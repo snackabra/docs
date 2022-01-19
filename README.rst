@@ -1,33 +1,5 @@
 Welcome to ``snackabra/docs``
 ================================
 
-``snackabra`` is awesome.
-
-.. code-block:: pycon
-
-    >>> from cryptography.fernet import Fernet
-    >>> # Put this somewhere safe!
-    >>> key = Fernet.generate_key()
-    >>> f = Fernet(key)
-    >>> token = f.encrypt(b"A really secret message. Not for prying eyes.")
-    >>> token
-    b'...'
-    >>> f.decrypt(token)
-    b'A really secret message. Not for prying eyes.'
-
-If you are interested in learning more about the field of cryptography, we
-recommend `Crypto 101, by Laurens Van Houtven`_ and `The Cryptopals Crypto
-Challenges`_.
-
-Installation
-------------
-You can install ``cryptography`` with ``pip``:
-
-.. code-block:: console
-
-    $ pip install cryptography
-
-See :doc:`Installation <installation>` for more information.
-
-.. _cryptography-layout:
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
 

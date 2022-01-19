@@ -1,0 +1,5 @@
+sphinx
+seqdiag
+sphinxcontrib-blockdiag
+sphinxcontrib-seqdiag
+furo

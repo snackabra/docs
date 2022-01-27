@@ -3,8 +3,8 @@ Welcome to ``snackabra/docs``
 
 Home of documentation and specifications for the snackabra service. See:
 
-https://snackabra.readthedocs.org
-https://snackabra.io
+* https://snackabra.readthedocs.org
+* https://snackabra.io
 
 ## Working on the docs
 

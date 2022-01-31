@@ -16,6 +16,4 @@ exclude_patterns = []
 
 html_theme = 'furo'
 
-# ... fuck me
-# https://stackoverflow.com/questions/50080481/rendering-discrepancy-between-readthedocs-and-localhost
 html_static_path = ['']

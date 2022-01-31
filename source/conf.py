@@ -10,10 +10,10 @@ release = '0.3'
 
 extensions = ['sphinxcontrib.blockdiag', 'sphinxcontrib.seqdiag']
 
-templates_path = ['docs/_templates']
+templates_path = ['_templates']
 
 exclude_patterns = []
 
 html_theme = 'furo'
 
-html_static_path = ['../docs/_static']
+html_static_path = ['../_static']

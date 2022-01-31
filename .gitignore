@@ -1,6 +1,4 @@
-# build
+build/*
 venv
 *~
-# docs/html
-# docs/doctrees
-# html
+docs

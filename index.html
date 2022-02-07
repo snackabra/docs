@@ -3,13 +3,15 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Introduction" href="introduction.html" />
 
     <meta name="generator" content="sphinx-4.4.0, furo 2022.01.02"/>
-        <title>snackabra 0.3 documentation</title>
+        <title>snackabra 0.4.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=df49af52631e7917044a9c21a57f7b83170a6dd0" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=fade93df149f7c5fedb3ff897f799dc7d283b420" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
     
     
 
@@ -123,7 +125,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="#"><div class="brand">snackabra 0.3 documentation</div></a>
+      <a href="#"><div class="brand">snackabra 0.4.1 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -134,7 +136,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -146,7 +148,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="#">
   
   
-  <span class="sidebar-brand-text">snackabra 0.3 documentation</span>
+  <span class="sidebar-brand-text">snackabra 0.4.1 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
@@ -154,7 +156,24 @@
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core-doc.html">Technical Details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="system-architecture.html">System Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="discussion.html">Discussion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contact.html">Contact and Feedback</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="future.html">Future Work</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References / Further Reading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">LICENSE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pylib.html">Python Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix-a-crypto.html">Appendix A: Cryptography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide.html">Appendix B: Privacy.App Chat Room User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diag-sample.html">(ignore)</a></li>
+</ul>
+
 </div>
 </div>
       </div>
@@ -173,54 +192,92 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
-          <section id="welcome-to-snackabra-docs">
-<h1>Welcome to <code class="docutils literal notranslate"><span class="pre">snackabra/docs</span></code><a class="headerlink" href="#welcome-to-snackabra-docs" title="Permalink to this headline">¶</a></h1>
-<p>“SNACKABRA” is pronounced “snack” and then the first part of
+          <div class="line-block">
+<div class="line"><br/></div>
+<div class="line"><br/></div>
+</div>
+<a class="reference internal image-reference" href="_images/snackabra.svg"><img alt="The 'michat' Pet Logo" class="align-center" height="100px" src="_images/snackabra.svg" width="100px"/></a>
+<section id="snackabra">
+<h1>Snackabra<a class="headerlink" href="#snackabra" title="Permalink to this headline">¶</a></h1>
+<p>Snackabra is a from-scratch implementation of many-to-many
+conversation and document sharing.  It is made up of a set of
+designs, reference implementations, and a reference service.  It is
+intended to address a number of concerns and constraints with
+present systems. <a class="footnote-reference brackets" href="#f01" id="id1">1</a></p>
+<p>You might want to start with a <a class="reference internal" href="user-guide.html#introduction"><span class="std std-ref">slightly technical introduction</span></a> and then dig into <a class="reference internal" href="overview.html#overview"><span class="std std-ref">more detailed overview</span></a>. If you’re a member of public server such
+<a class="reference external" href="https://Privacy.App">https://Privacy.App</a> then you might be looking for a short <a class="reference internal" href="user-guide.html#introduction"><span class="std std-ref">user
+manual</span></a> instead.</p>
+<p>Snackabra <a class="footnote-reference brackets" href="#f02" id="id2">2</a> is open source (<a class="reference external" href="https://github.com/snackabra">https://github.com/snackabra</a>).
+If you would like to contribute or help out with the snackabra
+project, please feel free to <a class="reference internal" href="contact.html#contact"><span class="std std-ref">reach out to us</span></a>.</p>
+<p>This is work in progress, there’s much left to do. Design was begun in
+2020 and implementation was begun in 2021, so please be patient if and
+when we need to change (sometimes fundamental) things.  Until there
+are (many) more miles on this design and implementation, you should
+<em>not</em> rely on it for critical information: make sure you have
+independent backups of anything important.
+We will “signal” that we think the system is “pretty solid” by kicking
+the version number to “1.0.0”. <a class="footnote-reference brackets" href="#f03" id="id3">3</a> <a class="footnote-reference brackets" href="#f04" id="id4">4</a></p>
+<div class="toctree-wrapper compound">
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>References to the “Institute” or “MI” (or sometimes “us/our”) refers
+to the <a class="reference external" href="https://Magnusson.Institute">https://Magnusson.Institute</a> - which is funding the
+development of snackabra as part of a (paid) membership package of
+privacy services (see <a class="reference external" href="http://Privacy.App">http://Privacy.App</a>). References to “Members”
+refer to either such users, or users of an equivalent public hosting
+of snackabra.</p>
+</div>
+<hr class="docutils"/>
+<p class="rubric">Footnotes</p>
+<dl class="footnote brackets">
+<dt class="label" id="f01"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>See the <a class="reference internal" href="discussion.html#principles"><span class="std std-ref">section on underlying design principles</span></a> as well as the <a class="reference internal" href="discussion.html#id7"><span class="std std-ref">general discussion</span></a>
+sections for details.</p>
+</dd>
+<dt class="label" id="f02"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
+<dd><p>“SNACKABRA” is pronounced “snack” and then the first part of
 “abracadabra”. Accent is on the second “a” (the first “a” in
-“abracadabra”). It’s as easy to use as having a snack. And it’s
-magical.</p>
-<p>Copyright (c) 2019-2021 Magnusson Institute, All Rights Reserved.</p>
-<p>Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-“Software”), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:</p>
-<p>The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.</p>
-<p>THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
-<p>“Snackabra” is a registered trademark.</p>
-<section id="summary-of-snackabra">
-<h2>Summary of Snackabra<a class="headerlink" href="#summary-of-snackabra" title="Permalink to this headline">¶</a></h2>
-<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae
-ab illo inventore veritatis et quasi architecto beatae vitae dicta
-sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos
-qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui
-dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed
-quia non numquam eius modi tempora incidunt ut labore et dolore magnam
-aliquam quaerat voluptatem.</p>
-<div class="align-default"><img height="120" src="_images/blockdiag-68c909a02df7138f2bffc613eafcc98ebc6b0600.png" width="832"/></div>
-<p>Ut enim ad minima veniam, quis nostrum
-exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex
-ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in
-ea voluptate velit esse quam nihil molestiae consequatur, vel illum
-qui dolorem eum fugiat quo voluptas nulla pariatur?”</p>
-</section>
+“abracadabra”). It’s as easy to use as having a snack. And
+it’s magical.</p>
+</dd>
+<dt class="label" id="f03"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
+<dd><p>Though bear in mind that the <a class="reference internal" href="license.html#license"><span class="std std-ref">license language</span></a> will never cease to apply: this is provided “as is”.</p>
+</dd>
+<dt class="label" id="f04"><span class="brackets"><a class="fn-backref" href="#id4">4</a></span></dt>
+<dd><p>The “canary function” for all of snackabra is @psm’s
+personal twitter (<a class="reference external" href="https://twitter.com/petersmagnusson">https://twitter.com/petersmagnusson</a>).
+You can DM at any time to ask if there are any court orders
+or similar in effect of any sort that impact the integrity
+of design, implemtation, or operation of snackabra. @psm
+will reply if he is not aware. If you don’t know what
+this footnote means, don’t worry about it.</p>
+</dd>
+</dl>
+<hr class="docutils"/>
+<p><strong>LICENSE</strong></p>
+<p>Copyright (c) 2016-2021 Magnusson Institute, All Rights Reserved.</p>
+<p>“Snackabra” is a registered trademark</p>
+<p>This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as
+published by the Free Software Foundation, either version 3 of the
+License, or (at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Affero General Public License for more details.</p>
+<p>Licensed under GNU Affero General Public License
+<a class="reference external" href="https://www.gnu.org/licenses/agpl-3.0.html">https://www.gnu.org/licenses/agpl-3.0.html</a></p>
 </section>
 
         </article>
@@ -228,7 +285,15 @@ qui dolorem eum fugiat quo voluptas nulla pariatur?”</p>
       <footer>
         
         <div class="related-pages">
-          
+          <a class="next-page" href="introduction.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Introduction</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
           
         </div>
 
@@ -244,27 +309,8 @@ qui dolorem eum fugiat quo voluptas nulla pariatur?”</p>
         
       </footer>
     </div>
-    <aside class="toc-drawer">
+    <aside class="toc-drawer no-toc">
       
-      
-      <div class="toc-sticky toc-scroll">
-        <div class="toc-title-container">
-          <span class="toc-title">
-            Contents
-          </span>
-        </div>
-        <div class="toc-tree-container">
-          <div class="toc-tree">
-            <ul>
-<li><a class="reference internal" href="#">Welcome to <code class="docutils literal notranslate"><span class="pre">snackabra/docs</span></code></a><ul>
-<li><a class="reference internal" href="#summary-of-snackabra">Summary of Snackabra</a></li>
-</ul>
-</li>
-</ul>
-
-          </div>
-        </div>
-      </div>
       
       
     </aside>

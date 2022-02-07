@@ -1,58 +1,117 @@
-================================
-Welcome to ``snackabra/docs``
-================================
 
-"SNACKABRA" is pronounced "snack" and then the first part of
-"abracadabra". Accent is on the second "a" (the first "a" in
-"abracadabra"). It's as easy to use as having a snack. And it's
-magical.
+|
+|
 
-Copyright (c) 2019-2021 Magnusson Institute, All Rights Reserved.
+.. image:: _static/snackabra.svg
+   :height: 100px
+   :width: 100px
+   :align: center
+   :alt: The 'michat' Pet Logo
 
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
+=========
+Snackabra
+=========
 
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
+Snackabra is a from-scratch implementation of many-to-many
+conversation and document sharing.  It is made up of a set of
+designs, reference implementations, and a reference service.  It is
+intended to address a number of concerns and constraints with
+present systems. [#f01]_
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+You might want to start with a :ref:`slightly technical introduction
+<introduction>` and then dig into :ref:`more detailed overview
+<overview>`. If you're a member of public server such
+https://Privacy.App then you might be looking for a short :ref:`user
+manual <introduction>` instead.
 
-"Snackabra" is a registered trademark.
+Snackabra [#f02]_ is open source (https://github.com/snackabra).
+If you would like to contribute or help out with the snackabra
+project, please feel free to :ref:`reach out to us <contact>`.
+
+This is work in progress, there's much left to do. Design was begun in
+2020 and implementation was begun in 2021, so please be patient if and
+when we need to change (sometimes fundamental) things.  Until there
+are (many) more miles on this design and implementation, you should
+*not* rely on it for critical information: make sure you have
+independent backups of anything important.
+We will "signal" that we think the system is "pretty solid" by kicking
+the version number to "1.0.0". [#f03]_ [#f04]_
 
 
-Summary of Snackabra
---------------------
+.. toctree::
+   :hidden:
+   :maxdepth: 3
 
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae
-ab illo inventore veritatis et quasi architecto beatae vitae dicta
-sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos
-qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui
-dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed
-quia non numquam eius modi tempora incidunt ut labore et dolore magnam
-aliquam quaerat voluptatem.
+   introduction
+   overview
+   install
+   core-doc
+   system-architecture
+   discussion
+   contact
+   glossary
+   future
+   references
+   license
+   pylib
+   appendix-a-crypto.rst
+   user-guide
+   (ignore) <diag-sample>
 
-.. blockdiag::
+|
 
-    blockdiag admin {
-      top_page -> config -> config_edit -> config_confirm -> top_page;
-    }
 
-Ut enim ad minima veniam, quis nostrum
-exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex
-ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in
-ea voluptate velit esse quam nihil molestiae consequatur, vel illum
-qui dolorem eum fugiat quo voluptas nulla pariatur?"
+.. note::
 
+   References to the "Institute" or “MI” (or sometimes “us/our”) refers
+   to the https://Magnusson.Institute - which is funding the
+   development of snackabra as part of a (paid) membership package of
+   privacy services (see http://Privacy.App). References to "Members"
+   refer to either such users, or users of an equivalent public hosting
+   of snackabra.
+
+
+----------------
+
+.. rubric:: Footnotes
+
+.. [#f01] See the :ref:`section on underlying design principles
+           <principles>` as well as the :ref:`general discussion <discussion>`
+	   sections for details.
+
+.. [#f02] "SNACKABRA" is pronounced "snack" and then the first part of
+	 "abracadabra". Accent is on the second "a" (the first "a" in
+	 "abracadabra"). It's as easy to use as having a snack. And
+	 it's magical.
+
+.. [#f03] Though bear in mind that the :ref:`license language
+          <license>` will never cease to apply: this is provided "as is".
+
+.. [#f04] The "canary function" for all of snackabra is @psm's
+	  personal twitter (https://twitter.com/petersmagnusson).
+	  You can DM at any time to ask if there are any court orders
+	  or similar in effect of any sort that impact the integrity
+	  of design, implemtation, or operation of snackabra. @psm
+	  will reply if he is not aware. If you don't know what
+	  this footnote means, don't worry about it.
+
+----------------
+
+**LICENSE**
+
+Copyright (c) 2016-2021 Magnusson Institute, All Rights Reserved.
+
+"Snackabra" is a registered trademark
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as
+published by the Free Software Foundation, either version 3 of the
+License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Affero General Public License for more details.
+
+Licensed under GNU Affero General Public License
+https://www.gnu.org/licenses/agpl-3.0.html

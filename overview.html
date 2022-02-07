@@ -1,0 +1,1079 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Installation" href="install.html" /><link rel="prev" title="Introduction" href="introduction.html" />
+
+    <meta name="generator" content="sphinx-4.4.0, furo 2022.01.02"/>
+        <title>Overview - snackabra 0.4.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=df49af52631e7917044a9c21a57f7b83170a6dd0" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=fade93df149f7c5fedb3ff897f799dc7d283b420" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  body[data-theme="dark"] {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    body:not([data-theme="light"]) {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+</style></head>
+  <body>
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" />
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">snackabra 0.4.1 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
+  
+  <span class="sidebar-brand-text">snackabra 0.4.1 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core-doc.html">Technical Details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="system-architecture.html">System Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="discussion.html">Discussion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contact.html">Contact and Feedback</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="future.html">Future Work</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References / Further Reading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">LICENSE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pylib.html">Python Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix-a-crypto.html">Appendix A: Cryptography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide.html">Appendix B: Privacy.App Chat Room User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diag-sample.html">(ignore)</a></li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="overview">
+<span id="id1"></span><h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
+<p>This part will give a fairly technical overview of the system(s),
+somewhere between the <a class="reference internal" href="user-guide.html#introduction"><span class="std std-ref">Introduction</span></a> and the
+<a class="reference internal" href="core-doc.html#techdetails"><span class="std std-ref">Technical Details</span></a>.</p>
+<section id="rooms">
+<h2>Rooms<a class="headerlink" href="#rooms" title="Permalink to this headline">¶</a></h2>
+<p>A client connecting to a room will first check for their own
+participant keys in their localstorage.</p>
+<p>If the local_storage has no participant keys for the room, that means
+the person joining is new to the room. A dialog box is shown to
+confirm that the user understands this, if not, they’re prompted to
+load keys from backup.</p>
+<p>Otherwise, a new participant key is generated and stored in
+localstorage.</p>
+<p>Otherwise, the client connects to websocket and sends their public
+participant key to the DO. The DO replies with a ‘ready’ message
+containing the following data from <a class="reference internal" href="glossary.html#term-KV_local"><span class="xref std std-term">KV_local</span></a>:</p>
+<ul class="simple">
+<li><p>keys:</p>
+<ul>
+<li><p>&lt;room&gt;_ownerKey</p></li>
+<li><p>&lt;room&gt;_encryptionKey</p></li>
+<li><p>&lt;room&gt;_signKey</p></li>
+<li><p>&lt;room&gt;_guestKey  (‘Null’ if not present in <a class="reference internal" href="glossary.html#term-KV_global"><span class="xref std std-term">KV_global</span></a>)</p></li>
+</ul>
+</li>
+<li><p>MotD</p></li>
+</ul>
+<p>If the _ownerKey is Null, the room is “non-existent” meaning it has
+not been created. If a participant tries to message a non-existent
+room, a system message is displayed to the client which says that the
+room has not been initiated yet.  The keys (and the existence of the
+room) is generated by administrative tools (CLI).</p>
+<p>If the _guestKey is Null, it is set to the public half of the first
+participant (who does <em>not</em> have the cookie, e.g., who is not Owner).</p>
+</section>
+<section id="owner-and-admin">
+<h2>Owner and Admin<a class="headerlink" href="#owner-and-admin" title="Permalink to this headline">¶</a></h2>
+<p>If the participant key is the same as the roomKey, the client UI will
+assume that it’s the Owner. This only affects the whisper UI.</p>
+<p>If there is a correctly formed cookie (from the SSO backend), the Chat
+UI will show the Admin tab, and the Chat backend will consider this
+participant <em>authenticated</em> Owner and allow Admin API calls (cookie is
+included in each call). Current Admin operations are: restrict a room,
+accept a request to join a restricted room, and set the MotD (see
+below).</p>
+<p>The time to live for the cookie is one day:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">token_</span><span class="o">&lt;</span><span class="n">room</span><span class="o">&gt;</span><span class="p">:</span> <span class="n">epoch</span><span class="o">+</span><span class="s1">'.’+sign(&lt;epoch&gt;+'</span><span class="n">_</span><span class="o">&lt;</span><span class="n">roomId</span><span class="o">&gt;</span><span class="p">);</span><span class="n">domain</span><span class="o">=.</span><span class="n">privacy</span><span class="o">.</span><span class="n">app</span><span class="p">;</span><span class="n">secure</span><span class="p">;</span><span class="n">samesite</span><span class="o">=</span><span class="n">strict</span><span class="p">;</span><span class="nb">max</span><span class="o">-</span><span class="n">age</span><span class="o">=</span><span class="mi">86400</span><span class="s1">';</span>
+</pre></div>
+</div>
+<p>Where signing is done with ECDSA using &lt;roomId&gt;_authorizationKey (with SHA-256)</p>
+<p>Some notes:</p>
+<ol class="arabic">
+<li><p>For an Owner to join “as Owner”, both the above cookie and the
+participant key (private half of the ownerKey) will need to be set,
+such as by using sendMessage/iFrame.</p></li>
+<li><p>In default setup, the Owner’s (private) room owner keys need to be
+kept separate; in our SSO database.</p>
+<p>If the Owner so wishes, they can generate a new pair in the SSO,
+overwrite the corresponding room ownerKey in <a class="reference internal" href="glossary.html#term-KV_global"><span class="xref std std-term">KV_global</span></a>, and store the
+private key <em>only</em> in their localstorage.</p>
+<p>[internal: In a future upgrade to the membership kits, we can
+include the private keys for all the rooms (current and future!) on
+the USB. This would allow us to offer <em>physical</em> key recovery service
+for members, without <em>ever</em> having the private keys on a networked
+computer.]</p>
+</li>
+<li><p>Restriction is a “fire once” operation - when the Owner restricts a
+room, all participant clients can verify the public key of the
+Owner <em>as well as</em> the assurance from the worker back end <em>and</em> the
+separate SSO that this is indeed the Owner.</p></li>
+</ol>
+</section>
+<section id="message-of-the-day">
+<h2>Message of the Day<a class="headerlink" href="#message-of-the-day" title="Permalink to this headline">¶</a></h2>
+<p>Owner can change the MotD. It’s shown every time the websocket
+connects (e.g. whenever you reload the room, enter it for the first
+time, etc).</p>
+</section>
+<section id="whisper">
+<h2>Whisper:<a class="headerlink" href="#whisper" title="Permalink to this headline">¶</a></h2>
+<p>Whispers are for communication between just the Owner and one
+participant, and can be initiated from either party. For everyone
+else, the message appears in a yellow background as <em>(whispered)</em>
+unless the room is restricted. <a class="footnote-reference brackets" href="#f025" id="id2">1</a></p>
+<p>Guests can whisper to Owner by tapping the profile icon at the top
+right; Owners can whisper by long pressing the “Name” circle of any
+message.</p>
+<p>This encrypts the message (text and image separately) using the
+encryption key derived from the private key of the guest and the
+&lt;room&gt;_ownerKey. <a class="footnote-reference brackets" href="#f026" id="id3">2</a></p>
+<p>The owner can whisper to anyone who has sent a message to the room
+once by long pressing/long clicking on the user icon for the guest
+they want to whisper to. This encrypts the message (text and image
+separately) using the encryption key derived from the private key of
+the owner (generated when first joined) and the public key of the
+guest.</p>
+<p>To decrypt a whispered message, key generation is done using the
+user’s private key and the sender’s public key which is included in
+the message.</p>
+<p>(A whisper precludes the need for signing the message.)</p>
+</section>
+<section id="signing">
+<h2>Signing:<a class="headerlink" href="#signing" title="Permalink to this headline">¶</a></h2>
+<p>If a message is not whispered, it will be signed by the sender. If a
+message is not whispered and fails verification (sign not
+present/corrupted), it is displayed with a red outline.</p>
+<p>Each part to be signed (text, image, image metadata) is signed using
+the sign key derived from the private key of the sender and the public
+half from &lt;room&gt;_signKey.</p>
+<p>Each part is signed using an ‘HMAC’ key derived using the private half
+of the sender’s participant key or &lt;room&gt; key and the public half of
+the &lt;room&gt;_signKey. All 3 signs are verified using the key derived
+from the public key of the sender and the private half of the
+&lt;room&gt;_signKey.</p>
+</section>
+<section id="restricting-a-room">
+<h2>Restricting a room<a class="headerlink" href="#restricting-a-room" title="Permalink to this headline">¶</a></h2>
+<p>When the owner restricts the room, a new encryption key is generated
+and stored in the local_storage. All guests who have visited the room
+once will be added to “Visitor Requests”. The owner will also be added
+to this list and automatically approved.</p>
+<p>A restricted room will result in a conversation that nobody outside
+the group of participants can read (any participant can read all
+messages).</p>
+<p>Any new visitor will automatically generate a new request to the
+Owner.</p>
+<p>A restricted room has a green “locked” icon next to its name.</p>
+<p>The Durable Object backend maintains a list of the public key of
+‘accepted visitors’ in <a class="reference internal" href="glossary.html#term-KV_local"><span class="xref std std-term">KV_local</span></a>. The Durable Object backend also
+maintains a JavaScript Object of all ‘locked_keys’ wherein the
+‘encrypted’ locked_key for each ‘accepted guest’ (look at the section
+‘Accepting a guest’) is stored corresponding to the public half of the
+visitor’s participant or &lt;room&gt; key.</p>
+</section>
+<section id="accepting-a-guest">
+<h2>Accepting a guest<a class="headerlink" href="#accepting-a-guest" title="Permalink to this headline">¶</a></h2>
+<p>When the room owner accepts a guest to a restricted room, the key
+stored in the local_storage of the owner as &lt;room&gt;_lockedKey will be
+encrypted using the encryption key derived from the private key of the
+owner and public key of the guest. This encrypted key will be sent to
+the Durable Objects backend and stored there (<a class="reference internal" href="glossary.html#term-KV_local"><span class="xref std std-term">KV_local</span></a>).</p>
+<p>Whenever a guest joins a restricted room, if they have been accepted,
+this encrypted key will be sent to them as the first ‘message’ from
+the Websocket. The key will be decrypted using the key derived from
+their private key and the public key of the owner and then stored to
+the localstorage.</p>
+</section>
+<section id="owner-key-management">
+<h2>Owner Key Management<a class="headerlink" href="#owner-key-management" title="Permalink to this headline">¶</a></h2>
+<p>The Owner keys are initially managed by the SSO, a bit like if they
+were using a password manager. However, this default setup exposes the
+Owner to the Institute, for whatever reason, wanting to “impersonate”
+them (since the membership page is the SSO service). It also exposes
+participants to some extent to security issues in underlying
+infrastructure (see the ‘Discussion’ section at the end of this
+document).</p>
+<p>To give Owners an option for stronger privacy <a class="footnote-reference brackets" href="#f027" id="id4">3</a> they can
+regenerate their keys for any given room, from their membership
+page. When that happens, a new public ECDH key pair is created in the
+client. However the <em>private</em> key is <em>not</em> stored in the SSO
+system. The public half of this key is then signed using the current
+&lt;room&gt;_ownerKey (the key before rotation occurs). The sign and the
+public half of the new key are then sent to <a class="reference internal" href="glossary.html#term-KV_global"><span class="xref std std-term">KV_global</span></a> in a fetch
+request which stores the received value (key + sign) as
+&lt;room&gt;_ownerKey&lt;ts&gt;, where ts is the timestamp when it performs the
+store operation. (We also refer to this as ‘key rotation’ or ‘locking’
+a room.)</p>
+<p>The owner’s chat client will then make a fetch request to the Durable
+Object to refresh it’s maintained copy of the ownerKey in
+<a class="reference internal" href="glossary.html#term-KV_local"><span class="xref std std-term">KV_local</span></a>. The Durable Object pings <a class="reference internal" href="glossary.html#term-KV_global"><span class="xref std std-term">KV_global</span></a> and if the <a class="reference internal" href="glossary.html#term-KV_global"><span class="xref std std-term">KV_global</span></a>
+returns an ownerKey different from the ownerKey in <a class="reference internal" href="glossary.html#term-KV_local"><span class="xref std std-term">KV_local</span></a>, the DO
+broadcasts it to all active chat clients using websockets.</p>
+<p>Note: In the current design, the sign which is stored along with the
+key is not utilized. However, in future iterations, any user will
+independently be able to fetch all &lt;room&gt;_ownerKeys (meaning all
+rotated keys) and verify that all room_ownerKey rotations were signed
+by the owner key before rotation and hence, verify that key rotations
+were initiated by the owner.</p>
+<p>Note: only restricted rooms can be locked-down.</p>
+<p>Note: once the Owner has rotated their keys, all the other participant
+clients will note that hereafter, only commands (such as additional
+key rotations) signed by this set of Owner keys are respected.</p>
+<p>When a room is both restricted and rotated (‘locked-down’) a different
+lock icon is shown next to the room name.</p>
+</section>
+<section id="image-photo-sharing">
+<span id="photosharing"></span><h2>Image (Photo) Sharing <a class="footnote-reference brackets" href="#f043" id="id5">17</a><a class="headerlink" href="#image-photo-sharing" title="Permalink to this headline">¶</a></h2>
+<p>A major design element is to accomplish scaleable, reliable,
+economical, secure, and private mechanisms for sharing and accessing
+images.</p>
+<p>The attach icon allows you to send an image, or (on modern
+device/browser combinations) take a picture from the camera straight
+to the chat app.</p>
+<p>The instant the image is “uploaded” (given to the web app), it is
+processed <a class="footnote-reference brackets" href="#f030" id="id6">4</a>, in JPG format. This transform has as a side
+effect that any metadata is removed.</p>
+<p>If the image in the message is “sent”, then in fact three versions are
+processed:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="glossary.html#term-thumbnail"><span class="xref std std-term">thumbnail</span></a> - this is a (max) 20KB version of the processed
+image. This is transmitted using websockets and stored within the
+message as a DataURL (<em>not</em> an image link) and should appear close
+to instantly for all participants. The 20KB limit was originally chosen to allow
+the full image to fit in the <a class="reference internal" href="glossary.html#term-KV_local"><span class="xref std std-term">KV_local</span></a>. The entire object is enclosed
+in the (encrypted) image.</p></li>
+<li><p><a class="reference internal" href="glossary.html#term-preview"><span class="xref std std-term">preview</span></a> - this is a (max) 4MB processed image. This is stored in
+the <a class="reference internal" href="glossary.html#term-KV_global"><span class="xref std std-term">KV_global</span></a> (see next section) and can be retrieved by anyone who
+has access to the message with which it was shared (and that has the
+<a class="reference internal" href="glossary.html#term-thumbnail"><span class="xref std std-term">thumbnail</span></a>).</p></li>
+<li><p><strong>full</strong> - this is the 16MB or less version of the image. If the
+“original” is small enough, then it is stored unaltered. If it’s
+bigger, then it is processed as above. <a class="footnote-reference brackets" href="#f031" id="id7">5</a> This is stored
+in the <a class="reference internal" href="glossary.html#term-KV_global"><span class="xref std std-term">KV_global</span></a> in the same way as the preview. Only the owner has
+access to the original.</p></li>
+</ul>
+<p>Thus, a small thumbnail is sent and shared synchronously and
+immediately in the front end, and should appear almost instantly to
+everybody connected to that room. The larger versions are sent with
+eventual-consistency to <a class="reference internal" href="glossary.html#term-KV_global"><span class="xref std std-term">KV_global</span></a>-backed workers as detailed in the
+next section.</p>
+</section>
+<section id="image-dedup-encryption-storage">
+<h2>Image Dedup + Encryption + Storage:<a class="headerlink" href="#image-dedup-encryption-storage" title="Permalink to this headline">¶</a></h2>
+<p>The preview and full image are stored as secure ‘objects.’ An <a class="reference internal" href="glossary.html#term-object"><span class="xref std std-term">object</span></a> is
+a specific construct that is particular to this design. The image
+information itself is referred to below as ‘data’. Objects are
+ultimately stored in <a class="reference internal" href="glossary.html#term-KV_global"><span class="xref std std-term">KV_global</span></a> with the following information:</p>
+<ul class="simple" id="object">
+<li><p>Their full name (also the <a class="reference internal" href="glossary.html#term-KV_global"><span class="xref std std-term">KV_global</span></a> key). The name is a 512-bit
+string constructed in two halves, in two steps. The first half is
+the first half of the SHA-512 hash of the original (unencrypted)
+contents, the second half is a SHA-256 hash of (final) encrypted
+contents.</p></li>
+<li><p>Nonce and salt used for the encryption. These can be accessed using
+just the first half of the full name (prefix search).</p></li>
+<li><p>Contents, which is the encrypted version of the padded form of the
+original contents.</p></li>
+<li><p>A random 16-byte value, the <a class="reference internal" href="glossary.html#term-verification"><span class="xref std std-term">verification</span></a>.</p></li>
+<li><p>A random 48-bit value, the ‘version_id’ which might be used in the
+future for version control on files</p></li>
+</ul>
+<p>Starting from an image (or some other arbitrary data), the above is
+accomplished as follows:</p>
+<ul class="simple">
+<li><p>The client generates the SHA-512 hash based on original data (eg
+image). It sends a ‘request to store’ query with the first half of
+this hash (the ‘partial name’); it will eventually receive a 12-byte
+nonce and a 16-byte salt.</p></li>
+<li><p>While waiting for this, the client constructs the ‘shared image’
+message, with the <a class="reference internal" href="glossary.html#term-thumbnail"><span class="xref std std-term">thumbnail</span></a>, and forwards data and the first half of
+the SHA-512 hash for the compressed data (preview) and original data
+(full image), and sends the message.</p></li>
+<li><p>Next, the client makes a fetch request (once each for the preview
+and full <a class="reference internal" href="glossary.html#term-object"><span class="xref std std-term">object</span></a>) to <a class="reference internal" href="glossary.html#term-KV_global"><span class="xref std std-term">KV_global</span></a> with the first half of the full name
+of the file. When the <a class="reference internal" href="glossary.html#term-KV_global"><span class="xref std std-term">KV_global</span></a> receives the ‘request to store’
+query, if it’s a new object, then it generates random new nonce and
+salt and stores those with the partial name (it doesn’t have the
+full name yet); if it’s not a new object, it returns previously
+generated values. <a class="footnote-reference brackets" href="#f032" id="id8">6</a></p></li>
+<li><p>The client prepares the data by padding it to be almost exactly the
+size of the nearest exponent of two (2) larger than its actual
+(possibly new) size, no less than 128KB (this is the “target size”
+mentioned above). Regardless of image, the resulting ‘preview’ thus
+ends up appearing to be one of only six different sizes. <a class="footnote-reference brackets" href="#f033" id="id9">7</a>
+The padding is done using ‘bit’-padding, specifically, the length is
+padded only in increments of 128 bits <a class="footnote-reference brackets" href="#f042" id="id10">8</a>  up to one block
+<em>less</em> than the target size - if the target size is on a 128-bit
+boundary, a full 128bits are left. ‘Bit’ padding is 0x80 followed by
+zeroes. The last thus added block is then truncated by 4 bytes (32
+bits), and the length of the original data is stored.</p></li>
+<li><p>Next the client encrypts this padded block with a key derived from
+the entropy of the second half of the above first hash (using
+PBKDF2; 100,000 iterations; SHA-256), with the nonce and salt
+returned by the previous ‘request to store’ query.</p></li>
+<li><p>Next the client generates a SHA-256 hash based on the encrypted
+block (which after encryption should be on a perfect exponent-of-2
+boundary) and concatenates with the ‘partial name’ from earlier to
+form the ‘full name.’</p></li>
+<li><p>The client then makes API calls (once each for the preview and full
+<a class="reference internal" href="glossary.html#term-object"><span class="xref std std-term">object</span></a>) to the <a class="reference internal" href="glossary.html#term-KV_local"><span class="xref std std-term">KV_local</span></a> with the final size value (in cleartext) of
+the object (preview/full) (rounded up as per below); the room server
+inspects and approves the size (or not).</p></li>
+<li><p>If approved, the <a class="reference internal" href="glossary.html#term-KV_local"><span class="xref std std-term">KV_local</span></a> makes a fetch request to the
+<a class="reference internal" href="glossary.html#term-Ledger-Backend"><span class="xref std std-term">Ledger Backend</span></a> to generate a token for the requested
+size. The Ledger Backend returns a token_id. The <a class="reference internal" href="glossary.html#term-KV_local"><span class="xref std std-term">KV_local</span></a>
+then encrypts this token_id with the public half of the
+ledgerKey. Finally, the <a class="reference internal" href="glossary.html#term-KV_local"><span class="xref std std-term">KV_local</span></a> returns the hash of the
+token_id, the encrypted token_id and the hashed roomId as the
+storage token back to the client. <a class="footnote-reference brackets" href="#f034" id="id11">9</a></p></li>
+<li><p>The client then requests this encrypted <a class="reference internal" href="glossary.html#term-object"><span class="xref std std-term">object</span></a> to be stored under
+the full name provided, including token approving storage usage; in
+reply it will receive the 16-byte <a class="reference internal" href="glossary.html#term-verification"><span class="xref std std-term">verification</span></a>. This encrypted
+object is sent asynchronously to the (non-room) worker API.</p></li>
+<li><p>The client then generates a control message that contains the full
+name of previously shared (<a class="reference internal" href="glossary.html#term-thumbnail"><span class="xref std std-term">thumbnail</span></a> only) image together with the
+<a class="reference internal" href="glossary.html#term-verification"><span class="xref std std-term">verification</span></a> as well as (again) the storage token. This control
+message would be sent with the same encryption layers as the
+original message containing the thumbnail.</p></li>
+<li><p>When the backend receives the object, it independently generates the
+same second hash based on the encrypted object to verify the
+integrity. It then verifies the storage token is valid (i.e. has
+been created by <a class="reference internal" href="glossary.html#term-KV_local"><span class="xref std std-term">KV_local</span></a>, hasn’t already been spent and the size of
+the object sent to be stored does not exceed the size stored in the
+ledger) by making a fetch request to the ledger backend. If valid,
+the <a class="reference internal" href="glossary.html#term-KV_global"><span class="xref std std-term">KV_global</span></a> stores three separate entries in the
+RECOVERY_NAMESPACE (“D3”) -</p>
+<ul>
+<li><p>&lt;hashed_room_id&gt;_&lt;encrypted_token_id&gt;</p></li>
+<li><p>&lt;hashed_token_id&gt;_&lt;image_id&gt;</p></li>
+<li><p>&lt;image_id&gt;_&lt;hashed_token_id&gt;</p></li>
+</ul>
+</li>
+<li><p>If this full name of the object requested to be stored exists in its
+storage, then it can discard the received data, and return the
+stored <a class="reference internal" href="glossary.html#term-verification"><span class="xref std std-term">verification</span></a>. If it doesn’t, it creates an entry, with the
+<em>full</em> name as the key, and saves the encrypted object <a class="footnote-reference brackets" href="#f035" id="id12">10</a>
+together with nonce and salt, generates a random 48-bit version_id,
+generates a random 16-byte verification, and returns that.</p></li>
+</ul>
+<p>When a client wants to open a preview, the following happens:</p>
+<ul class="simple">
+<li><p>The <a class="reference internal" href="glossary.html#term-thumbnail"><span class="xref std std-term">thumbnail</span></a> needs to have been matched with a control message with
+the full name and the final <a class="reference internal" href="glossary.html#term-verification"><span class="xref std std-term">verification</span></a> returned by a previous
+storage.</p></li>
+<li><p>The client requests to read the object based on the full name with
+the <a class="reference internal" href="glossary.html#term-verification"><span class="xref std std-term">verification</span></a> token.</p></li>
+<li><p>When the client receives the (raw) contents, it will also receive
+the nonce and salt, it applies the stored (secret) key, and decrypts
+and displays the object.</p></li>
+<li><p>The backend will only reply if the full name corresponds to an
+entry, and the <a class="reference internal" href="glossary.html#term-verification"><span class="xref std std-term">verification</span></a> number matches the stored verification
+number..</p></li>
+<li><p>An honest client will also confirm that the partial name (and key)
+matches a regenerated SHA-512 hash of the decrypted object, and
+signal in the UI (such as a red border) and possibly ‘report’ to the
+backend that the object is suspect.</p></li>
+</ul>
+<p>A few comments that follow from the above process.</p>
+<ul class="simple">
+<li><p>This design retains the ability to de-duplicate any stored binary
+data, without having the ability to inspect contents.</p></li>
+<li><p>The padding method obscures the precise length of any data,
+complicating any brute force attacks against contents of a
+compromised server: all stored objects in the same ‘bucket’ of size
+would have to be attacked.</p></li>
+<li><p>The chained hashing makes it impossible for a client to fake binary
+contents: since the second half of the full name is a hash of the
+encrypted contents, the backend can check for consistency - the
+computational difficulty of generating a file to match a second half
+(equivalent to a pre-image attack) is high. A client can obviously
+store random data, but that’s immaterial: what’s important is for
+the client not to be able to design a hash collision in the full
+name.</p></li>
+<li><p>A client can obviously avoid duplication by some manner of modifying
+the image, even trivially. But this is no different from any other
+encrypted storage.</p></li>
+<li><p>The client can be dishonest about the first half of the hash, but
+that also does not enable any control over hash collisions.</p></li>
+<li><p>Dishonesty in a client in constructing the full name will stay with
+the image sharing message, with a certain probability of being
+detected down the road.</p></li>
+</ul>
+<p>Regardless of level of misuse, the “insider” privacy model (discussed
+at the end of this document) will still be in force. Any participant
+to any chat, who has access to decrypting a message with the full key
+to the object, can report it, or save the information for future use,
+as well as identify if the naming has been tampered with. If we
+receive a report on an object with the missing pieces of the key, we
+can decrypt the object in storage, and both verify whether it is
+correctly reported content, as well as verify integrity, such as
+confirming (post facto) that the client was breaking the protocol. At
+that point, we can overwrite the object per policy, and re-encrypt
+with the provided key information, such that any future access using
+the dishonest or manipulated object name will not yield the original,
+but just the take-down notice.</p>
+<p>Another scenario is that a user shares with themselves, or in some
+other manner uses the service as a strongly encrypted storage, and
+acts maliciously. But this is no different than if they were to simply
+encrypt locally and only upload encrypted data to any cloud storage.</p>
+</section>
+<section id="storage-ledger-server">
+<span id="ledgerserver"></span><h2>Storage Ledger Server<a class="headerlink" href="#storage-ledger-server" title="Permalink to this headline">¶</a></h2>
+<p>A core challenge in providing long-term storage of files <a class="footnote-reference brackets" href="#f044" id="id13">18</a>, is how
+to accomplish the following:</p>
+<ul class="simple">
+<li><p>The system should be highly secure and private: contents
+at rest should be strongly encrypted, and not (easily)
+attributed to whomever uploaded, shared it, and/or
+downloaded it.</p></li>
+<li><p>Operating expenses. In a multi-user (multi-owner) context,
+the costs of respective total storage usage needs to be allocated
+to the correct party.</p></li>
+<li><p>The system should not allow tracing of who uploaded what (or even,
+preferably, when).</p></li>
+<li><p>The system should not allow tracing of who is sharing (“re-linking”)
+any file.</p></li>
+<li><p>It should not be possibly to inquire whether a file
+exists on the system, e.g., it should not be possible to determine
+if anybody has at any time stored or shared a file.</p></li>
+<li><p>The system should be fundamentally capable of de-duplication: in
+other words, any file that is uploaded, should not
+require duplicate copies in back-end storage. This is essential
+for the economics of (highly) scalable cloud storage.</p></li>
+<li><p>It should be possible for administrators of a snackabra service
+to “take down” any file, that they determine
+violates their policy, including in particular the ability to
+take down clearly illegal content.</p></li>
+<li><p>Any file should end up with a ‘name’ that is globally unique,
+so that it will have the same identifier on any snackabra server. <a class="footnote-reference brackets" href="#f045" id="id14">19</a></p></li>
+</ul>
+<p>This becomes a heavily parameterized problem.  This has been a major
+challenge for us to solve. To our knowledge, nobody has solved this
+complete set of requirements.</p>
+<p>The design described above accomplishes most of these criteria,
+but we have not addressed the cost-tracking (budgeting) aspect.</p>
+<div class="align-default"><img height="857" src="_images/seqdiag-23b9a75be463891cb36e6c9a838c3a9ccfa95af9.png" width="976"/></div>
+<p>There is a lot to unpack in this diagram, bear with us:</p>
+<p>First, there are four “account balances” involved:</p>
+<ol class="upperalpha simple">
+<li><p>The budget of the total service.</p></li>
+<li><p>The current budget of the room.</p></li>
+<li><p>The amount spent in total on storage.</p></li>
+</ol>
+<p>[A] starts as the total budget for a service - let’s say 100 TB for a
+multi-user host. Upon creation of any room, an initial balance of
+(say) 1 GB is allocated to the room, ergo 1 GB goes [A] =&gt; [B]. When a room
+“spends” this, it requests the ledger to transfer it from the room’s “account”
+to the global storage [C].  (On a personal server this is much simpler:
+the admin simply sets [B] to whatever on a per room basis, and there
+is no global [A] nor [C].)</p>
+<p>The idea is that we step-wise anonymize parts of the overall transaction (namely:
+store an object): generation of identifying information for the object is
+kept separate from the path to receive permission to store that amount
+of data, for example. You’ll probably need to re-read this section
+a few times to see how it all hangs to gether.</p>
+<p>Second, there are three important datastores involved, “D1”, “D2”, “D3”
+used in this process (not counting the actual storage of data):</p>
+<ul class="simple">
+<li><p>D1: LEDGER - separate server in multi-owner setup,
+internalized to the room in a personal server setup.
+These keeps current “account balances” of everything.</p></li>
+<li><p>D2: LEDGER_NAMESPACE - tracks spending of approved &lt;TID&gt;.
+To spend storage space, you’re “issued” a kind of token,
+which is simply a reference into D2, which in turn
+will track if it’s been “cashed” or not.</p></li>
+<li><p>D3: RECOVERY_NAMESPACE - tracks details to allow for
+anonymous recovery - garbage collection - of revoked
+storage etc. This is a bit complex (TODO: add section below),
+but it’s only relevant for multi-owner paid
+membership management, for a personal server you
+don’t need to worry much about it.</p></li>
+</ul>
+<p>Now we can untangle the diagram a bit:</p>
+<ol class="arabic">
+<li><p>The client requests to store a <a class="reference internal" href="glossary.html#term-file"><span class="xref std std-term">file</span></a>.
+It generates the first “half” of the name, and sends it
+to the storage server. What it needs is help to
+“construct” the “true name” for the <a class="reference internal" href="glossary.html#term-object"><span class="xref std std-term">object</span></a>.</p></li>
+<li><p>Storage server checks if the data exists already.
+Regardless, it replies with the assigned salt and iv
+to be used for the corresponding <a class="reference internal" href="glossary.html#term-object"><span class="xref std std-term">object</span></a>.</p></li>
+<li><p>The client encrypts the full set of data
+and sorts out padding. The blob is ready
+to save, and client has the “true name” of
+the object (“&lt;FN&gt;”).</p></li>
+<li><p>The client next requests from the room server
+permission to store the amount of data needed.</p></li>
+<li><p>The room checks if it has budget:
+it asks the Ledger to “spend” storage bytes:
+it generates a transaction of class
+“token”, with properties “size, random id, used”,
+and asks the ledger for an identifier (“&lt;TID&gt;”.</p></li>
+<li><p>The ledger spends ‘size’ from the room’s
+budget ([B]-&gt;[C]), and generates &lt;TID&gt;.
+The key details are the approved
+size, and if it’s been “spent” yet.
+This is stored with a one-way
+hash in ‘D2’ - thus “h(&lt;TID&gt;)”
+If all is well and good,
+responds with &lt;TID&gt;.</p>
+<p>TODO: .. clarify how TID is used to recover,
+with “free(&lt;TID&gt;, &lt;FN&gt;)”, and how
+deletion is recorded as “queue(&lt;FN&gt;)”
+for offline resolution.</p>
+</li>
+<li><p>On a personal server, step 5/6 is done
+locally instead, self-generating a &lt;TID&gt;.</p></li>
+<li><p>The Room now creates a special object,
+sort of a “token”: <code class="docutils literal notranslate"><span class="pre">&lt;hash(&lt;TID&gt;),</span> <span class="pre">R(&lt;TID&gt;),</span> <span class="pre">R(h&lt;TID&gt;)&gt;</span></code>.
+This bundle is encrypted (and padded),
+and returned with h(&lt;TID&gt;) to the client.</p></li>
+<li><p>The client is now empowered to actually request
+the store to be done. It sends the “magical
+token” along with the blob of data.</p></li>
+<li><p>Storage now checks with the Ledger (‘D2’):
+the hash of the &lt;TID&gt; (“h(&lt;TID&gt;)”), checks
+that the ‘size’ is correct, and
+“spends” it (finalizing [B]-&gt;[C]).</p></li>
+<li><p>Storage now updates ‘D3’ with some special info:
+<code class="docutils literal notranslate"><span class="pre">h(R(&lt;RID&gt;)_R(&lt;TID&gt;),</span> <span class="pre">h(&lt;TID&gt;_&lt;FN&gt;),</span>
+<span class="pre">&lt;FN&gt;_h(&lt;TID&gt;)</span></code>.  TODO: explain details here,
+for offline recovery / garbage collection.</p></li>
+<li><p>Finally, the storage server will generate a random
+<a class="reference internal" href="glossary.html#term-verification"><span class="xref std std-term">verification</span></a> number - unique for every &lt;FN&gt;.
+When the client receives it, it can <em>finally</em>
+construct the control message with all
+the details about the object, which
+altogether we loosely refer to as
+the <a class="reference internal" href="glossary.html#term-manifest"><span class="xref std std-term">manifest</span></a>. This is sent to
+all chat room participants.</p></li>
+</ol>
+<p>Various things to note:</p>
+<ul class="simple">
+<li><p>The room server manages it’s own “budget”;
+you can think of it as a “bucket” or almost
+as a directory. On a personal server that
+you run yourself, you can modify this
+budget directly for any room. On a multi-user
+service, there’s a separate “Ledger Server”
+which manages storage budgets and accounting
+across all accounts and users.</p></li>
+<li><p>A new room is initialized with an initial
+total budget - current default is 1 GB.
+It can “independently” authorize messages
+and files up to that total amount.
+Once that’s exceeded, then on a personal
+server you need to directly change the
+budget using the <a class="reference internal" href="glossary.html#term-CLI"><span class="xref std std-term">CLI</span></a>, on a multi-user
+server it needs to request more allocation
+from the <a class="reference internal" href="glossary.html#term-Ledger-Backend"><span class="xref std std-term">Ledger Backend</span></a>.</p></li>
+<li><p>Note that in around step [5], neither the Room
+nor the Ledger actually need to know <em>what</em>
+object is being stored, just it’s size
+(which is padded to specific set of size
+options to further obfuscate correlation
+between specific objects and coresponding
+storage budget “spend”).</p></li>
+<li><p>You can think of part of the transactions
+around &lt;TID&gt; as a sort of local cryptocurrency,
+a “token” in the old-fashioned sense:
+it’s a thing that can be “printed” by
+asking the Ledger to approve [B]-&gt;[C],
+and cashed in by “spending” it with
+the storage server ([C]).</p></li>
+<li><p>The <a class="reference internal" href="glossary.html#term-manifest"><span class="xref std std-term">manifest</span></a> can be used anywhere:
+command line, other clients, etc. There’s two
+versions of it - one that is share with
+everybody, and one that includes the additional
+bit of information (TODO: clarify) that enables
+future revocation of storage budget(s).</p></li>
+</ul>
+</section>
+<section id="storage-revocation">
+<h2>Storage Revocation<a class="headerlink" href="#storage-revocation" title="Permalink to this headline">¶</a></h2>
+<p>[To be Written]</p>
+</section>
+<section id="group-security">
+<h2>Group Security<a class="headerlink" href="#group-security" title="Permalink to this headline">¶</a></h2>
+<p>For a number of security-oriented messaging apps, the “group” aspect
+has been a challenge. See for example:</p>
+<ul class="simple">
+<li><p>More is Less: On the End-to-End Security of Group Chats in Signal,
+WhatsApp, and Threema
+<a class="reference external" href="https://eprint.iacr.org/2017/713.pdf">https://eprint.iacr.org/2017/713.pdf</a></p></li>
+<li><p>(A number of Wired articles, to be added)</p></li>
+<li><p>Attack of the Week: Group Messaging in WhatsApp and Signal (blog) -
+<a class="reference external" href="https://blog.cryptographyengineering.com/2018/01/10/attack-of-the-week-group-messaging-in-whatsapp-and-signal/">https://blog.cryptographyengineering.com/2018/01/10/attack-of-the-week-group-messaging-in-whatsapp-and-signal/</a></p></li>
+</ul>
+<p>The Signal app and protocol being the most common, we’ll comment in
+relation to it’s design. The group chat capability was design while
+moxie0 was still with Open Whisper. <a class="footnote-reference brackets" href="#f036" id="id15">11</a>  Some issues:</p>
+<ul class="simple">
+<li><p>The “every client broadcasts” nature of group communication is still
+going through the Signal servers; this leaves enough metadata
+available (whether collected or not) to easily reconstruct group
+membership, and in addition, because of the authentication model,
+all the phone numbers of participants. Even though the server
+“notionally” doesn’t know group membership (there is no DB that
+explicitly tracks it), the data necessary is unavoidably generated
+in the normal course of the service. <a class="footnote-reference brackets" href="#f037" id="id16">12</a>  Anonymity bestowed
+in principle by the broadcast model does not in fact exist if the
+service has a monopoly on delivering the messages.</p>
+<ul>
+<li><p>Our design in contrast unashamedly sets up a websocket addressable
+worker to receive and re-transmit messages. This in fact puts
+control at the hands of the client with respect to how it connects
+to the server - it can “pop up” from a VPN or ToR or any manner
+that allows it to connect.</p></li>
+</ul>
+</li>
+<li><p>… next point was about random number generation … took a while to
+figure out actually entropy in Signal groupId … in the end I think
+their 2014 generation was just 31 bits, namely Java’s max integer
+value (signed 32 bit) .. new system is 128, but it’s generated in
+the client, so that’s not super great, more on that soon …</p></li>
+</ul>
+</section>
+<section id="binary-serialized-format">
+<h2>Binary Serialized Format<a class="headerlink" href="#binary-serialized-format" title="Permalink to this headline">¶</a></h2>
+<p>Images are generally stored in a binary serialized format. We may also
+use this format for binary protocols (web socket), where a more
+correct term might be “wire transfer format.”</p>
+<p>For storage, data in key-value stores in various Cloudflare services
+typically support either a string (JSON) object, or a purely binary
+object. <a class="footnote-reference brackets" href="#f038" id="id17">13</a> If we were to Base64 encode these, it would cause a
+8/6 (1.33) factor expansion, which matters less for a <a class="reference internal" href="glossary.html#term-thumbnail"><span class="xref std std-term">thumbnail</span></a>, but on
+full sized images starts adding up. We’ve therefore designed <a class="footnote-reference brackets" href="#f039" id="id18">14</a>
+a simple manner in which to store a more or less arbitrary JS data
+structure in binary format.</p>
+<p>Format: The first four bytes (32 bits) stores the size of the
+“metadata”, which in turn is a (JSON.stringified) dictionary in the
+form of “{ key1: dataSize1, key2: dataSize2, …}”. The data parts are
+all Uint8Array objects of arbitrary size, as given by dataSize1 etc,
+which are all assembled (concatenated) and stored as a single binary
+blob. The reverse (extract) operation first extracts the size of the
+metadata, allowing JSON.parse() to run against a well-formed object,
+and then assembles back into the dictionary the same keys, but with
+matching binary objects. This binary format does not limit the size of
+objects that can be included in any practical sense. <a class="footnote-reference brackets" href="#f040" id="id19">15</a> The net
+effect is that a JS dictionary of the form ‘{key1: arrayBuffer1,
+key2:arrayBuffer2, …}’ can be assembled and extracted, essentially a
+pickler that works for our specific use case.</p>
+</section>
+<section id="static-room-ui-local-client">
+<h2>Static Room UI (“Local Client”)<a class="headerlink" href="#static-room-ui-local-client" title="Permalink to this headline">¶</a></h2>
+<p>In the plan and the design, but not finalized, is the intent to
+provide an open source, static, single-html-page web application
+version of the client. We refer to this as a “local client” and also
+“static client”. This would allow any user to join any room by loading
+from local storage a static page, then loading a previously exported
+set of keys, and join any rooms detailed in those keys.</p>
+<p>Also to be implemented is support for full export of all messages, in
+a manner that can be synchronized (merged) upon joining any other
+server (see <a class="reference internal" href="install.html#personal-server"><span class="std std-ref">Stand-Alone Server</span></a>). UPDATE: this
+now works!</p>
+<p>An important use case is for participants to always be able to join a
+room (starting with the first time) by copy-pasting the room name and
+server address into the static client, and thereby have greater
+confidence that the keys they’re using were truly generated locally.</p>
+<p>A perhaps more obscure use case is the option for participants in a
+room to use local clients as a part of the strict locking-down
+process, to account for any possible combinations of compromised
+clients amongst any of the participants. This process is currently
+under design. UPDATE: this is almost fully in place!</p>
+<p>A simpler, likely more common, use case is a room with a small number
+of participants, where the owner has locked the room, and all
+participants including Owner have exported their respective sets of
+keys. Then, they should <em>all</em> be able to rejoin the room, from
+respective systems, all loading from static files.</p>
+<p>Below is a demonstration that current design works for this usage
+model. It shows connecting straight to a chat room endpoint from the
+command line, using ‘curl’ for API endpoints and ‘wscat’ for websocket
+connection. Ergo, users can script their own tools. We believe this
+approach remedies many of the historically observed problems with any
+web-based UI. <a class="footnote-reference brackets" href="#f041" id="id20">16</a>  was largely addressed by development of the
+subtle.crypto standard )</p>
+<img alt="_images/curl_example_01.png" src="_images/curl_example_01.png"/>
+</section>
+<section id="command-line-tools">
+<span id="command-line"></span><h2>Command Line Tools<a class="headerlink" href="#command-line-tools" title="Permalink to this headline">¶</a></h2>
+<p>To Be Written.</p>
+<hr class="docutils"/>
+<p class="rubric">Footnotes</p>
+<dl class="footnote brackets">
+<dt class="label" id="f025"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>
+<dd><p>This is the closest to DM (Direct Message) that the system
+allows, since one constraint is that any communication must
+include a responsible Owner.</p>
+</dd>
+<dt class="label" id="f026"><span class="brackets"><a class="fn-backref" href="#id3">2</a></span></dt>
+<dd><p>If the whisper is initiated by the guest. If whisper is
+initiated by the owner, the key derivation uses the private
+half of &lt;room&gt;_ownerKey and the public key of the
+guest. The derived key remains the same in both cases.</p>
+</dd>
+<dt class="label" id="f027"><span class="brackets"><a class="fn-backref" href="#id4">3</a></span></dt>
+<dd><p>In exchange for possible weaker security, since now the
+Owner needs to keep track of their key files.</p>
+</dd>
+<dt class="label" id="f030"><span class="brackets"><a class="fn-backref" href="#id6">4</a></span></dt>
+<dd><p>The Javascript code for the processing is publicly available to experiment with at:
+<a class="reference external" href="https://cdn.privacy.app/util/photoTesting.html">https://cdn.privacy.app/util/photoTesting.html</a> in the
+client to generate a <a class="reference internal" href="glossary.html#term-thumbnail"><span class="xref std std-term">thumbnail</span></a> as well as a standardized
+version; when the thumbnail appears <em>locally *on the client
+both versions are ready to be used. The code used will
+transform into any desired *maximum</em> size (iteratively
+“solving” for change in canvas size until it fits.
+A Swift version of the algorithm is in <code class="docutils literal notranslate"><span class="pre">restrictPhoto()</span></code>
+in <a class="reference external" href="https://github.com/snackabra/snackabra-ios/Snackabra/Helpers/DataFunctions.swift">https://github.com/snackabra/snackabra-ios/Snackabra/Helpers/DataFunctions.swift</a></p>
+</dd>
+<dt class="label" id="f031"><span class="brackets"><a class="fn-backref" href="#id7">5</a></span></dt>
+<dd><p>Which means metadata will be removed as a side-effect, if
+and only if the image is bigger than 16 MB. The 16 MB
+limit was chosen to bo fit within the current <a class="reference internal" href="glossary.html#term-KV_global"><span class="xref std std-term">KV_global</span></a>
+limits, and also to be conventient “page size” for future
+abstraction layers that would treat such a blob as a basic
+building block for more complex data structures (larger files,
+streaming files, file system emulation, etc).  A
+future extension is to allow uploaded objects to be pushed
+onto a separate blob store such as S3.</p>
+</dd>
+<dt class="label" id="f032"><span class="brackets"><a class="fn-backref" href="#id8">6</a></span></dt>
+<dd><p>The point being, the backend does not reveal if this object
+has been seen before.</p>
+</dd>
+<dt class="label" id="f033"><span class="brackets"><a class="fn-backref" href="#id9">7</a></span></dt>
+<dd><p>Counting in KB, either 128, 256, 512, 1024, 2048, or 4096
+KB. This is a slight leak of information about the image,
+but it’s in exchange for what we estimate to be 95% storage
+saving. If this is deemed a problem, a future feature could
+optionally enforce a specific size, say, 512KB. The “full”
+(unmodified, original) image is padded like previews if
+it’s no larger than 4MB, larger sizes are rounded up to the
+nearest ¼ of their size rounded up.</p>
+</dd>
+<dt class="label" id="f042"><span class="brackets"><a class="fn-backref" href="#id10">8</a></span></dt>
+<dd><p>The block size that the encryption stage (AES) will work
+with is 128 bits.</p>
+</dd>
+<dt class="label" id="f034"><span class="brackets"><a class="fn-backref" href="#id11">9</a></span></dt>
+<dd><p>The token needs to be anonymous in this sense: the storage
+backend needs to be able to confirm that it could only have
+been generated by a room server, but not which room server
+nor any other information other than the padded size of the
+object.</p>
+</dd>
+<dt class="label" id="f035"><span class="brackets"><a class="fn-backref" href="#id12">10</a></span></dt>
+<dd><p>There is a data race possibility here, namely, that the
+same image will be saved at the exact same time from
+different sources, and they will end up with different
+information; we will handle this (presumably rare) case
+later in the process.</p>
+</dd>
+<dt class="label" id="f036"><span class="brackets"><a class="fn-backref" href="#id15">11</a></span></dt>
+<dd><p><a class="reference external" href="https://signal.org/blog/the-new-textsecure/">https://signal.org/blog/the-new-textsecure/</a> and
+<a class="reference external" href="https://signal.org/blog/private-groups/">https://signal.org/blog/private-groups/</a> were the earlier
+design, details appear never to have been documented in the
+form of a white paper or publication. Their new group
+design is most recently documented here:
+<a class="reference external" href="https://eprint.iacr.org/2019/1416.pdf">https://eprint.iacr.org/2019/1416.pdf</a> . We have not been
+able to confirm key design issues in their 2014 design, for
+example the Java code appears to indicate that the key
+space for <code class="docutils literal notranslate"><span class="pre">groupId</span></code> is only 31.</p>
+</dd>
+<dt class="label" id="f037"><span class="brackets"><a class="fn-backref" href="#id16">12</a></span></dt>
+<dd><p>Signal wrote “The server doesn’t need to know about the
+concept of a ‘group,’ which means it doesn’t need to store
+group metadata.”  This is true, but “not needing” is not
+the same as “not being able to.”</p>
+</dd>
+<dt class="label" id="f038"><span class="brackets"><a class="fn-backref" href="#id17">13</a></span></dt>
+<dd><p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer</a></p>
+</dd>
+<dt class="label" id="f039"><span class="brackets"><a class="fn-backref" href="#id18">14</a></span></dt>
+<dd><p>Arguably we could have used BSON <a class="reference external" href="https://bsonspec.org/">https://bsonspec.org/</a> or
+Protobufs but they seemed heavy-weight and complex for our
+basic use case, notably we have no need for multi-language
+support.</p>
+</dd>
+<dt class="label" id="f040"><span class="brackets"><a class="fn-backref" href="#id19">15</a></span></dt>
+<dd><p>Strictly speaking it’s limited to a total size of 9
+quadrillion bytes (<code class="docutils literal notranslate"><span class="pre">Number.MAX_SAFE_INTEGER</span></code>), since any
+processing is limited to Javascript’s use of
+double-precision float-point numbers.</p>
+</dd>
+<dt class="label" id="f041"><span class="brackets"><a class="fn-backref" href="#id20">16</a></span></dt>
+<dd><p>For example, as reviewed here:
+<a class="reference external" href="https://tonyarcieri.com/whats-wrong-with-webcrypto">https://tonyarcieri.com/whats-wrong-with-webcrypto</a> ;
+earlier criticism such as the classic “Javascript
+Cryptography Considered Harmful”, see References for a
+link.</p>
+</dd>
+<dt class="label" id="f043"><span class="brackets"><a class="fn-backref" href="#id5">17</a></span></dt>
+<dd><p>We will present all data storage and sharing in terms of “photos”
+or “images”, since that is the most important type of data chunk
+for basic chat service. However, the same core mechanisms
+will be used to generalize storage of any type of document or file.</p>
+</dd>
+<dt class="label" id="f044"><span class="brackets"><a class="fn-backref" href="#id13">18</a></span></dt>
+<dd><p>Below we will use the term ‘file’ to cover all possible types
+of data that we want to be able to store and share: photos,
+images, videos, documents, backups, disk images, etc.</p>
+</dd>
+<dt class="label" id="f045"><span class="brackets"><a class="fn-backref" href="#id14">19</a></span></dt>
+<dd><p>Or if/when replicated or mirrored onto other systems
+such as IPFS (<a class="reference external" href="https://ipfs.io/">https://ipfs.io/</a>).</p>
+</dd>
+</dl>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="install.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Installation</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="introduction.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Introduction</div>
+                
+              </div>
+            </a>
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; 2019-2022, Magnusson Institute |
+          Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+          <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+            | <a class="muted-link" href="_sources/overview.rst.txt"
+               rel="nofollow">
+              Show Source
+            </a>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Overview</a><ul>
+<li><a class="reference internal" href="#rooms">Rooms</a></li>
+<li><a class="reference internal" href="#owner-and-admin">Owner and Admin</a></li>
+<li><a class="reference internal" href="#message-of-the-day">Message of the Day</a></li>
+<li><a class="reference internal" href="#whisper">Whisper:</a></li>
+<li><a class="reference internal" href="#signing">Signing:</a></li>
+<li><a class="reference internal" href="#restricting-a-room">Restricting a room</a></li>
+<li><a class="reference internal" href="#accepting-a-guest">Accepting a guest</a></li>
+<li><a class="reference internal" href="#owner-key-management">Owner Key Management</a></li>
+<li><a class="reference internal" href="#image-photo-sharing">Image (Photo) Sharing </a></li>
+<li><a class="reference internal" href="#image-dedup-encryption-storage">Image Dedup + Encryption + Storage:</a></li>
+<li><a class="reference internal" href="#storage-ledger-server">Storage Ledger Server</a></li>
+<li><a class="reference internal" href="#storage-revocation">Storage Revocation</a></li>
+<li><a class="reference internal" href="#group-security">Group Security</a></li>
+<li><a class="reference internal" href="#binary-serialized-format">Binary Serialized Format</a></li>
+<li><a class="reference internal" href="#static-room-ui-local-client">Static Room UI (“Local Client”)</a></li>
+<li><a class="reference internal" href="#command-line-tools">Command Line Tools</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/scripts/furo.js"></script>
+    </body>
+</html>

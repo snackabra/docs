@@ -1,0 +1,336 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Sphinx Diagram Examples" href="diag-sample.html" /><link rel="prev" title="Appendix A: Cryptography" href="appendix-a-crypto.html" />
+
+    <meta name="generator" content="sphinx-4.4.0, furo 2022.01.02"/>
+        <title>Appendix B: Privacy.App Chat Room User Guide - snackabra 0.4.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=df49af52631e7917044a9c21a57f7b83170a6dd0" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=fade93df149f7c5fedb3ff897f799dc7d283b420" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  body[data-theme="dark"] {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    body:not([data-theme="light"]) {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+</style></head>
+  <body>
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" />
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">snackabra 0.4.1 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
+  
+  <span class="sidebar-brand-text">snackabra 0.4.1 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core-doc.html">Technical Details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="system-architecture.html">System Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="discussion.html">Discussion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contact.html">Contact and Feedback</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="future.html">Future Work</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References / Further Reading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">LICENSE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pylib.html">Python Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix-a-crypto.html">Appendix A: Cryptography</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Appendix B: Privacy.App Chat Room User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diag-sample.html">(ignore)</a></li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="appendix-b-privacy-app-chat-room-user-guide">
+<span id="introduction"></span><h1>Appendix B: Privacy.App Chat Room User Guide<a class="headerlink" href="#appendix-b-privacy-app-chat-room-user-guide" title="Permalink to this headline">¶</a></h1>
+<p>Here we will only give you a brief tour of this chat service; once you
+are on the service itself, there’s also a ‘Guide’ tab that gives you a
+quick start - below we go into details.</p>
+<p>You can use these personal chat rooms as you like. To invite somebody
+just send them a link - they don’t need to members, or ‘sign up’, or
+give us their email, or any such nonsense.  They just need to go to
+the link and you will both be in a chat room (you can have up to 300
+participants in any room).</p>
+<p>All chatting occurs in ‘Rooms’, and all rooms have one ‘owner’, and an
+owner has to be a Member. To invite somebody to any of your Rooms, you
+just send them a link - use the ‘Copy Link’ for any room below to copy
+the unique URL for that room to the clipboard.</p>
+<p>When you join the room, you will probably join as ‘Owner’ which also
+gives you some special features.  Any messages in the Room by the
+Owner are surrounded by a green line.</p>
+<p>A room is a unique web address, a ‘URL’, and will look something like
+this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">s</span><span class="o">.</span><span class="n">privacy</span><span class="o">.</span><span class="n">app</span><span class="o">/</span><span class="n">hkUkHY6wm</span><span class="o">-</span><span class="n">ZXmIyhCt1v4NBK</span><span class="o">-</span><span class="n">o1PV4GyKBnl7U8KaYgoe1Yi150ptDnVUmkboFOL</span>
+</pre></div>
+</div>
+<p>Every room has a unique address, nobody will ‘find’ it unless you’ve
+shared it with them. (In fact, the room above is a real room, it’s one
+of our support chat rooms - feel free to drop by and say ‘hi’. But
+don’t share any information about yourself!  It’s an ‘open mike’.)</p>
+<p>The ‘first’ guest that joins gets a special status as ‘verified
+guest’ - that way you can share the room with somebody and have them
+join it right away.</p>
+<p>Note that you can always join your own rooms as a ‘Guest’, just make
+sure to use another browser or ‘private/incognito’ tab, and go to the
+Room.</p>
+<p>The most important (and different) part of this chat service is that
+any guest that joins will receive cryptographic keys that are
+stored locally in your browser. Any guest needs to take
+care of these keys themselves - but if they lose them they can always
+join again and get new keys. More details in the ‘Guide’ on the chat
+service; we are also hoping to put together an introductory video for
+you. There is no username or password part of this system (because
+that is inherently insecure), and you and your guests are fully
+empowered to manage your cryptographic keys yourself (because that way
+there is no way for us to read your messages or see any pictures
+you’re sharing etc). The simplest way is to export the keys to a
+file - it can be stored on your phone, your computer, on a USB - and
+then import it to any device and browser where you want to continue
+chatting.</p>
+<p>Note that only Members can store their keys online (the ‘cloud’),
+meaning, our servers.  Your guests can’t, because we have no way to
+authenticate them - that’s why you have your Yubikey and membership
+number.</p>
+<p>In a room there are two ways to send a message: normally, and as a
+‘whisper’. A ‘whisper’ can only be read by the Owner (Member), nobody
+else, ever. However, other guests in the room can see that you have
+whispered something (the Owner can disable this).  A reply to a
+whisper is similarly only readable by the other guest; that way you
+can always have a ‘side conversation’, just like you would in a large
+room!</p>
+<p>All messages are encrypted, but anybody that has the web address to
+the room can join, and read the messages as well Therefore there is an
+important feature called ‘Lock Down’, from your ‘Admin’ menu you can
+enable Lock Down mode on any room. Once locked down, all communication
+is encrypted with new keys, and any guest has to be approved first by
+the Owner.</p>
+<p>If you are very concerned about security and privacy, then as
+Owner of a locked down room, you can re-generate your own message
+keys, and also re-generate (‘roll’) the room’s end-to-end encryption
+keys. If you do that, you now need to keep track of your own room
+keys, even as a Member - because at this point we are not keeping any
+of the keys for the room. If you are a very advanced user, you can
+generate your own keys for this purpose (SECP384R1, you can manually
+edit your export/import file, keys are in JWK format).</p>
+<p>A (very) brief note on terms of use: As an Owner, you are
+responsible for what happens in any room you create. You decide what
+is appropriate and what is not, and you control who has access to the
+Room, and you have ultimate control over any content that is
+shared. The Magnusson Institute, who owns and manages all services on
+Privacy.App, is not responsible for the contents of any rooms, as long
+as it is &lt;u&gt;legal&lt;/u&gt; under applicable United States laws - and
+&lt;u&gt;only&lt;/u&gt; US laws. We are a service for US residents and we will
+only accept US jurisdictional oversight. We will not accept any
+&lt;u&gt;illegal&lt;/u&gt; activities, and we expect the Owner to enforce that,
+and to contact us as needed. Details are explained elsewhere.</p>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="diag-sample.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Sphinx Diagram Examples</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="appendix-a-crypto.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Appendix A: Cryptography</div>
+                
+              </div>
+            </a>
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; 2019-2022, Magnusson Institute |
+          Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+          <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+            | <a class="muted-link" href="_sources/user-guide.rst.txt"
+               rel="nofollow">
+              Show Source
+            </a>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/scripts/furo.js"></script>
+    </body>
+</html>

@@ -3,3 +3,5 @@ seqdiag
 sphinxcontrib-blockdiag
 sphinxcontrib-seqdiag
 furo
+# this is at https://github.com/snackabra/snackabra-pylib
+snackabra

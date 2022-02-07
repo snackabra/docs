@@ -2,3 +2,8 @@ build
 venv
 *~
 docs
+.secret.*
+.DS_Store
+.tmp
+aside.*
+*~

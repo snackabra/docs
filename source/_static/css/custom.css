@@ -1,0 +1,8 @@
+/* Copyright (c) 2022, Magnusson Institute, All Rights Reserved */
+
+/* anoying detail ... sphinx 'make' won't trigger on changes here */
+
+/* add custom background so seqdiag etc works.  i don't know how to constrain this to less than 'img' */
+img {
+    background-color: white;
+}

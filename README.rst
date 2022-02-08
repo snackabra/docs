@@ -11,7 +11,6 @@ This repo contains all documentation and specifications related to ``snackabra``
 the resulting output is hosted on:
 
 * https://snackabra.io
-* https://snackabra.github.org
 
 Latest PDF format version should be on ReadTheDocs [#r00]_.
 

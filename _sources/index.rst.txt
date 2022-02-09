@@ -75,8 +75,8 @@ the version number to "1.0.0". [#f03]_ [#f04]_
 .. rubric:: Footnotes
 
 .. [#f01] See the :ref:`section on underlying design principles
-           <principles>` as well as the :ref:`general discussion <discussion>`
-	   sections for details.
+          <principles>` as well as the :ref:`general discussion <discussion>`
+	  sections for details.
 
 .. [#f02] "SNACKABRA" is pronounced "snack" and then the first part of
 	 "abracadabra". Accent is on the second "a" (the first "a" in

@@ -77,6 +77,8 @@ idea being that you can share these with people you meet, instead
 of :term:`PII` like emails or phone numbers.
 
 
+.. _roomUserKeyDetails:
+
 Room and User Keys
 ------------------
 

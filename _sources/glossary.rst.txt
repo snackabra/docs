@@ -63,6 +63,10 @@ Glossary
       the parts needed to decrypt it. Specifically: <FN>, <verification>,
       <salt>, <iv>, <size>.
 
+   LEDGER_KEY
+      The public half of the server secret for the storage server;
+      the private half needs to be kept offline for specific batch use cases.
+
    Ledger Backend
       See the section on :ref:`Storage Ledger Server <ledgerserver>`.
 

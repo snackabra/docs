@@ -38,7 +38,12 @@ containing the following data from :term:`KV_local`:
 
   * <room>_guestKey  (‘Null’ if not present in :term:`KV_global`)
 
+  * <room>_authorizationKey 
+
 * MotD
+
+(See the :ref:`Room and User Keys <roomUserKeyDetails>` section for
+details, the above is just a summary.)
 
 If the _ownerKey is Null, the room is "non-existent" meaning it has
 not been created. If a participant tries to message a non-existent
@@ -580,12 +585,12 @@ used in this process (not counting the actual storage of data):
 
 * D3: RECOVERY_NAMESPACE - tracks details to allow for
   anonymous recovery - garbage collection - of revoked
-  storage etc. This is a bit complex (TODO: add section below),
+  storage etc. This is a bit complex,
   but it's only relevant for multi-owner paid
   membership management, for a personal server you
   don't need to worry much about it.
   
-Now we can untangle the diagram a bit:
+Now we can untangle the diagram a bit (you can follow along in the code [#f046]_):
 
 1. The client requests to store a :term:`file`.
    It generates the first "half" of the name, and sends it
@@ -617,12 +622,7 @@ Now we can untangle the diagram a bit:
    This is stored with a one-way
    hash in 'D2' - thus "h(<TID>)"
    If all is well and good,
-   responds with <TID>.
-
-   TODO: .. clarify how TID is used to recover,
-   with "free(<TID>, <FN>)", and how
-   deletion is recorded as "queue(<FN>)"
-   for offline resolution.
+   responds with <TID>. 
 
 7. On a personal server, step 5/6 is done
    locally instead, self-generating a <TID>.
@@ -642,9 +642,13 @@ Now we can untangle the diagram a bit:
     "spends" it (finalizing [B]->[C]).
 
 11. Storage now updates 'D3' with some special info:
-    ``h(R(<RID>)_R(<TID>), h(<TID>_<FN>),
-    <FN>_h(<TID>)``.  TODO: explain details here,
+    ``h(R(<room>)_R(<TID>), h(<TID>)_<FN>, <FN>_h(<TID>)``
     for offline recovery / garbage collection.
+    (you can see the keys stowed away
+    by ``handleStoredata()`` [#f048]_).
+    The ``R()`` notation shows it has been encrypted
+    by the :term:`LEDGER_KEY` [#f049]_ .
+    
 
 12. Finally, the storage server will generate a random
     :term:`verification` number - unique for every <FN>.
@@ -697,8 +701,8 @@ Various things to note:
   command line, other clients, etc. There's two
   versions of it - one that is share with
   everybody, and one that includes the additional
-  bit of information (TODO: clarify) that enables
-  future revocation of storage budget(s).
+  bit of information that enables
+  future revocation of storage budget(s). [#f047]_
 
 
 
@@ -940,3 +944,19 @@ To Be Written.
 .. [#f045] Or if/when replicated or mirrored onto other systems
 	   such as IPFS (https://ipfs.io/).
 
+.. [#f046] https://github.com/snackabra/snackabra-webclient/blob/main/src/containers/Room/Room.js
+	   
+.. [#f047] TODO: we have an outstanding design concern here, which is
+	   to retain a hash or encrypted copy of the <TID> that only
+	   the owner can take advantage of in a future 
+           "free(<TID>, <FN>)" which would queue up <FN> for offline resolution
+	   (to deallocated the storage budget accrued for that specific <FN>
+	   for that specific user, with minimal privacy leakage).
+
+.. [#f048] https://github.com/snackabra/snackabra-storageserver/blob/main/src/index.js
+
+.. [#f049] This allows recovery requests to be queued up, and storage that's been
+           caused by a user on a multi-user server to be recoverd. That processing
+	   is done offline on an air-gapped system, the results being simply
+	   a set of object that can (optionally) be safely deallocated (because
+	   nobody is paying for that storage space). 

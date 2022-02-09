@@ -11,7 +11,6 @@ This repo contains all documentation and specifications related to ``snackabra``
 the resulting output is hosted on:
 
 * https://snackabra.io
-* https://snackabra.github.org
 
 Latest PDF format version should be on ReadTheDocs [#r00]_.
 
@@ -65,7 +64,7 @@ the library, it's at https://github.com/snackabra/snackabra-pylib *
 LICENSE
 -------
 
-Copyright (c) 2016-2021 Magnusson Institute, All Rights Reserved.
+Copyright (c) 2016-2022 Magnusson Institute, All Rights Reserved.
 
 "Snackabra" is a registered trademark
 

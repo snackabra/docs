@@ -577,7 +577,9 @@ used in this process (not counting the actual storage of data):
   internalized to the room in a personal server setup.
   These keeps current "account balances" of everything.
 
-* D2: LEDGER_NAMESPACE - tracks spending of approved <TID>.
+.. _ledgerNamespace:
+
+* D2: LEDGER_NAMESPACE - tracks spending of approved :term:`<TID>`.
   To spend storage space, you're "issued" a kind of token,
   which is simply a reference into D2, which in turn
   will track if it's been "cashed" or not.
@@ -603,7 +605,7 @@ Now we can untangle the diagram a bit (you can follow along in the code [#f046]_
 3. The client encrypts the full set of data
    and sorts out padding. The blob is ready
    to save, and client has the "true name" of
-   the object ("<FN>").
+   the object (":term:`<FN>`:").
 
 4. The client next requests from the room server
    permission to store the amount of data needed.
@@ -612,10 +614,10 @@ Now we can untangle the diagram a bit (you can follow along in the code [#f046]_
    it asks the Ledger to "spend" storage bytes:
    it generates a transaction of class
    "token", with properties "size, random id, used",
-   and asks the ledger for an identifier ("<TID>".
+   and asks the ledger for an identifier (":term:`<TID>`".
 
 6. The ledger spends 'size' from the room's
-   budget ([B]->[C]), and generates <TID>.
+   budget ([B]->[C]), and generates :term:`<TID>`.
    The key details are the approved
    size, and if it's been "spent" yet.
    This is stored with a one-way
@@ -624,7 +626,7 @@ Now we can untangle the diagram a bit (you can follow along in the code [#f046]_
    responds with <TID>. 
 
 7. On a personal server, step 5/6 is done
-   locally instead, self-generating a <TID>.
+   locally instead, self-generating a :term:`<TID>`.
    
 8. The Room now creates a special object,
    sort of a "token": ``<hash(<TID>), R(<TID>), R(h<TID>)>``.
@@ -636,7 +638,7 @@ Now we can untangle the diagram a bit (you can follow along in the code [#f046]_
    token" along with the blob of data.
 
 10. Storage now checks with the Ledger ('D2'):
-    the hash of the <TID> ("h(<TID>)"), checks
+    the hash of the :term:`<TID>` ("h(<TID>)"), checks
     that the 'size' is correct, and
     "spends" it (finalizing [B]->[C]).
 
@@ -650,7 +652,7 @@ Now we can untangle the diagram a bit (you can follow along in the code [#f046]_
     
 
 12. Finally, the storage server will generate a random
-    :term:`verification` number - unique for every <FN>.
+    :term:`verification` number - unique for every :term:`<FN>`.
     When the client receives it, it can *finally*
     construct the control message with all
     the details about the object, which
@@ -689,7 +691,7 @@ Various things to note:
   storage budget "spend").
 
 * You can think of part of the transactions
-  around <TID> as a sort of local cryptocurrency,
+  around :term:`<TID>` as a sort of local cryptocurrency,
   a "token" in the old-fashioned sense:
   it's a thing that can be "printed" by
   asking the Ledger to approve [B]->[C],
@@ -1166,9 +1168,9 @@ control messages once finalized.
 .. [#f046] https://github.com/snackabra/snackabra-webclient/blob/main/src/containers/Room/Room.js
 	   
 .. [#f047] TODO: we have an outstanding design concern here, which is
-	   to retain a hash or encrypted copy of the <TID> that only
+	   to retain a hash or encrypted copy of the :term:`<TID>` that only
 	   the owner can take advantage of in a future 
-           "free(<TID>, <FN>)" which would queue up <FN> for offline resolution
+           "free(<TID>, <FN>)" which would queue up :term:`<FN>` for offline resolution
 	   (to deallocated the storage budget accrued for that specific <FN>
 	   for that specific user, with minimal privacy leakage).
 

@@ -642,7 +642,9 @@ used in this process (not counting the actual storage of data):</p>
 <li><p>D1: LEDGER - separate server in multi-owner setup,
 internalized to the room in a personal server setup.
 These keeps current “account balances” of everything.</p></li>
-<li><p>D2: LEDGER_NAMESPACE - tracks spending of approved &lt;TID&gt;.
+</ul>
+<ul class="simple" id="ledgernamespace">
+<li><p>D2: LEDGER_NAMESPACE - tracks spending of approved <a class="reference internal" href="glossary.html#term-TID"><span class="xref std std-term">&lt;TID&gt;</span></a>.
 To spend storage space, you’re “issued” a kind of token,
 which is simply a reference into D2, which in turn
 will track if it’s been “cashed” or not.</p></li>
@@ -665,16 +667,16 @@ to be used for the corresponding <a class="reference internal" href="glossary.ht
 <li><p>The client encrypts the full set of data
 and sorts out padding. The blob is ready
 to save, and client has the “true name” of
-the object (“&lt;FN&gt;”).</p></li>
+the object (”<a class="reference internal" href="glossary.html#term-FN"><span class="xref std std-term">&lt;FN&gt;</span></a>:”).</p></li>
 <li><p>The client next requests from the room server
 permission to store the amount of data needed.</p></li>
 <li><p>The room checks if it has budget:
 it asks the Ledger to “spend” storage bytes:
 it generates a transaction of class
 “token”, with properties “size, random id, used”,
-and asks the ledger for an identifier (“&lt;TID&gt;”.</p></li>
+and asks the ledger for an identifier (”<a class="reference internal" href="glossary.html#term-TID"><span class="xref std std-term">&lt;TID&gt;</span></a>”.</p></li>
 <li><p>The ledger spends ‘size’ from the room’s
-budget ([B]-&gt;[C]), and generates &lt;TID&gt;.
+budget ([B]-&gt;[C]), and generates <a class="reference internal" href="glossary.html#term-TID"><span class="xref std std-term">&lt;TID&gt;</span></a>.
 The key details are the approved
 size, and if it’s been “spent” yet.
 This is stored with a one-way
@@ -682,7 +684,7 @@ hash in ‘D2’ - thus “h(&lt;TID&gt;)”
 If all is well and good,
 responds with &lt;TID&gt;.</p></li>
 <li><p>On a personal server, step 5/6 is done
-locally instead, self-generating a &lt;TID&gt;.</p></li>
+locally instead, self-generating a <a class="reference internal" href="glossary.html#term-TID"><span class="xref std std-term">&lt;TID&gt;</span></a>.</p></li>
 <li><p>The Room now creates a special object,
 sort of a “token”: <code class="docutils literal notranslate"><span class="pre">&lt;hash(&lt;TID&gt;),</span> <span class="pre">R(&lt;TID&gt;),</span> <span class="pre">R(h&lt;TID&gt;)&gt;</span></code>.
 This bundle is encrypted (and padded),
@@ -691,7 +693,7 @@ and returned with h(&lt;TID&gt;) to the client.</p></li>
 the store to be done. It sends the “magical
 token” along with the blob of data.</p></li>
 <li><p>Storage now checks with the Ledger (‘D2’):
-the hash of the &lt;TID&gt; (“h(&lt;TID&gt;)”), checks
+the hash of the <a class="reference internal" href="glossary.html#term-TID"><span class="xref std std-term">&lt;TID&gt;</span></a> (“h(&lt;TID&gt;)”), checks
 that the ‘size’ is correct, and
 “spends” it (finalizing [B]-&gt;[C]).</p></li>
 <li><p>Storage now updates ‘D3’ with some special info:
@@ -702,7 +704,7 @@ by <code class="docutils literal notranslate"><span class="pre">handleStoredata(
 The <code class="docutils literal notranslate"><span class="pre">R()</span></code> notation shows it has been encrypted
 by the <a class="reference internal" href="glossary.html#term-LEDGER_KEY"><span class="xref std std-term">LEDGER_KEY</span></a> <a class="footnote-reference brackets" href="#f049" id="id16">23</a> .</p></li>
 <li><p>Finally, the storage server will generate a random
-<a class="reference internal" href="glossary.html#term-verification"><span class="xref std std-term">verification</span></a> number - unique for every &lt;FN&gt;.
+<a class="reference internal" href="glossary.html#term-verification"><span class="xref std std-term">verification</span></a> number - unique for every <a class="reference internal" href="glossary.html#term-FN"><span class="xref std std-term">&lt;FN&gt;</span></a>.
 When the client receives it, it can <em>finally</em>
 construct the control message with all
 the details about the object, which
@@ -737,7 +739,7 @@ options to further obfuscate correlation
 between specific objects and coresponding
 storage budget “spend”).</p></li>
 <li><p>You can think of part of the transactions
-around &lt;TID&gt; as a sort of local cryptocurrency,
+around <a class="reference internal" href="glossary.html#term-TID"><span class="xref std std-term">&lt;TID&gt;</span></a> as a sort of local cryptocurrency,
 a “token” in the old-fashioned sense:
 it’s a thing that can be “printed” by
 asking the Ledger to approve [B]-&gt;[C],
@@ -1177,9 +1179,9 @@ such as IPFS (<a class="reference external" href="https://ipfs.io/">https://ipfs
 </dd>
 <dt class="label" id="f047"><span class="brackets"><a class="fn-backref" href="#id17">21</a></span></dt>
 <dd><p>TODO: we have an outstanding design concern here, which is
-to retain a hash or encrypted copy of the &lt;TID&gt; that only
+to retain a hash or encrypted copy of the <a class="reference internal" href="glossary.html#term-TID"><span class="xref std std-term">&lt;TID&gt;</span></a> that only
 the owner can take advantage of in a future
-“free(&lt;TID&gt;, &lt;FN&gt;)” which would queue up &lt;FN&gt; for offline resolution
+“free(&lt;TID&gt;, &lt;FN&gt;)” which would queue up <a class="reference internal" href="glossary.html#term-FN"><span class="xref std std-term">&lt;FN&gt;</span></a> for offline resolution
 (to deallocated the storage budget accrued for that specific &lt;FN&gt;
 for that specific user, with minimal privacy leakage).</p>
 </dd>

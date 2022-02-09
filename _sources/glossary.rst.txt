@@ -27,26 +27,23 @@ Glossary
       They are also sometimes referred to as "Unique Durable Objects"
       or “Durable Object Workers”.
 
-   Personal Room Server
-      A :term:`Room` server that you are running for yourself
-      or for friends and family. On a personal room server,
-      the :term:`Owner` of every room is the individual
-      operating the room server.
-
-   Room Name
-      The unique 48-byte (64-character b64) string that
-      uniquely identifies a :ref:`room <rooms>`.
-      It is derived from the :term:`Owner Key`.
-
-   Room
-      All discussions or chats or conversations or file or document
-      sharing occurs within the context of a :ref:`room <rooms>`, identified
-      by a :term:`Room Name`.
+   <FN>
+      The "full name", sort of: this is a unique identifier that empowers
+      you to access a blob of data (such as an image). Just like in fairy tales
+      and myths, if you know the True Name of a Demon, you have power over it.
+      "<FN>" is the True Name of an object. Details of how it's constructed
+      are summarized in :ref:`the section on deduplication and storage <object>`.
 
    Local Storage
       Storage (typically key-value / JSON) in the client. In a web client,
       this refers to ``Window.localStorage`` (https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage),
       on mobile it will be secure on-device equivalent.
+
+   Personal Room Server
+      A :term:`Room` server that you are running for yourself
+      or for friends and family. On a personal room server,
+      the :term:`Owner` of every room is the individual
+      operating the room server.
 
    KV_global
       Key-value store that is global and accessible by both room and storage servers.
@@ -57,18 +54,18 @@ Glossary
       local to each individual :term:`Room`. See :ref:`the section on storage <storage>`
       for more details.
 
-   manifest
-      The set of information needed to convince the storage server
-      that you are allowed to fetch a certain :term:`object`, including
-      the parts needed to decrypt it. Specifically: <FN>, <verification>,
-      <salt>, <iv>, <size>.
-
    LEDGER_KEY
       The public half of the server secret for the storage server;
       the private half needs to be kept offline for specific batch use cases.
 
    Ledger Backend
       See the section on :ref:`Storage Ledger Server <ledgerserver>`.
+
+   manifest
+      The set of information needed to convince the storage server
+      that you are allowed to fetch a certain :term:`object`, including
+      the parts needed to decrypt it. Specifically: <FN>, <verification>,
+      <salt>, <iv>, <size>.
 
    Micro Federation
       See :ref:`micro-federation <micro-federation>` for a discussion.
@@ -109,6 +106,16 @@ Glossary
       that all participants must be approved by the owner. Any new
       participant will be automatically queued for admission.
  
+   Room Name
+      The unique 48-byte (64-character b64) string that
+      uniquely identifies a :ref:`room <rooms>`.
+      It is derived from the :term:`Owner Key`.
+
+   Room
+      All discussions or chats or conversations or file or document
+      sharing occurs within the context of a :ref:`room <rooms>`, identified
+      by a :term:`Room Name`.
+
    SSO
       Single Sign-On system: an online service through which you can
       authenticate to multiple systems. In snackabra, we use "SSO"
@@ -131,6 +138,16 @@ Glossary
       
    thumbnail
       See :ref:`section on photo sharing <photosharing>`
+
+   <TID>
+      Transaction Identifier. First discussed in regards to the
+      :ref:`LEDGER_NAMESPACE <ledgerNamespace>`, this is a token
+      of sorts, which tracks spending of storage budget. It's
+      main purpose is to enable systems where users manage (and
+      pay for) their total storage on a system, without any
+      individual files or documents being easily attributable to them.
+      It's never retained (at rest) anywhere except in either hashed
+      or encrypted form.
 
    verification
       This is a random 16-byte value associated with every

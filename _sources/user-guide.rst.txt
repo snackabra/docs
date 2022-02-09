@@ -1,5 +1,5 @@
 
-.. _introduction:
+.. _userGuide:
 
 ============================================
 Appendix B: Privacy.App Chat Room User Guide
@@ -29,7 +29,7 @@ this:
 
 ::
 
-  https://s.privacy.app/hkUkHY6wm-ZXmIyhCt1v4NBK-o1PV4GyKBnl7U8KaYgoe1Yi150ptDnVUmkboFOL
+  https://r.example.com/hkUkHY6wm-ZXmIyhCt1v4NBK-o1PV4GyKBnl7U8KaYgoe1Yi150ptDnVUmkboFOL
 
 Every room has a unique address, nobody will 'find' it unless you've
 shared it with them. (In fact, the room above is a real room, it's one

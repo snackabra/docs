@@ -62,7 +62,7 @@ This leads to two directions:
   (and interoperable) service(s), either for themselves
   personally, or to host a paid-for service.
   We are doing this by developing the https://github.com/snackabra 
-  technology as open source (MIT License), and without strange
+  technology as open source, and without strange
   footnotes, restrictions, or gotchas.
 
 With respect to our own hosting, we arrive at a few principles

@@ -202,8 +202,8 @@
 <span id="id1"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
 <p>One-to-one messaging or group messaging is the same in snackabra,
 everything centers around a “room”. You access a room with it’s unique
-URL, that will look something like this:<a class="footnote-reference brackets" href="#f02" id="id2">1</a></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">s</span><span class="o">.</span><span class="n">privacy</span><span class="o">.</span><span class="n">app</span><span class="o">/</span><span class="n">hkUkHY6wm</span><span class="o">-</span><span class="n">ZXmIyhCt1v4NBK</span><span class="o">-</span><span class="n">o1PV4GyKBnl7U8KaYgoe1Yi150ptDnVUmkboFOL</span>
+URL, that will look something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">hkUkHY6wm</span><span class="o">-</span><span class="n">ZXmIyhCt1v4NBK</span><span class="o">-</span><span class="n">o1PV4GyKBnl7U8KaYgoe1Yi150ptDnVUmkboFOL</span>
 </pre></div>
 </div>
 <p>First time you visit any room you will see a welcome message to assign yourself an alias:</p>
@@ -222,7 +222,7 @@ URL, that will look something like this:<a class="footnote-reference brackets" h
 </figure>
 <p>The above is from our current web interface, a native iOS app is under
 development, but the “web app” interface is designed to work
-(decently) on mobile browsers.[#f06]_</p>
+(decently) on mobile browsers. <a class="footnote-reference brackets" href="#f06" id="id2">2</a></p>
 <section id="message-types">
 <h2>Message Types<a class="headerlink" href="#message-types" title="Permalink to this headline">¶</a></h2>
 <p>In the <a class="reference external" href="_static/sample-room.png">above screenshot</a> of a sample room,
@@ -301,7 +301,7 @@ Admin. More on all this shortly:</p>
 </figure>
 <p>A typical first-time visitor is a straight-up Guest (neither Verified
 nor Accepted).  The app now generates more state, which is what you
-actually see when you go to the Home tab:<a class="footnote-reference brackets" href="#f05" id="id3">2</a></p>
+actually see when you go to the Home tab:<a class="footnote-reference brackets" href="#f05" id="id3">1</a></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">"roomData"</span><span class="p">:</span> <span class="p">{</span>
     <span class="s2">"hkUkHY6wm-ZXmIyhCt1v4NBK-o1PV4GyKBnl7U8KaYgoe1Yi150ptDnVUmkboFOL"</span><span class="p">:</span> <span class="p">{</span>
@@ -336,7 +336,7 @@ actually see when you go to the Home tab:<a class="footnote-reference brackets" 
 </div>
 <p>These are your “keys”. We will explain the components briefly in this
 overview, and then in detail elsewhere in the document. These are all
-stored in your browser’s <code class="docutils literal notranslate"><span class="pre">localStorage</span></code> <a class="footnote-reference brackets" href="#f07" id="id4">4</a>. That’s a small
+stored in your browser’s <code class="docutils literal notranslate"><span class="pre">localStorage</span></code> <a class="footnote-reference brackets" href="#f07" id="id4">3</a>. That’s a small
 database handled by your browser, whether you are on a computer or on
 a mobile phone.</p>
 <p>This is important: <strong>you are responsible for not losing these
@@ -473,7 +473,7 @@ simply derived from this (details later). That means only the individual
 with the private half of the owner key can ever prove that they “own”
 the room. When rooms are migrated or mirrored, snackabra servers will
 only accept the authority provided by that owner, and snackabra clients
-can verify that the servers are doing it correctly. <a class="footnote-reference brackets" href="#f08" id="id5">5</a></p>
+can verify that the servers are doing it correctly. <a class="footnote-reference brackets" href="#f08" id="id5">4</a></p>
 <p>This is the gist of it. The biggest part that we’re not covering in
 this overview is storage - how to share photos and files and
 documents, while maintaining privacy, secrecy, etc, is the big
@@ -484,26 +484,22 @@ documents, while maintaining privacy, secrecy, etc, is the big
 <hr class="docutils"/>
 <p class="rubric">Footnotes</p>
 <dl class="footnote brackets">
-<dt class="label" id="f02"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>
-<dd><p>That’s a <a class="reference external" href="https://s.privacy.app/hkUkHY6wm-ZXmIyhCt1v4NBK-o1PV4GyKBnl7U8KaYgoe1Yi150ptDnVUmkboFOL">real link</a>,
-you can join it to discuss this design document.</p>
-</dd>
-<dt class="label" id="f05"><span class="brackets"><a class="fn-backref" href="#id3">2</a></span></dt>
+<dt class="label" id="f05"><span class="brackets"><a class="fn-backref" href="#id3">1</a></span></dt>
 <dd><p>Here we are cleaning it up a little so it’s easier to read, the actual
 string will have some escape characters etc so that it can be stored
 and re-loaded and re-parsed.</p>
 </dd>
-<dt class="label" id="f06"><span class="brackets">3</span></dt>
+<dt class="label" id="f06"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
 <dd><p>It’s important to note that this is just our reference web app user
 interface - the important parts of snackabra are various protocols and
 formats, hopefully allowing anybody that wants to develop their own
 apps (or add chat features to web sites or apps) to take their own
 approach.</p>
 </dd>
-<dt class="label" id="f07"><span class="brackets"><a class="fn-backref" href="#id4">4</a></span></dt>
+<dt class="label" id="f07"><span class="brackets"><a class="fn-backref" href="#id4">3</a></span></dt>
 <dd><p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage">https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage</a></p>
 </dd>
-<dt class="label" id="f08"><span class="brackets"><a class="fn-backref" href="#id5">5</a></span></dt>
+<dt class="label" id="f08"><span class="brackets"><a class="fn-backref" href="#id5">4</a></span></dt>
 <dd><p>Regardless, it’s not very useful to spoof ownership, since
 unless you were a participant, you can’t untangle and read
 the message history anyway.</p>

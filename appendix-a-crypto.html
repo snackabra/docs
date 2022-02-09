@@ -136,7 +136,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -158,9 +158,8 @@
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="core-doc.html">Technical Details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Technical Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="system-architecture.html">System Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="discussion.html">Discussion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contact.html">Contact and Feedback</a></li>
@@ -192,7 +191,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -200,7 +199,47 @@
         <article role="main">
           <section id="appendix-a-cryptography">
 <h1>Appendix A: Cryptography<a class="headerlink" href="#appendix-a-cryptography" title="Permalink to this headline">¶</a></h1>
-<p>To be written.</p>
+<p>We have strived for the entire design to rely on only a small number
+of cryptographic primitives, chosen for being modern, broadly used,
+and with good support in Javascript (both browsers and Node), Python,
+and Rust.</p>
+<p><em>To be written - this appendix is intended to be a primer on the
+primitives that we are using, and a guide to further reading. For now,
+we’ve included key links to JS, Python, and Rust implementations.</em></p>
+<section id="ecdh">
+<h2>ECDH<a class="headerlink" href="#ecdh" title="Permalink to this headline">¶</a></h2>
+<p>Public key pairs:</p>
+<div class="line-block">
+<div class="line"><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/deriveKey#ecdh">https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/deriveKey#ecdh</a></div>
+<div class="line"><a class="reference external" href="https://cryptography.io/en/latest/hazmat/primitives/asymmetric/ec/">https://cryptography.io/en/latest/hazmat/primitives/asymmetric/ec/</a></div>
+<div class="line"><a class="reference external" href="https://datatracker.ietf.org/doc/html/rfc6090">https://datatracker.ietf.org/doc/html/rfc6090</a></div>
+<div class="line"><a class="reference external" href="https://github.com/mozilla/application-services/blob/main/components/support/rc_crypto/src/agreement.rs">https://github.com/mozilla/application-services/blob/main/components/support/rc_crypto/src/agreement.rs</a></div>
+</div>
+</section>
+<section id="rsa">
+<h2>RSA<a class="headerlink" href="#rsa" title="Permalink to this headline">¶</a></h2>
+<p>Public-key pairs; SECG curve 3841;  OAEP (4096)</p>
+<div class="line-block">
+<div class="line"><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/encrypt#rsa-oaep">https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/encrypt#rsa-oaep</a></div>
+<div class="line"><a class="reference external" href="https://cryptography.io/en/latest/hazmat/primitives/asymmetric/rsa/">https://cryptography.io/en/latest/hazmat/primitives/asymmetric/rsa/</a></div>
+<div class="line"><a class="reference external" href="https://github.com/mozilla/application-services/blob/main/components/support/rc_crypto/src/aead.rs">https://github.com/mozilla/application-services/blob/main/components/support/rc_crypto/src/aead.rs</a></div>
+<div class="line"><a class="reference external" href="https://datatracker.ietf.org/doc/html/rfc3447">https://datatracker.ietf.org/doc/html/rfc3447</a></div>
+</div>
+</section>
+<section id="aes">
+<h2>AES<a class="headerlink" href="#aes" title="Permalink to this headline">¶</a></h2>
+<p>A256GCM; symmetric keys;  authenticated (AEAD)</p>
+<div class="line-block">
+<div class="line"><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/encrypt#aes-gcm">https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/encrypt#aes-gcm</a></div>
+<div class="line"><a class="reference external" href="https://cryptography.io/en/latest/hazmat/primitives/symmetric-encryption/">https://cryptography.io/en/latest/hazmat/primitives/symmetric-encryption/</a></div>
+<div class="line"><a class="reference external" href="https://github.com/mozilla/application-services/blob/components/support/rc_crypto/src/aead.rs">https://github.com/mozilla/application-services/blob/components/support/rc_crypto/src/aead.rs</a></div>
+<div class="line"><a class="reference external" href="https://csrc.nist.gov/publications/detail/sp/800-38d/final">https://csrc.nist.gov/publications/detail/sp/800-38d/final</a></div>
+</div>
+<div class="line-block">
+<div class="line"><br/></div>
+<div class="line"><br/></div>
+</div>
+</section>
 </section>
 
         </article>
@@ -242,8 +281,29 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Appendix A: Cryptography</a><ul>
+<li><a class="reference internal" href="#ecdh">ECDH</a></li>
+<li><a class="reference internal" href="#rsa">RSA</a></li>
+<li><a class="reference internal" href="#aes">AES</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

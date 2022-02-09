@@ -7,11 +7,11 @@ Introduction
 
 One-to-one messaging or group messaging is the same in snackabra,
 everything centers around a "room". You access a room with it's unique
-URL, that will look something like this:[#f02]_
+URL, that will look something like this:
 
 ::
 
-   https://s.privacy.app/hkUkHY6wm-ZXmIyhCt1v4NBK-o1PV4GyKBnl7U8KaYgoe1Yi150ptDnVUmkboFOL
+   https://example.com/hkUkHY6wm-ZXmIyhCt1v4NBK-o1PV4GyKBnl7U8KaYgoe1Yi150ptDnVUmkboFOL
 
 First time you visit any room you will see a welcome message to assign yourself an alias:
 
@@ -31,7 +31,7 @@ Type something in the box, and you're in the chat room:
 
 The above is from our current web interface, a native iOS app is under
 development, but the "web app" interface is designed to work
-(decently) on mobile browsers.[#f06]_
+(decently) on mobile browsers. [#f06]_
 
 
 
@@ -395,9 +395,6 @@ documents, while maintaining privacy, secrecy, etc, is the big
 ------------
 
 .. rubric:: Footnotes
-
-.. [#f02] That's a `real link <https://s.privacy.app/hkUkHY6wm-ZXmIyhCt1v4NBK-o1PV4GyKBnl7U8KaYgoe1Yi150ptDnVUmkboFOL>`_,
-          you can join it to discuss this design document.
 
 .. [#f05] Here we are cleaning it up a little so it's easier to read, the actual
           string will have some escape characters etc so that it can be stored

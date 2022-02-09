@@ -19,4 +19,5 @@ help:
 %: Makefile
 	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
         # deploying to root
-	cp -Rv $(BUILDDIR)/html/* .
+	echo "Copying file to root directory"
+	cp -R $(BUILDDIR)/html/* .

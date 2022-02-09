@@ -22,7 +22,7 @@ You might want to start with a :ref:`slightly technical introduction
 <introduction>` and then dig into :ref:`more detailed overview
 <overview>`. If you're a member of public server such
 https://Privacy.App then you might be looking for a short :ref:`user
-manual <introduction>` instead.
+manual <userGuide>` instead.
 
 Snackabra [#f02]_ is open source (https://github.com/snackabra).
 If you would like to contribute or help out with the snackabra
@@ -43,9 +43,8 @@ the version number to "1.0.0". [#f03]_ [#f04]_
    :maxdepth: 3
 
    introduction
-   overview
    install
-   core-doc
+   overview
    system-architecture
    discussion
    contact

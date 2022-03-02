@@ -8,6 +8,8 @@ Contact and Feedback
 If you would like to contribute or help out with the snackabra
 project, please feel free to reach out to us at any of:
 
+* snackabra@pm.me
+
 * snackabra@gmail.com
 
 * snackabra@protonmail.com

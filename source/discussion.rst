@@ -1,10 +1,227 @@
-.. _principles:
+.. _discussion:
 
-==========
-Discussion
-==========
+=========================
+Background and Discussion
+=========================
 
 
+
+Motivation
+----------
+
+As we are writing this in March of 2022, you might think there are
+enough options for messaging, chatting, photo sharing, social
+networking, file storage, video, forums, and so on and so forth. It's
+a multi-hundred billion dollar business today - arguably a trillion
+dollar business on the whole.
+
+But that's actually the problem.
+
+What we have discovered in the past 10 years or so is something quite
+disconcerting: that this area of communication software (or however
+you want to label the category) is a key to influencing people, and
+hence, incredibly profitable. Profitable to the point that all these
+supposed options available to us are in fact crowding out alternatives
+that, were we fully informed and had access to such alternatives, we
+would prefer. In fact, arguably, the "system" is countering the
+evolution of any such alternatives.
+
+Historically, this would have been very (very) difficult to do much
+about.  But there have been a few technical "equalizers" that have
+developed in the past several years that provides an opportunity to
+change things. Before we get to that, let us first try to be more
+concrete. The following list introduces the requirements that we
+*should* apply - and when we *do* apply these criteria to all the
+options available today, not a single one (zero) fullfil them.
+
+We will first introduce these points very briefly, and then go into
+some detail on each. We want a messaging and file sharing service to
+be:
+
+* :ref:`Open Source <discussion_open_source>`
+
+* :ref:`Interoperable <discussion_interoperable>`
+
+* :ref:`Under participant control <discussion_participant_control>`
+
+* :ref:`Vendor-independent <discussion_vendor_independent>`
+
+* :ref:`Private <discussion_private>`
+
+* :ref:`Secure <discussion_secure>`
+
+* :ref:`Compatible with legal oversight <discussion_legal_oversight>`
+
+
+Below we will cover them in order from the simplest to the
+hardest. They do not really have a clear ordering in terms of
+priorities: they are *all* necessary criteria, as we will argue.
+Later on we will by necessity go into priorities, since there are some
+trade-offs.
+
+But first, let's talk about Data Rights: much of the criteria above
+follow from formulating what we mean by Data Rights, and then applying
+that systematically.
+
+
+.. _discussion_data_rights:
+
+-----------
+Data Rights
+-----------
+
+A number of smart people have developed precise and concrete
+guidelines for what rights you *should* have to data. We do not have
+genuine legal rights that align with these: today we might think of
+them as "natural rights" re-applied to our current digitized condition.
+
+To pick a few examples, here we paraphrase from the User Data
+Manifesto that was written by Frank Karlitschek [#f092]_ and Hugo Roy
+[#f093]_:
+   
+   *Control:* User data should be under the ultimate control of the
+   user, including any "metadata". Users should be able to decide whom
+   to grant direct access to their data and with which permissions and
+   licenses should be granted.
+
+   *Transparency:* [#f091]_ Users should know where their data is
+   stored, how it is stored, what is done with it, and what laws
+   apply.
+
+   *Freedom:* Users should always be able to extract their data from
+   the service at any time without experiencing any vendor lock-in.
+   Any rights they've granted should always be revocable.
+
+   --- https://userdatamanifesto.org/
+
+
+Another powerful expression of our necessary rights to our data is a more
+recent expression by Jeffrey H. Wernick:
+
+   The basis for any society to respect the individual is predicated
+   upon the sovereign individual. Our most important property right is
+   ourselves. If we lose ownership of ourselves, we become
+   enslaved. The property of others.
+
+   We are comprised of our attributes. That defines who we are. We are
+   the sum total of our attributes and more. Apparently there is great
+   commercial value in understanding our attributes and then using
+   what is learned, sometimes in our interests and sometimes against
+   our interests but never with our permission and never with the
+   recognition that we have not transferred copyright over ourselves
+   to others to be sold. We are being sold. That is slavery.
+
+   What we do. What we think. The activities we engage in. [...]  We
+   are violated. We are dehumanized. It is outrageous. And it is
+   accomplished through deception. The selling of data is human
+   trafficking. The selling of contraband. A violation of our human
+   rights.
+
+   --- https://www.jeffreyhwernick.com/articles/data-manifesto
+
+
+The Mission Statement from Magnusson Institute (initial funder of
+Snackabra) is along the same lines. It is the lack of privacy that
+allows for the collection of information about ourselves. Data Rights
+along the lines of what Karlitschek, Roy, and Wernick seek to address.
+
+   *Without privacy, the rights afforded to us are not just eroded,
+   they become meaningless.  Without privacy, our lives become cages
+   built from one-way mirrors. Others can look in, but we can’t see
+   them. This is not about everybody knowing everything about
+   everybody. It is about some entities – corporations, political
+   organizations, foreign governments, any group with a budget and a
+   purpose – gaining perfect information about us.  We won’t even know
+   who “they” are, let alone what they are up to.  Without privacy, we
+   lose our free will.  We become an asset for somebody’s algorithm.
+   We lose our agency, you think you are in control, but you're really
+   not, and in the cruelest way – within an illusion that we retain
+   control.  Without privacy, we become pawns in a game we cannot see,
+   contributing to an outcome of which we are unaware. The course of
+   our lives will be to serve some unknown purpose.  Without privacy,
+   we lose not just individual agency, but collective agency. We
+   become powerless.  Without privacy, we lose more than freedom and
+   liberty.  We lose our humanity.  We become blind mice in a maze;
+   puppets on invisible strings.*
+   
+   --- https://www.magnusson.institute/about.html
+
+
+We will be referring back to these principles: *control*,
+*transparency*, and *freedom*.
+
+
+
+.. _discussion_open_source:
+
+-----------
+Open Source
+-----------
+
+All sorts of messaging projects claim that they are open source.  But
+they all have caveats, footnotes, reservations, carve-outs, etc. Some of
+these are driven by the need to have some avenue of monetization. The problem
+is that
+
+
+
+.. _discussion_interoperable:
+
+-------------
+Interoperable
+-------------
+
+
+.. _discussion_participant_control:
+
+-------------------------
+Under participant control
+-------------------------
+
+There are many parts to this. Let's start with an aspect that is more
+well-known: data rights.
+
+
+
+
+.. _discussion_vendor_independent:
+
+------------------
+Vendor-independent
+------------------
+
+
+.. _discussion_private:
+
+-------
+Private
+-------
+
+
+.. _discussion_secure:
+
+------
+Secure
+------
+
+
+.. _discussion_legal_oversight:
+
+-------------------------------
+Compatible with legal oversight
+-------------------------------
+
+|
+|
+
+
+
+
+Design Principles and Constraints
+---------------------------------
+
+
+--------------------------
 Principles and Constraints
 --------------------------
 
@@ -35,6 +252,7 @@ The core design principles include, in strict order of priority:
    external libraries and tools, as little of our own custom code as
    possible.
 
+--------------
 Accountability
 --------------
 
@@ -88,6 +306,7 @@ that relate to any Members:
 
     
 
+----------------
 Design Decisions
 ----------------
 
@@ -109,8 +328,15 @@ accountability, we currently derive these (strict) decisions:
   other participants etc
 
 
-.. _discussion:
 
+
+Discussion Topics
+-----------------
+
+A few topics don't easily fit in elsewhere. Those are here.
+
+
+----------------------------------------------------
 Deleting / Recording / "Autodestruct" Message Models
 ----------------------------------------------------
 
@@ -125,6 +351,7 @@ hardware, operating system, and application, from a single vendor. In
 which case you now have to completely trust the vendor.
 
 
+-----------------------
 The thing about "Trust"
 -----------------------
 
@@ -192,10 +419,13 @@ also migrated to a personal storage server, as desired.
 
 .. _end-to-end-encryption:
 
+------------------------------------------------------
 What do we (and others) mean by End-to-End Encryption?
 ------------------------------------------------------
 
-E2E (end-to-end) encryption means that only the (two) parties at each end can read anything being transmitted, and nothing and nobody in-between.
+E2E (end-to-end) encryption means that only the (two) parties at each
+end can read anything being transmitted, and nothing and nobody
+in-between.
 
 E2E is a little reminiscent of "zero trust" systems. In a literal,
 purist sense, there is no such thing. You would have to prove a
@@ -314,6 +544,8 @@ recap (not all of these items are implemented yet):
 * All the parts will be open sourced and we will publish and maintain
   this design doc.
 
+
+---------------------------
 The "Insider" Privacy Model
 ---------------------------
 
@@ -444,6 +676,12 @@ existed before all of this marvelous technology:
 
 
 .. rubric:: Footnotes
+
+.. [#f091] The User Data Manifesto refers to this as "knowledge".
+
+.. [#f092] https://karlitschek.de/2012/10/the-user-data-manifesto/
+
+.. [#f093] https://hroy.eu/posts/UserDataManifesto2dot0/
 
 .. [#f130] Note our emphasis on clearly and unambiguously illegal:
 	   it’s impossible to provide a clear definition, but we

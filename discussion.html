@@ -5,12 +5,12 @@
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Contact and Feedback" href="contact.html" /><link rel="prev" title="System Architecture" href="system-architecture.html" />
 
-    <meta name="generator" content="sphinx-4.4.0, furo 2022.01.02"/>
-        <title>Discussion - snackabra 0.4.2 documentation</title>
+    <meta name="generator" content="sphinx-4.4.0, furo 2022.02.23"/>
+        <title>Background and Discussion - snackabra 0.4.2 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=df49af52631e7917044a9c21a57f7b83170a6dd0" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=3c656993158f05539f962c5cea52a5e6c184bb8c" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=fade93df149f7c5fedb3ff897f799dc7d283b420" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=25ceb02ed1c46dc30f2321ff83e92799f69dfdb9" />
     <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
     
     
@@ -43,17 +43,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
   <symbol id="svg-toc" viewBox="0 0 24 24">
     <title>Contents</title>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-      <path stroke="none" d="M0 0h24v24H0z" />
-      <line x1="4" y1="6" x2="20" y2="6" />
-      <line x1="10" y1="12" x2="20" y2="12" />
-      <line x1="6" y1="18" x2="20" y2="18" />
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
     </svg>
   </symbol>
   <symbol id="svg-menu" viewBox="0 0 24 24">
     <title>Menu</title>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
       stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
       <line x1="3" y1="12" x2="21" y2="12"></line>
       <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -62,14 +58,14 @@
   </symbol>
   <symbol id="svg-arrow-right" viewBox="0 0 24 24">
     <title>Expand</title>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
       stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
       <polyline points="9 18 15 12 9 6"></polyline>
     </svg>
   </symbol>
   <symbol id="svg-sun" viewBox="0 0 24 24">
     <title>Light mode</title>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
       stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
       <circle cx="12" cy="12" r="5"></circle>
       <line x1="12" y1="1" x2="12" y2="3"></line>
@@ -84,7 +80,7 @@
   </symbol>
   <symbol id="svg-moon" viewBox="0 0 24 24">
     <title>Dark mode</title>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
       stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
@@ -92,7 +88,7 @@
   </symbol>
   <symbol id="svg-sun-half" viewBox="0 0 24 24">
     <title>Auto light/dark mode</title>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
       stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
       <circle cx="12" cy="12" r="9" />
@@ -161,7 +157,7 @@
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Technical Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="system-architecture.html">System Architecture</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Discussion</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Background and Discussion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contact.html">Contact and Feedback</a></li>
 <li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="future.html">Future Work</a></li>
@@ -175,6 +171,7 @@
 
 </div>
 </div>
+
       </div>
       
     </div>
@@ -182,8 +179,13 @@
   <div class="main">
     <div class="content">
       <div class="article-container">
-        <div class="content-icon-container">
-          <div class="theme-toggle-container theme-toggle-content">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -197,10 +199,158 @@
           </label>
         </div>
         <article role="main">
-          <section id="discussion">
-<span id="principles"></span><h1>Discussion<a class="headerlink" href="#discussion" title="Permalink to this headline">¶</a></h1>
+          <section id="background-and-discussion">
+<span id="discussion"></span><h1>Background and Discussion<a class="headerlink" href="#background-and-discussion" title="Permalink to this headline">#</a></h1>
+<section id="motivation">
+<h2>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">#</a></h2>
+<p>As we are writing this in March of 2022, you might think there are
+enough options for messaging, chatting, photo sharing, social
+networking, file storage, video, forums, and so on and so forth. It’s
+a multi-hundred billion dollar business today - arguably a trillion
+dollar business on the whole.</p>
+<p>But that’s actually the problem.</p>
+<p>What we have discovered in the past 10 years or so is something quite
+disconcerting: that this area of communication software (or however
+you want to label the category) is a key to influencing people, and
+hence, incredibly profitable. Profitable to the point that all these
+supposed options available to us are in fact crowding out alternatives
+that, were we fully informed and had access to such alternatives, we
+would prefer. In fact, arguably, the “system” is countering the
+evolution of any such alternatives.</p>
+<p>Historically, this would have been very (very) difficult to do much
+about.  But there have been a few technical “equalizers” that have
+developed in the past several years that provides an opportunity to
+change things. Before we get to that, let us first try to be more
+concrete. The following list introduces the requirements that we
+<em>should</em> apply - and when we <em>do</em> apply these criteria to all the
+options available today, not a single one (zero) fullfil them.</p>
+<p>We will first introduce these points very briefly, and then go into
+some detail on each. We want a messaging and file sharing service to
+be:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#discussion-open-source"><span class="std std-ref">Open Source</span></a></p></li>
+<li><p><a class="reference internal" href="#discussion-interoperable"><span class="std std-ref">Interoperable</span></a></p></li>
+<li><p><a class="reference internal" href="#discussion-participant-control"><span class="std std-ref">Under participant control</span></a></p></li>
+<li><p><a class="reference internal" href="#discussion-vendor-independent"><span class="std std-ref">Vendor-independent</span></a></p></li>
+<li><p><a class="reference internal" href="#discussion-private"><span class="std std-ref">Private</span></a></p></li>
+<li><p><a class="reference internal" href="#discussion-secure"><span class="std std-ref">Secure</span></a></p></li>
+<li><p><a class="reference internal" href="#discussion-legal-oversight"><span class="std std-ref">Compatible with legal oversight</span></a></p></li>
+</ul>
+<p>Below we will cover them in order from the simplest to the
+hardest. They do not really have a clear ordering in terms of
+priorities: they are <em>all</em> necessary criteria, as we will argue.
+Later on we will by necessity go into priorities, since there are some
+trade-offs.</p>
+<p>But first, let’s talk about Data Rights: much of the criteria above
+follow from formulating what we mean by Data Rights, and then applying
+that systematically.</p>
+<section id="data-rights">
+<span id="discussion-data-rights"></span><h3>Data Rights<a class="headerlink" href="#data-rights" title="Permalink to this headline">#</a></h3>
+<p>A number of smart people have developed precise and concrete
+guidelines for what rights you <em>should</em> have to data. We do not have
+genuine legal rights that align with these: today we might think of
+them as “natural rights” re-applied to our current digitized condition.</p>
+<p>To pick a few examples, here we paraphrase from the User Data
+Manifesto that was written by Frank Karlitschek <a class="footnote-reference brackets" href="#f092" id="id1">2</a> and Hugo Roy
+<a class="footnote-reference brackets" href="#f093" id="id2">3</a>:</p>
+<blockquote>
+<div><p><em>Control:</em> User data should be under the ultimate control of the
+user, including any “metadata”. Users should be able to decide whom
+to grant direct access to their data and with which permissions and
+licenses should be granted.</p>
+<p><em>Transparency:</em> <a class="footnote-reference brackets" href="#f091" id="id3">1</a> Users should know where their data is
+stored, how it is stored, what is done with it, and what laws
+apply.</p>
+<p><em>Freedom:</em> Users should always be able to extract their data from
+the service at any time without experiencing any vendor lock-in.
+Any rights they’ve granted should always be revocable.</p>
+<p class="attribution">—<a class="reference external" href="https://userdatamanifesto.org/">https://userdatamanifesto.org/</a></p>
+</div></blockquote>
+<p>Another powerful expression of our necessary rights to our data is a more
+recent expression by Jeffrey H. Wernick:</p>
+<blockquote>
+<div><p>The basis for any society to respect the individual is predicated
+upon the sovereign individual. Our most important property right is
+ourselves. If we lose ownership of ourselves, we become
+enslaved. The property of others.</p>
+<p>We are comprised of our attributes. That defines who we are. We are
+the sum total of our attributes and more. Apparently there is great
+commercial value in understanding our attributes and then using
+what is learned, sometimes in our interests and sometimes against
+our interests but never with our permission and never with the
+recognition that we have not transferred copyright over ourselves
+to others to be sold. We are being sold. That is slavery.</p>
+<p>What we do. What we think. The activities we engage in. […]  We
+are violated. We are dehumanized. It is outrageous. And it is
+accomplished through deception. The selling of data is human
+trafficking. The selling of contraband. A violation of our human
+rights.</p>
+<p class="attribution">—<a class="reference external" href="https://www.jeffreyhwernick.com/articles/data-manifesto">https://www.jeffreyhwernick.com/articles/data-manifesto</a></p>
+</div></blockquote>
+<p>The Mission Statement from Magnusson Institute (initial funder of
+Snackabra) is along the same lines. It is the lack of privacy that
+allows for the collection of information about ourselves. Data Rights
+along the lines of what Karlitschek, Roy, and Wernick seek to address.</p>
+<blockquote>
+<div><p><em>Without privacy, the rights afforded to us are not just eroded,
+they become meaningless.  Without privacy, our lives become cages
+built from one-way mirrors. Others can look in, but we can’t see
+them. This is not about everybody knowing everything about
+everybody. It is about some entities – corporations, political
+organizations, foreign governments, any group with a budget and a
+purpose – gaining perfect information about us.  We won’t even know
+who “they” are, let alone what they are up to.  Without privacy, we
+lose our free will.  We become an asset for somebody’s algorithm.
+We lose our agency, you think you are in control, but you’re really
+not, and in the cruelest way – within an illusion that we retain
+control.  Without privacy, we become pawns in a game we cannot see,
+contributing to an outcome of which we are unaware. The course of
+our lives will be to serve some unknown purpose.  Without privacy,
+we lose not just individual agency, but collective agency. We
+become powerless.  Without privacy, we lose more than freedom and
+liberty.  We lose our humanity.  We become blind mice in a maze;
+puppets on invisible strings.</em></p>
+<p class="attribution">—<a class="reference external" href="https://www.magnusson.institute/about.html">https://www.magnusson.institute/about.html</a></p>
+</div></blockquote>
+<p>We will be referring back to these principles: <em>control</em>,
+<em>transparency</em>, and <em>freedom</em>.</p>
+</section>
+<section id="open-source">
+<span id="discussion-open-source"></span><h3>Open Source<a class="headerlink" href="#open-source" title="Permalink to this headline">#</a></h3>
+<p>All sorts of messaging projects claim that they are open source.  But
+they all have caveats, footnotes, reservations, carve-outs, etc. Some of
+these are driven by the need to have some avenue of monetization. The problem
+is that</p>
+</section>
+<section id="interoperable">
+<span id="discussion-interoperable"></span><h3>Interoperable<a class="headerlink" href="#interoperable" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="under-participant-control">
+<span id="discussion-participant-control"></span><h3>Under participant control<a class="headerlink" href="#under-participant-control" title="Permalink to this headline">#</a></h3>
+<p>There are many parts to this. Let’s start with an aspect that is more
+well-known: data rights.</p>
+</section>
+<section id="vendor-independent">
+<span id="discussion-vendor-independent"></span><h3>Vendor-independent<a class="headerlink" href="#vendor-independent" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="private">
+<span id="discussion-private"></span><h3>Private<a class="headerlink" href="#private" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="secure">
+<span id="discussion-secure"></span><h3>Secure<a class="headerlink" href="#secure" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="compatible-with-legal-oversight">
+<span id="discussion-legal-oversight"></span><h3>Compatible with legal oversight<a class="headerlink" href="#compatible-with-legal-oversight" title="Permalink to this headline">#</a></h3>
+<div class="line-block">
+<div class="line"><br/></div>
+<div class="line"><br/></div>
+</div>
+</section>
+</section>
+<section id="design-principles-and-constraints">
+<h2>Design Principles and Constraints<a class="headerlink" href="#design-principles-and-constraints" title="Permalink to this headline">#</a></h2>
 <section id="principles-and-constraints">
-<h2>Principles and Constraints<a class="headerlink" href="#principles-and-constraints" title="Permalink to this headline">¶</a></h2>
+<h3>Principles and Constraints<a class="headerlink" href="#principles-and-constraints" title="Permalink to this headline">#</a></h3>
 <p>The core design principles include, in strict order of priority:</p>
 <ol class="arabic simple">
 <li><p>Private by design - from the ground up, providing as much privacy
@@ -224,7 +374,7 @@ possible.</p></li>
 </ol>
 </section>
 <section id="accountability">
-<h2>Accountability<a class="headerlink" href="#accountability" title="Permalink to this headline">¶</a></h2>
+<h3>Accountability<a class="headerlink" href="#accountability" title="Permalink to this headline">#</a></h3>
 <p>A brief note on accountability needs - they are rooted in the following deductions:</p>
 <p>The Institute’s Mission is to “inform and empower Members
 to defend their privacy and protect their information,” which
@@ -255,15 +405,15 @@ that relate to any Members:</p>
 <li><p>We cannot allow illegal activities. A liberal, democratic society
 will not (and cannot) accept communication and collaboration
 systems that are used for <em>clearly and unambiguously illegal</em>
-activities. <a class="footnote-reference brackets" href="#f130" id="id1">1</a> <a class="footnote-reference brackets" href="#f130b" id="id2">2</a></p></li>
+activities. <a class="footnote-reference brackets" href="#f130" id="id4">4</a> <a class="footnote-reference brackets" href="#f130b" id="id5">5</a></p></li>
 <li><p>We need to <em>pick one legal jurisdiction</em> - it’s beyond the scope
 of this summary to walk through the exact details of this
 consequence, but essentially what we find is that any attempt to
 be “global” will constrain our ability to protect or help Members
-and easily ends up becoming lowest common denominator. <a class="footnote-reference brackets" href="#f131" id="id3">3</a> <a class="footnote-reference brackets" href="#f132" id="id4">4</a>
+and easily ends up becoming lowest common denominator. <a class="footnote-reference brackets" href="#f131" id="id6">6</a> <a class="footnote-reference brackets" href="#f132" id="id7">7</a>
 Since we are a US-based non-profit,
 we are at a minimum subject to US law, ergo, we select US (and
-only US) jurisdiction over us. <a class="footnote-reference brackets" href="#f133" id="id5">5</a></p></li>
+only US) jurisdiction over us. <a class="footnote-reference brackets" href="#f133" id="id8">8</a></p></li>
 <li><p>The minimum, practical, amount we need to know about you is (a)
 you’re Human and (b) you are a United States resident (that you
 are subject to - and only subject to - our single jurisdiction).</p></li>
@@ -271,7 +421,7 @@ are subject to - and only subject to - our single jurisdiction).</p></li>
 </div></blockquote>
 </section>
 <section id="design-decisions">
-<h2>Design Decisions<a class="headerlink" href="#design-decisions" title="Permalink to this headline">¶</a></h2>
+<h3>Design Decisions<a class="headerlink" href="#design-decisions" title="Permalink to this headline">#</a></h3>
 <p>Given all the above principles, constraints, and consequences of
 accountability, we currently derive these (strict) decisions:</p>
 <ul class="simple">
@@ -279,7 +429,7 @@ accountability, we currently derive these (strict) decisions:</p>
 etc, occur in a <a class="reference internal" href="glossary.html#term-Room"><span class="xref std std-term">Room</span></a>.</p></li>
 <li><p>All conversations must have an <a class="reference internal" href="glossary.html#term-Owner"><span class="xref std std-term">Owner</span></a> that is responsible and
 accountable for any conversations and communications that occur in
-the room <a class="footnote-reference brackets" href="#f134" id="id6">6</a></p></li>
+the room <a class="footnote-reference brackets" href="#f134" id="id9">9</a></p></li>
 <li><p>Unavoidable trade-offs between privacy, security, and ease of use
 are managed on a per-room basis</p></li>
 <li><p>The owner controls who has access to a room, any settings, and has
@@ -287,8 +437,12 @@ control over content - including “taking down” postings, removing
 other participants etc</p></li>
 </ul>
 </section>
+</section>
+<section id="discussion-topics">
+<h2>Discussion Topics<a class="headerlink" href="#discussion-topics" title="Permalink to this headline">#</a></h2>
+<p>A few topics don’t easily fit in elsewhere. Those are here.</p>
 <section id="deleting-recording-autodestruct-message-models">
-<span id="id7"></span><h2>Deleting / Recording / “Autodestruct” Message Models<a class="headerlink" href="#deleting-recording-autodestruct-message-models" title="Permalink to this headline">¶</a></h2>
+<h3>Deleting / Recording / “Autodestruct” Message Models<a class="headerlink" href="#deleting-recording-autodestruct-message-models" title="Permalink to this headline">#</a></h3>
 <p>Some chat services make various claims about supporting messages to be
 deleted, not downloadable, not recordable (even against screenshots),
 etc.</p>
@@ -299,7 +453,7 @@ hardware, operating system, and application, from a single vendor. In
 which case you now have to completely trust the vendor.</p>
 </section>
 <section id="the-thing-about-trust">
-<h2>The thing about “Trust”<a class="headerlink" href="#the-thing-about-trust" title="Permalink to this headline">¶</a></h2>
+<h3>The thing about “Trust”<a class="headerlink" href="#the-thing-about-trust" title="Permalink to this headline">#</a></h3>
 <p>Allow us to elaborate. There is no such thing as zero trust
 communication, outside of the realm of your own dreams, at night, that
 you promptly forget upon waking up. Any communication with another
@@ -313,10 +467,10 @@ the “+1 effect”). But that minimum is not likely to actually be the
 case. For example, if you’re using a “highly secure” messaging system
 on your smartphone, you’re now needing to trust both the service
 provider as well as the phone manufacturer. In all likelihood, in both
-“camps” (app and phone), several more. <a class="footnote-reference brackets" href="#f102" id="id8">8</a></p>
+“camps” (app and phone), several more. <a class="footnote-reference brackets" href="#f102" id="id10">11</a></p>
 <p>Our objective with this design is to minimize these “trust-creep”
 effects. As baseline, we split the system into (offline) CLI key and
-identity generation, a separate SSO <a class="footnote-reference brackets" href="#f103" id="id9">9</a> to manage
+identity generation, a separate SSO <a class="footnote-reference brackets" href="#f103" id="id11">12</a> to manage
 public room keys and Owner information, backend servers on Cloudflare,
 and the frontend UI by default <em>not</em> a phone “app” but a simple
 single-page web application. This separation is intended to make
@@ -343,7 +497,7 @@ participant, as well as the locked-in public key of who is Owner. If
 somebody hosts a server, they just need to message (securely) the
 address to that server, and everybody can “export” their keys and
 settings, go to that server, “import” their keyfile, and they’re all
-back. <a class="footnote-reference brackets" href="#f101" id="id10">7</a></p>
+back. <a class="footnote-reference brackets" href="#f101" id="id12">10</a></p>
 <p>This is currently supported as the “download” function in all rooms.
 To “upload”, you need to have permissions to create a room on a
 room server (such as by being the admin of a personal server).</p>
@@ -353,8 +507,10 @@ and are encrypted etc, so can be left on an origin server, or
 also migrated to a personal storage server, as desired.</p>
 </section>
 <section id="what-do-we-and-others-mean-by-end-to-end-encryption">
-<span id="end-to-end-encryption"></span><h2>What do we (and others) mean by End-to-End Encryption?<a class="headerlink" href="#what-do-we-and-others-mean-by-end-to-end-encryption" title="Permalink to this headline">¶</a></h2>
-<p>E2E (end-to-end) encryption means that only the (two) parties at each end can read anything being transmitted, and nothing and nobody in-between.</p>
+<span id="end-to-end-encryption"></span><h3>What do we (and others) mean by End-to-End Encryption?<a class="headerlink" href="#what-do-we-and-others-mean-by-end-to-end-encryption" title="Permalink to this headline">#</a></h3>
+<p>E2E (end-to-end) encryption means that only the (two) parties at each
+end can read anything being transmitted, and nothing and nobody
+in-between.</p>
 <p>E2E is a little reminiscent of “zero trust” systems. In a literal,
 purist sense, there is no such thing. You would have to prove a
 negative: that nobody has tampered with your iPhone for example, or
@@ -369,7 +525,7 @@ and believe statements regarding the implementation of all it’s
 parts</em>, is secure in the sense that only the two parties can (ever)
 read the messages.</p>
 <p>Serious providers of secure messaging make no bones about this. For
-example, Telegram goes to some length <a class="footnote-reference brackets" href="#f104" id="id11">10</a> to
+example, Telegram goes to some length <a class="footnote-reference brackets" href="#f104" id="id13">13</a> to
 discuss the various trade-offs; notably they gloss it over <em>slightly</em>
 for new users by talking about “client-to-client” encryption, but the
 most nominal effort to inform yourself from their documentation will
@@ -378,7 +534,7 @@ product that aims at a mass market.</p>
 <p>Others are not so forthcoming. When Apple’s iMessenger protocol design
 and features were first introduced and discussed in detail in 2013, it
 was quickly pointed out that at the end of the day you still needed to
-trust Apple. <a class="footnote-reference brackets" href="#f105" id="id12">11</a></p>
+trust Apple. <a class="footnote-reference brackets" href="#f105" id="id14">14</a></p>
 <p>To which the corporate giant’s spokesperson helpfully stated “The
 research discussed theoretical vulnerabilities that would require
 Apple to re-engineer the iMessage system to exploit it, and Apple has
@@ -410,22 +566,22 @@ on key management.</p>
 <p>More tricky is to trust the client platform. For example, any
 web-based system relies on a web server to deliver the application,
 making your client environment susceptible to any code injected from
-the server. <a class="footnote-reference brackets" href="#f106" id="id13">12</a>  This limits the efficacy of key
+the server. <a class="footnote-reference brackets" href="#f106" id="id15">15</a>  This limits the efficacy of key
 verification as per above - since the app was in control of the
 private side of those keys prior to the verification. An open source
 approach on the client software helps, but not if it cannot connect to
 the core (global) service, and not if it doesn’t have an open source
-ecosystem (including servers). <a class="footnote-reference brackets" href="#f107" id="id14">13</a></p>
+ecosystem (including servers). <a class="footnote-reference brackets" href="#f107" id="id16">16</a></p>
 <p>E2E is about security, not privacy. For example, any messaging system
 that requires you to use a phone number to authenticate is
 <em>emphatically *not private. Any messaging system that uses the *same</em>
 cryptographic credentials (such as a public key unique to you) for
-every separate conversation is not private either. <a class="footnote-reference brackets" href="#f108" id="id15">14</a> Any system
+every separate conversation is not private either. <a class="footnote-reference brackets" href="#f108" id="id17">17</a> Any system
 that depends on some other system (such as SMS or notification) for
 any part of the lifecycle of a conversation, is not private. Etc. The
 simple answer why it’s easier to acquire <em>secure</em> communications
 rather than <em>private</em> communications, is that the former is generally
-not a factor in monetization, the latter is. <a class="footnote-reference brackets" href="#f109" id="id16">15</a></p>
+not a factor in monetization, the latter is. <a class="footnote-reference brackets" href="#f109" id="id18">18</a></p>
 <p>Our design attempts to address all of the above; here’s a partial
 recap (not all of these items are implemented yet):</p>
 <ul class="simple">
@@ -454,7 +610,7 @@ this design doc.</p></li>
 </ul>
 </section>
 <section id="the-insider-privacy-model">
-<h2>The “Insider” Privacy Model<a class="headerlink" href="#the-insider-privacy-model" title="Permalink to this headline">¶</a></h2>
+<h3>The “Insider” Privacy Model<a class="headerlink" href="#the-insider-privacy-model" title="Permalink to this headline">#</a></h3>
 <p>If you are not familiar with the extent to which you <strong>lack</strong> privacy
 and protections in currently available messaging systems and services,
 e.g. if you are not well-informed about online security and current
@@ -465,7 +621,7 @@ not tell you the measures and processes that they have in place, on a
 daily basis, to collaborate with law enforcement. Many “privacy
 startups” won’t tell you who owns or controls their company, leaving
 future use of any collected data (especially metadata) unprotected.
-<a class="footnote-reference brackets" href="#f110" id="id17">16</a></p>
+<a class="footnote-reference brackets" href="#f110" id="id19">19</a></p>
 <p>Many services are based outside the US or the EU, making any policy
 assurances on their websites unenforceable. You should know that in
 the face of law enforcement requests or subpoenas, any privacy policy
@@ -503,12 +659,12 @@ trust basis as well. As long as the private keys of all the
 participants are kept safe, nobody can read the contents of exchanged
 messages. They are all created locally. Once a room is locked, only
 the Owner private key can authorize any administrative functions, such
-as approving a new participant. <a class="footnote-reference brackets" href="#f111" id="id18">17</a></p>
+as approving a new participant. <a class="footnote-reference brackets" href="#f111" id="id20">20</a></p>
 <p>This brings the question of, in a (fully) legitimate law enforcement
 request for assistance, that we (voluntarily and according to our
 principles of maximum privacy) agree with, what measure can be taken?
 What if something truly horrible is going on? Obviously the room can
-be shut down <a class="footnote-reference brackets" href="#f112" id="id19">18</a> and in addition any associated membership service
+be shut down <a class="footnote-reference brackets" href="#f112" id="id21">21</a> and in addition any associated membership service
 can be suspended. But is there a way to tap into the conversation?</p>
 <p>Yes, but law enforcement would need an insider - they would need the
 assistance of somebody in the group, or figure out a way to get
@@ -540,7 +696,7 @@ yourself from a conversation. Any non-Owner participant can just
 delete their keys, and that’s it: other participants can read their
 old messages, but new ones can’t be written, and nobody can come along
 and impersonate the original author - there is no ‘account’ that can
-be locked or taken over. <a class="footnote-reference brackets" href="#f113" id="id20">19</a></p>
+be locked or taken over. <a class="footnote-reference brackets" href="#f113" id="id22">22</a></p>
 <p>An analogy here might be: if a group of individuals meet to discuss
 something illegal in the real world, then if law enforcement really
 cares, they’re likely to not only be able to recruit or insert an
@@ -562,18 +718,27 @@ existed before all of this marvelous technology:</p>
 <hr class="docutils"/>
 <p class="rubric">Footnotes</p>
 <dl class="footnote brackets">
-<dt class="label" id="f130"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dt class="label" id="f091"><span class="brackets"><a class="fn-backref" href="#id3">1</a></span></dt>
+<dd><p>The User Data Manifesto refers to this as “knowledge”.</p>
+</dd>
+<dt class="label" id="f092"><span class="brackets"><a class="fn-backref" href="#id1">2</a></span></dt>
+<dd><p><a class="reference external" href="https://karlitschek.de/2012/10/the-user-data-manifesto/">https://karlitschek.de/2012/10/the-user-data-manifesto/</a></p>
+</dd>
+<dt class="label" id="f093"><span class="brackets"><a class="fn-backref" href="#id2">3</a></span></dt>
+<dd><p><a class="reference external" href="https://hroy.eu/posts/UserDataManifesto2dot0/">https://hroy.eu/posts/UserDataManifesto2dot0/</a></p>
+</dd>
+<dt class="label" id="f130"><span class="brackets"><a class="fn-backref" href="#id4">4</a></span></dt>
 <dd><p>Note our emphasis on clearly and unambiguously illegal:
 it’s impossible to provide a clear definition, but we
 will err on the side of privacy. Social norms not
 encoded in applicable law are not enforced by us.</p>
 </dd>
-<dt class="label" id="f130b"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
+<dt class="label" id="f130b"><span class="brackets"><a class="fn-backref" href="#id5">5</a></span></dt>
 <dd><p>This is our statement when <em>we</em> host a server. We
 are not placing any restrictions on how and where
 anybody else can host servers.</p>
 </dd>
-<dt class="label" id="f131"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
+<dt class="label" id="f131"><span class="brackets"><a class="fn-backref" href="#id6">6</a></span></dt>
 <dd><p>For example, a driving force of the internet industry to
 identify who you are is actually driven by needing to
 know where you are and what you are (robot or
@@ -585,18 +750,18 @@ our systems is by definition a human, US resident, with
 appropriate rights, which we in turn will aggressively
 fight on behalf for.</p>
 </dd>
-<dt class="label" id="f132"><span class="brackets"><a class="fn-backref" href="#id4">4</a></span></dt>
+<dt class="label" id="f132"><span class="brackets"><a class="fn-backref" href="#id7">7</a></span></dt>
 <dd><p>This is in contrast to typical web or mobile apps, since
 they are simply maximizing advertising reach.</p>
 </dd>
-<dt class="label" id="f133"><span class="brackets"><a class="fn-backref" href="#id5">5</a></span></dt>
+<dt class="label" id="f133"><span class="brackets"><a class="fn-backref" href="#id8">8</a></span></dt>
 <dd><p>This also ties into micro-federation and our intent to provide
 FOSS versions of public (multi-owner) server code as well.
 As an end-user of a chat / file share service, you should be
 able to “pick up and go” and bring conversations and files
 to a different jurisdiction.</p>
 </dd>
-<dt class="label" id="f134"><span class="brackets"><a class="fn-backref" href="#id6">6</a></span></dt>
+<dt class="label" id="f134"><span class="brackets"><a class="fn-backref" href="#id9">9</a></span></dt>
 <dd><p>Any complete system will need a separate authentication
 model for “Owner”. In our first implementation, for our
 version of the service only Members of the Privacy.App
@@ -604,7 +769,7 @@ service can be Owners. If you run the system yourself, you
 will need some mechanism for Owners to “log in”; details
 later in document.</p>
 </dd>
-<dt class="label" id="f101"><span class="brackets"><a class="fn-backref" href="#id10">7</a></span></dt>
+<dt class="label" id="f101"><span class="brackets"><a class="fn-backref" href="#id12">10</a></span></dt>
 <dd><p>Note: once an Owner “rotates” their keys, the identity of
 the Owner is locked-in for every participant - at their
 end. It cannot be changed, the participant clients will no
@@ -619,7 +784,7 @@ those servers ever being able to read any parts of the
 conversation. Owner can be “re-rooted” in a new “home” by
 simply copying their rotated private key)</p>
 </dd>
-<dt class="label" id="f102"><span class="brackets"><a class="fn-backref" href="#id8">8</a></span></dt>
+<dt class="label" id="f102"><span class="brackets"><a class="fn-backref" href="#id10">11</a></span></dt>
 <dd><p>For example, the CPU manufacturer for that phone, if it’s
 not fully integrated. The underlying DNS provider might be
 a dependency, not to mention the datacenter operator that
@@ -627,17 +792,17 @@ the messaging app is using for their servers. The
 notification system for the phone app is probably uniquely
 identifying you. Etc.</p>
 </dd>
-<dt class="label" id="f103"><span class="brackets"><a class="fn-backref" href="#id9">9</a></span></dt>
+<dt class="label" id="f103"><span class="brackets"><a class="fn-backref" href="#id11">12</a></span></dt>
 <dd><p>That we recommend you do NOT run on Cloudflare. In our case
 we run it on Azure.</p>
 </dd>
-<dt class="label" id="f104"><span class="brackets"><a class="fn-backref" href="#id11">10</a></span></dt>
+<dt class="label" id="f104"><span class="brackets"><a class="fn-backref" href="#id13">13</a></span></dt>
 <dd><p><a class="reference external" href="https://telegram.org/faq#q-what-is-this-39encryption-key-39-thing">https://telegram.org/faq#q-what-is-this-39encryption-key-39-thing</a></p>
 </dd>
-<dt class="label" id="f105"><span class="brackets"><a class="fn-backref" href="#id12">11</a></span></dt>
+<dt class="label" id="f105"><span class="brackets"><a class="fn-backref" href="#id14">14</a></span></dt>
 <dd><p><a class="reference external" href="https://blog.quarkslab.com/imessage-privacy.html">https://blog.quarkslab.com/imessage-privacy.html</a></p>
 </dd>
-<dt class="label" id="f106"><span class="brackets"><a class="fn-backref" href="#id13">12</a></span></dt>
+<dt class="label" id="f106"><span class="brackets"><a class="fn-backref" href="#id15">15</a></span></dt>
 <dd><p>For example, this is a (fundamental) limitation of a secure
 email service that provides a web interface, such as
 ProtonMail. See references for an analysis, but briefly,
@@ -647,13 +812,13 @@ provider, malicious code from a web server (or an
 intermediary) can be both targeted and fleeting, removing
 itself when done.</p>
 </dd>
-<dt class="label" id="f107"><span class="brackets"><a class="fn-backref" href="#id14">13</a></span></dt>
+<dt class="label" id="f107"><span class="brackets"><a class="fn-backref" href="#id16">16</a></span></dt>
 <dd><p>For example, the Telegram FAQ has stated “Our architecture
 does not support federation yet” since
 July 2014. Federation would imply losing control over much
 of the meta-data.</p>
 </dd>
-<dt class="label" id="f108"><span class="brackets"><a class="fn-backref" href="#id15">14</a></span></dt>
+<dt class="label" id="f108"><span class="brackets"><a class="fn-backref" href="#id17">17</a></span></dt>
 <dd><p>Since the meta-data implied by tracking what public keys
 are talking to what other public keys constitute your
 conversation pattern, both as an individual and, in
@@ -662,7 +827,7 @@ to whom, for how long, and when, and in what order are new
 connections made, etc etc. These were concerns that were
 less well understood in the past.)</p>
 </dd>
-<dt class="label" id="f109"><span class="brackets"><a class="fn-backref" href="#id16">15</a></span></dt>
+<dt class="label" id="f109"><span class="brackets"><a class="fn-backref" href="#id18">18</a></span></dt>
 <dd><p>If you are using a messaging product that’s free to use,
 does not worry much about how many images or documents you
 are storing for free, but somehow wants to know who is in
@@ -671,7 +836,7 @@ you are probably the product. You could ask their owners to
 see what their business plan is. Assuming you can figure
 out who the controlling owners are. Or where.</p>
 </dd>
-<dt class="label" id="f110"><span class="brackets"><a class="fn-backref" href="#id17">16</a></span></dt>
+<dt class="label" id="f110"><span class="brackets"><a class="fn-backref" href="#id19">19</a></span></dt>
 <dd><p>As a general rule under US law, no commitments from a
 service provider is enforceable against a new company that
 acquires them, or a third party who has access to or
@@ -681,7 +846,7 @@ most startups that have received investment money will be
 subject to “investor agreements” regulating board
 composition.</p>
 </dd>
-<dt class="label" id="f111"><span class="brackets"><a class="fn-backref" href="#id18">17</a></span></dt>
+<dt class="label" id="f111"><span class="brackets"><a class="fn-backref" href="#id20">20</a></span></dt>
 <dd><p>Or change of keys - to rotate keys you will need the
 current Owner ones. This means if the Owner loses their
 private key for a locked room, then there is no simple way
@@ -689,14 +854,14 @@ to reset or recover access, but the participants can always
 simply communicate to arrange for a new room to be
 created.)</p>
 </dd>
-<dt class="label" id="f112"><span class="brackets"><a class="fn-backref" href="#id19">18</a></span></dt>
+<dt class="label" id="f112"><span class="brackets"><a class="fn-backref" href="#id21">21</a></span></dt>
 <dd><p>Even that, not necessarily - a server can only delete a
 room in it’s own database. The Owner may have moved the
 room to another server, or themself set up a server. Any
 participant that has downloaded their message history will
 still has access to it using a static client.</p>
 </dd>
-<dt class="label" id="f113"><span class="brackets"><a class="fn-backref" href="#id20">19</a></span></dt>
+<dt class="label" id="f113"><span class="brackets"><a class="fn-backref" href="#id22">22</a></span></dt>
 <dd><p>Note: the Owner who created the room remains accountable,
 as long as the (SSO) service is managing their keys. This
 creates a deliberate safeguard: if the room is co-opted by
@@ -718,6 +883,7 @@ that you want to, and if it comes to it, you can kick
 everybody out of your house.</p>
 </dd>
 </dl>
+</section>
 </section>
 </section>
 
@@ -747,15 +913,21 @@ everybody out of your house.</p>
               </div>
             </a>
         </div>
-
-        <div class="related-information">
-              Copyright &#169; 2019-2022, Magnusson Institute |
-          Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
-          <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
-            | <a class="muted-link" href="_sources/discussion.rst.txt"
-               rel="nofollow">
-              Show Source
-            </a>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2019-2022, Magnusson Institute
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              
+            </div>
+          </div>
         </div>
         
       </footer>
@@ -772,14 +944,31 @@ everybody out of your house.</p>
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Discussion</a><ul>
+<li><a class="reference internal" href="#">Background and Discussion</a><ul>
+<li><a class="reference internal" href="#motivation">Motivation</a><ul>
+<li><a class="reference internal" href="#data-rights">Data Rights</a></li>
+<li><a class="reference internal" href="#open-source">Open Source</a></li>
+<li><a class="reference internal" href="#interoperable">Interoperable</a></li>
+<li><a class="reference internal" href="#under-participant-control">Under participant control</a></li>
+<li><a class="reference internal" href="#vendor-independent">Vendor-independent</a></li>
+<li><a class="reference internal" href="#private">Private</a></li>
+<li><a class="reference internal" href="#secure">Secure</a></li>
+<li><a class="reference internal" href="#compatible-with-legal-oversight">Compatible with legal oversight</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#design-principles-and-constraints">Design Principles and Constraints</a><ul>
 <li><a class="reference internal" href="#principles-and-constraints">Principles and Constraints</a></li>
 <li><a class="reference internal" href="#accountability">Accountability</a></li>
 <li><a class="reference internal" href="#design-decisions">Design Decisions</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#discussion-topics">Discussion Topics</a><ul>
 <li><a class="reference internal" href="#deleting-recording-autodestruct-message-models">Deleting / Recording / “Autodestruct” Message Models</a></li>
 <li><a class="reference internal" href="#the-thing-about-trust">The thing about “Trust”</a></li>
 <li><a class="reference internal" href="#what-do-we-and-others-mean-by-end-to-end-encryption">What do we (and others) mean by End-to-End Encryption?</a></li>
 <li><a class="reference internal" href="#the-insider-privacy-model">The “Insider” Privacy Model</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

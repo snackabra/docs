@@ -460,7 +460,9 @@ confirming (post facto) that the client was breaking the protocol. At
 that point, we can overwrite the object per policy, and re-encrypt
 with the provided key information, such that any future access using
 the dishonest or manipulated object name will not yield the original,
-but just the take-down notice.
+but just the take-down notice. In other words: the design deliberately
+allows for the party operating the server to enforce their content
+policy, but does not allow them to pre-emptively scan or review any content.
 
 Another scenario is that a user shares with themselves, or in some
 other manner uses the service as a strongly encrypted storage, and

@@ -13,16 +13,17 @@ Snackabra
 =========
 
 Snackabra is a from-scratch implementation of many-to-many
-conversation and document sharing.  It is made up of a set of
-designs, reference implementations, and a reference service.  It is
-intended to address a number of concerns and constraints with
-present systems. [#f01]_
+conversation and document sharing.  It is made up of a set of designs,
+reference implementations, and a reference service.  It is intended to
+address a number of concerns and constraints with present systems. For
+motivation and design principles, see the :ref:`general discussion
+<discussion>` section.
 
-You might want to start with a :ref:`slightly technical introduction
-<introduction>` and then dig into :ref:`more detailed overview
-<overview>`. If you're a member of public server such
-https://Privacy.App then you might be looking for a short :ref:`user
-manual <userGuide>` instead.
+To jump into the technical details, you might want to start with a
+:ref:`slightly technical introduction <introduction>` and then dig
+into :ref:`more detailed overview <overview>`. If you're a member of
+public server such https://Privacy.App then you might be looking for a
+short :ref:`user manual <userGuide>` instead.
 
 Snackabra [#f02]_ is open source (https://github.com/snackabra).
 If you would like to contribute or help out with the snackabra
@@ -74,10 +75,6 @@ anything important.  We will "signal" that we think the system is
 ----------------
 
 .. rubric:: Footnotes
-
-.. [#f01] See the :ref:`section on underlying design principles
-          <principles>` as well as the :ref:`general discussion <discussion>`
-	  sections for details.
 
 .. [#f02] "SNACKABRA" is pronounced "snack" and then the first part of
 	 "abracadabra". Accent is on the second "a" (the first "a" in

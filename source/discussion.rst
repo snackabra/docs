@@ -160,8 +160,7 @@ Open Source
 
 All sorts of messaging projects claim that they are open source.  But
 they all have caveats, footnotes, reservations, carve-outs, etc. Some of
-these are driven by the need to have some avenue of monetization. The problem
-is that
+these are driven by the need to have some avenue of monetization.
 
 
 
@@ -178,8 +177,7 @@ Interoperable
 Under participant control
 -------------------------
 
-There are many parts to this. Let's start with an aspect that is more
-well-known: data rights.
+
 
 
 
@@ -214,7 +212,7 @@ Compatible with legal oversight
 |
 |
 
-
+---------------
 
 
 Design Principles and Constraints
@@ -328,6 +326,11 @@ accountability, we currently derive these (strict) decisions:
   other participants etc
 
 
+
+|
+|
+
+---------------
 
 
 Discussion Topics

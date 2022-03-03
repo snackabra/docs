@@ -59,7 +59,7 @@ priorities: they are *all* necessary criteria, as we will argue.
 Later on we will by necessity go into priorities, since there are some
 trade-offs.
 
-But first, let's talk about Data Rights: much of the criteria above
+We begin with talking about Data Rights: much of the criteria above
 follow from formulating what we mean by Data Rights, and then applying
 that systematically.
 
@@ -159,9 +159,94 @@ Open Source
 -----------
 
 All sorts of messaging projects claim that they are open source.  But
-they all have caveats, footnotes, reservations, carve-outs, etc. Some of
-these are driven by the need to have some avenue of monetization.
+upon closer inspection they all exhibit a variety caveats, footnotes,
+reservations, carve-outs, etc. Of course, many of these are driven by
+the need to have some avenue of monetization. Examples of issues include:
 
+* Systems where some key component is missing from the complete "set"
+  that you would need to run a system. Typically that component is
+  licensed commercially.
+
+* Systems where the code is free to use and host - as long as you
+  don't compete with a named corporate entity.
+
+* Systems where key parts (such as the 'client' vs the 'server' side)
+  are distributed with different licensing models, or missing
+  completely.
+
+* Systems where the *server* side is distributed under a non-Afero-Style
+  license - we'll explain this below.
+
+* Systems where key aspects of the documentation are either not
+  kept up to date, or are only available through separate commercial
+  licensing.
+
+* Systems where the code is technically available, but some aspects
+  of using the code is inpractical. For examnple, if the build process
+  is highly complex and not easily reproduced.
+
+* Systems which embed a number of commercial aspects, such as "phone
+  home" or paid "placement", or embed lead generation to commercial
+  verions. These embeddings can be so numerous that it's not practical
+  for a consumer of the code base (and updates) to keep up.
+
+The above are examples of real-world issues. It's perhaps unfair to
+single out any particular alternative, since any team is free to
+pursue how they want to approach the problem (that of suffering the
+expense of engineering yet provide freedom of us). However the problem
+facing all of us, is that at the end of the day it is hard to find a
+*single* viable system that does not suffer from one or more of these
+issues.
+
+The "Afero-style" licensing problem merits some elaboration, for
+readers who are not familiar with the problem. If you are, you can
+skip ahead a bit.
+
+Briefly, the Open Source movement dates to a time when software was
+delivered to a user to run on their computer. The principle at the
+heart of Open Source was that you could use the source code freely,
+and modify it for your own use, but if you ever were to re-distribute
+it (freely or commercially), you were bound to also include your
+changes and additions.  The "trigger" that would force you to share
+your additional work was thus the notion of "distribution."  This was
+all before the modern Internet: Personal Computers, the World Wide
+Web, and eventually the smartphone. Along came companies like Yahoo,
+Ebay, Google, and Amazon, and they discovered that could essentially
+"vaccum up" the entire open source world of code, make all the
+improvements and changes they wanted, and, since they didn't
+"distribute" the code, they ran it on their own computers and offered
+an "online service", they never had to contribute back to open source.
+
+This created a crisis - massive open source projects that had been
+developed over decades were just absorbed and monetized. The Open Source
+movement responded by developing new versions of licenses. Notably,
+"GPL v3", also referred to as an "Afero" license, adds a new trigger:
+use of the software to deliver any sort of online service will force
+the provider to share any changes and additions they've done.
+
+Ergo, any communication open source project should "obviously" be
+distributed under GPL v3. But, few are.
+
+We can summarize by stating what criteria we consider to be necessary
+beyond simply stating "we are open source":
+
+* Only GPL v3 or similar license is acceptable.
+
+* All parts of the system should be available under open source,
+  and we see no reason why there should be any variations.
+
+* To emphasize: there shouldn't be any parts that are not available.
+
+* "Peripheral" aspects such as documentation, test suites, and so
+  forth, should all be included.
+
+* Development should be done in the open, so anybody can either
+  join in, or at a minimum follow along.
+
+* The aggregate system should be designed and maintained so as to
+  remain practical to use - simple to download, build, and run.
+
+  
 
 
 .. _discussion_interoperable:
@@ -170,12 +255,25 @@ these are driven by the need to have some avenue of monetization.
 Interoperable
 -------------
 
+|
+being written...
+
+|
+|
+
+
 
 .. _discussion_participant_control:
 
 -------------------------
 Under participant control
 -------------------------
+
+|
+being written...
+
+|
+|
 
 
 
@@ -188,12 +286,29 @@ Under participant control
 Vendor-independent
 ------------------
 
+|
+being written...
+
+|
+|
+
+
+
 
 .. _discussion_private:
 
 -------
 Private
 -------
+
+|
+being written...
+
+|
+|
+
+
+
 
 
 .. _discussion_secure:
@@ -202,12 +317,29 @@ Private
 Secure
 ------
 
+|
+being written...
+
+|
+|
+
+
+
 
 .. _discussion_legal_oversight:
 
 -------------------------------
 Compatible with legal oversight
 -------------------------------
+
+|
+being written...
+
+|
+|
+
+
+
 
 |
 |

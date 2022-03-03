@@ -241,7 +241,7 @@ hardest. They do not really have a clear ordering in terms of
 priorities: they are <em>all</em> necessary criteria, as we will argue.
 Later on we will by necessity go into priorities, since there are some
 trade-offs.</p>
-<p>But first, let’s talk about Data Rights: much of the criteria above
+<p>We begin with talking about Data Rights: much of the criteria above
 follow from formulating what we mean by Data Rights, and then applying
 that systematically.</p>
 <section id="data-rights">
@@ -318,26 +318,143 @@ puppets on invisible strings.</em></p>
 <section id="open-source">
 <span id="discussion-open-source"></span><h3>Open Source<a class="headerlink" href="#open-source" title="Permalink to this headline">#</a></h3>
 <p>All sorts of messaging projects claim that they are open source.  But
-they all have caveats, footnotes, reservations, carve-outs, etc. Some of
-these are driven by the need to have some avenue of monetization.</p>
+upon closer inspection they all exhibit a variety caveats, footnotes,
+reservations, carve-outs, etc. Of course, many of these are driven by
+the need to have some avenue of monetization. Examples of issues include:</p>
+<ul class="simple">
+<li><p>Systems where some key component is missing from the complete “set”
+that you would need to run a system. Typically that component is
+licensed commercially.</p></li>
+<li><p>Systems where the code is free to use and host - as long as you
+don’t compete with a named corporate entity.</p></li>
+<li><p>Systems where key parts (such as the ‘client’ vs the ‘server’ side)
+are distributed with different licensing models, or missing
+completely.</p></li>
+<li><p>Systems where the <em>server</em> side is distributed under a non-Afero-Style
+license - we’ll explain this below.</p></li>
+<li><p>Systems where key aspects of the documentation are either not
+kept up to date, or are only available through separate commercial
+licensing.</p></li>
+<li><p>Systems where the code is technically available, but some aspects
+of using the code is inpractical. For examnple, if the build process
+is highly complex and not easily reproduced.</p></li>
+<li><p>Systems which embed a number of commercial aspects, such as “phone
+home” or paid “placement”, or embed lead generation to commercial
+verions. These embeddings can be so numerous that it’s not practical
+for a consumer of the code base (and updates) to keep up.</p></li>
+</ul>
+<p>The above are examples of real-world issues. It’s perhaps unfair to
+single out any particular alternative, since any team is free to
+pursue how they want to approach the problem (that of suffering the
+expense of engineering yet provide freedom of us). However the problem
+facing all of us, is that at the end of the day it is hard to find a
+<em>single</em> viable system that does not suffer from one or more of these
+issues.</p>
+<p>The “Afero-style” licensing problem merits some elaboration, for
+readers who are not familiar with the problem. If you are, you can
+skip ahead a bit.</p>
+<p>Briefly, the Open Source movement dates to a time when software was
+delivered to a user to run on their computer. The principle at the
+heart of Open Source was that you could use the source code freely,
+and modify it for your own use, but if you ever were to re-distribute
+it (freely or commercially), you were bound to also include your
+changes and additions.  The “trigger” that would force you to share
+your additional work was thus the notion of “distribution.”  This was
+all before the modern Internet: Personal Computers, the World Wide
+Web, and eventually the smartphone. Along came companies like Yahoo,
+Ebay, Google, and Amazon, and they discovered that could essentially
+“vaccum up” the entire open source world of code, make all the
+improvements and changes they wanted, and, since they didn’t
+“distribute” the code, they ran it on their own computers and offered
+an “online service”, they never had to contribute back to open source.</p>
+<p>This created a crisis - massive open source projects that had been
+developed over decades were just absorbed and monetized. The Open Source
+movement responded by developing new versions of licenses. Notably,
+“GPL v3”, also referred to as an “Afero” license, adds a new trigger:
+use of the software to deliver any sort of online service will force
+the provider to share any changes and additions they’ve done.</p>
+<p>Ergo, any communication open source project should “obviously” be
+distributed under GPL v3. But, few are.</p>
+<p>We can summarize by stating what criteria we consider to be necessary
+beyond simply stating “we are open source”:</p>
+<ul class="simple">
+<li><p>Only GPL v3 or similar license is acceptable.</p></li>
+<li><p>All parts of the system should be available under open source,
+and we see no reason why there should be any variations.</p></li>
+<li><p>To emphasize: there shouldn’t be any parts that are not available.</p></li>
+<li><p>“Peripheral” aspects such as documentation, test suites, and so
+forth, should all be included.</p></li>
+<li><p>Development should be done in the open, so anybody can either
+join in, or at a minimum follow along.</p></li>
+<li><p>The aggregate system should be designed and maintained so as to
+remain practical to use - simple to download, build, and run.</p></li>
+</ul>
 </section>
 <section id="interoperable">
 <span id="discussion-interoperable"></span><h3>Interoperable<a class="headerlink" href="#interoperable" title="Permalink to this headline">#</a></h3>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<p>being written…</p>
+<div class="line-block">
+<div class="line"><br/></div>
+<div class="line"><br/></div>
+</div>
 </section>
 <section id="under-participant-control">
 <span id="discussion-participant-control"></span><h3>Under participant control<a class="headerlink" href="#under-participant-control" title="Permalink to this headline">#</a></h3>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<p>being written…</p>
+<div class="line-block">
+<div class="line"><br/></div>
+<div class="line"><br/></div>
+</div>
 </section>
 <section id="vendor-independent">
 <span id="discussion-vendor-independent"></span><h3>Vendor-independent<a class="headerlink" href="#vendor-independent" title="Permalink to this headline">#</a></h3>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<p>being written…</p>
+<div class="line-block">
+<div class="line"><br/></div>
+<div class="line"><br/></div>
+</div>
 </section>
 <section id="private">
 <span id="discussion-private"></span><h3>Private<a class="headerlink" href="#private" title="Permalink to this headline">#</a></h3>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<p>being written…</p>
+<div class="line-block">
+<div class="line"><br/></div>
+<div class="line"><br/></div>
+</div>
 </section>
 <section id="secure">
 <span id="discussion-secure"></span><h3>Secure<a class="headerlink" href="#secure" title="Permalink to this headline">#</a></h3>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<p>being written…</p>
+<div class="line-block">
+<div class="line"><br/></div>
+<div class="line"><br/></div>
+</div>
 </section>
 <section id="compatible-with-legal-oversight">
 <span id="discussion-legal-oversight"></span><h3>Compatible with legal oversight<a class="headerlink" href="#compatible-with-legal-oversight" title="Permalink to this headline">#</a></h3>
+<div class="line-block">
+<div class="line"><br/></div>
+</div>
+<p>being written…</p>
+<div class="line-block">
+<div class="line"><br/></div>
+<div class="line"><br/></div>
+</div>
 <div class="line-block">
 <div class="line"><br/></div>
 <div class="line"><br/></div>

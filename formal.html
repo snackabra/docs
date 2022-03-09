@@ -244,7 +244,7 @@ This is the point where deduplication occurs: any attempts to upload an identica
 will always result in the same encryption parameters.</p></li>
 <li><p>Alice next generates an encryption key <span class="math notranslate nohighlight">\(\mathcal{k}=\mathcal{K}(\mathfrak{H}_2(\mathcal{M}), \mathcal{s})\)</span> from
 the second half of the hash of the plaintext message (and salted), then
-generates the cryptotext of the message <span class="math notranslate nohighlight">\(\mathcal{C}=\mathscr{E}(\mathcal{k},\mathcal{s}|\mathcal{M})\)</span>,
+generates the cryptotext of the message <span class="math notranslate nohighlight">\(\mathcal{C}=\mathscr{E}(\mathcal{k},\mathcal{iv}|\mathcal{M})\)</span>,
 and then constructs a new hash of the encrypted message <span class="math notranslate nohighlight">\(\mathcal{c}=\mathcal{H}(\mathcal{C})\)</span>.
 Alice sends the full encrypted message <span class="math notranslate nohighlight">\(\mathcal{C}\)</span> to the server.</p></li>
 <li><p>The storage server maintains a second mapping <span class="math notranslate nohighlight">\(\mathcal{T}''(c)\longmapsto\langle\mathcal{v},\mathcal{C}\rangle\)</span>,

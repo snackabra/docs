@@ -76,7 +76,7 @@ Consider Alice wants to send :math:`\mathcal{M}` to Bob:
 
 3. Alice next generates an encryption key :math:`\mathcal{k}=\mathcal{K}(\mathfrak{H}_2(\mathcal{M}), \mathcal{s})` from
    the second half of the hash of the plaintext message (and salted), then
-   generates the cryptotext of the message :math:`\mathcal{C}=\mathscr{E}(\mathcal{k},\mathcal{s}|\mathcal{M})`,
+   generates the cryptotext of the message :math:`\mathcal{C}=\mathscr{E}(\mathcal{k},\mathcal{iv}|\mathcal{M})`,
    and then constructs a new hash of the encrypted message :math:`\mathcal{c}=\mathcal{H}(\mathcal{C})`.
    Alice sends the full encrypted message :math:`\mathcal{C}` to the server.
 

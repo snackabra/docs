@@ -7,14 +7,14 @@ Formal Treatment
 
 This section is currently a *start* to a formal treatment of the
 snackabra design - this is early.  The reality of the ~3 year
-implementation period has been to begin with a simple implementation
+development period has been to begin with a simple implementation
 using readily available building blocks, then iterating with input
 from internal discussions combined with progressively deeper research
 into academic work. We expect this to continue for some time, and we
 continue to appreciate any and all inputs, critiques, and pointers to
 relevant work.
 
-Within the scope of tentative steps, we being not with the core room
+Within the scope of tentative steps, we begin not with the core room
 (group) chat service, but with the storage service. This is for two
 reasons: firstly we have more confidence that any issues that arise
 with chat messaging can be addressed, given the large amount of work

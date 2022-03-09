@@ -45,10 +45,11 @@ anything important.  We will "signal" that we think the system is
    :maxdepth: 3
 
    introduction
-   install
    overview
    system-architecture
    discussion
+   formal
+   install
    contact
    glossary
    future

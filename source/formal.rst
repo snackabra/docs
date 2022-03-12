@@ -305,5 +305,10 @@ To be written.
 .. [#f206] A concern is that OPRF is not yet an accepted IETF
 	   standard. Latest draft is here https://github.com/cfrg/draft-irtf-cfrg-voprf
 	   and current (Draft 9) reference implementations
-	   are here https://github.com/cfrg/draft-irtf-cfrg-voprf 
+	   are here https://github.com/cfrg/draft-irtf-cfrg-voprf.
+	   So far in snackabra design, we have avoided using any functions
+	   that triggers the necessity of including libraries
+	   or even major sections of code. The advantages of improving
+	   the blob storage system with OPRF might outweigh those
+	   concerns, but we have not made a final decision.
 	   

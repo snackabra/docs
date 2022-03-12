@@ -303,7 +303,7 @@ To be written.
            :math:`\mathcal{OPRF_1}` server has been compromised.
 
 .. [#f206] A concern is that OPRF is not yet an accepted IETF
-	   standard. Latest draft is here https://github.com/cfrg/draft-irtf-cfrg-voprf
+	   standard. Latest draft is here https://www.ietf.org/id/draft-irtf-cfrg-voprf-09.html
 	   and current (Draft 9) reference implementations
 	   are here https://github.com/cfrg/draft-irtf-cfrg-voprf.
 	   So far in snackabra design, we have avoided using any functions

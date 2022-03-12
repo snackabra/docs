@@ -218,8 +218,8 @@ done in this space, whereas for the storage service, it feels like we
 are breaking some new ground, which is always worrisome. Probably for
 that reason, the storage design has attracted more initial interest
 and questions, which is the second reason to prioritize it.</p>
-<section id="photos-and-files">
-<h2>Photos and Files<a class="headerlink" href="#photos-and-files" title="Permalink to this headline">#</a></h2>
+<section id="photos-and-files-blobs">
+<h2>Photos and Files (Blobs)<a class="headerlink" href="#photos-and-files-blobs" title="Permalink to this headline">#</a></h2>
 <p>For a new group chat service to be a credible alternative to the
 myriad existing alternatives, it needs these basic features: text chat
 (either one-to-one or group) and photo sharing (again, either
@@ -250,7 +250,8 @@ Alice sends the full encrypted message <span class="math notranslate nohighlight
 <li><p>The storage server maintains a second mapping <span class="math notranslate nohighlight">\(\mathcal{T}''(c)\longmapsto\langle\mathcal{v},\mathcal{C}\rangle\)</span>,
 which simply relates a hash of the encrypted contents to the contents, as well as a random
 verification identifier <span class="math notranslate nohighlight">\(\mathcal{v}\)</span>, which is returned only if the server receives the full encrypted message.</p></li>
-<li><p>At this point Alice has collected the full “manifest”: <span class="math notranslate nohighlight">\(\langle\mathcal{H}(\mathcal{C}),\mathcal{k},\mathcal{iv},\mathcal{s},\mathcal{v}\rangle\)</span>,
+<li><p>At this point Alice has collected the full “manifest”:
+<span class="math notranslate nohighlight">\(\langle\mathcal{H}(\mathcal{C}),\mathcal{k},\mathcal{iv},\mathcal{s},\mathcal{v}\rangle\)</span>,
 which can be sent to Bob.</p></li>
 </ol>
 <p>When Bob wants to fetch the object, Bob sends <span class="math notranslate nohighlight">\(\langle\mathcal{H}(\mathcal{C}),\mathcal{v}\rangle\)</span> to the
@@ -281,6 +282,92 @@ motions of “storing” <span class="math notranslate nohighlight">\(\mathcal{C
 that will only respond if you already have <span class="math notranslate nohighlight">\(\mathcal{v}\)</span>, which you can only have if you either
 went through the above steps yourself, or somebody else did and gave you the results. And of course
 the resulting <span class="math notranslate nohighlight">\(\mathcal{C}\)</span> is of no use to you without <span class="math notranslate nohighlight">\(\langle\mathcal{k},\mathcal{iv},\mathcal{s}\rangle\)</span>.</p>
+<section id="future-design-directions">
+<h3>Future Design Directions<a class="headerlink" href="#future-design-directions" title="Permalink to this headline">#</a></h3>
+<p>The above design is the current one, which results in a few issues. In
+this section we summarize the current next-generation design candidate.
+First we present the future direction, then we discuss how it improves
+upon the characteristics of the current design.</p>
+<p>To the above servers, we add two OPRF endpoints,
+<span class="math notranslate nohighlight">\(\mathcal{OPRF_1}\)</span> whic can be reached by anybody
+and <span class="math notranslate nohighlight">\(\mathcal{OPRF_2}\)</span> that is only accessible by
+the storage server.</p>
+<ol class="arabic simple">
+<li><p>Alice creates a hash <span class="math notranslate nohighlight">\(\mathfrak{H}(\mathcal{M})\)</span>.
+Alice sends this to <span class="math notranslate nohighlight">\(\mathcal{OPRF_1}\)</span>,
+which returns a secret <span class="math notranslate nohighlight">\(\mathcal{r}\)</span> which Alice first recombines (xor)
+with <span class="math notranslate nohighlight">\(\mathfrak{H}(\mathcal{M})\)</span>, and derives
+nonce <span class="math notranslate nohighlight">\(\mathcal{iv}\)</span> and salt <span class="math notranslate nohighlight">\(\mathcal{s}\)</span>.
+Alice now constructs encryption key <span class="math notranslate nohighlight">\(\mathcal{k}=\mathcal{K}(\mathfrak{x}\oplus\mathfrak{H}(\mathcal{M}), \mathcal{s})\)</span>. <a class="footnote-reference brackets" href="#f205" id="id5">5</a></p></li>
+<li><p>This step is no longer needed - <span class="math notranslate nohighlight">\(\mathcal{OPRF_1}\)</span>
+ensures that any clients with the same message <span class="math notranslate nohighlight">\(\mathcal{M}\)</span> end up with the same encryption <span class="math notranslate nohighlight">\(\mathcal{k}\)</span> and
+nonce <span class="math notranslate nohighlight">\(\mathcal{iv}\)</span>, without revealing anything about <span class="math notranslate nohighlight">\(\mathcal{M}\)</span>
+to the <span class="math notranslate nohighlight">\(\mathcal{OPRF_1}\)</span> server. It is this characteristic
+of <span class="math notranslate nohighlight">\(\mathcal{OPRF_1}\)</span> which yields deduplication.</p></li>
+<li><p>Alice next generates the cryptotext of the message <span class="math notranslate nohighlight">\(\mathcal{C}=\mathscr{E}(\mathcal{k},\mathcal{iv}|\mathcal{M})\)</span>.
+Alice sends the full encrypted message <span class="math notranslate nohighlight">\(\mathcal{C}\)</span> to the server.</p></li>
+<li><p>The storage server receives <span class="math notranslate nohighlight">\(\mathcal{C}\)</span> and generates a pseudo-random
+verification identifier <span class="math notranslate nohighlight">\(\mathcal{v}\)</span>, returning the identifier
+once it’s fully received <span class="math notranslate nohighlight">\(\mathcal{C}\)</span>. The server maintains
+a mapping <span class="math notranslate nohighlight">\(\mathfrak{H}(\mathcal{v}|\mathcal{C})\longmapsto\langle\mathcal{v}|\mathcal{C}\rangle\)</span>.
+Note that this constitutes a simple content-based hash storage.
+The pseudo-random verification identifier
+is generated from <span class="math notranslate nohighlight">\(\mathcal{OPRF_2(\mathcal{H}(\mathcal{C}))}\)</span>,
+assuring that identical <span class="math notranslate nohighlight">\(\mathcal{C}\)</span> blobs will end up
+with the same name, however that name cannot easily be
+guessed even with access to <span class="math notranslate nohighlight">\(\mathcal{C}\)</span>.</p></li>
+<li><p>Once Alice receives <span class="math notranslate nohighlight">\(\mathcal{v}\)</span>, Alice can construct a (final) name
+hash <span class="math notranslate nohighlight">\(\mathcal{c}=\mathcal{H}(\mathcal{v}|\mathcal{C})\)</span>.
+At this point Alice has collected the full “manifest”:
+<span class="math notranslate nohighlight">\(\langle\mathcal{c},\mathcal{k},\mathcal{iv},\mathcal{s}\rangle\)</span>,
+which can be sent to Bob.</p></li>
+</ol>
+<p>When Bob wants to fetch the object, Bob sends
+<span class="math notranslate nohighlight">\(\mathcal{c}\)</span> to the
+storage server which returns <span class="math notranslate nohighlight">\(\mathcal{v}|\mathcal{C}\)</span>. Bob can
+strip <span class="math notranslate nohighlight">\(\mathcal{v}\)</span> and has <span class="math notranslate nohighlight">\(\mathcal{M}\)</span> from
+<span class="math notranslate nohighlight">\(\mathcal{D}(\mathcal{C},\mathcal{k},\mathcal{iv},\mathcal{s})\)</span>.</p>
+<p>Note: brute force attacks against either
+<span class="math notranslate nohighlight">\(\mathcal{OPRF_1}\)</span> or
+<span class="math notranslate nohighlight">\(\mathcal{OPRF_2}\)</span> are not economical, since an
+upload operation can only be initiated by spending a storage token
+from the ledger server.</p>
+<p>The characteristics of the current design are all retained, with these
+improvements:</p>
+<ul class="simple">
+<li><p>The storage server only needs to retain a single, trivially simple, mapping
+<span class="math notranslate nohighlight">\(\mathfrak{H}(\mathcal{v}|\mathcal{C})\longmapsto\langle\mathcal{v}|\mathcal{C}\rangle\)</span>.
+Since it no longer needs a verification “step” for <span class="math notranslate nohighlight">\(\mathcal{v}\)</span>,
+this “blob” store is now fully CDN-compatible, which is a significant
+improvement in both performance, cost efficiency, and privacy.
+Furthermore, since this final mapping is a pure content-based addressing
+scheme, it can be trivially mirrored to systems such as IPFS.</p></li>
+<li><p>The storage server does <em>not</em> need to ever see even a prefix of
+<span class="math notranslate nohighlight">\(\mathcal{H}(\mathcal{M})\)</span>. This means that even if the storage
+server is compromised, an adversary cannot trivially confirm
+what objects have ever been shared.</p></li>
+<li><p>Deduplication is accomplished through the two uses of <span class="math notranslate nohighlight">\(\mathcal{OPRF}\)</span>.
+Notably, this approach simplifies some operational tasks.
+If there is a fear of system compromise, then the secrets of both
+<span class="math notranslate nohighlight">\(\mathcal{OPRF_1}\)</span> and <span class="math notranslate nohighlight">\(\mathcal{OPRF_2}\)</span>
+can be trivially rotated - for example every two weeks. Thus, deduplication
+occurs only within timing windows, which should yield the bulk
+of any deduplication efficacy. This way, an adversary who gains
+complete control of the storage server as well as <span class="math notranslate nohighlight">\(\mathcal{OPRF_2}\)</span>
+can at most initiate a brute force attack against objects
+shared in the current window (and even then only tell <em>if</em>
+that object had been shared at all, not how often or by whom etc).</p></li>
+<li><p>To emphasize: with this design, the <em>only</em> state the storage server needs
+to maintain is <span class="math notranslate nohighlight">\(\mathfrak{H}(\mathcal{v}|\mathcal{C})\longmapsto\langle\mathcal{v}|\mathcal{C}\rangle\)</span>,
+nothing else, and no need for any authentication or verification steps.
+All information needed to <em>find</em> the object and decrypt it
+is contained in the manifest, which is shared through room chat
+control messages.</p></li>
+</ul>
+<p>Currently, implementation of this approach is pending adding
+OPRF to the snackabra core library, since it is not (yet) a part
+of the web crypto API standard. <a class="footnote-reference brackets" href="#f206" id="id6">6</a></p>
+</section>
 </section>
 <section id="rooms-chats-groups">
 <h2>Rooms, Chats, Groups<a class="headerlink" href="#rooms-chats-groups" title="Permalink to this headline">#</a></h2>
@@ -354,6 +441,17 @@ completely compromise the system would only be able to
 determine if a given plaintext message was uploaded
 and shared by anybody in the past week.</p>
 </dd>
+<dt class="label" id="f205"><span class="brackets"><a class="fn-backref" href="#id5">5</a></span></dt>
+<dd><p>The final xor operation with
+<span class="math notranslate nohighlight">\(\mathfrak{H}(\mathcal{M})\)</span> exists to protect for the case where the
+<span class="math notranslate nohighlight">\(\mathcal{OPRF_1}\)</span> server has been compromised.</p>
+</dd>
+<dt class="label" id="f206"><span class="brackets"><a class="fn-backref" href="#id6">6</a></span></dt>
+<dd><p>A concern is that OPRF is not yet an accepted IETF
+standard. Latest draft is here <a class="reference external" href="https://github.com/cfrg/draft-irtf-cfrg-voprf">https://github.com/cfrg/draft-irtf-cfrg-voprf</a>
+and current (Draft 9) reference implementations
+are here <a class="reference external" href="https://github.com/cfrg/draft-irtf-cfrg-voprf">https://github.com/cfrg/draft-irtf-cfrg-voprf</a></p>
+</dd>
 </dl>
 </section>
 </section>
@@ -416,7 +514,10 @@ and shared by anybody in the past week.</p>
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Formal Treatment</a><ul>
-<li><a class="reference internal" href="#photos-and-files">Photos and Files</a></li>
+<li><a class="reference internal" href="#photos-and-files-blobs">Photos and Files (Blobs)</a><ul>
+<li><a class="reference internal" href="#future-design-directions">Future Design Directions</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#rooms-chats-groups">Rooms, Chats, Groups</a></li>
 <li><a class="reference internal" href="#ledger">Ledger</a></li>
 </ul>

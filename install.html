@@ -132,7 +132,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -194,7 +194,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -214,19 +214,174 @@ develop. We’re proud to say that much of this is now available.</p>
 <p>If you wish to run your own basic snackabra environment, here are the
 building blocks:</p>
 <ul class="simple">
-<li><p>Core server for running rooms:
-<a class="reference external" href="https://github.com/snackabra/snackabra-roomserver">https://github.com/snackabra/snackabra-roomserver</a></p></li>
-<li><p>To manage any shared photos or file yourself, you need a storage server:
-<a class="reference external" href="https://github.com/snackabra/snackabra-storageserver">https://github.com/snackabra/snackabra-storageserver</a></p></li>
-<li><p>The “landing” page is the (static) web client:
-<a class="reference external" href="https://github.com/snackabra/snackabra-webclient">https://github.com/snackabra/snackabra-webclient</a></p></li>
-<li><p>There’s a (native swift) iOS app as well:
-<a class="reference external" href="https://github.com/snackabra/snackabra-ios">https://github.com/snackabra/snackabra-ios</a></p></li>
-<li><p>For command line operations you’ll need the python library, <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">snackabra</span></code> or:
-<a class="reference external" href="https://github.com/snackabra/snackabra-pylib">https://github.com/snackabra/snackabra-pylib</a></p></li>
-<li><p>This one is coming soon!
-<a class="reference external" href="https://github.com/snackabra/snackabra-cli">https://github.com/snackabra/snackabra-cli</a></p></li>
+<li><p><a class="reference internal" href="#room-server"><span class="std std-ref">Room Server</span></a>: The chat group / messaging server.</p></li>
+<li><p><a class="reference internal" href="#storage-server"><span class="std std-ref">Storage Server</span></a>: To manage any shared photos or files yourself.</p></li>
+<li><p><a class="reference internal" href="#web-client"><span class="std std-ref">Web Client</span></a>: Serves as both landing page, user dashboard,
+and stand-alone chat client. React Native.</p></li>
 </ul>
+<p>The above three parts are working and sufficient to set up a personal snackabra server.
+A few additional elements are under development or coming soon. Below we list them
+in descending order of priority. Anybody willing to help out can influence priority
+simply by helping out.</p>
+<ul class="simple">
+<li><p>For the generic snackabra javascript library, <code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">install</span> <span class="pre">snackabra</span></code> or:
+<a class="reference external" href="https://github.com/snackabra/snackabra-jslib">https://github.com/snackabra/snackabra-jslib</a> (under development).</p></li>
+<li><p><a class="reference internal" href="#ios-client"><span class="std std-ref">iOS Client</span></a>: An early template (native) implementation. Swift.</p></li>
+<li><p>For command line operations you’ll need the python library, <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">snackabra</span></code> or:
+<a class="reference external" href="https://github.com/snackabra/snackabra-pylib">https://github.com/snackabra/snackabra-pylib</a> (under development).</p></li>
+<li><p>Command-line admin interface and tools (coming soon)
+<a class="reference external" href="https://github.com/snackabra/snackabra-cli">https://github.com/snackabra/snackabra-cli</a></p></li>
+<li><p>Ledger server (coming soon)</p></li>
+<li><p>Reference (multi-owner) SSO. Curently low priority, but we will get to it!</p></li>
+</ul>
+<section id="room-server">
+<span id="id1"></span><h2>Room Server<a class="headerlink" href="#room-server" title="Permalink to this headline">#</a></h2>
+<p>Source: <a class="reference external" href="https://github.com/snackabra/snackabra-roomserver">https://github.com/snackabra/snackabra-roomserver</a></p>
+<p>The room server allows you to host and manage your own Snackabra
+server, called a “personal” server (as opposed to a “public”
+server). This same code supports a public (multi-user) Snackabra
+service, but that requires other building blocks (including you need
+an SSO), so for now this documentation will focus on setting up a
+personal server. On a personal server, the individual running the
+server is de-facto “owner” of all rooms - see the general
+documentation for more information.</p>
+<p>You will need a client to connect to the server. See
+<a class="reference external" href="https://github.com/snackabra">https://github.com/snackabra</a> for what’s currently available (at time
+of writing, there’s a react native web client and an early native
+swift ios version).</p>
+<p>For installation documentation on the room server, see:</p>
+<p>We currently have two
+reference implementations, a web app version</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://snackabra.github.com/snackabra-webclient">https://snackabra.github.com/snackabra-webclient</a></p></li>
+<li><p><a class="reference external" href="https://snackabra.github.com/snackabra-ios">https://snackabra.github.com/snackabra-ios</a> (early version)</p></li>
+</ul>
+<p>In the clients you can then point to your server (once it’s up and
+running).</p>
+</section>
+<section id="setup-personal-room-server">
+<h2>Setup (Personal Room Server)<a class="headerlink" href="#setup-personal-room-server" title="Permalink to this headline">#</a></h2>
+<p>The current room server requires a domain name and a Cloudflare (CF)
+account. Currently, a free CF account is _almost_ sufficient, but
+“durable objects” are not available yet on the free plans, so that
+sets a minimum of $5/month to host a personal server (*).</p>
+<p>If you want (push) notifications for mobile you will (eventually) need
+to set up the necessary accounts with Apple; details coming soon in</p>
+<ul class="simple">
+<li><p>Set up a domain (we will call it “example.com”) that you control.
+You will need to be able to change the nameservers to be Cloudflare.</p></li>
+<li><p>Set up a free account with CF: <a class="reference external" href="https://dash.cloudflare.com/sign-up">https://dash.cloudflare.com/sign-up</a> -
+use your domain in the signup process.</p></li>
+<li><p>Go to the “workers” section and pick a name for your worker on
+CF, we’ll call it “example” here. That sets up a subdomain on
+“workers.dev”, e.g. “example.workers.dev.”  Later you can set
+up “routes” from own domain.</p></li>
+<li><p>Click on the “Free” button, you need to upgrade to the
+“Pay-as-you-go” plan.</p></li>
+</ul>
+<p>Now you have the account(s) set up. You might need to check email for
+when any nameservers have propagated.</p>
+<p>Next set up the CF command line environment, the “Wrangler CLI”, we
+use “yarn” in general but the personal server code is pure JS and
+(currently) does not need any node packages. Follow instructions at
+<a class="reference external" href="https://dash.cloudflare.com/6a24dd354a78c1e313b1b8054d75e506/workers/cli">https://dash.cloudflare.com/6a24dd354a78c1e313b1b8054d75e506/workers/cli</a> -
+at time of writing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># install the CLI:</span>
+<span class="n">yarn</span> <span class="k">global</span> <span class="n">add</span> <span class="nd">@cloudflare</span><span class="o">/</span><span class="n">wrangler</span>
+<span class="c1"># authenticate your CLI:</span>
+<span class="n">wrangler</span> <span class="n">login</span>
+<span class="c1"># copy the template 'toml' file</span>
+<span class="n">cp</span> <span class="n">setup</span><span class="o">/</span><span class="n">template</span><span class="o">.</span><span class="n">wranger</span><span class="o">.</span><span class="n">toml</span> <span class="n">wrangler</span><span class="o">.</span><span class="n">toml</span>
+</pre></div>
+</div>
+<p>The ‘login’ will open a web page to confirm that your CLI is allowed
+to administrate your CF account.</p>
+<p>In the above ‘wrangler.toml’ file, you will need to add your ‘Account
+ID’ from the dashboard. Next, you will need a few “KV Namespaces”. You
+can do that with the CLI:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wrangler</span> <span class="n">kv</span><span class="p">:</span><span class="n">namespace</span> <span class="n">create</span> <span class="s2">"MESSAGES_NAMESPACE"</span>
+<span class="n">wrangler</span> <span class="n">kv</span><span class="p">:</span><span class="n">namespace</span> <span class="n">create</span> <span class="s2">"KEYS_NAMESPACE"</span>
+<span class="n">wrangler</span> <span class="n">kv</span><span class="p">:</span><span class="n">namespace</span> <span class="n">create</span> <span class="s2">"LEDGER_NAMESPACE"</span>
+</pre></div>
+</div>
+<p>For each of them, you need to copy-paste the corresponding ‘id’ to
+your <code class="docutils literal notranslate"><span class="pre">`wrangler.toml`</span></code> file.</p>
+<p>Before you deploy, you need to enable “Durable Objects” for your
+account.  On your “Workers” dashboard there is currently a link
+“Durable Objects is now generally available!” - click that.(**)</p>
+<p>Finally, you need to make a tiny change to your copy of
+the server code, providing a ‘secret’. This is essentially a simple
+auth token that your server will request every time you create a new
+room, or migrate a room over from somewhere else.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wrangler</span> <span class="n">secret</span> <span class="n">put</span> <span class="n">SERVER_SECRET</span><span class="o">&lt;</span><span class="n">enter</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>It will prompt you to enter the secret.</p>
+<p>You also need to generate a RSA-OAEP key and push that;
+you need to generate that and copy-paste.</p>
+<p>You need to generate the ledger key yourself (‘jwk’ format), there’s a
+few ways to do that, for example open a browser console and enter the
+following Javascript (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/generateKey#rsa_key_pair_generation">https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/generateKey#rsa_key_pair_generation</a>):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">let</span> <span class="n">keyPair</span> <span class="o">=</span> <span class="k">await</span> <span class="n">window</span><span class="o">.</span><span class="n">crypto</span><span class="o">.</span><span class="n">subtle</span><span class="o">.</span><span class="n">generateKey</span><span class="p">(</span>
+  <span class="p">{</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s2">"RSA-OAEP"</span><span class="p">,</span>
+    <span class="n">modulusLength</span><span class="p">:</span> <span class="mi">4096</span><span class="p">,</span>
+    <span class="n">publicExponent</span><span class="p">:</span> <span class="n">new</span> <span class="n">Uint8Array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span>
+    <span class="nb">hash</span><span class="p">:</span> <span class="s2">"SHA-256"</span>
+  <span class="p">},</span>
+  <span class="n">true</span><span class="p">,</span>
+  <span class="p">[</span><span class="s2">"encrypt"</span><span class="p">,</span> <span class="s2">"decrypt"</span><span class="p">]</span>
+<span class="p">);</span>
+<span class="n">let</span> <span class="n">my_private_key</span> <span class="o">=</span> <span class="k">await</span> <span class="n">window</span><span class="o">.</span><span class="n">crypto</span><span class="o">.</span><span class="n">subtle</span><span class="o">.</span><span class="n">exportKey</span><span class="p">(</span><span class="s2">"jwk"</span><span class="p">,</span> <span class="n">keyPair</span><span class="o">.</span><span class="n">privateKey</span><span class="p">);</span>
+<span class="n">let</span> <span class="n">my_public_key</span> <span class="o">=</span> <span class="k">await</span> <span class="n">window</span><span class="o">.</span><span class="n">crypto</span><span class="o">.</span><span class="n">subtle</span><span class="o">.</span><span class="n">exportKey</span><span class="p">(</span><span class="s2">"jwk"</span><span class="p">,</span> <span class="n">keyPair</span><span class="o">.</span><span class="n">publicKey</span><span class="p">);</span>
+<span class="n">JSON</span><span class="o">.</span><span class="n">stringify</span><span class="p">(</span><span class="n">my_public_key</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>And you should get something like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'{"alg":"RSA-OAEP-256","e":"AQAB","ext":true,"key_ops":["encrypt"],"kty":"RSA","n":"mOmu ....</span>
+</pre></div>
+</div>
+<p>(Don’t forget to store the full / private key somewhere secure: <code class="docutils literal notranslate"><span class="pre">JSON.stringify(my_private_key)</span></code>)</p>
+<p>The resulting string (include the quotes) is the string you enter as your “LEDGER_KEY”:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wrangler</span> <span class="n">secret</span> <span class="n">put</span> <span class="n">LEDGER_KEY</span><span class="o">&lt;</span><span class="n">enter</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Now you should be able to start your server:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wrangler</span> <span class="n">publish</span>
+</pre></div>
+</div>
+<p>And point a client to it!</p>
+<p>(*) We are not affiliated with Cloudflare, we’re just fans.</p>
+<p>(**) At time of writing, the link was:
+<a class="reference external" href="https://dash.cloudflare.com/6a24dd354a78c1e313b1b8054d75e506/workers/overview?enable-durable-objects">https://dash.cloudflare.com/6a24dd354a78c1e313b1b8054d75e506/workers/overview?enable-durable-objects</a></p>
+<section id="directory">
+<h3>Directory<a class="headerlink" href="#directory" title="Permalink to this headline">#</a></h3>
+<p>Following files should be in the git:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>.
+├── LICENSE.md
+├── README.rst
+├── package.json
+├── setup
+│   └── template.wranger.toml
+├── snackabra.svg
+└── src
+    └── room.mjs
+</pre></div>
+</div>
+</section>
+<section id="storage-server">
+<span id="id2"></span><h3>Storage Server<a class="headerlink" href="#storage-server" title="Permalink to this headline">#</a></h3>
+<p>Source: <a class="reference external" href="https://github.com/snackabra/snackabra-storageserver">https://github.com/snackabra/snackabra-storageserver</a></p>
+</section>
+<section id="web-client">
+<span id="id3"></span><h3>Web Client<a class="headerlink" href="#web-client" title="Permalink to this headline">#</a></h3>
+<p>Source: <a class="reference external" href="https://github.com/snackabra/snackabra-webclient">https://github.com/snackabra/snackabra-webclient</a></p>
+</section>
+<section id="ios-client">
+<span id="id4"></span><h3>iOS Client<a class="headerlink" href="#ios-client" title="Permalink to this headline">#</a></h3>
+<p>Source: <a class="reference external" href="https://github.com/snackabra/snackabra-ios">https://github.com/snackabra/snackabra-ios</a></p>
+</section>
+</section>
 </section>
 
         </article>
@@ -274,8 +429,34 @@ building blocks:</p>
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Installation</a><ul>
+<li><a class="reference internal" href="#room-server">Room Server</a></li>
+<li><a class="reference internal" href="#setup-personal-room-server">Setup (Personal Room Server)</a><ul>
+<li><a class="reference internal" href="#directory">Directory</a></li>
+<li><a class="reference internal" href="#storage-server">Storage Server</a></li>
+<li><a class="reference internal" href="#web-client">Web Client</a></li>
+<li><a class="reference internal" href="#ios-client">iOS Client</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

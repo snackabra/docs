@@ -359,7 +359,7 @@ accomplished as follows:
   :term:`Ledger Backend` to generate a token for the requested
   size. The Ledger Backend returns a token_id. The :term:`KV_local`
   then encrypts this token_id with the public half of the
-  ledgerKey. Finally, the :term:`KV_local` returns the hash of the
+  :term:`LEDGER_KEY`. Finally, the :term:`KV_local` returns the hash of the
   token_id, the encrypted token_id and the hashed roomId as the
   storage token back to the client. [#f034]_
 
@@ -475,7 +475,7 @@ Storage Ledger Server
 ---------------------
 
 A core challenge in providing long-term storage of files [#f044]_, is how
-to accomplish the following:
+to accomplish the following (a more formal treatment is :ref:`here <ledger_formal>`):
 
 * The system should be highly secure and private: contents
   at rest should be strongly encrypted, and not (easily)
@@ -552,13 +552,14 @@ There is a lot to unpack in this diagram, bear with us:
 
 First, there are four "account balances" involved:
 
-A. The budget of the total service.
+**[A]** The budget of the total service.
 
-B. The current budget of the room.
+**[B]** The current budget of the room.
 
-C. The amount spent in total on storage.
+**[C]** The amount spent in total on storage.
 
-[A] starts as the total budget for a service - let's say 100 TB for a
+
+'[A]' starts as the total budget for a service - let's say 100 TB for a
 multi-user host. Upon creation of any room, an initial balance of
 (say) 1 GB is allocated to the room, ergo 1 GB goes [A] => [B]. When a room
 "spends" this, it requests the ledger to transfer it from the room's "account"
@@ -610,7 +611,7 @@ Now we can untangle the diagram a bit (you can follow along in the code [#f046]_
    the object (":term:`<FN>`:").
 
 4. The client next requests from the room server
-   permission to store the amount of data needed.
+   permission to store the amount of data needed. [#f050]_
 
 5. The room checks if it has budget:
    it asks the Ledger to "spend" storage bytes:
@@ -1011,7 +1012,7 @@ local_storage:
   * (We will refer to this key as the ‘<room>_participant’ key or
     ‘participant keys’ in this document)
 
-In addition to all of the above, a ‘global’ ledgerKey (RSA keyPair) is
+In addition to all of the above, a ‘global’ :term:`LEDGER_KEY` (RSA keyPair) is
 also generated.
 
 * The public half is used to encrypt the storage token id by KV_local
@@ -1169,6 +1170,10 @@ control messages once finalized.
 
 .. [#f046] https://github.com/snackabra/snackabra-webclient/blob/main/src/containers/Room/Room.js
 	   
+.. [#f050] TODO: In the modified design (summarized :ref:`here <blob_future_design>`),
+	   this request to store needs to come earlier to serve as natural
+	   DDOS protection for the OPRF() endpoints.
+
 .. [#f047] TODO: we have an outstanding design concern here, which is
 	   to retain a hash or encrypted copy of the :term:`<TID>` that only
 	   the owner can take advantage of in a future 

@@ -23,7 +23,7 @@ copyright = '2019-2022, Magnusson Institute'
 author = 'Magnusson Institute'
 
 # The full version, including alpha/beta/rc tags
-release = '0.4.3'
+release = '0.5.0'
 
 
 # -- General configuration ---------------------------------------------------
@@ -37,7 +37,8 @@ extensions = [
     'sphinx.ext.graphviz',
     'sphinx.ext.autodoc',
     'sphinx.ext.autosummary',
-    'sphinx.ext.napoleon' # google-style python autodoc
+    'sphinx.ext.napoleon', # google-style python autodoc
+    'sphinx_js'
 ]
 
 # Fontpath for blockdiag (truetype font)
@@ -60,6 +61,8 @@ templates_path = ['_templates']
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = []
 
+# sphinx-js path to snackabra-javascript library
+js_source_path = '../../snackabra-jslib/src'
 
 # -- Options for HTML output -------------------------------------------------
 

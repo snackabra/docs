@@ -1,16 +1,16 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="References / Further Reading" href="references.html" /><link rel="prev" title="Glossary" href="glossary.html" />
 
-    <meta name="generator" content="sphinx-4.4.0, furo 2022.02.23"/>
-        <title>Future Work - snackabra 0.4.3 documentation</title>
+    <meta name="generator" content="sphinx-5.1.1, furo 2022.09.15"/>
+        <title>Future Work - snackabra 0.5.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=3c656993158f05539f962c5cea52a5e6c184bb8c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=9ec31e2665bf879c1d47d93a8ec4893870ee1e45" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=25ceb02ed1c46dc30f2321ff83e92799f69dfdb9" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
     
     
@@ -22,24 +22,28 @@
   --color-code-foreground: black;
   
   }
-  body[data-theme="dark"] {
-    --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
-  
-  }
-  @media (prefers-color-scheme: dark) {
-    body:not([data-theme="light"]) {
+  @media not print {
+    body[data-theme="dark"] {
       --color-code-background: #202020;
   --color-code-foreground: #d0d0d0;
   
     }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
   }
 </style></head>
   <body>
+    
     <script>
       document.body.dataset.theme = localStorage.getItem("theme") || "auto";
     </script>
     
+
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
   <symbol id="svg-toc" viewBox="0 0 24 24">
     <title>Contents</title>
@@ -121,7 +125,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">snackabra 0.4.3 documentation</div></a>
+      <a href="index.html"><div class="brand">snackabra 0.5.0 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -144,7 +148,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
   
-  <span class="sidebar-brand-text">snackabra 0.4.3 documentation</span>
+  <span class="sidebar-brand-text">snackabra 0.5.0 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
@@ -164,6 +168,7 @@
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Future Work</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References / Further Reading</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">LICENSE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jslib.html">Javascript Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pylib.html">Python Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="appendix-a-crypto.html">Appendix A: Cryptography</a></li>
 <li class="toctree-l1"><a class="reference internal" href="user-guide.html">Appendix B: Privacy.App Chat Room User Guide</a></li>
@@ -186,7 +191,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -201,11 +207,11 @@
         </div>
         <article role="main">
           <section id="future-work">
-<h1>Future Work<a class="headerlink" href="#future-work" title="Permalink to this headline">#</a></h1>
+<h1>Future Work<a class="headerlink" href="#future-work" title="Permalink to this heading">#</a></h1>
 <p>In this section we cover topics that are well progressed in terms
 of design thinking, but not finalize (or implemented) yet.</p>
 <section id="verifying-room-integrity">
-<h2>Verifying Room Integrity<a class="headerlink" href="#verifying-room-integrity" title="Permalink to this headline">#</a></h2>
+<h2>Verifying Room Integrity<a class="headerlink" href="#verifying-room-integrity" title="Permalink to this heading">#</a></h2>
 <p>This needs to be thought through more, consider the below as
 tentative: the whole process of how to securely “disconnect” from a
 server, in what steps exactly, is a bit unclear.</p>
@@ -221,7 +227,7 @@ participants. Then, once that’s accomplished, the concept of ‘locking’
 is to eliminate the ability of the SSO to override (impersonate) Owner
 identity, whether that may happen through action by an entity
 controlling the SSO, or a sufficient subset of underlying
-infrastructure providers. <a class="footnote-reference brackets" href="#f028" id="id1">1</a></p>
+infrastructure providers. <a class="footnote-reference brackets" href="#f028" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
 <p>This raises a well-known challenge: how do you, as a user, ascertain
 that there was no manipulation of any part of the setup leading up to
 this final state?</p>
@@ -231,11 +237,11 @@ pairwise verify the integrity of the final result. Said final
 result from every participants’ point of view is simply the room name
 and the set of all participants’ public keys. If all participants have
 the exact same final result, then there could not have been
-manipulation. <a class="footnote-reference brackets" href="#f029" id="id2">2</a></p>
+manipulation. <a class="footnote-reference brackets" href="#f029" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></p>
 <p>When a room is locked down (both verified and the owner has rotated
 keys), for users who are verified a new “lock” icon appears next to
 the room name. Pressing that lock will produce the verification image:</p>
-<a class="reference internal image-reference" href="_images/verify_example.png"><img alt="_images/verify_example.png" class="align-center" src="_images/verify_example.png" style="height: 140px;"/></a>
+<a class="reference internal image-reference" href="_images/verify_example.png"><img alt="_images/verify_example.png" class="align-center" src="_images/verify_example.png" style="height: 140px;" /></a>
 <p>The above image is generated as follows:</p>
 <p>A string is generated by concatenating the &lt;roomId&gt; with every
 participants’ public keys, the latter in alphanumeric order. The
@@ -262,16 +268,18 @@ be identical to everybody), a simply pairwise execution of the
 by Boudt, Schoenmakerrs, and Traore
 (<a class="reference external" href="https://www.win.tue.nl/~berry/papers/dam.pdf">https://www.win.tue.nl/~berry/papers/dam.pdf</a>).</p>
 <div class="line-block">
-<div class="line"><br/></div>
+<div class="line"><br /></div>
 </div>
 <p class="rubric">Footnotes</p>
-<dl class="footnote brackets">
-<dt class="label" id="f028"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>Whether or not the entity controlling the SSO is aware of
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="f028" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Whether or not the entity controlling the SSO is aware of
 such interference.</p>
-</dd>
-<dt class="label" id="f029"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
-<dd><p>Here is why: all individual participants’ keys are
+</aside>
+<aside class="footnote brackets" id="f029" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>Here is why: all individual participants’ keys are
 generated locally to their client and the private half is
 never on the network. So from the perspective of each
 participant, if every other participant has the same view
@@ -281,8 +289,8 @@ leaves open the possibility of one or more clients having
 been tampered with at some point in the process; this
 security risk is discussed below in the ‘Static Client’
 section.</p>
-</dd>
-</dl>
+</aside>
+</aside>
 </section>
 </section>
 
@@ -298,10 +306,10 @@ section.</p>
                 </div>
                 <div class="title">References / Further Reading</div>
               </div>
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
           <a class="prev-page" href="glossary.html">
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
@@ -337,7 +345,7 @@ section.</p>
       <div class="toc-sticky toc-scroll">
         <div class="toc-title-container">
           <span class="toc-title">
-            Contents
+            On this page
           </span>
         </div>
         <div class="toc-tree-container">
@@ -359,6 +367,7 @@ section.</p>
 </div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/scripts/furo.js"></script>
     </body>

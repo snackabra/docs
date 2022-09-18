@@ -5,24 +5,16 @@
 # Required
 version: 2
 
-# Set the version of Python and other tools you might need
 build:
-  image: latest
-  # see issue below - needs newer image
-  # os: ubuntu-22.04
+  os: ubuntu-22.04
   tools:
     python: "3.9"
     nodejs: "16"
-    # rust: "1.55"
-    # golang: "1.17"
   jobs:
-    # from https://github.com/remotestorage/remotestorage.js/issues/1268
     post_install:
-      - npm install -g jsdoc   
+      - npm install -g jsdoc
 
-# Build documentation in the docs/ directory with Sphinx
-# sphinx:
-#    configuration: docs/conf.py
+
 
 sphinx:
    configuration: source/conf.py
@@ -32,7 +24,5 @@ formats:
 
 # Python requirements required to build docs
 python:
-   version: 3.8
    install:
    - requirements: requirements.txt
-

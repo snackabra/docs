@@ -62,7 +62,7 @@ templates_path = ['_templates']
 exclude_patterns = []
 
 # sphinx-js path to snackabra-javascript library
-js_source_path = '../../snackabra-jslib/src'
+js_source_path = '../snackabra-jslib'
 
 # -- Options for HTML output -------------------------------------------------
 

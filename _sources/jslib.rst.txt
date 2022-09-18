@@ -8,6 +8,13 @@ Install with:
 
 Git repository: https://github.com/snackabra/snackabra-jslib.git
 
+Note: in SB version 0.5.0, most core SB client and server
+logic is being refactored into this library. If you're looking
+at this prior to release of 0.5.0 (link above), then the latest
+(in progress) refactor underlying this documentation is here:
+https://github.com/psm384/snackabra-0.5.0-docs/blob/main/snackabra-jslib/main.js
+
+
 
 Utilities
 ---------

@@ -55,6 +55,7 @@ anything important.  We will "signal" that we think the system is
    future
    references
    license
+   jslib
    pylib
    appendix-a-crypto.rst
    user-guide

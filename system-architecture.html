@@ -1,16 +1,16 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Background and Discussion" href="discussion.html" /><link rel="prev" title="Technical Overview" href="overview.html" />
 
-    <meta name="generator" content="sphinx-4.4.0, furo 2022.02.23"/>
-        <title>System Architecture - snackabra 0.4.3 documentation</title>
+    <meta name="generator" content="sphinx-5.1.1, furo 2022.09.15"/>
+        <title>System Architecture - snackabra 0.5.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=3c656993158f05539f962c5cea52a5e6c184bb8c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=9ec31e2665bf879c1d47d93a8ec4893870ee1e45" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=25ceb02ed1c46dc30f2321ff83e92799f69dfdb9" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
     
     
@@ -22,24 +22,28 @@
   --color-code-foreground: black;
   
   }
-  body[data-theme="dark"] {
-    --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
-  
-  }
-  @media (prefers-color-scheme: dark) {
-    body:not([data-theme="light"]) {
+  @media not print {
+    body[data-theme="dark"] {
       --color-code-background: #202020;
   --color-code-foreground: #d0d0d0;
   
     }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
   }
 </style></head>
   <body>
+    
     <script>
       document.body.dataset.theme = localStorage.getItem("theme") || "auto";
     </script>
     
+
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
   <symbol id="svg-toc" viewBox="0 0 24 24">
     <title>Contents</title>
@@ -121,7 +125,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">snackabra 0.4.3 documentation</div></a>
+      <a href="index.html"><div class="brand">snackabra 0.5.0 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -144,7 +148,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
   
-  <span class="sidebar-brand-text">snackabra 0.4.3 documentation</span>
+  <span class="sidebar-brand-text">snackabra 0.5.0 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
@@ -164,6 +168,7 @@
 <li class="toctree-l1"><a class="reference internal" href="future.html">Future Work</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References / Further Reading</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">LICENSE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jslib.html">Javascript Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pylib.html">Python Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="appendix-a-crypto.html">Appendix A: Cryptography</a></li>
 <li class="toctree-l1"><a class="reference internal" href="user-guide.html">Appendix B: Privacy.App Chat Room User Guide</a></li>
@@ -186,7 +191,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -201,7 +207,7 @@
         </div>
         <article role="main">
           <section id="system-architecture">
-<h1>System Architecture<a class="headerlink" href="#system-architecture" title="Permalink to this headline">#</a></h1>
+<h1>System Architecture<a class="headerlink" href="#system-architecture" title="Permalink to this heading">#</a></h1>
 <p>To both future-proof as well as take advantage of what we’ve learned
 over the past 10-20 years in the area of <em>implementing and *operating</em>
 a messaging and document sharing service. To give a full accounting of
@@ -216,10 +222,10 @@ the “correct” (most widely used) names for any technologies or
 architecture decisions, to facilitate for a reader to inform
 themselves elsewhere.</p>
 <section id="computing">
-<span id="id1"></span><h2>Computing<a class="headerlink" href="#computing" title="Permalink to this headline">#</a></h2>
+<span id="id1"></span><h2>Computing<a class="headerlink" href="#computing" title="Permalink to this heading">#</a></h2>
 <p>We have clients and backend(s). For clients our baseline is simply a
 modern web browser. The core of the client chat application is
-Javascript. <a class="footnote-reference brackets" href="#f151" id="id2">2</a> The communication with backends is over
+Javascript. <a class="footnote-reference brackets" href="#f151" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> The communication with backends is over
 asynchronous HTTPS and WebSockets. The entry (“landing page”) backend
 delivers a single-page web app (‘SPA’) after which it operates an
 asynchronous API.</p>
@@ -278,7 +284,7 @@ used for specific purposes; furthermore we strive for these to be
 “batch” oriented as much as possible.</p>
 </section>
 <section id="storage">
-<span id="id7"></span><h2>Storage<a class="headerlink" href="#storage" title="Permalink to this headline">#</a></h2>
+<span id="id7"></span><h2>Storage<a class="headerlink" href="#storage" title="Permalink to this heading">#</a></h2>
 <p>For storage we will assume both global and local key-value storage. We
 will make minimum assumptions on features; for searches we will only
 need “prefix” storage queries. <a href="#id20"><span class="problematic" id="id8">[#156]_</span></a> We will also assume that
@@ -303,7 +309,7 @@ if that is unreliable, that user needs to export/import to a local
 file system (local to their computer/device).</p>
 </section>
 <section id="cloudflare">
-<span id="id13"></span><h2>Cloudflare<a class="headerlink" href="#cloudflare" title="Permalink to this headline">#</a></h2>
+<span id="id13"></span><h2>Cloudflare<a class="headerlink" href="#cloudflare" title="Permalink to this heading">#</a></h2>
 <p>Our reference implementation is primarily built on Cloudflare
 products, and should be relatively easy to self-host. The reason is
 that, from what we can tell, Cloudflare currently has the simplest to
@@ -350,27 +356,32 @@ Durable Objects: Easy, Fast, Correct — Choose three
 <a class="reference external" href="https://developers.cloudflare.com/workers/runtime-apis/kv">https://developers.cloudflare.com/workers/runtime-apis/kv</a></p></li>
 </ul>
 <p class="rubric">Footnotes</p>
-<dl class="footnote brackets">
-<dt class="label" id="f02"><span class="brackets">1</span></dt>
-<dd><p>Concept of “Owner” is explained <a class="reference internal" href="overview.html#owner-definition"><span class="std std-ref">here</span></a>.</p>
-</dd>
-<dt class="label" id="f151"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
-<dd><p>In our case we are using React Native for the UI, but the
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="f02" role="note">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<p>Concept of “Owner” is explained <a class="reference internal" href="overview.html#owner-definition"><span class="std std-ref">here</span></a>.</p>
+</aside>
+<aside class="footnote brackets" id="f151" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>In our case we are using React Native for the UI, but the
 core of the client-side MiChat code will be a Javascript
 library that can be added to various contexts, including a
 minimalist (static, local) html file.</p>
-</dd>
-<dt class="label" id="f152"><span class="brackets">3</span></dt>
-<dd><p>As opposed to ‘cloud computing’ which was the preceding
+</aside>
+<aside class="footnote brackets" id="f152" role="note">
+<span class="label"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></span>
+<p>As opposed to ‘cloud computing’ which was the preceding
 generation of architecture.</p>
-</dd>
-<dt class="label" id="f153"><span class="brackets">4</span></dt>
-<dd><p>In this context, something like a Docker image is, in fact,
+</aside>
+<aside class="footnote brackets" id="f153" role="note">
+<span class="label"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></span>
+<p>In this context, something like a Docker image is, in fact,
 Heavy. We assume a subset since that’s the smart thing to
 do: full api support starts getting heavy.</p>
-</dd>
-<dt class="label" id="f154"><span class="brackets">5</span></dt>
-<dd><p>Edge computing is where the backend/server code is running
+</aside>
+<aside class="footnote brackets" id="f154" role="note">
+<span class="label"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></span>
+<p>Edge computing is where the backend/server code is running
 inside, or very near, the network: for example in an
 Internet Exchange Point or even on a Mobile Base
 Station. It would include any computing platform that the
@@ -378,47 +389,54 @@ operator of the chat service considers trusted. Thus, for
 example, it would probably not include a consumer home
 router, unless the instance of the service was operated by
 its owner. See also <a class="reference internal" href="discussion.html#micro-federation"><span class="std std-ref">micro-federation</span></a></p>
-</dd>
-<dt class="label" id="f155"><span class="brackets">6</span></dt>
-<dd><p>The textbook pioneer of this model was Google App Engine,
+</aside>
+<aside class="footnote brackets" id="f155" role="note">
+<span class="label"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></span>
+<p>The textbook pioneer of this model was Google App Engine,
 though their initial choice for container language was
 Python. By having a standardized language and API, the
 exact same lightweight container can be used for all
 customers and all applications, with dramatic benefits.</p>
-</dd>
-<dt class="label" id="f156"><span class="brackets">7</span></dt>
-<dd><p>The core concept of key-value store (also called ‘key-value
+</aside>
+<aside class="footnote brackets" id="f156" role="note">
+<span class="label"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></span>
+<p>The core concept of key-value store (also called ‘key-value
 database’) is a generic ‘key’ which then maps to some
 object (value). It’s akin to a hash table. By having a flat
 addressing scheme and no metadata (in its simplest form),
 it can be made both scalable, reliable, and fast.</p>
-</dd>
-<dt class="label" id="f157"><span class="brackets">8</span></dt>
-<dd><p>We will manage multi-part objects ourselves, see ‘wire
+</aside>
+<aside class="footnote brackets" id="f157" role="note">
+<span class="label"><span class="fn-bracket">[</span>8<span class="fn-bracket">]</span></span>
+<p>We will manage multi-part objects ourselves, see ‘wire
 protocol’ below.</p>
-</dd>
-<dt class="label" id="f158"><span class="brackets">9</span></dt>
-<dd><p>In the case of images, the client code will down-sample /
+</aside>
+<aside class="footnote brackets" id="f158" role="note">
+<span class="label"><span class="fn-bracket">[</span>9<span class="fn-bracket">]</span></span>
+<p>In the case of images, the client code will down-sample /
 reduce the image size until it fits into 80% of the limit
 (which currently translates to 20MB image/photo size
 max). It will only store unmodified image (with metadata)
 if that fits into 20MB (binary).</p>
-</dd>
-<dt class="label" id="f159"><span class="brackets">10</span></dt>
-<dd><p>Technically O(m) where ‘m’ is the length of the prefix. So
+</aside>
+<aside class="footnote brackets" id="f159" role="note">
+<span class="label"><span class="fn-bracket">[</span>10<span class="fn-bracket">]</span></span>
+<p>Technically O(m) where ‘m’ is the length of the prefix. So
 we should note that the design will only ever perform
 fixed-length / bounded prefix queries; in current
 implementation &lt;64 bytes.</p>
-</dd>
-<dt class="label" id="f160"><span class="brackets">11</span></dt>
-<dd><p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage/local">https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage/local</a></p>
-</dd>
-<dt class="label" id="f161"><span class="brackets">12</span></dt>
-<dd><p>Not surprisingly, Cloudflare anticipated that chat rooms
+</aside>
+<aside class="footnote brackets" id="f160" role="note">
+<span class="label"><span class="fn-bracket">[</span>11<span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage/local">https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage/local</a></p>
+</aside>
+<aside class="footnote brackets" id="f161" role="note">
+<span class="label"><span class="fn-bracket">[</span>12<span class="fn-bracket">]</span></span>
+<p>Not surprisingly, Cloudflare anticipated that chat rooms
 would be an excellent use case:
 <a class="reference external" href="https://github.com/cloudflare/workers-chat-demo">https://github.com/cloudflare/workers-chat-demo</a></p>
-</dd>
-</dl>
+</aside>
+</aside>
 </section>
 </section>
 
@@ -434,10 +452,10 @@ would be an excellent use case:
                 </div>
                 <div class="title">Background and Discussion</div>
               </div>
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
           <a class="prev-page" href="overview.html">
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
@@ -473,7 +491,7 @@ would be an excellent use case:
       <div class="toc-sticky toc-scroll">
         <div class="toc-title-container">
           <span class="toc-title">
-            Contents
+            On this page
           </span>
         </div>
         <div class="toc-tree-container">
@@ -497,6 +515,7 @@ would be an excellent use case:
 </div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/scripts/furo.js"></script>
     </body>

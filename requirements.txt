@@ -1,7 +1,13 @@
+
+# problems with newer versions
+markupsafe==2.0.1
+
 sphinx
 seqdiag
 sphinxcontrib-blockdiag
 sphinxcontrib-seqdiag
 furo
+sphinx-js
+
 # this is at https://github.com/snackabra/snackabra-pylib
 snackabra

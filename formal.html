@@ -1,16 +1,16 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Installation" href="install.html" /><link rel="prev" title="Background and Discussion" href="discussion.html" />
 
-    <meta name="generator" content="sphinx-4.4.0, furo 2022.02.23"/>
-        <title>Formal Treatment - snackabra 0.4.3 documentation</title>
+    <meta name="generator" content="sphinx-5.1.1, furo 2022.09.15"/>
+        <title>Formal Treatment - snackabra 0.5.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=3c656993158f05539f962c5cea52a5e6c184bb8c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=9ec31e2665bf879c1d47d93a8ec4893870ee1e45" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=25ceb02ed1c46dc30f2321ff83e92799f69dfdb9" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
     
     
@@ -22,24 +22,28 @@
   --color-code-foreground: black;
   
   }
-  body[data-theme="dark"] {
-    --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
-  
-  }
-  @media (prefers-color-scheme: dark) {
-    body:not([data-theme="light"]) {
+  @media not print {
+    body[data-theme="dark"] {
       --color-code-background: #202020;
   --color-code-foreground: #d0d0d0;
   
     }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
   }
 </style></head>
   <body>
+    
     <script>
       document.body.dataset.theme = localStorage.getItem("theme") || "auto";
     </script>
     
+
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
   <symbol id="svg-toc" viewBox="0 0 24 24">
     <title>Contents</title>
@@ -121,7 +125,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">snackabra 0.4.3 documentation</div></a>
+      <a href="index.html"><div class="brand">snackabra 0.5.0 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -144,7 +148,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
   
-  <span class="sidebar-brand-text">snackabra 0.4.3 documentation</span>
+  <span class="sidebar-brand-text">snackabra 0.5.0 documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
@@ -164,6 +168,7 @@
 <li class="toctree-l1"><a class="reference internal" href="future.html">Future Work</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References / Further Reading</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">LICENSE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jslib.html">Javascript Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pylib.html">Python Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="appendix-a-crypto.html">Appendix A: Cryptography</a></li>
 <li class="toctree-l1"><a class="reference internal" href="user-guide.html">Appendix B: Privacy.App Chat Room User Guide</a></li>
@@ -186,7 +191,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -201,7 +207,7 @@
         </div>
         <article role="main">
           <section id="formal-treatment">
-<span id="formal"></span><h1>Formal Treatment<a class="headerlink" href="#formal-treatment" title="Permalink to this headline">#</a></h1>
+<span id="formal"></span><h1>Formal Treatment<a class="headerlink" href="#formal-treatment" title="Permalink to this heading">#</a></h1>
 <p>This section is currently a <em>start</em> to a formal treatment of the
 snackabra design - this is early.  The reality of the ~3 year
 development period has been to begin with a simple implementation
@@ -219,7 +225,7 @@ are breaking some new ground, which is always worrisome. Probably for
 that reason, the storage design has attracted more initial interest
 and questions, which is the second reason to prioritize it.</p>
 <section id="photos-and-files-blobs">
-<h2>Photos and Files (Blobs)<a class="headerlink" href="#photos-and-files-blobs" title="Permalink to this headline">#</a></h2>
+<h2>Photos and Files (Blobs)<a class="headerlink" href="#photos-and-files-blobs" title="Permalink to this heading">#</a></h2>
 <p>For a new group chat service to be a credible alternative to the
 myriad existing alternatives, it needs these basic features: text chat
 (either one-to-one or group) and photo sharing (again, either
@@ -228,10 +234,10 @@ messaging fabric needs to be able to exchange simple (text) messages,
 as well as arbitrary blobs of data. We picked photos first for reasons
 explained elsewhere.</p>
 <p>For the purposes of this section, we will refer to any blob of data
-as <span class="math notranslate nohighlight">\(\mathcal{M}\)</span>. <a class="footnote-reference brackets" href="#f201" id="id1">1</a>  Small messages (next section) are
-referred to as <span class="math notranslate nohighlight">\(\mathcal{m}\)</span>. <a class="footnote-reference brackets" href="#f202" id="id2">2</a>
+as <span class="math notranslate nohighlight">\(\mathcal{M}\)</span>. <a class="footnote-reference brackets" href="#f201" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>  Small messages (next section) are
+referred to as <span class="math notranslate nohighlight">\(\mathcal{m}\)</span>. <a class="footnote-reference brackets" href="#f202" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>
 Consider Alice wants to send <span class="math notranslate nohighlight">\(\mathcal{M}\)</span> to Bob:</p>
-<div class="align-default"><img height="412" src="_images/seqdiag-6a7125f77007263fbffb3233ea0de238374da07f.png" width="640"/></div>
+<div class="align-default"><img height="412" src="_images/seqdiag-6a7125f77007263fbffb3233ea0de238374da07f.png" width="640" /></div>
 <ol class="arabic simple">
 <li><p>Alice creates a partial hash <span class="math notranslate nohighlight">\(\mathfrak{H}_1(\mathcal{M})\)</span>.
 <span class="math notranslate nohighlight">\(\mathfrak{H}_1\)</span> and <span class="math notranslate nohighlight">\(\mathfrak{H}_2\)</span> are decompositions
@@ -239,7 +245,7 @@ Consider Alice wants to send <span class="math notranslate nohighlight">\(\mathc
 Alice sends this to the storage server, which returns a nonce <span class="math notranslate nohighlight">\(\mathcal{iv}\)</span> and salt <span class="math notranslate nohighlight">\(\mathcal{s}\)</span>.</p></li>
 <li><p>The server mantains a mapping <span class="math notranslate nohighlight">\(\mathcal{T}'(h)\longmapsto\langle\mathcal{iv},\mathcal{s}\rangle\)</span> which
 relates <em>half</em> of the hash of the full plaintext to enryption parameters;
-if the values existed already, they are returned, otherwise, they are created on the fly (and saved and returned).  <a class="footnote-reference brackets" href="#f203" id="id3">3</a>
+if the values existed already, they are returned, otherwise, they are created on the fly (and saved and returned).  <a class="footnote-reference brackets" href="#f203" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>
 This is the point where deduplication occurs: any attempts to upload an identical message
 will always result in the same encryption parameters.</p></li>
 <li><p>Alice next generates an encryption key <span class="math notranslate nohighlight">\(\mathcal{k}=\mathcal{K}(\mathfrak{H}_2(\mathcal{M}), \mathcal{s})\)</span> from
@@ -258,7 +264,7 @@ which can be sent to Bob.</p></li>
 storage server which first confirms correct <span class="math notranslate nohighlight">\(\mathcal{T}''(c)\longmapsto\langle\mathcal{v}\rangle\)</span> and then returns
 <span class="math notranslate nohighlight">\(\mathcal{C}\)</span>. Bob then has <span class="math notranslate nohighlight">\(\mathcal{M}\)</span> from <span class="math notranslate nohighlight">\(\mathcal{D}(\mathcal{C},\mathcal{k},\mathcal{iv},\mathcal{s})\)</span>.</p>
 <p>The storage server (obviously) never sees <span class="math notranslate nohighlight">\(\mathcal{M}\)</span>. Furthermore, it doesn’t track an explicit relationship
-between <span class="math notranslate nohighlight">\(\mathcal{M}\)</span> and <span class="math notranslate nohighlight">\(\mathcal{C}\)</span> in any manner. <a class="footnote-reference brackets" href="#f204" id="id4">4</a></p>
+between <span class="math notranslate nohighlight">\(\mathcal{M}\)</span> and <span class="math notranslate nohighlight">\(\mathcal{C}\)</span> in any manner. <a class="footnote-reference brackets" href="#f204" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a></p>
 <p>Now, consider another user, Charles, who independently uploads the same object
 to share with some other party. The above process will play out the same, and the resulting
 <span class="math notranslate nohighlight">\(\langle\mathcal{H}(\mathcal{C}),\mathcal{k},\mathcal{iv},\mathcal{s},\mathcal{v}\rangle\)</span> will end up
@@ -283,7 +289,7 @@ that will only respond if you already have <span class="math notranslate nohighl
 went through the above steps yourself, or somebody else did and gave you the results. And of course
 the resulting <span class="math notranslate nohighlight">\(\mathcal{C}\)</span> is of no use to you without <span class="math notranslate nohighlight">\(\langle\mathcal{k},\mathcal{iv},\mathcal{s}\rangle\)</span>.</p>
 <section id="future-design-directions">
-<span id="blob-future-design"></span><h3>Future Design Directions<a class="headerlink" href="#future-design-directions" title="Permalink to this headline">#</a></h3>
+<span id="blob-future-design"></span><h3>Future Design Directions<a class="headerlink" href="#future-design-directions" title="Permalink to this heading">#</a></h3>
 <p>The above design is the current one, which results in a few issues. In
 this section we summarize the current next-generation design candidate.
 First we present the future direction, then we discuss how it improves
@@ -298,7 +304,7 @@ Alice sends this to <span class="math notranslate nohighlight">\(\mathcal{OPRF_1
 which returns a secret <span class="math notranslate nohighlight">\(\mathcal{r}\)</span> which Alice first recombines (xor)
 with <span class="math notranslate nohighlight">\(\mathfrak{H}(\mathcal{M})\)</span>, and derives
 nonce <span class="math notranslate nohighlight">\(\mathcal{iv}\)</span> and salt <span class="math notranslate nohighlight">\(\mathcal{s}\)</span>.
-Alice now constructs encryption key <span class="math notranslate nohighlight">\(\mathcal{k}=\mathcal{K}(\mathfrak{x}\oplus\mathfrak{H}(\mathcal{M}), \mathcal{s})\)</span>. <a class="footnote-reference brackets" href="#f205" id="id5">5</a></p></li>
+Alice now constructs encryption key <span class="math notranslate nohighlight">\(\mathcal{k}=\mathcal{K}(\mathfrak{x}\oplus\mathfrak{H}(\mathcal{M}), \mathcal{s})\)</span>. <a class="footnote-reference brackets" href="#f205" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a></p></li>
 <li><p>This step is no longer needed - <span class="math notranslate nohighlight">\(\mathcal{OPRF_1}\)</span>
 ensures that any clients with the same message <span class="math notranslate nohighlight">\(\mathcal{M}\)</span> end up with the same encryption <span class="math notranslate nohighlight">\(\mathcal{k}\)</span> and
 nonce <span class="math notranslate nohighlight">\(\mathcal{iv}\)</span>, without revealing anything about <span class="math notranslate nohighlight">\(\mathcal{M}\)</span>
@@ -366,11 +372,11 @@ control messages.</p></li>
 </ul>
 <p>Currently, implementation of this approach is pending adding
 OPRF to the snackabra core library, since it is not (yet) a part
-of the web crypto API standard. <a class="footnote-reference brackets" href="#f206" id="id6">6</a></p>
+of the web crypto API standard. <a class="footnote-reference brackets" href="#f206" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a></p>
 </section>
 </section>
 <section id="ledger">
-<span id="ledger-formal"></span><h2>Ledger<a class="headerlink" href="#ledger" title="Permalink to this headline">#</a></h2>
+<span id="ledger-formal"></span><h2>Ledger<a class="headerlink" href="#ledger" title="Permalink to this heading">#</a></h2>
 <p>For a conversational (and more complete) exposition of how the Ledger
 currently works, see <a class="reference internal" href="overview.html#ledgerserver"><span class="std std-ref">Storage Ledger Server</span></a>. Note
 also that this (slightly more) formal presentation presuposes the
@@ -387,13 +393,13 @@ reserved account names that correspond to two special accounts:
 <span class="math notranslate nohighlight">\(\mathcal{B_s}\)</span> is the total spent so far.</p>
 <p>Every <a class="reference internal" href="glossary.html#term-Room"><span class="xref std std-term">Room</span></a> maintains a budget <span class="math notranslate nohighlight">\(\mathcal{B_r}\)</span> that was assigned
 to it at creation by taking an initial budget from <span class="math notranslate nohighlight">\(\mathcal{B_g}\)</span> and adding
-it to both <span class="math notranslate nohighlight">\(\mathcal{B_s}\)</span> and  <span class="math notranslate nohighlight">\(\mathcal{B_r}\)</span>. <a class="footnote-reference brackets" href="#f208" id="id7">7</a></p>
+it to both <span class="math notranslate nohighlight">\(\mathcal{B_s}\)</span> and  <span class="math notranslate nohighlight">\(\mathcal{B_r}\)</span>. <a class="footnote-reference brackets" href="#f208" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></a></p>
 <p>When a client uploads an item <span class="math notranslate nohighlight">\(\mathcal{M}\)</span>, it first needs to
-calculate what <span class="math notranslate nohighlight">\(\mathcal{|C|}\)</span> will become. <a class="footnote-reference brackets" href="#f207" id="id8">8</a>
+calculate what <span class="math notranslate nohighlight">\(\mathcal{|C|}\)</span> will become. <a class="footnote-reference brackets" href="#f207" id="id8" role="doc-noteref"><span class="fn-bracket">[</span>8<span class="fn-bracket">]</span></a>
 It first requests from the room to spend
 <span class="math notranslate nohighlight">\(\mathcal{s = |C|}\)</span> bytes out of the Room balance <span class="math notranslate nohighlight">\(\mathcal{B_r}\)</span>.</p>
 <p>If approved, the Room <span class="math notranslate nohighlight">\(\mathcal{r}\)</span> requests an identifier
-<span class="math notranslate nohighlight">\(\mathcal{t}\)</span> (elsewhere called <a class="reference internal" href="glossary.html#term-TID"><span class="xref std std-term">&lt;TID&gt;</span></a>) from the Ledger. <a class="footnote-reference brackets" href="#f209" id="id9">9</a> This is a random
+<span class="math notranslate nohighlight">\(\mathcal{t}\)</span> (elsewhere called <a class="reference internal" href="glossary.html#term-TID"><span class="xref std std-term">&lt;TID&gt;</span></a>) from the Ledger. <a class="footnote-reference brackets" href="#f209" id="id9" role="doc-noteref"><span class="fn-bracket">[</span>9<span class="fn-bracket">]</span></a> This is a random
 token generated by the Ledger which maintains
 <span class="math notranslate nohighlight">\(\mathfrak{D_2}\mathcal{h(t)}\mapsto\langle\mathcal{s,
 u}\rangle\)</span> where <span class="math notranslate nohighlight">\(\mathcal{h()}\)</span> is a hash function, <span class="math notranslate nohighlight">\(\mathcal{s}\)</span> is the size and
@@ -411,26 +417,28 @@ using the <a class="reference internal" href="glossary.html#term-LEDGER_KEY"><sp
 along with it <span class="math notranslate nohighlight">\(\mathcal{T}\)</span>.</p>
 </section>
 <section id="rooms-chats-groups">
-<h2>Rooms, Chats, Groups<a class="headerlink" href="#rooms-chats-groups" title="Permalink to this headline">#</a></h2>
+<h2>Rooms, Chats, Groups<a class="headerlink" href="#rooms-chats-groups" title="Permalink to this heading">#</a></h2>
 <p>For a conversational exposition of how Rooms work, see the
 <a class="reference internal" href="overview.html#overview"><span class="std std-ref">Technical Overview</span></a>.</p>
 <p>To be written, we’re saving the formal treatment for this for last, since
 it’s quite conventional.</p>
 <div class="line-block">
-<div class="line"><br/></div>
-<div class="line"><br/></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
 </div>
-<hr class="docutils"/>
+<hr class="docutils" />
 <p class="rubric">Footnotes</p>
-<dl class="footnote brackets">
-<dt class="label" id="f201"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>In this section we will largely follow the nomenclature in
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="f201" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>In this section we will largely follow the nomenclature in
 <em>Message-Locked Encryption and Secure Deduplication</em>;
 Mihir Bellare, Sriram Keelveedhi, Thomas Ristenpart;
 Full version, original version in Eurocrypt 2013.</p>
-</dd>
-<dt class="label" id="f202"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
-<dd><p>You can think about it as follows: think of a generic
+</aside>
+<aside class="footnote brackets" id="f202" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>You can think about it as follows: think of a generic
 message as being <span class="math notranslate nohighlight">\(\mathfrak{m}\)</span> with size
 <span class="math notranslate nohighlight">\(\vert\mathfrak{m}\vert\)</span>.
 We wish to distinguish between “small” and “large”
@@ -444,9 +452,10 @@ larger <span class="math notranslate nohighlight">\(\mathcal{M}\)</span> are ess
 <em>converted into a reference</em> and embedded inside a
 new <span class="math notranslate nohighlight">\(\mathcal{m}\)</span>. That conversion includes
 handling deduplication.</p>
-</dd>
-<dt class="label" id="f203"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
-<dd><p>There is a race condition if multiple parties are trying to
+</aside>
+<aside class="footnote brackets" id="f203" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
+<p>There is a race condition if multiple parties are trying to
 create a new entry in this mapping at the same time.
 To address this, the underlying primitive should be a
 <em>compare-and-exchange</em>-style operation, where a new
@@ -457,9 +466,10 @@ default to zero if not allocated: ergo, if there’s a zero
 the old ones. This would also reduce timing differences,
 since the overhead of generating enryption parameters
 is <em>always</em> carried, but optionally discarded.</p>
-</dd>
-<dt class="label" id="f204"><span class="brackets"><a class="fn-backref" href="#id4">4</a></span></dt>
-<dd><p>Note that this is slightly different from the current
+</aside>
+<aside class="footnote brackets" id="f204" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">4</a><span class="fn-bracket">]</span></span>
+<p>Note that this is slightly different from the current
 implementation, and is a (believed) improvement: current
 code (soon to be updated) creates a concatenation of
 partial hash of the plaintext with partial hash of
@@ -480,14 +490,16 @@ weekly period, but conversely an adversary that could
 completely compromise the system would only be able to
 determine if a given plaintext message was uploaded
 and shared by anybody in the past week.</p>
-</dd>
-<dt class="label" id="f205"><span class="brackets"><a class="fn-backref" href="#id5">5</a></span></dt>
-<dd><p>The final xor operation with
+</aside>
+<aside class="footnote brackets" id="f205" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">5</a><span class="fn-bracket">]</span></span>
+<p>The final xor operation with
 <span class="math notranslate nohighlight">\(\mathfrak{H}(\mathcal{M})\)</span> exists to protect for the case where the
 <span class="math notranslate nohighlight">\(\mathcal{OPRF_1}\)</span> server has been compromised.</p>
-</dd>
-<dt class="label" id="f206"><span class="brackets"><a class="fn-backref" href="#id6">6</a></span></dt>
-<dd><p>A concern is that OPRF is not yet an accepted IETF
+</aside>
+<aside class="footnote brackets" id="f206" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">6</a><span class="fn-bracket">]</span></span>
+<p>A concern is that OPRF is not yet an accepted IETF
 standard. Latest draft is here <a class="reference external" href="https://www.ietf.org/id/draft-irtf-cfrg-voprf-09.html">https://www.ietf.org/id/draft-irtf-cfrg-voprf-09.html</a>
 and current (Draft 9) reference implementations
 are here <a class="reference external" href="https://github.com/cfrg/draft-irtf-cfrg-voprf">https://github.com/cfrg/draft-irtf-cfrg-voprf</a>.
@@ -496,24 +508,27 @@ that triggers the necessity of including libraries
 or even major sections of code. The advantages of improving
 the blob storage system with OPRF might outweigh those
 concerns, but we have not made a final decision.</p>
-</dd>
-<dt class="label" id="f208"><span class="brackets"><a class="fn-backref" href="#id7">7</a></span></dt>
-<dd><p>The Room balance is actually simply a local cached value that
+</aside>
+<aside class="footnote brackets" id="f208" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">7</a><span class="fn-bracket">]</span></span>
+<p>The Room balance is actually simply a local cached value that
 matches whatever the balance is for the room according to the
 Ledger server. The Room ‘copy’ of the balance serves as a synchronization
 primitive, allowing the Ledger server to not have to worry
 about that - the Ledger server can fullfil account balance
 changes in any order. Similarly, this naturally protects against
 various abuse and DDOS scenarios.</p>
-</dd>
-<dt class="label" id="f207"><span class="brackets"><a class="fn-backref" href="#id8">8</a></span></dt>
-<dd><p>Because of the very specific padding requirements, this is
+</aside>
+<aside class="footnote brackets" id="f207" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id8">8</a><span class="fn-bracket">]</span></span>
+<p>Because of the very specific padding requirements, this is
 predictable.</p>
-</dd>
-<dt class="label" id="f209"><span class="brackets"><a class="fn-backref" href="#id9">9</a></span></dt>
-<dd><p>Note that <a class="reference internal" href="glossary.html#term-TID"><span class="xref std std-term">&lt;TID&gt;</span></a> and <a class="reference internal" href="glossary.html#term-verification"><span class="xref std std-term">verification</span></a> are different.</p>
-</dd>
-</dl>
+</aside>
+<aside class="footnote brackets" id="f209" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id9">9</a><span class="fn-bracket">]</span></span>
+<p>Note that <a class="reference internal" href="glossary.html#term-TID"><span class="xref std std-term">&lt;TID&gt;</span></a> and <a class="reference internal" href="glossary.html#term-verification"><span class="xref std std-term">verification</span></a> are different.</p>
+</aside>
+</aside>
 </section>
 </section>
 
@@ -529,10 +544,10 @@ predictable.</p>
                 </div>
                 <div class="title">Installation</div>
               </div>
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
           <a class="prev-page" href="discussion.html">
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
@@ -568,7 +583,7 @@ predictable.</p>
       <div class="toc-sticky toc-scroll">
         <div class="toc-title-container">
           <span class="toc-title">
-            Contents
+            On this page
           </span>
         </div>
         <div class="toc-tree-container">
@@ -595,6 +610,7 @@ predictable.</p>
 </div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/scripts/furo.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>

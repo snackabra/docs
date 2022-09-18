@@ -29,7 +29,8 @@ To setup working with the ``snackabra`` documentation per se:
 
     $ git clone https://github.com/snackabra/snackabra-docs
     $ cd snackabra-docs
-    $ python3 -m venv venv
+    $ # note we do not support 3.10 yet (some package issues)
+    $ python3.9 -m venv venv
     $ source venv/bin/activate
     $ pip install -r ./requirements.txt
 

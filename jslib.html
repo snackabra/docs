@@ -249,6 +249,12 @@ input and decodes it. Note: always returns Uint8Array.</p>
 </dd></dl>
 
 <dl class="js function">
+<dt class="sig sig-object js" id="getRandomValues">
+<span class="sig-name descname"><span class="n"><span class="pre">getRandomValues</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">buffer</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#getRandomValues" title="Permalink to this definition">#</a></dt>
+<dd><p>Fills buffer with random data</p>
+</dd></dl>
+
+<dl class="js function">
 <dt class="sig sig-object js" id="str2ab">
 <span class="sig-name descname"><span class="n"><span class="pre">str2ab</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#str2ab" title="Permalink to this definition">#</a></dt>
 <dd><p>Standardized ‘str2ab()’ function, string to array buffer.
@@ -387,9 +393,74 @@ callback function with the results</p>
 <dd><p>Partition</p>
 </dd></dl>
 
+<dl class="js function">
+<dt class="sig sig-object js" id="extractPayloadV1">
+<span class="sig-name descname"><span class="n"><span class="pre">extractPayloadV1</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">payload</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#extractPayloadV1" title="Permalink to this definition">#</a></dt>
+<dd><p>Extract payload</p>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="assemblePayload">
+<span class="sig-name descname"><span class="n"><span class="pre">assemblePayload</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#assemblePayload" title="Permalink to this definition">#</a></dt>
+<dd><p>Assemble payload</p>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="extractPayload">
+<span class="sig-name descname"><span class="n"><span class="pre">extractPayload</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">payload</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#extractPayload" title="Permalink to this definition">#</a></dt>
+<dd><p>Extract payload (latest version)</p>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="encodeB64Url">
+<span class="sig-name descname"><span class="n"><span class="pre">encodeB64Url</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#encodeB64Url" title="Permalink to this definition">#</a></dt>
+<dd><p>Encode into b64 URL</p>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="decodeB64Url">
+<span class="sig-name descname"><span class="n"><span class="pre">decodeB64Url</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#decodeB64Url" title="Permalink to this definition">#</a></dt>
+<dd><p>Decode b64 URL</p>
+</dd></dl>
+
 </section>
-<section id="classes">
-<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">#</a></h2>
+<section id="messagebus-class">
+<h2>Messagebus Class<a class="headerlink" href="#messagebus-class" title="Permalink to this heading">#</a></h2>
+<dl class="js class">
+<dt class="sig sig-object js" id="MessageBus">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">MessageBus</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#MessageBus" title="Permalink to this definition">#</a></dt>
+<dd><p>SB simple events (mesage bus) class</p>
+<dl class="js attribute">
+<dt class="sig sig-object js" id="MessageBus.MessageBus">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">MessageBus</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">MessageBus</span></span></span><a class="headerlink" href="#MessageBus.MessageBus" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="MessageBus.publish">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">MessageBus</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">publish</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MessageBus.publish" title="Permalink to this definition">#</a></dt>
+<dd><p>Publish</p>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="MessageBus.subscribe">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">MessageBus</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">subscribe</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">handler</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MessageBus.subscribe" title="Permalink to this definition">#</a></dt>
+<dd><dl class="simple">
+<dt>Subscribe. ‘event’ is a string, special case ‘*’ means everything</dt><dd><p>(in which case the handler is also given the message)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="MessageBus.unsubscribe">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">MessageBus</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">unsubscribe</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">handler</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MessageBus.unsubscribe" title="Permalink to this definition">#</a></dt>
+<dd><p>Unsubscribe</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="crypto-class">
+<h2>Crypto Class<a class="headerlink" href="#crypto-class" title="Permalink to this heading">#</a></h2>
 <dl class="js class">
 <dt class="sig sig-object js" id="Crypto">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">Crypto</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Crypto" title="Permalink to this definition">#</a></dt>
@@ -456,6 +527,258 @@ callback function with the results</p>
 </dd></dl>
 
 </section>
+<section id="identity-class">
+<h2>Identity Class<a class="headerlink" href="#identity-class" title="Permalink to this heading">#</a></h2>
+<dl class="js class">
+<dt class="sig sig-object js" id="Identity">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">Identity</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Identity" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="sb-message-class">
+<h2>SB Message Class<a class="headerlink" href="#sb-message-class" title="Permalink to this heading">#</a></h2>
+<dl class="js class">
+<dt class="sig sig-object js" id="SBMessage">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">SBMessage</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">contents</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signKey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SBMessage" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="sb-file-class">
+<h2>SB File Class<a class="headerlink" href="#sb-file-class" title="Permalink to this heading">#</a></h2>
+<dl class="js class">
+<dt class="sig sig-object js" id="SBFile">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">SBFile</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signKey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SBFile" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="payload-class">
+<h2>Payload Class<a class="headerlink" href="#payload-class" title="Permalink to this heading">#</a></h2>
+<dl class="js class">
+<dt class="sig sig-object js" id="Payload">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">Payload</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Payload" title="Permalink to this definition">#</a></dt>
+<dd><p>Takes a message object and turns it into a payload to be
+used by SB protocol</p>
+<dl class="js function">
+<dt class="sig sig-object js" id="Payload.unwrap">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">Payload</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">unwrap</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">payload</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Payload.unwrap" title="Permalink to this definition">#</a></dt>
+<dd><p>unwrap</p>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="Payload.wrap">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">Payload</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">wrap</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">contents</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Payload.wrap" title="Permalink to this definition">#</a></dt>
+<dd><p>wrap</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="ws-protocol-class">
+<h2>WS Protocol Class<a class="headerlink" href="#ws-protocol-class" title="Permalink to this heading">#</a></h2>
+<dl class="js class">
+<dt class="sig sig-object js" id="WS_Protocol">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">WS_Protocol</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">options</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#WS_Protocol" title="Permalink to this definition">#</a></dt>
+<dd><p>mtg: Protocol code that we wrap our WebSocket in
+I will be updating this to send messages and remove
+the wait to send messages only when ack received
+The benefit is reduced latency in communication protocol</p>
+<dl class="js attribute">
+<dt class="sig sig-object js" id="WS_Protocol.options">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">WS_Protocol</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">options</span></span></span><a class="headerlink" href="#WS_Protocol.options" title="Permalink to this definition">#</a></dt>
+<dd><p>Get options</p>
+</dd></dl>
+
+<dl class="js attribute">
+<dt class="sig sig-object js" id="WS_Protocol.readyState">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">WS_Protocol</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">readyState</span></span></span><a class="headerlink" href="#WS_Protocol.readyState" title="Permalink to this definition">#</a></dt>
+<dd><p>readyState</p>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="WS_Protocol.close">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">WS_Protocol</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">close</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#WS_Protocol.close" title="Permalink to this definition">#</a></dt>
+<dd><p>close</p>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="WS_Protocol.join">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">WS_Protocol</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">join</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#WS_Protocol.join" title="Permalink to this definition">#</a></dt>
+<dd><p>join</p>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="WS_Protocol.onClose">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">WS_Protocol</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">onClose</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#WS_Protocol.onClose" title="Permalink to this definition">#</a></dt>
+<dd><p>onClose</p>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="WS_Protocol.onError">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">WS_Protocol</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">onError</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#WS_Protocol.onError" title="Permalink to this definition">#</a></dt>
+<dd><p>onError</p>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="WS_Protocol.onMessage">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">WS_Protocol</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">onMessage</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#WS_Protocol.onMessage" title="Permalink to this definition">#</a></dt>
+<dd><p>onMessage</p>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="WS_Protocol.onOpen">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">WS_Protocol</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">onOpen</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#WS_Protocol.onOpen" title="Permalink to this definition">#</a></dt>
+<dd><p>onOpen</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="channel-class">
+<h2>Channel Class<a class="headerlink" href="#channel-class" title="Permalink to this heading">#</a></h2>
+<dl class="js class">
+<dt class="sig sig-object js" id="Channel">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">Channel</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">https</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wss</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Channel" title="Permalink to this definition">#</a></dt>
+<dd><dl class="js attribute">
+<dt class="sig sig-object js" id="Channel.api">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">Channel</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">api</span></span></span><a class="headerlink" href="#Channel.api" title="Permalink to this definition">#</a></dt>
+<dd><p>Return API</p>
+</dd></dl>
+
+<dl class="js attribute">
+<dt class="sig sig-object js" id="Channel.keys">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">Channel</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">keys</span></span></span><a class="headerlink" href="#Channel.keys" title="Permalink to this definition">#</a></dt>
+<dd><p>Return keys</p>
+</dd></dl>
+
+<dl class="js attribute">
+<dt class="sig sig-object js" id="Channel.socket">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">Channel</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">socket</span></span></span><a class="headerlink" href="#Channel.socket" title="Permalink to this definition">#</a></dt>
+<dd><p>Return socket</p>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="Channel.join">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">Channel</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">join</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Channel.join" title="Permalink to this definition">#</a></dt>
+<dd><p>Join channel</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="sb-socket-class">
+<h2>SB Socket Class<a class="headerlink" href="#sb-socket-class" title="Permalink to this heading">#</a></h2>
+<dl class="js class">
+<dt class="sig sig-object js" id="ChannelSocket">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">ChannelSocket</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wsUrl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identity</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ChannelSocket" title="Permalink to this definition">#</a></dt>
+<dd><dl class="js function">
+<dt class="sig sig-object js" id="ChannelSocket.close">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">ChannelSocket</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">close</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ChannelSocket.close" title="Permalink to this definition">#</a></dt>
+<dd><p>close</p>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="ChannelSocket.isReady">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">ChannelSocket</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">isReady</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ChannelSocket.isReady" title="Permalink to this definition">#</a></dt>
+<dd><p>isReady</p>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="ChannelSocket.open">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">ChannelSocket</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">open</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ChannelSocket.open" title="Permalink to this definition">#</a></dt>
+<dd><p>open</p>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="ChannelSocket.receive">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">ChannelSocket</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">receive</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ChannelSocket.receive" title="Permalink to this definition">#</a></dt>
+<dd><p>Receive message on channel socket</p>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="ChannelSocket.send">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">ChannelSocket</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">send</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ChannelSocket.send" title="Permalink to this definition">#</a></dt>
+<dd><p>Send message on channel socket</p>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="ChannelSocket.sendSbObject">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">ChannelSocket</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">sendSbObject</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ChannelSocket.sendSbObject" title="Permalink to this definition">#</a></dt>
+<dd><p>Send SB object (file) on channel socket</p>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="ChannelSocket.setKeys">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">ChannelSocket</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">setKeys</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_keys</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ChannelSocket.setKeys" title="Permalink to this definition">#</a></dt>
+<dd><p>setKeys</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="sb-storage-class">
+<h2>SB Storage Class<a class="headerlink" href="#sb-storage-class" title="Permalink to this heading">#</a></h2>
+<dl class="js class">
+<dt class="sig sig-object js" id="StorageApi">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">StorageApi</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">server</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identity</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#StorageApi" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="channel-api-class">
+<h2>Channel API Class<a class="headerlink" href="#channel-api-class" title="Permalink to this heading">#</a></h2>
+<dl class="js class">
+<dt class="sig sig-object js" id="ChannelApi">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">ChannelApi</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">server</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identity</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ChannelApi" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="kv-class">
+<h2>KV Class<a class="headerlink" href="#kv-class" title="Permalink to this heading">#</a></h2>
+<dl class="js class">
+<dt class="sig sig-object js" id="KV">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">KV</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">options</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#KV" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="filesystemdb-class">
+<h2>FileSystemDB Class<a class="headerlink" href="#filesystemdb-class" title="Permalink to this heading">#</a></h2>
+<dl class="js class">
+<dt class="sig sig-object js" id="FileSystemDB">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">FileSystemDB</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">options</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#FileSystemDB" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="indexedkv-class">
+<h2>IndexedKV Class<a class="headerlink" href="#indexedkv-class" title="Permalink to this heading">#</a></h2>
+<dl class="js class">
+<dt class="sig sig-object js" id="IndexedKV">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">IndexedKV</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">options</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#IndexedKV" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="queueitem-class">
+<h2>QueueItem Class<a class="headerlink" href="#queueitem-class" title="Permalink to this heading">#</a></h2>
+<dl class="js class">
+<dt class="sig sig-object js" id="QueueItem">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">QueueItem</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">action</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#QueueItem" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="queue-class">
+<h2>Queue Class<a class="headerlink" href="#queue-class" title="Permalink to this heading">#</a></h2>
+<dl class="js class">
+<dt class="sig sig-object js" id="Queue">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">Queue</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">options</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Queue" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="snackabra-class">
+<h2>Snackabra Class<a class="headerlink" href="#snackabra-class" title="Permalink to this heading">#</a></h2>
+<dl class="js class">
+<dt class="sig sig-object js" id="Snackabra">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">Snackabra</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Snackabra" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</section>
 </section>
 
         </article>
@@ -517,7 +840,23 @@ callback function with the results</p>
             <ul>
 <li><a class="reference internal" href="#">Javascript Library</a><ul>
 <li><a class="reference internal" href="#utilities">Utilities</a></li>
-<li><a class="reference internal" href="#classes">Classes</a></li>
+<li><a class="reference internal" href="#messagebus-class">Messagebus Class</a></li>
+<li><a class="reference internal" href="#crypto-class">Crypto Class</a></li>
+<li><a class="reference internal" href="#identity-class">Identity Class</a></li>
+<li><a class="reference internal" href="#sb-message-class">SB Message Class</a></li>
+<li><a class="reference internal" href="#sb-file-class">SB File Class</a></li>
+<li><a class="reference internal" href="#payload-class">Payload Class</a></li>
+<li><a class="reference internal" href="#ws-protocol-class">WS Protocol Class</a></li>
+<li><a class="reference internal" href="#channel-class">Channel Class</a></li>
+<li><a class="reference internal" href="#sb-socket-class">SB Socket Class</a></li>
+<li><a class="reference internal" href="#sb-storage-class">SB Storage Class</a></li>
+<li><a class="reference internal" href="#channel-api-class">Channel API Class</a></li>
+<li><a class="reference internal" href="#kv-class">KV Class</a></li>
+<li><a class="reference internal" href="#filesystemdb-class">FileSystemDB Class</a></li>
+<li><a class="reference internal" href="#indexedkv-class">IndexedKV Class</a></li>
+<li><a class="reference internal" href="#queueitem-class">QueueItem Class</a></li>
+<li><a class="reference internal" href="#queue-class">Queue Class</a></li>
+<li><a class="reference internal" href="#snackabra-class">Snackabra Class</a></li>
 </ul>
 </li>
 </ul>

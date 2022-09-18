@@ -216,11 +216,9 @@
 <dl class="js function">
 <dt class="sig sig-object js" id="arrayBufferToBase64">
 <span class="sig-name descname"><span class="n"><span class="pre">arrayBufferToBase64</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Uint8Array</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#arrayBufferToBase64" title="Permalink to this definition">#</a></dt>
-<dd><dl class="simple">
-<dt>Standardized ‘btoa()’-like function, e.g., takes a binary string</dt><dd><p>(‘b’) and returns a Base64 encoded version (‘a’ used to be short
+<dd><p>Standardized ‘btoa()’-like function, e.g., takes a binary string
+(‘b’) and returns a Base64 encoded version (‘a’ used to be short
 for ‘ascii’).</p>
-</dd>
-</dl>
 <dl class="field-list simple">
 <dt class="field-odd">Arguments<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -231,6 +229,230 @@ for ‘ascii’).</p>
 <dd class="field-even"><p><strong>string</strong> – base64 string</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="base64ToArrayBuffer">
+<span class="sig-name descname"><span class="n"><span class="pre">base64ToArrayBuffer</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base64</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#base64ToArrayBuffer" title="Permalink to this definition">#</a></dt>
+<dd><p>Standardized ‘atob()’ function, e.g. takes the a Base64 encoded
+input and decodes it. Note: always returns Uint8Array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Arguments<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>base64</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">string()</span></code></span>) – string</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Uint8Array</strong> – returns decoded result</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="str2ab">
+<span class="sig-name descname"><span class="n"><span class="pre">str2ab</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#str2ab" title="Permalink to this definition">#</a></dt>
+<dd><p>Standardized ‘str2ab()’ function, string to array buffer.
+This assumes on byte per character.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Arguments<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">string()</span></code></span>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Uint8Array</strong> – buffer</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="ab2str">
+<span class="sig-name descname"><span class="n"><span class="pre">ab2str</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ab2str" title="Permalink to this definition">#</a></dt>
+<dd><p>Standardized ‘ab2str()’ function, array buffer to string.
+This assumes one byte per character.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Arguments<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">string()</span></code></span>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Uint8Array</strong> – buffer</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="importPublicKey">
+<span class="sig-name descname"><span class="n"><span class="pre">importPublicKey</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">RSA</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#importPublicKey" title="Permalink to this definition">#</a></dt>
+<dd><p>Import a PEM encoded RSA public key, to use for RSA-OAEP
+encryption.  Takes a string containing the PEM encoded key, and
+returns a Promise that will resolve to a CryptoKey representing
+the public key.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Arguments<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>RSA</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">PEM()</span></code></span>) – public key, string, PEM format</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>cryptoKey</strong> – RSA-OAEP key</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="simpleRand256">
+<span class="sig-name descname"><span class="n"><span class="pre">simpleRand256</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simpleRand256" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns random number</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>int</strong> – integer 0..255</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="simpleRandomString">
+<span class="sig-name descname"><span class="n"><span class="pre">simpleRandomString</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">number</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simpleRandomString" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns a random string in requested encoding</p>
+<dl class="field-list simple">
+<dt class="field-odd">Arguments<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>number</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">n()</span></code></span>) – of characters</p></li>
+<li><p><strong>encoding,</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">code()</span></code></span>) – supported types: ‘base32mi’</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>string</strong> – random string base32mi: <code class="docutils literal notranslate"><span class="pre">0123456789abcdefyhEjkLmNHpFrRTUW</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="cleanBase32mi">
+<span class="sig-name descname"><span class="n"><span class="pre">cleanBase32mi</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cleanBase32mi" title="Permalink to this definition">#</a></dt>
+<dd><p>Disambiguates strings that are known to be ‘base32mi’ type</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;base32mi&#39;</span><span class="p">:</span> <span class="s1">&#39;0123456789abcdefyhEjkLmNHpFrRTUW&#39;</span>
+</pre></div>
+</div>
+<p>This is the base32mi disambiguation table</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">OoQD</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;0&#39;</span>
+<span class="p">[</span><span class="n">lIiJ</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;1&#39;</span>
+<span class="p">[</span><span class="n">Zz</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;2&#39;</span>
+<span class="p">[</span><span class="n">A</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;4&#39;</span>
+<span class="p">[</span><span class="n">Ss</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;5&#39;</span>
+<span class="p">[</span><span class="n">G</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;6&#39;</span>
+<span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;7&#39;</span>
+<span class="p">[</span><span class="n">B</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;8&#39;</span>
+<span class="p">[</span><span class="n">gq</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;9&#39;</span>
+<span class="p">[</span><span class="n">C</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;c&#39;</span>
+<span class="p">[</span><span class="n">Y</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;y&#39;</span>
+<span class="p">[</span><span class="n">KxX</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;k&#39;</span>
+<span class="p">[</span><span class="n">M</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;m&#39;</span>
+<span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;N&#39;</span>
+<span class="p">[</span><span class="n">P</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;p&#39;</span>
+<span class="p">[</span><span class="n">uvV</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;U&#39;</span>
+<span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;W&#39;</span>
+</pre></div>
+</div>
+<p>Another way to think of it is that this, becomes this (‘.’ means no change):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0123456789</span><span class="n">abcdefghijklmnopqrstuvxyzABCDEFGHIJKLMNOPQRSTUVXYZ</span>
+<span class="o">...............</span><span class="mf">.9.1</span><span class="o">.</span><span class="mf">.1</span><span class="o">.</span><span class="n">N0</span><span class="mf">.9.57</span><span class="n">UUk</span><span class="mf">.248</span><span class="n">c0EF6</span><span class="mf">.11</span><span class="n">kLm</span><span class="mf">.0</span><span class="n">p0</span><span class="mf">.5</span><span class="o">..</span><span class="n">Uky2</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="packageEncryptDict">
+<span class="sig-name descname"><span class="n"><span class="pre">packageEncryptDict</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dictionary</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">public</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#packageEncryptDict" title="Permalink to this definition">#</a></dt>
+<dd><p>Takes an arbitrary dict object, a public key in PEM
+format, and a callback function: generates a random AES key,
+wraps that in (RSA) key, and when all done will call the
+callback function with the results</p>
+<dl class="field-list simple">
+<dt class="field-odd">Arguments<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dictionary</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">dict()</span></code></span>) – (payload)</p></li>
+<li><p><strong>public</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">publicKeyPEM()</span></code></span>) – key (PEM format)</p></li>
+<li><p><strong>callback</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">callback()</span></code></span>) – function, called with results</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="partition">
+<span class="sig-name descname"><span class="n"><span class="pre">partition</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partition" title="Permalink to this definition">#</a></dt>
+<dd><p>Partition</p>
+</dd></dl>
+
+</section>
+<section id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">#</a></h2>
+<dl class="js class">
+<dt class="sig sig-object js" id="Crypto">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">Crypto</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Crypto" title="Permalink to this definition">#</a></dt>
+<dd><dl class="js function">
+<dt class="sig sig-object js" id="Crypto.areKeysSame">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">Crypto</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">areKeysSame</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Crypto.areKeysSame" title="Permalink to this definition">#</a></dt>
+<dd><p>Compare keys</p>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="Crypto.decrypt">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">Crypto</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">decrypt</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">secretKey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">contents</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputType</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Crypto.decrypt" title="Permalink to this definition">#</a></dt>
+<dd><p>Decrypt</p>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="Crypto.deriveKey">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">Crypto</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">deriveKey</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">privateKey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">publicKey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extractable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keyUsages</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Crypto.deriveKey" title="Permalink to this definition">#</a></dt>
+<dd><p>Derive key.</p>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="Crypto.encrypt">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">Crypto</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">encrypt</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">contents</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">secret_key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputType</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_iv</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Crypto.encrypt" title="Permalink to this definition">#</a></dt>
+<dd><p>Encrypt</p>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="Crypto.extractPubKey">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">Crypto</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">extractPubKey</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">privateKey</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Crypto.extractPubKey" title="Permalink to this definition">#</a></dt>
+<dd><p>Extracts (generates) public key from a private key.</p>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="Crypto.generateKeys">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">Crypto</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">generateKeys</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Crypto.generateKeys" title="Permalink to this definition">#</a></dt>
+<dd><p>Generates standard <code class="docutils literal notranslate"><span class="pre">ECDH</span></code> keys using <code class="docutils literal notranslate"><span class="pre">P-384</span></code>.</p>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="Crypto.getFileKey">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">Crypto</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">getFileKey</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileHash</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_salt</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Crypto.getFileKey" title="Permalink to this definition">#</a></dt>
+<dd><p>Get file key</p>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="Crypto.importKey">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">Crypto</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">importKey</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">format</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extractable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keyUsages</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Crypto.importKey" title="Permalink to this definition">#</a></dt>
+<dd><p>Import keys</p>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="Crypto.sign">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">Crypto</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">sign</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">secretKey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">contents</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Crypto.sign" title="Permalink to this definition">#</a></dt>
+<dd><p>Sign</p>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="Crypto.verify">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">Crypto</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">verify</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">secretKey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sign</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">contents</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Crypto.verify" title="Permalink to this definition">#</a></dt>
+<dd><p>Verify</p>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -295,6 +517,7 @@ for ‘ascii’).</p>
             <ul>
 <li><a class="reference internal" href="#">Javascript Library</a><ul>
 <li><a class="reference internal" href="#utilities">Utilities</a></li>
+<li><a class="reference internal" href="#classes">Classes</a></li>
 </ul>
 </li>
 </ul>

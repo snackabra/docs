@@ -63,6 +63,8 @@ exclude_patterns = []
 
 # sphinx-js path to snackabra-javascript library
 js_source_path = '../snackabra-jslib'
+# optional configuration for jsdoc per se
+# jsdoc_config_path = '../jsdoc_conf.json'
 
 # -- Options for HTML output -------------------------------------------------
 

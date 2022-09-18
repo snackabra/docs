@@ -1,4 +1,32 @@
-/* Copyright (c) 2020-2022 Magnusson Institute, All Rights Reserved */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: main.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: main.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/* Copyright (c) 2020-2022 Magnusson Institute, All Rights Reserved */
 
 /* Distributed under GPL-v03, see 'LICENSE' file for details */
 
@@ -91,7 +119,7 @@ function sleep(ms) {
 // throw new RethrownError(`Oh no a "${error.message}" error`, error)
 
 function _sb_exception(loc, msg) {
-  const m = '<< SB lib error (' + loc + ': ' + msg + ') >>';
+  const m = '&lt;&lt; SB lib error (' + loc + ': ' + msg + ') >>';
   console.error(m);
   throw new Error(m);
 }
@@ -109,13 +137,12 @@ const _fromCC = String.fromCharCode.bind(String);
 
 const _U8Afrom = (it, fn = (x) => x) => new Uint8Array(Array.prototype.slice.call(it, 0).map(fn));
 
-/**
- * Standardized 'btoa()'-like function, e.g., takes a binary string
- * ('b') and returns a Base64 encoded version ('a' used to be short
- * for 'ascii').
- *
- * @param {buffer} Uint8Array buffer
- * @return {string} base64 string
+/** Standardized 'btoa()'-like function, e.g., takes a binary string
+ ('b') and returns a Base64 encoded version ('a' used to be short
+ for 'ascii').
+
+ @param {buffer} Uint8Array buffer
+ @return {string} base64 string
  */
 function arrayBufferToBase64(buffer) {
   const u8a = new Uint8Array(buffer);
@@ -124,13 +151,13 @@ function arrayBufferToBase64(buffer) {
     let u32, c0, c1, c2, asc = '';
     const maxargs = 0x1000;
     const strs = [];
-    for (let i = 0, l = u8a.length; i < l; i += maxargs) strs.push(_fromCC.apply(null, u8a.subarray(i, i + maxargs)));
+    for (let i = 0, l = u8a.length; i &lt; l; i += maxargs) strs.push(_fromCC.apply(null, u8a.subarray(i, i + maxargs)));
     const bin = strs.join('');
     const pad = bin.length % 3;
-    for (let i = 0; i < bin.length;) {
+    for (let i = 0; i &lt; bin.length;) {
       if ((c0 = bin.charCodeAt(i++)) > 255 || (c1 = bin.charCodeAt(i++)) > 255 || (c2 = bin.charCodeAt(i++)) > 255) throw new Error('Invalid Character');
-      u32 = (c0 << 16) | (c1 << 8) | c2;
-      asc += b64chs[u32 >> 18 & 63] + b64chs[u32 >> 12 & 63] + b64chs[u32 >> 6 & 63] + b64chs[u32 & 63];
+      u32 = (c0 &lt;&lt; 16) | (c1 &lt;&lt; 8) | c2;
+      asc += b64chs[u32 >> 18 &amp; 63] + b64chs[u32 >> 12 &amp; 63] + b64chs[u32 >> 6 &amp; 63] + b64chs[u32 &amp; 63];
     }
     return pad ? asc.slice(0, pad - 3) + '==='.substring(pad) : asc;
   } else {
@@ -151,23 +178,22 @@ const b64tab = ((a) => {
   return tab;
 })(b64chs);
 
-/**
- * Standardized 'atob()' function, e.g. takes the a Base64 encoded
- * input and decodes it. Note: always returns Uint8Array.
- *
- * @param {string} base64 string
- * @return {Uint8Array} returns decoded result
+/** Standardized 'atob()' function, e.g. takes the a Base64 encoded
+ input and decodes it. Note: always returns Uint8Array.
+
+ @param {string} base64 string
+ @return {Uint8Array} returns decoded result
  */
 function base64ToArrayBuffer(asc) {
   asc = asc.replace(/\s+/g, ''); // collapse any whitespace
-  asc += '=='.slice(2 - (asc.length & 3)); // make it tolerant of padding
+  asc += '=='.slice(2 - (asc.length &amp; 3)); // make it tolerant of padding
   if (!_assertBase64(asc)) throw new Error('Invalid Character');
   if (process.browser) {
     // we could use window.atob but chose not to
     let u24, bin = '', r1, r2;
-    for (let i = 0; i < asc.length;) {
-      u24 = b64tab[asc.charAt(i++)] << 18 | b64tab[asc.charAt(i++)] << 12 | (r1 = b64tab[asc.charAt(i++)]) << 6 | (r2 = b64tab[asc.charAt(i++)]);
-      bin += r1 === 64 ? _fromCC(u24 >> 16 & 255) : r2 === 64 ? _fromCC(u24 >> 16 & 255, u24 >> 8 & 255) : _fromCC(u24 >> 16 & 255, u24 >> 8 & 255, u24 & 255);
+    for (let i = 0; i &lt; asc.length;) {
+      u24 = b64tab[asc.charAt(i++)] &lt;&lt; 18 | b64tab[asc.charAt(i++)] &lt;&lt; 12 | (r1 = b64tab[asc.charAt(i++)]) &lt;&lt; 6 | (r2 = b64tab[asc.charAt(i++)]);
+      bin += r1 === 64 ? _fromCC(u24 >> 16 &amp; 255) : r2 === 64 ? _fromCC(u24 >> 16 &amp; 255, u24 >> 8 &amp; 255) : _fromCC(u24 >> 16 &amp; 255, u24 >> 8 &amp; 255, u24 &amp; 255);
     }
     return str2ab(bin);
   } else {
@@ -213,8 +239,8 @@ function getRandomValues(buffer) {
 }
 
 /**
- * Returns 'true' if (and only if) object is of type 'Uint8Array'.
- * Works same on browsers and nodejs.
+ Returns 'true' if (and only if) object is of type 'Uint8Array'.
+ Works same on browsers and nodejs.
  */
 function _assertUint8Array(obj) {
   if (typeof obj === 'object') if (Object.prototype.toString.call(obj) === '[object Uint8Array]') return true;
@@ -224,8 +250,8 @@ function _assertUint8Array(obj) {
 const b64_regex = new RegExp('^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$');
 
 /**
- * Returns 'true' if (and only if) string is well-formed base64.
- * Works same on browsers and nodejs.
+ Returns 'true' if (and only if) string is well-formed base64.
+ Works same on browsers and nodejs.
  */
 function _assertBase64(base64) {
   /* webpack 4 doesn't support optional chaining, requires webpack 5;
@@ -236,27 +262,22 @@ function _assertBase64(base64) {
   if (z) return (z[0] === base64); else return false;
 }
 
-/**
- * Standardized 'str2ab()' function, string to array buffer.
- * This assumes on byte per character.
- *
- * @param {string} string
- * @return {Uint8Array} buffer
+/** Standardized 'str2ab()' function, string to array buffer.
+ This assumes on byte per character.
+ @param {string} string
+ @return {Uint8Array} buffer
  */
 function str2ab(string) {
   const length = string.length;
   const buffer = new Uint8Array(length);
-  for (let i = 0; i < length; i++) buffer[i] = string.charCodeAt(i);
+  for (let i = 0; i &lt; length; i++) buffer[i] = string.charCodeAt(i);
   return buffer;
 }
 
-/**
- * Standardized 'ab2str()' function, array buffer to string.
- * This assumes one byte per character.
- *
- * @param {string} string
- * @return {Uint8Array} buffer
- *
+/** Standardized 'ab2str()' function, array buffer to string.
+ This assumes one byte per character.
+ @param {string} string
+ @return {Uint8Array} buffer
  */
 function ab2str(buffer) {
   if (!_assertUint8Array(buffer)) _sb_exception('ab2str()', 'parameter is not a Uint8Array buffer'); // this will throw
@@ -289,15 +310,13 @@ OlY876IbVmwlWAQ82l9r7ECjBL2nGMjDFm5Lv8TXKC5NHWHwY1b2vfvl6cyGtG1I
 OTJj8TMRI6y3Omop3kIfpgUCAwEAAQ==
 -----END PUBLIC KEY-----`;
 
-/**
- * Import a PEM encoded RSA public key, to use for RSA-OAEP
- * encryption.  Takes a string containing the PEM encoded key, and
- * returns a Promise that will resolve to a CryptoKey representing
- * the public key.
- *
- * @param {PEM} RSA public key, string, PEM format
- * @return {cryptoKey} RSA-OAEP key
- *
+/** Import a PEM encoded RSA public key, to use for RSA-OAEP
+ encryption.  Takes a string containing the PEM encoded key, and
+ returns a Promise that will resolve to a CryptoKey representing
+ the public key.
+
+ @param {PEM} RSA public key, string, PEM format
+ @return {cryptoKey} RSA-OAEP key
  */
 function importPublicKey(pem) {
   if (!pem) pem = defaultPublicKeyPEM;
@@ -306,18 +325,15 @@ function importPublicKey(pem) {
   const pemFooter = '-----END PUBLIC KEY-----';
   const start = pem.indexOf(pemHeader);
   const end = pem.indexOf(pemFooter);
-  if ((start < 0) || (end < 0)) _sb_exception('importPublicKey()', 'fail to find BEGIN and/or END string in RSA (PEM) key');
+  if ((start &lt; 0) || (end &lt; 0)) _sb_exception('importPublicKey()', 'fail to find BEGIN and/or END string in RSA (PEM) key');
   const pemContents = pem.slice(start + pemHeader.length, end);
   // const pemContents = pem.substring(pemHeader.length, pem.length - pemFooter.length);
   const binaryDer = base64ToArrayBuffer(pemContents);
   return _crypto.subtle.importKey('spki', binaryDer, {name: 'RSA-OAEP', hash: 'SHA-256'}, true, ['encrypt']);
 }
 
-/**
- * Returns random number
- *
- * @return {int} integer 0..255
- *
+/** Returns random number
+ @return {int} integer 0..255
  */
 function simpleRand256() {
   return _crypto.getRandomValues(new Uint8Array(1))[0];
@@ -326,57 +342,58 @@ function simpleRand256() {
 
 const base32mi = '0123456789abcdefyhEjkLmNHpFrRTUW';
 
-/**
- * Returns a random string in requested encoding
- *
- * @param {n} number of characters
- * @param {code} encoding, supported types: 'base32mi'
- * @return {string} random string
- *
- * base32mi: ``0123456789abcdefyhEjkLmNHpFrRTUW``
+/** Returns a random string in requested encoding
+ @param {n} number of characters
+ @param {code} encoding, supported types: 'base32mi'
+ @return {string} random string
+
+ 'base32mi': '0123456789abcdefyhEjkLmNHpFrRTUW'
  */
 function simpleRandomString(n, code) {
   if (code == 'base32mi') {
     // yeah of course we need to add base64 etc
     const z = _crypto.getRandomValues(new Uint8Array(n));
     let r = '';
-    for (let i = 0; i < n; i++) r += base32mi[z[i] & 31];
+    for (let i = 0; i &lt; n; i++) r += base32mi[z[i] &amp; 31];
     return r;
   }
   _sb_exception('simpleRandomString', 'code ' + code + ' not supported');
 }
 
-/**
- * Disambiguates strings that are known to be 'base32mi' type
+/** Disambiguates strings that are known to be 'base32mi' type
+ *  @param {s} string
+ *  @return {string} cleaned up string
  * 
- * ::
- *
- *     'base32mi': '0123456789abcdefyhEjkLmNHpFrRTUW'
+ *  'base32mi': '0123456789abcdefyhEjkLmNHpFrRTUW'
  * 
- * This is the base32mi disambiguation table ::
+ *  This is the base32mi disambiguation table:
  * 
- *     [OoQD] -> '0'  
- *     [lIiJ] -> '1'  
- *     [Zz] -> '2'  
- *     [A] -> '4'  
- *     [Ss] -> '5'  
- *     [G] -> '6'  
- *     [t] -> '7'  
- *     [B] -> '8'  
- *     [gq] -> '9'  
- *     [C] -> 'c'  
- *     [Y] -> 'y'  
- *     [KxX] -> 'k'  
- *     [M] -> 'm'  
- *     [n] -> 'N'  
- *     [P] -> 'p'  
- *     [uvV] -> 'U'  
- *     [w] -> 'W'  
+ *  &lt;pre>
+ *    [OoQD] -> '0'  
+ *    [lIiJ] -> '1'  
+ *    [Zz] -> '2'  
+ *    [A] -> '4'  
+ *    [Ss] -> '5'  
+ *    [G] -> '6'  
+ *    [t] -> '7'  
+ *    [B] -> '8'  
+ *    [gq] -> '9'  
+ *    [C] -> 'c'  
+ *    [Y] -> 'y'  
+ *    [KxX] -> 'k'  
+ *    [M] -> 'm'  
+ *    [n] -> 'N'  
+ *    [P] -> 'p'  
+ *    [uvV] -> 'U'  
+ *    [w] -> 'W'  
+ *  &lt;/pre>
  * 
- * Another way to think of it is that this, becomes this ('.' means no change): ::
- *
- *     0123456789abcdefghijklmnopqrstuvxyzABCDEFGHIJKLMNOPQRSTUVXYZ
- *     ................9.1..1.N0.9.57UUk.248c0EF6.11kLm.0p0.5..Uky2
+ *  Another way to think of it is that this, becomes this ('.' means no change):
+ * 
+ *  &lt;pre>
+ *    0123456789abcdefghijklmnopqrstuvxyzABCDEFGHIJKLMNOPQRSTUVXYZ
+ *    ................9.1..1.N0.9.57UUk.248c0EF6.11kLm.0p0.5..Uky2
+ *  &lt;/pre>
  * 
  */
 function cleanBase32mi(s) {
@@ -385,16 +402,14 @@ function cleanBase32mi(s) {
 }
 
 
-/**
- * Takes an arbitrary dict object, a public key in PEM
- * format, and a callback function: generates a random AES key,
- * wraps that in (RSA) key, and when all done will call the
- * callback function with the results
- *
- * @param {dict} dictionary (payload)
- * @param {publicKeyPEM} public key (PEM format)
- * @param {callback} callback function, called with results
- *
+/** Takes an arbitrary dict object, a public key in PEM
+ format, and a callback function: generates a random AES key,
+ wraps that in (RSA) key, and when all done will call the
+ callback function with the results
+
+ @param {dict} dictionary (payload)
+ @param {publicKeyPEM} public key (PEM format)
+ @param {callback} callback function, called with results
  */
 function packageEncryptDict(dict, publicKeyPEM, callback) {
   const clearDataArrayBufferView = str2ab(JSON.stringify(dict));
@@ -434,13 +449,10 @@ function packageEncryptDict(dict, publicKeyPEM, callback) {
   });
 } // packageEncrypt()
 
-/**
- * Partition
- */
 function partition(str, n) {
   const returnArr = [];
   let i, l;
-  for (i = 0, l = str.length; i < l; i += n) {
+  for (i = 0, l = str.length; i &lt; l; i += n) {
     returnArr.push(str.substr(i, n));
   }
   return returnArr;
@@ -513,7 +525,7 @@ function extractPayload(payload) {
         return extractPayloadV1(payload);
       case '002':
         const data = {};
-        for (let i = 1; i < Object.keys(_metadata).length; i++) {
+        for (let i = 1; i &lt; Object.keys(_metadata).length; i++) {
           const _index = i.toString();
           if (_metadata.hasOwnProperty(_index)) {
             const propertyStartIndex = _metadata[_index]['start'];
@@ -568,9 +580,8 @@ class EventEmitter extends EventTarget {
  */
 class Crypto {
 
-  /**
-   * Extracts (generates) public key from a private key.
-   */
+  /** Extracts (generates) public key from a private key.
+    */
   extractPubKey(privateKey) {
     try {
       const pubKey = {...privateKey};
@@ -587,9 +598,6 @@ class Crypto {
     }
   }
 
-  /**
-   * Generates standard ``ECDH`` keys using ``P-384``.
-   */
   generateKeys() {
     return new Promise(async (resolve, reject) => {
       try {
@@ -602,10 +610,6 @@ class Crypto {
     });
   }
 
-
-  /**
-   * Import keys
-   */
   importKey(format, key, type, extractable, keyUsages) {
     return new Promise(async (resolve, reject) => {
       const keyAlgorithms = {
@@ -625,9 +629,6 @@ class Crypto {
     });
   }
 
-  /**
-   * Derive key.
-   */
   deriveKey(privateKey, publicKey, type, extractable, keyUsages) {
     return new Promise(async (resolve, reject) => {
       const keyAlgorithms = {
@@ -648,9 +649,6 @@ class Crypto {
     });
   }
 
-  /**
-   * Get file key
-   */
   getFileKey(fileHash, _salt) {
     return new Promise(async (resolve, reject) => {
       try {
@@ -670,9 +668,6 @@ class Crypto {
     });
   }
 
-  /**
-   * Encrypt
-   */
   encrypt(contents, secret_key = null, outputType = 'string', _iv = null) {
     return new Promise(async (resolve, reject) => {
       try {
@@ -706,9 +701,6 @@ class Crypto {
     });
   }
 
-  /**
-   * Decrypt
-   */
   decrypt(secretKey, contents, outputType = 'string') {
     return new Promise(async (resolve, reject) => {
       try {
@@ -727,9 +719,6 @@ class Crypto {
     });
   }
 
-  /**
-   * Sign
-   */
   sign(secretKey, contents) {
     return new Promise(async (resolve, reject) => {
       try {
@@ -748,9 +737,6 @@ class Crypto {
     });
   }
 
-  /**
-   * Verify
-   */
   verify(secretKey, sign, contents) {
     return new Promise(async (resolve, reject) => {
       try {
@@ -769,12 +755,9 @@ class Crypto {
     });
   }
 
-  /**
-   * Compare keys
-   */
   areKeysSame(key1, key2) {
-    if (key1 != null && key2 != null && typeof key1 === 'object' && typeof key2 === 'object') {
-      return key1['x'] === key2['x'] && key1['y'] === key2['y'];
+    if (key1 != null &amp;&amp; key2 != null &amp;&amp; typeof key1 === 'object' &amp;&amp; typeof key2 === 'object') {
+      return key1['x'] === key2['x'] &amp;&amp; key1['y'] === key2['y'];
     }
     return false;
   }
@@ -942,9 +925,9 @@ class SBFile {
     const image_size = image_buffer.byteLength;
     // console.log('BEFORE PADDING: ', image_size)
     let _target;
-    if (image_size < _sizes[_sizes.length - 1]) {
-      for (let i = 0; i < _sizes.length; i++) {
-        if (image_size + 21 < _sizes[i]) {
+    if (image_size &lt; _sizes[_sizes.length - 1]) {
+      for (let i = 0; i &lt; _sizes.length; i++) {
+        if (image_size + 21 &lt; _sizes[i]) {
           _target = _sizes[i];
           break;
         }
@@ -960,7 +943,7 @@ class SBFile {
     // We will finally convert to Uint32Array where each element is 4 bytes
     // So we need (_target/4) - 6 array elements with value 0 (128 bits or 16 bytes or 4 elements to be left empty,
     // last 4 bytes or 1 element to represent the size and 1st element is 128 or 0x80)
-    for (let i = 0; i < _target; i++) {
+    for (let i = 0; i &lt; _target; i++) {
       _padding_array.push(0);
     }
     // _padding_array.push(image_size);
@@ -984,7 +967,7 @@ class SBFile {
     // workingDots();
     // console.log(`start canvas W ${_c.width} x H ${_c.height}`)
     let _size = _b1.size;
-    if (_size <= maxSize) {
+    if (_size &lt;= maxSize) {
       // console.log(`Starting size ${_size} is fine`);
       return _b1;
     }
@@ -1019,7 +1002,7 @@ class SBFile {
       // workingDots();
       // console.log(`... fine-tuning to W ${_final_c.width} x H ${_final_c.height} (size ${_b1.size})`);
       _ratio *= (maxSize / _b1.size);
-    } while (((_b1.size > maxSize) || ((Math.abs(_b1.size - maxSize) / maxSize) > 0.02)) && (--_maxIteration > 0));// it's ok within 2%
+    } while (((_b1.size > maxSize) || ((Math.abs(_b1.size - maxSize) / maxSize) > 0.02)) &amp;&amp; (--_maxIteration > 0));// it's ok within 2%
 
     // workingDots();
     // console.log(`... ok looks like we're good now ... final size is ${_b1.size} (which is ${((_b1.size * 100) / maxSize).toFixed(2)}% of cap)`);
@@ -1320,12 +1303,12 @@ class Channel {
       const isOwner = SB_Crypto.areKeysSame(_exportable_pubKey, _exportable_owner_pubKey);
       let isAdmin;
       if (process.browser) {
-        isAdmin = (document.cookie.split('; ').find((row) => row.startsWith('token_' + this._id)) !== undefined) || (this.url !== 'https://s_socket.privacy.app' && isOwner);
+        isAdmin = (document.cookie.split('; ').find((row) => row.startsWith('token_' + this._id)) !== undefined) || (this.url !== 'https://s_socket.privacy.app' &amp;&amp; isOwner);
       } else {
-        isAdmin = (process.env.REACT_APP_ROOM_SERVER !== 's_socket.privacy.app' && isOwner);
+        isAdmin = (process.env.REACT_APP_ROOM_SERVER !== 's_socket.privacy.app' &amp;&amp; isOwner);
       }
 
-      if (!isOwner && !isAdmin) {
+      if (!isOwner &amp;&amp; !isAdmin) {
         if (_exportable_verifiedGuest_pubKey === null) {
           this.api.postPubKey(_exportable_pubKey);
           _exportable_verifiedGuest_pubKey = {..._exportable_pubKey};
@@ -1581,7 +1564,7 @@ class StorageApi {
 
   storeData(type, fileId, encrypt_data, storageToken, data) {
     return new Promise(async (resolve, reject) => {
-      fetch(this.server + '/storeData?type=' + type + '&key=' + encodeURIComponent(fileId), {
+      fetch(this.server + '/storeData?type=' + type + '&amp;key=' + encodeURIComponent(fileId), {
         method: 'POST', body: assemblePayload({
           iv: encrypt_data.iv,
           salt: encrypt_data.salt,
@@ -1625,7 +1608,7 @@ class StorageApi {
 
   fetchData(msgId, verificationToken) {
     return new Promise(async (resolve, reject) => {
-      fetch(this.server + '/fetchData?id=' + encodeURIComponent(msgId) + '&verification_token=' + verificationToken, {
+      fetch(this.server + '/fetchData?id=' + encodeURIComponent(msgId) + '&amp;verification_token=' + verificationToken, {
         method: 'GET'
       })
         .then((response) => {
@@ -1650,7 +1633,7 @@ class StorageApi {
   async retrieveData(msgId, messages, controlMessages) {
     const imageMetaData = messages.find((msg) => msg._id === msgId).imageMetaData;
     const image_id = imageMetaData.previewId;
-    const control_msg = controlMessages.find((ctrl_msg) => ctrl_msg.hasOwnProperty('id') && ctrl_msg.id.startsWith(image_id));
+    const control_msg = controlMessages.find((ctrl_msg) => ctrl_msg.hasOwnProperty('id') &amp;&amp; ctrl_msg.id.startsWith(image_id));
     if (!control_msg) {
       return {'error': 'Failed to fetch data - missing control message for that image'};
     }
@@ -1673,7 +1656,7 @@ class StorageApi {
   async retrieveDataFromMessage(message, controlMessages) {
     const imageMetaData = typeof message.imageMetaData === 'string' ? JSON.parse(message.imageMetaData) : message.imageMetaData;
     const image_id = imageMetaData.previewId;
-    const control_msg = controlMessages.find((ctrl_msg) => ctrl_msg.hasOwnProperty('id') && ctrl_msg.id === image_id);
+    const control_msg = controlMessages.find((ctrl_msg) => ctrl_msg.hasOwnProperty('id') &amp;&amp; ctrl_msg.id === image_id);
     if (!control_msg) {
       return {'error': 'Failed to fetch data - missing control message for that image'};
     }
@@ -1993,7 +1976,7 @@ class ChannelApi {
 
   lock() {
     return new Promise(async (resolve, reject) => {
-      if (this.#channel.keys.locked_key == null && this.#channel.channel_admin) {
+      if (this.#channel.keys.locked_key == null &amp;&amp; this.#channel.channel_admin) {
         const _locked_key = await _crypto.subtle.generateKey({
           name: 'AES-GCM', length: 256
         }, true, ['encrypt', 'decrypt']);
@@ -2247,7 +2230,7 @@ class FileSystemDB {
   }
 
   #serializeKey(key) {
-    return (key.replace(/[ &\/\\#,+()$~%.'":*?<>{}]/g, ''));
+    return (key.replace(/[ &amp;\/\\#,+()$~%.'":*?&lt;>{}]/g, ''));
   }
 
   // Set item will insert or replace
@@ -2581,7 +2564,7 @@ class Queue {
   wsCallback = (_id, ws, message, ms) => {
     return new Promise(async (resolve, reject) => {
       if (ms) {
-        while (Date.now() <= this.lastProcessed + ms) {
+        while (Date.now() &lt;= this.lastProcessed + ms) {
           await sleep(ms);
         }
       }
@@ -2796,3 +2779,26 @@ export {
   arrayBufferToBase64,
   getRandomValues
 };
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Crypto.html">Crypto</a></li></ul><h3>Global</h3><ul><li><a href="global.html#_assertBase64">_assertBase64</a></li><li><a href="global.html#_assertUint8Array">_assertUint8Array</a></li><li><a href="global.html#ab2str">ab2str</a></li><li><a href="global.html#arrayBufferToBase64">arrayBufferToBase64</a></li><li><a href="global.html#base64ToArrayBuffer">base64ToArrayBuffer</a></li><li><a href="global.html#cleanBase32mi">cleanBase32mi</a></li><li><a href="global.html#importPublicKey">importPublicKey</a></li><li><a href="global.html#packageEncryptDict">packageEncryptDict</a></li><li><a href="global.html#simpleRand256">simpleRand256</a></li><li><a href="global.html#simpleRandomString">simpleRandomString</a></li><li><a href="global.html#str2ab">str2ab</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Sat Sep 17 2022 22:20:08 GMT-0700 (Pacific Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

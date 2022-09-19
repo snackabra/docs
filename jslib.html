@@ -428,6 +428,14 @@ callback function with the results</p>
 <dd><p>Decode b64 URL</p>
 </dd></dl>
 
+<dl class="js function">
+<dt class="sig sig-object js" id="jsonParseWrapper">
+<span class="sig-name descname"><span class="n"><span class="pre">jsonParseWrapper</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loc</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#jsonParseWrapper" title="Permalink to this definition">#</a></dt>
+<dd><p>There are o many problems with JSON parsing, adding a wrapper to capture more info.
+The ‘loc’ parameter should be a (unique) string that allows you to find the usage
+in the code; one approach is the line number in the file (at some point).</p>
+</dd></dl>
+
 </section>
 <section id="messagebus-class">
 <h2>Messagebus Class<a class="headerlink" href="#messagebus-class" title="Permalink to this heading">#</a></h2>
@@ -664,7 +672,7 @@ The benefit is reduced latency in communication protocol</p>
 <dl class="js function">
 <dt class="sig sig-object js" id="Channel.join">
 <span class="sig-prename descclassname"><span class="n"><span class="pre">Channel</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">join</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Channel.join" title="Permalink to this definition">#</a></dt>
-<dd><p>Join channel</p>
+<dd><p>Join channel, channel_id is the <a class="reference internal" href="glossary.html#term-channel-name"><span class="xref std std-term">Channel Name</span></a>.</p>
 </dd></dl>
 
 </dd></dl>
@@ -781,7 +789,15 @@ The benefit is reduced latency in communication protocol</p>
 <dl class="js class">
 <dt class="sig sig-object js" id="Snackabra">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">Snackabra</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Snackabra" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Constructor expects an object with the names of the matching servers, for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="n">channel_server</span><span class="p">:</span> <span class="s1">&#39;http://127.0.0.1:4001&#39;</span><span class="p">,</span>
+  <span class="n">channel_ws</span><span class="p">:</span> <span class="s1">&#39;ws://127.0.0.1:4001&#39;</span><span class="p">,</span>
+  <span class="n">storage_server</span><span class="p">:</span> <span class="s1">&#39;http://127.0.0.1:4000&#39;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
 
 </section>
 </section>

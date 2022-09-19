@@ -51,6 +51,8 @@ Utilities
 
 .. js:autofunction:: decodeB64Url
 
+.. js:autofunction:: jsonParseWrapper
+
 
 Messagebus Class
 ----------------

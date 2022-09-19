@@ -13,6 +13,12 @@ Glossary
       We use "file" to refer to anything we store - image, video, document,
       photo, etc.
 
+   channel
+      Essentially a synonym for :term:`Room`.
+      
+   channel name
+      Essentially a synonym for :term:`Room Name`.
+      
    CLI
       The command line interface; relevant for administering a
       :term:`Personal Room Server`. See :ref:`command line tools <command-line>`.

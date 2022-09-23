@@ -34,6 +34,8 @@ To setup working with the ``snackabra`` documentation per se:
     $ source venv/bin/activate
     $ pip install -r ./requirements.txt
 
+TODO: complete list of system requirements (eg including some not
+super common stuff like latexlive for confluence support).
 
 
 Development
@@ -59,6 +61,22 @@ needing upwards 10 GB of disk space.
 the docstrings that come allong with ``pip install snackabara``,
 that will just happen magically. If you wish to contribute to
 the library, it's at https://github.com/snackabra/snackabra-pylib *
+
+
+Confluence
+----------
+
+You need to set environment variables:
+
+.. code-block:: console
+    export confluence_server_url='https://<YourCompany>.atlassian.net/wiki/'
+    export confluence_server_user='<YourEmail>'
+    # see below for API key
+    export confluence_server_pass=YourAPIKey
+    export confluence_space_key=snackabra
+
+You will need an API key from Atlassian, eg from here: https://id.atlassian.com/manage-profile/security/api-tokens
+
 
 
     

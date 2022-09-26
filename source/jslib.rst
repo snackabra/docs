@@ -85,12 +85,6 @@ SB File Class
 .. js:autoclass:: SBFile
    :members:
 
-Payload Class
--------------
-
-.. js:autoclass:: Payload
-   :members:
-
 WS Protocol Class
 -----------------
 
@@ -119,33 +113,12 @@ Channel API Class
 
 .. js:autoclass:: ChannelApi
 
-KV Class
---------
-
-.. js:autoclass:: KV
-                  
-FileSystemDB Class
-------------------
-
-.. js:autoclass:: FileSystemDB
-                  
 
 IndexedKV Class
 ---------------
 
 .. js:autoclass:: IndexedKV
 
-
-QueueItem Class
----------------
-
-.. js:autoclass:: QueueItem
-                  
-
-Queue Class
------------
-
-.. js:autoclass:: Queue
 
 Snackabra Class
 ---------------

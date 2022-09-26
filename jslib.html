@@ -220,14 +220,14 @@ at this prior to release of 0.5.0 (link above), then the latest
 <h2>Utilities<a class="headerlink" href="#utilities" title="Permalink to this heading">#</a></h2>
 <dl class="js function">
 <dt class="sig sig-object js" id="arrayBufferToBase64">
-<span class="sig-name descname"><span class="n"><span class="pre">arrayBufferToBase64</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Uint8Array</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#arrayBufferToBase64" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="n"><span class="pre">arrayBufferToBase64</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ArrayBuffer</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#arrayBufferToBase64" title="Permalink to this definition">#</a></dt>
 <dd><p>Standardized ‘btoa()’-like function, e.g., takes a binary string
 (‘b’) and returns a Base64 encoded version (‘a’ used to be short
 for ‘ascii’).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Arguments<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>Uint8Array</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">buffer()</span></code></span>) – buffer</p></li>
+<li><p><strong>ArrayBuffer</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">bufferSource()</span></code></span>) – buffer</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -240,15 +240,17 @@ for ‘ascii’).</p>
 <dt class="sig sig-object js" id="base64ToArrayBuffer">
 <span class="sig-name descname"><span class="n"><span class="pre">base64ToArrayBuffer</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base64</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#base64ToArrayBuffer" title="Permalink to this definition">#</a></dt>
 <dd><p>Standardized ‘atob()’ function, e.g. takes the a Base64 encoded
-input and decodes it. Note: always returns Uint8Array.</p>
+input and decodes it. Note: always returns Uint8Array.
+Accepts both regular Base64 and the URL-friendly variant,
+where <cite>+</cite> =&gt; <cite>-</cite>, <cite>/</cite> =&gt; <cite>_</cite>, and the padding character is omitted.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Arguments<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>base64</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">string()</span></code></span>) – string</p></li>
+<li><p><strong>base64</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">str()</span></code></span>) – string in either regular or URL-friendly representation.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>Uint8Array</strong> – returns decoded result</p>
+<dd class="field-even"><p><strong>Uint8Array</strong> – returns decoded binary result</p>
 </dd>
 </dl>
 </dd></dl>
@@ -278,17 +280,12 @@ This assumes on byte per character.</p>
 
 <dl class="js function">
 <dt class="sig sig-object js" id="ab2str">
-<span class="sig-name descname"><span class="n"><span class="pre">ab2str</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ab2str" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="n"><span class="pre">ab2str</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">buffer</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ab2str" title="Permalink to this definition">#</a></dt>
 <dd><p>Standardized ‘ab2str()’ function, array buffer to string.
 This assumes one byte per character.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Arguments<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>string</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">string()</span></code></span>) – </p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>Uint8Array</strong> – buffer</p>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>Uint8Array</strong> – Uint8Array</p>
 </dd>
 </dl>
 </dd></dl>
@@ -303,7 +300,7 @@ the public key.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Arguments<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>RSA</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">PEM()</span></code></span>) – public key, string, PEM format</p></li>
+<li><p><strong>RSA</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">pem()</span></code></span>) – public key, string, PEM format</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -443,11 +440,6 @@ in the code; one approach is the line number in the file (at some point).</p>
 <dt class="sig sig-object js" id="MessageBus">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">MessageBus</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#MessageBus" title="Permalink to this definition">#</a></dt>
 <dd><p>SB simple events (mesage bus) class</p>
-<dl class="js attribute">
-<dt class="sig sig-object js" id="MessageBus.MessageBus">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">MessageBus</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">MessageBus</span></span></span><a class="headerlink" href="#MessageBus.MessageBus" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
 <dl class="js function">
 <dt class="sig sig-object js" id="MessageBus.publish">
 <span class="sig-prename descclassname"><span class="n"><span class="pre">MessageBus</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">publish</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MessageBus.publish" title="Permalink to this definition">#</a></dt>
@@ -544,15 +536,27 @@ in the code; one approach is the line number in the file (at some point).</p>
 <h2>Identity Class<a class="headerlink" href="#identity-class" title="Permalink to this heading">#</a></h2>
 <dl class="js class">
 <dt class="sig sig-object js" id="Identity">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">Identity</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Identity" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">Identity</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Identity" title="Permalink to this definition">#</a></dt>
+<dd><dl class="js function">
+<dt class="sig sig-object js" id="Identity.mintKeys">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">Identity</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">mintKeys</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Identity.mintKeys" title="Permalink to this definition">#</a></dt>
+<dd><p>Mint keys</p>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="Identity.mountKeys">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">Identity</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">mountKeys</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Identity.mountKeys" title="Permalink to this definition">#</a></dt>
+<dd><p>Mount keys</p>
+</dd></dl>
+
+</dd></dl>
 
 </section>
 <section id="sb-message-class">
 <h2>SB Message Class<a class="headerlink" href="#sb-message-class" title="Permalink to this heading">#</a></h2>
 <dl class="js class">
 <dt class="sig sig-object js" id="SBMessage">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">SBMessage</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">contents</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signKey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SBMessage" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">SBMessage</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">contents</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SBMessage" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 </section>
@@ -562,28 +566,6 @@ in the code; one approach is the line number in the file (at some point).</p>
 <dt class="sig sig-object js" id="SBFile">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">SBFile</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signKey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SBFile" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
-
-</section>
-<section id="payload-class">
-<h2>Payload Class<a class="headerlink" href="#payload-class" title="Permalink to this heading">#</a></h2>
-<dl class="js class">
-<dt class="sig sig-object js" id="Payload">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">Payload</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Payload" title="Permalink to this definition">#</a></dt>
-<dd><p>Takes a message object and turns it into a payload to be
-used by SB protocol</p>
-<dl class="js function">
-<dt class="sig sig-object js" id="Payload.unwrap">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">Payload</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">unwrap</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">payload</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Payload.unwrap" title="Permalink to this definition">#</a></dt>
-<dd><p>unwrap</p>
-</dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="Payload.wrap">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">Payload</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">wrap</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">contents</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Payload.wrap" title="Permalink to this definition">#</a></dt>
-<dd><p>wrap</p>
-</dd></dl>
-
-</dd></dl>
 
 </section>
 <section id="ws-protocol-class">
@@ -650,7 +632,7 @@ The benefit is reduced latency in communication protocol</p>
 <h2>Channel Class<a class="headerlink" href="#channel-class" title="Permalink to this heading">#</a></h2>
 <dl class="js class">
 <dt class="sig sig-object js" id="Channel">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">Channel</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">https</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wss</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Channel" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">Channel</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">https</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wss</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identity</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Channel" title="Permalink to this definition">#</a></dt>
 <dd><dl class="js attribute">
 <dt class="sig sig-object js" id="Channel.api">
 <span class="sig-prename descclassname"><span class="n"><span class="pre">Channel</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">api</span></span></span><a class="headerlink" href="#Channel.api" title="Permalink to this definition">#</a></dt>
@@ -660,7 +642,8 @@ The benefit is reduced latency in communication protocol</p>
 <dl class="js attribute">
 <dt class="sig sig-object js" id="Channel.keys">
 <span class="sig-prename descclassname"><span class="n"><span class="pre">Channel</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">keys</span></span></span><a class="headerlink" href="#Channel.keys" title="Permalink to this definition">#</a></dt>
-<dd><p>Return keys</p>
+<dd><p>Channel.keys()</p>
+<p>Return keys</p>
 </dd></dl>
 
 <dl class="js attribute">
@@ -672,7 +655,8 @@ The benefit is reduced latency in communication protocol</p>
 <dl class="js function">
 <dt class="sig sig-object js" id="Channel.join">
 <span class="sig-prename descclassname"><span class="n"><span class="pre">Channel</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">join</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Channel.join" title="Permalink to this definition">#</a></dt>
-<dd><p>Join channel, channel_id is the <a class="reference internal" href="glossary.html#term-channel-name"><span class="xref std std-term">Channel Name</span></a>.</p>
+<dd><p>Channel.join()</p>
+<p>Join channel, channel_id is the <a class="reference internal" href="glossary.html#term-channel-name"><span class="xref std std-term">Channel Name</span></a>.</p>
 </dd></dl>
 
 </dd></dl>
@@ -683,46 +667,51 @@ The benefit is reduced latency in communication protocol</p>
 <dl class="js class">
 <dt class="sig sig-object js" id="ChannelSocket">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">ChannelSocket</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wsUrl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identity</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ChannelSocket" title="Permalink to this definition">#</a></dt>
-<dd><dl class="js function">
+<dd><p>Class managing connections</p>
+<dl class="js function">
 <dt class="sig sig-object js" id="ChannelSocket.close">
 <span class="sig-prename descclassname"><span class="n"><span class="pre">ChannelSocket</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">close</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ChannelSocket.close" title="Permalink to this definition">#</a></dt>
-<dd><p>close</p>
+<dd><p>ChannelSocket.close()</p>
 </dd></dl>
 
 <dl class="js function">
 <dt class="sig sig-object js" id="ChannelSocket.isReady">
 <span class="sig-prename descclassname"><span class="n"><span class="pre">ChannelSocket</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">isReady</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ChannelSocket.isReady" title="Permalink to this definition">#</a></dt>
-<dd><p>isReady</p>
+<dd><p>ChannelSocket.isReady()</p>
 </dd></dl>
 
 <dl class="js function">
 <dt class="sig sig-object js" id="ChannelSocket.open">
 <span class="sig-prename descclassname"><span class="n"><span class="pre">ChannelSocket</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">open</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ChannelSocket.open" title="Permalink to this definition">#</a></dt>
-<dd><p>open</p>
+<dd><p>ChannelSocket.open()</p>
 </dd></dl>
 
 <dl class="js function">
 <dt class="sig sig-object js" id="ChannelSocket.receive">
 <span class="sig-prename descclassname"><span class="n"><span class="pre">ChannelSocket</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">receive</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ChannelSocket.receive" title="Permalink to this definition">#</a></dt>
-<dd><p>Receive message on channel socket</p>
+<dd><p>ChannelSocket.receive()</p>
+<p>Receive message on channel socket
+psm: updating using new cool types
+(it will arrive mostly unwrapped)</p>
 </dd></dl>
 
 <dl class="js function">
 <dt class="sig sig-object js" id="ChannelSocket.send">
 <span class="sig-prename descclassname"><span class="n"><span class="pre">ChannelSocket</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">send</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ChannelSocket.send" title="Permalink to this definition">#</a></dt>
-<dd><p>Send message on channel socket</p>
+<dd><p>ChannelSocket.send()</p>
 </dd></dl>
 
 <dl class="js function">
 <dt class="sig sig-object js" id="ChannelSocket.sendSbObject">
 <span class="sig-prename descclassname"><span class="n"><span class="pre">ChannelSocket</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">sendSbObject</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ChannelSocket.sendSbObject" title="Permalink to this definition">#</a></dt>
-<dd><p>Send SB object (file) on channel socket</p>
+<dd><p>ChannelSocket.sendSbObject()</p>
+<p>Send SB object (file) on channel socket</p>
 </dd></dl>
 
 <dl class="js function">
-<dt class="sig sig-object js" id="ChannelSocket.setKeys">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">ChannelSocket</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">setKeys</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_keys</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ChannelSocket.setKeys" title="Permalink to this definition">#</a></dt>
-<dd><p>setKeys</p>
+<dt class="sig sig-object js" id="ChannelSocket.unwrap">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">ChannelSocket</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">unwrap</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">payload</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ChannelSocket.unwrap" title="Permalink to this definition">#</a></dt>
+<dd><p>Payload.unwrap()</p>
 </dd></dl>
 
 </dd></dl>
@@ -732,7 +721,7 @@ The benefit is reduced latency in communication protocol</p>
 <h2>SB Storage Class<a class="headerlink" href="#sb-storage-class" title="Permalink to this heading">#</a></h2>
 <dl class="js class">
 <dt class="sig sig-object js" id="StorageApi">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">StorageApi</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">server</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identity</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#StorageApi" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">StorageApi</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#StorageApi" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 </section>
@@ -744,43 +733,11 @@ The benefit is reduced latency in communication protocol</p>
 <dd></dd></dl>
 
 </section>
-<section id="kv-class">
-<h2>KV Class<a class="headerlink" href="#kv-class" title="Permalink to this heading">#</a></h2>
-<dl class="js class">
-<dt class="sig sig-object js" id="KV">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">KV</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">options</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#KV" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-</section>
-<section id="filesystemdb-class">
-<h2>FileSystemDB Class<a class="headerlink" href="#filesystemdb-class" title="Permalink to this heading">#</a></h2>
-<dl class="js class">
-<dt class="sig sig-object js" id="FileSystemDB">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">FileSystemDB</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">options</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#FileSystemDB" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-</section>
 <section id="indexedkv-class">
 <h2>IndexedKV Class<a class="headerlink" href="#indexedkv-class" title="Permalink to this heading">#</a></h2>
 <dl class="js class">
 <dt class="sig sig-object js" id="IndexedKV">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">IndexedKV</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">options</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#IndexedKV" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-</section>
-<section id="queueitem-class">
-<h2>QueueItem Class<a class="headerlink" href="#queueitem-class" title="Permalink to this heading">#</a></h2>
-<dl class="js class">
-<dt class="sig sig-object js" id="QueueItem">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">QueueItem</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">action</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#QueueItem" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-</section>
-<section id="queue-class">
-<h2>Queue Class<a class="headerlink" href="#queue-class" title="Permalink to this heading">#</a></h2>
-<dl class="js class">
-<dt class="sig sig-object js" id="Queue">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">Queue</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">options</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Queue" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">IndexedKV</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#IndexedKV" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 </section>
@@ -867,17 +824,12 @@ The benefit is reduced latency in communication protocol</p>
 <li><a class="reference internal" href="#identity-class">Identity Class</a></li>
 <li><a class="reference internal" href="#sb-message-class">SB Message Class</a></li>
 <li><a class="reference internal" href="#sb-file-class">SB File Class</a></li>
-<li><a class="reference internal" href="#payload-class">Payload Class</a></li>
 <li><a class="reference internal" href="#ws-protocol-class">WS Protocol Class</a></li>
 <li><a class="reference internal" href="#channel-class">Channel Class</a></li>
 <li><a class="reference internal" href="#sb-socket-class">SB Socket Class</a></li>
 <li><a class="reference internal" href="#sb-storage-class">SB Storage Class</a></li>
 <li><a class="reference internal" href="#channel-api-class">Channel API Class</a></li>
-<li><a class="reference internal" href="#kv-class">KV Class</a></li>
-<li><a class="reference internal" href="#filesystemdb-class">FileSystemDB Class</a></li>
 <li><a class="reference internal" href="#indexedkv-class">IndexedKV Class</a></li>
-<li><a class="reference internal" href="#queueitem-class">QueueItem Class</a></li>
-<li><a class="reference internal" href="#queue-class">Queue Class</a></li>
 <li><a class="reference internal" href="#snackabra-class">Snackabra Class</a></li>
 </ul>
 </li>

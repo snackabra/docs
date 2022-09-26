@@ -8,6 +8,7 @@ sphinxcontrib-blockdiag
 sphinxcontrib-seqdiag
 furo
 sphinx-js
+sphinxcontrib-confluencebuilder
 
 # this is at https://github.com/snackabra/snackabra-pylib
 snackabra

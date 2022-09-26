@@ -41,10 +41,17 @@ super common stuff like latexlive for confluence support).
 Development
 -----------
 
+Package requirements (node) include:
+
+.. code-block:: console
+
+    $ npm install -g typedoc		
+
 You work with files in 'source', after you've made any changes, run
 'make html' [#r03]_ and results will be in the 'build' directory:
 
 .. code-block:: console
+
     $ make html  # you sometimes need to run this twice
     $ open index.html  # should open nicely, note this is root dir
 
@@ -56,6 +63,10 @@ PDF through readthedocs [#r00]_. If you want to be able to run 'make
 latexpdf' yourself [#r01]_, you'll need to install Latexmk [#r02]_,
 which can be a bit of a struggle depending on your system, including
 needing upwards 10 GB of disk space.
+
+For the jsdoc (documenting snackabra.js), you need to copy the
+javascript code you want documented to the ''snackabra-jslib''
+directory, ''make'' won't pull anything for you.
 
 *Note: Documenation strings for ``snackabra-pylib`` are pulled from
 the docstrings that come allong with ``pip install snackabara``,

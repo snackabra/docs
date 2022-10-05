@@ -45,7 +45,8 @@ Package requirements (node) include:
 
 .. code-block:: console
 
-    $ npm install -g typedoc		
+    $ npm install -g typedoc
+    $ npm install -g jsdoc
 
 You work with files in 'source', after you've made any changes, run
 'make html' [#r03]_ and results will be in the 'build' directory:

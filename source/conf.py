@@ -88,6 +88,11 @@ js_source_path = '../snackabra-jslib'
 # optional configuration for jsdoc per se
 # jsdoc_config_path = '../jsdoc_conf.json'
 
+# testing working with typescript (typedoc)
+# (not able to get it to work, stuck on 'Unable to find any entry points'
+# js_language = 'typescript'
+# primary_domain = 'js'
+
 # -- Options for HTML output -------------------------------------------------
 
 # Our pick for Snackabra

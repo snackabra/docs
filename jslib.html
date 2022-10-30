@@ -5,10 +5,10 @@
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Python Library" href="pylib.html" /><link rel="prev" title="LICENSE" href="license.html" />
 
-    <meta name="generator" content="sphinx-5.1.1, furo 2022.09.15"/>
+    <meta name="generator" content="sphinx-5.1.1, furo 2022.09.29"/>
         <title>Javascript Library - snackabra 0.5.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=9ec31e2665bf879c1d47d93a8ec4893870ee1e45" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
@@ -192,7 +192,8 @@
           <span>Back to top</span>
         </a>
         <div class="content-icon-container">
-          <div class="theme-toggle-container theme-toggle-content">
+          
+<div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -398,7 +399,7 @@ callback function with the results</p>
 <dl class="js function">
 <dt class="sig sig-object js" id="extractPayloadV1">
 <span class="sig-name descname"><span class="n"><span class="pre">extractPayloadV1</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">payload</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#extractPayloadV1" title="Permalink to this definition">#</a></dt>
-<dd><p>Extract payload</p>
+<dd><p>Deprecated (older version of payloads, for older channels)</p>
 </dd></dl>
 
 <dl class="js function">
@@ -410,7 +411,9 @@ callback function with the results</p>
 <dl class="js function">
 <dt class="sig sig-object js" id="extractPayload">
 <span class="sig-name descname"><span class="n"><span class="pre">extractPayload</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">payload</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#extractPayload" title="Permalink to this definition">#</a></dt>
-<dd><p>Extract payload (latest version)</p>
+<dd><p>Extract payload - this decodes from our binary (wire) format
+to a JS object. This provides a binary encoding of any JSON,
+and it allows some elements of the JSON to be raw (binary).</p>
 </dd></dl>
 
 <dl class="js function">
@@ -431,6 +434,30 @@ callback function with the results</p>
 <dd><p>There are o many problems with JSON parsing, adding a wrapper to capture more info.
 The ‘loc’ parameter should be a (unique) string that allows you to find the usage
 in the code; one approach is the line number in the file (at some point).</p>
+</dd></dl>
+
+</section>
+<section id="snackabra-class">
+<h2>Snackabra Class<a class="headerlink" href="#snackabra-class" title="Permalink to this heading">#</a></h2>
+<dl class="js class">
+<dt class="sig sig-object js" id="Snackabra">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">Snackabra</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Snackabra" title="Permalink to this definition">#</a></dt>
+<dd><p>Constructor expects an object with the names of the matching servers, for example
+(this shows the miniflare local dev config):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="n">channel_server</span><span class="p">:</span> <span class="s1">&#39;http://127.0.0.1:4001&#39;</span><span class="p">,</span>
+  <span class="n">channel_ws</span><span class="p">:</span> <span class="s1">&#39;ws://127.0.0.1:4001&#39;</span><span class="p">,</span>
+  <span class="n">storage_server</span><span class="p">:</span> <span class="s1">&#39;http://127.0.0.1:4000&#39;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Arguments<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">SnackabraOptions()</span></code></span>) – interface</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 </section>
@@ -536,7 +563,7 @@ in the code; one approach is the line number in the file (at some point).</p>
 <h2>Identity Class<a class="headerlink" href="#identity-class" title="Permalink to this heading">#</a></h2>
 <dl class="js class">
 <dt class="sig sig-object js" id="Identity">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">Identity</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Identity" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">Identity</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keys</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Identity" title="Permalink to this definition">#</a></dt>
 <dd><dl class="js function">
 <dt class="sig sig-object js" id="Identity.mintKeys">
 <span class="sig-prename descclassname"><span class="n"><span class="pre">Identity</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">mintKeys</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Identity.mintKeys" title="Permalink to this definition">#</a></dt>
@@ -556,7 +583,7 @@ in the code; one approach is the line number in the file (at some point).</p>
 <h2>SB Message Class<a class="headerlink" href="#sb-message-class" title="Permalink to this heading">#</a></h2>
 <dl class="js class">
 <dt class="sig sig-object js" id="SBMessage">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">SBMessage</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">contents</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SBMessage" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">SBMessage</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identity</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SBMessage" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 </section>
@@ -568,75 +595,15 @@ in the code; one approach is the line number in the file (at some point).</p>
 <dd></dd></dl>
 
 </section>
-<section id="ws-protocol-class">
-<h2>WS Protocol Class<a class="headerlink" href="#ws-protocol-class" title="Permalink to this heading">#</a></h2>
-<dl class="js class">
-<dt class="sig sig-object js" id="WS_Protocol">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">WS_Protocol</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">options</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#WS_Protocol" title="Permalink to this definition">#</a></dt>
-<dd><p>mtg: Protocol code that we wrap our WebSocket in
-I will be updating this to send messages and remove
-the wait to send messages only when ack received
-The benefit is reduced latency in communication protocol</p>
-<dl class="js attribute">
-<dt class="sig sig-object js" id="WS_Protocol.options">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">WS_Protocol</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">options</span></span></span><a class="headerlink" href="#WS_Protocol.options" title="Permalink to this definition">#</a></dt>
-<dd><p>Get options</p>
-</dd></dl>
-
-<dl class="js attribute">
-<dt class="sig sig-object js" id="WS_Protocol.readyState">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">WS_Protocol</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">readyState</span></span></span><a class="headerlink" href="#WS_Protocol.readyState" title="Permalink to this definition">#</a></dt>
-<dd><p>readyState</p>
-</dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="WS_Protocol.close">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">WS_Protocol</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">close</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#WS_Protocol.close" title="Permalink to this definition">#</a></dt>
-<dd><p>close</p>
-</dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="WS_Protocol.join">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">WS_Protocol</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">join</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#WS_Protocol.join" title="Permalink to this definition">#</a></dt>
-<dd><p>join</p>
-</dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="WS_Protocol.onClose">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">WS_Protocol</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">onClose</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#WS_Protocol.onClose" title="Permalink to this definition">#</a></dt>
-<dd><p>onClose</p>
-</dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="WS_Protocol.onError">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">WS_Protocol</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">onError</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#WS_Protocol.onError" title="Permalink to this definition">#</a></dt>
-<dd><p>onError</p>
-</dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="WS_Protocol.onMessage">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">WS_Protocol</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">onMessage</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#WS_Protocol.onMessage" title="Permalink to this definition">#</a></dt>
-<dd><p>onMessage</p>
-</dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="WS_Protocol.onOpen">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">WS_Protocol</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">onOpen</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#WS_Protocol.onOpen" title="Permalink to this definition">#</a></dt>
-<dd><p>onOpen</p>
-</dd></dl>
-
-</dd></dl>
-
-</section>
 <section id="channel-class">
 <h2>Channel Class<a class="headerlink" href="#channel-class" title="Permalink to this heading">#</a></h2>
 <dl class="js class">
 <dt class="sig sig-object js" id="Channel">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">Channel</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">https</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wss</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identity</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Channel" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">Channel</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sbServer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identity</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Channel" title="Permalink to this definition">#</a></dt>
 <dd><dl class="js attribute">
 <dt class="sig sig-object js" id="Channel.api">
 <span class="sig-prename descclassname"><span class="n"><span class="pre">Channel</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">api</span></span></span><a class="headerlink" href="#Channel.api" title="Permalink to this definition">#</a></dt>
-<dd><p>Return API</p>
+<dd><p>Channel.api()</p>
 </dd></dl>
 
 <dl class="js attribute">
@@ -649,14 +616,37 @@ The benefit is reduced latency in communication protocol</p>
 <dl class="js attribute">
 <dt class="sig sig-object js" id="Channel.socket">
 <span class="sig-prename descclassname"><span class="n"><span class="pre">Channel</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">socket</span></span></span><a class="headerlink" href="#Channel.socket" title="Permalink to this definition">#</a></dt>
-<dd><p>Return socket</p>
+<dd><p>Channel.socket()</p>
 </dd></dl>
 
 <dl class="js function">
-<dt class="sig sig-object js" id="Channel.join">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">Channel</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">join</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Channel.join" title="Permalink to this definition">#</a></dt>
-<dd><p>Channel.join()</p>
-<p>Join channel, channel_id is the <a class="reference internal" href="glossary.html#term-channel-name"><span class="xref std std-term">Channel Name</span></a>.</p>
+<dt class="sig sig-object js" id="Channel.loadKeys">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">Channel</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">loadKeys</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keys</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Channel.loadKeys" title="Permalink to this definition">#</a></dt>
+<dd><p>Channel.loadKeys()</p>
+<p>When connecting to a channel server, the first thing it replies with is a set of
+keys for operating against the channel. Here we load those into the channel.</p>
+<p>Specifically the server will respond with something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;ready&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">,</span>
+ <span class="s2">&quot;keys&quot;</span><span class="p">:{</span>
+         <span class="s2">&quot;ownerKey&quot;</span><span class="p">:</span><span class="s2">&quot;{</span><span class="se">\&quot;</span><span class="s2">crv</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">P-384</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">ext</span><span class="se">\&quot;</span><span class="s2">:true,</span><span class="se">\&quot;</span><span class="s2">key_ops</span><span class="se">\&quot;</span><span class="s2">:[],</span><span class="se">\&quot;</span><span class="s2">kty</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">EC</span><span class="se">\&quot;</span><span class="s2">,</span>
+                     \<span class="s2">&quot;x</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">9s17B4i0Cuf_w9XN_uAq2DFePOr6S3sMFMA95KjLN8akBUWEhPAcuMEMwNUlrrkN</span><span class="se">\&quot;</span><span class="s2">,</span>
+                     \<span class="s2">&quot;y</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">6dAtcyMbtsO5ufKvlhxRsvjTmkABGlTYG1BrEjTpwrAgtmn6k25GR7akklz9klBr</span><span class="se">\&quot;</span><span class="s2">}&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;guestKey&quot;</span><span class="p">:</span><span class="s2">&quot;{</span><span class="se">\&quot;</span><span class="s2">crv</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">P-384</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">ext</span><span class="se">\&quot;</span><span class="s2">:true,</span><span class="se">\&quot;</span><span class="s2">key_ops</span><span class="se">\&quot;</span><span class="s2">:[],</span><span class="se">\&quot;</span><span class="s2">kty</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">EC</span><span class="se">\&quot;</span><span class="s2">,</span>
+                      \<span class="s2">&quot;x</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">Lx0eJcbNuyEfHDobWaZqgy9UO7ppxVIsEpEtvbzkAlIjySh9lY2AvgnACREO6QXD</span><span class="se">\&quot;</span><span class="s2">,</span>
+                      \<span class="s2">&quot;y</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">zEHPgpsl4jge_Q-K6ekuzi2bQOybnaPT1MozCFQJnXEePBX8emkHriOiwl6P8BAS</span><span class="se">\&quot;</span><span class="s2">}&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;encryptionKey&quot;</span><span class="p">:</span><span class="s2">&quot;{</span><span class="se">\&quot;</span><span class="s2">alg</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">A256GCM</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">ext</span><span class="se">\&quot;</span><span class="s2">:true,</span>
+                          \<span class="s2">&quot;k</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">F0sQTTLXDhuvvmgGQLzMoeHPD-SJlFyhfOD-cqejEOU</span><span class="se">\&quot;</span><span class="s2">,</span>
+                          \<span class="s2">&quot;key_ops</span><span class="se">\&quot;</span><span class="s2">:[</span><span class="se">\&quot;</span><span class="s2">encrypt</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">decrypt</span><span class="se">\&quot;</span><span class="s2">],</span><span class="se">\&quot;</span><span class="s2">kty</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">oct</span><span class="se">\&quot;</span><span class="s2">}&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;signKey&quot;</span><span class="p">:</span><span class="s2">&quot;{</span><span class="se">\&quot;</span><span class="s2">crv</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">P-384</span><span class="se">\&quot;</span><span class="s2">,</span>
+                     \<span class="s2">&quot;d</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">KCJHDZ34XgVFsS9-sU09HFzXZhnGCvnDgJ5a8GTSfjuJQaq-1N2acvchPRhknk8B</span><span class="se">\&quot;</span><span class="s2">,</span>
+                     \<span class="s2">&quot;ext</span><span class="se">\&quot;</span><span class="s2">:true,</span><span class="se">\&quot;</span><span class="s2">key_ops</span><span class="se">\&quot;</span><span class="s2">:[</span><span class="se">\&quot;</span><span class="s2">deriveKey</span><span class="se">\&quot;</span><span class="s2">],</span><span class="se">\&quot;</span><span class="s2">kty</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">EC</span><span class="se">\&quot;</span><span class="s2">,</span>
+                     \<span class="s2">&quot;x</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">rdsyBle0DD1hvp2OE2mINyyI87Cyg7FS3tCQUIeVkfPiNOACtFxi6iP8oeYt-Dge</span><span class="se">\&quot;</span><span class="s2">,</span>
+                     \<span class="s2">&quot;y</span><span class="se">\&quot;</span><span class="s2">:</span><span class="se">\&quot;</span><span class="s2">qW9VP72uf9rgUU117G7AfTkCMncJbT5scIaIRwBXfqET6FYcq20fwSP7R911J2_t</span><span class="se">\&quot;</span><span class="s2">}&quot;</span>
+          <span class="p">},</span>
+  <span class="s2">&quot;motd&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;roomLocked&quot;</span><span class="p">:</span><span class="n">false</span><span class="p">}</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </dd></dl>
@@ -666,7 +656,7 @@ The benefit is reduced latency in communication protocol</p>
 <h2>SB Socket Class<a class="headerlink" href="#sb-socket-class" title="Permalink to this heading">#</a></h2>
 <dl class="js class">
 <dt class="sig sig-object js" id="ChannelSocket">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">ChannelSocket</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wsUrl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identity</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ChannelSocket" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">ChannelSocket</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sbServer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identity</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ChannelSocket" title="Permalink to this definition">#</a></dt>
 <dd><p>Class managing connections</p>
 <dl class="js function">
 <dt class="sig sig-object js" id="ChannelSocket.close">
@@ -715,12 +705,6 @@ psm: updating using new cool types
 <p>Send SB object (file) on channel socket</p>
 </dd></dl>
 
-<dl class="js function">
-<dt class="sig sig-object js" id="ChannelSocket.unwrap">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">ChannelSocket</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">unwrap</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">payload</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ChannelSocket.unwrap" title="Permalink to this definition">#</a></dt>
-<dd><p>Payload.unwrap()</p>
-</dd></dl>
-
 </dd></dl>
 
 </section>
@@ -728,7 +712,7 @@ psm: updating using new cool types
 <h2>SB Storage Class<a class="headerlink" href="#sb-storage-class" title="Permalink to this heading">#</a></h2>
 <dl class="js class">
 <dt class="sig sig-object js" id="StorageApi">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">StorageApi</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#StorageApi" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">StorageApi</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">server</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#StorageApi" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 </section>
@@ -736,7 +720,7 @@ psm: updating using new cool types
 <h2>Channel API Class<a class="headerlink" href="#channel-api-class" title="Permalink to this heading">#</a></h2>
 <dl class="js class">
 <dt class="sig sig-object js" id="ChannelApi">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">ChannelApi</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">server</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identity</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ChannelApi" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">ChannelApi</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sbServer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identity</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ChannelApi" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 </section>
@@ -746,23 +730,6 @@ psm: updating using new cool types
 <dt class="sig sig-object js" id="IndexedKV">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">IndexedKV</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#IndexedKV" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
-
-</section>
-<section id="snackabra-class">
-<h2>Snackabra Class<a class="headerlink" href="#snackabra-class" title="Permalink to this heading">#</a></h2>
-<dl class="js class">
-<dt class="sig sig-object js" id="Snackabra">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">Snackabra</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Snackabra" title="Permalink to this definition">#</a></dt>
-<dd><p>Constructor expects an object with the names of the matching servers, for example
-(this shows the miniflare local dev config):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="n">channel_server</span><span class="p">:</span> <span class="s1">&#39;http://127.0.0.1:4001&#39;</span><span class="p">,</span>
-  <span class="n">channel_ws</span><span class="p">:</span> <span class="s1">&#39;ws://127.0.0.1:4001&#39;</span><span class="p">,</span>
-  <span class="n">storage_server</span><span class="p">:</span> <span class="s1">&#39;http://127.0.0.1:4000&#39;</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</dd></dl>
 
 </section>
 </section>
@@ -826,18 +793,17 @@ psm: updating using new cool types
             <ul>
 <li><a class="reference internal" href="#">Javascript Library</a><ul>
 <li><a class="reference internal" href="#utilities">Utilities</a></li>
+<li><a class="reference internal" href="#snackabra-class">Snackabra Class</a></li>
 <li><a class="reference internal" href="#messagebus-class">Messagebus Class</a></li>
 <li><a class="reference internal" href="#crypto-class">Crypto Class</a></li>
 <li><a class="reference internal" href="#identity-class">Identity Class</a></li>
 <li><a class="reference internal" href="#sb-message-class">SB Message Class</a></li>
 <li><a class="reference internal" href="#sb-file-class">SB File Class</a></li>
-<li><a class="reference internal" href="#ws-protocol-class">WS Protocol Class</a></li>
 <li><a class="reference internal" href="#channel-class">Channel Class</a></li>
 <li><a class="reference internal" href="#sb-socket-class">SB Socket Class</a></li>
 <li><a class="reference internal" href="#sb-storage-class">SB Storage Class</a></li>
 <li><a class="reference internal" href="#channel-api-class">Channel API Class</a></li>
 <li><a class="reference internal" href="#indexedkv-class">IndexedKV Class</a></li>
-<li><a class="reference internal" href="#snackabra-class">Snackabra Class</a></li>
 </ul>
 </li>
 </ul>

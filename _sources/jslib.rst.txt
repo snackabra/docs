@@ -16,6 +16,8 @@ https://github.com/psm384/snackabra-0.5.0-docs/blob/main/snackabra-jslib/main.js
 
 
 
+
+
 Utilities
 ---------
 
@@ -54,6 +56,12 @@ Utilities
 .. js:autofunction:: jsonParseWrapper
 
 
+Snackabra Class
+---------------
+
+.. js:autoclass:: Snackabra
+
+
 Messagebus Class
 ----------------
 
@@ -85,11 +93,6 @@ SB File Class
 .. js:autoclass:: SBFile
    :members:
 
-WS Protocol Class
------------------
-
-.. js:autoclass:: WS_Protocol
-   :members:
 
 Channel Class
 -------------
@@ -120,10 +123,6 @@ IndexedKV Class
 .. js:autoclass:: IndexedKV
 
 
-Snackabra Class
----------------
-
-.. js:autoclass:: Snackabra
 
                   
                   

@@ -1688,6 +1688,8 @@ class ChannelSocket {
     }
     /**
      * ChannelSocket.send()
+     *
+     * @param {SBMessage} the message object to send
      */
     async send(message) {
         message.ready.then(() => {

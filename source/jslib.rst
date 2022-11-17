@@ -71,13 +71,13 @@ Messagebus Class
 Crypto Class
 ------------
 
-.. js:autoclass:: Crypto
+.. js:autoclass:: SBCrypto
    :members:
 
-Identity Class
---------------
+Main 384 Identity Class
+-----------------------
 
-.. js:autoclass:: Identity
+.. js:autoclass:: SB384
    :members:
 
 

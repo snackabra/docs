@@ -12,4 +12,5 @@ sphinx-js>=3.1
 sphinxcontrib-confluencebuilder
 
 # this is at https://github.com/snackabra/snackabra-pylib
+# currently NOT supported
 snackabra

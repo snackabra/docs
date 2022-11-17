@@ -239,7 +239,7 @@ some of the diagram / figure tools.</p>
 <p>Here’s an example using graphviz (more here: <a class="reference external" href="https://graphviz.org/gallery/">https://graphviz.org/gallery/</a> )</p>
 <section id="digraph">
 <h3>Digraph<a class="headerlink" href="#digraph" title="Permalink to this heading">#</a></h3>
-digraph PhiloDilemma {
+<div class="graphviz"><img src="_images/graphviz-84b43c8606d0bc796a3a6c24d22a7d82e5dbbccc.png" alt="digraph PhiloDilemma {
 layout=neato
 node [shape=box];  bec3; rel3; bec2; rel2; acq2; acq3; bec1; rel1; acq1;
 node [shape=circle,fixedsize=true,width=0.9];  hu3; th3; ri3; ea3; hu2; th2; ri2; ea2; hu1; th1; ri1; ea1;
@@ -274,10 +274,11 @@ acq1-&gt;ea1;
 overlap=false
 label=&quot;PetriNet Model PhiloDilemma\nExtracted from ConceptBase and layed out by Graphviz &quot;
 fontsize=12;
-}</section>
+}" class="graphviz" /></div>
+</section>
 <section id="process-graph">
 <h3>Process Graph<a class="headerlink" href="#process-graph" title="Permalink to this heading">#</a></h3>
-graph G {
+<div class="graphviz"><img src="_images/graphviz-b61c7aecdb64833bf229b759a613380785166522.png" alt="graph G {
         layout=neato
         run -- intr;
         intr -- runbl;
@@ -292,7 +293,8 @@ graph G {
         runswap -- runmem;
         new -- runmem;
         sleep -- runmem;
-}</section>
+}" class="graphviz" /></div>
+</section>
 </section>
 </section>
 

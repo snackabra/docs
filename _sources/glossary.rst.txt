@@ -17,7 +17,7 @@ Glossary
       Essentially a synonym for :term:`Room`.
       
    channel name
-      Essentially a synonym for :term:`Room Name`.
+      Essentially a synonym for :term:`Room Name`. This is the newer term.
       
    CLI
       The command line interface; relevant for administering a
@@ -116,6 +116,7 @@ Glossary
       The unique 48-byte (64-character b64) string that
       uniquely identifies a :ref:`room <rooms>`.
       It is derived from the :term:`Owner Key`.
+      Note that the newer name for this is :term:`Channel Name`.
 
    Room
       All discussions or chats or conversations or file or document

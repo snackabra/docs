@@ -237,22 +237,23 @@ at this prior to release of 0.5.0 (link above), then the latest
 (in progress) version underlying this documentation is here:</p>
 <p><a class="reference external" href="https://github.com/384co/snackabra-docs/blob/main/snackabra-jslib/snackabra.js">https://github.com/384co/snackabra-docs/blob/main/snackabra-jslib/snackabra.js</a></p>
 </section>
-<section id="main-384-identity-class">
-<h2>Main 384 Identity Class<a class="headerlink" href="#main-384-identity-class" title="Permalink to this heading">#</a></h2>
+<section id="sb384">
+<h2>SB384<a class="headerlink" href="#sb384" title="Permalink to this heading">#</a></h2>
+<p>Most classes in SB are rooted in SB384. It encapsulates the core of an
+“identifier” in SB, namely a (384-bit) global <a class="reference internal" href="glossary.html#term-channel-name"><span class="xref std std-term">Channel Name</span></a>, derived
+from the <a class="reference internal" href="glossary.html#term-Owner-Key"><span class="xref std std-term">Owner Key</span></a> of that object - typically either a <a class="reference internal" href="glossary.html#term-channel"><span class="xref std std-term">channel</span></a>
+or a <a class="reference internal" href="glossary.html#term-object"><span class="xref std std-term">object</span></a>. Most of the properties (see getters below) are various
+perspectives and formats on this identity.</p>
 <dl class="js class">
 <dt class="sig sig-object js" id="SB384">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">SB384</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SB384" title="Permalink to this definition">#</a></dt>
-<dd><p>SB384</p>
-<p>Basic (core) capability object in SB.</p>
+<dd><p>Basic (core) capability object in SB.</p>
 <p>Note that all the getters below will throw an exception if the
 corresponding information is not ready.</p>
 <p>Like most SB classes, SB384 follows the “ready template” design
 principle: the object is immediately available upon creation,
 but isn’t “ready” until it says it’s ready. See <a class="reference internal" href="#channel-class">Channel Class</a>
 example below.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">let</span>
-</pre></div>
-</div>
 <dl class="field-list simple">
 <dt class="field-odd">Arguments<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -305,8 +306,10 @@ example below.</p>
 </dd></dl>
 
 </section>
-<section id="snackabra-class">
-<h2>Snackabra Class<a class="headerlink" href="#snackabra-class" title="Permalink to this heading">#</a></h2>
+<section id="snackabra-server-class">
+<h2>Snackabra (Server) Class<a class="headerlink" href="#snackabra-server-class" title="Permalink to this heading">#</a></h2>
+<p id="snackabra">The SB class is the orchestrator, in particular it tracks one or more channels
+connecting to one or more SB servers.</p>
 <dl class="js class">
 <dt class="sig sig-object js" id="Snackabra">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">Snackabra</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Snackabra" title="Permalink to this definition">#</a></dt>
@@ -328,41 +331,359 @@ without a parameter in which case SB will ping known servers.</p>
 </ul>
 </dd>
 </dl>
+<dl class="js function">
+<dt class="sig sig-object js" id="Snackabra.connect">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">Snackabra</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">connect</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">onMessage</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channelId</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Snackabra.connect" title="Permalink to this definition">#</a></dt>
+<dd><p>Connects to <a class="reference internal" href="glossary.html#term-channel-name"><span class="xref std std-term">Channel Name</span></a> on this SB config.
+Returns a (promise to the) channel (socket) object.
+It will throw an <code class="docutils literal notranslate"><span class="pre">AggregateError</span></code> if it fails
+to find the room anywhere.</p>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="Snackabra.create">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">Snackabra</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">create</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sbServer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">serverSecret</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keys</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Snackabra.create" title="Permalink to this definition">#</a></dt>
+<dd><p>Creates a new channel. Currently uses trivial authentication.
+Returns the <a class="reference internal" href="glossary.html#term-channel-name"><span class="xref std std-term">Channel Name</span></a>. Note that this does not
+create a channel object, e.g. does not make a connection.</p>
+</dd></dl>
+
 </dd></dl>
 
 </section>
-<section id="messagebus-class">
-<h2>Messagebus Class<a class="headerlink" href="#messagebus-class" title="Permalink to this heading">#</a></h2>
-<dl class="js class">
-<dt class="sig sig-object js" id="MessageBus">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">MessageBus</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#MessageBus" title="Permalink to this definition">#</a></dt>
-<dd><p>SB simple events (mesage bus) class</p>
-<dl class="js function">
-<dt class="sig sig-object js" id="MessageBus.publish">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">MessageBus</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">publish</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MessageBus.publish" title="Permalink to this definition">#</a></dt>
-<dd><p>Publish</p>
-</dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="MessageBus.subscribe">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">MessageBus</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">subscribe</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">handler</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MessageBus.subscribe" title="Permalink to this definition">#</a></dt>
-<dd><dl class="simple">
-<dt>Subscribe. ‘event’ is a string, special case ‘*’ means everything</dt><dd><p>(in which case the handler is also given the message)</p>
+<section id="channels">
+<h2>Channels<a class="headerlink" href="#channels" title="Permalink to this heading">#</a></h2>
+<p>Channels (aka “Rooms”) are the core communication primitive in SB.</p>
+<section id="sb-message-class">
+<h3>SB Message Class<a class="headerlink" href="#sb-message-class" title="Permalink to this heading">#</a></h3>
+<span class="target" id="sbmessage"></span><dl class="js class">
+<dt class="sig sig-object js" id="SBMessage">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">SBMessage</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SBMessage" title="Permalink to this definition">#</a></dt>
+<dd><dl class="js function">
+<dt class="sig sig-object js" id="SBMessage.send">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">SBMessage</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">send</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SBMessage.send" title="Permalink to this definition">#</a></dt>
+<dd><p>SBMessage.send()</p>
+<dl class="field-list simple">
+<dt class="field-odd">Arguments<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>message</strong> (<span><a class="reference internal" href="#SBMessage" title="SBMessage"><code class="xref js js-func docutils literal notranslate"><span class="pre">SBMessage()</span></code></a></span>) – the message object to send</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="js function">
-<dt class="sig sig-object js" id="MessageBus.unsubscribe">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">MessageBus</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">unsubscribe</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">handler</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MessageBus.unsubscribe" title="Permalink to this definition">#</a></dt>
-<dd><p>Unsubscribe</p>
 </dd></dl>
+
+</section>
+<section id="channel-class">
+<h3>Channel Class<a class="headerlink" href="#channel-class" title="Permalink to this heading">#</a></h3>
+<dl class="js class">
+<dt class="sig sig-object js" id="Channel">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">Channel</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sbServer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key?</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channelId</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Channel" title="Permalink to this definition">#</a></dt>
+<dd><p>SB384</p>
+<p>Join a channel, returns channel object.</p>
+<p>Currently, you must have an identity when connecting, because every single
+message is signed by sender. TODO is to look at how to provide a ‘listening’
+mode on channels.</p>
+<p>Most classes in SB follow the “ready” template: objects can be used
+right away, but they decide for themselves if they’re ready or not.</p>
+<p>Below is a (complete) example for reference:</p>
+<blockquote>
+<div><pre class="literal-block">//
+// Here we create a new channel; for this we need to be specific
+// about what servers to use. This example references local dev
+// (miniflare) servers
+//
+const sb_config = {
+  channel_server: 'http://localhost:4001',
+  channel_ws: 'ws://localhost:4001',
+  storage_server: 'http://localhost:4000'
+}
+//
+// Next we create the orchestrator object, for above endpoints
+//
+const SB = new <a class="reference internal" href="#snackabra">Snackabra</a> (sb_config)
+//
+// On these servers, we create a new channel (trivial auth)
+//
+SB.create(sb_config, '&lt;SECRET&gt;').then((handle) =&gt; {
+  //
+  // This will return a 'handle', a type that contains all
+  // the information you need to keep reference a channel.
+  //
+  SB.connect(
+    //
+    // Above we've created a channel, but not connected.
+    // Besides some information in the handle, to connect we
+    // must provide a message handler for all (new) messages
+    //
+    (m: ChannelMessage) =&gt; { console.log(`got message: ${m}`) },
+    handle.key,
+    handle.channelId
+  ).then((c) =&gt; c.ready).then((c) =&gt; {
+    //
+    // We are now connected, 'c' is a <a class="reference internal" href="#channel-socket-class">Channel Socket Class</a>
+    // and can (optionally) pick a name (alias) for ourselves
+    //
+    c.userName = &quot;TestBot&quot;
+    //
+    // We can now send messages
+    //
+    (new <a class="reference internal" href="#sbmessage">SBMessage</a> (c, &quot;Hello from TestBot!&quot;)).send().then((c) =&gt; {
+      console.log(`test message sent! (${c})`) })
+  })
+})</pre>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Arguments<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sbServer</strong> (<span><a class="reference internal" href="#Snackabra" title="Snackabra"><code class="xref js js-func docutils literal notranslate"><span class="pre">Snackabra()</span></code></a></span>) – server to join</p></li>
+<li><p><strong>key?</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">JsonWebKey()</span></code></span>) – key to use to join (optional)</p></li>
+<li><p><strong>channelId</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">string()</span></code></span>) – (the <a class="reference internal" href="glossary.html#term-channel-name"><span class="xref std std-term">Channel Name</span></a>) to find on that server (optional)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="js attribute">
+<dt class="sig sig-object js" id="Channel.api">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">Channel</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">api</span></span></span><a class="headerlink" href="#Channel.api" title="Permalink to this definition">#</a></dt>
+<dd><p><strong>type:</strong> ChannelApi</p>
+</dd></dl>
+
+<dl class="js attribute">
+<dt class="sig sig-object js" id="Channel.channelId">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">Channel</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">channelId</span></span></span><a class="headerlink" href="#Channel.channelId" title="Permalink to this definition">#</a></dt>
+<dd><p><strong>type:</strong> string</p>
+</dd></dl>
+
+<dl class="js attribute">
+<dt class="sig sig-object js" id="Channel.readyFlag">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">Channel</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">readyFlag</span></span></span><a class="headerlink" href="#Channel.readyFlag" title="Permalink to this definition">#</a></dt>
+<dd><p><strong>type:</strong> boolean</p>
+</dd></dl>
+
+<dl class="js attribute">
+<dt class="sig sig-object js" id="Channel.sbServer">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">Channel</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">sbServer</span></span></span><a class="headerlink" href="#Channel.sbServer" title="Permalink to this definition">#</a></dt>
+<dd><p><strong>type:</strong> SBServer</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="channel-socket-class">
+<h3>Channel Socket Class<a class="headerlink" href="#channel-socket-class" title="Permalink to this heading">#</a></h3>
+<p>Channel “sockets” are the synchronous communication interface to channels.</p>
+<dl class="js class">
+<dt class="sig sig-object js" id="ChannelSocket">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">ChannelSocket</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sbServer:</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ChannelSocket" title="Permalink to this definition">#</a></dt>
+<dd><p>ChannelSocket</p>
+<blockquote>
+<div><p>Class managing connections</p>
+</div></blockquote>
+<p>ChannelSocket</p>
+<dl class="field-list simple">
+<dt class="field-odd">Arguments<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sbServer:</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">SBServer()</span></code></span>) – </p></li>
+</ul>
+</dd>
+</dl>
+<dl class="js attribute">
+<dt class="sig sig-object js" id="ChannelSocket.ChannelSocket">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">ChannelSocket</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">ChannelSocket</span></span></span><a class="headerlink" href="#ChannelSocket.ChannelSocket" title="Permalink to this definition">#</a></dt>
+<dd><p>ChannelSocket</p>
+</dd></dl>
+
+<dl class="js attribute">
+<dt class="sig sig-object js" id="ChannelSocket.exportable_owner_pubKey">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">ChannelSocket</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">exportable_owner_pubKey</span></span></span><a class="headerlink" href="#ChannelSocket.exportable_owner_pubKey" title="Permalink to this definition">#</a></dt>
+<dd><p><strong>type:</strong> JsonWebKey</p>
+</dd></dl>
+
+<dl class="js attribute">
+<dt class="sig sig-object js" id="ChannelSocket.keys">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">ChannelSocket</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">keys</span></span></span><a class="headerlink" href="#ChannelSocket.keys" title="Permalink to this definition">#</a></dt>
+<dd><p>ChannelSocket.keys</p>
+<p>Will throw an exception if keys are unknown or not yet loaded</p>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="ChannelSocket.send">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">ChannelSocket</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">send</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ChannelSocket.send" title="Permalink to this definition">#</a></dt>
+<dd><p>ChannelSocket.send()</p>
+<p>Returns a promise that resolves to “success” when sent,
+or an error message if it fails.</p>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="ChannelSocket.sendSbObject">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">ChannelSocket</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">sendSbObject</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ChannelSocket.sendSbObject" title="Permalink to this definition">#</a></dt>
+<dd><p>ChannelSocket.sendSbObject()</p>
+<p>Send SB object (file) on channel socket</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="channel-api-class">
+<h3>Channel API Class<a class="headerlink" href="#channel-api-class" title="Permalink to this heading">#</a></h3>
+<p>The channel “API” class is the asynchronous interface to channels.</p>
+<dl class="js class">
+<dt class="sig sig-object js" id="ChannelApi">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">ChannelApi</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ChannelApi" title="Permalink to this definition">#</a></dt>
+<dd><dl class="js function">
+<dt class="sig sig-object js" id="ChannelApi.downloadData">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">ChannelApi</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">downloadData</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ChannelApi.downloadData" title="Permalink to this definition">#</a></dt>
+<dd><p>downloadData</p>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="ChannelApi.getAdminData">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">ChannelApi</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">getAdminData</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ChannelApi.getAdminData" title="Permalink to this definition">#</a></dt>
+<dd><p>getAdminData</p>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="ChannelApi.getCapacity">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">ChannelApi</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">getCapacity</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ChannelApi.getCapacity" title="Permalink to this definition">#</a></dt>
+<dd><p>getCapacity</p>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="ChannelApi.getJoinRequests">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">ChannelApi</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">getJoinRequests</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ChannelApi.getJoinRequests" title="Permalink to this definition">#</a></dt>
+<dd><p>getJoinRequests</p>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="ChannelApi.getLastMessageTimes">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">ChannelApi</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">getLastMessageTimes</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ChannelApi.getLastMessageTimes" title="Permalink to this definition">#</a></dt>
+<dd><p>getLastMessageTimes</p>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="ChannelApi.getOldMessages">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">ChannelApi</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">getOldMessages</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">currentMessagesLength</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ChannelApi.getOldMessages" title="Permalink to this definition">#</a></dt>
+<dd><p>getOldMessages</p>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="ChannelApi.isLocked">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">ChannelApi</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">isLocked</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ChannelApi.isLocked" title="Permalink to this definition">#</a></dt>
+<dd><p>isLocked</p>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="ChannelApi.setMOTD">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">ChannelApi</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">setMOTD</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">motd</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ChannelApi.setMOTD" title="Permalink to this definition">#</a></dt>
+<dd><p>Set message of the day</p>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="ChannelApi.updateCapacity">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">ChannelApi</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">updateCapacity</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">capacity</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ChannelApi.updateCapacity" title="Permalink to this definition">#</a></dt>
+<dd><p>updateCapacity</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+<section id="storage">
+<h2>Storage<a class="headerlink" href="#storage" title="Permalink to this heading">#</a></h2>
+<section id="sb-storage-class">
+<h3>SB Storage Class<a class="headerlink" href="#sb-storage-class" title="Permalink to this heading">#</a></h3>
+<dl class="js class">
+<dt class="sig sig-object js" id="StorageApi">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">StorageApi</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">server</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channelServer</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#StorageApi" title="Permalink to this definition">#</a></dt>
+<dd><dl class="js function">
+<dt class="sig sig-object js" id="StorageApi.fetchData">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">StorageApi</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">fetchData</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">h</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#StorageApi.fetchData" title="Permalink to this definition">#</a></dt>
+<dd><p>StorageApi().fetchData()</p>
+<p>This assumes you have a complete SBObjectHandle. Note that
+if you only have the ‘id’ and ‘verification fields, you
+can reconstruct / request the rest. The current interface
+will return both nonce, salt, and encrypted data.</p>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="StorageApi.retrieveData">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">StorageApi</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">retrieveData</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msgId</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">messages</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">controlMessages</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#StorageApi.retrieveData" title="Permalink to this definition">#</a></dt>
+<dd><p>StorageApi().retrieveData()
+retrieves an object from storage</p>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="StorageApi.retrieveDataFromMessage">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">StorageApi</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">retrieveDataFromMessage</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">controlMessages</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#StorageApi.retrieveDataFromMessage" title="Permalink to this definition">#</a></dt>
+<dd><p>StorageApi().retrieveDataFromMessage()</p>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="StorageApi.saveFile">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">StorageApi</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">saveFile</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sbFile</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#StorageApi.saveFile" title="Permalink to this definition">#</a></dt>
+<dd><p>StorageApi.saveFile()</p>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="StorageApi.storeData">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">StorageApi</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">storeData</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fileId</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iv</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">salt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">storageToken</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#StorageApi.storeData" title="Permalink to this definition">#</a></dt>
+<dd><p>StorageApi().storeData()</p>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="StorageApi.storeImage">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">StorageApi</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">storeImage</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keyData</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#StorageApi.storeImage" title="Permalink to this definition">#</a></dt>
+<dd><p>StorageApi().storeImage()</p>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="StorageApi.storeObject">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">StorageApi</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">storeObject</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">buf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roomId</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#StorageApi.storeObject" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="StorageApi.storeRequest">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">StorageApi</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">storeRequest</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileId</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#StorageApi.storeRequest" title="Permalink to this definition">#</a></dt>
+<dd><p>StorageApi().storeRequest</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="sb-file-class">
+<h3>SB File Class<a class="headerlink" href="#sb-file-class" title="Permalink to this heading">#</a></h3>
+<dl class="js class">
+<dt class="sig sig-object js" id="SBFile">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">SBFile</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#SBFile" title="Permalink to this definition">#</a></dt>
+<dd><dl class="js attribute">
+<dt class="sig sig-object js" id="SBFile.SBFile">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">SBFile</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">SBFile</span></span></span><a class="headerlink" href="#SBFile.SBFile" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+<section id="utilities-and-helpers">
+<h2>Utilities and Helpers<a class="headerlink" href="#utilities-and-helpers" title="Permalink to this heading">#</a></h2>
+<p>These are a set common operations, that typically are supported by the
+web api, but where we want to ensure specific behavior.</p>
+<section id="indexedkv-class">
+<h3>IndexedKV Class<a class="headerlink" href="#indexedkv-class" title="Permalink to this heading">#</a></h3>
+<dl class="js class">
+<dt class="sig sig-object js" id="IndexedKV">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">IndexedKV</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#IndexedKV" title="Permalink to this definition">#</a></dt>
+<dd><dl class="js attribute">
+<dt class="sig sig-object js" id="IndexedKV.IndexedKV">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">IndexedKV</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">IndexedKV</span></span></span><a class="headerlink" href="#IndexedKV.IndexedKV" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
 </section>
 <section id="crypto-class">
-<h2>Crypto Class<a class="headerlink" href="#crypto-class" title="Permalink to this heading">#</a></h2>
+<h3>Crypto Class<a class="headerlink" href="#crypto-class" title="Permalink to this heading">#</a></h3>
 <dl class="js class">
 <dt class="sig sig-object js" id="SBCrypto">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">SBCrypto</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#SBCrypto" title="Permalink to this definition">#</a></dt>
@@ -418,170 +739,6 @@ TODO: type it up.</p>
 </dd></dl>
 
 </section>
-<section id="sb-message-class">
-<h2>SB Message Class<a class="headerlink" href="#sb-message-class" title="Permalink to this heading">#</a></h2>
-<dl class="js class">
-<dt class="sig sig-object js" id="SBMessage">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">SBMessage</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SBMessage" title="Permalink to this definition">#</a></dt>
-<dd><dl class="js function">
-<dt class="sig sig-object js" id="SBMessage.send">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">SBMessage</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">send</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SBMessage.send" title="Permalink to this definition">#</a></dt>
-<dd><p>SBMessage.send()</p>
-<dl class="field-list simple">
-<dt class="field-odd">Arguments<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>message</strong> (<span><a class="reference internal" href="#SBMessage" title="SBMessage"><code class="xref js js-func docutils literal notranslate"><span class="pre">SBMessage()</span></code></a></span>) – the message object to send</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-</section>
-<section id="sb-file-class">
-<h2>SB File Class<a class="headerlink" href="#sb-file-class" title="Permalink to this heading">#</a></h2>
-<dl class="js class">
-<dt class="sig sig-object js" id="SBFile">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">SBFile</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#SBFile" title="Permalink to this definition">#</a></dt>
-<dd><dl class="js attribute">
-<dt class="sig sig-object js" id="SBFile.SBFile">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">SBFile</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">SBFile</span></span></span><a class="headerlink" href="#SBFile.SBFile" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-</section>
-<section id="channel-class">
-<h2>Channel Class<a class="headerlink" href="#channel-class" title="Permalink to this heading">#</a></h2>
-<dl class="js class">
-<dt class="sig sig-object js" id="Channel">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">Channel</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sbServer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key?</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channelId</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Channel" title="Permalink to this definition">#</a></dt>
-<dd><p>Join a channel, returns channel object.</p>
-<p>Currently, you must have an identity when connecting, because every single
-message is signed by sender. TODO is to look at how to provide a ‘listening’
-mode on channels.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Arguments<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>sbServer</strong> (<span><a class="reference internal" href="#Snackabra" title="Snackabra"><code class="xref js js-func docutils literal notranslate"><span class="pre">Snackabra()</span></code></a></span>) – server to join</p></li>
-<li><p><strong>key?</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">JsonWebKey()</span></code></span>) – key to use to join (optional)</p></li>
-<li><p><strong>channelId</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">string()</span></code></span>) – (the <a class="reference internal" href="glossary.html#term-channel-name"><span class="xref std std-term">Channel Name</span></a>) to find on that server (optional)</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="js attribute">
-<dt class="sig sig-object js" id="Channel._id">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">Channel</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">_id</span></span></span><a class="headerlink" href="#Channel._id" title="Permalink to this definition">#</a></dt>
-<dd><p><strong>type:</strong> JsonWebKey</p>
-</dd></dl>
-
-<dl class="js attribute">
-<dt class="sig sig-object js" id="Channel.exportable_privateKey">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">Channel</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">exportable_privateKey</span></span></span><a class="headerlink" href="#Channel.exportable_privateKey" title="Permalink to this definition">#</a></dt>
-<dd><p><strong>type:</strong> JsonWebKey</p>
-</dd></dl>
-
-<dl class="js attribute">
-<dt class="sig sig-object js" id="Channel.exportable_pubKey">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">Channel</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">exportable_pubKey</span></span></span><a class="headerlink" href="#Channel.exportable_pubKey" title="Permalink to this definition">#</a></dt>
-<dd><p><strong>type:</strong> JsonWebKey</p>
-</dd></dl>
-
-<dl class="js attribute">
-<dt class="sig sig-object js" id="Channel.keyPair">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">Channel</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">keyPair</span></span></span><a class="headerlink" href="#Channel.keyPair" title="Permalink to this definition">#</a></dt>
-<dd><p><strong>type:</strong> CryptoKeyPair</p>
-</dd></dl>
-
-<dl class="js attribute">
-<dt class="sig sig-object js" id="Channel.ownerChannelId">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">Channel</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">ownerChannelId</span></span></span><a class="headerlink" href="#Channel.ownerChannelId" title="Permalink to this definition">#</a></dt>
-<dd><p><strong>type:</strong> string</p>
-</dd></dl>
-
-<dl class="js attribute">
-<dt class="sig sig-object js" id="Channel.privateKey">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">Channel</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">privateKey</span></span></span><a class="headerlink" href="#Channel.privateKey" title="Permalink to this definition">#</a></dt>
-<dd><p><strong>type:</strong> CryptoKey</p>
-</dd></dl>
-
-<dl class="js attribute">
-<dt class="sig sig-object js" id="Channel.readyFlag">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">Channel</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">readyFlag</span></span></span><a class="headerlink" href="#Channel.readyFlag" title="Permalink to this definition">#</a></dt>
-<dd><p><strong>type:</strong> boolean</p>
-</dd></dl>
-
-</dd></dl>
-
-</section>
-<section id="sb-socket-class">
-<h2>SB Socket Class<a class="headerlink" href="#sb-socket-class" title="Permalink to this heading">#</a></h2>
-<dl class="js class">
-<dt class="sig sig-object js" id="ChannelSocket">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">ChannelSocket</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ChannelSocket" title="Permalink to this definition">#</a></dt>
-<dd><p>ChannelSocket</p>
-<blockquote>
-<div><p>Class managing connections</p>
-</div></blockquote>
-<dl class="js attribute">
-<dt class="sig sig-object js" id="ChannelSocket.ChannelSocket">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">ChannelSocket</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">ChannelSocket</span></span></span><a class="headerlink" href="#ChannelSocket.ChannelSocket" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="js attribute">
-<dt class="sig sig-object js" id="ChannelSocket.keys">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">ChannelSocket</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">keys</span></span></span><a class="headerlink" href="#ChannelSocket.keys" title="Permalink to this definition">#</a></dt>
-<dd><p>ChannelSocket.keys</p>
-<p>Will throw an exception if keys are unknown or not yet loaded</p>
-</dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="ChannelSocket.send">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">ChannelSocket</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">send</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ChannelSocket.send" title="Permalink to this definition">#</a></dt>
-<dd><p>ChannelSocket.send()</p>
-<p>Returns a promise that resolves to “success” when sent,
-or an error message if it fails.</p>
-</dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="ChannelSocket.sendSbObject">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">ChannelSocket</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">sendSbObject</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ChannelSocket.sendSbObject" title="Permalink to this definition">#</a></dt>
-<dd><p>ChannelSocket.sendSbObject()</p>
-<p>Send SB object (file) on channel socket</p>
-</dd></dl>
-
-</dd></dl>
-
-</section>
-<section id="sb-storage-class">
-<h2>SB Storage Class<a class="headerlink" href="#sb-storage-class" title="Permalink to this heading">#</a></h2>
-<dl class="js class">
-<dt class="sig sig-object js" id="StorageApi">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">StorageApi</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">server</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channelServer</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#StorageApi" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-</section>
-<section id="channel-api-class">
-<h2>Channel API Class<a class="headerlink" href="#channel-api-class" title="Permalink to this heading">#</a></h2>
-<dl class="js class">
-<dt class="sig sig-object js" id="ChannelApi">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">ChannelApi</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ChannelApi" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-</section>
-<section id="indexedkv-class">
-<h2>IndexedKV Class<a class="headerlink" href="#indexedkv-class" title="Permalink to this heading">#</a></h2>
-<dl class="js class">
-<dt class="sig sig-object js" id="IndexedKV">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">IndexedKV</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#IndexedKV" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-</section>
-<section id="utilities">
-<h2>Utilities<a class="headerlink" href="#utilities" title="Permalink to this heading">#</a></h2>
-<p>These are a set common operations, that typically are supported by the
-web api, but where we want to ensure specific behavior.</p>
 <section id="format-related">
 <h3>Format Related<a class="headerlink" href="#format-related" title="Permalink to this heading">#</a></h3>
 <dl class="js function">
@@ -885,18 +1042,23 @@ in the code; one approach is the line number in the file (at some point).</p>
             <ul>
 <li><a class="reference internal" href="#">Javascript Library</a><ul>
 <li><a class="reference internal" href="#installation-development">Installation / Development</a></li>
-<li><a class="reference internal" href="#main-384-identity-class">Main 384 Identity Class</a></li>
-<li><a class="reference internal" href="#snackabra-class">Snackabra Class</a></li>
-<li><a class="reference internal" href="#messagebus-class">Messagebus Class</a></li>
-<li><a class="reference internal" href="#crypto-class">Crypto Class</a></li>
+<li><a class="reference internal" href="#sb384">SB384</a></li>
+<li><a class="reference internal" href="#snackabra-server-class">Snackabra (Server) Class</a></li>
+<li><a class="reference internal" href="#channels">Channels</a><ul>
 <li><a class="reference internal" href="#sb-message-class">SB Message Class</a></li>
-<li><a class="reference internal" href="#sb-file-class">SB File Class</a></li>
 <li><a class="reference internal" href="#channel-class">Channel Class</a></li>
-<li><a class="reference internal" href="#sb-socket-class">SB Socket Class</a></li>
-<li><a class="reference internal" href="#sb-storage-class">SB Storage Class</a></li>
+<li><a class="reference internal" href="#channel-socket-class">Channel Socket Class</a></li>
 <li><a class="reference internal" href="#channel-api-class">Channel API Class</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#storage">Storage</a><ul>
+<li><a class="reference internal" href="#sb-storage-class">SB Storage Class</a></li>
+<li><a class="reference internal" href="#sb-file-class">SB File Class</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#utilities-and-helpers">Utilities and Helpers</a><ul>
 <li><a class="reference internal" href="#indexedkv-class">IndexedKV Class</a></li>
-<li><a class="reference internal" href="#utilities">Utilities</a><ul>
+<li><a class="reference internal" href="#crypto-class">Crypto Class</a></li>
 <li><a class="reference internal" href="#format-related">Format Related</a></li>
 <li><a class="reference internal" href="#crypto-helpers">Crypto Helpers</a></li>
 <li><a class="reference internal" href="#sb-wire-format-helpers">SB “Wire” Format Helpers</a></li>

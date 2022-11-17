@@ -37,83 +37,106 @@ at this prior to release of 0.5.0 (link above), then the latest
 https://github.com/384co/snackabra-docs/blob/main/snackabra-jslib/snackabra.js
 
 
-Main 384 Identity Class
------------------------
+SB384
+-----
+
+Most classes in SB are rooted in SB384. It encapsulates the core of an 
+"identifier" in SB, namely a (384-bit) global :term:`Channel Name`, derived
+from the :term:`Owner Key` of that object - typically either a :term:`channel`
+or a :term:`object`. Most of the properties (see getters below) are various
+perspectives and formats on this identity.
+
 
 .. js:autoclass:: SB384
    :members:
 
 
+Snackabra (Server) Class
+------------------------
 
+.. _Snackabra:
 
-Snackabra Class
----------------
+The SB class is the orchestrator, in particular it tracks one or more channels
+connecting to one or more SB servers.
 
 .. js:autoclass:: Snackabra
-
-
-Messagebus Class
-----------------
-
-.. js:autoclass:: MessageBus
    :members:
 
-Crypto Class
-------------
 
-.. js:autoclass:: SBCrypto
-   :members:
+Channels
+--------
 
+Channels (aka "Rooms") are the core communication primitive in SB.
 
 SB Message Class
-----------------
+================
+
+.. _SBMessage:
 
 .. js:autoclass:: SBMessage
    :members:
 
+Channel Class
+=============
+
+.. js:autoclass:: Channel
+   :members:
+
+Channel Socket Class
+====================
+
+Channel "sockets" are the synchronous communication interface to channels.
+
+.. js:autoclass:: ChannelSocket
+   :members:
+
+Channel API Class
+=================
+
+The channel "API" class is the asynchronous interface to channels.
+
+.. js:autoclass:: ChannelApi
+   :members:
+
+
+
+Storage
+-------
+
+SB Storage Class
+================
+
+.. js:autoclass:: StorageApi
+   :members:
+
+
 SB File Class
--------------
+=============
 
 .. js:autoclass:: SBFile
    :members:
 
 
-Channel Class
--------------
-
-.. js:autoclass:: Channel
-   :members:
-
-SB Socket Class
----------------
-
-.. js:autoclass:: ChannelSocket
-   :members:
-
-SB Storage Class
-----------------
-
-.. js:autoclass:: StorageApi
-
-Channel API Class
------------------
-
-.. js:autoclass:: ChannelApi
 
 
-IndexedKV Class
----------------
-
-.. js:autoclass:: IndexedKV
-
-
-
-
-Utilities
----------
+Utilities and Helpers
+---------------------
 
 These are a set common operations, that typically are supported by the
 web api, but where we want to ensure specific behavior.
+
+
+IndexedKV Class
+===============
+
+.. js:autoclass:: IndexedKV
+   :members:
+
+Crypto Class
+============
+
+.. js:autoclass:: SBCrypto
+   :members:
 
 
 Format Related

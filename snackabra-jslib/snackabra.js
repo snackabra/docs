@@ -1103,10 +1103,10 @@ function Ready(target, propertyKey, descriptor) {
 }
 //# endregion - local decorators
 /**
- * SB384 - basic (core) capability object in SB
  * @class
  * @constructor
  * @public
+ *
  */
 class SB384 {
     ready;
@@ -1118,9 +1118,27 @@ class SB384 {
     #ownerChannelId = null;
     #keyPair = null;
     /**
-     * new SB384()
+     * SB384
+     *
+     * Basic (core) capability object in SB.
+     *
+     * Note that all the getters below will throw an exception if the
+     * corresponding information is not ready.
+     *
+     * Like most SB classes, SB384 follows the "ready template" design
+     * principle: the object is immediately available upon creation,
+     * but isn't "ready" until it says it's ready. See `Channel Class`_
+     * example below.
+     *
+     * ::
+     *
+     *     let
+     *
+     *
      * @param key a jwk with which to create identity; if not provided,
-     * it will 'mint' (generate) them randomly
+     * it will 'mint' (generate) them randomly, in other words it will
+     * default to creating a new identity ("384").
+     *
      */
     constructor(key) {
         // console.log("setting SB384.ready")
@@ -1197,13 +1215,13 @@ class SB384 {
             resolve(this.#generateRoomHash(channelBytes));
         });
     }
-    get readyFlag() { return this.#SB384ReadyFlag; }
-    get exportable_pubKey() { return this.#exportable_pubKey; }
-    get exportable_privateKey() { return this.#exportable_privateKey; }
-    get privateKey() { return this.#privateKey; }
-    get keyPair() { return this.#keyPair; }
-    get _id() { return JSON.stringify(this.exportable_pubKey); }
-    get ownerChannelId() { return this.#ownerChannelId; }
+    /** @type {boolean}       */ get readyFlag() { return this.#SB384ReadyFlag; }
+    /** @type {JsonWebKey}    */ get exportable_pubKey() { return this.#exportable_pubKey; }
+    /** @type {JsonWebKey}    */ get exportable_privateKey() { return this.#exportable_privateKey; }
+    /** @type {CryptoKey}     */ get privateKey() { return this.#privateKey; }
+    /** @type {CryptoKeyPair} */ get keyPair() { return this.#keyPair; }
+    /** @type {JsonWebKey}    */ get _id() { return JSON.stringify(this.exportable_pubKey); }
+    /** @type {string}        */ get ownerChannelId() { return this.#ownerChannelId; }
 } /* class Identity */
 __decorate([
     Memoize
@@ -1346,11 +1364,7 @@ export class SBFile extends SBMessage {
     }
 } /* class SBFile */
 /**
- * Channel
- *
- * @class
- * @constructor
- * @public
+ * @extends SB384
  */
 class Channel extends SB384 {
     ready;
@@ -1365,18 +1379,17 @@ class Channel extends SB384 {
     userName = '';
     #channelId;
     #api;
-    /*
-     * Channel()
+    /**
      * Join a channel, returns channel object.
      *
      * Currently, you must have an identity when connecting, because every single
      * message is signed by sender. TODO is to look at how to provide a 'listening'
      * mode on channels.
      *
-     * @param {Snackabra} which server to join
-     * @param {string} channelId (the :term:`Channel Name`) to find on that server
-     * @param {Identity} the identity which you want to present (defaults to server default)
-     */
+     * @param {Snackabra} sbServer server to join
+     * @param {JsonWebKey} key? key to use to join (optional)
+     * @param {string} channelId (the :term:`Channel Name`) to find on that server (optional)
+    */
     constructor(sbServer, key, channelId) {
         super(key);
         this.#sbServer = sbServer;
@@ -2729,6 +2742,11 @@ export class IndexedKV {
 }
 const _localStorage = new IndexedKV();
 //#endregion IndexedKV
+/**
+ * @class
+ * @constructor
+ * @public
+ */
 class Snackabra {
     #storage;
     #channel;

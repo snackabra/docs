@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Python Library" href="pylib.html" /><link rel="prev" title="LICENSE" href="license.html" />
 
     <meta name="generator" content="sphinx-5.1.1, furo 2022.09.29"/>
-        <title>Javascript Library - snackabra 0.5.0 documentation</title>
+        <title>Javascript Library - snackabra 0.5.0 alpha documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -125,7 +125,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">snackabra 0.5.0 documentation</div></a>
+      <a href="index.html"><div class="brand">snackabra 0.5.0 alpha documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -148,7 +148,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
   
-  <span class="sidebar-brand-text">snackabra 0.5.0 documentation</span>
+  <span class="sidebar-brand-text">snackabra 0.5.0 alpha documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
@@ -209,240 +209,99 @@
         <article role="main">
           <section id="javascript-library">
 <h1>Javascript Library<a class="headerlink" href="#javascript-library" title="Permalink to this heading">#</a></h1>
+<p><cite>The core of SB is implemented in snackabra.ts, targeting ES2022.
+This section documents the JS (translated) version. Please note:
+any current published version is Alpha of upcoming 0.5.0 and should
+not be used for sensitive or production use (or if you do use it as
+such: caveat emptor). We will signal production-ready use by versioning
+it as 1.0.x (published to npmjs).</cite></p>
+<p>All core capababilities of the SB design is intended to be encapsulated
+in this library. Design objectives include:</p>
+<ul class="simple">
+<li><p>No external dependencies (no other libraries)</p></li>
+<li><p>No dependencies on the DOM object</p></li>
+<li><p>Pure asynchronous (eg no ‘await’)</p></li>
+<li><p>Clean es2022 code</p></li>
+<li><p>Zero errors/warnings on tsc ‘strict’ setting</p></li>
+<li><p>Minimum “forced typecasting”</p></li>
+<li><p>DRY extendable / abstract OOP implementation</p></li>
+</ul>
+<section id="installation-development">
+<h2>Installation / Development<a class="headerlink" href="#installation-development" title="Permalink to this heading">#</a></h2>
 <p>Install with:</p>
 <p><code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">i</span> <span class="pre">-g</span> <span class="pre">snackabra</span></code></p>
 <p>Git repository: <a class="reference external" href="https://github.com/snackabra/snackabra-jslib.git">https://github.com/snackabra/snackabra-jslib.git</a></p>
 <p>Note: in SB version 0.5.0, most core SB client and server
 logic is being refactored into this library. If you’re looking
 at this prior to release of 0.5.0 (link above), then the latest
-(in progress) refactor underlying this documentation is here:
-<a class="reference external" href="https://github.com/psm384/snackabra-0.5.0-docs/blob/main/snackabra-jslib/main.js">https://github.com/psm384/snackabra-0.5.0-docs/blob/main/snackabra-jslib/main.js</a></p>
-<section id="utilities">
-<h2>Utilities<a class="headerlink" href="#utilities" title="Permalink to this heading">#</a></h2>
-<dl class="js function">
-<dt class="sig sig-object js" id="arrayBufferToBase64">
-<span class="sig-name descname"><span class="n"><span class="pre">arrayBufferToBase64</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ArrayBuffer</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#arrayBufferToBase64" title="Permalink to this definition">#</a></dt>
-<dd><p>Standardized ‘btoa()’-like function, e.g., takes a binary string
-(‘b’) and returns a Base64 encoded version (‘a’ used to be short
-for ‘ascii’).</p>
-<dl class="field-list simple">
-<dt class="field-odd">Arguments<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>ArrayBuffer</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">bufferSource()</span></code></span>) – buffer</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>string</strong> – base64 string</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="base64ToArrayBuffer">
-<span class="sig-name descname"><span class="n"><span class="pre">base64ToArrayBuffer</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base64</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#base64ToArrayBuffer" title="Permalink to this definition">#</a></dt>
-<dd><p>Standardized ‘atob()’ function, e.g. takes the a Base64 encoded
-input and decodes it. Note: always returns Uint8Array.
-Accepts both regular Base64 and the URL-friendly variant,
-where <cite>+</cite> =&gt; <cite>-</cite>, <cite>/</cite> =&gt; <cite>_</cite>, and the padding character is omitted.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Arguments<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>base64</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">str()</span></code></span>) – string in either regular or URL-friendly representation.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>Uint8Array</strong> – returns decoded binary result</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="getRandomValues">
-<span class="sig-name descname"><span class="n"><span class="pre">getRandomValues</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">buffer</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#getRandomValues" title="Permalink to this definition">#</a></dt>
-<dd><p>Fills buffer with random data</p>
-</dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="str2ab">
-<span class="sig-name descname"><span class="n"><span class="pre">str2ab</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#str2ab" title="Permalink to this definition">#</a></dt>
-<dd><p>Standardized ‘str2ab()’ function, string to array buffer.
-This assumes on byte per character.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Arguments<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>string</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">string()</span></code></span>) – </p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>Uint8Array</strong> – buffer</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="ab2str">
-<span class="sig-name descname"><span class="n"><span class="pre">ab2str</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">buffer</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ab2str" title="Permalink to this definition">#</a></dt>
-<dd><p>Standardized ‘ab2str()’ function, array buffer to string.
-This assumes one byte per character.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Arguments<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>buffer</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">Uint8Array()</span></code></span>) – </p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>string</strong> – string</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="importPublicKey">
-<span class="sig-name descname"><span class="n"><span class="pre">importPublicKey</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">RSA</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#importPublicKey" title="Permalink to this definition">#</a></dt>
-<dd><p>Import a PEM encoded RSA public key, to use for RSA-OAEP
-encryption.  Takes a string containing the PEM encoded key, and
-returns a Promise that will resolve to a CryptoKey representing
-the public key.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Arguments<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>RSA</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">pem()</span></code></span>) – public key, string, PEM format</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>cryptoKey</strong> – RSA-OAEP key</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="simpleRand256">
-<span class="sig-name descname"><span class="n"><span class="pre">simpleRand256</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simpleRand256" title="Permalink to this definition">#</a></dt>
-<dd><p>Returns random number</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>int</strong> – integer 0..255</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="simpleRandomString">
-<span class="sig-name descname"><span class="n"><span class="pre">simpleRandomString</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">number</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simpleRandomString" title="Permalink to this definition">#</a></dt>
-<dd><p>Returns a random string in requested encoding</p>
-<dl class="field-list simple">
-<dt class="field-odd">Arguments<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>number</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">n()</span></code></span>) – of characters</p></li>
-<li><p><strong>encoding,</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">code()</span></code></span>) – supported types: ‘base32mi’</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>string</strong> – random string base32mi: <code class="docutils literal notranslate"><span class="pre">0123456789abcdefyhEjkLmNHpFrRTUW</span></code></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="cleanBase32mi">
-<span class="sig-name descname"><span class="n"><span class="pre">cleanBase32mi</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cleanBase32mi" title="Permalink to this definition">#</a></dt>
-<dd><p>Disambiguates strings that are known to be ‘base32mi’ type</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;base32mi&#39;</span><span class="p">:</span> <span class="s1">&#39;0123456789abcdefyhEjkLmNHpFrRTUW&#39;</span>
+(in progress) version underlying this documentation is here:</p>
+<p><a class="reference external" href="https://github.com/384co/snackabra-docs/blob/main/snackabra-jslib/snackabra.js">https://github.com/384co/snackabra-docs/blob/main/snackabra-jslib/snackabra.js</a></p>
+</section>
+<section id="main-384-identity-class">
+<h2>Main 384 Identity Class<a class="headerlink" href="#main-384-identity-class" title="Permalink to this heading">#</a></h2>
+<dl class="js class">
+<dt class="sig sig-object js" id="SB384">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">SB384</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SB384" title="Permalink to this definition">#</a></dt>
+<dd><p>SB384</p>
+<p>Basic (core) capability object in SB.</p>
+<p>Note that all the getters below will throw an exception if the
+corresponding information is not ready.</p>
+<p>Like most SB classes, SB384 follows the “ready template” design
+principle: the object is immediately available upon creation,
+but isn’t “ready” until it says it’s ready. See <a class="reference internal" href="#channel-class">Channel Class</a>
+example below.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">let</span>
 </pre></div>
 </div>
-<p>This is the base32mi disambiguation table</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">OoQD</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;0&#39;</span>
-<span class="p">[</span><span class="n">lIiJ</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;1&#39;</span>
-<span class="p">[</span><span class="n">Zz</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;2&#39;</span>
-<span class="p">[</span><span class="n">A</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;4&#39;</span>
-<span class="p">[</span><span class="n">Ss</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;5&#39;</span>
-<span class="p">[</span><span class="n">G</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;6&#39;</span>
-<span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;7&#39;</span>
-<span class="p">[</span><span class="n">B</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;8&#39;</span>
-<span class="p">[</span><span class="n">gq</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;9&#39;</span>
-<span class="p">[</span><span class="n">C</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;c&#39;</span>
-<span class="p">[</span><span class="n">Y</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;y&#39;</span>
-<span class="p">[</span><span class="n">KxX</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;k&#39;</span>
-<span class="p">[</span><span class="n">M</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;m&#39;</span>
-<span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;N&#39;</span>
-<span class="p">[</span><span class="n">P</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;p&#39;</span>
-<span class="p">[</span><span class="n">uvV</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;U&#39;</span>
-<span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;W&#39;</span>
-</pre></div>
-</div>
-<p>Another way to think of it is that this, becomes this (‘.’ means no change):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0123456789</span><span class="n">abcdefghijklmnopqrstuvxyzABCDEFGHIJKLMNOPQRSTUVXYZ</span>
-<span class="o">...............</span><span class="mf">.9.1</span><span class="o">.</span><span class="mf">.1</span><span class="o">.</span><span class="n">N0</span><span class="mf">.9.57</span><span class="n">UUk</span><span class="mf">.248</span><span class="n">c0EF6</span><span class="mf">.11</span><span class="n">kLm</span><span class="mf">.0</span><span class="n">p0</span><span class="mf">.5</span><span class="o">..</span><span class="n">Uky2</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="packageEncryptDict">
-<span class="sig-name descname"><span class="n"><span class="pre">packageEncryptDict</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dictionary</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">public</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#packageEncryptDict" title="Permalink to this definition">#</a></dt>
-<dd><p>Takes an arbitrary dict object, a public key in PEM
-format, and a callback function: generates a random AES key,
-wraps that in (RSA) key, and when all done will call the
-callback function with the results.</p>
-<p>This function is for direct use in a web page, for example
-capturing a ‘form’ input set of data about a user, and
-sending towards a backend in such a way that the contents
-can only be decrypted and read off-line (air gapped).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Arguments<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>dictionary</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">dict()</span></code></span>) – (payload)</p></li>
-<li><p><strong>public</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">publicKeyPEM()</span></code></span>) – key (PEM format)</p></li>
-<li><p><strong>callback</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">callback()</span></code></span>) – function, called with results</p></li>
+<li><p><strong>key</strong> – a jwk with which to create identity; if not provided, it will ‘mint’ (generate) them randomly, in other words it will default to creating a new identity (“384”).</p></li>
 </ul>
 </dd>
 </dl>
+<dl class="js attribute">
+<dt class="sig sig-object js" id="SB384._id">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">SB384</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">_id</span></span></span><a class="headerlink" href="#SB384._id" title="Permalink to this definition">#</a></dt>
+<dd><p><strong>type:</strong> JsonWebKey</p>
 </dd></dl>
 
-<dl class="js function">
-<dt class="sig sig-object js" id="partition">
-<span class="sig-name descname"><span class="n"><span class="pre">partition</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partition" title="Permalink to this definition">#</a></dt>
-<dd><p>Partition</p>
+<dl class="js attribute">
+<dt class="sig sig-object js" id="SB384.exportable_privateKey">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">SB384</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">exportable_privateKey</span></span></span><a class="headerlink" href="#SB384.exportable_privateKey" title="Permalink to this definition">#</a></dt>
+<dd><p><strong>type:</strong> JsonWebKey</p>
 </dd></dl>
 
-<dl class="js function">
-<dt class="sig sig-object js" id="extractPayloadV1">
-<span class="sig-name descname"><span class="n"><span class="pre">extractPayloadV1</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">payload</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#extractPayloadV1" title="Permalink to this definition">#</a></dt>
-<dd><p>Deprecated (older version of payloads, for older channels)</p>
+<dl class="js attribute">
+<dt class="sig sig-object js" id="SB384.exportable_pubKey">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">SB384</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">exportable_pubKey</span></span></span><a class="headerlink" href="#SB384.exportable_pubKey" title="Permalink to this definition">#</a></dt>
+<dd><p><strong>type:</strong> JsonWebKey</p>
 </dd></dl>
 
-<dl class="js function">
-<dt class="sig sig-object js" id="assemblePayload">
-<span class="sig-name descname"><span class="n"><span class="pre">assemblePayload</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#assemblePayload" title="Permalink to this definition">#</a></dt>
-<dd><p>Assemble payload</p>
+<dl class="js attribute">
+<dt class="sig sig-object js" id="SB384.keyPair">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">SB384</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">keyPair</span></span></span><a class="headerlink" href="#SB384.keyPair" title="Permalink to this definition">#</a></dt>
+<dd><p><strong>type:</strong> CryptoKeyPair</p>
 </dd></dl>
 
-<dl class="js function">
-<dt class="sig sig-object js" id="extractPayload">
-<span class="sig-name descname"><span class="n"><span class="pre">extractPayload</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">payload</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#extractPayload" title="Permalink to this definition">#</a></dt>
-<dd><p>Extract payload - this decodes from our binary (wire) format
-to a JS object. This provides a binary encoding of any JSON,
-and it allows some elements of the JSON to be raw (binary).</p>
+<dl class="js attribute">
+<dt class="sig sig-object js" id="SB384.ownerChannelId">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">SB384</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">ownerChannelId</span></span></span><a class="headerlink" href="#SB384.ownerChannelId" title="Permalink to this definition">#</a></dt>
+<dd><p><strong>type:</strong> string</p>
 </dd></dl>
 
-<dl class="js function">
-<dt class="sig sig-object js" id="encodeB64Url">
-<span class="sig-name descname"><span class="n"><span class="pre">encodeB64Url</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#encodeB64Url" title="Permalink to this definition">#</a></dt>
-<dd><p>Encode into b64 URL</p>
+<dl class="js attribute">
+<dt class="sig sig-object js" id="SB384.privateKey">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">SB384</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">privateKey</span></span></span><a class="headerlink" href="#SB384.privateKey" title="Permalink to this definition">#</a></dt>
+<dd><p><strong>type:</strong> CryptoKey</p>
 </dd></dl>
 
-<dl class="js function">
-<dt class="sig sig-object js" id="decodeB64Url">
-<span class="sig-name descname"><span class="n"><span class="pre">decodeB64Url</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#decodeB64Url" title="Permalink to this definition">#</a></dt>
-<dd><p>Decode b64 URL</p>
+<dl class="js attribute">
+<dt class="sig sig-object js" id="SB384.readyFlag">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">SB384</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">readyFlag</span></span></span><a class="headerlink" href="#SB384.readyFlag" title="Permalink to this definition">#</a></dt>
+<dd><p><strong>type:</strong> boolean</p>
 </dd></dl>
 
-<dl class="js function">
-<dt class="sig sig-object js" id="jsonParseWrapper">
-<span class="sig-name descname"><span class="n"><span class="pre">jsonParseWrapper</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loc</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#jsonParseWrapper" title="Permalink to this definition">#</a></dt>
-<dd><p>There are many problems with JSON parsing, adding a wrapper to capture more info.
-The ‘loc’ parameter should be a (unique) string that allows you to find the usage
-in the code; one approach is the line number in the file (at some point).</p>
 </dd></dl>
 
 </section>
@@ -559,22 +418,6 @@ TODO: type it up.</p>
 </dd></dl>
 
 </section>
-<section id="main-384-identity-class">
-<h2>Main 384 Identity Class<a class="headerlink" href="#main-384-identity-class" title="Permalink to this heading">#</a></h2>
-<dl class="js class">
-<dt class="sig sig-object js" id="SB384">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">SB384</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SB384" title="Permalink to this definition">#</a></dt>
-<dd><p>new SB384()</p>
-<dl class="field-list simple">
-<dt class="field-odd">Arguments<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>key</strong> – a jwk with which to create identity; if not provided, it will ‘mint’ (generate) them randomly</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-</section>
 <section id="sb-message-class">
 <h2>SB Message Class<a class="headerlink" href="#sb-message-class" title="Permalink to this heading">#</a></h2>
 <dl class="js class">
@@ -613,8 +456,63 @@ TODO: type it up.</p>
 <h2>Channel Class<a class="headerlink" href="#channel-class" title="Permalink to this heading">#</a></h2>
 <dl class="js class">
 <dt class="sig sig-object js" id="Channel">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">Channel</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sbServer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channelId</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Channel" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">Channel</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sbServer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key?</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channelId</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Channel" title="Permalink to this definition">#</a></dt>
+<dd><p>Join a channel, returns channel object.</p>
+<p>Currently, you must have an identity when connecting, because every single
+message is signed by sender. TODO is to look at how to provide a ‘listening’
+mode on channels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Arguments<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sbServer</strong> (<span><a class="reference internal" href="#Snackabra" title="Snackabra"><code class="xref js js-func docutils literal notranslate"><span class="pre">Snackabra()</span></code></a></span>) – server to join</p></li>
+<li><p><strong>key?</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">JsonWebKey()</span></code></span>) – key to use to join (optional)</p></li>
+<li><p><strong>channelId</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">string()</span></code></span>) – (the <a class="reference internal" href="glossary.html#term-channel-name"><span class="xref std std-term">Channel Name</span></a>) to find on that server (optional)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="js attribute">
+<dt class="sig sig-object js" id="Channel._id">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">Channel</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">_id</span></span></span><a class="headerlink" href="#Channel._id" title="Permalink to this definition">#</a></dt>
+<dd><p><strong>type:</strong> JsonWebKey</p>
+</dd></dl>
+
+<dl class="js attribute">
+<dt class="sig sig-object js" id="Channel.exportable_privateKey">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">Channel</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">exportable_privateKey</span></span></span><a class="headerlink" href="#Channel.exportable_privateKey" title="Permalink to this definition">#</a></dt>
+<dd><p><strong>type:</strong> JsonWebKey</p>
+</dd></dl>
+
+<dl class="js attribute">
+<dt class="sig sig-object js" id="Channel.exportable_pubKey">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">Channel</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">exportable_pubKey</span></span></span><a class="headerlink" href="#Channel.exportable_pubKey" title="Permalink to this definition">#</a></dt>
+<dd><p><strong>type:</strong> JsonWebKey</p>
+</dd></dl>
+
+<dl class="js attribute">
+<dt class="sig sig-object js" id="Channel.keyPair">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">Channel</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">keyPair</span></span></span><a class="headerlink" href="#Channel.keyPair" title="Permalink to this definition">#</a></dt>
+<dd><p><strong>type:</strong> CryptoKeyPair</p>
+</dd></dl>
+
+<dl class="js attribute">
+<dt class="sig sig-object js" id="Channel.ownerChannelId">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">Channel</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">ownerChannelId</span></span></span><a class="headerlink" href="#Channel.ownerChannelId" title="Permalink to this definition">#</a></dt>
+<dd><p><strong>type:</strong> string</p>
+</dd></dl>
+
+<dl class="js attribute">
+<dt class="sig sig-object js" id="Channel.privateKey">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">Channel</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">privateKey</span></span></span><a class="headerlink" href="#Channel.privateKey" title="Permalink to this definition">#</a></dt>
+<dd><p><strong>type:</strong> CryptoKey</p>
+</dd></dl>
+
+<dl class="js attribute">
+<dt class="sig sig-object js" id="Channel.readyFlag">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">Channel</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">readyFlag</span></span></span><a class="headerlink" href="#Channel.readyFlag" title="Permalink to this definition">#</a></dt>
+<dd><p><strong>type:</strong> boolean</p>
+</dd></dl>
+
+</dd></dl>
 
 </section>
 <section id="sb-socket-class">
@@ -680,6 +578,252 @@ or an error message if it fails.</p>
 <dd></dd></dl>
 
 </section>
+<section id="utilities">
+<h2>Utilities<a class="headerlink" href="#utilities" title="Permalink to this heading">#</a></h2>
+<p>These are a set common operations, that typically are supported by the
+web api, but where we want to ensure specific behavior.</p>
+<section id="format-related">
+<h3>Format Related<a class="headerlink" href="#format-related" title="Permalink to this heading">#</a></h3>
+<dl class="js function">
+<dt class="sig sig-object js" id="arrayBufferToBase64">
+<span class="sig-name descname"><span class="n"><span class="pre">arrayBufferToBase64</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ArrayBuffer</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#arrayBufferToBase64" title="Permalink to this definition">#</a></dt>
+<dd><p>Standardized ‘btoa()’-like function, e.g., takes a binary string
+(‘b’) and returns a Base64 encoded version (‘a’ used to be short
+for ‘ascii’).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Arguments<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ArrayBuffer</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">bufferSource()</span></code></span>) – buffer</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>string</strong> – base64 string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="base64ToArrayBuffer">
+<span class="sig-name descname"><span class="n"><span class="pre">base64ToArrayBuffer</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base64</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#base64ToArrayBuffer" title="Permalink to this definition">#</a></dt>
+<dd><p>Standardized ‘atob()’ function, e.g. takes the a Base64 encoded
+input and decodes it. Note: always returns Uint8Array.
+Accepts both regular Base64 and the URL-friendly variant,
+where <cite>+</cite> =&gt; <cite>-</cite>, <cite>/</cite> =&gt; <cite>_</cite>, and the padding character is omitted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Arguments<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>base64</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">str()</span></code></span>) – string in either regular or URL-friendly representation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Uint8Array</strong> – returns decoded binary result</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="encodeB64Url">
+<span class="sig-name descname"><span class="n"><span class="pre">encodeB64Url</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#encodeB64Url" title="Permalink to this definition">#</a></dt>
+<dd><p>Encode into b64 URL</p>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="decodeB64Url">
+<span class="sig-name descname"><span class="n"><span class="pre">decodeB64Url</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#decodeB64Url" title="Permalink to this definition">#</a></dt>
+<dd><p>Decode b64 URL</p>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="str2ab">
+<span class="sig-name descname"><span class="n"><span class="pre">str2ab</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#str2ab" title="Permalink to this definition">#</a></dt>
+<dd><p>Standardized ‘str2ab()’ function, string to array buffer.
+This assumes on byte per character.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Arguments<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">string()</span></code></span>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Uint8Array</strong> – buffer</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="ab2str">
+<span class="sig-name descname"><span class="n"><span class="pre">ab2str</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">buffer</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ab2str" title="Permalink to this definition">#</a></dt>
+<dd><p>Standardized ‘ab2str()’ function, array buffer to string.
+This assumes one byte per character.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Arguments<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>buffer</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">Uint8Array()</span></code></span>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>string</strong> – string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="cleanBase32mi">
+<span class="sig-name descname"><span class="n"><span class="pre">cleanBase32mi</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cleanBase32mi" title="Permalink to this definition">#</a></dt>
+<dd><p>Disambiguates strings that are known to be ‘base32mi’ type</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;base32mi&#39;</span><span class="p">:</span> <span class="s1">&#39;0123456789abcdefyhEjkLmNHpFrRTUW&#39;</span>
+</pre></div>
+</div>
+<p>This is the base32mi disambiguation table</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">OoQD</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;0&#39;</span>
+<span class="p">[</span><span class="n">lIiJ</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;1&#39;</span>
+<span class="p">[</span><span class="n">Zz</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;2&#39;</span>
+<span class="p">[</span><span class="n">A</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;4&#39;</span>
+<span class="p">[</span><span class="n">Ss</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;5&#39;</span>
+<span class="p">[</span><span class="n">G</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;6&#39;</span>
+<span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;7&#39;</span>
+<span class="p">[</span><span class="n">B</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;8&#39;</span>
+<span class="p">[</span><span class="n">gq</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;9&#39;</span>
+<span class="p">[</span><span class="n">C</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;c&#39;</span>
+<span class="p">[</span><span class="n">Y</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;y&#39;</span>
+<span class="p">[</span><span class="n">KxX</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;k&#39;</span>
+<span class="p">[</span><span class="n">M</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;m&#39;</span>
+<span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;N&#39;</span>
+<span class="p">[</span><span class="n">P</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;p&#39;</span>
+<span class="p">[</span><span class="n">uvV</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;U&#39;</span>
+<span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;W&#39;</span>
+</pre></div>
+</div>
+<p>Another way to think of it is that this, becomes this (‘.’ means no change):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0123456789</span><span class="n">abcdefghijklmnopqrstuvxyzABCDEFGHIJKLMNOPQRSTUVXYZ</span>
+<span class="o">...............</span><span class="mf">.9.1</span><span class="o">.</span><span class="mf">.1</span><span class="o">.</span><span class="n">N0</span><span class="mf">.9.57</span><span class="n">UUk</span><span class="mf">.248</span><span class="n">c0EF6</span><span class="mf">.11</span><span class="n">kLm</span><span class="mf">.0</span><span class="n">p0</span><span class="mf">.5</span><span class="o">..</span><span class="n">Uky2</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<section id="crypto-helpers">
+<h3>Crypto Helpers<a class="headerlink" href="#crypto-helpers" title="Permalink to this heading">#</a></h3>
+<dl class="js function">
+<dt class="sig sig-object js" id="importPublicKey">
+<span class="sig-name descname"><span class="n"><span class="pre">importPublicKey</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">RSA</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#importPublicKey" title="Permalink to this definition">#</a></dt>
+<dd><p>Import a PEM encoded RSA public key, to use for RSA-OAEP
+encryption.  Takes a string containing the PEM encoded key, and
+returns a Promise that will resolve to a CryptoKey representing
+the public key.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Arguments<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>RSA</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">pem()</span></code></span>) – public key, string, PEM format</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>cryptoKey</strong> – RSA-OAEP key</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="simpleRand256">
+<span class="sig-name descname"><span class="n"><span class="pre">simpleRand256</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simpleRand256" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns random number</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>int</strong> – integer 0..255</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="simpleRandomString">
+<span class="sig-name descname"><span class="n"><span class="pre">simpleRandomString</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">number</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simpleRandomString" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns a random string in requested encoding</p>
+<dl class="field-list simple">
+<dt class="field-odd">Arguments<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>number</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">n()</span></code></span>) – of characters</p></li>
+<li><p><strong>encoding,</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">code()</span></code></span>) – supported types: ‘base32mi’</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>string</strong> – random string base32mi: <code class="docutils literal notranslate"><span class="pre">0123456789abcdefyhEjkLmNHpFrRTUW</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="getRandomValues">
+<span class="sig-name descname"><span class="n"><span class="pre">getRandomValues</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">buffer</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#getRandomValues" title="Permalink to this definition">#</a></dt>
+<dd><p>Fills buffer with random data</p>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="packageEncryptDict">
+<span class="sig-name descname"><span class="n"><span class="pre">packageEncryptDict</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dictionary</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">public</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#packageEncryptDict" title="Permalink to this definition">#</a></dt>
+<dd><p>Takes an arbitrary dict object, a public key in PEM
+format, and a callback function: generates a random AES key,
+wraps that in (RSA) key, and when all done will call the
+callback function with the results.</p>
+<p>This function is for direct use in a web page, for example
+capturing a ‘form’ input set of data about a user, and
+sending towards a backend in such a way that the contents
+can only be decrypted and read off-line (air gapped).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Arguments<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dictionary</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">dict()</span></code></span>) – (payload)</p></li>
+<li><p><strong>public</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">publicKeyPEM()</span></code></span>) – key (PEM format)</p></li>
+<li><p><strong>callback</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">callback()</span></code></span>) – function, called with results</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="sb-wire-format-helpers">
+<h3>SB “Wire” Format Helpers<a class="headerlink" href="#sb-wire-format-helpers" title="Permalink to this heading">#</a></h3>
+<dl class="js function">
+<dt class="sig sig-object js" id="assemblePayload">
+<span class="sig-name descname"><span class="n"><span class="pre">assemblePayload</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#assemblePayload" title="Permalink to this definition">#</a></dt>
+<dd><p>Assemble payload</p>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="extractPayload">
+<span class="sig-name descname"><span class="n"><span class="pre">extractPayload</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">payload</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#extractPayload" title="Permalink to this definition">#</a></dt>
+<dd><p>Extract payload - this decodes from our binary (wire) format
+to a JS object. This provides a binary encoding of any JSON,
+and it allows some elements of the JSON to be raw (binary).</p>
+</dd></dl>
+
+</section>
+<section id="sb-specific-helpers">
+<h3>SB-specific Helpers<a class="headerlink" href="#sb-specific-helpers" title="Permalink to this heading">#</a></h3>
+<dl class="js function">
+<dt class="sig sig-object js" id="jsonParseWrapper">
+<span class="sig-name descname"><span class="n"><span class="pre">jsonParseWrapper</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loc</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#jsonParseWrapper" title="Permalink to this definition">#</a></dt>
+<dd><p>There are many problems with JSON parsing, adding a wrapper to capture more info.
+The ‘loc’ parameter should be a (unique) string that allows you to find the usage
+in the code; one approach is the line number in the file (at some point).</p>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="partition">
+<span class="sig-name descname"><span class="n"><span class="pre">partition</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partition" title="Permalink to this definition">#</a></dt>
+<dd><p>Partition</p>
+</dd></dl>
+
+</section>
+<section id="testing-related">
+<h3>Testing Related<a class="headerlink" href="#testing-related" title="Permalink to this heading">#</a></h3>
+<dl class="js function">
+<dt class="sig sig-object js" id="compareBuffers">
+<span class="sig-name descname"><span class="n"><span class="pre">compareBuffers</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#compareBuffers" title="Permalink to this definition">#</a></dt>
+<dd><p>Compare buffers</p>
+</dd></dl>
+
+</section>
+</section>
 </section>
 
         </article>
@@ -740,11 +884,11 @@ or an error message if it fails.</p>
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Javascript Library</a><ul>
-<li><a class="reference internal" href="#utilities">Utilities</a></li>
+<li><a class="reference internal" href="#installation-development">Installation / Development</a></li>
+<li><a class="reference internal" href="#main-384-identity-class">Main 384 Identity Class</a></li>
 <li><a class="reference internal" href="#snackabra-class">Snackabra Class</a></li>
 <li><a class="reference internal" href="#messagebus-class">Messagebus Class</a></li>
 <li><a class="reference internal" href="#crypto-class">Crypto Class</a></li>
-<li><a class="reference internal" href="#main-384-identity-class">Main 384 Identity Class</a></li>
 <li><a class="reference internal" href="#sb-message-class">SB Message Class</a></li>
 <li><a class="reference internal" href="#sb-file-class">SB File Class</a></li>
 <li><a class="reference internal" href="#channel-class">Channel Class</a></li>
@@ -752,6 +896,14 @@ or an error message if it fails.</p>
 <li><a class="reference internal" href="#sb-storage-class">SB Storage Class</a></li>
 <li><a class="reference internal" href="#channel-api-class">Channel API Class</a></li>
 <li><a class="reference internal" href="#indexedkv-class">IndexedKV Class</a></li>
+<li><a class="reference internal" href="#utilities">Utilities</a><ul>
+<li><a class="reference internal" href="#format-related">Format Related</a></li>
+<li><a class="reference internal" href="#crypto-helpers">Crypto Helpers</a></li>
+<li><a class="reference internal" href="#sb-wire-format-helpers">SB “Wire” Format Helpers</a></li>
+<li><a class="reference internal" href="#sb-specific-helpers">SB-specific Helpers</a></li>
+<li><a class="reference internal" href="#testing-related">Testing Related</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

@@ -34,15 +34,25 @@ To setup working with the ``snackabra`` documentation per se:
     $ source venv/bin/activate
     $ pip install -r ./requirements.txt
 
+TODO: complete list of system requirements (eg including some not
+super common stuff like latexlive for confluence support).
 
 
 Development
 -----------
 
+Package requirements (node) include:
+
+.. code-block:: console
+
+    $ npm install -g typedoc
+    $ npm install -g jsdoc
+
 You work with files in 'source', after you've made any changes, run
 'make html' [#r03]_ and results will be in the 'build' directory:
 
 .. code-block:: console
+
     $ make html  # you sometimes need to run this twice
     $ open index.html  # should open nicely, note this is root dir
 
@@ -55,10 +65,30 @@ latexpdf' yourself [#r01]_, you'll need to install Latexmk [#r02]_,
 which can be a bit of a struggle depending on your system, including
 needing upwards 10 GB of disk space.
 
+For the jsdoc (documenting snackabra.js), you need to copy the
+javascript code you want documented to the ''snackabra-jslib''
+directory, ''make'' won't pull anything for you.
+
 *Note: Documenation strings for ``snackabra-pylib`` are pulled from
 the docstrings that come allong with ``pip install snackabara``,
 that will just happen magically. If you wish to contribute to
 the library, it's at https://github.com/snackabra/snackabra-pylib *
+
+
+Confluence
+----------
+
+You need to set environment variables:
+
+.. code-block:: console
+    export confluence_server_url='https://<YourCompany>.atlassian.net/wiki/'
+    export confluence_server_user='<YourEmail>'
+    # see below for API key
+    export confluence_server_pass=YourAPIKey
+    export confluence_space_key=snackabra
+
+You will need an API key from Atlassian, eg from here: https://id.atlassian.com/manage-profile/security/api-tokens
+
 
 
     

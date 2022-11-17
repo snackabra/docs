@@ -11,7 +11,7 @@
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
 
-# import os
+import os
 # import sys
 # sys.path.insert(0, os.path.abspath('../snackabra-pylib/src/snackabra'))
 
@@ -38,8 +38,30 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.autosummary',
     'sphinx.ext.napoleon', # google-style python autodoc
-    'sphinx_js'
+    'sphinx_js',
+
+    # these are for confluence setup ... not sure all are needed
+    'sphinx.ext.intersphinx',
+    'sphinx.ext.ifconfig',
+    'sphinx.ext.viewcode',
+    'sphinx.ext.githubpages',
+    'sphinxcontrib.confluencebuilder'
 ]
+
+# Atlassian Confluence extension configuration
+# it will only try to deploy if you have env set for it
+if (os.environ.get('confluence_server_pass', '')):
+    # guide from:
+    # https://towardsdatascience.com/publish-python-project-documentation-on-confluence-html-using-sphinx-fad3a98b8eeb
+    # extensions.append('sphinxcontrib.confluencebuilder')
+    confluence_publish = True
+    confluence_space_key = os.environ.get('confluence_space_key', 'YOU NEED TO CONF YOUR ENV')
+    # confluence_parent_page = os.environ.get('confluence_parent_page', 'YOU NEED TO CONF YOUR ENV')
+    confluence_server_url = os.environ.get('confluence_server_url', 'YOU NEED TO CONF YOUR ENV')
+    confluence_server_user = os.environ.get('confluence_server_user', 'YOU NEED TO CONF YOUR ENV')
+    confluence_server_pass = os.environ.get('confluence_server_pass', 'YOU NEED TO CONF YOUR ENV')
+    # confluence_ask_password = True
+    # confluence_page_hierarchy = True
 
 # Fontpath for blockdiag (truetype font)
 # ... TODO .. needed?
@@ -65,6 +87,11 @@ exclude_patterns = []
 js_source_path = '../snackabra-jslib'
 # optional configuration for jsdoc per se
 # jsdoc_config_path = '../jsdoc_conf.json'
+
+# testing working with typescript (typedoc)
+# (not able to get it to work, stuck on 'Unable to find any entry points'
+# js_language = 'typescript'
+# primary_domain = 'js'
 
 # -- Options for HTML output -------------------------------------------------
 

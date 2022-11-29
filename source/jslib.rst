@@ -15,6 +15,24 @@ at this prior to release of 0.5.0 (link above), then the latest
 https://github.com/psm384/snackabra-0.5.0-docs/blob/main/snackabra-jslib/main.js
 
 
+Sample usage:
+
+::
+   
+   const SB = new Snackabra(sb_config)
+   SB.create(
+     'password',
+     (new Identity())).then((channelId) => {
+       SB.connect(
+         channelId,
+         (m: ChannelMessage) => { console.log(`got message: ${m}`)}
+       ).then((c) => c.ready).then((c) => {
+         c.userName = "TestBot" // optional
+         (new SBMessage(c, "Hello Message!")).send().then((c) => { console.log(`sent! (${c})`) })
+      })
+    })
+  }
+
 
 
 

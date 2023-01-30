@@ -6,5 +6,8 @@ version of library (eg snackabra-jslib), you will need
 to copy (overwrite) the version you want in the 
 documentation into this directory.
 
-... together with any other javascript files you want
-jsdoc/sphinx to find.
+You can do ``make jslib`` in the top directory.
+
+Any other javascript files you want jsdoc/sphinx to find
+also need to be here.
+

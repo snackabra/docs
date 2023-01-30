@@ -54,6 +54,7 @@ You work with files in 'source', after you've made any changes, run
 .. code-block:: console
 
     $ make html  # you sometimes need to run this twice
+    $ make jslib # optional - this just copies over from ../snackabra-jslib
     $ open index.html  # should open nicely, note this is root dir
 
 Note that the makefile will copy the results from the 'build'

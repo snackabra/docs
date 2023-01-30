@@ -1,5 +1,5 @@
 # Snackabra Documentation Sphinx File
-# Copyright (c) Magnusson Institute
+# Copyright (c) 2019-2023 Magnusson Institute
 #
 # (full sphinx conf docs:
 #  https://www.sphinx-doc.org/en/master/usage/configuration.html)
@@ -19,11 +19,11 @@ import os
 # -- Project information -----------------------------------------------------
 
 project = 'snackabra'
-copyright = '2019-2022, Magnusson Institute'
+copyright = '2019-2023, Magnusson Institute'
 author = 'Magnusson Institute'
 
 # The full version, including alpha/beta/rc tags
-release = '0.5.0 alpha'
+release = '0.5.x beta'
 
 
 # -- General configuration ---------------------------------------------------

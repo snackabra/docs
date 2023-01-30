@@ -9,7 +9,7 @@ Background and Discussion
 Motivation
 ----------
 
-As we are writing this in March of 2022, you might think there are
+As we are first writing this in March of 2022, you might think there are
 enough options for messaging, chatting, photo sharing, social
 networking, file storage, video, forums, and so on and so forth. It's
 a multi-hundred billion dollar business today - arguably a trillion
@@ -26,7 +26,19 @@ that, were we fully informed and had access to such alternatives, we
 would prefer. In fact, arguably, the "system" is countering the
 evolution of any such alternatives.
 
-Historically, this would have been very (very) difficult to do much
+For simplicity, we will use the term "collaboration" to
+cover apps and services that we otherwise would label as "chat",
+"messaging", "file sharing", "file storage", and so forth. We do
+no necessarily include "social networking", but there is an 
+overlap: sharing photos with a group of family and friends, for
+example, is essentially collaboration.
+
+The net result of industry developments is that the options available
+for collaboration software are few, and if we apply our mondern
+understanding of terms such as "privacy", "security", and 
+"data sovereignty", then arguably there are zero good options.
+
+Historically, this would have been very difficult to do much
 about.  But there have been a few technical "equalizers" that have
 developed in the past several years that provides an opportunity to
 change things. Before we get to that, let us first try to be more
@@ -35,8 +47,8 @@ concrete. The following list introduces the requirements that we
 options available today, not a single one (zero) fullfil them.
 
 We will first introduce these points very briefly, and then go into
-some detail on each. We want a messaging and file sharing service to
-be:
+some detail on each. We want a messaging and file sharing
+(collaboration) service to be:
 
 * :ref:`Open Source <discussion_open_source>`
 
@@ -256,7 +268,24 @@ Interoperable
 -------------
 
 |
-being written...
+This means the design of the service is open to connecting to
+other instances of the service, following open standards or at 
+least well documented and open sourced documentation. 
+
+In the early days of the Internet, this was a given. Email uses 
+standards like SMTP for transmission, RFC 5322 for the basic 
+formatting of emails, MIME standards to add new data types, 
+and POP3 and IMAP to specify how applications can talk to 
+email services.
+
+With the advent of Internet as a Very Big Business, these traditions 
+and principles went away: the "walled garden" rules supreme.
+
+Snackabra defines two primitives: a :term:`shard` and a 
+:term:`channel`. Services are built on those, and hosting them 
+is done in a fundamentally interoperable manner: there is no 
+central source of authority for logging in, for example, authentication 
+is done by means of channels.
 
 
 |

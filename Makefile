@@ -21,3 +21,10 @@ help:
         # deploying to root
 	echo "Copying file to root directory"
 	cp -R $(BUILDDIR)/html/* .
+
+jslib:
+	echo "Copying over jslib - in case you develop locally"
+	cp ../snackabra-jslib/browser.mjs snackabra-jslib/snackabra.js
+	cp ../snackabra-jslib/src/snackabra.js.map snackabra-jslib/snackabra.js.map
+	cp ../snackabra-jslib/src/snackabra.d.ts snackabra-jslib/snackabra.d.ts
+	

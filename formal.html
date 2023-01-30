@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Installation" href="install.html" /><link rel="prev" title="Background and Discussion" href="discussion.html" />
 
     <!-- Generated with Sphinx 5.3.0 and Furo 2022.12.07 -->
-        <title>Formal Treatment - snackabra 0.5.0 alpha documentation</title>
+        <title>Formal Treatment - snackabra 0.5.x beta documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -125,7 +125,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">snackabra 0.5.0 alpha documentation</div></a>
+      <a href="index.html"><div class="brand">snackabra 0.5.x beta documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -148,7 +148,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
   
-  <span class="sidebar-brand-text">snackabra 0.5.0 alpha documentation</span>
+  <span class="sidebar-brand-text">snackabra 0.5.x beta documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -291,89 +291,10 @@ went through the above steps yourself, or somebody else did and gave you the res
 the resulting <span class="math notranslate nohighlight">\(\mathcal{C}\)</span> is of no use to you without <span class="math notranslate nohighlight">\(\langle\mathcal{k},\mathcal{iv},\mathcal{s}\rangle\)</span>.</p>
 <section id="future-design-directions">
 <span id="blob-future-design"></span><h3>Future Design Directions<a class="headerlink" href="#future-design-directions" title="Permalink to this heading">#</a></h3>
-<p>The above design is the current one, which results in a few issues. In
-this section we summarize the current next-generation design candidate.
-First we present the future direction, then we discuss how it improves
-upon the characteristics of the current design.</p>
-<p>To the above servers, we add two OPRF endpoints,
-<span class="math notranslate nohighlight">\(\mathcal{OPRF_1}\)</span> whic can be reached by anybody
-and <span class="math notranslate nohighlight">\(\mathcal{OPRF_2}\)</span> that is only accessible by
-the storage server.</p>
-<ol class="arabic simple">
-<li><p>Alice creates a hash <span class="math notranslate nohighlight">\(\mathfrak{H}(\mathcal{M})\)</span>.
-Alice sends this to <span class="math notranslate nohighlight">\(\mathcal{OPRF_1}\)</span>,
-which returns a secret <span class="math notranslate nohighlight">\(\mathcal{r}\)</span> which Alice first recombines (xor)
-with <span class="math notranslate nohighlight">\(\mathfrak{H}(\mathcal{M})\)</span>, and derives
-nonce <span class="math notranslate nohighlight">\(\mathcal{iv}\)</span> and salt <span class="math notranslate nohighlight">\(\mathcal{s}\)</span>.
-Alice now constructs encryption key <span class="math notranslate nohighlight">\(\mathcal{k}=\mathcal{K}(\mathfrak{x}\oplus\mathfrak{H}(\mathcal{M}), \mathcal{s})\)</span>. <a class="footnote-reference brackets" href="#f205" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a></p></li>
-<li><p>This step is no longer needed - <span class="math notranslate nohighlight">\(\mathcal{OPRF_1}\)</span>
-ensures that any clients with the same message <span class="math notranslate nohighlight">\(\mathcal{M}\)</span> end up with the same encryption <span class="math notranslate nohighlight">\(\mathcal{k}\)</span> and
-nonce <span class="math notranslate nohighlight">\(\mathcal{iv}\)</span>, without revealing anything about <span class="math notranslate nohighlight">\(\mathcal{M}\)</span>
-to the <span class="math notranslate nohighlight">\(\mathcal{OPRF_1}\)</span> server. It is this characteristic
-of <span class="math notranslate nohighlight">\(\mathcal{OPRF_1}\)</span> which yields deduplication.</p></li>
-<li><p>Alice next generates the cryptotext of the message <span class="math notranslate nohighlight">\(\mathcal{C}=\mathscr{E}(\mathcal{k},\mathcal{iv}|\mathcal{M})\)</span>.
-Alice sends the full encrypted message <span class="math notranslate nohighlight">\(\mathcal{C}\)</span> to the server.</p></li>
-<li><p>The storage server receives <span class="math notranslate nohighlight">\(\mathcal{C}\)</span> and generates a pseudo-random
-verification identifier <span class="math notranslate nohighlight">\(\mathcal{v}\)</span>, returning the identifier
-once it’s fully received <span class="math notranslate nohighlight">\(\mathcal{C}\)</span>. The server maintains
-a mapping <span class="math notranslate nohighlight">\(\mathfrak{H}(\mathcal{v}|\mathcal{C})\longmapsto\langle\mathcal{v}|\mathcal{C}\rangle\)</span>.
-Note that this constitutes a simple content-based hash storage.
-The pseudo-random verification identifier
-is generated from <span class="math notranslate nohighlight">\(\mathcal{OPRF_2(\mathcal{H}(\mathcal{C}))}\)</span>,
-assuring that identical <span class="math notranslate nohighlight">\(\mathcal{C}\)</span> blobs will end up
-with the same name, however that name cannot easily be
-guessed even with access to <span class="math notranslate nohighlight">\(\mathcal{C}\)</span>.</p></li>
-<li><p>Once Alice receives <span class="math notranslate nohighlight">\(\mathcal{v}\)</span>, Alice can construct a (final) name
-hash <span class="math notranslate nohighlight">\(\mathcal{c}=\mathcal{H}(\mathcal{v}|\mathcal{C})\)</span>.
-At this point Alice has collected the full “manifest”:
-<span class="math notranslate nohighlight">\(\langle\mathcal{c},\mathcal{k},\mathcal{iv},\mathcal{s}\rangle\)</span>,
-which can be sent to Bob.</p></li>
-</ol>
-<p>When Bob wants to fetch the object, Bob sends
-<span class="math notranslate nohighlight">\(\mathcal{c}\)</span> to the
-storage server which returns <span class="math notranslate nohighlight">\(\mathcal{v}|\mathcal{C}\)</span>. Bob can
-strip <span class="math notranslate nohighlight">\(\mathcal{v}\)</span> and has <span class="math notranslate nohighlight">\(\mathcal{M}\)</span> from
-<span class="math notranslate nohighlight">\(\mathcal{D}(\mathcal{C},\mathcal{k},\mathcal{iv},\mathcal{s})\)</span>.</p>
-<p>Note: brute force attacks against either
-<span class="math notranslate nohighlight">\(\mathcal{OPRF_1}\)</span> or
-<span class="math notranslate nohighlight">\(\mathcal{OPRF_2}\)</span> are not economical, since an
-upload operation can only be initiated by spending a storage token
-from the ledger server.</p>
-<p>The characteristics of the current design are all retained, with these
-improvements:</p>
-<ul class="simple">
-<li><p>The storage server only needs to retain a single, trivially simple, mapping
-<span class="math notranslate nohighlight">\(\mathfrak{H}(\mathcal{v}|\mathcal{C})\longmapsto\langle\mathcal{v}|\mathcal{C}\rangle\)</span>.
-Since it no longer needs a verification “step” for <span class="math notranslate nohighlight">\(\mathcal{v}\)</span>,
-this “blob” store is now fully CDN-compatible, which is a significant
-improvement in both performance, cost efficiency, and privacy.
-Furthermore, since this final mapping is a pure content-based addressing
-scheme, it can be trivially mirrored to systems such as IPFS.</p></li>
-<li><p>The storage server does <em>not</em> need to ever see even a prefix of
-<span class="math notranslate nohighlight">\(\mathcal{H}(\mathcal{M})\)</span>. This means that even if the storage
-server is compromised, an adversary cannot trivially confirm
-what objects have ever been shared.</p></li>
-<li><p>Deduplication is accomplished through the two uses of <span class="math notranslate nohighlight">\(\mathcal{OPRF}\)</span>.
-Notably, this approach simplifies some operational tasks.
-If there is a fear of system compromise, then the secrets of both
-<span class="math notranslate nohighlight">\(\mathcal{OPRF_1}\)</span> and <span class="math notranslate nohighlight">\(\mathcal{OPRF_2}\)</span>
-can be trivially rotated - for example every two weeks. Thus, deduplication
-occurs only within timing windows, which should yield the bulk
-of any deduplication efficacy. This way, an adversary who gains
-complete control of the storage server as well as <span class="math notranslate nohighlight">\(\mathcal{OPRF_2}\)</span>
-can at most initiate a brute force attack against objects
-shared in the current window (and even then only tell <em>if</em>
-that object had been shared at all, not how often or by whom etc).</p></li>
-<li><p>To emphasize: with this design, the <em>only</em> state the storage server needs
-to maintain is <span class="math notranslate nohighlight">\(\mathfrak{H}(\mathcal{v}|\mathcal{C})\longmapsto\langle\mathcal{v}|\mathcal{C}\rangle\)</span>,
-nothing else, and no need for any authentication or verification steps.
-All information needed to <em>find</em> the object and decrypt it
-is contained in the manifest, which is shared through room chat
-control messages.</p></li>
-</ul>
-<p>Currently, implementation of this approach is pending adding
-OPRF to the snackabra core library, since it is not (yet) a part
-of the web crypto API standard. <a class="footnote-reference brackets" href="#f206" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a></p>
+<p>The above design is the current one. The next generation will be
+a slight tweak: you can access either with the ID plus the
+verification, or a hash of both.  It’s up to the shard server
+to decide on policy.</p>
 </section>
 </section>
 <section id="ledger">
@@ -394,13 +315,13 @@ reserved account names that correspond to two special accounts:
 <span class="math notranslate nohighlight">\(\mathcal{B_s}\)</span> is the total spent so far.</p>
 <p>Every <a class="reference internal" href="glossary.html#term-Room"><span class="xref std std-term">Room</span></a> maintains a budget <span class="math notranslate nohighlight">\(\mathcal{B_r}\)</span> that was assigned
 to it at creation by taking an initial budget from <span class="math notranslate nohighlight">\(\mathcal{B_g}\)</span> and adding
-it to both <span class="math notranslate nohighlight">\(\mathcal{B_s}\)</span> and  <span class="math notranslate nohighlight">\(\mathcal{B_r}\)</span>. <a class="footnote-reference brackets" href="#f208" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></a></p>
+it to both <span class="math notranslate nohighlight">\(\mathcal{B_s}\)</span> and  <span class="math notranslate nohighlight">\(\mathcal{B_r}\)</span>. <a class="footnote-reference brackets" href="#f208" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></a></p>
 <p>When a client uploads an item <span class="math notranslate nohighlight">\(\mathcal{M}\)</span>, it first needs to
-calculate what <span class="math notranslate nohighlight">\(\mathcal{|C|}\)</span> will become. <a class="footnote-reference brackets" href="#f207" id="id8" role="doc-noteref"><span class="fn-bracket">[</span>8<span class="fn-bracket">]</span></a>
+calculate what <span class="math notranslate nohighlight">\(\mathcal{|C|}\)</span> will become. <a class="footnote-reference brackets" href="#f207" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>8<span class="fn-bracket">]</span></a>
 It first requests from the room to spend
 <span class="math notranslate nohighlight">\(\mathcal{s = |C|}\)</span> bytes out of the Room balance <span class="math notranslate nohighlight">\(\mathcal{B_r}\)</span>.</p>
 <p>If approved, the Room <span class="math notranslate nohighlight">\(\mathcal{r}\)</span> requests an identifier
-<span class="math notranslate nohighlight">\(\mathcal{t}\)</span> (elsewhere called <a class="reference internal" href="glossary.html#term-TID"><span class="xref std std-term">&lt;TID&gt;</span></a>) from the Ledger. <a class="footnote-reference brackets" href="#f209" id="id9" role="doc-noteref"><span class="fn-bracket">[</span>9<span class="fn-bracket">]</span></a> This is a random
+<span class="math notranslate nohighlight">\(\mathcal{t}\)</span> (elsewhere called <a class="reference internal" href="glossary.html#term-TID"><span class="xref std std-term">&lt;TID&gt;</span></a>) from the Ledger. <a class="footnote-reference brackets" href="#f209" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>9<span class="fn-bracket">]</span></a> This is a random
 token generated by the Ledger which maintains
 <span class="math notranslate nohighlight">\(\mathfrak{D_2}\mathcal{h(t)}\mapsto\langle\mathcal{s,
 u}\rangle\)</span> where <span class="math notranslate nohighlight">\(\mathcal{h()}\)</span> is a hash function, <span class="math notranslate nohighlight">\(\mathcal{s}\)</span> is the size and
@@ -493,13 +414,13 @@ determine if a given plaintext message was uploaded
 and shared by anybody in the past week.</p>
 </aside>
 <aside class="footnote brackets" id="f205" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">5</a><span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></span>
 <p>The final xor operation with
 <span class="math notranslate nohighlight">\(\mathfrak{H}(\mathcal{M})\)</span> exists to protect for the case where the
 <span class="math notranslate nohighlight">\(\mathcal{OPRF_1}\)</span> server has been compromised.</p>
 </aside>
 <aside class="footnote brackets" id="f206" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">6</a><span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></span>
 <p>A concern is that OPRF is not yet an accepted IETF
 standard. Latest draft is here <a class="reference external" href="https://www.ietf.org/id/draft-irtf-cfrg-voprf-09.html">https://www.ietf.org/id/draft-irtf-cfrg-voprf-09.html</a>
 and current (Draft 9) reference implementations
@@ -511,7 +432,7 @@ the blob storage system with OPRF might outweigh those
 concerns, but we have not made a final decision.</p>
 </aside>
 <aside class="footnote brackets" id="f208" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">7</a><span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">7</a><span class="fn-bracket">]</span></span>
 <p>The Room balance is actually simply a local cached value that
 matches whatever the balance is for the room according to the
 Ledger server. The Room ‘copy’ of the balance serves as a synchronization
@@ -521,12 +442,12 @@ changes in any order. Similarly, this naturally protects against
 various abuse and DDOS scenarios.</p>
 </aside>
 <aside class="footnote brackets" id="f207" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id8">8</a><span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">8</a><span class="fn-bracket">]</span></span>
 <p>Because of the very specific padding requirements, this is
 predictable.</p>
 </aside>
 <aside class="footnote brackets" id="f209" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id9">9</a><span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">9</a><span class="fn-bracket">]</span></span>
 <p>Note that <a class="reference internal" href="glossary.html#term-TID"><span class="xref std std-term">&lt;TID&gt;</span></a> and <a class="reference internal" href="glossary.html#term-verification"><span class="xref std std-term">verification</span></a> are different.</p>
 </aside>
 </aside>
@@ -562,7 +483,7 @@ predictable.</p>
         <div class="bottom-of-page">
           <div class="left-details">
             <div class="copyright">
-                Copyright &#169; 2019-2022, Magnusson Institute
+                Copyright &#169; 2019-2023, Magnusson Institute
             </div>
             Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
             

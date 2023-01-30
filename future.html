@@ -5,10 +5,10 @@
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="References / Further Reading" href="references.html" /><link rel="prev" title="Glossary" href="glossary.html" />
 
-    <meta name="generator" content="sphinx-5.1.1, furo 2022.09.29"/>
+    <!-- Generated with Sphinx 5.3.0 and Furo 2022.12.07 -->
         <title>Future Work - snackabra 0.5.0 alpha documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
@@ -151,7 +151,7 @@
   <span class="sidebar-brand-text">snackabra 0.5.0 alpha documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
-  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
   <input type="hidden" name="check_keywords" value="yes">
   <input type="hidden" name="area" value="default">
 </form>
@@ -211,6 +211,49 @@
 <h1>Future Work<a class="headerlink" href="#future-work" title="Permalink to this heading">#</a></h1>
 <p>In this section we cover topics that are well progressed in terms
 of design thinking, but not finalize (or implemented) yet.</p>
+<section id="curve25519-support">
+<h2>Curve25519 Support<a class="headerlink" href="#curve25519-support" title="Permalink to this heading">#</a></h2>
+<p>We currently use ECDSA (Elliptic Curve Digital Signature Algorithm)
+to generate channel names. There are some concerns with this curve,
+however, we consider the support of it by major browser vendors as
+preferable over the possible improvement from using another curve,
+which would require significant custom code. Recall that one of
+our design principles is that core of SB should all fit into a
+single typescript library with no external dependencies, and one
+that is as simple to read and understand by humans as possible.</p>
+<p>One candidate replacement is Ed25519 (which for example was chosen
+for recent revisions of Onion and IPFS) and Curve448. NIST has
+announced that both will be included in FIPS-186-5.</p>
+<p>It seems likely that support for both of these will be added to
+the standard web crypto api, and we plan to simply follow that
+development. In the SB protocol, we will be adding meta data on
+what algorithm was used to generate the channel name. (For
+backwards compatibility, if no such information exists, default
+assumption is that ECDSA P-384 was used).</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/sign#ecdsa">https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/sign#ecdsa</a></p></li>
+<li><p><a class="reference external" href="https://datatracker.ietf.org/doc/html/rfc7748">https://datatracker.ietf.org/doc/html/rfc7748</a></p></li>
+<li><p><a class="reference external" href="https://datatracker.ietf.org/doc/html/rfc6090">https://datatracker.ietf.org/doc/html/rfc6090</a></p></li>
+<li><p><a class="reference external" href="https://chromestatus.com/feature/4913922408710144">https://chromestatus.com/feature/4913922408710144</a></p></li>
+<li><p><a class="reference external" href="https://docs.google.com/document/d/1fDTUY3HVAXehi-eSfbi7nxh8ZPw4MpSKM8U1fMdqJlU">https://docs.google.com/document/d/1fDTUY3HVAXehi-eSfbi7nxh8ZPw4MpSKM8U1fMdqJlU</a></p></li>
+<li><p><a class="reference external" href="https://csrc.nist.gov/publications/detail/fips/186/5/draft">https://csrc.nist.gov/publications/detail/fips/186/5/draft</a></p></li>
+<li><p><a class="reference external" href="https://www.rfc-editor.org/rfc/rfc8032#section-5.1">https://www.rfc-editor.org/rfc/rfc8032#section-5.1</a></p></li>
+<li><p><a class="reference external" href="http://safecurves.cr.yp.to/">http://safecurves.cr.yp.to/</a></p></li>
+<li><p><a class="reference external" href="http://ed25519.cr.yp.to/ed25519-20110926.pdf">http://ed25519.cr.yp.to/ed25519-20110926.pdf</a></p></li>
+<li><p><a class="reference external" href="https://github.com/libp2p/specs/blob/master/peer-ids/peer-ids.md">https://github.com/libp2p/specs/blob/master/peer-ids/peer-ids.md</a></p></li>
+</ul>
+<p>Not directly relevant, but there is some interesting discussion of the
+issues with the Onion v3 privacy improvements:</p>
+<p><a class="reference external" href="https://blog.torproject.org/v3-onion-services-usage/">https://blog.torproject.org/v3-onion-services-usage/</a></p>
+<p>Similar issues in the area of brute-forcing a global identifier. In the
+case of SB, we don’t have an opinion on directory services (e.g. discovery
+of where a channel is being served from), but we do want to take into
+consideration issues any directory service somebody else builds for SB
+channels will run into. We were not aware of the Onion V3 address format
+when we first designed SB channel names, but we did design it to be a
+64-byte name (currently an iterated hash of the 64-byte public key)
+compared to 16 characters for Onion V2 and 56 for V3.</p>
+</section>
 <section id="verifying-room-integrity">
 <h2>Verifying Room Integrity<a class="headerlink" href="#verifying-room-integrity" title="Permalink to this heading">#</a></h2>
 <p>This needs to be thought through more, consider the below as
@@ -332,9 +375,7 @@ section.</p>
             
           </div>
           <div class="right-details">
-            <div class="icons">
-              
-            </div>
+            
           </div>
         </div>
         
@@ -353,6 +394,7 @@ section.</p>
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Future Work</a><ul>
+<li><a class="reference internal" href="#curve25519-support">Curve25519 Support</a></li>
 <li><a class="reference internal" href="#verifying-room-integrity">Verifying Room Integrity</a></li>
 </ul>
 </li>
@@ -370,6 +412,7 @@ section.</p>
     <script src="_static/underscore.js"></script>
     <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/scripts/furo.js"></script>
     </body>
 </html>

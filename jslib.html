@@ -5,10 +5,10 @@
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Python Library" href="pylib.html" /><link rel="prev" title="LICENSE" href="license.html" />
 
-    <meta name="generator" content="sphinx-5.1.1, furo 2022.09.29"/>
+    <!-- Generated with Sphinx 5.3.0 and Furo 2022.12.07 -->
         <title>Javascript Library - snackabra 0.5.0 alpha documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
@@ -151,7 +151,7 @@
   <span class="sidebar-brand-text">snackabra 0.5.0 alpha documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
-  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
   <input type="hidden" name="check_keywords" value="yes">
   <input type="hidden" name="area" value="default">
 </form>
@@ -327,7 +327,7 @@ without a parameter in which case SB will ping known servers.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Arguments<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>args</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">SBServer()</span></code></span>) – server names (optional)</p></li>
+<li><p><strong>args</strong> (<em>SBServer</em>) – server names (optional)</p></li>
 </ul>
 </dd>
 </dl>
@@ -366,7 +366,7 @@ create a channel object, e.g. does not make a connection.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Arguments<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>message</strong> (<span><a class="reference internal" href="#SBMessage" title="SBMessage"><code class="xref js js-func docutils literal notranslate"><span class="pre">SBMessage()</span></code></a></span>) – the message object to send</p></li>
+<li><p><strong>message</strong> (<a class="reference internal" href="#SBMessage" title="SBMessage"><em>SBMessage</em></a>) – the message object to send</p></li>
 </ul>
 </dd>
 </dl>
@@ -437,9 +437,9 @@ SB.create(sb_config, '&lt;SECRET&gt;').then((handle) =&gt; {
 <dl class="field-list simple">
 <dt class="field-odd">Arguments<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>sbServer</strong> (<span><a class="reference internal" href="#Snackabra" title="Snackabra"><code class="xref js js-func docutils literal notranslate"><span class="pre">Snackabra()</span></code></a></span>) – server to join</p></li>
-<li><p><strong>key?</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">JsonWebKey()</span></code></span>) – key to use to join (optional)</p></li>
-<li><p><strong>channelId</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">string()</span></code></span>) – (the <a class="reference internal" href="glossary.html#term-channel-name"><span class="xref std std-term">Channel Name</span></a>) to find on that server (optional)</p></li>
+<li><p><strong>sbServer</strong> (<a class="reference internal" href="#Snackabra" title="Snackabra"><em>Snackabra</em></a>) – server to join</p></li>
+<li><p><strong>key?</strong> (<em>JsonWebKey</em>) – key to use to join (optional)</p></li>
+<li><p><strong>channelId</strong> (<em>string</em>) – (the <a class="reference internal" href="glossary.html#term-channel-name"><span class="xref std std-term">Channel Name</span></a>) to find on that server (optional)</p></li>
 </ul>
 </dd>
 </dl>
@@ -484,7 +484,7 @@ SB.create(sb_config, '&lt;SECRET&gt;').then((handle) =&gt; {
 <dl class="field-list simple">
 <dt class="field-odd">Arguments<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>sbServer:</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">SBServer()</span></code></span>) – </p></li>
+<li><p><strong>sbServer:</strong> (<em>SBServer</em>) – </p></li>
 </ul>
 </dd>
 </dl>
@@ -766,7 +766,7 @@ for ‘ascii’).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Arguments<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>ArrayBuffer</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">bufferSource()</span></code></span>) – buffer</p></li>
+<li><p><strong>ArrayBuffer</strong> (<em>bufferSource</em>) – buffer</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -785,7 +785,7 @@ where <cite>+</cite> =&gt; <cite>-</cite>, <cite>/</cite> =&gt; <cite>_</cite>, 
 <dl class="field-list simple">
 <dt class="field-odd">Arguments<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>base64</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">str()</span></code></span>) – string in either regular or URL-friendly representation.</p></li>
+<li><p><strong>base64</strong> (<em>str</em>) – string in either regular or URL-friendly representation.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -814,7 +814,7 @@ This assumes on byte per character.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Arguments<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>string</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">string()</span></code></span>) – </p></li>
+<li><p><strong>string</strong> (<em>string</em>) – </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -831,7 +831,7 @@ This assumes one byte per character.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Arguments<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>buffer</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">Uint8Array()</span></code></span>) – </p></li>
+<li><p><strong>buffer</strong> (<em>Uint8Array</em>) – </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -887,7 +887,7 @@ the public key.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Arguments<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>RSA</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">pem()</span></code></span>) – public key, string, PEM format</p></li>
+<li><p><strong>RSA</strong> (<em>pem</em>) – public key, string, PEM format</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -914,8 +914,8 @@ the public key.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Arguments<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>number</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">n()</span></code></span>) – of characters</p></li>
-<li><p><strong>encoding,</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">code()</span></code></span>) – supported types: ‘base32mi’</p></li>
+<li><p><strong>number</strong> (<em>n</em>) – of characters</p></li>
+<li><p><strong>encoding,</strong> (<em>code</em>) – supported types: ‘base32mi’</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -944,9 +944,9 @@ can only be decrypted and read off-line (air gapped).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Arguments<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>dictionary</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">dict()</span></code></span>) – (payload)</p></li>
-<li><p><strong>public</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">publicKeyPEM()</span></code></span>) – key (PEM format)</p></li>
-<li><p><strong>callback</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">callback()</span></code></span>) – function, called with results</p></li>
+<li><p><strong>dictionary</strong> (<em>dict</em>) – (payload)</p></li>
+<li><p><strong>public</strong> (<em>publicKeyPEM</em>) – key (PEM format)</p></li>
+<li><p><strong>callback</strong> (<em>callback</em>) – function, called with results</p></li>
 </ul>
 </dd>
 </dl>
@@ -1036,9 +1036,7 @@ in the code; one approach is the line number in the file (at some point).</p>
             
           </div>
           <div class="right-details">
-            <div class="icons">
-              
-            </div>
+            
           </div>
         </div>
         
@@ -1058,28 +1056,150 @@ in the code; one approach is the line number in the file (at some point).</p>
             <ul>
 <li><a class="reference internal" href="#">Javascript Library</a><ul>
 <li><a class="reference internal" href="#installation-development">Installation / Development</a></li>
-<li><a class="reference internal" href="#sb384">SB384</a></li>
-<li><a class="reference internal" href="#snackabra-server-class">Snackabra (Server) Class</a></li>
+<li><a class="reference internal" href="#sb384">SB384</a><ul>
+<li><a class="reference internal" href="#SB384"><code class="docutils literal notranslate"><span class="pre">SB384</span></code></a><ul>
+<li><a class="reference internal" href="#SB384._id"><code class="docutils literal notranslate"><span class="pre">SB384._id</span></code></a></li>
+<li><a class="reference internal" href="#SB384.exportable_privateKey"><code class="docutils literal notranslate"><span class="pre">SB384.exportable_privateKey</span></code></a></li>
+<li><a class="reference internal" href="#SB384.exportable_pubKey"><code class="docutils literal notranslate"><span class="pre">SB384.exportable_pubKey</span></code></a></li>
+<li><a class="reference internal" href="#SB384.keyPair"><code class="docutils literal notranslate"><span class="pre">SB384.keyPair</span></code></a></li>
+<li><a class="reference internal" href="#SB384.ownerChannelId"><code class="docutils literal notranslate"><span class="pre">SB384.ownerChannelId</span></code></a></li>
+<li><a class="reference internal" href="#SB384.privateKey"><code class="docutils literal notranslate"><span class="pre">SB384.privateKey</span></code></a></li>
+<li><a class="reference internal" href="#SB384.readyFlag"><code class="docutils literal notranslate"><span class="pre">SB384.readyFlag</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#snackabra-server-class">Snackabra (Server) Class</a><ul>
+<li><a class="reference internal" href="#Snackabra"><code class="docutils literal notranslate"><span class="pre">Snackabra</span></code></a><ul>
+<li><a class="reference internal" href="#Snackabra.connect"><code class="docutils literal notranslate"><span class="pre">Snackabra.connect()</span></code></a></li>
+<li><a class="reference internal" href="#Snackabra.create"><code class="docutils literal notranslate"><span class="pre">Snackabra.create()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a class="reference internal" href="#channels">Channels</a><ul>
-<li><a class="reference internal" href="#sb-message-class">SB Message Class</a></li>
-<li><a class="reference internal" href="#channel-class">Channel Class</a></li>
-<li><a class="reference internal" href="#channel-socket-class">Channel Socket Class</a></li>
-<li><a class="reference internal" href="#channel-api-class">Channel API Class</a></li>
+<li><a class="reference internal" href="#sb-message-class">SB Message Class</a><ul>
+<li><a class="reference internal" href="#SBMessage"><code class="docutils literal notranslate"><span class="pre">SBMessage</span></code></a><ul>
+<li><a class="reference internal" href="#SBMessage.send"><code class="docutils literal notranslate"><span class="pre">SBMessage.send()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#channel-class">Channel Class</a><ul>
+<li><a class="reference internal" href="#Channel"><code class="docutils literal notranslate"><span class="pre">Channel</span></code></a><ul>
+<li><a class="reference internal" href="#Channel.api"><code class="docutils literal notranslate"><span class="pre">Channel.api</span></code></a></li>
+<li><a class="reference internal" href="#Channel.channelId"><code class="docutils literal notranslate"><span class="pre">Channel.channelId</span></code></a></li>
+<li><a class="reference internal" href="#Channel.readyFlag"><code class="docutils literal notranslate"><span class="pre">Channel.readyFlag</span></code></a></li>
+<li><a class="reference internal" href="#Channel.sbServer"><code class="docutils literal notranslate"><span class="pre">Channel.sbServer</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#channel-socket-class">Channel Socket Class</a><ul>
+<li><a class="reference internal" href="#ChannelSocket"><code class="docutils literal notranslate"><span class="pre">ChannelSocket</span></code></a><ul>
+<li><a class="reference internal" href="#ChannelSocket.ChannelSocket"><code class="docutils literal notranslate"><span class="pre">ChannelSocket.ChannelSocket</span></code></a></li>
+<li><a class="reference internal" href="#ChannelSocket.exportable_owner_pubKey"><code class="docutils literal notranslate"><span class="pre">ChannelSocket.exportable_owner_pubKey</span></code></a></li>
+<li><a class="reference internal" href="#ChannelSocket.keys"><code class="docutils literal notranslate"><span class="pre">ChannelSocket.keys</span></code></a></li>
+<li><a class="reference internal" href="#ChannelSocket.send"><code class="docutils literal notranslate"><span class="pre">ChannelSocket.send()</span></code></a></li>
+<li><a class="reference internal" href="#ChannelSocket.sendSbObject"><code class="docutils literal notranslate"><span class="pre">ChannelSocket.sendSbObject()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#channel-api-class">Channel API Class</a><ul>
+<li><a class="reference internal" href="#ChannelApi"><code class="docutils literal notranslate"><span class="pre">ChannelApi</span></code></a><ul>
+<li><a class="reference internal" href="#ChannelApi.downloadData"><code class="docutils literal notranslate"><span class="pre">ChannelApi.downloadData()</span></code></a></li>
+<li><a class="reference internal" href="#ChannelApi.getAdminData"><code class="docutils literal notranslate"><span class="pre">ChannelApi.getAdminData()</span></code></a></li>
+<li><a class="reference internal" href="#ChannelApi.getCapacity"><code class="docutils literal notranslate"><span class="pre">ChannelApi.getCapacity()</span></code></a></li>
+<li><a class="reference internal" href="#ChannelApi.getJoinRequests"><code class="docutils literal notranslate"><span class="pre">ChannelApi.getJoinRequests()</span></code></a></li>
+<li><a class="reference internal" href="#ChannelApi.getLastMessageTimes"><code class="docutils literal notranslate"><span class="pre">ChannelApi.getLastMessageTimes()</span></code></a></li>
+<li><a class="reference internal" href="#ChannelApi.getOldMessages"><code class="docutils literal notranslate"><span class="pre">ChannelApi.getOldMessages()</span></code></a></li>
+<li><a class="reference internal" href="#ChannelApi.isLocked"><code class="docutils literal notranslate"><span class="pre">ChannelApi.isLocked()</span></code></a></li>
+<li><a class="reference internal" href="#ChannelApi.setMOTD"><code class="docutils literal notranslate"><span class="pre">ChannelApi.setMOTD()</span></code></a></li>
+<li><a class="reference internal" href="#ChannelApi.updateCapacity"><code class="docutils literal notranslate"><span class="pre">ChannelApi.updateCapacity()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a class="reference internal" href="#storage">Storage</a><ul>
-<li><a class="reference internal" href="#sb-storage-class">SB Storage Class</a></li>
-<li><a class="reference internal" href="#sb-file-class">SB File Class</a></li>
+<li><a class="reference internal" href="#sb-storage-class">SB Storage Class</a><ul>
+<li><a class="reference internal" href="#StorageApi"><code class="docutils literal notranslate"><span class="pre">StorageApi</span></code></a><ul>
+<li><a class="reference internal" href="#StorageApi.fetchData"><code class="docutils literal notranslate"><span class="pre">StorageApi.fetchData()</span></code></a></li>
+<li><a class="reference internal" href="#StorageApi.retrieveData"><code class="docutils literal notranslate"><span class="pre">StorageApi.retrieveData()</span></code></a></li>
+<li><a class="reference internal" href="#StorageApi.retrieveDataFromMessage"><code class="docutils literal notranslate"><span class="pre">StorageApi.retrieveDataFromMessage()</span></code></a></li>
+<li><a class="reference internal" href="#StorageApi.saveFile"><code class="docutils literal notranslate"><span class="pre">StorageApi.saveFile()</span></code></a></li>
+<li><a class="reference internal" href="#StorageApi.storeData"><code class="docutils literal notranslate"><span class="pre">StorageApi.storeData()</span></code></a></li>
+<li><a class="reference internal" href="#StorageApi.storeImage"><code class="docutils literal notranslate"><span class="pre">StorageApi.storeImage()</span></code></a></li>
+<li><a class="reference internal" href="#StorageApi.storeObject"><code class="docutils literal notranslate"><span class="pre">StorageApi.storeObject()</span></code></a></li>
+<li><a class="reference internal" href="#StorageApi.storeRequest"><code class="docutils literal notranslate"><span class="pre">StorageApi.storeRequest()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#sb-file-class">SB File Class</a><ul>
+<li><a class="reference internal" href="#SBFile"><code class="docutils literal notranslate"><span class="pre">SBFile</span></code></a><ul>
+<li><a class="reference internal" href="#SBFile.SBFile"><code class="docutils literal notranslate"><span class="pre">SBFile.SBFile</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a class="reference internal" href="#utilities-and-helpers">Utilities and Helpers</a><ul>
-<li><a class="reference internal" href="#indexedkv-class">IndexedKV Class</a></li>
-<li><a class="reference internal" href="#crypto-class">Crypto Class</a></li>
-<li><a class="reference internal" href="#format-related">Format Related</a></li>
-<li><a class="reference internal" href="#crypto-helpers">Crypto Helpers</a></li>
-<li><a class="reference internal" href="#sb-wire-format-helpers">SB “Wire” Format Helpers</a></li>
-<li><a class="reference internal" href="#sb-specific-helpers">SB-specific Helpers</a></li>
-<li><a class="reference internal" href="#testing-related">Testing Related</a></li>
+<li><a class="reference internal" href="#indexedkv-class">IndexedKV Class</a><ul>
+<li><a class="reference internal" href="#IndexedKV"><code class="docutils literal notranslate"><span class="pre">IndexedKV</span></code></a><ul>
+<li><a class="reference internal" href="#IndexedKV.IndexedKV"><code class="docutils literal notranslate"><span class="pre">IndexedKV.IndexedKV</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#crypto-class">Crypto Class</a><ul>
+<li><a class="reference internal" href="#SBCrypto"><code class="docutils literal notranslate"><span class="pre">SBCrypto</span></code></a><ul>
+<li><a class="reference internal" href="#SBCrypto.compareKeys"><code class="docutils literal notranslate"><span class="pre">SBCrypto.compareKeys()</span></code></a></li>
+<li><a class="reference internal" href="#SBCrypto.deriveKey"><code class="docutils literal notranslate"><span class="pre">SBCrypto.deriveKey()</span></code></a></li>
+<li><a class="reference internal" href="#SBCrypto.extractPubKey"><code class="docutils literal notranslate"><span class="pre">SBCrypto.extractPubKey()</span></code></a></li>
+<li><a class="reference internal" href="#SBCrypto.generateKeys"><code class="docutils literal notranslate"><span class="pre">SBCrypto.generateKeys()</span></code></a></li>
+<li><a class="reference internal" href="#SBCrypto.importKey"><code class="docutils literal notranslate"><span class="pre">SBCrypto.importKey()</span></code></a></li>
+<li><a class="reference internal" href="#SBCrypto.sign"><code class="docutils literal notranslate"><span class="pre">SBCrypto.sign()</span></code></a></li>
+<li><a class="reference internal" href="#SBCrypto.verify"><code class="docutils literal notranslate"><span class="pre">SBCrypto.verify()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#format-related">Format Related</a><ul>
+<li><a class="reference internal" href="#arrayBufferToBase64"><code class="docutils literal notranslate"><span class="pre">arrayBufferToBase64()</span></code></a></li>
+<li><a class="reference internal" href="#base64ToArrayBuffer"><code class="docutils literal notranslate"><span class="pre">base64ToArrayBuffer()</span></code></a></li>
+<li><a class="reference internal" href="#encodeB64Url"><code class="docutils literal notranslate"><span class="pre">encodeB64Url()</span></code></a></li>
+<li><a class="reference internal" href="#decodeB64Url"><code class="docutils literal notranslate"><span class="pre">decodeB64Url()</span></code></a></li>
+<li><a class="reference internal" href="#str2ab"><code class="docutils literal notranslate"><span class="pre">str2ab()</span></code></a></li>
+<li><a class="reference internal" href="#ab2str"><code class="docutils literal notranslate"><span class="pre">ab2str()</span></code></a></li>
+<li><a class="reference internal" href="#cleanBase32mi"><code class="docutils literal notranslate"><span class="pre">cleanBase32mi()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#crypto-helpers">Crypto Helpers</a><ul>
+<li><a class="reference internal" href="#importPublicKey"><code class="docutils literal notranslate"><span class="pre">importPublicKey()</span></code></a></li>
+<li><a class="reference internal" href="#simpleRand256"><code class="docutils literal notranslate"><span class="pre">simpleRand256()</span></code></a></li>
+<li><a class="reference internal" href="#simpleRandomString"><code class="docutils literal notranslate"><span class="pre">simpleRandomString()</span></code></a></li>
+<li><a class="reference internal" href="#getRandomValues"><code class="docutils literal notranslate"><span class="pre">getRandomValues()</span></code></a></li>
+<li><a class="reference internal" href="#packageEncryptDict"><code class="docutils literal notranslate"><span class="pre">packageEncryptDict()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#sb-wire-format-helpers">SB “Wire” Format Helpers</a><ul>
+<li><a class="reference internal" href="#assemblePayload"><code class="docutils literal notranslate"><span class="pre">assemblePayload()</span></code></a></li>
+<li><a class="reference internal" href="#extractPayload"><code class="docutils literal notranslate"><span class="pre">extractPayload()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#sb-specific-helpers">SB-specific Helpers</a><ul>
+<li><a class="reference internal" href="#jsonParseWrapper"><code class="docutils literal notranslate"><span class="pre">jsonParseWrapper()</span></code></a></li>
+<li><a class="reference internal" href="#partition"><code class="docutils literal notranslate"><span class="pre">partition()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#testing-related">Testing Related</a><ul>
+<li><a class="reference internal" href="#compareBuffers"><code class="docutils literal notranslate"><span class="pre">compareBuffers()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1098,6 +1218,7 @@ in the code; one approach is the line number in the file (at some point).</p>
     <script src="_static/underscore.js"></script>
     <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/scripts/furo.js"></script>
     </body>
 </html>

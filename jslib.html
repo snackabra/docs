@@ -663,6 +663,22 @@ retrieves an object from storage</p>
 
 </dd></dl>
 
+<p>Sample usage:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> const SB = new Snackabra(sb_config)
+ SB.create(
+   &#39;password&#39;,
+   (new Identity())).then((channelId) =&gt; {
+     SB.connect(
+       channelId,
+       (m: ChannelMessage) =&gt; { console.log(`got message: ${m}`)}
+     ).then((c) =&gt; c.ready).then((c) =&gt; {
+       c.userName = &quot;TestBot&quot; // optional
+       (new SBMessage(c, &quot;Hello Message!&quot;)).send().then((c) =&gt; { console.log(`sent! (${c})`) })
+    })
+  })
+}
+</pre></div>
+</div>
 </section>
 </section>
 <section id="utilities-and-helpers">

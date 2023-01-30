@@ -117,6 +117,24 @@ SB File Class
    :members:
 
 
+Sample usage:
+
+::
+   
+   const SB = new Snackabra(sb_config)
+   SB.create(
+     'password',
+     (new Identity())).then((channelId) => {
+       SB.connect(
+         channelId,
+         (m: ChannelMessage) => { console.log(`got message: ${m}`)}
+       ).then((c) => c.ready).then((c) => {
+         c.userName = "TestBot" // optional
+         (new SBMessage(c, "Hello Message!")).send().then((c) => { console.log(`sent! (${c})`) })
+      })
+    })
+  }
+
 
 
 Utilities and Helpers

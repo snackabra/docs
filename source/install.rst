@@ -92,12 +92,16 @@ sets a minimum of $5/month to host a personal server (*).
 If you want (push) notifications for mobile you will (eventually) need
 to set up the necessary accounts with Apple; details coming soon in
 
+* Path 1: If you have a CF account and domains, you can add a subdomain
+  and then proceed with setup. You will need to be able to change the nameservers for your domain to be Cloudflare.
 
-* Set up a domain (we will call it "example.com") that you control.
-  You will need to be able to change the nameservers to be Cloudflare.
-
-* Set up a free account with CF: https://dash.cloudflare.com/sign-up -
-  use your domain in the signup process.
+* Path 2: If you do not have a CF account, then first 
+  set up a new domain (we will call it "example.com") that you control.
+  
+* Path 2: Set up a free account with CF: https://dash.cloudflare.com/sign-up -
+  use above new domain in the signup process.
+  
+* Within CF select which domain you're working with.
 
 * Go to the "workers" section and pick a name for your worker on
   CF, we'll call it "example" here. That sets up a subdomain on

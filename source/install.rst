@@ -117,7 +117,7 @@ when any nameservers have propagated.
 Next set up the CF command line environment, the "Wrangler CLI", we
 use "yarn" in general but the personal server code is pure JS and
 (currently) does not need any node packages. Follow instructions at
-https://dash.cloudflare.com/6a24dd354a78c1e313b1b8054d75e506/workers/cli -
+https://dash.cloudflare.com/id/workers/cli -b
 at time of writing:
 
 ::
@@ -211,7 +211,7 @@ And point a client to it!
 (*) We are not affiliated with Cloudflare, we're just fans.
 
 (**) At time of writing, the link was:
-https://dash.cloudflare.com/6a24dd354a78c1e313b1b8054d75e506/workers/overview?enable-durable-objects
+https://dash.cloudflare.com/id/workers/overview?enable-durable-objects
 
 
 ---------

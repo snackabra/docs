@@ -6,7 +6,7 @@ Install with:
 
 ``pip install snackabra``
 
-Git repository: https://github.com/snackabra/pylib.git
+Git repository: https://github.com/snackabra/snackabra-pylib.git
 
 
 snackabra.crypto module

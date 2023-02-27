@@ -24,7 +24,9 @@ help:
 
 jslib:
 	echo "Copying over jslib - in case you develop locally"
-	cp ../snackabra-jslib/browser.mjs snackabra-jslib/snackabra.js
-	cp ../snackabra-jslib/src/snackabra.js.map snackabra-jslib/snackabra.js.map
-	cp ../snackabra-jslib/src/snackabra.d.ts snackabra-jslib/snackabra.d.ts
-	
+	cp ../snackabra-jslib/snackabra.js snackabra-jslib
+	cp ../snackabra-jslib/snackabra.js.map snackabra-jslib
+	cp ../snackabra-jslib/snackabra.d.ts snackabra-jslib
+	# cp ../snackabra-sdk/src/index.ts snackabra-jslib/snackabra-server.ts
+	cp ../snackabra-sdk/src/index.js snackabra-jslib/snackabra-server.js
+	# cp ../snackabra-sdk/src/index.d.ts snackabra-jslib/snackabra-server.d.ts

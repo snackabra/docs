@@ -56,6 +56,7 @@ anything important.  We will "signal" that we think the system is
    references
    license
    jslib
+   server
    pylib
    appendix-a-crypto.rst
    user-guide

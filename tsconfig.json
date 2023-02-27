@@ -15,5 +15,5 @@
     "watch": true,
     "declaration": true,
   },
-  "files": ["snackabra-jslib/snackabra.ts"],
+  "files": ["snackabra-jslib/snackabra.ts", "snackabra-jslib/snackabra-server.ts"],
 }

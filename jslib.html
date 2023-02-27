@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Python Library" href="pylib.html" /><link rel="prev" title="LICENSE" href="license.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Snackabra Server" href="server.html" /><link rel="prev" title="LICENSE" href="license.html" />
 
     <!-- Generated with Sphinx 5.3.0 and Furo 2022.12.07 -->
-        <title>Javascript Library - snackabra 0.5.x beta documentation</title>
+        <title>SB JSLib - snackabra 0.5.x beta documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -168,7 +168,8 @@
 <li class="toctree-l1"><a class="reference internal" href="future.html">Future Work</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References / Further Reading</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">LICENSE</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Javascript Library</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">SB JSLib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="server.html">Snackabra Server</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pylib.html">Python Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="appendix-a-crypto.html">Appendix A: Cryptography</a></li>
 <li class="toctree-l1"><a class="reference internal" href="user-guide.html">Appendix B: Privacy.App Chat Room User Guide</a></li>
@@ -207,8 +208,8 @@
           </label>
         </div>
         <article role="main">
-          <section id="javascript-library">
-<h1>Javascript Library<a class="headerlink" href="#javascript-library" title="Permalink to this heading">#</a></h1>
+          <section id="sb-jslib">
+<h1>SB JSLib<a class="headerlink" href="#sb-jslib" title="Permalink to this heading">#</a></h1>
 <p><cite>The core of SB is implemented in snackabra.ts, targeting ES2022.
 This section documents the JS (translated) version. Please note:
 any current published version is Alpha of upcoming 0.5.0 and should
@@ -216,7 +217,7 @@ not be used for sensitive or production use (or if you do use it as
 such: caveat emptor). We will signal production-ready use by versioning
 it as 1.0.x (published to npmjs).</cite></p>
 <p>All core capababilities of the SB design is intended to be encapsulated
-in this library. Design objectives include:</p>
+in this library. Design objectives include: <a class="footnote-reference brackets" href="#id4" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a></p>
 <ul class="simple">
 <li><p>No external dependencies (no other libraries)</p></li>
 <li><p>No dependencies on the DOM object</p></li>
@@ -251,7 +252,7 @@ perspectives and formats on this identity.</p>
 <p>Note that all the getters below will throw an exception if the
 corresponding information is not ready.</p>
 <p>Like most SB classes, SB384 follows the “ready template” design
-principle: the object is immediately available upon creation,
+pattern: the object is immediately available upon creation,
 but isn’t “ready” until it says it’s ready. See <a class="reference internal" href="#channel-class">Channel Class</a>
 example below.</p>
 <dl class="field-list simple">
@@ -332,24 +333,20 @@ without a parameter in which case SB will ping known servers.</p>
 </dd>
 </dl>
 <dl class="js function">
-<dt class="sig sig-object js" id="Snackabra.connect">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">Snackabra</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">connect</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">onMessage</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channelId</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Snackabra.connect" title="Permalink to this definition">#</a></dt>
-<dd><p>Connects to <a class="reference internal" href="glossary.html#term-channel-name"><span class="xref std std-term">Channel Name</span></a> on this SB config.
-Returns a (promise to the) channel (socket) object.
-It will throw an <code class="docutils literal notranslate"><span class="pre">AggregateError</span></code> if it fails
-to find the room anywhere.</p>
-</dd></dl>
-
-<dl class="js function">
 <dt class="sig sig-object js" id="Snackabra.create">
 <span class="sig-prename descclassname"><span class="n"><span class="pre">Snackabra</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">create</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sbServer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">serverSecret</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keys</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Snackabra.create" title="Permalink to this definition">#</a></dt>
 <dd><p>Creates a new channel. Currently uses trivial authentication.
+Returns a promise to a :ref:
 Returns the <a class="reference internal" href="glossary.html#term-channel-name"><span class="xref std std-term">Channel Name</span></a>. Note that this does not
 create a channel object, e.g. does not make a connection.</p>
 </dd></dl>
 
 </dd></dl>
 
+</section>
+<section id="interfaces">
+<h2>Interfaces<a class="headerlink" href="#interfaces" title="Permalink to this heading">#</a></h2>
+<p>TODO: how to get SBServer (and interfaces and types) over here.</p>
 </section>
 <section id="channels">
 <h2>Channels<a class="headerlink" href="#channels" title="Permalink to this heading">#</a></h2>
@@ -380,8 +377,7 @@ create a channel object, e.g. does not make a connection.</p>
 <dl class="js class">
 <dt class="sig sig-object js" id="Channel">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">Channel</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sbServer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key?</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channelId</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Channel" title="Permalink to this definition">#</a></dt>
-<dd><p>SB384</p>
-<p>Join a channel, returns channel object.</p>
+<dd><p>Join a channel, returns channel object.</p>
 <p>Currently, you must have an identity when connecting, because every single
 message is signed by sender. TODO is to look at how to provide a ‘listening’
 mode on channels.</p>
@@ -565,6 +561,11 @@ or an error message if it fails.</p>
 <dt class="sig sig-object js" id="ChannelApi.getOldMessages">
 <span class="sig-prename descclassname"><span class="n"><span class="pre">ChannelApi</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">getOldMessages</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">currentMessagesLength</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ChannelApi.getOldMessages" title="Permalink to this definition">#</a></dt>
 <dd><p>getOldMessages</p>
+<dl class="simple">
+<dt>TODO: this needs to be able to check that the channel socket</dt><dd><p>is ready, otherwise the keys might not be … currently
+before calling this, make a ready check on the socket</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="js function">
@@ -582,7 +583,7 @@ or an error message if it fails.</p>
 <dl class="js function">
 <dt class="sig sig-object js" id="ChannelApi.updateCapacity">
 <span class="sig-prename descclassname"><span class="n"><span class="pre">ChannelApi</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">updateCapacity</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">capacity</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ChannelApi.updateCapacity" title="Permalink to this definition">#</a></dt>
-<dd><p>updateCapacity</p>
+<dd><p>Update (set) the capacity of the channel; Owner only</p>
 </dd></dl>
 
 </dd></dl>
@@ -601,22 +602,21 @@ or an error message if it fails.</p>
 <span class="sig-prename descclassname"><span class="n"><span class="pre">StorageApi</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">fetchData</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">h</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#StorageApi.fetchData" title="Permalink to this definition">#</a></dt>
 <dd><p>StorageApi().fetchData()</p>
 <p>This assumes you have a complete SBObjectHandle. Note that
-if you only have the ‘id’ and ‘verification fields, you
+if you only have the ‘id’ and ‘verification’ fields, you
 can reconstruct / request the rest. The current interface
 will return both nonce, salt, and encrypted data.</p>
 </dd></dl>
 
 <dl class="js function">
-<dt class="sig sig-object js" id="StorageApi.retrieveData">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">StorageApi</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">retrieveData</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msgId</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">messages</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">controlMessages</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#StorageApi.retrieveData" title="Permalink to this definition">#</a></dt>
-<dd><p>StorageApi().retrieveData()
-retrieves an object from storage</p>
-</dd></dl>
+<dt class="sig sig-object js" id="StorageApi.getObjectMetadata">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">StorageApi</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">getObjectMetadata</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">buf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roomId</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#StorageApi.getObjectMetadata" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
 
 <dl class="js function">
-<dt class="sig sig-object js" id="StorageApi.retrieveDataFromMessage">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">StorageApi</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">retrieveDataFromMessage</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">controlMessages</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#StorageApi.retrieveDataFromMessage" title="Permalink to this definition">#</a></dt>
-<dd><p>StorageApi().retrieveDataFromMessage()</p>
+<dt class="sig sig-object js" id="StorageApi.retrieveImage">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">StorageApi</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">retrieveImage</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">imageMetaData</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">controlMessages</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">imageId</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">imageKey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">imageType</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#StorageApi.retrieveImage" title="Permalink to this definition">#</a></dt>
+<dd><p>StorageApi().retrieveData()
+retrieves an object from storage</p>
 </dd></dl>
 
 <dl class="js function">
@@ -685,30 +685,33 @@ retrieves an object from storage</p>
 <h2>Utilities and Helpers<a class="headerlink" href="#utilities-and-helpers" title="Permalink to this heading">#</a></h2>
 <p>These are a set common operations, that typically are supported by the
 web api, but where we want to ensure specific behavior.</p>
-<section id="indexedkv-class">
-<h3>IndexedKV Class<a class="headerlink" href="#indexedkv-class" title="Permalink to this heading">#</a></h3>
-<dl class="js class">
-<dt class="sig sig-object js" id="IndexedKV">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">IndexedKV</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#IndexedKV" title="Permalink to this definition">#</a></dt>
-<dd><dl class="js attribute">
-<dt class="sig sig-object js" id="IndexedKV.IndexedKV">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">IndexedKV</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">IndexedKV</span></span></span><a class="headerlink" href="#IndexedKV.IndexedKV" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-</section>
 <section id="crypto-class">
 <h3>Crypto Class<a class="headerlink" href="#crypto-class" title="Permalink to this heading">#</a></h3>
 <dl class="js class">
 <dt class="sig sig-object js" id="SBCrypto">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">SBCrypto</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#SBCrypto" title="Permalink to this definition">#</a></dt>
 <dd><dl class="js function">
+<dt class="sig sig-object js" id="SBCrypto.ab2str">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">SBCrypto</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">ab2str</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">buffer</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SBCrypto.ab2str" title="Permalink to this definition">#</a></dt>
+<dd><p>Standardized ‘ab2str()’ function, array buffer to string.
+This assumes one byte per character.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Arguments<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>buffer</strong> (<em>Uint8Array</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>string</strong> – string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="js function">
 <dt class="sig sig-object js" id="SBCrypto.compareKeys">
 <span class="sig-prename descclassname"><span class="n"><span class="pre">SBCrypto</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">compareKeys</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SBCrypto.compareKeys" title="Permalink to this definition">#</a></dt>
 <dd><p>SBCrypto.compareKeys()</p>
-<p>Compare keys, true if the ‘same’, false if different.
-TODO: type it up.</p>
+<p>Compare JSON keys, true if the ‘same’, false if different.</p>
 </dd></dl>
 
 <dl class="js function">
@@ -743,6 +746,23 @@ TODO: type it up.</p>
 <span class="sig-prename descclassname"><span class="n"><span class="pre">SBCrypto</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">sign</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">secretKey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">contents</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SBCrypto.sign" title="Permalink to this definition">#</a></dt>
 <dd><p>SBCrypto.sign()</p>
 <p>Sign</p>
+</dd></dl>
+
+<dl class="js function">
+<dt class="sig sig-object js" id="SBCrypto.str2ab">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">SBCrypto</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">str2ab</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SBCrypto.str2ab" title="Permalink to this definition">#</a></dt>
+<dd><p>Standardized ‘str2ab()’ function, string to array buffer.
+This assumes on byte per character.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Arguments<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> (<em>string</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Uint8Array</strong> – buffer</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="js function">
@@ -848,7 +868,8 @@ This assumes one byte per character.</p>
 </pre></div>
 </div>
 <p>This is the base32mi disambiguation table</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">OoQD</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;0&#39;</span>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">OoQD</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;0&#39;</span>
 <span class="p">[</span><span class="n">lIiJ</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;1&#39;</span>
 <span class="p">[</span><span class="n">Zz</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;2&#39;</span>
 <span class="p">[</span><span class="n">A</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;4&#39;</span>
@@ -867,7 +888,8 @@ This assumes one byte per character.</p>
 <span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;W&#39;</span>
 </pre></div>
 </div>
-<p>Another way to think of it is that this, becomes this (‘.’ means no change):</p>
+</div></blockquote>
+<p>Another way to think of it is this transform (‘.’ means no change):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0123456789</span><span class="n">abcdefghijklmnopqrstuvxyzABCDEFGHIJKLMNOPQRSTUVXYZ</span>
 <span class="o">...............</span><span class="mf">.9.1</span><span class="o">.</span><span class="mf">.1</span><span class="o">.</span><span class="n">N0</span><span class="mf">.9.57</span><span class="n">UUk</span><span class="mf">.248</span><span class="n">c0EF6</span><span class="mf">.11</span><span class="n">kLm</span><span class="mf">.0</span><span class="n">p0</span><span class="mf">.5</span><span class="o">..</span><span class="n">Uky2</span>
 </pre></div>
@@ -877,81 +899,6 @@ This assumes one byte per character.</p>
 </section>
 <section id="crypto-helpers">
 <h3>Crypto Helpers<a class="headerlink" href="#crypto-helpers" title="Permalink to this heading">#</a></h3>
-<dl class="js function">
-<dt class="sig sig-object js" id="importPublicKey">
-<span class="sig-name descname"><span class="n"><span class="pre">importPublicKey</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">RSA</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#importPublicKey" title="Permalink to this definition">#</a></dt>
-<dd><p>Import a PEM encoded RSA public key, to use for RSA-OAEP
-encryption.  Takes a string containing the PEM encoded key, and
-returns a Promise that will resolve to a CryptoKey representing
-the public key.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Arguments<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>RSA</strong> (<em>pem</em>) – public key, string, PEM format</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>cryptoKey</strong> – RSA-OAEP key</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="simpleRand256">
-<span class="sig-name descname"><span class="n"><span class="pre">simpleRand256</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simpleRand256" title="Permalink to this definition">#</a></dt>
-<dd><p>Returns random number</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>int</strong> – integer 0..255</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="simpleRandomString">
-<span class="sig-name descname"><span class="n"><span class="pre">simpleRandomString</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">number</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simpleRandomString" title="Permalink to this definition">#</a></dt>
-<dd><p>Returns a random string in requested encoding</p>
-<dl class="field-list simple">
-<dt class="field-odd">Arguments<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>number</strong> (<em>n</em>) – of characters</p></li>
-<li><p><strong>encoding,</strong> (<em>code</em>) – supported types: ‘base32mi’</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>string</strong> – random string base32mi: <code class="docutils literal notranslate"><span class="pre">0123456789abcdefyhEjkLmNHpFrRTUW</span></code></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="getRandomValues">
-<span class="sig-name descname"><span class="n"><span class="pre">getRandomValues</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">buffer</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#getRandomValues" title="Permalink to this definition">#</a></dt>
-<dd><p>Fills buffer with random data</p>
-</dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="packageEncryptDict">
-<span class="sig-name descname"><span class="n"><span class="pre">packageEncryptDict</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dictionary</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">public</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#packageEncryptDict" title="Permalink to this definition">#</a></dt>
-<dd><p>Takes an arbitrary dict object, a public key in PEM
-format, and a callback function: generates a random AES key,
-wraps that in (RSA) key, and when all done will call the
-callback function with the results.</p>
-<p>This function is for direct use in a web page, for example
-capturing a ‘form’ input set of data about a user, and
-sending towards a backend in such a way that the contents
-can only be decrypted and read off-line (air gapped).</p>
-<dl class="field-list simple">
-<dt class="field-odd">Arguments<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>dictionary</strong> (<em>dict</em>) – (payload)</p></li>
-<li><p><strong>public</strong> (<em>publicKeyPEM</em>) – key (PEM format)</p></li>
-<li><p><strong>callback</strong> (<em>callback</em>) – function, called with results</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
 </section>
 <section id="sb-wire-format-helpers">
 <h3>SB “Wire” Format Helpers<a class="headerlink" href="#sb-wire-format-helpers" title="Permalink to this heading">#</a></h3>
@@ -996,6 +943,118 @@ in the code; one approach is the line number in the file (at some point).</p>
 </dd></dl>
 
 </section>
+<section id="other">
+<h3>Other<a class="headerlink" href="#other" title="Permalink to this heading">#</a></h3>
+<p>TODO: add ‘’SBFetch’’ function.</p>
+<hr class="docutils" />
+<p class="rubric">Footnotes</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id2" role="note">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<p>(test) This is the closest to DM (Direct Message) that the system
+allows, since one constraint is that any communication must
+include a responsible Owner.</p>
+</aside>
+<aside class="footnote brackets" id="id3" role="note">
+<span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
+<p>(test) If the whisper is initiated by the guest. If whisper is
+initiated by the owner, the key derivation uses the private
+half of &lt;room&gt;_ownerKey and the public key of the
+guest. The derived key remains the same in both cases.</p>
+</aside>
+<aside class="footnote brackets" id="id4" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">3</a><span class="fn-bracket">]</span></span>
+<p>(test) In exchange for possible weaker security, since now the
+Owner needs to keep track of their key files.</p>
+</aside>
+</aside>
+<hr class="docutils" />
+</section>
+</section>
+<section id="dn-004-the-ready-pattern">
+<span id="dn004"></span><h2>DN 004: The “Ready” Pattern<a class="headerlink" href="#dn-004-the-ready-pattern" title="Permalink to this heading">#</a></h2>
+<p>Unfortunately we have lost the original source from where we first
+heard about the “ready” design pattern, and that source might have
+called it something different.</p>
+<p>The idea is to allow objects to be created immediately, but not
+necessarily be “ready” to use, meaning that there might be some
+asynchronous initialization that needs to be completed before the
+object is ready to use.</p>
+<p>Here is essentially how it works:</p>
+<blockquote>
+<div><div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">SomeClass</span><span class="p">()</span>
+<span class="c1">// the object per se is created right away</span>
+
+<span class="c1">// you can call any method on the object, but it will</span>
+<span class="c1">// throw an exception if the object is not ready</span>
+<span class="nx">obj</span><span class="p">.</span><span class="nx">someMethod</span><span class="p">()</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">obj</span><span class="p">.</span><span class="nx">readyFlag</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="c1">// you can explicitly check if an object is ready</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="c1">// and if not, perhaps do something else</span>
+<span class="p">}</span>
+
+<span class="nx">obj</span><span class="p">.</span><span class="nx">ready</span><span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">obj</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="c1">// or you can set up what should be done when the object is ready</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+<p>That’s the basic model. Creating an object is not a blocking operation,
+but you can check if it is ready or not, and if not, you can either
+wait for it to become ready, or you can move on and do something else.
+If you call a method on an object that is not ready, it will throw an
+exception.</p>
+<p>The “readyFlag” value is set to true when the object is ready, and the
+“ready” promise is resolved when the object is ready. The “ready”
+promise is initialized by the constructor, so you also can do this:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">SomeClass</span><span class="p">()).</span><span class="nx">ready</span><span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">obj</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="c1">// do something with the object</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+<p>Internally (inside jslib), part of this pattern is done by the
+ready decorator, allowing things like getters to be succinct:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span>@Ready get privateKey() { return this.#privateKey }
+</pre></div>
+</div>
+<p>This will automatically protect the getter from being called before
+the internal state is ready, which in turn allows users of the library
+to code more aggressively and not always have to explicitly
+check if the object is ready or not.</p>
+</div></blockquote>
+</section>
+<section id="dn-005-browser-connectivity">
+<span id="dn005"></span><h2>DN 005: Browser connectivity<a class="headerlink" href="#dn-005-browser-connectivity" title="Permalink to this heading">#</a></h2>
+<p>Unfortunately, browsers at the time of writing (February, 2023)
+simply do not have a good way of checking network status. Currently
+it comes down to this:</p>
+<blockquote>
+<div><ul>
+<li><p>You cannot use ‘’XMLHttpRequest()’’ or ‘’fetch()’’ to “ping”
+a server without it being noisy: for example, Chrome insists on
+complaining (in red font) about ‘’ERR_CONNECTION_REFUSED’’ in the
+developer console, no matter what you do in your javascript code.
+The only way to turn that off is change default settings in the
+browser developer tools setup.</p></li>
+<li><p>You cannot use ‘’navigator.online’’ in all cases, because the
+browser doesn’t consider a local server (on the same computer)
+as a “server” per se, for this purpose, even though you can
+connect to it.</p>
+<p>The current net-net of this situation is that we chose not to
+make jslib “proactive”, or “smart”, in this context. What we
+can do, however, is “track” any of these errors, and print out
+an info message on the console to ignore ‘’ERR_CONNECTION_REFUSED’’.</p>
+<p>It would be nice if there was a simple api to check connectivity
+to a server or an IP address. But it’s not something to be too
+upset about: we’re pushing the browser behavior here pretty far
+already. But it does mean that systems like Deno or Cloudflare’s
+‘’workerd’’ will have to have additional non-browser APIs, just
+like node needed … and then presumably browsers will add
+incompatible versions of those …</p>
+</li>
+</ul>
+</div></blockquote>
 </section>
 </section>
 
@@ -1004,12 +1063,12 @@ in the code; one approach is the line number in the file (at some point).</p>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="pylib.html">
+          <a class="next-page" href="server.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Python Library</div>
+                <div class="title">Snackabra Server</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -1054,7 +1113,7 @@ in the code; one approach is the line number in the file (at some point).</p>
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Javascript Library</a><ul>
+<li><a class="reference internal" href="#">SB JSLib</a><ul>
 <li><a class="reference internal" href="#installation-development">Installation / Development</a></li>
 <li><a class="reference internal" href="#sb384">SB384</a><ul>
 <li><a class="reference internal" href="#SB384"><code class="docutils literal notranslate"><span class="pre">SB384</span></code></a><ul>
@@ -1071,12 +1130,12 @@ in the code; one approach is the line number in the file (at some point).</p>
 </li>
 <li><a class="reference internal" href="#snackabra-server-class">Snackabra (Server) Class</a><ul>
 <li><a class="reference internal" href="#Snackabra"><code class="docutils literal notranslate"><span class="pre">Snackabra</span></code></a><ul>
-<li><a class="reference internal" href="#Snackabra.connect"><code class="docutils literal notranslate"><span class="pre">Snackabra.connect()</span></code></a></li>
 <li><a class="reference internal" href="#Snackabra.create"><code class="docutils literal notranslate"><span class="pre">Snackabra.create()</span></code></a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li><a class="reference internal" href="#interfaces">Interfaces</a></li>
 <li><a class="reference internal" href="#channels">Channels</a><ul>
 <li><a class="reference internal" href="#sb-message-class">SB Message Class</a><ul>
 <li><a class="reference internal" href="#SBMessage"><code class="docutils literal notranslate"><span class="pre">SBMessage</span></code></a><ul>
@@ -1127,8 +1186,8 @@ in the code; one approach is the line number in the file (at some point).</p>
 <li><a class="reference internal" href="#sb-storage-class">SB Storage Class</a><ul>
 <li><a class="reference internal" href="#StorageApi"><code class="docutils literal notranslate"><span class="pre">StorageApi</span></code></a><ul>
 <li><a class="reference internal" href="#StorageApi.fetchData"><code class="docutils literal notranslate"><span class="pre">StorageApi.fetchData()</span></code></a></li>
-<li><a class="reference internal" href="#StorageApi.retrieveData"><code class="docutils literal notranslate"><span class="pre">StorageApi.retrieveData()</span></code></a></li>
-<li><a class="reference internal" href="#StorageApi.retrieveDataFromMessage"><code class="docutils literal notranslate"><span class="pre">StorageApi.retrieveDataFromMessage()</span></code></a></li>
+<li><a class="reference internal" href="#StorageApi.getObjectMetadata"><code class="docutils literal notranslate"><span class="pre">StorageApi.getObjectMetadata()</span></code></a></li>
+<li><a class="reference internal" href="#StorageApi.retrieveImage"><code class="docutils literal notranslate"><span class="pre">StorageApi.retrieveImage()</span></code></a></li>
 <li><a class="reference internal" href="#StorageApi.saveFile"><code class="docutils literal notranslate"><span class="pre">StorageApi.saveFile()</span></code></a></li>
 <li><a class="reference internal" href="#StorageApi.storeData"><code class="docutils literal notranslate"><span class="pre">StorageApi.storeData()</span></code></a></li>
 <li><a class="reference internal" href="#StorageApi.storeImage"><code class="docutils literal notranslate"><span class="pre">StorageApi.storeImage()</span></code></a></li>
@@ -1148,21 +1207,16 @@ in the code; one approach is the line number in the file (at some point).</p>
 </ul>
 </li>
 <li><a class="reference internal" href="#utilities-and-helpers">Utilities and Helpers</a><ul>
-<li><a class="reference internal" href="#indexedkv-class">IndexedKV Class</a><ul>
-<li><a class="reference internal" href="#IndexedKV"><code class="docutils literal notranslate"><span class="pre">IndexedKV</span></code></a><ul>
-<li><a class="reference internal" href="#IndexedKV.IndexedKV"><code class="docutils literal notranslate"><span class="pre">IndexedKV.IndexedKV</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
 <li><a class="reference internal" href="#crypto-class">Crypto Class</a><ul>
 <li><a class="reference internal" href="#SBCrypto"><code class="docutils literal notranslate"><span class="pre">SBCrypto</span></code></a><ul>
+<li><a class="reference internal" href="#SBCrypto.ab2str"><code class="docutils literal notranslate"><span class="pre">SBCrypto.ab2str()</span></code></a></li>
 <li><a class="reference internal" href="#SBCrypto.compareKeys"><code class="docutils literal notranslate"><span class="pre">SBCrypto.compareKeys()</span></code></a></li>
 <li><a class="reference internal" href="#SBCrypto.deriveKey"><code class="docutils literal notranslate"><span class="pre">SBCrypto.deriveKey()</span></code></a></li>
 <li><a class="reference internal" href="#SBCrypto.extractPubKey"><code class="docutils literal notranslate"><span class="pre">SBCrypto.extractPubKey()</span></code></a></li>
 <li><a class="reference internal" href="#SBCrypto.generateKeys"><code class="docutils literal notranslate"><span class="pre">SBCrypto.generateKeys()</span></code></a></li>
 <li><a class="reference internal" href="#SBCrypto.importKey"><code class="docutils literal notranslate"><span class="pre">SBCrypto.importKey()</span></code></a></li>
 <li><a class="reference internal" href="#SBCrypto.sign"><code class="docutils literal notranslate"><span class="pre">SBCrypto.sign()</span></code></a></li>
+<li><a class="reference internal" href="#SBCrypto.str2ab"><code class="docutils literal notranslate"><span class="pre">SBCrypto.str2ab()</span></code></a></li>
 <li><a class="reference internal" href="#SBCrypto.verify"><code class="docutils literal notranslate"><span class="pre">SBCrypto.verify()</span></code></a></li>
 </ul>
 </li>
@@ -1178,14 +1232,7 @@ in the code; one approach is the line number in the file (at some point).</p>
 <li><a class="reference internal" href="#cleanBase32mi"><code class="docutils literal notranslate"><span class="pre">cleanBase32mi()</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#crypto-helpers">Crypto Helpers</a><ul>
-<li><a class="reference internal" href="#importPublicKey"><code class="docutils literal notranslate"><span class="pre">importPublicKey()</span></code></a></li>
-<li><a class="reference internal" href="#simpleRand256"><code class="docutils literal notranslate"><span class="pre">simpleRand256()</span></code></a></li>
-<li><a class="reference internal" href="#simpleRandomString"><code class="docutils literal notranslate"><span class="pre">simpleRandomString()</span></code></a></li>
-<li><a class="reference internal" href="#getRandomValues"><code class="docutils literal notranslate"><span class="pre">getRandomValues()</span></code></a></li>
-<li><a class="reference internal" href="#packageEncryptDict"><code class="docutils literal notranslate"><span class="pre">packageEncryptDict()</span></code></a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#crypto-helpers">Crypto Helpers</a></li>
 <li><a class="reference internal" href="#sb-wire-format-helpers">SB “Wire” Format Helpers</a><ul>
 <li><a class="reference internal" href="#assemblePayload"><code class="docutils literal notranslate"><span class="pre">assemblePayload()</span></code></a></li>
 <li><a class="reference internal" href="#extractPayload"><code class="docutils literal notranslate"><span class="pre">extractPayload()</span></code></a></li>
@@ -1200,8 +1247,11 @@ in the code; one approach is the line number in the file (at some point).</p>
 <li><a class="reference internal" href="#compareBuffers"><code class="docutils literal notranslate"><span class="pre">compareBuffers()</span></code></a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#other">Other</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#dn-004-the-ready-pattern">DN 004: The “Ready” Pattern</a></li>
+<li><a class="reference internal" href="#dn-005-browser-connectivity">DN 005: Browser connectivity</a></li>
 </ul>
 </li>
 </ul>

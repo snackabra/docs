@@ -18,17 +18,12 @@ export interface SBServer {
     channel_ws: string;
     storage_server: string;
 }
-interface IndexedKVOptions {
-    db: string;
-    table: string;
-    onReady: CallableFunction;
+interface Dictionary<T> {
+    [index: string]: T;
 }
-type StorableDataType = string | number | bigint | boolean | symbol | object;
-interface Dictionary {
-    [index: string]: any;
-}
+export type SBChannelId = string;
 interface ChannelData {
-    roomId?: string;
+    roomId?: SBChannelId;
     channelId?: string;
     ownerKey: string;
     encryptionKey: string;
@@ -40,6 +35,8 @@ interface ImageMetaData {
     previewId?: string;
     imageKey?: string;
     previewKey?: string;
+    previewNonce?: string;
+    previewSalt?: string;
 }
 /**
 @typedef {import("./snackabra.d.ts").ChannelMessage} ChannelMessage
@@ -118,7 +115,7 @@ interface ChannelKeyStrings {
     signKey: string;
     lockedKey?: string;
 }
-interface ChannelKeys {
+export interface ChannelKeys {
     ownerKey: CryptoKey;
     guestKey?: CryptoKey;
     encryptionKey: CryptoKey;
@@ -151,7 +148,6 @@ export interface EncryptedContentsBin {
  * supports either string or arrays)
  */
 export declare function encryptedContentsMakeBinary(o: EncryptedContents): EncryptedContentsBin;
-/******************************************************************************************************/
 export type ChannelMessageTypes = 'ack' | 'keys' | 'invalid' | 'ready' | 'encypted';
 /******************************************************************************************************/
 /**
@@ -159,7 +155,7 @@ export type ChannelMessageTypes = 'ack' | 'keys' | 'invalid' | 'ready' | 'encypt
  */
 export declare class MessageBus {
     #private;
-    bus: Dictionary;
+    bus: Dictionary<any>;
     /**
      * Subscribe. 'event' is a string, special case '*' means everything
      *  (in which case the handler is also given the message)
@@ -174,14 +170,10 @@ export declare class MessageBus {
      */
     publish(event: string, ...args: unknown[]): void;
 }
-/**
- * @fileoverview Main file for snackabra javascript utilities.
- *               See https://snackabra.io for details.
- * @package
- */
 export declare function _sb_exception(loc: string, msg: string): void;
 export declare function _sb_resolve(val: any): any;
 export declare function _sb_assert(val: unknown, msg: string): void;
+/******************************************************************************************************/
 /******************************************************************************************************/
 /**
  * Fills buffer with random data
@@ -192,22 +184,6 @@ export declare function getRandomValues(buffer: Uint8Array): Uint8Array;
  * Works same on browsers and nodejs.
  */
 export declare function _assertBase64(base64: string): boolean;
-/**
- * Standardized 'str2ab()' function, string to array buffer.
- * This assumes on byte per character.
- *
- * @param {string} string
- * @return {Uint8Array} buffer
- */
-export declare function str2ab(string: string): Uint8Array;
-/**
- * Standardized 'ab2str()' function, array buffer to string.
- * This assumes one byte per character.
- *
- * @param {Uint8Array} buffer
- * @return {string} string
- */
-export declare function ab2str(buffer: Uint8Array): string;
 /**
  * Standardized 'atob()' function, e.g. takes the a Base64 encoded
  * input and decodes it. Note: always returns Uint8Array.
@@ -230,19 +206,15 @@ export declare function compareBuffers(a: Uint8Array | ArrayBuffer | null, b: Ui
  * @param {bufferSource} ArrayBuffer buffer
  * @return {string} base64 string
  */
-export declare function arrayBufferToBase64(buffer: ArrayBuffer | Uint8Array | null): string;
-export declare function _appendBuffer(buffer1: Uint8Array | ArrayBuffer, buffer2: Uint8Array | ArrayBuffer): ArrayBuffer;
+export declare function arrayBufferToBase64(buffer: ArrayBuffer | Uint8Array | null, variant?: 'b64' | 'url'): string;
 /**
- * Import a PEM encoded RSA public key, to use for RSA-OAEP
- * encryption.  Takes a string containing the PEM encoded key, and
- * returns a Promise that will resolve to a CryptoKey representing
- * the public key.
+ * Appends two buffers and returns a new buffer
  *
- * @param {pem} RSA public key, string, PEM format
- * @return {cryptoKey} RSA-OAEP key
- *
+ * @param buffer1
+ * @param buffer2
+ * @returns
  */
-export declare function importPublicKey(pem?: string): Promise<CryptoKey>;
+export declare function _appendBuffer(buffer1: Uint8Array | ArrayBuffer, buffer2: Uint8Array | ArrayBuffer): ArrayBuffer;
 /**
  * Returns random number
  *
@@ -267,7 +239,9 @@ export declare function simpleRandomString(n: number, code: string): string;
  *
  *     'base32mi': '0123456789abcdefyhEjkLmNHpFrRTUW'
  *
- * This is the base32mi disambiguation table ::
+ * This is the base32mi disambiguation table
+ *
+ *  ::
  *
  *     [OoQD] -> '0'
  *     [lIiJ] -> '1'
@@ -287,30 +261,15 @@ export declare function simpleRandomString(n: number, code: string): string;
  *     [uvV] -> 'U'
  *     [w] -> 'W'
  *
- * Another way to think of it is that this, becomes this ('.' means no change): ::
+ * Another way to think of it is this transform ('.' means no change):
+ *
+ * ::
  *
  *     0123456789abcdefghijklmnopqrstuvxyzABCDEFGHIJKLMNOPQRSTUVXYZ
  *     ................9.1..1.N0.9.57UUk.248c0EF6.11kLm.0p0.5..Uky2
  *
  */
 export declare function cleanBase32mi(s: string): string;
-/**
- * Takes an arbitrary dict object, a public key in PEM
- * format, and a callback function: generates a random AES key,
- * wraps that in (RSA) key, and when all done will call the
- * callback function with the results.
- *
- * This function is for direct use in a web page, for example
- * capturing a 'form' input set of data about a user, and
- * sending towards a backend in such a way that the contents
- * can only be decrypted and read off-line (air gapped).
- *
- * @param {dict} dictionary (payload)
- * @param {publicKeyPEM} public key (PEM format)
- * @param {callback} callback function, called with results
- *
- */
-export declare function packageEncryptDict(dict: Dictionary, publicKeyPEM: string, callback: CallableFunction): void;
 /**
  * Partition
  */
@@ -324,17 +283,17 @@ export declare function jsonParseWrapper(str: string, loc: string): any;
 /**
  * Deprecated (older version of payloads, for older channels)
  */
-export declare function extractPayloadV1(payload: ArrayBuffer): Dictionary;
+export declare function extractPayloadV1(payload: ArrayBuffer): Dictionary<any>;
 /**
  * Assemble payload
  */
-export declare function assemblePayload(data: Dictionary): BodyInit | null;
+export declare function assemblePayload(data: Dictionary<any>): BodyInit | null;
 /**
  * Extract payload - this decodes from our binary (wire) format
  * to a JS object. This provides a binary encoding of any JSON,
  * and it allows some elements of the JSON to be raw (binary).
  */
-export declare function extractPayload(payload: ArrayBuffer): Dictionary;
+export declare function extractPayload(payload: ArrayBuffer): Dictionary<any>;
 /**
  * Encode into b64 URL
  */
@@ -343,10 +302,13 @@ export declare function encodeB64Url(input: string): string;
  * Decode b64 URL
  */
 export declare function decodeB64Url(input: string): string;
-/******************************************************************************************************/
+/******************************************************************************************************
+   ******************************************************************************************************/
 /**
- * SBCrypto contains all the SB specific crypto functions. It should be the only area where
- * SB code uses subtle crypto directly.
+ * SBCrypto
+ *
+ * SBCrypto contains all the SB specific crypto functions,
+ * as well as some general utility functions.
  *
  * @class
  * @constructor
@@ -407,14 +369,30 @@ declare class SBCrypto {
      */
     verify(verifyKey: CryptoKey, sign: string, contents: string): Promise<boolean>;
     /**
+     * Standardized 'str2ab()' function, string to array buffer.
+     * This assumes on byte per character.
+     *
+     * @param {string} string
+     * @return {Uint8Array} buffer
+     */
+    str2ab(string: string): Uint8Array;
+    /**
+     * Standardized 'ab2str()' function, array buffer to string.
+     * This assumes one byte per character.
+     *
+     * @param {Uint8Array} buffer
+     * @return {string} string
+     */
+    ab2str(buffer: Uint8Array): string;
+    /**
      * SBCrypto.compareKeys()
      *
-     * Compare keys, true if the 'same', false if different.
-     * TODO: type it up.
+     * Compare JSON keys, true if the 'same', false if different.
      */
-    compareKeys(key1: Dictionary, key2: Dictionary): boolean;
+    compareKeys(key1: Dictionary<any>, key2: Dictionary<any>): boolean;
 }
 /**
+ *
  * @class
  * @constructor
  * @public
@@ -431,7 +409,7 @@ declare class SB384 {
      * corresponding information is not ready.
      *
      * Like most SB classes, SB384 follows the "ready template" design
-     * principle: the object is immediately available upon creation,
+     * pattern: the object is immediately available upon creation,
      * but isn't "ready" until it says it's ready. See `Channel Class`_
      * example below.
      *
@@ -461,8 +439,12 @@ interface SBMessageContents {
     imageMetadata_sign?: string;
     imageMetaData?: ImageMetaData;
 }
+declare const SB_MESSAGE_SYMBOL: unique symbol;
+declare const SB_OBJECT_HANDLE_SYMBOL: unique symbol;
 /**
  * SBMessage
+ *
+ * Body should be below 32KiB, though it tolerates up to 64KiB
  *
  * @class
  * @constructor
@@ -472,6 +454,8 @@ declare class SBMessage {
     ready: Promise<SBMessage>;
     channel: Channel;
     contents: SBMessageContents;
+    [SB_MESSAGE_SYMBOL]: boolean;
+    MAX_SB_BODY_SIZE: number;
     constructor(channel: Channel, body?: string);
     /**
      * SBMessage.send()
@@ -488,13 +472,20 @@ declare class SBMessage {
  */
 export declare class SBFile extends SBMessage {
     #private;
-    data: Dictionary;
+    data: Dictionary<string>;
     image: string;
     image_sign: string;
     imageMetaData: ImageMetaData;
     constructor(channel: Channel, file: File);
 }
 /** SB384 */
+/**
+ * Channel
+ *
+ * @class
+ * @constructor
+ * @public
+ */
 declare abstract class Channel extends SB384 {
     #private;
     ready: Promise<Channel>;
@@ -508,7 +499,7 @@ declare abstract class Channel extends SB384 {
     abstract get keys(): ChannelKeys;
     abstract send(m: SBMessage | string, messageType?: 'string' | 'SBMessage'): Promise<string>;
     abstract set onMessage(f: CallableFunction);
-    abstract adminData?: Dictionary;
+    abstract adminData?: Dictionary<any>;
     /**
      * Join a channel, returns channel object.
      *
@@ -588,7 +579,7 @@ declare abstract class Channel extends SB384 {
 export declare class ChannelSocket extends Channel {
     #private;
     ready: Promise<ChannelSocket>;
-    adminData?: Dictionary;
+    adminData?: Dictionary<any>;
     /**
      * ChannelSocket
      *
@@ -596,10 +587,12 @@ export declare class ChannelSocket extends Channel {
      *
      * */
     constructor(sbServer: SBServer, onMessage: (m: ChannelMessage) => void, key?: JsonWebKey, channelId?: string);
-    get status(): "CONNECTING" | "OPEN" | "CLOSING" | "CLOSED";
+    close: () => void;
+    checkServerStatus(url: string, timeout: number, callback: (online: boolean) => void): void;
+    get status(): "CLOSED" | "CONNECTING" | "OPEN" | "CLOSING";
     set onMessage(f: (m: ChannelMessage) => void);
-    set enableTrace(b: boolean);
     get onMessage(): (m: ChannelMessage) => void;
+    set enableTrace(b: boolean);
     /**
      * ChannelSocket.keys
      *
@@ -618,18 +611,29 @@ export declare class ChannelSocket extends Channel {
       * Returns a promise that resolves to "success" when sent,
       * or an error message if it fails.
       */
-    send(msg: SBMessage | string | object): Promise<string>;
+    send(msg: SBMessage | string): Promise<string>;
     /** @type {JsonWebKey} */ get exportable_owner_pubKey(): JsonWebKey | null;
 }
 export type SBObjectType = 'f' | 'p' | 'b';
 export interface SBObjectHandle {
+    [SB_OBJECT_HANDLE_SYMBOL]: boolean;
     version: '1';
     type: SBObjectType;
     id: string;
     key: string;
-    verification: Promise<string>;
+    verification: Promise<string> | string;
     iv?: Uint8Array;
     salt?: Uint8Array;
+}
+export interface SBObjectMetadata {
+    [SB_OBJECT_HANDLE_SYMBOL]: boolean;
+    version: '1';
+    type: SBObjectType;
+    id: string;
+    key: string;
+    paddedBuffer: ArrayBuffer;
+    iv: Uint8Array;
+    salt: Uint8Array;
 }
 /**
  * Storage API
@@ -649,11 +653,19 @@ declare class StorageApi {
      * @param roomId
      *
      */
-    storeObject(buf: ArrayBuffer, type: SBObjectType, roomId: string): Promise<SBObjectHandle>;
+    getObjectMetadata(buf: ArrayBuffer, type: SBObjectType): Promise<SBObjectMetadata>;
+    /**
+     *
+     * @param buf
+     * @param type
+     * @param roomId
+     *
+     */
+    storeObject(buf: ArrayBuffer, type: SBObjectType, roomId: string, metadata?: SBObjectMetadata): Promise<SBObjectHandle>;
     /**
      * StorageApi.saveFile()
      */
-    saveFile(channel: Channel, sbFile: SBFile): Promise<void>;
+    saveFile(channel: Channel, sbFile: SBFile): void;
     /**
      * StorageApi().storeRequest
      */
@@ -661,7 +673,7 @@ declare class StorageApi {
     /**
      * StorageApi().storeData()
      */
-    storeData(type: string, fileId: string, iv: Uint8Array, salt: Uint8Array, storageToken: string, data: ArrayBuffer): Promise<Dictionary>;
+    storeData(type: string, fileId: string, iv: Uint8Array, salt: Uint8Array, storageToken: string, data: ArrayBuffer): Promise<Dictionary<any>>;
     /**
      * StorageApi().storeImage()
      */
@@ -670,7 +682,7 @@ declare class StorageApi {
      * StorageApi().fetchData()
      *
      * This assumes you have a complete SBObjectHandle. Note that
-     * if you only have the 'id' and 'verification fields, you
+     * if you only have the 'id' and 'verification' fields, you
      * can reconstruct / request the rest. The current interface
      * will return both nonce, salt, and encrypted data.
      */
@@ -679,17 +691,7 @@ declare class StorageApi {
      * StorageApi().retrieveData()
      * retrieves an object from storage
      */
-    retrieveData(msgId: string, messages: Array<ChannelMessage>, controlMessages: Array<ChannelMessage>): Promise<Dictionary>;
-    /**
-     * StorageApi().retrieveDataFromMessage()
-     */
-    retrieveDataFromMessage(message: Dictionary, controlMessages: Array<Dictionary>): Promise<{
-        error: string;
-        url?: undefined;
-    } | {
-        url: string;
-        error?: undefined;
-    }>;
+    retrieveImage(imageMetaData: ImageMetaData, controlMessages: Array<ChannelMessage>, imageId?: string, imageKey?: string, imageType?: SBObjectType): Promise<Dictionary<any>>;
 }
 /**
  * Channel API
@@ -706,28 +708,32 @@ declare class ChannelApi {
     getLastMessageTimes(): Promise<unknown>;
     /**
      * getOldMessages
+     *
+     * TODO: this needs to be able to check that the channel socket
+     *       is ready, otherwise the keys might not be ... currently
+     *       before calling this, make a ready check on the socket
      */
     getOldMessages(currentMessagesLength: number): Promise<Array<ChannelMessage>>;
     /**
-     * updateCapacity
+     * Update (set) the capacity of the channel; Owner only
      */
-    updateCapacity(capacity: number): Promise<unknown>;
+    updateCapacity(capacity: number): Promise<any>;
     /**
      * getCapacity
      */
-    getCapacity(): Promise<unknown>;
+    getCapacity(): Promise<any>;
     /**
      * getJoinRequests
      */
-    getJoinRequests(): Promise<unknown>;
+    getJoinRequests(): Promise<any>;
     /**
      * isLocked
      */
-    isLocked(): Promise<unknown>;
+    isLocked(): Promise<boolean>;
     /**
      * Set message of the day
      */
-    setMOTD(motd: string): Promise<unknown>;
+    setMOTD(motd: string): Promise<any>;
     /**
      * getAdminData
      */
@@ -737,32 +743,14 @@ declare class ChannelApi {
      */
     downloadData(): Promise<unknown>;
     uploadChannel(channelData: ChannelData): Promise<unknown>;
-    authorize(ownerPublicKey: Dictionary, serverSecret: string): Promise<unknown>;
+    authorize(ownerPublicKey: Dictionary<any>, serverSecret: string): Promise<any>;
     postPubKey(_exportable_pubKey: JsonWebKey): Promise<{
         success: boolean;
     }>;
-    storageRequest(byteLength: number): Promise<Dictionary>;
-}
-/******************************************************************************************************/
-/**
- * Augments IndexedDB to be used as a KV to easily
- * replace _localStorage for larger and more complex datasets
- *
- * @class
- * @constructor
- * @public
- */
-export declare class IndexedKV {
-    #private;
-    db: IDBDatabase;
-    events: MessageBus;
-    options: IndexedKVOptions;
-    constructor();
-    openCursor(match: string, callback: CallableFunction): Promise<unknown>;
-    setItem(key: string, value: StorableDataType): Promise<unknown>;
-    add(key: string, value: StorableDataType): Promise<unknown>;
-    getItem(key: string): Promise<string | null>;
-    removeItem(key: string): Promise<unknown>;
+    storageRequest(byteLength: number): Promise<Dictionary<any>>;
+    lock(): Promise<unknown>;
+    acceptVisitor(pubKey: string): Promise<unknown>;
+    ownerKeyRotation(): Promise<unknown>;
 }
 declare class Snackabra {
     #private;
@@ -771,7 +759,6 @@ declare class Snackabra {
      * below shows the miniflare local dev config. Note that 'new Snackabra()' is
      * guaranteed synchronous, so can be 'used' right away. You can optionally call
      * without a parameter in which case SB will ping known servers.
-     *
      *
      * ::
      *
@@ -788,13 +775,18 @@ declare class Snackabra {
     constructor(args?: SBServer);
     /**
      * Connects to :term:`Channel Name` on this SB config.
-     * Returns a (promise to the) channel (socket) object.
-     * It will throw an ``AggregateError`` if it fails
-     * to find the room anywhere.
+     * Returns a channel object right away, but the channel
+     * will not be ready until the ``ready`` promise is resolved.
+     * Note that if you have a preferred server then the channel
+     * object will be returned right away, but the ``ready`` promise
+     * will still be pending. If you do not have a preferred server,
+     * then the ``ready`` promise will be resolved when a least
+     * one of the known servers is ready.
      */
     connect(onMessage: (m: ChannelMessage) => void, key?: JsonWebKey, channelId?: string): Promise<ChannelSocket>;
     /**
      * Creates a new channel. Currently uses trivial authentication.
+     * Returns a promise to a :ref:
      * Returns the :term:`Channel Name`. Note that this does not
      * create a channel object, e.g. does not make a connection.
      */

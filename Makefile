@@ -27,6 +27,6 @@ jslib:
 	cp ../snackabra-jslib/snackabra.js snackabra-jslib
 	cp ../snackabra-jslib/snackabra.js.map snackabra-jslib
 	cp ../snackabra-jslib/snackabra.d.ts snackabra-jslib
-	# cp ../snackabra-sdk/src/index.ts snackabra-jslib/snackabra-server.ts
-	cp ../snackabra-sdk/src/index.js snackabra-jslib/snackabra-server.js
-	# cp ../snackabra-sdk/src/index.d.ts snackabra-jslib/snackabra-server.d.ts
+	cp ../snackabra-sdk/server/src/index.ts snackabra-jslib/snackabra-server.ts
+	cp ../snackabra-sdk/server/src/index.js snackabra-jslib/snackabra-server.js
+	cp ../snackabra-sdk/server/src/index.d.ts snackabra-jslib/snackabra-server.d.ts

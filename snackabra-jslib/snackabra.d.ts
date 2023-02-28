@@ -10,7 +10,7 @@
  * an 'owner' key.
  */
 export interface SBChannelHandle {
-    channelId: string;
+    channelId: SBChannelId;
     key: JsonWebKey;
 }
 export interface SBServer {
@@ -24,7 +24,7 @@ interface Dictionary<T> {
 export type SBChannelId = string;
 interface ChannelData {
     roomId?: SBChannelId;
-    channelId?: string;
+    channelId?: SBChannelId;
     ownerKey: string;
     encryptionKey: string;
     signKey: string;
@@ -62,7 +62,7 @@ export interface ChannelMessage {
     id?: string;
     timestamp?: number;
     timestampPrefix?: string;
-    channelID?: string;
+    channelID?: SBChannelId;
     control?: boolean;
     encrypted_contents?: EncryptedContents;
     contents?: string;
@@ -655,15 +655,18 @@ declare class StorageApi {
      */
     getObjectMetadata(buf: ArrayBuffer, type: SBObjectType): Promise<SBObjectMetadata>;
     /**
-     *
+     * StorageApi.storeObject
      * @param buf
      * @param type
      * @param roomId
      *
      */
-    storeObject(buf: ArrayBuffer, type: SBObjectType, roomId: string, metadata?: SBObjectMetadata): Promise<SBObjectHandle>;
+    storeObject(buf: ArrayBuffer, type: SBObjectType, roomId: SBChannelId, metadata?: SBObjectMetadata): Promise<SBObjectHandle>;
     /**
      * StorageApi.saveFile()
+     *
+     * @param channel
+     * @param sbFile
      */
     saveFile(channel: Channel, sbFile: SBFile): void;
     /**
@@ -786,9 +789,10 @@ declare class Snackabra {
     connect(onMessage: (m: ChannelMessage) => void, key?: JsonWebKey, channelId?: string): Promise<ChannelSocket>;
     /**
      * Creates a new channel. Currently uses trivial authentication.
-     * Returns a promise to a :ref:
-     * Returns the :term:`Channel Name`. Note that this does not
-     * create a channel object, e.g. does not make a connection.
+     * Returns a promise to a ''SBChannelHandle'' object
+     * (which includes the :term:`Channel Name`).
+     * Note that this method does not connect to the channel,
+     * it just creates (authorizes) it.
      */
     create(sbServer: SBServer, serverSecret: string, keys?: JsonWebKey): Promise<SBChannelHandle>;
     get channel(): Channel;
@@ -796,10 +800,11 @@ declare class Snackabra {
     get crypto(): SBCrypto;
     sendFile(file: SBFile): void;
 }
-export { Channel, SBMessage, Snackabra, SBCrypto, };
+export { Channel, SBMessage, Snackabra, SBCrypto, SB384 };
 export declare var SB: {
     Snackabra: typeof Snackabra;
     SBMessage: typeof SBMessage;
     Channel: typeof Channel;
     SBCrypto: typeof SBCrypto;
+    SB384: typeof SB384;
 };

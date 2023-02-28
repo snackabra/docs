@@ -171,7 +171,7 @@ function SBFetch(input, init) {
     if (init)
         return fetch(input, init);
     else
-        return fetch(input, { method: 'GET', credentials: 'include' });
+        return fetch(input, { method: 'GET' /*, credentials: 'include' */ });
 }
 function WrapError(e) {
     if (e instanceof Error) {
@@ -1706,151 +1706,138 @@ export class ChannelSocket extends Channel {
             try {
                 console.log("++++++++ readyPromise() has url:");
                 console.log(url);
-                this.checkServerStatus(this.#sbServer.channel_server, 500, function (online) {
-                    if (online) {
-                        console.log('Server is online.');
-                    }
-                    else {
-                        console.log('Server is offline.');
-                    }
-                });
-                console.log(this.api);
-                let z = this.api.isLocked();
-                console.log("z is: ");
-                console.log(z);
-                z.then((zz) => {
-                    console.log("zz is: ");
-                    console.log(zz);
-                    // if (this.#ws.websocket) this.#ws.websocket.close() // keep clean
-                    if (!this.#ws.websocket)
-                        this.#ws.websocket = new WebSocket(this.#ws.url);
-                    if (this.#ws.websocket.readyState === 3) {
-                        // it's been closed
-                        this.#ws.websocket = new WebSocket(url);
-                    }
-                    else if (this.#ws.websocket.readyState === 2) {
-                        console.log("STRANGE - trying to use a ChannelSocket that is in the process of closing ...");
-                        this.#ws.websocket = new WebSocket(url);
-                    }
-                    this.#ws.websocket.addEventListener('open', () => {
-                        this.#ws.closed = false;
-                        this.channelReady.then(() => {
-                            // console.log("++++++++ readyPromise() has identity:")
-                            // console.log(id)
-                            this.#ws.init = { name: JSON.stringify(this.exportable_pubKey) }; // TODO: sometimes this is null?
-                            // console.log("++++++++ readyPromise() constructed init:")
-                            // console.log(this.#ws.init)
-                            this.#ws.websocket.send(JSON.stringify(this.#ws.init));
-                            // note: not ready until channel responds with keys
-                        });
+                // this.checkServerStatus(this.#sbServer.channel_server, 500, function (online) {
+                //   if (online) {
+                //     console.log('Server is online.');
+                //   } else {
+                //     console.log('Server is offline.');
+                //   }
+                // });
+                // if (this.#ws.websocket) this.#ws.websocket.close() // keep clean
+                if (!this.#ws.websocket)
+                    this.#ws.websocket = new WebSocket(this.#ws.url);
+                if (this.#ws.websocket.readyState === 3) {
+                    // it's been closed
+                    this.#ws.websocket = new WebSocket(url);
+                }
+                else if (this.#ws.websocket.readyState === 2) {
+                    console.log("STRANGE - trying to use a ChannelSocket that is in the process of closing ...");
+                    this.#ws.websocket = new WebSocket(url);
+                }
+                this.#ws.websocket.addEventListener('open', () => {
+                    this.#ws.closed = false;
+                    this.channelReady.then(() => {
+                        // console.log("++++++++ readyPromise() has identity:")
+                        // console.log(id)
+                        this.#ws.init = { name: JSON.stringify(this.exportable_pubKey) }; // TODO: sometimes this is null?
+                        // console.log("++++++++ readyPromise() constructed init:")
+                        // console.log(this.#ws.init)
+                        this.#ws.websocket.send(JSON.stringify(this.#ws.init));
+                        // note: not ready until channel responds with keys
                     });
-                    this.#ws.websocket.addEventListener('message', (e) => {
-                        // the 'root' administrative messages are processed first before
-                        // anything else can be processed, when this is done it self-replaces
-                        // console.log("++++++++ readyPromise() received ChannelKeysMessage:")
+                });
+                this.#ws.websocket.addEventListener('message', (e) => {
+                    // the 'root' administrative messages are processed first before
+                    // anything else can be processed, when this is done it self-replaces
+                    // console.log("++++++++ readyPromise() received ChannelKeysMessage:")
+                    // console.log(e)
+                    if (processingKeys) {
+                        backlog.push(e.data);
+                        // console.log("++++++++ readyPromise() pushing message to backlog:")
                         // console.log(e)
-                        if (processingKeys) {
-                            backlog.push(e.data);
-                            // console.log("++++++++ readyPromise() pushing message to backlog:")
-                            // console.log(e)
-                            return;
-                        }
-                        processingKeys = true; // helps not drop messages
-                        // const message: ChannelKeysMessage = deserializeMessage(e.data, 'channelKeys')! as ChannelKeysMessage
-                        const message = JSON.parse(e.data);
-                        // console.log(message)
-                        _sb_assert(message.ready, 'got roomKeys but channel reports it is not ready (?)');
-                        this.motd = message.motd;
-                        this.locked = message.roomLocked;
-                        const exportable_owner_pubKey = JSON.parse(message.keys.ownerKey);
-                        this.#exportable_owner_pubKey = exportable_owner_pubKey;
-                        // console.log(this.#exportable_owner_pubKey )
+                        return;
+                    }
+                    processingKeys = true; // helps not drop messages
+                    // const message: ChannelKeysMessage = deserializeMessage(e.data, 'channelKeys')! as ChannelKeysMessage
+                    const message = JSON.parse(e.data);
+                    // console.log(message)
+                    _sb_assert(message.ready, 'got roomKeys but channel reports it is not ready (?)');
+                    this.motd = message.motd;
+                    this.locked = message.roomLocked;
+                    const exportable_owner_pubKey = JSON.parse(message.keys.ownerKey);
+                    this.#exportable_owner_pubKey = exportable_owner_pubKey;
+                    // console.log(this.#exportable_owner_pubKey )
+                    Promise.all([
+                        sbCrypto.importKey('jwk', JSON.parse(message.keys.ownerKey), 'ECDH', false, []),
+                        sbCrypto.importKey('jwk', JSON.parse(message.keys.encryptionKey), 'AES', false, ['encrypt', 'decrypt']),
+                        sbCrypto.importKey('jwk', JSON.parse(message.keys.signKey), 'ECDH', true, ['deriveKey']),
+                        sbCrypto.importKey('jwk', sbCrypto.extractPubKey(JSON.parse(message.keys.signKey)), 'ECDH', true, []),
+                        // this.identity!.privateKey // we know we have id by now
+                    ]).then((v) => {
+                        // console.log("++++++++ readyPromise() processed first batch of keys")
+                        const ownerKey = v[0];
+                        const encryptionKey = v[1];
+                        const signKey = v[2];
+                        const publicSignKey = v[3];
+                        const privateKey = this.privateKey;
                         Promise.all([
-                            sbCrypto.importKey('jwk', JSON.parse(message.keys.ownerKey), 'ECDH', false, []),
-                            sbCrypto.importKey('jwk', JSON.parse(message.keys.encryptionKey), 'AES', false, ['encrypt', 'decrypt']),
-                            sbCrypto.importKey('jwk', JSON.parse(message.keys.signKey), 'ECDH', true, ['deriveKey']),
-                            sbCrypto.importKey('jwk', sbCrypto.extractPubKey(JSON.parse(message.keys.signKey)), 'ECDH', true, []),
-                            // this.identity!.privateKey // we know we have id by now
-                        ]).then((v) => {
-                            // console.log("++++++++ readyPromise() processed first batch of keys")
-                            const ownerKey = v[0];
-                            const encryptionKey = v[1];
-                            const signKey = v[2];
-                            const publicSignKey = v[3];
-                            const privateKey = this.privateKey;
+                            // we derive the HMAC key we use when *we* sign outgoing messages
+                            sbCrypto.deriveKey(privateKey, publicSignKey, 'HMAC', false, ['sign', 'verify'])
+                        ]).then((w) => {
+                            // console.log("++++++++ readyPromise() second phase of key processing")
+                            const channelSignKey = w[0];
+                            this.#keys = {
+                                ownerKey: ownerKey,
+                                encryptionKey: encryptionKey,
+                                signKey: signKey,
+                                channelSignKey: channelSignKey,
+                                privateKey: this.privateKey
+                            };
+                            // once we have keys we can also query admin info
+                            const adminData = this.api.getAdminData();
+                            this.owner = sbCrypto.compareKeys(exportable_owner_pubKey, this.exportable_pubKey);
                             Promise.all([
-                                // we derive the HMAC key we use when *we* sign outgoing messages
-                                sbCrypto.deriveKey(privateKey, publicSignKey, 'HMAC', false, ['sign', 'verify'])
-                            ]).then((w) => {
-                                // console.log("++++++++ readyPromise() second phase of key processing")
-                                const channelSignKey = w[0];
-                                this.#keys = {
-                                    ownerKey: ownerKey,
-                                    encryptionKey: encryptionKey,
-                                    signKey: signKey,
-                                    channelSignKey: channelSignKey,
-                                    privateKey: this.privateKey
-                                };
-                                // once we have keys we can also query admin info
-                                const adminData = this.api.getAdminData();
-                                this.owner = sbCrypto.compareKeys(exportable_owner_pubKey, this.exportable_pubKey);
-                                Promise.all([
-                                    adminData,
-                                ]).then((d) => {
-                                    // console.log("++++++++ readyPromise() getting adminData:")
-                                    // console.log(adminData)
-                                    this.adminData = d[0];
-                                    // TODO: until we have better logic here a shim from old code
-                                    this.admin = this.owner;
-                                    if (backlog.length > 0) {
-                                        // console.log("++++++++ readyPromise() we are queuing up a microtask for message processing")
-                                        queueMicrotask(() => {
-                                            console.log("++++++++ readyPromise() inside micro task");
-                                            for (let d in backlog) {
-                                                // console.log("++++++++ pulling this message from the backlog:")
-                                                // console.log(e)
-                                                this.#processMessage(d);
-                                            }
-                                        });
-                                    }
-                                    else {
-                                        // console.log("++++++++ readyPromise() there were NO messages queued up")
-                                    }
-                                    // once we've gotten our keys, we substitute the message handler
-                                    // console.log("++++++++ readyPromise() changing onMessage to processMessage")
-                                    this.#ws.websocket.addEventListener('message', (e) => {
-                                        this.#processMessage(e.data);
+                                adminData,
+                            ]).then((d) => {
+                                // console.log("++++++++ readyPromise() getting adminData:")
+                                // console.log(adminData)
+                                this.adminData = d[0];
+                                // TODO: until we have better logic here a shim from old code
+                                this.admin = this.owner;
+                                if (backlog.length > 0) {
+                                    // console.log("++++++++ readyPromise() we are queuing up a microtask for message processing")
+                                    queueMicrotask(() => {
+                                        console.log("++++++++ readyPromise() inside micro task");
+                                        for (let d in backlog) {
+                                            // console.log("++++++++ pulling this message from the backlog:")
+                                            // console.log(e)
+                                            this.#processMessage(d);
+                                        }
                                     });
-                                    // and now we are ready!
-                                    this.#ChannelSocketReadyFlag = true;
-                                    // console.log("++++++++ readyPromise() all done - resolving!")
-                                    resolve(this);
+                                }
+                                else {
+                                    // console.log("++++++++ readyPromise() there were NO messages queued up")
+                                }
+                                // once we've gotten our keys, we substitute the message handler
+                                // console.log("++++++++ readyPromise() changing onMessage to processMessage")
+                                this.#ws.websocket.addEventListener('message', (e) => {
+                                    this.#processMessage(e.data);
                                 });
+                                // and now we are ready!
+                                this.#ChannelSocketReadyFlag = true;
+                                // console.log("++++++++ readyPromise() all done - resolving!")
+                                resolve(this);
                             });
                         });
                     });
-                    this.#ws.websocket.addEventListener('close', (e) => {
-                        this.#ws.closed = true;
-                        if (!e.wasClean) {
-                            console.log(`ChannelSocket() was closed (and NOT cleanly: ${e.reason} from ${this.#sbServer.channel_server}`);
-                        }
-                        else {
-                            if (e.reason.includes("does not have an owner"))
-                                reject(`No such channel on this server (${this.#sbServer.channel_server})`);
-                            else
-                                console.log('ChannelSocket() was closed (cleanly): ', e.reason);
-                        }
-                        reject('wbSocket() closed before it was opened (?)');
-                    });
-                    this.#ws.websocket.addEventListener('error', (e) => {
-                        this.#ws.closed = true;
-                        console.log('ChannelSocket() error: ', e);
-                        reject('ChannelSocket creation error (see log)');
-                    });
-                })
-                    .catch((e) => {
+                });
+                this.#ws.websocket.addEventListener('close', (e) => {
                     this.#ws.closed = true;
-                    reject(`failed to create ChannelSocket, see log ${WrapError(e)}`);
+                    if (!e.wasClean) {
+                        console.log(`ChannelSocket() was closed (and NOT cleanly: ${e.reason} from ${this.#sbServer.channel_server}`);
+                    }
+                    else {
+                        if (e.reason.includes("does not have an owner"))
+                            reject(`No such channel on this server (${this.#sbServer.channel_server})`);
+                        else
+                            console.log('ChannelSocket() was closed (cleanly): ', e.reason);
+                    }
+                    reject('wbSocket() closed before it was opened (?)');
+                });
+                this.#ws.websocket.addEventListener('error', (e) => {
+                    this.#ws.closed = true;
+                    console.log('ChannelSocket() error: ', e);
+                    reject('ChannelSocket creation error (see log)');
                 });
             }
             catch (e) {
@@ -2185,7 +2172,7 @@ class StorageApi {
         });
     }
     /**
-     *
+     * StorageApi.storeObject
      * @param buf
      * @param type
      * @param roomId
@@ -2240,6 +2227,9 @@ class StorageApi {
     }
     /**
      * StorageApi.saveFile()
+     *
+     * @param channel
+     * @param sbFile
      */
     saveFile(channel, sbFile) {
         console.log("saveFile()");
@@ -2534,6 +2524,9 @@ class ChannelApi {
         });
     }
     #callApi(path, init) {
+        console.log(path);
+        if (init)
+            console.log(init);
         return new Promise((resolve, reject) => {
             try {
                 SBFetch(this.#channelServer + this.#channel.channelId + path, init)
@@ -2576,7 +2569,7 @@ class ChannelApi {
      * isLocked
      */
     isLocked() {
-        return new Promise((resolve) => (this.#callApi('/roomLocked')).then((d) => resolve(d.locked === true)));
+        return new Promise((resolve) => (this.#callApi('/roomLocked')).then((d) => { console.log(d); resolve(d.locked === true); }));
     }
     /**
      * Set message of the day
@@ -2826,6 +2819,10 @@ class Snackabra {
      */
     /* @Online */
     connect(onMessage, key, channelId /*, identity?: SB384 */) {
+        if (key)
+            console.log(key);
+        if (channelId)
+            console.log(channelId);
         return new Promise((resolve, reject) => {
             // if we have a preferred server then we do not have to wait for 'ready'
             if (this.#preferredServer)
@@ -2854,9 +2851,10 @@ class Snackabra {
     //   .catch((e) => { console.log("No known servers responding to channel"); reject(e); })
     /**
      * Creates a new channel. Currently uses trivial authentication.
-     * Returns a promise to a :ref:
-     * Returns the :term:`Channel Name`. Note that this does not
-     * create a channel object, e.g. does not make a connection.
+     * Returns a promise to a ''SBChannelHandle'' object
+     * (which includes the :term:`Channel Name`).
+     * Note that this method does not connect to the channel,
+     * it just creates (authorizes) it.
      */
     create(sbServer, serverSecret, keys) {
         return new Promise(async (resolve, reject) => {
@@ -2931,11 +2929,12 @@ class Snackabra {
         this.storage.saveFile(this.#channel, file);
     }
 } /* class Snackabra */
-export { Channel, SBMessage, Snackabra, SBCrypto, };
+export { Channel, SBMessage, Snackabra, SBCrypto, SB384 };
 export var SB = {
     Snackabra: Snackabra,
     SBMessage: SBMessage,
     Channel: Channel,
-    SBCrypto: SBCrypto
+    SBCrypto: SBCrypto,
+    SB384: SB384
 };
 //# sourceMappingURL=snackabra.js.map

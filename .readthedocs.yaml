@@ -14,15 +14,6 @@ build:
     post_install:
       - npm install -g jsdoc
 
-# Build configuration
-build:
-  # Add your custom build command here
-  command:
-    - sphinx-build -M latex docs build/latex
-    - latexmk -pdf -cd -use-make -interaction=nonstopmode build/latex/*.tex
-    - latexmk -pdf -cd -use-make -interaction=nonstopmode build/latex/*.tex
-
-
 sphinx:
    configuration: source/conf.py
 

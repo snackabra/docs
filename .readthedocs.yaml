@@ -37,7 +37,7 @@ python:
 # per chatgpt :-) this should be run to try to fix footnotes
 build:
   # this should be triggered by the "-e" ... supposedly
-  commands:
-    - sphinx-build -M latex docs build/latex
+  script:
+    - sphinx-build -M latex souurce build/latex
     - latexmk -pdf -cd -use-make -interaction=nonstopmode build/latex/*.tex
     - latexmk -pdf -cd -use-make -interaction=nonstopmode build/latex/*.tex

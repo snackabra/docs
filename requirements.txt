@@ -16,4 +16,5 @@ snackabra
 
 # Add the [pdf] extra for building PDF output
 # (problem is footnotes are dangling)
--e .[pdf]
+# moving to TODO - chatgpt tips are wrong/incomplete
+# -e .[pdf]

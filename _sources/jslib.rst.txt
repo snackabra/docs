@@ -9,6 +9,9 @@ not be used for sensitive or production use (or if you do use it as
 such: caveat emptor). We will signal production-ready use by versioning
 it as 1.0.x (published to npmjs).`
 
+`We are still trying to sort out how to get Sphinx, JSDoc, Typedoc,
+ etc to all play nice together in a good way...`
+
 All core capababilities of the SB design is intended to be encapsulated
 in this library. Design objectives include: [3]_
 
@@ -334,7 +337,19 @@ it comes down to this:
      like node needed ... and then presumably browsers will add 
      incompatible versions of those ...
 
+DN 006: Localhost, CORS, and other fun things
+---------------------------------------------
 
+The browser has a concept of "same origin" policy, which means that
+a web page can only access resources on the same server, or on a
+different server, but only if the server explicitly allows it.
+
+This plus some other issues adds up to these constraints:
+
+*  If you want a static (local) web page, e.g. a resource of type
+   "file://", then it CANNOT load other resources locally - such as 
+   a library (eg jslib itself). This is a security feature of the
+   browser, and it's not likely to change.
 
        
       

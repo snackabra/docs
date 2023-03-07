@@ -216,8 +216,12 @@ any current published version is Alpha of upcoming 0.5.0 and should
 not be used for sensitive or production use (or if you do use it as
 such: caveat emptor). We will signal production-ready use by versioning
 it as 1.0.x (published to npmjs).</cite></p>
+<dl class="simple">
+<dt><a href="#id1"><span class="problematic" id="id2">`</span></a>We are still trying to sort out how to get Sphinx, JSDoc, Typedoc,</dt><dd><p>etc to all play nice together in a good way…`</p>
+</dd>
+</dl>
 <p>All core capababilities of the SB design is intended to be encapsulated
-in this library. Design objectives include: <a class="footnote-reference brackets" href="#id4" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a></p>
+in this library. Design objectives include: <a class="footnote-reference brackets" href="#id6" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a></p>
 <ul class="simple">
 <li><p>No external dependencies (no other libraries)</p></li>
 <li><p>No dependencies on the DOM object</p></li>
@@ -336,9 +340,10 @@ without a parameter in which case SB will ping known servers.</p>
 <dt class="sig sig-object js" id="Snackabra.create">
 <span class="sig-prename descclassname"><span class="n"><span class="pre">Snackabra</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">create</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sbServer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">serverSecret</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keys</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Snackabra.create" title="Permalink to this definition">#</a></dt>
 <dd><p>Creates a new channel. Currently uses trivial authentication.
-Returns a promise to a :ref:
-Returns the <a class="reference internal" href="glossary.html#term-channel-name"><span class="xref std std-term">Channel Name</span></a>. Note that this does not
-create a channel object, e.g. does not make a connection.</p>
+Returns a promise to a ‘’SBChannelHandle’’ object
+(which includes the <a class="reference internal" href="glossary.html#term-channel-name"><span class="xref std std-term">Channel Name</span></a>).
+Note that this method does not connect to the channel,
+it just creates (authorizes) it.</p>
 </dd></dl>
 
 </dd></dl>
@@ -640,7 +645,8 @@ retrieves an object from storage</p>
 <dl class="js function">
 <dt class="sig sig-object js" id="StorageApi.storeObject">
 <span class="sig-prename descclassname"><span class="n"><span class="pre">StorageApi</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">storeObject</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">buf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roomId</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#StorageApi.storeObject" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>StorageApi.storeObject</p>
+</dd></dl>
 
 <dl class="js function">
 <dt class="sig sig-object js" id="StorageApi.storeRequest">
@@ -949,21 +955,21 @@ in the code; one approach is the line number in the file (at some point).</p>
 <hr class="docutils" />
 <p class="rubric">Footnotes</p>
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id2" role="note">
+<aside class="footnote brackets" id="id4" role="note">
 <span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
 <p>(test) This is the closest to DM (Direct Message) that the system
 allows, since one constraint is that any communication must
 include a responsible Owner.</p>
 </aside>
-<aside class="footnote brackets" id="id3" role="note">
+<aside class="footnote brackets" id="id5" role="note">
 <span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
 <p>(test) If the whisper is initiated by the guest. If whisper is
 initiated by the owner, the key derivation uses the private
 half of &lt;room&gt;_ownerKey and the public key of the
 guest. The derived key remains the same in both cases.</p>
 </aside>
-<aside class="footnote brackets" id="id4" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">3</a><span class="fn-bracket">]</span></span>
+<aside class="footnote brackets" id="id6" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
 <p>(test) In exchange for possible weaker security, since now the
 Owner needs to keep track of their key files.</p>
 </aside>
@@ -1055,6 +1061,19 @@ incompatible versions of those …</p>
 </li>
 </ul>
 </div></blockquote>
+</section>
+<section id="dn-006-localhost-cors-and-other-fun-things">
+<h2>DN 006: Localhost, CORS, and other fun things<a class="headerlink" href="#dn-006-localhost-cors-and-other-fun-things" title="Permalink to this heading">#</a></h2>
+<p>The browser has a concept of “same origin” policy, which means that
+a web page can only access resources on the same server, or on a
+different server, but only if the server explicitly allows it.</p>
+<p>This plus some other issues adds up to these constraints:</p>
+<ul class="simple">
+<li><p>If you want a static (local) web page, e.g. a resource of type
+“<a class="reference external" href="file://">file://</a>”, then it CANNOT load other resources locally - such as
+a library (eg jslib itself). This is a security feature of the
+browser, and it’s not likely to change.</p></li>
+</ul>
 </section>
 </section>
 
@@ -1252,6 +1271,7 @@ incompatible versions of those …</p>
 </li>
 <li><a class="reference internal" href="#dn-004-the-ready-pattern">DN 004: The “Ready” Pattern</a></li>
 <li><a class="reference internal" href="#dn-005-browser-connectivity">DN 005: Browser connectivity</a></li>
+<li><a class="reference internal" href="#dn-006-localhost-cors-and-other-fun-things">DN 006: Localhost, CORS, and other fun things</a></li>
 </ul>
 </li>
 </ul>

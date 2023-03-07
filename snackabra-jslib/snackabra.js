@@ -267,7 +267,7 @@ const messageIdRegex = /([A-Za-z0-9+/_\-=]{64})([01]{42})/;
 // But we will go (very) lenient:
 const b64_regex = /^([A-Za-z0-9+/_\-=]*)$/;
 // stricter - only accepts URI friendly:
-const url_regex = /^([A-Za-z0-9_\-=]*)$/;
+// const url_regex = /^([A-Za-z0-9_\-=]*)$/
 /**
  * Returns 'true' if (and only if) string is well-formed base64.
  * Works same on browsers and nodejs.
@@ -285,20 +285,6 @@ function ensureSafe(base64) {
     const z = b64_regex.exec(base64);
     _sb_assert((z) && (z[0] === base64), 'ensureSafe() tripped: something is not URI safe');
     return base64;
-}
-function typedArrayToBuffer(array) {
-    console.log('typedArrayToBuffer');
-    console.log(typeof array);
-    console.log(Object.assign({}, array));
-    console.log(Object.assign({}, array.buffer));
-    try {
-        return array.buffer.slice(array.byteOffset, array.byteLength + array.byteOffset);
-    }
-    catch (e) {
-        console.log('ERROR in typedArrayTo Buffer');
-        console.log(e);
-        return array;
-    }
 }
 /**
  * based on https://github.com/qwtel/base64-encoding/blob/master/base64-js.ts
@@ -2052,18 +2038,27 @@ class StorageApi {
      * all the padding and returns the actual object.
      */
     #unpadData(data_buffer) {
-        const _size = new Uint32Array(data_buffer.slice(-4))[0];
+        // psm: ... wait has this ever worked?
+        // const _size = new Uint32Array(data_buffer.slice(-4))[0]
+        // fixing with:
+        const _size = new DataView(data_buffer.slice(-4)).getUint32(0);
+        // .. interesting, we didn't notice until we started doing things
+        //    like sharding javascript files and then injecting them ...
         // console.log(`#unpadData - size of object is ${_size}`)
         return data_buffer.slice(0, _size);
     }
     #getObjectKey(fileHash, _salt) {
         // was: getFileKey(fileHash: string, _salt: ArrayBuffer) 
         // also (?): getImageKey(imageHash, _salt) {
-        // console.log('getObjectKey with hash and salt:')
-        // console.log(fileHash)
-        // console.log(_salt)
+        console.log('getObjectKey with hash and salt:');
+        console.log(fileHash);
+        console.log(_salt);
         return new Promise((resolve, reject) => {
             try {
+                console.log("Using key: ");
+                console.log(fileHash);
+                console.log(decodeURIComponent(fileHash));
+                console.log(base64ToArrayBuffer(decodeURIComponent(fileHash)));
                 // const keyMaterial: CryptoKey = await sbCrypto.importKey('raw', base64ToArrayBuffer(decodeURIComponent(fileHash)), 'PBKDF2', false, ['deriveBits', 'deriveKey']);
                 sbCrypto.importKey('raw', base64ToArrayBuffer(decodeURIComponent(fileHash)), 'PBKDF2', false, ['deriveBits', 'deriveKey']).then((keyMaterial) => {
                     // @psm TODO - Support deriving from PBKDF2 in sbCrypto.eriveKey function
@@ -2073,7 +2068,7 @@ class StorageApi {
                         'iterations': 100000,
                         'hash': 'SHA-256'
                     }, keyMaterial, { 'name': 'AES-GCM', 'length': 256 }, true, ['encrypt', 'decrypt']).then((key) => {
-                        // return key;
+                        console.log(key);
                         resolve(key);
                     });
                 });
@@ -2339,6 +2334,8 @@ class StorageApi {
                 // const image_key: CryptoKey = await this.#getObjectKey(imageMetaData!.previewKey!, salt);
                 this.#getObjectKey(h.key, salt).then((image_key) => {
                     const encrypted_image = data.image;
+                    console.log("image_key: ");
+                    console.log(image_key);
                     // const padded_img: ArrayBuffer = await sbCrypto.unwrap(image_key, { content: encrypted_image, iv: iv }, 'arrayBuffer')
                     sbCrypto.unwrap(image_key, { content: encrypted_image, iv: iv }, 'arrayBuffer').then((padded_img) => {
                         const img = this.#unpadData(padded_img);
@@ -2374,13 +2371,13 @@ class StorageApi {
                 //   console.log("Found object in _localStorage")
                 //   resolve(this.#processData(base64ToArrayBuffer(payload), h))
                 // } else {
-                console.log("Object not cached, fetching from server. SBObjectHandle is:");
-                console.log(h);
+                // console.log("Object not cached, fetching from server. SBObjectHandle is:")
+                // console.log(h)
                 if (typeof h.verification === 'string')
                     h.verification = new Promise((resolve) => { resolve(h.verification); });
                 h.verification.then((verificationToken) => {
-                    console.log("verification token:");
-                    console.log(verificationToken);
+                    // console.log("verification token:")
+                    // console.log(verificationToken)
                     _sb_assert(verificationToken, "fetchData(): missing verification token (?)");
                     SBFetch(this.server + '/fetchData?id=' + ensureSafe(h.id) + '&type=' + h.type + '&verification_token=' + verificationToken, { method: 'GET' })
                         .then((response) => {

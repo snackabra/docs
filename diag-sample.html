@@ -235,12 +235,18 @@ some of the diagram / figure tools.</p>
 <p>And activity diagrams: <a class="reference external" href="http://blockdiag.com/en/actdiag/examples.html">http://blockdiag.com/en/actdiag/examples.html</a></p>
 </section>
 </section>
+<section id="chatgpt">
+<h2>ChatGPT<a class="headerlink" href="#chatgpt" title="Permalink to this heading">#</a></h2>
+<p>Testing some chatgpt-generated ones:</p>
+<div class="align-default"><img height="120" src="_images/blockdiag-16f5500a28aad08ed51fcee391803a5f5c9b70aa.png" width="1216" /></div>
+<div class="align-default"><img height="1184" src="_images/seqdiag-51797d9e343256ce4eb9198e093481abea95203c.png" width="1216" /></div>
+</section>
 <section id="graphviz">
 <h2>Graphviz<a class="headerlink" href="#graphviz" title="Permalink to this heading">#</a></h2>
 <p>Here’s an example using graphviz (more here: <a class="reference external" href="https://graphviz.org/gallery/">https://graphviz.org/gallery/</a> )</p>
 <section id="digraph">
 <h3>Digraph<a class="headerlink" href="#digraph" title="Permalink to this heading">#</a></h3>
-<div class="graphviz"><img src="_images/graphviz-84b43c8606d0bc796a3a6c24d22a7d82e5dbbccc.png" alt="digraph PhiloDilemma {
+digraph PhiloDilemma {
 layout=neato
 node [shape=box];  bec3; rel3; bec2; rel2; acq2; acq3; bec1; rel1; acq1;
 node [shape=circle,fixedsize=true,width=0.9];  hu3; th3; ri3; ea3; hu2; th2; ri2; ea2; hu1; th1; ri1; ea1;
@@ -275,11 +281,10 @@ acq1-&gt;ea1;
 overlap=false
 label=&quot;PetriNet Model PhiloDilemma\nExtracted from ConceptBase and layed out by Graphviz &quot;
 fontsize=12;
-}" class="graphviz" /></div>
-</section>
+}</section>
 <section id="process-graph">
 <h3>Process Graph<a class="headerlink" href="#process-graph" title="Permalink to this heading">#</a></h3>
-<div class="graphviz"><img src="_images/graphviz-b61c7aecdb64833bf229b759a613380785166522.png" alt="graph G {
+graph G {
         layout=neato
         run -- intr;
         intr -- runbl;
@@ -294,8 +299,7 @@ fontsize=12;
         runswap -- runmem;
         new -- runmem;
         sleep -- runmem;
-}" class="graphviz" /></div>
-</section>
+}</section>
 </section>
 </section>
 
@@ -352,6 +356,7 @@ fontsize=12;
 <li><a class="reference internal" href="#block-diagrams">Block Diagrams</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#chatgpt">ChatGPT</a></li>
 <li><a class="reference internal" href="#graphviz">Graphviz</a><ul>
 <li><a class="reference internal" href="#digraph">Digraph</a></li>
 <li><a class="reference internal" href="#process-graph">Process Graph</a></li>

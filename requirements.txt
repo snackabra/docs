@@ -1,4 +1,3 @@
-
 # problems with newer versions
 markupsafe==2.0.1
 
@@ -14,3 +13,7 @@ sphinxcontrib-confluencebuilder
 # this is at https://github.com/snackabra/snackabra-pylib
 # currently NOT supported
 snackabra
+
+# Add the [pdf] extra for building PDF output
+# (problem is footnotes are dangling)
+-e .[pdf]

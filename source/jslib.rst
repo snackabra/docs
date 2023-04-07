@@ -2,15 +2,15 @@
 SB JSLib
 ========
 
-`The core of SB is implemented in snackabra.ts, targeting ES2022.
+_The core of SB is implemented in snackabra.ts, targeting ES2022.
 This section documents the JS (translated) version. Please note:
 any current published version is Alpha of upcoming 0.5.0 and should
 not be used for sensitive or production use (or if you do use it as
 such: caveat emptor). We will signal production-ready use by versioning
-it as 1.0.x (published to npmjs).`
+it as 1.0.x (published to npmjs)._
 
-`We are still trying to sort out how to get Sphinx, JSDoc, Typedoc,
-etc to all play nice together in a good way...`
+_We are still trying to sort out how to get Sphinx, JSDoc, Typedoc,
+etc to all play nice together in a good way..._
 
 All core capababilities of the SB design is intended to be encapsulated
 in this library. Design objectives include: [3]_

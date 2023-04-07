@@ -73,7 +73,7 @@ directory, ''make'' won't pull anything for you.
 *Note: Documenation strings for ``snackabra-pylib`` are pulled from
 the docstrings that come allong with ``pip install snackabara``,
 that will just happen magically. If you wish to contribute to
-the library, it's at https://github.com/snackabra/snackabra-pylib *
+the library, it's at https://github.com/snackabra/snackabra-pylib*
 
 
 Confluence

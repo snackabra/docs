@@ -272,7 +272,7 @@ Here is essentially how it works:
       obj.ready.then((obj) => {
          // or you can set up what should be done when the object is ready
       })
-
+      
 
 That's the basic model. Creating an object is not a blocking operation,
 but you can check if it is ready or not, and if not, you can either
@@ -290,12 +290,14 @@ promise is initialized by the constructor, so you also can do this:
          // do something with the object
       })
 
+
 Internally (inside jslib), part of this pattern is done by the
 ready decorator, allowing things like getters to be succinct:
 
    .. code-block:: javascript
 
       @Ready get privateKey() { return this.#privateKey }
+
 
 This will automatically protect the getter from being called before
 the internal state is ready, which in turn allows users of the library

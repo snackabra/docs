@@ -17,6 +17,7 @@ export interface SBServer {
     channel_server: string;
     channel_ws: string;
     storage_server: string;
+    shard_server?: string;
 }
 interface Dictionary<T> {
     [index: string]: T;
@@ -128,7 +129,7 @@ export interface ChannelKeys {
 
     SB standard wrapping encrypted messages.
 
-    Encryption is done with AES-GCM, 16 bytes of salt (iv), The
+    Encryption is done with AES-GCM, 16 bytes of salt, The
     ``contents`` are url-safe base64, same thing with the nonce (iv),
     depending on if it's internal or over wire.
  */
@@ -145,7 +146,8 @@ export interface EncryptedContentsBin {
 }
 /**
  * Force EncryptedContents object to binary (interface
- * supports either string or arrays)
+ * supports either string or arrays). String contents
+ * implies base64 encoding.
  */
 export declare function encryptedContentsMakeBinary(o: EncryptedContents): EncryptedContentsBin;
 export type ChannelMessageTypes = 'ack' | 'keys' | 'invalid' | 'ready' | 'encypted';
@@ -206,7 +208,7 @@ export declare function compareBuffers(a: Uint8Array | ArrayBuffer | null, b: Ui
  * @param {bufferSource} ArrayBuffer buffer
  * @return {string} base64 string
  */
-export declare function arrayBufferToBase64(buffer: ArrayBuffer | Uint8Array | null, variant?: 'b64' | 'url'): string;
+declare function arrayBufferToBase64(buffer: ArrayBuffer | Uint8Array | null, variant?: 'b64' | 'url'): string;
 /**
  * Appends two buffers and returns a new buffer
  *
@@ -280,20 +282,23 @@ export declare function partition(str: string, n: number): void;
  * in the code; one approach is the line number in the file (at some point).
  */
 export declare function jsonParseWrapper(str: string, loc: string): any;
+export interface SBPayload {
+    [index: string]: ArrayBuffer;
+}
 /**
  * Deprecated (older version of payloads, for older channels)
  */
-export declare function extractPayloadV1(payload: ArrayBuffer): Dictionary<any>;
+export declare function extractPayloadV1(payload: ArrayBuffer): SBPayload;
 /**
  * Assemble payload
  */
-export declare function assemblePayload(data: Dictionary<any>): BodyInit | null;
+export declare function assemblePayload(data: SBPayload): BodyInit | null;
 /**
  * Extract payload - this decodes from our binary (wire) format
  * to a JS object. This provides a binary encoding of any JSON,
  * and it allows some elements of the JSON to be raw (binary).
  */
-export declare function extractPayload(payload: ArrayBuffer): Dictionary<any>;
+export declare function extractPayload(payload: ArrayBuffer): SBPayload;
 /**
  * Encode into b64 URL
  */
@@ -557,7 +562,7 @@ declare abstract class Channel extends SB384 {
             console.log(\`test message sent! (${c})\`) })
         })
       })
-    
+  
   
      *
      * @param {Snackabra} sbServer server to join
@@ -616,14 +621,21 @@ export declare class ChannelSocket extends Channel {
 }
 export type SBObjectType = 'f' | 'p' | 'b';
 export interface SBObjectHandle {
-    [SB_OBJECT_HANDLE_SYMBOL]: boolean;
+    [SB_OBJECT_HANDLE_SYMBOL]?: boolean;
     version: '1';
     type: SBObjectType;
     id: string;
     key: string;
     verification: Promise<string> | string;
-    iv?: Uint8Array;
-    salt?: Uint8Array;
+    iv?: Uint8Array | string;
+    salt?: Uint8Array | string;
+    fileName?: string;
+    dateAndTime?: string;
+    shardServer?: string;
+    fileType?: string;
+    lastModified?: number;
+    actualSize?: number;
+    savedSize?: number;
 }
 export interface SBObjectMetadata {
     [SB_OBJECT_HANDLE_SYMBOL]: boolean;
@@ -644,8 +656,9 @@ export interface SBObjectMetadata {
 declare class StorageApi {
     #private;
     server: string;
+    shardServer?: string;
     channelServer: string;
-    constructor(server: string, channelServer: string);
+    constructor(server: string, channelServer: string, shardServer?: string);
     /**
      *
      * @param buf
@@ -661,7 +674,7 @@ declare class StorageApi {
      * @param roomId
      *
      */
-    storeObject(buf: ArrayBuffer, type: SBObjectType, roomId: SBChannelId, metadata?: SBObjectMetadata): Promise<SBObjectHandle>;
+    storeObject(buf: BodyInit | Uint8Array, type: SBObjectType, roomId: SBChannelId, metadata?: SBObjectMetadata): Promise<SBObjectHandle>;
     /**
      * StorageApi.saveFile()
      *
@@ -688,8 +701,13 @@ declare class StorageApi {
      * if you only have the 'id' and 'verification' fields, you
      * can reconstruct / request the rest. The current interface
      * will return both nonce, salt, and encrypted data.
+     *
+     * @param h SBObjectHandle - the object to fetch
+     * @param returnType 'string' | 'arrayBuffer' - the type of data to return (default: 'arrayBuffer')
+     * @returns Promise<ArrayBuffer | string> - the shard data
      */
-    fetchData(h: SBObjectHandle): Promise<ArrayBuffer>;
+    fetchData(h: SBObjectHandle, returnType: 'string'): Promise<string>;
+    fetchData(h: SBObjectHandle, returnType?: 'arrayBuffer'): Promise<ArrayBuffer>;
     /**
      * StorageApi().retrieveData()
      * retrieves an object from storage
@@ -772,10 +790,11 @@ declare class Snackabra {
      *     }
      *
      * @param args {SBServer} server names (optional)
+     * @param args {DEBUG} if set to true, will make ALL jslib calls verbose in the console
      *
      *
      */
-    constructor(args?: SBServer);
+    constructor(args?: SBServer, DEBUG?: boolean);
     /**
      * Connects to :term:`Channel Name` on this SB config.
      * Returns a channel object right away, but the channel
@@ -800,11 +819,12 @@ declare class Snackabra {
     get crypto(): SBCrypto;
     sendFile(file: SBFile): void;
 }
-export { Channel, SBMessage, Snackabra, SBCrypto, SB384 };
+export { Channel, SBMessage, Snackabra, SBCrypto, SB384, arrayBufferToBase64 };
 export declare var SB: {
     Snackabra: typeof Snackabra;
     SBMessage: typeof SBMessage;
     Channel: typeof Channel;
     SBCrypto: typeof SBCrypto;
     SB384: typeof SB384;
+    arrayBufferToBase64: typeof arrayBufferToBase64;
 };

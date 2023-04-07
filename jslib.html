@@ -5,10 +5,10 @@
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Snackabra Server" href="server.html" /><link rel="prev" title="LICENSE" href="license.html" />
 
-    <!-- Generated with Sphinx 5.3.0 and Furo 2022.12.07 -->
+    <!-- Generated with Sphinx 5.3.0 and Furo 2023.03.27 -->
         <title>SB JSLib - snackabra 0.5.x beta documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
@@ -332,7 +332,8 @@ without a parameter in which case SB will ping known servers.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Arguments<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>args</strong> (<em>SBServer</em>) – server names (optional)</p></li>
+<li><p><strong>args</strong> (<em>DEBUG</em>) – server names (optional)</p></li>
+<li><p><strong>args</strong> – if set to true, will make ALL jslib calls verbose in the console</p></li>
 </ul>
 </dd>
 </dl>
@@ -601,18 +602,8 @@ before calling this, make a ready check on the socket</p>
 <h3>SB Storage Class<a class="headerlink" href="#sb-storage-class" title="Permalink to this heading">#</a></h3>
 <dl class="js class">
 <dt class="sig sig-object js" id="StorageApi">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">StorageApi</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">server</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channelServer</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#StorageApi" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">StorageApi</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">server</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channelServer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shardServer</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#StorageApi" title="Permalink to this definition">#</a></dt>
 <dd><dl class="js function">
-<dt class="sig sig-object js" id="StorageApi.fetchData">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">StorageApi</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">fetchData</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">h</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#StorageApi.fetchData" title="Permalink to this definition">#</a></dt>
-<dd><p>StorageApi().fetchData()</p>
-<p>This assumes you have a complete SBObjectHandle. Note that
-if you only have the ‘id’ and ‘verification’ fields, you
-can reconstruct / request the rest. The current interface
-will return both nonce, salt, and encrypted data.</p>
-</dd></dl>
-
-<dl class="js function">
 <dt class="sig sig-object js" id="StorageApi.getObjectMetadata">
 <span class="sig-prename descclassname"><span class="n"><span class="pre">StorageApi</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">getObjectMetadata</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">buf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roomId</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#StorageApi.getObjectMetadata" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -1204,7 +1195,6 @@ browser, and it’s not likely to change.</p></li>
 <li><a class="reference internal" href="#storage">Storage</a><ul>
 <li><a class="reference internal" href="#sb-storage-class">SB Storage Class</a><ul>
 <li><a class="reference internal" href="#StorageApi"><code class="docutils literal notranslate"><span class="pre">StorageApi</span></code></a><ul>
-<li><a class="reference internal" href="#StorageApi.fetchData"><code class="docutils literal notranslate"><span class="pre">StorageApi.fetchData()</span></code></a></li>
 <li><a class="reference internal" href="#StorageApi.getObjectMetadata"><code class="docutils literal notranslate"><span class="pre">StorageApi.getObjectMetadata()</span></code></a></li>
 <li><a class="reference internal" href="#StorageApi.retrieveImage"><code class="docutils literal notranslate"><span class="pre">StorageApi.retrieveImage()</span></code></a></li>
 <li><a class="reference internal" href="#StorageApi.saveFile"><code class="docutils literal notranslate"><span class="pre">StorageApi.saveFile()</span></code></a></li>

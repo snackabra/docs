@@ -53,47 +53,78 @@ const SBKnownServers = [
 ];
 /**
  * Force EncryptedContents object to binary (interface
- * supports either string or arrays)
+ * supports either string or arrays). String contents
+ * implies base64 encoding.
  */
 export function encryptedContentsMakeBinary(o) {
-    let t;
-    let iv;
-    if (typeof o.content === 'string') {
-        t = base64ToArrayBuffer(decodeURIComponent(o.content));
-    }
-    else {
-        // console.log(structuredClone(o))
-        const ocn = o.content.constructor.name;
-        _sb_assert((ocn === 'ArrayBuffer') || (ocn === 'Uint8Array'), 'undetermined content type in EncryptedContents object');
-        t = o.content;
-    }
-    // console.log("=+=+=+=+ processing nonce")
-    if (typeof o.iv === 'string') {
-        // console.log("got iv as string:")
-        // console.log(structuredClone(o.iv))
-        iv = base64ToArrayBuffer(decodeURIComponent(o.iv));
-        // console.log("this was turned into array:")
-        // console.log(structuredClone(iv))
-    }
-    else if ((o.iv.constructor.name === 'Uint8Array') || (o.iv.constructor.name === 'ArrayBuffer')) {
-        // console.log("it's an array already")
-        iv = new Uint8Array(o.iv);
-    }
-    else {
-        // probably a dictionary
-        try {
-            iv = new Uint8Array(Object.values(o.iv));
+    try {
+        let t;
+        let iv;
+        if (DBG) {
+            console.log("=+=+=+=+ processing content");
+            console.log(o.content.constructor.name);
         }
-        catch (e) {
-            // console.error("ERROR: cannot figure out format of iv (nonce), here's the input object:")
-            // console.error(o.iv)
-            _sb_assert(false, "undetermined iv (nonce) type, see console");
+        if (typeof o.content === 'string') {
+            try {
+                t = base64ToArrayBuffer(decodeURIComponent(o.content));
+            }
+            catch (e) {
+                throw new Error("EncryptedContents is string format but not base64 (?)");
+            }
         }
+        else {
+            // console.log(structuredClone(o))
+            const ocn = o.content.constructor.name;
+            _sb_assert((ocn === 'ArrayBuffer') || (ocn === 'Uint8Array'), 'undetermined content type in EncryptedContents object');
+            t = o.content;
+        }
+        if (DBG)
+            console.log("=+=+=+=+ processing nonce");
+        if (typeof o.iv === 'string') {
+            if (DBG) {
+                console.log("got iv as string:");
+                console.log(structuredClone(o.iv));
+            }
+            iv = base64ToArrayBuffer(decodeURIComponent(o.iv));
+            if (DBG) {
+                console.log("this was turned into array:");
+                console.log(structuredClone(iv));
+            }
+        }
+        else if ((o.iv.constructor.name === 'Uint8Array') || (o.iv.constructor.name === 'ArrayBuffer')) {
+            if (DBG) {
+                console.log("it's an array already");
+            }
+            iv = new Uint8Array(o.iv);
+        }
+        else {
+            if (DBG)
+                console.log("probably a dictionary");
+            try {
+                iv = new Uint8Array(Object.values(o.iv));
+            }
+            catch (e) {
+                if (DBG) {
+                    console.error("ERROR: cannot figure out format of iv (nonce), here's the input object:");
+                    console.error(o.iv);
+                }
+                _sb_assert(false, "undetermined iv (nonce) type, see console");
+            }
+        }
+        if (DBG) {
+            console.log("decided on nonce as:");
+            console.log(iv);
+        }
+        _sb_assert(iv.length == 12, `unwrap(): nonce should be 12 bytes but is not (${iv.length})`);
+        return { content: t, iv: iv };
     }
-    // console.log("decided on nonce as:")
-    // console.log(iv!)
-    _sb_assert(iv.length == 12, `unwrap(): nonce should be 12 bytes but is not (${iv.length})`);
-    return { content: t, iv: iv };
+    catch (e) {
+        console.error('encryptedContentsMakeBinary() failed:');
+        console.error(e);
+        console.trace();
+        console.log(e.stack);
+        throw e;
+    }
 }
 //#endregion
 /******************************************************************************************************/
@@ -163,9 +194,7 @@ export class MessageBus {
  * @returns
  */
 function SBFetch(input, init) {
-    console.log("SBFetch()");
-    console.log(input);
-    console.log(init);
+    // console.log("SBFetch()"); console.log(input); console.log(init);
     if (navigator.onLine === false)
         console.info("Note: you are offline, according to the browser"); /* return Promise.reject(new Error("you are offline")) */
     if (init)
@@ -413,7 +442,7 @@ export function compareBuffers(a, b) {
  * @param {bufferSource} ArrayBuffer buffer
  * @return {string} base64 string
  */
-export function arrayBufferToBase64(buffer, variant = 'url') {
+function arrayBufferToBase64(buffer, variant = 'url') {
     if (buffer == null) {
         _sb_exception('L509', 'arrayBufferToBase64() -> null paramater');
         return '';
@@ -861,17 +890,21 @@ class SBCrypto {
         });
     }
     unwrap(k, o, returnType) {
-        // console.log("SBCrypto.unwrap(), got k/o:")
-        // console.log(k)
-        // console.log(o)
+        if (DBG) {
+            console.log("SBCrypto.unwrap(), got k/o:");
+            console.log(k);
+            console.log(o);
+        }
         return new Promise(async (resolve, reject) => {
             try {
                 const { content: t, iv: iv } = encryptedContentsMakeBinary(o);
-                // console.log("======== calling subtle.decrypt with iv, k, t (AES-GCM):")
-                // console.log(iv)
-                // console.log(k)
-                // console.log(t)
-                // console.log("======== (end of subtle.decrypt parameters)")
+                if (DBG) {
+                    console.log("======== calling subtle.decrypt with iv, k, t (AES-GCM):");
+                    console.log(iv);
+                    console.log(k);
+                    console.log(t);
+                    console.log("======== (end of subtle.decrypt parameters)");
+                }
                 crypto.subtle.decrypt({ name: 'AES-GCM', iv: iv }, k, t).then((d) => {
                     if (returnType === 'string') {
                         resolve(new TextDecoder().decode(d));
@@ -1121,7 +1154,7 @@ class SB384 {
                             this.#exportable_privateKey = v[1];
                             this.#generateRoomId(this.#exportable_pubKey.x, this.#exportable_pubKey.y).then((channelId) => {
                                 // console.log('******** setting ownerChannelId')
-                                // console.log(channelId)  
+                                // console.log(channelId)
                                 this.#ownerChannelId = channelId;
                                 this.#SB384ReadyFlag = true;
                                 resolve(this);
@@ -1406,7 +1439,7 @@ class Channel extends SB384 {
             console.log(\`test message sent! (${c})\`) })
         })
       })
-    
+  
   
      *
      * @param {Snackabra} sbServer server to join
@@ -1547,7 +1580,7 @@ export class ChannelSocket extends Channel {
         // console.log("----ChannelSocket.constructor() start:")
         // console.log(sbServer)
         // console.log("----ChannelSocket.constructor() ... end")
-        super(sbServer, key, channelId /*, identity ? identity : new Identity() */); // initialize 'channel' parent    
+        super(sbServer, key, channelId /*, identity ? identity : new Identity() */); // initialize 'channel' parent
         _sb_assert(sbServer.channel_ws, 'ChannelSocket(): no websocket server name provided');
         const url = sbServer.channel_ws + '/api/room/' + channelId + '/websocket';
         this.#onMessage = onMessage;
@@ -1643,7 +1676,7 @@ export class ChannelSocket extends Channel {
                     }
                 }
                 else {
-                    // 
+                    //
                     // TODO: other message types (low level?) are parsed here ...
                     //
                     console.log("++++++++ #processMessage: can't decipher message, passing along unchanged:");
@@ -1891,7 +1924,7 @@ export class ChannelSocket extends Channel {
         if (this.#ws.closed) {
             if (this.#traceSocket)
                 console.info("send() triggered reset of #readyPromise() (normal)");
-            this.ready = this.#readyPromise(); // possible reset of ready 
+            this.ready = this.#readyPromise(); // possible reset of ready
         }
         return new Promise((resolve, reject) => {
             message.ready.then((message) => {
@@ -1977,10 +2010,15 @@ __decorate([
  */
 class StorageApi {
     server;
+    shardServer;
     channelServer; // approves budget, TODO this needs some thought
-    constructor(server, channelServer) {
+    constructor(server, channelServer, shardServer) {
         this.server = server + '/api/v1';
         this.channelServer = channelServer + '/api/room/';
+        if (shardServer)
+            this.shardServer = shardServer + '/api/v1';
+        else
+            this.shardServer = 'https://shard.3.8.4.land/api/v1';
     }
     /**
      * Hashes and splits into two (h1 and h1) signature of data, h1
@@ -2030,6 +2068,10 @@ class StorageApi {
         let finalArray = _appendBuffer(buf, (new Uint8Array(_target - image_size)).buffer);
         // set the (original) size in the last 4 bytes
         (new DataView(finalArray)).setUint32(_target - 4, image_size);
+        if (DBG) {
+            console.log("#padBuf bytes:");
+            console.log(finalArray.slice(-4));
+        }
         return finalArray;
     }
     /**
@@ -2038,27 +2080,32 @@ class StorageApi {
      * all the padding and returns the actual object.
      */
     #unpadData(data_buffer) {
-        // psm: ... wait has this ever worked?
-        // const _size = new Uint32Array(data_buffer.slice(-4))[0]
-        // fixing with:
-        const _size = new DataView(data_buffer.slice(-4)).getUint32(0);
-        // .. interesting, we didn't notice until we started doing things
-        //    like sharding javascript files and then injecting them ...
-        // console.log(`#unpadData - size of object is ${_size}`)
+        const tail = data_buffer.slice(-4);
+        var _size = new DataView(tail).getUint32(0);
+        const _little_endian = new DataView(tail).getUint32(0, true);
+        if (_little_endian < _size) {
+            if (DBG)
+                console.warn("#unpadData - size of shard encoded as little endian (fixed upon read)");
+            _size = _little_endian;
+        }
+        if (DBG) {
+            console.log(`#unpadData - size of object is ${_size}`);
+            // console.log(tail)
+        }
         return data_buffer.slice(0, _size);
     }
     #getObjectKey(fileHash, _salt) {
-        // was: getFileKey(fileHash: string, _salt: ArrayBuffer) 
+        // was: getFileKey(fileHash: string, _salt: ArrayBuffer)
         // also (?): getImageKey(imageHash, _salt) {
-        console.log('getObjectKey with hash and salt:');
-        console.log(fileHash);
-        console.log(_salt);
+        // console.log('getObjectKey with hash and salt:')
+        // console.log(fileHash)
+        // console.log(_salt)
         return new Promise((resolve, reject) => {
             try {
-                console.log("Using key: ");
-                console.log(fileHash);
-                console.log(decodeURIComponent(fileHash));
-                console.log(base64ToArrayBuffer(decodeURIComponent(fileHash)));
+                // console.log("Using key: ");
+                // console.log(fileHash)
+                // console.log(decodeURIComponent(fileHash))
+                // console.log(base64ToArrayBuffer(decodeURIComponent(fileHash)))
                 // const keyMaterial: CryptoKey = await sbCrypto.importKey('raw', base64ToArrayBuffer(decodeURIComponent(fileHash)), 'PBKDF2', false, ['deriveBits', 'deriveKey']);
                 sbCrypto.importKey('raw', base64ToArrayBuffer(decodeURIComponent(fileHash)), 'PBKDF2', false, ['deriveBits', 'deriveKey']).then((keyMaterial) => {
                     // @psm TODO - Support deriving from PBKDF2 in sbCrypto.eriveKey function
@@ -2068,7 +2115,7 @@ class StorageApi {
                         'iterations': 100000,
                         'hash': 'SHA-256'
                     }, keyMaterial, { 'name': 'AES-GCM', 'length': 256 }, true, ['encrypt', 'decrypt']).then((key) => {
-                        console.log(key);
+                        // console.log(key)
                         resolve(key);
                     });
                 });
@@ -2088,7 +2135,7 @@ class StorageApi {
                 // console.log(`object ID: ${image_id}`)
                 // console.log(`     salt: ${arrayBufferToBase64(par.salt)}`)
                 // console.log(`       iv:  ${arrayBufferToBase64(par.iv)}`)
-                resolve({ salt: par.salt, iv: par.iv });
+                resolve({ salt: new Uint8Array(par.salt), iv: new Uint8Array(par.iv) });
             })
                 .catch((e) => {
                 console.log(`ERROR: ${e}`);
@@ -2101,7 +2148,7 @@ class StorageApi {
         return new Promise((resolve, reject) => {
             this.#getObjectKey(keyData, salt).then((key) => {
                 sbCrypto.encrypt(image, key, iv, 'arrayBuffer').then((data) => {
-                    // const storageTokenReq = await(await 
+                    // const storageTokenReq = await(await
                     SBFetch(this.channelServer + roomId + '/storageRequest?size=' + data.byteLength)
                         .then((r) => r.json())
                         .then((storageTokenReq) => {
@@ -2113,8 +2160,8 @@ class StorageApi {
                         // console.log(image_id)
                         this.storeData(type, image_id, iv, salt, storageToken, data)
                             .then((resp_json) => {
-                            console.log("storeData() returned:");
-                            console.log(resp_json);
+                            // console.log("storeData() returned:")
+                            // console.log(resp_json)
                             if (resp_json.error)
                                 reject(`storeObject() failed: ${resp_json.error}`);
                             if (resp_json.image_id != image_id)
@@ -2176,8 +2223,20 @@ class StorageApi {
     storeObject(buf, type, roomId, metadata) {
         // export async function saveImage(sbImage, roomId, sendSystemMessage)
         return new Promise((resolve, reject) => {
+            if (buf instanceof Uint8Array) {
+                if (DBG)
+                    console.log('converting Uint8Array to ArrayBuffer');
+                buf = new Uint8Array(buf).buffer;
+            }
+            if (!(buf instanceof ArrayBuffer) && buf.constructor.name != 'ArrayBuffer') {
+                if (DBG)
+                    console.log('buf must be an ArrayBuffer:');
+                console.log(buf);
+                reject('buf must be an ArrayBuffer');
+            }
+            const bufSize = buf.byteLength;
             if (!metadata) {
-                console.warn('No metadata');
+                // console.warn('No metadata')
                 const paddedBuf = this.#padBuf(buf);
                 this.#generateIdKey(paddedBuf).then((fullHash) => {
                     // return { full: { id: fullHash.id, key: fullHash.key }, preview: { id: previewHash.id, key: previewHash.key } }
@@ -2194,6 +2253,7 @@ class StorageApi {
                             key: fullHash.key,
                             iv: p.iv,
                             salt: p.salt,
+                            actualSize: bufSize,
                             verification: this.#_storeObject(paddedBuf, fullHash.id, fullHash.key, type, roomId, p.iv, p.salt)
                         };
                         // console.log("SBObj is:")
@@ -2212,6 +2272,7 @@ class StorageApi {
                     key: metadata.key,
                     iv: metadata.iv,
                     salt: metadata.salt,
+                    actualSize: bufSize,
                     verification: this.#_storeObject(metadata.paddedBuffer, metadata.id, metadata.key, type, roomId, metadata.iv, metadata.salt)
                 };
                 // console.log("SBObj is:")
@@ -2302,40 +2363,94 @@ class StorageApi {
     }
     #processData(payload, h) {
         return new Promise((resolve, reject) => {
-            console.log('#processData()');
-            console.log(payload);
-            console.log(h);
+            // console.log('#processData()')
+            // console.log(payload)
+            // console.log(h)
             try {
                 let j = JSON.parse(sbCrypto.ab2str(new Uint8Array(payload)));
                 // normal operation is to break on the JSON.parse() and continue to finally clause
                 if (j.error)
                     reject(`#processData() error: ${j.error}`);
+                if (DBG) {
+                    console.log(`#processData() JSON.parse() returned:`);
+                    console.log(j);
+                    console.warn("should this happen?");
+                }
             }
             catch (e) {
                 // do nothing - this is expected
+                // if (DBG) {
+                //   console.log(`#processData() JSON.parse() failed as expected:`)
+                //   console.log(e)
+                // }
             }
             finally {
                 const data = extractPayload(payload);
-                console.log(data);
-                const iv = data.iv;
-                // if (h.iv) _sb_assert(compareBuffers(iv, h.iv), 'nonce (iv) differs')
-                if ((h.iv) && (!compareBuffers(iv, h.iv))) {
+                if (DBG) {
+                    console.log("Payload is:");
+                    console.log(data);
+                }
+                // payload includes nonce and salt
+                const iv = new Uint8Array(data.iv);
+                const salt = new Uint8Array(data.salt);
+                // we accept b64 versions
+                const handleIV = (!h.iv) ? undefined : (typeof h.iv === 'string') ? base64ToArrayBuffer(h.iv) : h.iv;
+                const handleSalt = (!h.salt) ? undefined : (typeof h.salt === 'string') ? base64ToArrayBuffer(h.salt) : h.salt;
+                if ((handleIV) && (!compareBuffers(iv, handleIV))) {
                     console.error("WARNING: nonce from server differs from local copy");
                     console.log(`object ID: ${h.id}`);
-                    console.log(` local iv: ${arrayBufferToBase64(h.iv)}`);
+                    console.log(` local iv: ${arrayBufferToBase64(handleIV)}`);
                     console.log(`server iv: ${arrayBufferToBase64(data.iv)}`);
                 }
-                const salt = data.salt;
-                if (h.salt)
-                    _sb_assert(compareBuffers(salt, h.salt), 'salt differs');
-                console.log("will use nonce and salt of:");
-                console.log(`iv: ${arrayBufferToBase64(iv)}`);
-                console.log(`salt : ${arrayBufferToBase64(salt)}`);
-                // const image_key: CryptoKey = await this.#getObjectKey(imageMetaData!.previewKey!, salt);
+                if ((handleSalt) && (!compareBuffers(salt, handleSalt))) {
+                    console.error("WARNING: salt from server differs from local copy (will use server)");
+                    console.log(` object ID: ${h.id}`);
+                    console.log("server salt:");
+                    console.log("data.salt as b64:");
+                    console.log(arrayBufferToBase64(data.salt));
+                    console.log("data.salt unprocessed:");
+                    console.log(data.salt);
+                    console.log("'salt' as b64:");
+                    console.log(arrayBufferToBase64(salt));
+                    console.log("salt unprocessed:");
+                    console.log(salt);
+                    console.log("local salt:");
+                    if (!h.salt) {
+                        console.log("h.salt is undefined");
+                    }
+                    else if (typeof h.salt === 'string') {
+                        console.log("h.salt is in string form (unprocessed):");
+                        console.log(h.salt);
+                    }
+                    else {
+                        console.log("h.salt is in arrayBuffer or Uint8Array");
+                        console.log("h.salt as b64:");
+                        console.log(arrayBufferToBase64(h.salt));
+                        console.log("h.salt unprocessed:");
+                        console.log(h.salt);
+                    }
+                    console.log("handleSalt as b64:");
+                    console.log(arrayBufferToBase64(handleSalt));
+                    console.log("handleSalt unprocessed:");
+                    console.log(handleSalt);
+                }
+                if (DBG) {
+                    console.log("will use nonce and salt of:");
+                    console.log(`iv: ${arrayBufferToBase64(iv)}`);
+                    console.log(`salt : ${arrayBufferToBase64(salt)}`);
+                }
+                // const image_key: CryptoKey = await this.#getObjectKey(imageMetaData!.previewKey!, salt)
                 this.#getObjectKey(h.key, salt).then((image_key) => {
+                    // TODO: test this, it used to call ab2str()? how could that work?
+                    // const encrypted_image = sbCrypto.ab2str(new Uint8Array(data.image))
+                    // const encrypted_image = new Uint8Array(data.image)
                     const encrypted_image = data.image;
-                    console.log("image_key: ");
-                    console.log(image_key);
+                    if (DBG) {
+                        console.log("data.image:      ");
+                        console.log(data.image);
+                        console.log("encrypted_image: ");
+                        console.log(encrypted_image);
+                    }
                     // const padded_img: ArrayBuffer = await sbCrypto.unwrap(image_key, { content: encrypted_image, iv: iv }, 'arrayBuffer')
                     sbCrypto.unwrap(image_key, { content: encrypted_image, iv: iv }, 'arrayBuffer').then((padded_img) => {
                         const img = this.#unpadData(padded_img);
@@ -2344,25 +2459,26 @@ class StorageApi {
                         //   console.error('(Image error: ' + img.error + ')');
                         //   throw new Error('Failed to fetch data - authentication or formatting error');
                         // }
+                        if (DBG) {
+                            console.log(" unwrapped img: ");
+                            console.log(img);
+                        }
                         resolve(img);
                     });
                 });
             }
         });
     }
-    /**
-     * StorageApi().fetchData()
-     *
-     * This assumes you have a complete SBObjectHandle. Note that
-     * if you only have the 'id' and 'verification' fields, you
-     * can reconstruct / request the rest. The current interface
-     * will return both nonce, salt, and encrypted data.
-     */
-    fetchData(h) {
+    fetchData(h, returnType = 'arrayBuffer') {
         // TODO: change SBObjectHandle from being an interface to being a class
         // _sb_assert(SBValidateObject(h, 'SBObjectHandle'), "fetchData() ERROR: parameter is not an SBOBjectHandle")
         return new Promise((resolve, reject) => {
             try {
+                if (DBG) {
+                    console.log("Calling fetchData():");
+                    console.log(h);
+                    console.log(returnType);
+                }
                 if (!h)
                     reject('invalid');
                 // TODO: haven't tested this caching stuff .. moving from the refactored web client
@@ -2379,7 +2495,10 @@ class StorageApi {
                     // console.log("verification token:")
                     // console.log(verificationToken)
                     _sb_assert(verificationToken, "fetchData(): missing verification token (?)");
-                    SBFetch(this.server + '/fetchData?id=' + ensureSafe(h.id) + '&type=' + h.type + '&verification_token=' + verificationToken, { method: 'GET' })
+                    const useServer = h.shardServer ? h.shardServer + '/api/v1' : (this.shardServer ? this.shardServer : this.server);
+                    if (DBG)
+                        console.log("fetching from server: " + useServer);
+                    SBFetch(useServer + '/fetchData?id=' + ensureSafe(h.id) + '&type=' + h.type + '&verification_token=' + verificationToken, { method: 'GET' })
                         .then((response) => {
                         if (!response.ok)
                             reject(new Error('Network response was not OK'));
@@ -2387,7 +2506,14 @@ class StorageApi {
                         return response.arrayBuffer();
                     })
                         .then((payload) => {
-                        resolve(this.#processData(payload, h));
+                        return this.#processData(payload, h);
+                    })
+                        .then((payload) => {
+                        // _localStorage.setItem(`${h.id}_cache`, arrayBufferToBase64(payload))
+                        if (returnType === 'string')
+                            resolve(sbCrypto.ab2str(new Uint8Array(payload)));
+                        else
+                            resolve(payload);
                     });
                 });
                 // fetch(this.server + '/fetchData?id=' + ensureSafe(h.id) + '&type=' + h.type + '&verification_token=' + h.verification, { method: 'GET' })
@@ -2428,7 +2554,12 @@ class StorageApi {
                 type: type,
                 id: control_msg.id,
                 key: key,
-                verification: typeof control_msg.verificationToken === 'string' ? new Promise((res) => res(control_msg.verificationToken)) : control_msg.verificationToken
+                verification: new Promise((res, rej) => {
+                    if (control_msg.verificationToken)
+                        res(control_msg.verificationToken);
+                    else
+                        rej("retrieveImage(): verificationToken missing (?)");
+                })
             };
             const img = await this.fetchData(obj);
             console.log(img);
@@ -2521,8 +2652,9 @@ class ChannelApi {
         });
     }
     #callApi(path, init) {
-        console.log(path);
-        if (init)
+        if (DBG)
+            console.log(path);
+        if ((DBG) && (init))
             console.log(init);
         return new Promise((resolve, reject) => {
             try {
@@ -2626,14 +2758,16 @@ class ChannelApi {
                     if (v.match(regex)) {
                         const message = jsonParseWrapper(data[v], "L3318");
                         if (message.hasOwnProperty('encrypted_contents')) {
-                            console.log(message);
+                            if (DBG)
+                                console.log(message);
                             return message;
                         }
                     }
                 })
                     .map((v) => {
                     const message = jsonParseWrapper(data[v], "L3327");
-                    console.log(v, message.encrypted_contents, this.#channel.keys);
+                    if (DBG)
+                        console.log(v, message.encrypted_contents, this.#channel.keys);
                     return deCryptChannelMessage(v, message.encrypted_contents, this.#channel.keys);
                 }))
                     .then((decryptedMessageArray) => {
@@ -2774,6 +2908,7 @@ __decorate([
     ExceptionReject
 ], ChannelApi.prototype, "isLocked", null);
 //#region - class ChannelAPI - TODO implement these methods
+let DBG = false;
 class Snackabra {
     #storage;
     #channel;
@@ -2795,13 +2930,16 @@ class Snackabra {
      *     }
      *
      * @param args {SBServer} server names (optional)
+     * @param args {DEBUG} if set to true, will make ALL jslib calls verbose in the console
      *
      *
      */
-    constructor(args) {
+    constructor(args, DEBUG = false) {
         if (args) {
             this.#preferredServer = Object.assign({}, args);
-            this.#storage = new StorageApi(args.storage_server, args.channel_server);
+            this.#storage = new StorageApi(args.storage_server, args.channel_server, args.shard_server ? args.shard_server : undefined);
+            if (DEBUG)
+                DBG = true;
         }
     }
     /**
@@ -2816,9 +2954,9 @@ class Snackabra {
      */
     /* @Online */
     connect(onMessage, key, channelId /*, identity?: SB384 */) {
-        if (key)
+        if ((DBG) && (key))
             console.log(key);
-        if (channelId)
+        if ((DBG) && (channelId))
             console.log(channelId);
         return new Promise((resolve, reject) => {
             // if we have a preferred server then we do not have to wait for 'ready'
@@ -2926,12 +3064,13 @@ class Snackabra {
         this.storage.saveFile(this.#channel, file);
     }
 } /* class Snackabra */
-export { Channel, SBMessage, Snackabra, SBCrypto, SB384 };
+export { Channel, SBMessage, Snackabra, SBCrypto, SB384, arrayBufferToBase64 };
 export var SB = {
     Snackabra: Snackabra,
     SBMessage: SBMessage,
     Channel: Channel,
     SBCrypto: SBCrypto,
-    SB384: SB384
+    SB384: SB384,
+    arrayBufferToBase64: arrayBufferToBase64
 };
 //# sourceMappingURL=snackabra.js.map

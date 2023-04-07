@@ -71,9 +71,10 @@ javascript code you want documented to the ''snackabra-jslib''
 directory, ''make'' won't pull anything for you.
 
 *Note: Documenation strings for ``snackabra-pylib`` are pulled from
-the docstrings that come allong with ``pip install snackabara``,
-that will just happen magically. If you wish to contribute to
-the library, it's at https://github.com/snackabra/snackabra-pylib*
+the docstrings that come with ``pip install snackabara``,
+and will just happen magically. Pylib development is currently on
+hiatus (with the arrival of Deno) but if you wish to contribute 
+it's at https://github.com/snackabra/snackabra-pylib*
 
 
 Confluence

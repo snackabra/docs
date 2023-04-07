@@ -174,6 +174,7 @@
 <li class="toctree-l1"><a class="reference internal" href="appendix-a-crypto.html">Appendix A: Cryptography</a></li>
 <li class="toctree-l1"><a class="reference internal" href="user-guide.html">Appendix B: Privacy.App Chat Room User Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="diag-sample.html">(ignore)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="motivation.html">Motivation</a></li>
 </ul>
 
 </div>
@@ -210,18 +211,16 @@
         <article role="main">
           <section id="sb-jslib">
 <h1>SB JSLib<a class="headerlink" href="#sb-jslib" title="Permalink to this heading">#</a></h1>
-<p><cite>The core of SB is implemented in snackabra.ts, targeting ES2022.
+<p><em>The core of SB is implemented in snackabra.ts, targeting ES2022.
 This section documents the JS (translated) version. Please note:
 any current published version is Alpha of upcoming 0.5.0 and should
 not be used for sensitive or production use (or if you do use it as
 such: caveat emptor). We will signal production-ready use by versioning
-it as 1.0.x (published to npmjs).</cite></p>
-<dl class="simple">
-<dt><a href="#id1"><span class="problematic" id="id2">`</span></a>We are still trying to sort out how to get Sphinx, JSDoc, Typedoc,</dt><dd><p>etc to all play nice together in a good way…`</p>
-</dd>
-</dl>
+it as 1.0.x (published to npmjs).</em></p>
+<p><em>We are still trying to sort out how to get Sphinx, JSDoc, Typedoc,
+etc to all play nice together in a good way…</em></p>
 <p>All core capababilities of the SB design is intended to be encapsulated
-in this library. Design objectives include: <a class="footnote-reference brackets" href="#id6" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a></p>
+in this library. Design objectives include: <a class="footnote-reference brackets" href="#id4" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a></p>
 <ul class="simple">
 <li><p>No external dependencies (no other libraries)</p></li>
 <li><p>No dependencies on the DOM object</p></li>
@@ -946,21 +945,21 @@ in the code; one approach is the line number in the file (at some point).</p>
 <hr class="docutils" />
 <p class="rubric">Footnotes</p>
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id4" role="note">
+<aside class="footnote brackets" id="id2" role="note">
 <span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
 <p>(test) This is the closest to DM (Direct Message) that the system
 allows, since one constraint is that any communication must
 include a responsible Owner.</p>
 </aside>
-<aside class="footnote brackets" id="id5" role="note">
+<aside class="footnote brackets" id="id3" role="note">
 <span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
 <p>(test) If the whisper is initiated by the guest. If whisper is
 initiated by the owner, the key derivation uses the private
 half of &lt;room&gt;_ownerKey and the public key of the
 guest. The derived key remains the same in both cases.</p>
 </aside>
-<aside class="footnote brackets" id="id6" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
+<aside class="footnote brackets" id="id4" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">3</a><span class="fn-bracket">]</span></span>
 <p>(test) In exchange for possible weaker security, since now the
 Owner needs to keep track of their key files.</p>
 </aside>
@@ -997,6 +996,7 @@ object is ready to use.</p>
 <span class="p">})</span>
 </pre></div>
 </div>
+</div></blockquote>
 <p>That’s the basic model. Creating an object is not a blocking operation,
 but you can check if it is ready or not, and if not, you can either
 wait for it to become ready, or you can move on and do something else.
@@ -1005,29 +1005,31 @@ exception.</p>
 <p>The “readyFlag” value is set to true when the object is ready, and the
 “ready” promise is resolved when the object is ready. The “ready”
 promise is initialized by the constructor, so you also can do this:</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">SomeClass</span><span class="p">()).</span><span class="nx">ready</span><span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">obj</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<blockquote>
+<div><div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">SomeClass</span><span class="p">()).</span><span class="nx">ready</span><span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">obj</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">   </span><span class="c1">// do something with the object</span>
 <span class="p">})</span>
 </pre></div>
 </div>
+</div></blockquote>
 <p>Internally (inside jslib), part of this pattern is done by the
 ready decorator, allowing things like getters to be succinct:</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span>@Ready get privateKey() { return this.#privateKey }
+<blockquote>
+<div><div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span>@Ready get privateKey() { return this.#privateKey }
 </pre></div>
 </div>
+</div></blockquote>
 <p>This will automatically protect the getter from being called before
 the internal state is ready, which in turn allows users of the library
 to code more aggressively and not always have to explicitly
 check if the object is ready or not.</p>
-</div></blockquote>
 </section>
 <section id="dn-005-browser-connectivity">
 <span id="dn005"></span><h2>DN 005: Browser connectivity<a class="headerlink" href="#dn-005-browser-connectivity" title="Permalink to this heading">#</a></h2>
 <p>Unfortunately, browsers at the time of writing (February, 2023)
 simply do not have a good way of checking network status. Currently
 it comes down to this:</p>
-<blockquote>
-<div><ul>
+<ul class="simple">
 <li><p>You cannot use ‘’XMLHttpRequest()’’ or ‘’fetch()’’ to “ping”
 a server without it being noisy: for example, Chrome insists on
 complaining (in red font) about ‘’ERR_CONNECTION_REFUSED’’ in the
@@ -1037,7 +1039,8 @@ browser developer tools setup.</p></li>
 <li><p>You cannot use ‘’navigator.online’’ in all cases, because the
 browser doesn’t consider a local server (on the same computer)
 as a “server” per se, for this purpose, even though you can
-connect to it.</p>
+connect to it.</p></li>
+</ul>
 <p>The current net-net of this situation is that we chose not to
 make jslib “proactive”, or “smart”, in this context. What we
 can do, however, is “track” any of these errors, and print out
@@ -1049,9 +1052,6 @@ already. But it does mean that systems like Deno or Cloudflare’s
 ‘’workerd’’ will have to have additional non-browser APIs, just
 like node needed … and then presumably browsers will add
 incompatible versions of those …</p>
-</li>
-</ul>
-</div></blockquote>
 </section>
 <section id="dn-006-localhost-cors-and-other-fun-things">
 <h2>DN 006: Localhost, CORS, and other fun things<a class="headerlink" href="#dn-006-localhost-cors-and-other-fun-things" title="Permalink to this heading">#</a></h2>

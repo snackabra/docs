@@ -61,6 +61,7 @@ anything important.  We will "signal" that we think the system is
    appendix-a-crypto.rst
    user-guide
    (ignore) <diag-sample>
+   motivation
 
 |
 

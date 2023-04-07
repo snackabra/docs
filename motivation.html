@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Sphinx Diagram Examples" href="diag-sample.html" /><link rel="prev" title="Appendix A: Cryptography" href="appendix-a-crypto.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="prev" title="Sphinx Diagram Examples" href="diag-sample.html" />
 
     <!-- Generated with Sphinx 5.3.0 and Furo 2023.03.27 -->
-        <title>Appendix B: Privacy.App Chat Room User Guide - snackabra 0.5.x beta documentation</title>
+        <title>Motivation - snackabra 0.5.x beta documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -136,7 +136,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -172,9 +172,9 @@
 <li class="toctree-l1"><a class="reference internal" href="server.html">Snackabra Server</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pylib.html">Python Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="appendix-a-crypto.html">Appendix A: Cryptography</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Appendix B: Privacy.App Chat Room User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-guide.html">Appendix B: Privacy.App Chat Room User Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="diag-sample.html">(ignore)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="motivation.html">Motivation</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Motivation</a></li>
 </ul>
 
 </div>
@@ -203,94 +203,45 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
-          <section id="appendix-b-privacy-app-chat-room-user-guide">
-<span id="userguide"></span><h1>Appendix B: Privacy.App Chat Room User Guide<a class="headerlink" href="#appendix-b-privacy-app-chat-room-user-guide" title="Permalink to this heading">#</a></h1>
-<p>Here we will only give you a brief tour of this chat service; once you
-are on the service itself, there’s also a ‘Guide’ tab that gives you a
-quick start - below we go into details.</p>
-<p>You can use these personal chat rooms as you like. To invite somebody
-just send them a link - they don’t need to members, or ‘sign up’, or
-give us their email, or any such nonsense.  They just need to go to
-the link and you will both be in a chat room (you can have up to 300
-participants in any room).</p>
-<p>All chatting occurs in ‘Rooms’, and all rooms have one ‘owner’, and an
-owner has to be a Member. To invite somebody to any of your Rooms, you
-just send them a link - use the ‘Copy Link’ for any room below to copy
-the unique URL for that room to the clipboard.</p>
-<p>When you join the room, you will probably join as ‘Owner’ which also
-gives you some special features.  Any messages in the Room by the
-Owner are surrounded by a green line.</p>
-<p>A room is a unique web address, a ‘URL’, and will look something like
-this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">r</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">hkUkHY6wm</span><span class="o">-</span><span class="n">ZXmIyhCt1v4NBK</span><span class="o">-</span><span class="n">o1PV4GyKBnl7U8KaYgoe1Yi150ptDnVUmkboFOL</span>
-</pre></div>
-</div>
-<p>Every room has a unique address, nobody will ‘find’ it unless you’ve
-shared it with them. (In fact, the room above is a real room, it’s one
-of our support chat rooms - feel free to drop by and say ‘hi’. But
-don’t share any information about yourself!  It’s an ‘open mike’.)</p>
-<p>The ‘first’ guest that joins gets a special status as ‘verified
-guest’ - that way you can share the room with somebody and have them
-join it right away.</p>
-<p>Note that you can always join your own rooms as a ‘Guest’, just make
-sure to use another browser or ‘private/incognito’ tab, and go to the
-Room.</p>
-<p>The most important (and different) part of this chat service is that
-any guest that joins will receive cryptographic keys that are
-stored locally in your browser. Any guest needs to take
-care of these keys themselves - but if they lose them they can always
-join again and get new keys. More details in the ‘Guide’ on the chat
-service; we are also hoping to put together an introductory video for
-you. There is no username or password part of this system (because
-that is inherently insecure), and you and your guests are fully
-empowered to manage your cryptographic keys yourself (because that way
-there is no way for us to read your messages or see any pictures
-you’re sharing etc). The simplest way is to export the keys to a
-file - it can be stored on your phone, your computer, on a USB - and
-then import it to any device and browser where you want to continue
-chatting.</p>
-<p>Note that only Members can store their keys online (the ‘cloud’),
-meaning, our servers.  Your guests can’t, because we have no way to
-authenticate them - that’s why you have your Yubikey and membership
-number.</p>
-<p>In a room there are two ways to send a message: normally, and as a
-‘whisper’. A ‘whisper’ can only be read by the Owner (Member), nobody
-else, ever. However, other guests in the room can see that you have
-whispered something (the Owner can disable this).  A reply to a
-whisper is similarly only readable by the other guest; that way you
-can always have a ‘side conversation’, just like you would in a large
-room!</p>
-<p>All messages are encrypted, but anybody that has the web address to
-the room can join, and read the messages as well Therefore there is an
-important feature called ‘Lock Down’, from your ‘Admin’ menu you can
-enable Lock Down mode on any room. Once locked down, all communication
-is encrypted with new keys, and any guest has to be approved first by
-the Owner.</p>
-<p>If you are very concerned about security and privacy, then as
-Owner of a locked down room, you can re-generate your own message
-keys, and also re-generate (‘roll’) the room’s end-to-end encryption
-keys. If you do that, you now need to keep track of your own room
-keys, even as a Member - because at this point we are not keeping any
-of the keys for the room. If you are a very advanced user, you can
-generate your own keys for this purpose (SECP384R1, you can manually
-edit your export/import file, keys are in JWK format).</p>
-<p>A (very) brief note on terms of use: As an Owner, you are
-responsible for what happens in any room you create. You decide what
-is appropriate and what is not, and you control who has access to the
-Room, and you have ultimate control over any content that is
-shared. The Magnusson Institute, who owns and manages all services on
-Privacy.App, is not responsible for the contents of any rooms, as long
-as it is &lt;u&gt;legal&lt;/u&gt; under applicable United States laws - and
-&lt;u&gt;only&lt;/u&gt; US laws. We are a service for US residents and we will
-only accept US jurisdictional oversight. We will not accept any
-&lt;u&gt;illegal&lt;/u&gt; activities, and we expect the Owner to enforce that,
-and to contact us as needed. Details are explained elsewhere.</p>
+          <section id="motivation">
+<span id="id1"></span><h1>Motivation<a class="headerlink" href="#motivation" title="Permalink to this heading">#</a></h1>
+<p>The 384 platform is built on a number of core concepts that are essential to the design of a decentralized
+storage platform. Each of these concepts is explained in more detail below.</p>
+<section id="zero-trust">
+<h2>Zero Trust<a class="headerlink" href="#zero-trust" title="Permalink to this heading">#</a></h2>
+<p>Cloudflare’s learning page succinctly summarizes what Zero Trust is and why it is important here.</p>
+<p>Traditional IT network security trusts anyone and anything inside the network. A Zero Trust architecture trusts no one and nothing. Traditional IT network security is based on the castle-and-moat concept. In castle-and-moat security, it is hard to obtain access from outside the network, but everyone inside the network is trusted by default. The problem with this approach is that once an attacker gains access to the network, they have free rein over everything inside. This vulnerability in castle-and-moat security systems is exacerbated by the fact that companies no longer have their data in just one place. Today, information is often spread across cloud vendors, which makes it more difficult to have a single security control for an entire network. Zero Trust security means that no one is trusted by default from inside or outside the network, and verification is required from everyone trying to gain access to resources on the network. This added layer of security has been shown to prevent data breaches. Studies have shown that the average cost of a single data breach is over $3 million. Considering that figure, it should come as no surprise that many organizations are now eager to adopt a Zero Trust security policy.</p>
+<p>384 is built on the Zero Trust model…to be continued…</p>
+</section>
+<section id="local-first-software">
+<h2>Local-first software<a class="headerlink" href="#local-first-software" title="Permalink to this heading">#</a></h2>
+<p>Local-first software is an approach to software design that prioritizes the user’s control and ownership of their data. The idea is to build software applications that work offline and store data locally either on device or on the edge, while also allowing for synchronization with other devices and the cloud.</p>
+<p>The 384 platform facilitates the creation of local first software by design. Our platform allows you to load an app locally from a shard and run it on whichever data you decide to give it. This flips the traditional SaaS model of uploading your data to some third-party server that then does processing on it. Since the app can run locally in the browser, it can also take advantage of all the latest features of Web APIs to build a PWA that works offline. This gives you the privacy, security, and performance of local desktop applications, but also the convenience and redundancy of the cloud. It was previously thought that web browsers were not a good way to make local first applications, but with advances in browser capability and increasing access to native compute and storage through APIs, it is more than possible, and in our opinion preferable.</p>
+</section>
+<section id="key-management">
+<h2>Key Management<a class="headerlink" href="#key-management" title="Permalink to this heading">#</a></h2>
+<p>Key management refers to the process of handling cryptographic keys throughout their lifecycle. It involves generating, distributing, storing, protecting, revoking, and ensuring the availability and integrity of keys, as well as implementing policies and selecting appropriate algorithms and key lengths. Effective key management is essential for maintaining the security and confidentiality of sensitive information.</p>
+<p>Imagine now that key management is done by some third party, on some infrastructure that you don’t know. Doesn’t that seem antithetical to privacy and security? Not only do you have to trust that they are not prying their eyes into your data, but you also must trust the integrity of their infrastructure. With 384, since key management is done in the client, the specific cloud infrastructure that our services are being run on does not matter, and they can even be insecure. Your data is never unencrypted in transit or in rest anywhere besides the client.</p>
+</section>
+<section id="data-sovereignty">
+<h2>Data Sovereignty<a class="headerlink" href="#data-sovereignty" title="Permalink to this heading">#</a></h2>
+<p>There are many conflicting definitions of data sovereignty, but what we feel is essential about this concept is that the individual has control over their personal data and digital identity, including the ability to determine how and where their data is collected, processed, and shared. It encompasses the rights of individuals/companies to privacy, security, and autonomy in their digital lives.</p>
+<p>384 is designed to facilitate this by providing a platform that fundamentally flips the power imbalance between the user and the service provider. The user has complete control over their data, and the application level has no access to it unless the user explicitly grants it. This is in contrast to the traditional model of data being stored and processed in a centralized location.</p>
+</section>
+<section id="open-source">
+<h2>Open Source<a class="headerlink" href="#open-source" title="Permalink to this heading">#</a></h2>
+<p>To be written…</p>
+</section>
+<section id="public-key-cryptography-as-identity">
+<h2>Public Key Cryptography as Identity<a class="headerlink" href="#public-key-cryptography-as-identity" title="Permalink to this heading">#</a></h2>
+<p>To be written…</p>
+</section>
 </section>
 
         </article>
@@ -298,23 +249,15 @@ and to contact us as needed. Details are explained elsewhere.</p>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="diag-sample.html">
-              <div class="page-info">
-                <div class="context">
-                  <span>Next</span>
-                </div>
-                <div class="title">Sphinx Diagram Examples</div>
-              </div>
-              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
-            </a>
-          <a class="prev-page" href="appendix-a-crypto.html">
+          
+          <a class="prev-page" href="diag-sample.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Appendix A: Cryptography</div>
+                <div class="title">Sphinx Diagram Examples</div>
                 
               </div>
             </a>
@@ -336,8 +279,32 @@ and to contact us as needed. Details are explained elsewhere.</p>
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Motivation</a><ul>
+<li><a class="reference internal" href="#zero-trust">Zero Trust</a></li>
+<li><a class="reference internal" href="#local-first-software">Local-first software</a></li>
+<li><a class="reference internal" href="#key-management">Key Management</a></li>
+<li><a class="reference internal" href="#data-sovereignty">Data Sovereignty</a></li>
+<li><a class="reference internal" href="#open-source">Open Source</a></li>
+<li><a class="reference internal" href="#public-key-cryptography-as-identity">Public Key Cryptography as Identity</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

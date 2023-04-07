@@ -2,15 +2,15 @@
 SB JSLib
 ========
 
-`The core of SB is implemented in snackabra.ts, targeting ES2022.
+*The core of SB is implemented in snackabra.ts, targeting ES2022.
 This section documents the JS (translated) version. Please note:
 any current published version is Alpha of upcoming 0.5.0 and should
 not be used for sensitive or production use (or if you do use it as
 such: caveat emptor). We will signal production-ready use by versioning
-it as 1.0.x (published to npmjs).`
+it as 1.0.x (published to npmjs).*
 
-`We are still trying to sort out how to get Sphinx, JSDoc, Typedoc,
- etc to all play nice together in a good way...`
+*We are still trying to sort out how to get Sphinx, JSDoc, Typedoc,
+etc to all play nice together in a good way...*
 
 All core capababilities of the SB design is intended to be encapsulated
 in this library. Design objectives include: [3]_
@@ -272,17 +272,17 @@ Here is essentially how it works:
       obj.ready.then((obj) => {
          // or you can set up what should be done when the object is ready
       })
+      
 
+That's the basic model. Creating an object is not a blocking operation,
+but you can check if it is ready or not, and if not, you can either
+wait for it to become ready, or you can move on and do something else.
+If you call a method on an object that is not ready, it will throw an
+exception.
 
-   That's the basic model. Creating an object is not a blocking operation,
-   but you can check if it is ready or not, and if not, you can either
-   wait for it to become ready, or you can move on and do something else.
-   If you call a method on an object that is not ready, it will throw an
-   exception.
-
-   The "readyFlag" value is set to true when the object is ready, and the
-   "ready" promise is resolved when the object is ready. The "ready"
-   promise is initialized by the constructor, so you also can do this:
+The "readyFlag" value is set to true when the object is ready, and the
+"ready" promise is resolved when the object is ready. The "ready"
+promise is initialized by the constructor, so you also can do this:
 
    .. code-block:: javascript
 
@@ -290,17 +290,19 @@ Here is essentially how it works:
          // do something with the object
       })
 
-   Internally (inside jslib), part of this pattern is done by the
-   ready decorator, allowing things like getters to be succinct:
+
+Internally (inside jslib), part of this pattern is done by the
+ready decorator, allowing things like getters to be succinct:
 
    .. code-block:: javascript
 
       @Ready get privateKey() { return this.#privateKey }
 
-   This will automatically protect the getter from being called before
-   the internal state is ready, which in turn allows users of the library
-   to code more aggressively and not always have to explicitly 
-   check if the object is ready or not.
+
+This will automatically protect the getter from being called before
+the internal state is ready, which in turn allows users of the library
+to code more aggressively and not always have to explicitly 
+check if the object is ready or not.
 
 
 .. _DN005:
@@ -312,30 +314,31 @@ Unfortunately, browsers at the time of writing (February, 2023)
 simply do not have a good way of checking network status. Currently
 it comes down to this:
 
-   * You cannot use ''XMLHttpRequest()'' or ''fetch()'' to "ping"
-     a server without it being noisy: for example, Chrome insists on
-     complaining (in red font) about ''ERR_CONNECTION_REFUSED'' in the
-     developer console, no matter what you do in your javascript code.
-     The only way to turn that off is change default settings in the
-     browser developer tools setup.
+* You cannot use ''XMLHttpRequest()'' or ''fetch()'' to "ping"
+  a server without it being noisy: for example, Chrome insists on
+  complaining (in red font) about ''ERR_CONNECTION_REFUSED'' in the
+  developer console, no matter what you do in your javascript code.
+  The only way to turn that off is change default settings in the
+  browser developer tools setup.
 
-   * You cannot use ''navigator.online'' in all cases, because the
-     browser doesn't consider a local server (on the same computer)
-     as a "server" per se, for this purpose, even though you can
-     connect to it.
+* You cannot use ''navigator.online'' in all cases, because the
+  browser doesn't consider a local server (on the same computer)
+  as a "server" per se, for this purpose, even though you can
+  connect to it.
 
-     The current net-net of this situation is that we chose not to
-     make jslib "proactive", or "smart", in this context. What we
-     can do, however, is "track" any of these errors, and print out
-     an info message on the console to ignore ''ERR_CONNECTION_REFUSED''.
+The current net-net of this situation is that we chose not to
+make jslib "proactive", or "smart", in this context. What we
+can do, however, is "track" any of these errors, and print out
+an info message on the console to ignore ''ERR_CONNECTION_REFUSED''.
 
-     It would be nice if there was a simple api to check connectivity
-     to a server or an IP address. But it's not something to be too
-     upset about: we're pushing the browser behavior here pretty far
-     already. But it does mean that systems like Deno or Cloudflare's 
-     ''workerd'' will have to have additional non-browser APIs, just
-     like node needed ... and then presumably browsers will add 
-     incompatible versions of those ...
+It would be nice if there was a simple api to check connectivity
+to a server or an IP address. But it's not something to be too
+upset about: we're pushing the browser behavior here pretty far
+already. But it does mean that systems like Deno or Cloudflare's 
+''workerd'' will have to have additional non-browser APIs, just
+like node needed ... and then presumably browsers will add 
+incompatible versions of those ...
+
 
 DN 006: Localhost, CORS, and other fun things
 ---------------------------------------------

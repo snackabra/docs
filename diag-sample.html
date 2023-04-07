@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="prev" title="Appendix B: Privacy.App Chat Room User Guide" href="user-guide.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Motivation" href="motivation.html" /><link rel="prev" title="Appendix B: Privacy.App Chat Room User Guide" href="user-guide.html" />
 
     <!-- Generated with Sphinx 5.3.0 and Furo 2023.03.27 -->
         <title>Sphinx Diagram Examples - snackabra 0.5.x beta documentation</title>
@@ -174,6 +174,7 @@
 <li class="toctree-l1"><a class="reference internal" href="appendix-a-crypto.html">Appendix A: Cryptography</a></li>
 <li class="toctree-l1"><a class="reference internal" href="user-guide.html">Appendix B: Privacy.App Chat Room User Guide</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">(ignore)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="motivation.html">Motivation</a></li>
 </ul>
 
 </div>
@@ -246,7 +247,7 @@ some of the diagram / figure tools.</p>
 <p>Here’s an example using graphviz (more here: <a class="reference external" href="https://graphviz.org/gallery/">https://graphviz.org/gallery/</a> )</p>
 <section id="digraph">
 <h3>Digraph<a class="headerlink" href="#digraph" title="Permalink to this heading">#</a></h3>
-<div class="graphviz"><img src="_images/graphviz-84b43c8606d0bc796a3a6c24d22a7d82e5dbbccc.png" alt="digraph PhiloDilemma {
+digraph PhiloDilemma {
 layout=neato
 node [shape=box];  bec3; rel3; bec2; rel2; acq2; acq3; bec1; rel1; acq1;
 node [shape=circle,fixedsize=true,width=0.9];  hu3; th3; ri3; ea3; hu2; th2; ri2; ea2; hu1; th1; ri1; ea1;
@@ -281,11 +282,10 @@ acq1-&gt;ea1;
 overlap=false
 label=&quot;PetriNet Model PhiloDilemma\nExtracted from ConceptBase and layed out by Graphviz &quot;
 fontsize=12;
-}" class="graphviz" /></div>
-</section>
+}</section>
 <section id="process-graph">
 <h3>Process Graph<a class="headerlink" href="#process-graph" title="Permalink to this heading">#</a></h3>
-<div class="graphviz"><img src="_images/graphviz-b61c7aecdb64833bf229b759a613380785166522.png" alt="graph G {
+graph G {
         layout=neato
         run -- intr;
         intr -- runbl;
@@ -300,8 +300,7 @@ fontsize=12;
         runswap -- runmem;
         new -- runmem;
         sleep -- runmem;
-}" class="graphviz" /></div>
-</section>
+}</section>
 </section>
 </section>
 
@@ -310,7 +309,15 @@ fontsize=12;
       <footer>
         
         <div class="related-pages">
-          
+          <a class="next-page" href="motivation.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Motivation</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
           <a class="prev-page" href="user-guide.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">

@@ -10,7 +10,7 @@ such: caveat emptor). We will signal production-ready use by versioning
 it as 1.0.x (published to npmjs).`
 
 `We are still trying to sort out how to get Sphinx, JSDoc, Typedoc,
- etc to all play nice together in a good way...`
+etc to all play nice together in a good way...`
 
 All core capababilities of the SB design is intended to be encapsulated
 in this library. Design objectives include: [3]_

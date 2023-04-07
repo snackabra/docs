@@ -314,30 +314,30 @@ Unfortunately, browsers at the time of writing (February, 2023)
 simply do not have a good way of checking network status. Currently
 it comes down to this:
 
-   * You cannot use ''XMLHttpRequest()'' or ''fetch()'' to "ping"
-     a server without it being noisy: for example, Chrome insists on
-     complaining (in red font) about ''ERR_CONNECTION_REFUSED'' in the
-     developer console, no matter what you do in your javascript code.
-     The only way to turn that off is change default settings in the
-     browser developer tools setup.
+* You cannot use ''XMLHttpRequest()'' or ''fetch()'' to "ping"
+a server without it being noisy: for example, Chrome insists on
+complaining (in red font) about ''ERR_CONNECTION_REFUSED'' in the
+developer console, no matter what you do in your javascript code.
+The only way to turn that off is change default settings in the
+browser developer tools setup.
 
-   * You cannot use ''navigator.online'' in all cases, because the
-     browser doesn't consider a local server (on the same computer)
-     as a "server" per se, for this purpose, even though you can
-     connect to it.
+* You cannot use ''navigator.online'' in all cases, because the
+browser doesn't consider a local server (on the same computer)
+as a "server" per se, for this purpose, even though you can
+connect to it.
 
-     The current net-net of this situation is that we chose not to
-     make jslib "proactive", or "smart", in this context. What we
-     can do, however, is "track" any of these errors, and print out
-     an info message on the console to ignore ''ERR_CONNECTION_REFUSED''.
+The current net-net of this situation is that we chose not to
+make jslib "proactive", or "smart", in this context. What we
+can do, however, is "track" any of these errors, and print out
+an info message on the console to ignore ''ERR_CONNECTION_REFUSED''.
 
-     It would be nice if there was a simple api to check connectivity
-     to a server or an IP address. But it's not something to be too
-     upset about: we're pushing the browser behavior here pretty far
-     already. But it does mean that systems like Deno or Cloudflare's 
-     ''workerd'' will have to have additional non-browser APIs, just
-     like node needed ... and then presumably browsers will add 
-     incompatible versions of those ...
+It would be nice if there was a simple api to check connectivity
+to a server or an IP address. But it's not something to be too
+upset about: we're pushing the browser behavior here pretty far
+already. But it does mean that systems like Deno or Cloudflare's 
+''workerd'' will have to have additional non-browser APIs, just
+like node needed ... and then presumably browsers will add 
+incompatible versions of those ...
 
 DN 006: Localhost, CORS, and other fun things
 ---------------------------------------------

@@ -274,15 +274,15 @@ Here is essentially how it works:
       })
 
 
-   That's the basic model. Creating an object is not a blocking operation,
-   but you can check if it is ready or not, and if not, you can either
-   wait for it to become ready, or you can move on and do something else.
-   If you call a method on an object that is not ready, it will throw an
-   exception.
+That's the basic model. Creating an object is not a blocking operation,
+but you can check if it is ready or not, and if not, you can either
+wait for it to become ready, or you can move on and do something else.
+If you call a method on an object that is not ready, it will throw an
+exception.
 
-   The "readyFlag" value is set to true when the object is ready, and the
-   "ready" promise is resolved when the object is ready. The "ready"
-   promise is initialized by the constructor, so you also can do this:
+The "readyFlag" value is set to true when the object is ready, and the
+"ready" promise is resolved when the object is ready. The "ready"
+promise is initialized by the constructor, so you also can do this:
 
    .. code-block:: javascript
 
@@ -290,17 +290,17 @@ Here is essentially how it works:
          // do something with the object
       })
 
-   Internally (inside jslib), part of this pattern is done by the
-   ready decorator, allowing things like getters to be succinct:
+Internally (inside jslib), part of this pattern is done by the
+ready decorator, allowing things like getters to be succinct:
 
    .. code-block:: javascript
 
       @Ready get privateKey() { return this.#privateKey }
 
-   This will automatically protect the getter from being called before
-   the internal state is ready, which in turn allows users of the library
-   to code more aggressively and not always have to explicitly 
-   check if the object is ready or not.
+This will automatically protect the getter from being called before
+the internal state is ready, which in turn allows users of the library
+to code more aggressively and not always have to explicitly 
+check if the object is ready or not.
 
 
 .. _DN005:

@@ -175,6 +175,7 @@
 <li class="toctree-l1"><a class="reference internal" href="user-guide.html">Appendix B: Privacy.App Chat Room User Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="diag-sample.html">(ignore)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="motivation.html">Motivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updated-glossary.html">Updated Glossary</a></li>
 </ul>
 
 </div>
@@ -244,9 +245,9 @@ at this prior to release of 0.5.0 (link above), then the latest
 <section id="sb384">
 <h2>SB384<a class="headerlink" href="#sb384" title="Permalink to this heading">#</a></h2>
 <p>Most classes in SB are rooted in SB384. It encapsulates the core of an
-“identifier” in SB, namely a (384-bit) global <a class="reference internal" href="glossary.html#term-channel-name"><span class="xref std std-term">Channel Name</span></a>, derived
-from the <a class="reference internal" href="glossary.html#term-Owner-Key"><span class="xref std std-term">Owner Key</span></a> of that object - typically either a <a class="reference internal" href="glossary.html#term-channel"><span class="xref std std-term">channel</span></a>
-or a <a class="reference internal" href="glossary.html#term-object"><span class="xref std std-term">object</span></a>. Most of the properties (see getters below) are various
+“identifier” in SB, namely a (384-bit) global <a class="reference internal" href="updated-glossary.html#term-channel-name"><span class="xref std std-term">Channel Name</span></a>, derived
+from the <a class="reference internal" href="updated-glossary.html#term-Owner-Key"><span class="xref std std-term">Owner Key</span></a> of that object - typically either a <a class="reference internal" href="updated-glossary.html#term-channel"><span class="xref std std-term">channel</span></a>
+or a <a class="reference internal" href="updated-glossary.html#term-object"><span class="xref std std-term">object</span></a>. Most of the properties (see getters below) are various
 perspectives and formats on this identity.</p>
 <dl class="js class">
 <dt class="sig sig-object js" id="SB384">
@@ -341,7 +342,7 @@ without a parameter in which case SB will ping known servers.</p>
 <span class="sig-prename descclassname"><span class="n"><span class="pre">Snackabra</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">create</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sbServer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">serverSecret</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keys</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Snackabra.create" title="Permalink to this definition">#</a></dt>
 <dd><p>Creates a new channel. Currently uses trivial authentication.
 Returns a promise to a ‘’SBChannelHandle’’ object
-(which includes the <a class="reference internal" href="glossary.html#term-channel-name"><span class="xref std std-term">Channel Name</span></a>).
+(which includes the <a class="reference internal" href="updated-glossary.html#term-channel-name"><span class="xref std std-term">Channel Name</span></a>).
 Note that this method does not connect to the channel,
 it just creates (authorizes) it.</p>
 </dd></dl>
@@ -440,7 +441,7 @@ SB.create(sb_config, '&lt;SECRET&gt;').then((handle) =&gt; {
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>sbServer</strong> (<a class="reference internal" href="#Snackabra" title="Snackabra"><em>Snackabra</em></a>) – server to join</p></li>
 <li><p><strong>key?</strong> (<em>JsonWebKey</em>) – key to use to join (optional)</p></li>
-<li><p><strong>channelId</strong> (<em>string</em>) – (the <a class="reference internal" href="glossary.html#term-channel-name"><span class="xref std std-term">Channel Name</span></a>) to find on that server (optional)</p></li>
+<li><p><strong>channelId</strong> (<em>string</em>) – (the <a class="reference internal" href="updated-glossary.html#term-channel-name"><span class="xref std std-term">Channel Name</span></a>) to find on that server (optional)</p></li>
 </ul>
 </dd>
 </dl>

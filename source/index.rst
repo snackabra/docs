@@ -62,6 +62,7 @@ anything important.  We will "signal" that we think the system is
    user-guide
    (ignore) <diag-sample>
    motivation
+   updated-glossary
 
 |
 

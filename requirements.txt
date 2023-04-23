@@ -18,3 +18,5 @@ snackabra
 # (problem is footnotes are dangling)
 # moving to TODO - needs debugging
 # -e .[pdf]
+
+myst-parser

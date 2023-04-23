@@ -5,10 +5,10 @@
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Motivation" href="motivation.html" /><link rel="prev" title="Appendix B: Privacy.App Chat Room User Guide" href="user-guide.html" />
 
-    <!-- Generated with Sphinx 5.3.0 and Furo 2023.03.27 -->
+    <!-- Generated with Sphinx 5.3.0 and Furo 2022.12.07 -->
         <title>Sphinx Diagram Examples - snackabra 0.5.x beta documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
@@ -168,7 +168,8 @@
 <li class="toctree-l1"><a class="reference internal" href="future.html">Future Work</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References / Further Reading</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">LICENSE</a></li>
-<li class="toctree-l1"><a class="reference internal" href="jslib.html">SB JSLib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jslib.html">JSLib User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">JSLib Reference Manual</a></li>
 <li class="toctree-l1"><a class="reference internal" href="server.html">Snackabra Server</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pylib.html">Python Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="appendix-a-crypto.html">Appendix A: Cryptography</a></li>
@@ -248,7 +249,7 @@ some of the diagram / figure tools.</p>
 <p>Here’s an example using graphviz (more here: <a class="reference external" href="https://graphviz.org/gallery/">https://graphviz.org/gallery/</a> )</p>
 <section id="digraph">
 <h3>Digraph<a class="headerlink" href="#digraph" title="Permalink to this heading">#</a></h3>
-digraph PhiloDilemma {
+<div class="graphviz"><img src="_images/graphviz-84b43c8606d0bc796a3a6c24d22a7d82e5dbbccc.png" alt="digraph PhiloDilemma {
 layout=neato
 node [shape=box];  bec3; rel3; bec2; rel2; acq2; acq3; bec1; rel1; acq1;
 node [shape=circle,fixedsize=true,width=0.9];  hu3; th3; ri3; ea3; hu2; th2; ri2; ea2; hu1; th1; ri1; ea1;
@@ -283,10 +284,11 @@ acq1-&gt;ea1;
 overlap=false
 label=&quot;PetriNet Model PhiloDilemma\nExtracted from ConceptBase and layed out by Graphviz &quot;
 fontsize=12;
-}</section>
+}" class="graphviz" /></div>
+</section>
 <section id="process-graph">
 <h3>Process Graph<a class="headerlink" href="#process-graph" title="Permalink to this heading">#</a></h3>
-graph G {
+<div class="graphviz"><img src="_images/graphviz-b61c7aecdb64833bf229b759a613380785166522.png" alt="graph G {
         layout=neato
         run -- intr;
         intr -- runbl;
@@ -301,7 +303,8 @@ graph G {
         runswap -- runmem;
         new -- runmem;
         sleep -- runmem;
-}</section>
+}" class="graphviz" /></div>
+</section>
 </section>
 </section>
 

@@ -45,8 +45,15 @@ extensions = [
     'sphinx.ext.ifconfig',
     'sphinx.ext.viewcode',
     'sphinx.ext.githubpages',
-    'sphinxcontrib.confluencebuilder'
+    'sphinxcontrib.confluencebuilder',
+
+    'myst_parser'
+
 ]
+
+# myst_parser (?)
+source_suffix = ['.rst', '.md']
+
 
 # Atlassian Confluence extension configuration
 # it will only try to deploy if you have env set for it
@@ -84,7 +91,7 @@ templates_path = ['_templates']
 exclude_patterns = []
 
 # sphinx-js path to snackabra-javascript library
-js_source_path = '../snackabra-jslib'
+# js_source_path = '../snackabra-jslib'
 # optional configuration for jsdoc per se
 # jsdoc_config_path = '../jsdoc_conf.json'
 

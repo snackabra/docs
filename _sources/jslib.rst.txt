@@ -1,6 +1,6 @@
-========
-SB JSLib
-========
+=================
+JSLib User Manual
+=================
 
 *The core of SB is implemented in snackabra.ts, targeting ES2022.
 This section documents the JS (translated) version. Please note:
@@ -40,6 +40,14 @@ at this prior to release of 0.5.0 (link above), then the latest
 https://github.com/384co/snackabra-docs/blob/main/snackabra-jslib/snackabra.js
 
 
+Complete reference is here:
+
+* `JSLib <modules.html>`_
+
+
+
+
+
 SB384
 -----
 
@@ -49,11 +57,8 @@ from the :term:`Owner Key` of that object - typically either a :term:`channel`
 or a :term:`object`. Most of the properties (see getters below) are various
 perspectives and formats on this identity.
 
+* `SB384 <classes/SB384.html>`_
 
-
-
-.. js:autoclass:: SB384
-   :members:
 
 
 Snackabra (Server) Class
@@ -64,72 +69,8 @@ Snackabra (Server) Class
 The SB class is the orchestrator, in particular it tracks one or more channels
 connecting to one or more SB servers.
 
-.. js:autoclass:: Snackabra
-   :members:
-
-
-Interfaces
-----------
-
-TODO: how to get SBServer (and interfaces and types) over here.
-
-.. js:class:: SBChannelHandle
-   :members:
-
-
-Channels
---------
-
-Channels (aka "Rooms") are the core communication primitive in SB.
-
-SB Message Class
-================
-
-.. _SBMessage:
-
-.. js:autoclass:: SBMessage
-   :members:
-
-Channel Class
-=============
-
-.. js:autoclass:: Channel
-   :members:
-
-Channel Socket Class
-====================
-
-Channel "sockets" are the synchronous communication interface to channels.
-
-.. js:autoclass:: ChannelSocket
-   :members:
-
-Channel API Class
-=================
-
-The channel "API" class is the asynchronous interface to channels.
-
-.. js:autoclass:: ChannelApi
-   :members:
-
-
-
-Storage
--------
-
-SB Storage Class
-================
-
-.. js:autoclass:: StorageApi
-   :members:
-
-
-SB File Class
-=============
-
-.. js:autoclass:: SBFile
-   :members:
-
+* `Snackabra <classes/Snackabra.html>`_
+* `SBServer <interfaces/SBServer.html>`_
 
 Sample usage:
 
@@ -151,38 +92,70 @@ Sample usage:
 
 
 
+
+SB Message Class
+================
+
+* `SBMessage <classes/SBMessage.html>`_
+
+
+Channels
+========
+
+Channels (aka "Rooms") are the core communication primitive in SB.
+Channel "sockets" are the synchronous communication interface to channels.
+The channel "API" class is the asynchronous interface to channels.
+
+* `Channel <classes/Channel.html>`_
+* `SBChannelHandle <interfaces/SBChannelHandle.html>`_
+* `ChannelSocket <classes/ChannelSocket.html>`_
+* `ChannelKeys <interfaces/ChannelKeys.html>`_
+* `ChannelMessage <interfaces/ChannelMessage.html>`_
+
+
+Storage
+=======
+
+* `SBObjectHandle <interfaces/SBObjectHandle.html>`_
+* `SBObjectHandleClass <classes/SBObjectHandleClass.html>`_
+* `SBObjectMetadata <interfaces/SBObjectMetadata.html>`_
+* `SBFile <classes/SBFile.html>`_
+* `SBPayload <interfaces/SBPayload.html>`_
+
+
 Utilities and Helpers
 ---------------------
 
 These are a set common operations, that typically are supported by the
 web api, but where we want to ensure specific behavior.
 
+* `MessageBus <classes/MessageBus.html>`_
+
+- [arrayBuffer32ToBase62](modules.md#arraybuffer32tobase62)
+- [arrayBufferToBase64](modules.md#arraybuffertobase64)
+- [assemblePayload](modules.md#assemblepayload)
+- [base62ToArrayBuffer32](modules.md#base62toarraybuffer32)
+- [base62ToBase64](modules.md#base62tobase64)
+- [base64ToArrayBuffer](modules.md#base64toarraybuffer)
+- [base64ToBase62](modules.md#base64tobase62)
+- [decodeB64Url](modules.md#decodeb64url)
+- [encodeB64Url](modules.md#encodeb64url)
+- [encryptedContentsMakeBinary](modules.md#encryptedcontentsmakebinary)
+- [extractPayload](modules.md#extractpayload)
+- [getRandomValues](modules.md#getrandomvalues)
+- [jsonParseWrapper](modules.md#jsonparsewrapper)
+- [partition](modules.md#partition)
+- [simpleRand256](modules.md#simplerand256)
+- [simpleRandomString](modules.md#simplerandomstring)
 
 
 Crypto Class
 ============
 
-.. js:autoclass:: SBCrypto
-   :members:
+* `SBCrypto <classes/SBCrypto.html>`_
 
-
-
-Format Related
-==============
-
-.. js:autofunction:: arrayBufferToBase64
-
-.. js:autofunction:: base64ToArrayBuffer
-
-.. js:autofunction:: encodeB64Url
-
-.. js:autofunction:: decodeB64Url
-
-.. js:autofunction:: str2ab
-
-.. js:autofunction:: ab2str
-
-.. js:autofunction:: cleanBase32mi
+* `EncryptedContents <interfaces/EncryptedContents.html>`_
+* `EncryptedContentsBin <interfaces/EncryptedContentsBin.html>`_
 
 
 Crypto Helpers
@@ -193,30 +166,21 @@ Crypto Helpers
 SB "Wire" Format Helpers
 ========================
 
-.. js:autofunction:: assemblePayload
-
-.. js:autofunction:: extractPayload
-
 
 
 SB-specific Helpers
 ===================
 
-.. js:autofunction:: jsonParseWrapper
-
-.. js:autofunction:: partition
-
 
 Testing Related
 ===============
 
-.. js:autofunction:: compareBuffers
+- [compareBuffers](modules.md#comparebuffers)
 
 
 Other
 =====
 
-TODO: add ''SBFetch'' function.
               
                   
 ------------------

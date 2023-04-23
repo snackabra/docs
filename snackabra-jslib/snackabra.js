@@ -189,9 +189,9 @@ export class MessageBus {
  * TODO: this will be integrated with SB (Snackabra) object and exposed
  *       to platform API for possible app use.
  *
- * @param input
- * @param init
- * @returns
+ * @param { RequestInfo | URL } input - the URL to fetch
+ * @param { RequestInit } init - the options for the request
+ * @returns { Promise<Response> }
  */
 function SBFetch(input, init) {
     // console.log("SBFetch()"); console.log(input); console.log(init);
@@ -213,7 +213,7 @@ function WrapError(e) {
 // the below general exception handler might be improved to
 // retain the error stack, per:
 // https://stackoverflow.com/a/42755876
-// class RethrownError extends Error {
+// class RethrownError ext ends Error {
 //   constructor(message, error){
 //     super(message)
 //     this.name = this.constructor.name
@@ -258,6 +258,7 @@ export function _sb_assert(val, msg) {
 /******************************************************************************************************/
 //#region - SBCryptoUtils - crypto and translation stuff used by SBCrypto etc
 /******************************************************************************************************/
+// TODO: should probably move into SBCrypto
 /**
  * Fills buffer with random data
  */
@@ -479,12 +480,87 @@ function arrayBufferToBase64(buffer, variant = 'url') {
         return parts.join('');
     }
 }
+// Define the base62 dictionary
+// We want the same sorting order as ASCII, so we go with 0-9A-Za-z
+const base62 = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+const base62Regex = /^(a32\.)?[0-9A-Za-z]{43}$/;
+// monkey hack for BigInt JSON serialization ... 
+BigInt.prototype.toJSON = function () {
+    return this.toString() + 'n';
+};
+/**
+ * base62ToArrayBuffer32 converts a base62 encoded string to an ArrayBuffer32.
+ *
+ * @param s base62 encoded string
+ * @returns ArrayBuffer32
+ */
+export function base62ToArrayBuffer32(s) {
+    if (!base62Regex.test(s))
+        throw new Error(`base62ToArrayBuffer32: string must match: ${base62Regex}`);
+    let n = 0n;
+    for (let i = 0; i < s.length; i++) {
+        const digit = BigInt(base62.indexOf(s[i]));
+        n = n * 62n + digit;
+    }
+    // base62 x 43 is slightly more than 256 bits, so we need to check for overflow
+    if (n > 2n ** 256n - 1n)
+        throw new Error(`base62ToArrayBuffer32: value exceeds 256 bits.`);
+    const buffer = new ArrayBuffer(32);
+    const view = new DataView(buffer);
+    for (let i = 0; i < 8; i++) {
+        const uint32 = Number(BigInt.asUintN(32, n));
+        view.setUint32((8 - i - 1) * 4, uint32);
+        n = n >> 32n;
+    }
+    return buffer;
+}
+/**
+ * arrayBuffer32ToBase62 converts an ArrayBuffer32 to a base62 encoded string.
+ *
+ * @param buffer ArrayBuffer32
+ * @returns base62 encoded string
+ */
+export function arrayBuffer32ToBase62(buffer) {
+    if (buffer.byteLength !== 32)
+        throw new Error('arrayBuffer32ToBase62: buffer must be exactly 32 bytes (256 bits).');
+    let result = '';
+    for (let n = BigInt('0x' + Array.from(new Uint8Array(buffer)).map(b => b.toString(16).padStart(2, '0')).join('')); n > 0n; n = n / 62n)
+        result = base62[Number(n % 62n)] + result;
+    return 'b62.' + result.padStart(43, '0');
+}
+/**
+ * base62ToBase64 converts a base62 encoded string to a base64 encoded string.
+ *
+ * @param s base62 encoded string
+ * @returns base64 encoded string
+ *
+ * @throws Error if the string is not a valid base62 encoded string
+ */
+export function base62ToBase64(s) {
+    return arrayBufferToBase64(base62ToArrayBuffer32(s));
+}
+/**
+ * base64ToBase62 converts a base64 encoded string to a base62 encoded string.
+ *
+ * @param s base64 encoded string
+ * @returns base62 encoded string
+ *
+ * @throws Error if the string is not a valid base64 encoded string
+ */
+export function base64ToBase62(s) {
+    return arrayBuffer32ToBase62(base64ToArrayBuffer(s));
+}
+// and a type guard
+function isBase62Encoded(value) {
+    return base62Regex.test(value);
+}
 /**
  * Appends two buffers and returns a new buffer
  *
- * @param buffer1
- * @param buffer2
- * @returns
+ * @param {Uint8Array | ArrayBuffer} buffer1
+ * @param {Uint8Array | ArrayBuffer} buffer2
+ * @return {ArrayBuffer} new buffer
+ *
  */
 export function _appendBuffer(buffer1, buffer2) {
     const tmp = new Uint8Array(buffer1.byteLength + buffer2.byteLength);
@@ -765,6 +841,31 @@ export function decodeB64Url(input) {
  * @public
  */
 class SBCrypto {
+    /**
+     * Hashes and splits into two (h1 and h1) signature of data, h1
+     * is used to request (salt, iv) pair and then h2 is used for
+     * encryption (h2, salt, iv)
+     *
+     * @param buf blob of data to be stored
+     *
+     */
+    generateIdKey(buf) {
+        return new Promise((resolve, reject) => {
+            try {
+                crypto.subtle.digest('SHA-512', buf).then((digest) => {
+                    const _id = digest.slice(0, 32);
+                    const _key = digest.slice(32);
+                    resolve({
+                        id: arrayBufferToBase64(_id),
+                        key: arrayBufferToBase64(_key)
+                    });
+                });
+            }
+            catch (e) {
+                reject(e);
+            }
+        });
+    }
     /**
      * Extracts (generates) public key from a private key.
      */
@@ -1077,6 +1178,20 @@ function ExceptionReject(target, _propertyKey, descriptor) {
         }
     };
 }
+// variation of "ready" pattern: an object is ready whenever it's validated,
+// and any setter that might impact this needs to be decorated. 
+// Decorator
+function Validate(_target, _propertyKey, descriptor) {
+    const operation = descriptor.value;
+    descriptor.value = function (...args) {
+        for (let x of args) {
+            const m = x.constructor.name;
+            if (isSBClass(m))
+                _sb_assert(SBValidateObject(x, m), `invalid parameter: ${x} (expecting ${m})`);
+        }
+        return operation.call(this, ...args);
+    };
+}
 // Decorator
 // TODO: (see design note [5]_)
 // function Online(_target: any, _propertyKey: string, descriptor: PropertyDescriptor): void {
@@ -1363,11 +1478,20 @@ export class SBFile extends SBMessage {
 } /* class SBFile */
 /** SB384 */
 /**
- * Channel
+ * Channel Class
  *
- * @class
- * @constructor
- * @public
+ * Join a channel, returns channel object.
+ *
+ * Currently, you must have an identity when connecting, because every single
+ * message is signed by sender. TODO is to look at how to provide a 'listening'
+ * mode on channels.
+ *
+ * Most classes in SB follow the "ready" template: objects can be used
+ * right away, but they decide for themselves if they're ready or not.
+ *
+ * @param {Snackabra} sbServer server to join
+ * @param {JsonWebKey} key? key to use to join (optional)
+ * @param {string} channelId (the :term:`Channel Name`) to find on that server (optional)
  */
 class Channel extends SB384 {
     ready;
@@ -1382,70 +1506,6 @@ class Channel extends SB384 {
     userName = '';
     #channelId;
     #api;
-    /**
-     * Join a channel, returns channel object.
-     *
-     * Currently, you must have an identity when connecting, because every single
-     * message is signed by sender. TODO is to look at how to provide a 'listening'
-     * mode on channels.
-     *
-     * Most classes in SB follow the "ready" template: objects can be used
-     * right away, but they decide for themselves if they're ready or not.
-     *
-     * Below is a (complete) example for reference:
-  
-    .. parsed-literal::
-      //
-      // Here we create a new channel; for this we need to be specific
-      // about what servers to use. This example references local dev
-      // (miniflare) servers
-      //
-      const sb_config = {
-        channel_server: \'http\:\/\/localhost\:4001\',
-        channel_ws: \'ws://localhost:4001\',
-        storage_server: \'http://localhost:4000\'
-      }
-      //
-      // Next we create the orchestrator object, for above endpoints
-      //
-      const SB = new `Snackabra`_ (sb_config)
-      //
-      // On these servers, we create a new channel (trivial auth)
-      //
-      SB.create(sb_config, \'<SECRET>\').then((handle) => {
-        //
-        // This will return a 'handle', a type that contains all
-        // the information you need to keep reference a channel.
-        //
-        SB.connect(
-          //
-          // Above we've created a channel, but not connected.
-          // Besides some information in the handle, to connect we
-          // must provide a message handler for all (new) messages
-          //
-          (m: ChannelMessage) => { console.log(\`got message: ${m}\`) },
-          handle.key,
-          handle.channelId
-        ).then((c) => c.ready).then((c) => {
-          //
-          // We are now connected, \'c\' is a `Channel Socket Class`_
-          // and can (optionally) pick a name (alias) for ourselves
-          //
-          c.userName = "TestBot"
-          //
-          // We can now send messages
-          //
-          (new `SBMessage`_ (c, "Hello from TestBot!")).send().then((c) => {
-            console.log(\`test message sent! (${c})\`) })
-        })
-      })
-  
-  
-     *
-     * @param {Snackabra} sbServer server to join
-     * @param {JsonWebKey} key? key to use to join (optional)
-     * @param {string} channelId (the :term:`Channel Name`) to find on that server (optional)
-     */
     constructor(sbServer, key, channelId) {
         super(key);
         this.#sbServer = sbServer;
@@ -2002,6 +2062,169 @@ __decorate([
     Memoize,
     Ready
 ], ChannelSocket.prototype, "exportable_owner_pubKey", null);
+// export interface SBObjectMetadata {
+//   [SB_OBJECT_HANDLE_SYMBOL]: boolean,
+//   version: '1', type: SBObjectType,
+//   // for long-term storage you only need these:
+//   id: string, key: string,
+//   paddedBuffer: ArrayBuffer
+//   // you'll need these in case you want to track an object
+//   // across future (storage) servers, but as long as you
+//   // are within the same SB servers you can request them.
+//   iv: Uint8Array,
+//   salt: Uint8Array
+// }
+/**
+ * Basic object handle for a shard (all storage).
+ *
+ * To RETRIEVE a shard, you need id and verification.
+ * Next generation shard servers will only require id32.
+ * Same goes for shard mirrors.
+ *
+ * To DECRYPT a shard, you need key, iv, and salt. Current
+ * generation of shard servers will provide (iv, salt) upon
+ * request if (and only if) you have id and verification.
+ *
+ * Note that id32/key32 are array32 encoded (b62). (Both
+ * id and key are 256-bit entities).
+ *
+ * 'verification' is a 64-bit integer, encoded as a string
+ * of up 23 characters: it is four 16-bit integers, either
+ * joined by '.' or simply concatenated. Currently all four
+ * values are random, future generation only first three
+ * are guaranteed to be random, the fourth may be "designed".
+ *
+ *
+ * @typedef {Object} SBObjectHandleClass
+ * @property {boolean} [SB_OBJECT_HANDLE_SYMBOL] - flag to indicate this is an SBObjectHandle
+ * @property {string} version - version of this object
+ * @property {SBObjectType} type - type of object
+ * @property {string} id - id of object
+ * @property {string} key - key of object
+ * @property {Base62Encoded} [id32] - optional: array32 format of id
+ * @property {Base62Encoded} [key32] - optional: array32 format of key
+ * @property {Promise<string>|string} verification - and currently you also need to keep track of this,
+ * but you can start sharing / communicating the
+ * object before it's resolved: among other things it
+ * serves as a 'write-through' verification
+ * @property {Uint8Array|string} [iv] - you'll need these in case you want to track an object
+ * across future (storage) servers, but as long as you
+ * are within the same SB servers you can request them.
+ * @property {Uint8Array|string} [salt] - you'll need these in case you want to track an object
+ * across future (storage) servers, but as long as you
+ * are within the same SB servers you can request them.
+ * @property {string} [fileName] - by convention will be "PAYLOAD" if it's a set of objects
+ * @property {string} [dateAndTime] - optional: time of shard creation
+ * @property {string} [shardServer] - optionally direct a shard to a specific server (especially for reads)
+ * @property {string} [fileType] - optional: file type (mime)
+ * @property {number} [lastModified] - optional: last modified time (of underlying file, if any)
+ * @property {number} [actualSize] - optional: actual size of underlying file, if any
+ * @property {number} [savedSize] - optional: size of shard (may be different from actualSize)
+ *
+ */
+export class SBObjectHandleClass {
+    version = '1';
+    #type = 'b';
+    #id;
+    #key;
+    #id32;
+    #key32;
+    #verification;
+    iv;
+    salt;
+    fileName;
+    dateAndTime;
+    shardServer;
+    fileType;
+    lastModified;
+    actualSize;
+    savedSize;
+    constructor(options
+    //   options: {
+    //   version?: '1';
+    //   type?: SBObjectType;
+    //   id: string;
+    //   key: string;
+    //   id32?: Base62Encoded;
+    //   key32?: Base62Encoded;
+    //   verification: Promise<string> | string;
+    //   iv?: Uint8Array | string;
+    //   salt?: Uint8Array | string;
+    //   fileName?: string;
+    //   dateAndTime?: string;
+    //   shardServer?: string;
+    //   fileType?: string;
+    //   lastModified?: number;
+    //   actualSize?: number;
+    //   savedSize?: number;
+    // }
+    ) {
+        const { version, type, id, key, id32, key32, verification, iv, salt, fileName, dateAndTime, shardServer, fileType, lastModified, actualSize, savedSize, } = options;
+        // this.ready = new Promise<SBObjectHandle>((resolve) => {
+        // });
+        if (version)
+            this.version = version;
+        if (type)
+            this.#type = type;
+        this.id = id;
+        this.key = key;
+        if (id32)
+            this.id32 = id32;
+        if (key32)
+            this.key32 = key32;
+        if (verification)
+            this.#verification = verification;
+        this.iv = iv;
+        this.salt = salt;
+        this.fileName = fileName;
+        this.dateAndTime = dateAndTime;
+        this.shardServer = shardServer;
+        this.fileType = fileType;
+        this.lastModified = lastModified;
+        this.actualSize = actualSize;
+        this.savedSize = savedSize;
+    }
+    // create id32 - if (and when) we have enough info
+    #setId32() {
+        if (this.#id) {
+            const bindID = this.#id;
+            async () => {
+                const verification = await Promise.resolve(this.verification);
+                const fullID = this.#id + verification.split('.').join(''); // backwards compatible
+                crypto.subtle.digest('SHA-256', new TextEncoder().encode(fullID)).then((hash) => {
+                    if (bindID !== this.#id)
+                        return; // if id has changed, don't set
+                    this.#id32 = arrayBuffer32ToBase62(hash);
+                });
+            };
+        }
+    }
+    set id(value) { _assertBase64(value); this.#id = value; this.#id32 = base64ToBase62(value); }
+    get id() { _sb_assert(this.#id, 'object handle identifier is undefined'); return this.#id; }
+    set key(value) { _assertBase64(value); this.#key = value; this.#key32 = base64ToBase62(value); }
+    get key() { _sb_assert(this.#key, 'object handle identifier is undefined'); return this.#key; }
+    // possible TODO: if id32 is set directly, confirm/enforce consistency w base64 id
+    set id32(value) {
+        if (!isBase62Encoded(value))
+            throw new Error('Invalid base62 encoded ID');
+        this.#id32 = value;
+        this.#id = base62ToBase64(value);
+    }
+    set key32(value) {
+        if (!isBase62Encoded(value))
+            throw new Error('Invalid base62 encoded Key');
+        this.#key32 = value;
+        this.#key = base62ToBase64(value);
+    }
+    get id32() { _sb_assert(this.#id32, 'object handle id (32) is undefined'); return this.#id32; }
+    get key32() { _sb_assert(this.#key32, 'object handle key (32) is undefined'); return this.#key32; }
+    set verification(value) { this.#verification = value; this.#setId32(); }
+    get verification() {
+        _sb_assert(this.#verification, 'object handle verification is undefined');
+        return this.#verification;
+    }
+    get type() { return this.#type; }
+}
 /**
  * Storage API
  * @class
@@ -2019,33 +2242,6 @@ class StorageApi {
             this.shardServer = shardServer + '/api/v1';
         else
             this.shardServer = 'https://shard.3.8.4.land/api/v1';
-    }
-    /**
-     * Hashes and splits into two (h1 and h1) signature of data, h1
-     * is used to request (salt, iv) pair and then h2 is used for
-     * encryption (h2, salt, iv)
-     *
-     * @param buf blob of data to be stored
-     *
-     */
-    #generateIdKey(buf) {
-        return new Promise((resolve, reject) => {
-            try {
-                crypto.subtle.digest('SHA-512', buf).then((digest) => {
-                    const _id = digest.slice(0, 32);
-                    const _key = digest.slice(32);
-                    resolve({
-                        id: ensureSafe(arrayBufferToBase64(_id)),
-                        key: ensureSafe(arrayBufferToBase64(_key))
-                        // id: arrayBufferToBase64(_id),
-                        // key: arrayBufferToBase64(_key)
-                    });
-                });
-            }
-            catch (e) {
-                reject(e);
-            }
-        });
     }
     /**
      * Pads object up to closest permitted size boundaries;
@@ -2188,7 +2384,7 @@ class StorageApi {
         // export async function saveImage(sbImage, roomId, sendSystemMessage)
         return new Promise((resolve, reject) => {
             const paddedBuf = this.#padBuf(buf);
-            this.#generateIdKey(paddedBuf).then((fullHash) => {
+            sbCrypto.generateIdKey(paddedBuf).then((fullHash) => {
                 // return { full: { id: fullHash.id, key: fullHash.key }, preview: { id: previewHash.id, key: previewHash.key } }
                 this.#_allocateObject(fullHash.id, type)
                     .then((p) => {
@@ -2238,7 +2434,7 @@ class StorageApi {
             if (!metadata) {
                 // console.warn('No metadata')
                 const paddedBuf = this.#padBuf(buf);
-                this.#generateIdKey(paddedBuf).then((fullHash) => {
+                sbCrypto.generateIdKey(paddedBuf).then((fullHash) => {
                     // return { full: { id: fullHash.id, key: fullHash.key }, preview: { id: previewHash.id, key: previewHash.key } }
                     this.#_allocateObject(fullHash.id, type)
                         .then((p) => {
@@ -2256,6 +2452,15 @@ class StorageApi {
                             actualSize: bufSize,
                             verification: this.#_storeObject(paddedBuf, fullHash.id, fullHash.key, type, roomId, p.iv, p.salt)
                         };
+                        // const r = new SBObjectHandleClass({
+                        //   type: type,
+                        //   id: fullHash.id,
+                        //   key: fullHash.key,
+                        //   iv: p.iv,
+                        //   salt: p.salt,
+                        //   actualSize: bufSize,
+                        //   verification: this.#_storeObject(paddedBuf, fullHash.id, fullHash.key, type, roomId, p.iv, p.salt)
+                        // })
                         // console.log("SBObj is:")
                         // console.log(r)
                         resolve(r);
@@ -2275,6 +2480,15 @@ class StorageApi {
                     actualSize: bufSize,
                     verification: this.#_storeObject(metadata.paddedBuffer, metadata.id, metadata.key, type, roomId, metadata.iv, metadata.salt)
                 };
+                // const r = new SBObjectHandleClass({
+                //   type: type,
+                //   id: metadata.id,
+                //   key: metadata.key,
+                //   iv: metadata.iv,
+                //   salt: metadata.salt,
+                //   actualSize: bufSize,
+                //   verification: this.#_storeObject(metadata.paddedBuffer, metadata.id, metadata.key, type, roomId, metadata.iv, metadata.salt)
+                // })
                 // console.log("SBObj is:")
                 // console.log(r)
                 resolve(r);
@@ -2548,9 +2762,19 @@ class StorageApi {
         if (control_msg) {
             _sb_assert(control_msg.verificationToken, "retrieveImage(): verificationToken missing (?)");
             _sb_assert(control_msg.id, "retrieveImage(): id missing (?)");
+            // const obj: SBObjectHandle = {
+            //   [SB_OBJECT_HANDLE_SYMBOL]: true,
+            //   version: '1',
+            //   type: type,
+            //   id: control_msg.id!,
+            //   key: key!,
+            //   verification: new Promise((res, rej) => {
+            //     if (control_msg.verificationToken) res(control_msg.verificationToken)
+            //     else
+            //       rej("retrieveImage(): verificationToken missing (?)")
+            //   })
+            // }
             const obj = {
-                [SB_OBJECT_HANDLE_SYMBOL]: true,
-                version: '1',
                 type: type,
                 id: control_msg.id,
                 key: key,

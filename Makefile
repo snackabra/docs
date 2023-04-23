@@ -22,11 +22,20 @@ help:
 	echo "Copying file to root directory"
 	cp -R $(BUILDDIR)/html/* .
 
-jslib:
-	echo "Copying over jslib - in case you develop locally"
-	cp ../snackabra-jslib/snackabra.js snackabra-jslib
-	cp ../snackabra-jslib/snackabra.js.map snackabra-jslib
-	cp ../snackabra-jslib/snackabra.d.ts snackabra-jslib
-	# cp ../snackabra-sdk/server/src/index.ts snackabra-jslib/snackabra-server.ts
-	# cp ../snackabra-sdk/server/src/index.js snackabra-jslib/snackabra-server.js
-	# cp ../snackabra-sdk/server/src/index.d.ts snackabra-jslib/snackabra-server.d.ts
+clean:
+	rm -rf $(BUILDDIR)/*
+
+# https://gitlab.acceleratxr.com/composerjs/typedoc-plugin-sphinx
+jslib: 
+	cp ../snackabra-jslib/snackabra.ts snackabra-jslib
+	npx typedoc --plugin typedoc-plugin-markdown --entryDocument jslib2.md --out typedocOutput ./snackabra-jslib/snackabra.ts
+	cp typedocOutput/modules.md source
+	cp -R typedocOutput/classes typedocOutput/interfaces source
+
+# copyLatestJslib:
+# 	echo "Copying over jslib - in case you develop locally"
+# 	cp ../snackabra-jslib/snackabra.js snackabra-jslib
+# 	cp ../snackabra-jslib/snackabra.js.map snackabra-jslib
+# 	cp ../snackabra-jslib/snackabra.d.ts snackabra-jslib
+# 	cp ../snackabra-jslib/snackabra.ts snackabra-jslib
+

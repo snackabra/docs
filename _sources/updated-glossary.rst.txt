@@ -18,8 +18,8 @@ Updated Glossary
 
    channel
       All discussions or chats or conversations or file or document
-      sharing occurs within the context of a :ref:`room <rooms>`, identified
-      by a :term:`Room Name`.
+      sharing occurs within the context of a channel, identified
+      by a channel identifier.
       
    channel name
       Essentially a synonym for :term:`Room Name`. This is the newer term.

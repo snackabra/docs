@@ -9,10 +9,19 @@ It is guaranteed to be synchronous, so you can use it right away.
 It is also guaranteed to be thread-safe, so you can use it from multiple
 threads.
 
+Constructor expects an object with the names of the matching servers, for example
+below shows the miniflare local dev config. Note that 'new Snackabra()' is
+guaranteed synchronous, so can be 'used' right away. You can optionally call
+without a parameter in which case SB will ping known servers.
+
 **`Example`**
 
 ```typescript
- const sb = new Snackabra();
+    const sb = new Snackabra({
+      channel_server: 'http://127.0.0.1:4001',
+      channel_ws: 'ws://127.0.0.1:4001',
+      storage_server: 'http://127.0.0.1:4000'
+    })
 ```
 
 ## Table of contents
@@ -43,29 +52,7 @@ threads.
 
 ### constructor
 
-• **new Snackabra**(`args?`, `DEBUG?`)
-
-Constructor expects an object with the names of the matching servers, for example
-below shows the miniflare local dev config. Note that 'new Snackabra()' is
-guaranteed synchronous, so can be 'used' right away. You can optionally call
-without a parameter in which case SB will ping known servers.
-
-**`Example`**
-
-```typescript
-    {
-      channel_server: 'http://127.0.0.1:4001',
-      channel_ws: 'ws://127.0.0.1:4001',
-      storage_server: 'http://127.0.0.1:4000'
-    }
-```
-
-#### Parameters
-
-| Name | Type | Default value |
-| :------ | :------ | :------ |
-| `args?` | [`SBServer`](../interfaces/SBServer.md) | `undefined` |
-| `DEBUG` | `boolean` | `false` |
+• **new Snackabra**()
 
 ## Properties
 
@@ -91,6 +78,8 @@ ___
 
 • `get` **channel**(): [`Channel`](Channel.md)
 
+Connects to a channel.
+
 #### Returns
 
 [`Channel`](Channel.md)
@@ -100,6 +89,8 @@ ___
 ### crypto
 
 • `get` **crypto**(): [`SBCrypto`](SBCrypto.md)
+
+Returns the crypto API.
 
 #### Returns
 
@@ -111,6 +102,8 @@ ___
 
 • `get` **storage**(): `StorageApi`
 
+Returns the storage API.
+
 #### Returns
 
 `StorageApi`
@@ -121,26 +114,19 @@ ___
 
 ▸ **connect**(`onMessage`, `key?`, `channelId?`): `Promise`<[`ChannelSocket`](ChannelSocket.md)\>
 
-Connects to :term:`Channel Name` on this SB config.
-Returns a channel object right away, but the channel
-will not be ready until the ``ready`` promise is resolved.
-Note that if you have a preferred server then the channel
-object will be returned right away, but the ``ready`` promise
-will still be pending. If you do not have a preferred server,
-then the ``ready`` promise will be resolved when a least
-one of the known servers is ready.
-
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `onMessage` | (`m`: [`ChannelMessage`](../interfaces/ChannelMessage.md)) => `void` |
-| `key?` | `JsonWebKey` |
-| `channelId?` | `string` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `onMessage` | (`m`: [`ChannelMessage`](../interfaces/ChannelMessage.md)) => `void` | - |
+| `key?` | `JsonWebKey` | optional key to use for encryption/decryption * |
+| `channelId?` | `string` | optional channel id to use for encryption/decryption * |
 
 #### Returns
 
 `Promise`<[`ChannelSocket`](ChannelSocket.md)\>
+
+a channel object
 
 ___
 
@@ -156,11 +142,11 @@ it just creates (authorizes) it.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `sbServer` | [`SBServer`](../interfaces/SBServer.md) |
-| `serverSecret` | `string` |
-| `keys?` | `JsonWebKey` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `sbServer` | [`SBServer`](../interfaces/SBServer.md) | the server to use |
+| `serverSecret` | `string` | the server secret |
+| `keys?` | `JsonWebKey` | optional keys to use for encryption/decryption |
 
 #### Returns
 
@@ -172,11 +158,13 @@ ___
 
 ▸ **sendFile**(`file`): `void`
 
+Sends a file to the channel.
+
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `file` | [`SBFile`](SBFile.md) |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `file` | [`SBFile`](SBFile.md) | the file to send |
 
 #### Returns
 

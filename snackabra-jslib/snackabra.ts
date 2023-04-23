@@ -40,9 +40,29 @@ export interface SBChannelHandle {
 }
 
 export interface SBServer {
+  /**
+   * The channel server is the server that handles channel creation,
+   * channel deletion, and channel access. It is also the server that
+   * handles channel messages.
+   */
   channel_server: string,
+  /**
+   * The channel websocket is the websocket that handles channel
+   * messages. It is the same as the channel server, but with a
+   * different protocol.
+   */
   channel_ws: string,
+  /**
+   * The storage server is the server that all "shard" (blob) storage
+   */
   storage_server: string,
+  /**
+   * "shard" server is a more modern version of the storage server,
+   * generally acting as a caching and/or mirroring layer. It proxies
+   * any new storage to one or more storage servers, and handles
+   * it's own caching behavior. Generally, this will be the fastest
+   * interface, in particular for reading.
+   */
   shard_server?: string
 }
 
@@ -3598,18 +3618,28 @@ class ChannelApi {
 let DBG = false;
 
 /**
- * Snackabra is the main class for interacting with the Snackable backend.
- * 
- * It is a singleton, so you can only have one instance of it.
- * It is guaranteed to be synchronous, so you can use it right away.
- * It is also guaranteed to be thread-safe, so you can use it from multiple
- * threads.
- * 
- * @example
- * ```typescript
- *  const sb = new Snackabra();
- * ```
- */
+   * Snackabra is the main class for interacting with the Snackable backend.
+   * 
+   * It is a singleton, so you can only have one instance of it.
+   * It is guaranteed to be synchronous, so you can use it right away.
+   * It is also guaranteed to be thread-safe, so you can use it from multiple
+   * threads.
+   * 
+  * Constructor expects an object with the names of the matching servers, for example
+  * below shows the miniflare local dev config. Note that 'new Snackabra()' is
+  * guaranteed synchronous, so can be 'used' right away. You can optionally call
+  * without a parameter in which case SB will ping known servers.
+  *
+  * @example
+  * ```typescript
+  *     const sb = new Snackabra({
+  *       channel_server: 'http://127.0.0.1:4001',
+  *       channel_ws: 'ws://127.0.0.1:4001',
+  *       storage_server: 'http://127.0.0.1:4000'
+  *     })
+  * ```
+  *
+  */
 class Snackabra {
   #storage!: StorageApi
   #channel!: Channel
@@ -3618,21 +3648,12 @@ class Snackabra {
   #preferredServer?: SBServer
 
   /**
-   * Constructor expects an object with the names of the matching servers, for example
-   * below shows the miniflare local dev config. Note that 'new Snackabra()' is
-   * guaranteed synchronous, so can be 'used' right away. You can optionally call
-   * without a parameter in which case SB will ping known servers.
-   *
-   * @example
-   * ```typescript
-   *     {
-   *       channel_server: 'http://127.0.0.1:4001',
-   *       channel_ws: 'ws://127.0.0.1:4001',
-   *       storage_server: 'http://127.0.0.1:4000'
-   *     }
-   * ```
-   *
-   */
+  * @param args - optional object with the names of the matching servers, for example
+  * below shows the miniflare local dev config. Note that 'new Snackabra()' is
+  * guaranteed synchronous, so can be 'used' right away. You can optionally call
+  * without a parameter in which case SB will ping known servers.
+  * @param DEBUG - optional boolean to enable debug logging
+  *
   constructor(args?: SBServer, DEBUG: boolean = false) {
     if (args) {
       this.#preferredServer = Object.assign({}, args)
@@ -3651,8 +3672,12 @@ class Snackabra {
    * will still be pending. If you do not have a preferred server,
    * then the ``ready`` promise will be resolved when a least
    * one of the known servers is ready.
+   * 
+   * @param channelName - the name of the channel to connect to
+   * @param key - optional key to use for encryption/decryption
+   * @param channelId - optional channel id to use for encryption/decryption
+   * @returns a channel object
    */
-  /* @Online */
   connect(onMessage: (m: ChannelMessage) => void, key?: JsonWebKey, channelId?: string /*, identity?: SB384 */): Promise<ChannelSocket> {
     if ((DBG) && (key)) console.log(key)
     if ((DBG) && (channelId)) console.log(channelId)
@@ -3692,6 +3717,10 @@ class Snackabra {
    * (which includes the :term:`Channel Name`).
    * Note that this method does not connect to the channel,
    * it just creates (authorizes) it.
+   * 
+   * @param sbServer - the server to use
+   * @param serverSecret - the server secret
+   * @param keys - optional keys to use for encryption/decryption
    */
   create(sbServer: SBServer, serverSecret: string, keys?: JsonWebKey): Promise<SBChannelHandle> {
     return new Promise<SBChannelHandle>(async (resolve, reject) => {
@@ -3741,14 +3770,23 @@ class Snackabra {
     });
   }
 
+  /**
+   * Connects to a channel.
+   */
   get channel(): Channel {
     return this.#channel;
   }
 
+  /**
+   * Returns the storage API.
+   */
   get storage(): StorageApi {
     return this.#storage;
   }
 
+  /**
+   * Returns the crypto API.
+   */
   get crypto(): SBCrypto {
     return sbCrypto;
   }
@@ -3767,6 +3805,11 @@ class Snackabra {
   //   this.channel.send(message);
   // }
 
+  /**
+   * Sends a file to the channel.
+   * 
+   * @param file - the file to send
+   */
   sendFile(file: SBFile) {
     this.storage.saveFile(this.#channel, file);
   }

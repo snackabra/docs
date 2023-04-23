@@ -17,11 +17,19 @@
 
 • **channel\_server**: `string`
 
+The channel server is the server that handles channel creation,
+channel deletion, and channel access. It is also the server that
+handles channel messages.
+
 ___
 
 ### channel\_ws
 
 • **channel\_ws**: `string`
+
+The channel websocket is the websocket that handles channel
+messages. It is the same as the channel server, but with a
+different protocol.
 
 ___
 
@@ -29,8 +37,16 @@ ___
 
 • `Optional` **shard\_server**: `string`
 
+"shard" server is a more modern version of the storage server,
+generally acting as a caching and/or mirroring layer. It proxies
+any new storage to one or more storage servers, and handles
+it's own caching behavior. Generally, this will be the fastest
+interface, in particular for reading.
+
 ___
 
 ### storage\_server
 
 • **storage\_server**: `string`
+
+The storage server is the server that all "shard" (blob) storage

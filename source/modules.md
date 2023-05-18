@@ -7,17 +7,21 @@
 ### Classes
 
 - [Channel](classes/Channel.md)
+- [ChannelApi](classes/ChannelApi.md)
+- [ChannelEndpoint](classes/ChannelEndpoint.md)
 - [ChannelSocket](classes/ChannelSocket.md)
 - [MessageBus](classes/MessageBus.md)
 - [SB384](classes/SB384.md)
 - [SBCrypto](classes/SBCrypto.md)
-- [SBFile](classes/SBFile.md)
 - [SBMessage](classes/SBMessage.md)
 - [SBObjectHandleClass](classes/SBObjectHandleClass.md)
 - [Snackabra](classes/Snackabra.md)
 
 ### Interfaces
 
+- [ChannelAdminData](interfaces/ChannelAdminData.md)
+- [ChannelData](interfaces/ChannelData.md)
+- [ChannelKeyStrings](interfaces/ChannelKeyStrings.md)
 - [ChannelKeys](interfaces/ChannelKeys.md)
 - [ChannelMessage](interfaces/ChannelMessage.md)
 - [EncryptedContents](interfaces/EncryptedContents.md)
@@ -42,9 +46,6 @@
 
 - [\_appendBuffer](modules.md#_appendbuffer)
 - [\_assertBase64](modules.md#_assertbase64)
-- [\_sb\_assert](modules.md#_sb_assert)
-- [\_sb\_exception](modules.md#_sb_exception)
-- [\_sb\_resolve](modules.md#_sb_resolve)
 - [arrayBuffer32ToBase62](modules.md#arraybuffer32tobase62)
 - [arrayBufferToBase64](modules.md#arraybuffertobase64)
 - [assemblePayload](modules.md#assemblepayload)
@@ -60,6 +61,7 @@
 - [extractPayload](modules.md#extractpayload)
 - [extractPayloadV1](modules.md#extractpayloadv1)
 - [getRandomValues](modules.md#getrandomvalues)
+- [isBase62Encoded](modules.md#isbase62encoded)
 - [jsonParseWrapper](modules.md#jsonparsewrapper)
 - [partition](modules.md#partition)
 - [simpleRand256](modules.md#simplerand256)
@@ -139,56 +141,6 @@ Works same on browsers and nodejs.
 #### Returns
 
 `boolean`
-
-___
-
-### \_sb\_assert
-
-▸ **_sb_assert**(`val`, `msg`): `void`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `val` | `unknown` |
-| `msg` | `string` |
-
-#### Returns
-
-`void`
-
-___
-
-### \_sb\_exception
-
-▸ **_sb_exception**(`loc`, `msg`): `void`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `loc` | `string` |
-| `msg` | `string` |
-
-#### Returns
-
-`void`
-
-___
-
-### \_sb\_resolve
-
-▸ **_sb_resolve**(`val`): `any`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `val` | `any` |
-
-#### Returns
-
-`any`
 
 ___
 
@@ -348,15 +300,20 @@ ___
 
 ▸ **cleanBase32mi**(`s`): `string`
 
-Disambiguates strings that are known to be 'base32mi' type
+This function disambiguates strings that are known to be 'base32mi' type.
+Below is the list of base32 characters, and the disambiguation table.
+base32mi is designed to be human-friendly, so this function can be 
+safely called anywhere you have human input - including as an 
+event on an input field that immediately makes any correction. 
 
-::
+You can think of the translation either in terms of many-to-one
+(all entered characters that map to a specific base32mi character),
+or as a one-to-one correspondence (where '.' means 'no change').
 
-    'base32mi': '0123456789abcdefyhEjkLmNHpFrRTUW'
+**`Example`**
 
-This is the base32mi disambiguation table
-
- ::
+```ts
+'base32mi': '0123456789abcdefyhEjkLmNHpFrRTUW'
 
     [OoQD] -> '0'
     [lIiJ] -> '1'
@@ -376,12 +333,9 @@ This is the base32mi disambiguation table
     [uvV] -> 'U'
     [w] -> 'W'
 
-Another way to think of it is this transform ('.' means no change):
-
-::
-
     0123456789abcdefghijklmnopqrstuvxyzABCDEFGHIJKLMNOPQRSTUVXYZ
     ................9.1..1.N0.9.57UUk.248c0EF6.11kLm.0p0.5..Uky2
+```
 
 #### Parameters
 
@@ -526,6 +480,22 @@ Fills buffer with random data
 
 ___
 
+### isBase62Encoded
+
+▸ **isBase62Encoded**(`value`): value is Base62Encoded
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `value` | `string` |
+
+#### Returns
+
+value is Base62Encoded
+
+___
+
 ### jsonParseWrapper
 
 ▸ **jsonParseWrapper**(`str`, `loc`): `any`
@@ -538,7 +508,7 @@ in the code; one approach is the line number in the file (at some point).
 
 | Name | Type |
 | :------ | :------ |
-| `str` | `string` |
+| `str` | ``null`` \| `string` |
 | `loc` | `string` |
 
 #### Returns

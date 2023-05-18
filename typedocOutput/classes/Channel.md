@@ -19,6 +19,8 @@ right away, but they decide for themselves if they're ready or not.
 
   ↳ **`Channel`**
 
+  ↳↳ [`ChannelEndpoint`](ChannelEndpoint.md)
+
   ↳↳ [`ChannelSocket`](ChannelSocket.md)
 
 ## Table of contents
@@ -29,16 +31,6 @@ right away, but they decide for themselves if they're ready or not.
 
 ### Properties
 
-- [#ChannelReadyFlag](Channel.md##channelreadyflag)
-- [#SB384ReadyFlag](Channel.md##sb384readyflag)
-- [#api](Channel.md##api)
-- [#channelId](Channel.md##channelid)
-- [#exportable\_privateKey](Channel.md##exportable_privatekey)
-- [#exportable\_pubKey](Channel.md##exportable_pubkey)
-- [#keyPair](Channel.md##keypair)
-- [#ownerChannelId](Channel.md##ownerchannelid)
-- [#privateKey](Channel.md##privatekey)
-- [#sbServer](Channel.md##sbserver)
 - [admin](Channel.md#admin)
 - [adminData](Channel.md#admindata)
 - [channelReady](Channel.md#channelready)
@@ -55,11 +47,10 @@ right away, but they decide for themselves if they're ready or not.
 - [\_id](Channel.md#_id)
 - [api](Channel.md#api)
 - [channelId](Channel.md#channelid)
+- [channelSignKey](Channel.md#channelsignkey)
 - [exportable\_privateKey](Channel.md#exportable_privatekey)
 - [exportable\_pubKey](Channel.md#exportable_pubkey)
-- [keyPair](Channel.md#keypair)
 - [keys](Channel.md#keys)
-- [onMessage](Channel.md#onmessage)
 - [ownerChannelId](Channel.md#ownerchannelid)
 - [privateKey](Channel.md#privatekey)
 - [readyFlag](Channel.md#readyflag)
@@ -67,8 +58,7 @@ right away, but they decide for themselves if they're ready or not.
 
 ### Methods
 
-- [#generateRoomHash](Channel.md##generateroomhash)
-- [#generateRoomId](Channel.md##generateroomid)
+- [importKeys](Channel.md#importkeys)
 - [send](Channel.md#send)
 
 ## Constructors
@@ -91,90 +81,6 @@ right away, but they decide for themselves if they're ready or not.
 
 ## Properties
 
-### #ChannelReadyFlag
-
-• `Private` **#ChannelReadyFlag**: `boolean` = `false`
-
-___
-
-### #SB384ReadyFlag
-
-• `Private` **#SB384ReadyFlag**: `boolean` = `false`
-
-#### Inherited from
-
-[SB384](SB384.md).[#SB384ReadyFlag](SB384.md##sb384readyflag)
-
-___
-
-### #api
-
-• `Private` **#api**: `ChannelApi`
-
-___
-
-### #channelId
-
-• `Private` `Optional` **#channelId**: `string`
-
-___
-
-### #exportable\_privateKey
-
-• `Private` **#exportable\_privateKey**: ``null`` \| `JsonWebKey` = `null`
-
-#### Inherited from
-
-[SB384](SB384.md).[#exportable_privateKey](SB384.md##exportable_privatekey)
-
-___
-
-### #exportable\_pubKey
-
-• `Private` **#exportable\_pubKey**: ``null`` \| `JsonWebKey` = `null`
-
-#### Inherited from
-
-[SB384](SB384.md).[#exportable_pubKey](SB384.md##exportable_pubkey)
-
-___
-
-### #keyPair
-
-• `Private` **#keyPair**: ``null`` \| `CryptoKeyPair` = `null`
-
-#### Inherited from
-
-[SB384](SB384.md).[#keyPair](SB384.md##keypair)
-
-___
-
-### #ownerChannelId
-
-• `Private` **#ownerChannelId**: ``null`` \| `string` = `null`
-
-#### Inherited from
-
-[SB384](SB384.md).[#ownerChannelId](SB384.md##ownerchannelid)
-
-___
-
-### #privateKey
-
-• `Private` **#privateKey**: ``null`` \| `CryptoKey` = `null`
-
-#### Inherited from
-
-[SB384](SB384.md).[#privateKey](SB384.md##privatekey)
-
-___
-
-### #sbServer
-
-• `Private` **#sbServer**: [`SBServer`](../interfaces/SBServer.md)
-
-___
-
 ### admin
 
 • **admin**: `boolean` = `false`
@@ -190,6 +96,18 @@ ___
 ### channelReady
 
 • **channelReady**: `Promise`<[`Channel`](Channel.md)\>
+
+**`Param`**
+
+server to join
+
+**`Param`**
+
+key to use to join (optional)
+
+**`Param`**
+
+the [Channel Name](glossary.md#term-channel-name) to find on that server (optional)
 
 ___
 
@@ -213,21 +131,9 @@ ___
 
 ### ready
 
-• **ready**: `Promise`<[`Channel`](Channel.md)\>
+• **ready**: `Promise`<[`SB384`](SB384.md)\>
 
-**`Param`**
-
-server to join
-
-**`Param`**
-
-key to use to join (optional)
-
-**`Param`**
-
-(the :term:`Channel Name`) to find on that server (optional)
-
-#### Overrides
+#### Inherited from
 
 [SB384](SB384.md).[ready](SB384.md#ready)
 
@@ -271,11 +177,11 @@ ___
 
 ### api
 
-• `get` **api**(): `ChannelApi`
+• `get` **api**(): [`ChannelApi`](ChannelApi.md)
 
 #### Returns
 
-`ChannelApi`
+[`ChannelApi`](ChannelApi.md)
 
 ___
 
@@ -289,13 +195,23 @@ ___
 
 ___
 
-### exportable\_privateKey
+### channelSignKey
 
-• `get` **exportable_privateKey**(): ``null`` \| `JsonWebKey`
+• `get` **channelSignKey**(): `CryptoKey`
 
 #### Returns
 
-``null`` \| `JsonWebKey`
+`CryptoKey`
+
+___
+
+### exportable\_privateKey
+
+• `get` **exportable_privateKey**(): `JsonWebKey`
+
+#### Returns
+
+`JsonWebKey`
 
 #### Inherited from
 
@@ -305,11 +221,11 @@ ___
 
 ### exportable\_pubKey
 
-• `get` **exportable_pubKey**(): ``null`` \| `JsonWebKey`
+• `get` **exportable_pubKey**(): `JsonWebKey`
 
 #### Returns
 
-``null`` \| `JsonWebKey`
+`JsonWebKey`
 
 #### Inherited from
 
@@ -317,23 +233,9 @@ SB384.exportable\_pubKey
 
 ___
 
-### keyPair
-
-• `get` **keyPair**(): ``null`` \| `CryptoKeyPair`
-
-#### Returns
-
-``null`` \| `CryptoKeyPair`
-
-#### Inherited from
-
-SB384.keyPair
-
-___
-
 ### keys
 
-• `Abstract` `get` **keys**(): [`ChannelKeys`](../interfaces/ChannelKeys.md)
+• `get` **keys**(): [`ChannelKeys`](../interfaces/ChannelKeys.md)
 
 #### Returns
 
@@ -341,29 +243,13 @@ ___
 
 ___
 
-### onMessage
-
-• `Abstract` `set` **onMessage**(`f`): `void`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `f` | `CallableFunction` |
-
-#### Returns
-
-`void`
-
-___
-
 ### ownerChannelId
 
-• `get` **ownerChannelId**(): ``null`` \| `string`
+• `get` **ownerChannelId**(): `string`
 
 #### Returns
 
-``null`` \| `string`
+`string`
 
 #### Inherited from
 
@@ -373,11 +259,11 @@ ___
 
 ### privateKey
 
-• `get` **privateKey**(): ``null`` \| `CryptoKey`
+• `get` **privateKey**(): `CryptoKey`
 
 #### Returns
 
-``null`` \| `CryptoKey`
+`CryptoKey`
 
 #### Inherited from
 
@@ -409,44 +295,19 @@ ___
 
 ## Methods
 
-### #generateRoomHash
+### importKeys
 
-▸ `Private` **#generateRoomHash**(`channelBytes`): `Promise`<`string`\>
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `channelBytes` | `ArrayBuffer` |
-
-#### Returns
-
-`Promise`<`string`\>
-
-#### Inherited from
-
-[SB384](SB384.md).[#generateRoomHash](SB384.md##generateroomhash)
-
-___
-
-### #generateRoomId
-
-▸ `Private` **#generateRoomId**(`x`, `y`): `Promise`<`string`\>
+▸ **importKeys**(`keyStrings`): `Promise`<`void`\>
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `x` | `string` |
-| `y` | `string` |
+| `keyStrings` | [`ChannelKeyStrings`](../interfaces/ChannelKeyStrings.md) |
 
 #### Returns
 
-`Promise`<`string`\>
-
-#### Inherited from
-
-[SB384](SB384.md).[#generateRoomId](SB384.md##generateroomid)
+`Promise`<`void`\>
 
 ___
 

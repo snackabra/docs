@@ -12,9 +12,6 @@
 #
 
 import os
-# import sys
-# sys.path.insert(0, os.path.abspath('../snackabra-pylib/src/snackabra'))
-
 
 # -- Project information -----------------------------------------------------
 
@@ -23,7 +20,7 @@ copyright = '2019-2023, Magnusson Institute'
 author = 'Magnusson Institute'
 
 # The full version, including alpha/beta/rc tags
-release = '0.5.x beta'
+release = '0.6.0 beta'
 
 
 # -- General configuration ---------------------------------------------------

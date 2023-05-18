@@ -20,24 +20,6 @@ ChannelSocket
 
 ### Properties
 
-- [#ChannelReadyFlag](ChannelSocket.md##channelreadyflag)
-- [#ChannelSocketReadyFlag](ChannelSocket.md##channelsocketreadyflag)
-- [#SB384ReadyFlag](ChannelSocket.md##sb384readyflag)
-- [#ack](ChannelSocket.md##ack)
-- [#api](ChannelSocket.md##api)
-- [#channelId](ChannelSocket.md##channelid)
-- [#exportable\_owner\_pubKey](ChannelSocket.md##exportable_owner_pubkey)
-- [#exportable\_privateKey](ChannelSocket.md##exportable_privatekey)
-- [#exportable\_pubKey](ChannelSocket.md##exportable_pubkey)
-- [#keyPair](ChannelSocket.md##keypair)
-- [#keys](ChannelSocket.md##keys)
-- [#onMessage](ChannelSocket.md##onmessage)
-- [#ownerChannelId](ChannelSocket.md##ownerchannelid)
-- [#privateKey](ChannelSocket.md##privatekey)
-- [#sbServer](ChannelSocket.md##sbserver)
-- [#sbServer](ChannelSocket.md##sbserver-1)
-- [#traceSocket](ChannelSocket.md##tracesocket)
-- [#ws](ChannelSocket.md##ws)
 - [admin](ChannelSocket.md#admin)
 - [adminData](ChannelSocket.md#admindata)
 - [channelReady](ChannelSocket.md#channelready)
@@ -54,11 +36,11 @@ ChannelSocket
 - [\_id](ChannelSocket.md#_id)
 - [api](ChannelSocket.md#api)
 - [channelId](ChannelSocket.md#channelid)
+- [channelSignKey](ChannelSocket.md#channelsignkey)
 - [enableTrace](ChannelSocket.md#enabletrace)
 - [exportable\_owner\_pubKey](ChannelSocket.md#exportable_owner_pubkey)
 - [exportable\_privateKey](ChannelSocket.md#exportable_privatekey)
 - [exportable\_pubKey](ChannelSocket.md#exportable_pubkey)
-- [keyPair](ChannelSocket.md#keypair)
 - [keys](ChannelSocket.md#keys)
 - [onMessage](ChannelSocket.md#onmessage)
 - [ownerChannelId](ChannelSocket.md#ownerchannelid)
@@ -69,14 +51,10 @@ ChannelSocket
 
 ### Methods
 
-- [#generateRoomHash](ChannelSocket.md##generateroomhash)
-- [#generateRoomId](ChannelSocket.md##generateroomid)
-- [#processMessage](ChannelSocket.md##processmessage)
-- [#readyPromise](ChannelSocket.md##readypromise)
 - [checkServerStatus](ChannelSocket.md#checkserverstatus)
 - [close](ChannelSocket.md#close)
+- [importKeys](ChannelSocket.md#importkeys)
 - [send](ChannelSocket.md#send)
-- [sendSbObject](ChannelSocket.md#sendsbobject)
 
 ## Constructors
 
@@ -101,172 +79,6 @@ ChannelSocket
 
 ## Properties
 
-### #ChannelReadyFlag
-
-• `Private` **#ChannelReadyFlag**: `boolean` = `false`
-
-#### Inherited from
-
-[Channel](Channel.md).[#ChannelReadyFlag](Channel.md##channelreadyflag)
-
-___
-
-### #ChannelSocketReadyFlag
-
-• `Private` **#ChannelSocketReadyFlag**: `boolean` = `false`
-
-___
-
-### #SB384ReadyFlag
-
-• `Private` **#SB384ReadyFlag**: `boolean` = `false`
-
-#### Inherited from
-
-[Channel](Channel.md).[#SB384ReadyFlag](Channel.md##sb384readyflag)
-
-___
-
-### #ack
-
-• `Private` **#ack**: `Dictionary`<`any`\> = `[]`
-
-___
-
-### #api
-
-• `Private` **#api**: `ChannelApi`
-
-#### Inherited from
-
-[Channel](Channel.md).[#api](Channel.md##api)
-
-___
-
-### #channelId
-
-• `Private` `Optional` **#channelId**: `string`
-
-#### Inherited from
-
-[Channel](Channel.md).[#channelId](Channel.md##channelid)
-
-___
-
-### #exportable\_owner\_pubKey
-
-• `Private` **#exportable\_owner\_pubKey**: ``null`` \| `JsonWebKey` = `null`
-
-___
-
-### #exportable\_privateKey
-
-• `Private` **#exportable\_privateKey**: ``null`` \| `JsonWebKey` = `null`
-
-#### Inherited from
-
-[Channel](Channel.md).[#exportable_privateKey](Channel.md##exportable_privatekey)
-
-___
-
-### #exportable\_pubKey
-
-• `Private` **#exportable\_pubKey**: ``null`` \| `JsonWebKey` = `null`
-
-#### Inherited from
-
-[Channel](Channel.md).[#exportable_pubKey](Channel.md##exportable_pubkey)
-
-___
-
-### #keyPair
-
-• `Private` **#keyPair**: ``null`` \| `CryptoKeyPair` = `null`
-
-#### Inherited from
-
-[Channel](Channel.md).[#keyPair](Channel.md##keypair)
-
-___
-
-### #keys
-
-• `Private` `Optional` **#keys**: [`ChannelKeys`](../interfaces/ChannelKeys.md)
-
-___
-
-### #onMessage
-
-• `Private` **#onMessage**: (`m`: [`ChannelMessage`](../interfaces/ChannelMessage.md)) => `void`
-
-#### Type declaration
-
-▸ (`m`): `void`
-
-##### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `m` | [`ChannelMessage`](../interfaces/ChannelMessage.md) |
-
-##### Returns
-
-`void`
-
-___
-
-### #ownerChannelId
-
-• `Private` **#ownerChannelId**: ``null`` \| `string` = `null`
-
-#### Inherited from
-
-[Channel](Channel.md).[#ownerChannelId](Channel.md##ownerchannelid)
-
-___
-
-### #privateKey
-
-• `Private` **#privateKey**: ``null`` \| `CryptoKey` = `null`
-
-#### Inherited from
-
-[Channel](Channel.md).[#privateKey](Channel.md##privatekey)
-
-___
-
-### #sbServer
-
-• `Private` **#sbServer**: [`SBServer`](../interfaces/SBServer.md)
-
-#### Inherited from
-
-[Channel](Channel.md).[#sbServer](Channel.md##sbserver)
-
-___
-
-### #sbServer
-
-• `Private` **#sbServer**: [`SBServer`](../interfaces/SBServer.md)
-
-#### Inherited from
-
-Channel.#sbServer
-
-___
-
-### #traceSocket
-
-• `Private` **#traceSocket**: `boolean` = `false`
-
-___
-
-### #ws
-
-• `Private` **#ws**: `WSProtocolOptions`
-
-___
-
 ### admin
 
 • **admin**: `boolean` = `false`
@@ -279,7 +91,7 @@ ___
 
 ### adminData
 
-• `Optional` **adminData**: `Dictionary`<`any`\>
+• `Optional` **adminData**: [`ChannelAdminData`](../interfaces/ChannelAdminData.md)
 
 #### Overrides
 
@@ -290,6 +102,18 @@ ___
 ### channelReady
 
 • **channelReady**: `Promise`<[`Channel`](Channel.md)\>
+
+**`Param`**
+
+server to join
+
+**`Param`**
+
+key to use to join (optional)
+
+**`Param`**
+
+the [Channel Name](glossary.md#term-channel-name) to find on that server (optional)
 
 #### Inherited from
 
@@ -330,18 +154,6 @@ ___
 ### ready
 
 • **ready**: `Promise`<[`ChannelSocket`](ChannelSocket.md)\>
-
-**`Param`**
-
-server to join
-
-**`Param`**
-
-key to use to join (optional)
-
-**`Param`**
-
-(the :term:`Channel Name`) to find on that server (optional)
 
 #### Overrides
 
@@ -395,11 +207,11 @@ ___
 
 ### api
 
-• `get` **api**(): `ChannelApi`
+• `get` **api**(): [`ChannelApi`](ChannelApi.md)
 
 #### Returns
 
-`ChannelApi`
+[`ChannelApi`](ChannelApi.md)
 
 #### Inherited from
 
@@ -418,6 +230,20 @@ ___
 #### Inherited from
 
 Channel.channelId
+
+___
+
+### channelSignKey
+
+• `get` **channelSignKey**(): `CryptoKey`
+
+#### Returns
+
+`CryptoKey`
+
+#### Inherited from
+
+Channel.channelSignKey
 
 ___
 
@@ -449,11 +275,11 @@ ___
 
 ### exportable\_privateKey
 
-• `get` **exportable_privateKey**(): ``null`` \| `JsonWebKey`
+• `get` **exportable_privateKey**(): `JsonWebKey`
 
 #### Returns
 
-``null`` \| `JsonWebKey`
+`JsonWebKey`
 
 #### Inherited from
 
@@ -463,11 +289,11 @@ ___
 
 ### exportable\_pubKey
 
-• `get` **exportable_pubKey**(): ``null`` \| `JsonWebKey`
+• `get` **exportable_pubKey**(): `JsonWebKey`
 
 #### Returns
 
-``null`` \| `JsonWebKey`
+`JsonWebKey`
 
 #### Inherited from
 
@@ -475,33 +301,15 @@ Channel.exportable\_pubKey
 
 ___
 
-### keyPair
-
-• `get` **keyPair**(): ``null`` \| `CryptoKeyPair`
-
-#### Returns
-
-``null`` \| `CryptoKeyPair`
-
-#### Inherited from
-
-Channel.keyPair
-
-___
-
 ### keys
 
 • `get` **keys**(): [`ChannelKeys`](../interfaces/ChannelKeys.md)
-
-ChannelSocket.keys
-
-Will throw an exception if keys are unknown or not yet loaded
 
 #### Returns
 
 [`ChannelKeys`](../interfaces/ChannelKeys.md)
 
-#### Overrides
+#### Inherited from
 
 Channel.keys
 
@@ -527,10 +335,6 @@ ___
 
 `void`
 
-#### Overrides
-
-Channel.onMessage
-
 • `set` **onMessage**(`f`): `void`
 
 #### Parameters
@@ -543,19 +347,15 @@ Channel.onMessage
 
 `void`
 
-#### Overrides
-
-Channel.onMessage
-
 ___
 
 ### ownerChannelId
 
-• `get` **ownerChannelId**(): ``null`` \| `string`
+• `get` **ownerChannelId**(): `string`
 
 #### Returns
 
-``null`` \| `string`
+`string`
 
 #### Inherited from
 
@@ -565,11 +365,11 @@ ___
 
 ### privateKey
 
-• `get` **privateKey**(): ``null`` \| `CryptoKey`
+• `get` **privateKey**(): `CryptoKey`
 
 #### Returns
 
-``null`` \| `CryptoKey`
+`CryptoKey`
 
 #### Inherited from
 
@@ -615,73 +415,6 @@ ___
 
 ## Methods
 
-### #generateRoomHash
-
-▸ `Private` **#generateRoomHash**(`channelBytes`): `Promise`<`string`\>
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `channelBytes` | `ArrayBuffer` |
-
-#### Returns
-
-`Promise`<`string`\>
-
-#### Inherited from
-
-[Channel](Channel.md).[#generateRoomHash](Channel.md##generateroomhash)
-
-___
-
-### #generateRoomId
-
-▸ `Private` **#generateRoomId**(`x`, `y`): `Promise`<`string`\>
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `x` | `string` |
-| `y` | `string` |
-
-#### Returns
-
-`Promise`<`string`\>
-
-#### Inherited from
-
-[Channel](Channel.md).[#generateRoomId](Channel.md##generateroomid)
-
-___
-
-### #processMessage
-
-▸ `Private` **#processMessage**(`m`): `void`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `m` | `any` |
-
-#### Returns
-
-`void`
-
-___
-
-### #readyPromise
-
-▸ `Private` **#readyPromise**(): `Promise`<[`ChannelSocket`](ChannelSocket.md)\>
-
-#### Returns
-
-`Promise`<[`ChannelSocket`](ChannelSocket.md)\>
-
-___
-
 ### checkServerStatus
 
 ▸ **checkServerStatus**(`url`, `timeout`, `callback`): `void`
@@ -710,6 +443,26 @@ ___
 
 ___
 
+### importKeys
+
+▸ **importKeys**(`keyStrings`): `Promise`<`void`\>
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `keyStrings` | [`ChannelKeyStrings`](../interfaces/ChannelKeyStrings.md) |
+
+#### Returns
+
+`Promise`<`void`\>
+
+#### Inherited from
+
+[Channel](Channel.md).[importKeys](Channel.md#importkeys)
+
+___
+
 ### send
 
 ▸ **send**(`msg`): `Promise`<`string`\>
@@ -732,23 +485,3 @@ or an error message if it fails.
 #### Overrides
 
 [Channel](Channel.md).[send](Channel.md#send)
-
-___
-
-### sendSbObject
-
-▸ **sendSbObject**(`file`): `Promise`<`string`\>
-
-ChannelSocket.sendSbObject()
-
-Send SB object (file) on channel socket
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `file` | [`SBFile`](SBFile.md) |
-
-#### Returns
-
-`Promise`<`string`\>

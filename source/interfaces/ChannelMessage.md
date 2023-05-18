@@ -118,7 +118,7 @@ ___
 
 ### keys
 
-• `Optional` **keys**: `ChannelKeyStrings`
+• `Optional` **keys**: [`ChannelKeyStrings`](ChannelKeyStrings.md)
 
 ___
 

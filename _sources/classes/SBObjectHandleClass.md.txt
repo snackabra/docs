@@ -12,7 +12,7 @@ To DECRYPT a shard, you need key, iv, and salt. Current
 generation of shard servers will provide (iv, salt) upon
 request if (and only if) you have id and verification.
 
-Note that id32/key32 are array32 encoded (b62). (Both 
+Note that id32/key32 are array32 encoded (a32). (Both 
 id and key are 256-bit entities).
 
 'verification' is a 64-bit integer, encoded as a string
@@ -29,12 +29,6 @@ are guaranteed to be random, the fourth may be "designed".
 
 ### Properties
 
-- [#id](SBObjectHandleClass.md##id)
-- [#id32](SBObjectHandleClass.md##id32)
-- [#key](SBObjectHandleClass.md##key)
-- [#key32](SBObjectHandleClass.md##key32)
-- [#type](SBObjectHandleClass.md##type)
-- [#verification](SBObjectHandleClass.md##verification)
 - [actualSize](SBObjectHandleClass.md#actualsize)
 - [dateAndTime](SBObjectHandleClass.md#dateandtime)
 - [fileName](SBObjectHandleClass.md#filename)
@@ -55,10 +49,6 @@ are guaranteed to be random, the fourth may be "designed".
 - [type](SBObjectHandleClass.md#type)
 - [verification](SBObjectHandleClass.md#verification)
 
-### Methods
-
-- [#setId32](SBObjectHandleClass.md##setid32)
-
 ## Constructors
 
 ### constructor
@@ -72,42 +62,6 @@ are guaranteed to be random, the fourth may be "designed".
 | `options` | [`SBObjectHandle`](../interfaces/SBObjectHandle.md) |
 
 ## Properties
-
-### #id
-
-• `Private` `Optional` **#id**: `string`
-
-___
-
-### #id32
-
-• `Private` `Optional` **#id32**: `Base62Encoded`
-
-___
-
-### #key
-
-• `Private` `Optional` **#key**: `string`
-
-___
-
-### #key32
-
-• `Private` `Optional` **#key32**: `Base62Encoded`
-
-___
-
-### #type
-
-• `Private` **#type**: [`SBObjectType`](../modules.md#sbobjecttype) = `'b'`
-
-___
-
-### #verification
-
-• `Private` `Optional` **#verification**: `string` \| `Promise`<`string`\>
-
-___
 
 ### actualSize
 
@@ -334,16 +288,6 @@ serves as a 'write-through' verification
 | Name | Type |
 | :------ | :------ |
 | `value` | `string` \| `Promise`<`string`\> |
-
-#### Returns
-
-`void`
-
-## Methods
-
-### #setId32
-
-▸ `Private` **#setId32**(): `void`
 
 #### Returns
 

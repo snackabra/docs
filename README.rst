@@ -18,8 +18,6 @@ If you would like to contribute or help out with the snackabra
 project, please feel free to reach out to us at snackabra@gmail.com or
 snackabra@protonmail.com
 
-
-
 Installation
 ------------
 
@@ -29,14 +27,13 @@ To setup working with the ``snackabra`` documentation per se:
 
     $ git clone https://github.com/snackabra/snackabra-docs
     $ cd snackabra-docs
+    
+    $ # main elements are typedoc
+    $ yarn install
     $ # note we do not support 3.10 yet (some package issues)
     $ python3.9 -m venv venv
     $ source venv/bin/activate
     $ pip install -r ./requirements.txt
-
-TODO: complete list of system requirements (eg including some not
-super common stuff like latexlive for confluence support).
-
 
 Development
 -----------
@@ -45,17 +42,20 @@ Package requirements (node) include:
 
 .. code-block:: console
 
-    $ npm install -g typedoc
-    $ npm install -g jsdoc
+    $ yarn add typedoc
+    $ yarn add jsdoc
 
 You work with files in 'source', after you've made any changes, run
 'make html' [#r03]_ and results will be in the 'build' directory:
 
 .. code-block:: console
 
-    $ make html  # you sometimes need to run this twice
-    $ make jslib # optional - this just copies over from ../snackabra-jslib
-    $ open index.html  # should open nicely, note this is root dir
+    $ # optional - this just copies over from ../snackabra-jslib
+    $ make jslib
+    $ # you sometimes need to run this twice
+    $ make html
+    $ # should open nicely, note this is root dir
+    $ open index.html
 
 Note that the makefile will copy the results from the 'build'
 directory to the root directory.

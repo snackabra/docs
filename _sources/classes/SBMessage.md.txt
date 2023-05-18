@@ -2,15 +2,9 @@
 
 # Class: SBMessage
 
-SBMessage
+Class SBMessage
 
 Body should be below 32KiB, though it tolerates up to 64KiB
-
-## Hierarchy
-
-- **`SBMessage`**
-
-  ↳ [`SBFile`](SBFile.md)
 
 ## Table of contents
 

@@ -16,17 +16,22 @@ as well as some general utility functions.
 ### Methods
 
 - [ab2str](SBCrypto.md#ab2str)
+- [channelKeyStringsToCryptoKeys](SBCrypto.md#channelkeystringstocryptokeys)
 - [compareKeys](SBCrypto.md#comparekeys)
 - [deriveKey](SBCrypto.md#derivekey)
 - [encrypt](SBCrypto.md#encrypt)
+- [exportKey](SBCrypto.md#exportkey)
 - [extractPubKey](SBCrypto.md#extractpubkey)
+- [generateChannelId](SBCrypto.md#generatechannelid)
 - [generateIdKey](SBCrypto.md#generateidkey)
 - [generateKeys](SBCrypto.md#generatekeys)
 - [importKey](SBCrypto.md#importkey)
+- [lookupKey](SBCrypto.md#lookupkey)
 - [sign](SBCrypto.md#sign)
 - [str2ab](SBCrypto.md#str2ab)
 - [unwrap](SBCrypto.md#unwrap)
 - [verify](SBCrypto.md#verify)
+- [verifyChannelId](SBCrypto.md#verifychannelid)
 - [wrap](SBCrypto.md#wrap)
 
 ## Constructors
@@ -58,13 +63,30 @@ string
 
 ___
 
+### channelKeyStringsToCryptoKeys
+
+▸ **channelKeyStringsToCryptoKeys**(`keyStrings`): `Promise`<[`ChannelKeys`](../interfaces/ChannelKeys.md)\>
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `keyStrings` | [`ChannelKeyStrings`](../interfaces/ChannelKeyStrings.md) |
+
+#### Returns
+
+`Promise`<[`ChannelKeys`](../interfaces/ChannelKeys.md)\>
+
+___
+
 ### compareKeys
 
 ▸ **compareKeys**(`key1`, `key2`): `boolean`
 
 SBCrypto.compareKeys()
 
-Compare JSON keys, true if the 'same', false if different.
+Compare JSON keys, true if the 'same', false if different. We consider
+them "equal" if both have 'x' and 'y' properties and they are the same.
 
 #### Parameters
 
@@ -143,6 +165,25 @@ Note that for the former, nonce must be given.
 
 ___
 
+### exportKey
+
+▸ **exportKey**(`format`, `key`): `Promise`<`JsonWebKey`\>
+
+SBCrypto.exportKey()
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `format` | ``"jwk"`` |
+| `key` | `CryptoKey` |
+
+#### Returns
+
+`Promise`<`JsonWebKey`\>
+
+___
+
 ### extractPubKey
 
 ▸ **extractPubKey**(`privateKey`): ``null`` \| `JsonWebKey`
@@ -158,6 +199,38 @@ Extracts (generates) public key from a private key.
 #### Returns
 
 ``null`` \| `JsonWebKey`
+
+___
+
+### generateChannelId
+
+▸ **generateChannelId**(`owner_key`): `Promise`<`string`\>
+
+Generates a channel ID from a public (owner) key. This is deterministic,
+used both for creating channels as well as at any time verifying ownership.
+Returns the SBChannelId, or error code if there are any issues:
+
+'InvalidJsonWebKey' - format (eg basic JWK) has issues
+'InvalidOwnerKey' - the key itself is not valid
+
+(Also does basic verification of the owner key itself)
+
+The channel ID is base64 encoding of the SHA-384 hash of the public key,
+taking the 'x' and 'y' fields. Not that is slightly restricted, it only
+allows [A-Za-z0-9_], eg does not allow the '-' character. This makes the
+encoding more practical for end-user interactions like copy-paste. This
+is accomplished by simply re-hashing until the result is valid. This 
+reduces the entropy of the channel ID by a neglible amount.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `owner_key` | ``null`` \| `JsonWebKey` |
+
+#### Returns
+
+`Promise`<`string`\>
 
 ___
 
@@ -216,6 +289,28 @@ Import keys
 #### Returns
 
 `Promise`<`CryptoKey`\>
+
+___
+
+### lookupKey
+
+▸ **lookupKey**(`key`, `array`): `number`
+
+SBCrypto.lookupKey()
+
+Uses compareKeys() to check for presense of a key in a list of keys.
+Returns index of key if found, -1 if not found.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `key` | `JsonWebKey` |
+| `array` | `JsonWebKey`[] |
+
+#### Returns
+
+`number`
 
 ___
 
@@ -313,6 +408,25 @@ Verify signature.
 | `verifyKey` | `CryptoKey` |
 | `sign` | `string` |
 | `contents` | `string` |
+
+#### Returns
+
+`Promise`<`boolean`\>
+
+___
+
+### verifyChannelId
+
+▸ **verifyChannelId**(`owner_key`, `channel_id`): `Promise`<`boolean`\>
+
+'Compare' two channel IDs. Note that this is not constant time.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `owner_key` | ``null`` \| `JsonWebKey` |
+| `channel_id` | `string` |
 
 #### Returns
 

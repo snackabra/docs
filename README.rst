@@ -57,7 +57,7 @@ directory to the root directory.
 
 Currently we only have it set up to make an html version. We build a
 PDF through readthedocs [#r00]_. If you want to be able to run 'make
-latexpdf' yourself [#r01]_, you'll need to install Latexmk [#r02]_,
+latexpdf' yourself you'll need to install Latexmk [#r02]_,
 which can be a bit of a struggle depending on your system, including
 needing upwards 10 GB of disk space.
 

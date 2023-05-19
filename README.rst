@@ -8,7 +8,7 @@ Snackabra Documentation
 =======================
 
 This repo contains all documentation and specifications related to ``snackabra``,
-the resulting output is hosted on:
+both client library and servers, etc, the resulting output is hosted on:
 
 * https://snackabra.readthedocs.io
 * https://snackabra.io (previous version, 0.4.x)
@@ -37,25 +37,18 @@ To setup working with the ``snackabra`` documentation per se:
     $ source venv/bin/activate
     $ pip install -r ./requirements.txt
 
-Development
------------
-
-Package requirements (node) include:
-
-.. code-block:: console
-
-    $ yarn add typedoc
-    $ yarn add jsdoc
+    # typescript 5+, typedoc, and importantly snackabra (library)
+    $ yarn install
 
 You work with files in 'source', after you've made any changes, run
 'make html' [#r03]_ and results will be in the 'build' directory:
 
 .. code-block:: console
 
-    $ # optional - this just copies over from ../snackabra-jslib
-    $ make jslib
+    $ make html
     $ # you sometimes need to run this twice
     $ make html
+
     $ # should open nicely, note this is root dir
     $ open index.html
 
@@ -67,15 +60,6 @@ PDF through readthedocs [#r00]_. If you want to be able to run 'make
 latexpdf' yourself [#r01]_, you'll need to install Latexmk [#r02]_,
 which can be a bit of a struggle depending on your system, including
 needing upwards 10 GB of disk space.
-
-For the jsdoc (documenting snackabra.js), you need to copy the
-javascript code you want documented to the ''snackabra-jslib''
-directory, ''make'' won't pull anything for you. 
-
-*UPDATE: we just got typedoc to work in this setup, thx to a recent
-typedoc plugin (typedoc-plugin-sphinx) combined with myst-parser.
-So jslib is being refactored with typedoc. So perhaps should be 
-called tslib soon ... *
 
 
     

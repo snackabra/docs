@@ -172,7 +172,7 @@
 								"content": [
 									{
 										"kind": "text",
-										"text": "the [Channel Name](glossary.md#term-channel-name) to find on that server (optional)"
+										"text": "the <a href=\"../glossary.html#term-channel-name\">Channel Name</a> to find on that server (optional)"
 									}
 								]
 							}
@@ -2081,7 +2081,7 @@
 								"content": [
 									{
 										"kind": "text",
-										"text": "the [Channel Name](glossary.md#term-channel-name) to find on that server (optional)"
+										"text": "the <a href=\"../glossary.html#term-channel-name\">Channel Name</a> to find on that server (optional)"
 									}
 								]
 							}
@@ -3054,7 +3054,7 @@
 								"content": [
 									{
 										"kind": "text",
-										"text": "the [Channel Name](glossary.md#term-channel-name) to find on that server (optional)"
+										"text": "the <a href=\"../glossary.html#term-channel-name\">Channel Name</a> to find on that server (optional)"
 									}
 								]
 							}
@@ -7285,15 +7285,6 @@
 							{
 								"kind": "code",
 								"text": "```typescript\n    const sb = new Snackabra({\n      channel_server: 'http://127.0.0.1:4001',\n      channel_ws: 'ws://127.0.0.1:4001',\n      storage_server: 'http://127.0.0.1:4000'\n    })\n```"
-							},
-							{
-								"kind": "text",
-								"text": "\n\nTesting glossary links:\n\n* "
-							},
-							{
-								"kind": "inline-tag",
-								"tag": "@link",
-								"text": "glossary.html"
 							}
 						]
 					}

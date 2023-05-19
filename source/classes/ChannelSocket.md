@@ -1,4 +1,4 @@
-[JSLib Reference Manual](../jslib2.md) / [Exports](../modules.md) / ChannelSocket
+[JSLib Reference Manual](../README.md) / [Exports](../modules.md) / ChannelSocket
 
 # Class: ChannelSocket
 
@@ -113,7 +113,7 @@ key to use to join (optional)
 
 **`Param`**
 
-the [Channel Name](glossary.md#term-channel-name) to find on that server (optional)
+the <a href="../glossary.html#term-channel-name">Channel Name</a> to find on that server (optional)
 
 #### Inherited from
 

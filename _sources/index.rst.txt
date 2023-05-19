@@ -81,7 +81,6 @@ rely on it for highly critical information if you are running the servers yourse
    motivation
    updated-glossary
 
-|
 
 .. note::
 
@@ -98,22 +97,22 @@ rely on it for highly critical information if you are running the servers yourse
 .. rubric:: Footnotes
 
 .. [#f02] "SNACKABRA" is pronounced "snack" and then the first part of
-	 "abracadabra". Accent is on the second "a" (the first "a" in
-	 "abracadabra"). It's as easy to use as having a snack. And
-	 it's magical.
+   "abracadabra". Accent is on the second "a" (the first "a" in
+   "abracadabra"). It's as easy to use as having a snack. And
+   it's magical.
 
-.. [#f03] Though bear in mind that the :ref:`license language
-          <license>` will never cease to apply: this is provided "as is".
+.. [#f03] Though bear in mind that the :ref:`license language <license>` will never cease to apply: this is provided "as is".
 
 .. [#f04] We have various "canary functions" in place.
-     The canary function for all of snackabra's open source technology is @psm's
-	  personal twitter (https://twitter.com/petersmagnusson).
-	  You can DM at any time to ask if there are any court orders
-	  or similar constraints in effect of any sort that might impact the integrity
-	  of any parts of the design, implemtation, algorithms, etc.
-     @psm will reply if (and only if) he is not aware of any.
-     At this time, 384co does _not_ have a canary function.
-     If you don't know what this footnote means, don't worry about it...
+   The canary function for all of snackabra's open source technology is @psm's
+   personal twitter (https://twitter.com/petersmagnusson).
+   You can DM at any time to ask if there are any court orders
+   or similar constraints in effect of any sort that might impact the integrity
+   of any parts of the design, implemtation, algorithms, etc.
+   @psm will reply if (and only if) he is not aware of any.
+   At this time, 384co does _not_ have a canary function.
+   If you don't know what this footnote means, don't worry about it...
+
 
 ----------------
 

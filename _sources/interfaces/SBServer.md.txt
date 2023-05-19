@@ -1,4 +1,4 @@
-[JSLib Reference Manual](../jslib2.md) / [Exports](../modules.md) / SBServer
+[JSLib Reference Manual](../README.md) / [Exports](../modules.md) / SBServer
 
 # Interface: SBServer
 

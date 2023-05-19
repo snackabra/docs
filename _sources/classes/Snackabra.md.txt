@@ -1,4 +1,4 @@
-[JSLib Reference Manual](../jslib2.md) / [Exports](../modules.md) / Snackabra
+[JSLib Reference Manual](../README.md) / [Exports](../modules.md) / Snackabra
 
 # Class: Snackabra
 
@@ -23,10 +23,6 @@ without a parameter in which case SB will ping known servers.
       storage_server: 'http://127.0.0.1:4000'
     })
 ```
-
-Testing glossary links:
-
-* glossary.html
 
 ## Table of contents
 

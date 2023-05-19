@@ -1,4 +1,4 @@
-[JSLib Reference Manual](../jslib2.md) / [Exports](../modules.md) / ChannelMessage
+[JSLib Reference Manual](../README.md) / [Exports](../modules.md) / ChannelMessage
 
 # Interface: ChannelMessage
 

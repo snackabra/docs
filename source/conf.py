@@ -51,6 +51,8 @@ extensions = [
 # myst_parser (?)
 source_suffix = ['.rst', '.md']
 
+tsdoc_warning_disable = 'abstract-method'
+
 
 # Atlassian Confluence extension configuration
 # it will only try to deploy if you have env set for it

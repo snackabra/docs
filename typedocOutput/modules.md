@@ -1,4 +1,4 @@
-[JSLib Reference Manual](jslib2.md) / Exports
+[JSLib Reference Manual](README.md) / Exports
 
 # JSLib Reference Manual
 

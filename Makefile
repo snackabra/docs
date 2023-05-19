@@ -18,7 +18,8 @@ help:
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
 
 %: Makefile jslib
-	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+	# TODO: working on suppressing or fixing warnings, suppressing for now to focus output on more important warnings
+	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O) 2>&1 | grep -v "WARNING: local id not found in doc" | grep -v " WARNING: document isn't included in any toctree"
 	echo "Copying file to root directory"
 	cp -R $(BUILDDIR)/html/* .
 
@@ -27,6 +28,6 @@ clean:
 
 # https://gitlab.acceleratxr.com/composerjs/typedoc-plugin-sphinx
 jslib:
-	npx typedoc --plugin typedoc-plugin-markdown --entryDocument jslib2.md --out typedocOutput ./snackabra-jslib/snackabra.ts
+	npx typedoc --plugin typedoc-plugin-markdown --out typedocOutput ./snackabra-jslib/snackabra.ts
 	cp typedocOutput/modules.md source
 	cp -R typedocOutput/classes typedocOutput/interfaces source

@@ -61,6 +61,8 @@ latexpdf' yourself you'll need to install Latexmk [#r02]_,
 which can be a bit of a struggle depending on your system, including
 needing upwards 10 GB of disk space.
 
+If you're modifying jslib and not using the npm package ``snackabra``,
+consider using ``yarn link`` to make life easier.
 
     
 LICENSE

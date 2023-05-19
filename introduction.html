@@ -1,16 +1,16 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Technical Overview" href="overview.html" /><link rel="prev" title="Snackabra" href="index.html" />
 
-    <meta name="generator" content="sphinx-4.4.0, furo 2022.02.23"/>
-        <title>Introduction - snackabra 0.4.3 documentation</title>
+    <!-- Generated with Sphinx 5.3.0 and Furo 2023.03.27 -->
+        <title>Introduction - snackabra 0.6.0 beta documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=3c656993158f05539f962c5cea52a5e6c184bb8c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=25ceb02ed1c46dc30f2321ff83e92799f69dfdb9" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
     
     
@@ -22,24 +22,28 @@
   --color-code-foreground: black;
   
   }
-  body[data-theme="dark"] {
-    --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
-  
-  }
-  @media (prefers-color-scheme: dark) {
-    body:not([data-theme="light"]) {
+  @media not print {
+    body[data-theme="dark"] {
       --color-code-background: #202020;
   --color-code-foreground: #d0d0d0;
   
     }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
   }
 </style></head>
   <body>
+    
     <script>
       document.body.dataset.theme = localStorage.getItem("theme") || "auto";
     </script>
     
+
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
   <symbol id="svg-toc" viewBox="0 0 24 24">
     <title>Contents</title>
@@ -121,7 +125,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">snackabra 0.4.3 documentation</div></a>
+      <a href="index.html"><div class="brand">snackabra 0.6.0 beta documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -144,10 +148,10 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
   
-  <span class="sidebar-brand-text">snackabra 0.4.3 documentation</span>
+  <span class="sidebar-brand-text">snackabra 0.6.0 beta documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
-  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
   <input type="hidden" name="check_keywords" value="yes">
   <input type="hidden" name="area" value="default">
 </form>
@@ -164,10 +168,15 @@
 <li class="toctree-l1"><a class="reference internal" href="future.html">Future Work</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References / Further Reading</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">LICENSE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jslib.html">JSLib User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">JSLib Reference Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="server.html">Snackabra Server</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pylib.html">Python Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="appendix-a-crypto.html">Appendix A: Cryptography</a></li>
 <li class="toctree-l1"><a class="reference internal" href="user-guide.html">Appendix B: Privacy.App Chat Room User Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="diag-sample.html">(ignore)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="motivation.html">Motivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updated-glossary.html">Updated Glossary</a></li>
 </ul>
 
 </div>
@@ -186,7 +195,9 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -201,7 +212,7 @@
         </div>
         <article role="main">
           <section id="introduction">
-<span id="id1"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h1>
+<span id="id1"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h1>
 <p>One-to-one messaging or group messaging is the same in snackabra,
 everything centers around a “room”. You access a room with it’s unique
 URL, that will look something like this:</p>
@@ -210,23 +221,23 @@ URL, that will look something like this:</p>
 </div>
 <p>First time you visit any room you will see a welcome message to assign yourself an alias:</p>
 <figure class="align-default" id="id6" style="width: 40%">
-<a class="reference external image-reference" href="_static/welcome-message.png"><img alt="_images/welcome-message.png" src="_images/welcome-message.png"/></a>
+<a class="reference external image-reference" href="_static/welcome-message.png"><img alt="_images/welcome-message.png" src="_images/welcome-message.png" /></a>
 <figcaption>
 <p><span class="caption-text">Typical first-time-visitor message.</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Type something in the box, and you’re in the chat room:</p>
 <figure class="align-default" id="id7" style="width: 40%">
-<a class="reference external image-reference" href="_static/sample-room.png"><img alt="_images/sample-room.png" src="_images/sample-room.png"/></a>
+<a class="reference external image-reference" href="_static/sample-room.png"><img alt="_images/sample-room.png" src="_images/sample-room.png" /></a>
 <figcaption>
 <p><span class="caption-text">Sample view of a room.</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The above is from our current web interface, a native iOS app is under
 development, but the “web app” interface is designed to work
-(decently) on mobile browsers. <a class="footnote-reference brackets" href="#f06" id="id2">2</a></p>
+(decently) on mobile browsers. <a class="footnote-reference brackets" href="#f06" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></p>
 <section id="message-types">
-<h2>Message Types<a class="headerlink" href="#message-types" title="Permalink to this headline">#</a></h2>
+<h2>Message Types<a class="headerlink" href="#message-types" title="Permalink to this heading">#</a></h2>
 <p>In the <a class="reference external" href="_static/sample-room.png">above screenshot</a> of a sample room,
 all the main message types are demonstrated:</p>
 <ul class="simple">
@@ -250,12 +261,12 @@ certain Owner actions.</p></li>
 </ul>
 </section>
 <section id="room-keys">
-<h2>Room Keys<a class="headerlink" href="#room-keys" title="Permalink to this headline">#</a></h2>
+<h2>Room Keys<a class="headerlink" href="#room-keys" title="Permalink to this heading">#</a></h2>
 <p>A lot happened in your browser in the above simple steps. The snackabra web client
 loaded, and checked for any state in your “local storage” (in your browser). If there’s none,
 it initializes that data for you. You can see the results by selecting the “Home” tab:</p>
 <figure class="align-default" id="id8" style="width: 40%">
-<a class="reference external image-reference" href="_static/sample-home-page-fixed.png"><img alt="_images/sample-home-page-fixed.png" src="_images/sample-home-page-fixed.png"/></a>
+<a class="reference external image-reference" href="_static/sample-home-page-fixed.png"><img alt="_images/sample-home-page-fixed.png" src="_images/sample-home-page-fixed.png" /></a>
 <figcaption>
 <p><span class="caption-text">Sample view of a basic home page.</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -269,11 +280,11 @@ so you can see the full set of “keys”. Let’s talk about those a bit.</p>
 the scenes the snackabra web app will initialize local data with basics
 about the room you’re trying to connect to:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="s2">"roomData"</span><span class="p">:</span> <span class="p">{},</span>
-  <span class="s2">"contacts"</span><span class="p">:</span> <span class="p">{},</span>
-  <span class="s2">"roomMetadata"</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s2">"hkUkHY6wm-ZXmIyhCt1v4NBK-o1PV4GyKBnl7U8KaYgoe1Yi150ptDnVUmkboFOL"</span><span class="p">:</span> <span class="p">{</span>
-      <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Room 1"</span>
+  <span class="s2">&quot;roomData&quot;</span><span class="p">:</span> <span class="p">{},</span>
+  <span class="s2">&quot;contacts&quot;</span><span class="p">:</span> <span class="p">{},</span>
+  <span class="s2">&quot;roomMetadata&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;hkUkHY6wm-ZXmIyhCt1v4NBK-o1PV4GyKBnl7U8KaYgoe1Yi150ptDnVUmkboFOL&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Room 1&quot;</span>
     <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">}</span>
@@ -288,49 +299,49 @@ anything about you.  Visitors are either Guests or Owners. Guests can
 be Verified (or not), and Accepted (or not), and Owners can also be
 Admin. More on all this shortly:</p>
 <figure class="align-center" id="id9">
-<div class="graphviz"><img alt='digraph visitors{
-        size="6,6";
-    node [shape="record", color=lightgrey]; Guest;
+<div class="graphviz"><img src="_images/graphviz-c8e609aa71d6648116000899492ac7ebaa7cd2b8.png" alt="digraph visitors{
+        size=&quot;6,6&quot;;
+    node [shape=&quot;record&quot;, color=lightgrey]; Guest;
         node [color=lightblue2, style=filled];  Visitor; Owner; Admin
-        "Visitor" -&gt; Guest;
-        "Visitor" -&gt; "Owner" [label="  Keys Match Room?  ", fontsize="10"];
-        "Owner" -&gt; "Admin" [label="  Cookie Present?  ", fontsize="10"];
-    Guest [label="Guest: \n|{Verified?|Accepted?}"];
-}' class="graphviz" src="_images/graphviz-c8e609aa71d6648116000899492ac7ebaa7cd2b8.png"/></div>
+        &quot;Visitor&quot; -&gt; Guest;
+        &quot;Visitor&quot; -&gt; &quot;Owner&quot; [label=&quot;  Keys Match Room?  &quot;, fontsize=&quot;10&quot;];
+        &quot;Owner&quot; -&gt; &quot;Admin&quot; [label=&quot;  Cookie Present?  &quot;, fontsize=&quot;10&quot;];
+    Guest [label=&quot;Guest: \n|{Verified?|Accepted?}&quot;];
+}" class="graphviz" /></div>
 <figcaption>
 <p><span class="caption-text">Basic categories of visitors</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>A typical first-time visitor is a straight-up Guest (neither Verified
 nor Accepted).  The app now generates more state, which is what you
-actually see when you go to the Home tab:<a class="footnote-reference brackets" href="#f05" id="id3">1</a></p>
+actually see when you go to the Home tab:<a class="footnote-reference brackets" href="#f05" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="s2">"roomData"</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s2">"hkUkHY6wm-ZXmIyhCt1v4NBK-o1PV4GyKBnl7U8KaYgoe1Yi150ptDnVUmkboFOL"</span><span class="p">:</span> <span class="p">{</span>
-      <span class="s2">"key"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"crv"</span><span class="p">:</span><span class="s2">"P-384"</span><span class="p">,</span>
-              <span class="s2">"d"</span><span class="p">:</span><span class="s2">"sj2_C2fkHLBp57X5MLJq6pN_ZErq0zZb8y4FvIXG_ffQsvqRlR958MMBcNwpzcn-"</span><span class="p">,</span>
-              <span class="s2">"ext"</span><span class="p">:</span><span class="n">true</span><span class="p">,</span>
-              <span class="s2">"key_ops"</span><span class="p">:[</span><span class="s2">"deriveKey"</span><span class="p">],</span>
-              <span class="s2">"kty"</span><span class="p">:</span><span class="s2">"EC"</span><span class="p">,</span>
-              <span class="s2">"x"</span><span class="p">:</span><span class="s2">"ql6o3O_8IC5fE7RnZOwTZtYm6Lm4oLyr3MgjH_gUIcZa1Y-PPhInxzfJxMNLQQqi"</span><span class="p">,</span>
-              <span class="s2">"y"</span><span class="p">:</span><span class="s2">"YMKC8rqt6VmwyMNo70wiAJi8bPzIrGoNeIUEzShj6MJuRUYnZlG0dRjBHY9TPgeN"</span>
+  <span class="s2">&quot;roomData&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;hkUkHY6wm-ZXmIyhCt1v4NBK-o1PV4GyKBnl7U8KaYgoe1Yi150ptDnVUmkboFOL&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;crv&quot;</span><span class="p">:</span><span class="s2">&quot;P-384&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;d&quot;</span><span class="p">:</span><span class="s2">&quot;sj2_C2fkHLBp57X5MLJq6pN_ZErq0zZb8y4FvIXG_ffQsvqRlR958MMBcNwpzcn-&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;ext&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">,</span>
+              <span class="s2">&quot;key_ops&quot;</span><span class="p">:[</span><span class="s2">&quot;deriveKey&quot;</span><span class="p">],</span>
+              <span class="s2">&quot;kty&quot;</span><span class="p">:</span><span class="s2">&quot;EC&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;x&quot;</span><span class="p">:</span><span class="s2">&quot;ql6o3O_8IC5fE7RnZOwTZtYm6Lm4oLyr3MgjH_gUIcZa1Y-PPhInxzfJxMNLQQqi&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;y&quot;</span><span class="p">:</span><span class="s2">&quot;YMKC8rqt6VmwyMNo70wiAJi8bPzIrGoNeIUEzShj6MJuRUYnZlG0dRjBHY9TPgeN&quot;</span>
              <span class="p">},</span>
-      <span class="s2">"username"</span><span class="p">:</span> <span class="s2">"Design Doc"</span><span class="p">,</span>
-      <span class="s2">"lastSeenMessage"</span><span class="p">:</span> <span class="s2">"010111111001111001100100100000000100010000"</span>
+      <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;Design Doc&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;lastSeenMessage&quot;</span><span class="p">:</span> <span class="s2">&quot;010111111001111001100100100000000100010000&quot;</span>
     <span class="p">}</span>
   <span class="p">},</span>
-  <span class="s2">"contacts"</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s2">"OnjiCyxa5G68wlCvXbpI_gdXV2YN26z-Jju9bg7eGBz4G5uCKOeJMQSFvI8m1qYa NdCa_mJYUcfgghMwLE2YPtEdv7PBDcy2gW_aHB8zHv1_LFe9SMVOu5wooTQOWIKr"</span><span class="p">:</span> <span class="s2">"Unnamed"</span><span class="p">,</span>
-    <span class="s2">"T8tsnKkhqCx68KxDRYJt58w_dw_lAXjgr8I1RanxIV0M_quLX1sXdfbxR7wjLVSu lQD3521v2K4XAwo2uB0qMQR2uqZJcoAR0uyY8YSuVYGHC_qumpFleAB3I1t1dWrc"</span><span class="p">:</span> <span class="s2">"Unnamed"</span><span class="p">,</span>
-    <span class="s2">"mMixQMasdGKMdqnxxzHbALZ95jIRBrZK-am_wEWfjNK1umaRW-Efd5tIV1Yr6Or9 PqDPj8NahdEnJbmFuuudwC57GR3UiljzHMP-4a64L7RTBaiMehJluyhuVjiOklJ8"</span><span class="p">:</span> <span class="s2">"Unnamed"</span><span class="p">,</span>
-    <span class="s2">"uO_6YnK55FecnIdEDrs5IDdyadc2Nrp9wFK3Te_ddoghrCljwA7acIRI28ZzGbq_ 7OdkqJhZgwgsZYIuFawl33hVqeems-D0aOZTLWjRC5WWKlSMDYA3Z2W68c_6-SJU"</span><span class="p">:</span> <span class="s2">"Unnamed"</span><span class="p">,</span>
-    <span class="s2">"ql6o3O_8IC5fE7RnZOwTZtYm6Lm4oLyr3MgjH_gUIcZa1Y-PPhInxzfJxMNLQQqi YMKC8rqt6VmwyMNo70wiAJi8bPzIrGoNeIUEzShj6MJuRUYnZlG0dRjBHY9TPgeN"</span><span class="p">:</span> <span class="s2">"Me"</span>
+  <span class="s2">&quot;contacts&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;OnjiCyxa5G68wlCvXbpI_gdXV2YN26z-Jju9bg7eGBz4G5uCKOeJMQSFvI8m1qYa NdCa_mJYUcfgghMwLE2YPtEdv7PBDcy2gW_aHB8zHv1_LFe9SMVOu5wooTQOWIKr&quot;</span><span class="p">:</span> <span class="s2">&quot;Unnamed&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;T8tsnKkhqCx68KxDRYJt58w_dw_lAXjgr8I1RanxIV0M_quLX1sXdfbxR7wjLVSu lQD3521v2K4XAwo2uB0qMQR2uqZJcoAR0uyY8YSuVYGHC_qumpFleAB3I1t1dWrc&quot;</span><span class="p">:</span> <span class="s2">&quot;Unnamed&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;mMixQMasdGKMdqnxxzHbALZ95jIRBrZK-am_wEWfjNK1umaRW-Efd5tIV1Yr6Or9 PqDPj8NahdEnJbmFuuudwC57GR3UiljzHMP-4a64L7RTBaiMehJluyhuVjiOklJ8&quot;</span><span class="p">:</span> <span class="s2">&quot;Unnamed&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;uO_6YnK55FecnIdEDrs5IDdyadc2Nrp9wFK3Te_ddoghrCljwA7acIRI28ZzGbq_ 7OdkqJhZgwgsZYIuFawl33hVqeems-D0aOZTLWjRC5WWKlSMDYA3Z2W68c_6-SJU&quot;</span><span class="p">:</span> <span class="s2">&quot;Unnamed&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ql6o3O_8IC5fE7RnZOwTZtYm6Lm4oLyr3MgjH_gUIcZa1Y-PPhInxzfJxMNLQQqi YMKC8rqt6VmwyMNo70wiAJi8bPzIrGoNeIUEzShj6MJuRUYnZlG0dRjBHY9TPgeN&quot;</span><span class="p">:</span> <span class="s2">&quot;Me&quot;</span>
   <span class="p">},</span>
-  <span class="s2">"roomMetadata"</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s2">"hkUkHY6wm-ZXmIyhCt1v4NBK-o1PV4GyKBnl7U8KaYgoe1Yi150ptDnVUmkboFOL"</span><span class="p">:</span> <span class="p">{</span>
-      <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Room 1"</span><span class="p">,</span>
-      <span class="s2">"lastMessageTime"</span><span class="p">:</span> <span class="s2">"010111110001001100010000011111000101101101"</span><span class="p">,</span>
-      <span class="s2">"unread"</span><span class="p">:</span> <span class="n">true</span>
+  <span class="s2">&quot;roomMetadata&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;hkUkHY6wm-ZXmIyhCt1v4NBK-o1PV4GyKBnl7U8KaYgoe1Yi150ptDnVUmkboFOL&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Room 1&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;lastMessageTime&quot;</span><span class="p">:</span> <span class="s2">&quot;010111110001001100010000011111000101101101&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;unread&quot;</span><span class="p">:</span> <span class="n">true</span>
     <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">}</span>
@@ -338,7 +349,7 @@ actually see when you go to the Home tab:<a class="footnote-reference brackets" 
 </div>
 <p>These are your “keys”. We will explain the components briefly in this
 overview, and then in detail elsewhere in the document. These are all
-stored in your browser’s <code class="docutils literal notranslate"><span class="pre">localStorage</span></code> <a class="footnote-reference brackets" href="#f07" id="id4">3</a>. That’s a small
+stored in your browser’s <code class="docutils literal notranslate"><span class="pre">localStorage</span></code> <a class="footnote-reference brackets" href="#f07" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>. That’s a small
 database handled by your browser, whether you are on a computer or on
 a mobile phone.</p>
 <p>This is important: <strong>you are responsible for not losing these
@@ -349,21 +360,21 @@ see this data at all and the app will manage it for you on your
 device. More on this later.</p>
 </section>
 <section id="sequence-diagrams">
-<h2>Sequence Diagrams<a class="headerlink" href="#sequence-diagrams" title="Permalink to this headline">#</a></h2>
+<h2>Sequence Diagrams<a class="headerlink" href="#sequence-diagrams" title="Permalink to this heading">#</a></h2>
 <p>First let’s introduce the type of sequence diagrams that we will be
 using in these docs:</p>
-<div class="align-default"><img height="683" src="_images/seqdiag-ebf5236af8edb72b009d08d1d510e8aae8b29842.png" width="856"/></div>
+<div class="align-default"><img height="683" src="_images/seqdiag-ebf5236af8edb72b009d08d1d510e8aae8b29842.png" width="856" /></div>
 <p>Note that the “solid” arrowhead is something initated, and if there
 is a regular arrow immediately after then, that is the reply.
 If the line is dotted, it’s optional - an optional reply, or
 an event that “might” happen.</p>
 </section>
 <section id="basic-connection">
-<h2>Basic Connection<a class="headerlink" href="#basic-connection" title="Permalink to this headline">#</a></h2>
+<h2>Basic Connection<a class="headerlink" href="#basic-connection" title="Permalink to this heading">#</a></h2>
 <p>Here’s roughly what’s going on. Let’s say you’re connecting to
 “example.com/&lt;room…&gt;” with a browser (on a computer or on a phone,
 doesn’t matter, you’re using a “web client” / “web app”):</p>
-<div class="align-default"><img height="897" src="_images/seqdiag-6770fdb2caf10830b6beff0d8302621b80e310de.png" width="640"/></div>
+<div class="align-default"><img height="897" src="_images/seqdiag-6770fdb2caf10830b6beff0d8302621b80e310de.png" width="640" /></div>
 <p>Details on the steps:</p>
 <ol class="arabic simple">
 <li><p>Your browser connects to “&lt;site&gt;/&lt;roomId&gt;”, which returns
@@ -380,13 +391,13 @@ keys for the room in question, then it’ll use those,
 otherwise it will generate a new “personal public key”
 pair (and store it locally). That’s your “real” identity in any room.</p></li>
 <li><p>The app connects (web socket) to the room server. In this example
-we will assume you’re connecting to a <a class="reference internal" href="glossary.html#term-Personal-Room-Server"><span class="xref std std-term">Personal Room Server</span></a>
+we will assume you’re connecting to a <a class="reference internal" href="updated-glossary.html#term-Personal-Room-Server"><span class="xref std std-term">Personal Room Server</span></a>
 to keep it simple.</p></li>
 <li><p>The first thing the app does is present the user identity (the
 public key from [3]).</p></li>
 <li><p>The room server will respond with a number of things:
 the room keys (public keys for other participants),
-the <a class="reference internal" href="glossary.html#term-MOTD"><span class="xref std std-term">MOTD</span></a>, and whether the room is <a class="reference internal" href="glossary.html#term-Restricted"><span class="xref std std-term">Restricted</span></a> or not.</p></li>
+the <a class="reference internal" href="updated-glossary.html#term-MOTD"><span class="xref std std-term">MOTD</span></a>, and whether the room is <a class="reference internal" href="updated-glossary.html#term-Restricted"><span class="xref std std-term">Restricted</span></a> or not.</p></li>
 <li><p>Once the app has digested all the info and is all set
 to rock and roll, it sends a “ready” message to the room server.</p></li>
 <li><p>The first thing the room sends upon seeing “ready” is to
@@ -398,32 +409,32 @@ anything anybody else adds to the room, in real time.</p></li>
 “[N]” notation refers to explanations below the figure):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">{</span>
 
-      <span class="s2">"roomData"</span><span class="p">:</span> <span class="p">{</span>
-<span class="p">[</span><span class="mi">2</span><span class="p">]</span>       <span class="s2">"hkUkHY6wm-ZXmIyhCt1v4NBK-o1PV4GyKBn...</span>
-          <span class="s2">"key"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"crv"</span><span class="p">:</span><span class="s2">"P-384"</span><span class="p">,</span>
-<span class="p">[</span><span class="mi">3</span><span class="p">]</span>               <span class="s2">"d"</span><span class="p">:</span><span class="s2">"sj2_C2fkHLBp57X5MLJq6pN...</span>
-                  <span class="s2">"ext"</span><span class="p">:</span><span class="n">true</span><span class="p">,</span>
-                  <span class="s2">"key_ops"</span><span class="p">:[</span><span class="s2">"deriveKey"</span><span class="p">],</span>
-                  <span class="s2">"kty"</span><span class="p">:</span><span class="s2">"EC"</span><span class="p">,</span>
-<span class="p">[</span><span class="mi">4</span><span class="p">]</span>               <span class="s2">"x"</span><span class="p">:</span><span class="s2">"ql6o3O_8IC5fE7RnZOwTZtY...</span>
-                  <span class="s2">"y"</span><span class="p">:</span><span class="s2">"YMKC8rqt6VmwyMNo70wiAJi...</span>
+      <span class="s2">&quot;roomData&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="p">[</span><span class="mi">2</span><span class="p">]</span>       <span class="s2">&quot;hkUkHY6wm-ZXmIyhCt1v4NBK-o1PV4GyKBn...</span>
+          <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;crv&quot;</span><span class="p">:</span><span class="s2">&quot;P-384&quot;</span><span class="p">,</span>
+<span class="p">[</span><span class="mi">3</span><span class="p">]</span>               <span class="s2">&quot;d&quot;</span><span class="p">:</span><span class="s2">&quot;sj2_C2fkHLBp57X5MLJq6pN...</span>
+                  <span class="s2">&quot;ext&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">,</span>
+                  <span class="s2">&quot;key_ops&quot;</span><span class="p">:[</span><span class="s2">&quot;deriveKey&quot;</span><span class="p">],</span>
+                  <span class="s2">&quot;kty&quot;</span><span class="p">:</span><span class="s2">&quot;EC&quot;</span><span class="p">,</span>
+<span class="p">[</span><span class="mi">4</span><span class="p">]</span>               <span class="s2">&quot;x&quot;</span><span class="p">:</span><span class="s2">&quot;ql6o3O_8IC5fE7RnZOwTZtY...</span>
+                  <span class="s2">&quot;y&quot;</span><span class="p">:</span><span class="s2">&quot;YMKC8rqt6VmwyMNo70wiAJi...</span>
                  <span class="p">},</span>
-          <span class="s2">"username"</span><span class="p">:</span> <span class="s2">"Design Doc"</span><span class="p">,</span>
-          <span class="s2">"lastSeenMessage"</span><span class="p">:</span> <span class="s2">"0101111110011110...</span>
+          <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;Design Doc&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;lastSeenMessage&quot;</span><span class="p">:</span> <span class="s2">&quot;0101111110011110...</span>
         <span class="p">}</span>
       <span class="p">},</span>
-<span class="p">[</span><span class="mi">5</span><span class="p">]</span>   <span class="s2">"contacts"</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">"OnjiCyxa5G68wlCvXbpI_gdXV2YN26z-Jju9b...</span>
-        <span class="s2">"T8tsnKkhqCx68KxDRYJt58w_dw_lAXjgr8I1R...</span>
-        <span class="s2">"mMixQMasdGKMdqnxxzHbALZ95jIRBrZK-am_w...</span>
-        <span class="s2">"uO_6YnK55FecnIdEDrs5IDdyadc2Nrp9wFK3T...</span>
-<span class="p">[</span><span class="mi">6</span><span class="p">]</span>     <span class="s2">"ql6o3O_8IC5FE7RnZ0wTztYM6Lm4oLyr3MgjH...</span>
+<span class="p">[</span><span class="mi">5</span><span class="p">]</span>   <span class="s2">&quot;contacts&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;OnjiCyxa5G68wlCvXbpI_gdXV2YN26z-Jju9b...</span>
+        <span class="s2">&quot;T8tsnKkhqCx68KxDRYJt58w_dw_lAXjgr8I1R...</span>
+        <span class="s2">&quot;mMixQMasdGKMdqnxxzHbALZ95jIRBrZK-am_w...</span>
+        <span class="s2">&quot;uO_6YnK55FecnIdEDrs5IDdyadc2Nrp9wFK3T...</span>
+<span class="p">[</span><span class="mi">6</span><span class="p">]</span>     <span class="s2">&quot;ql6o3O_8IC5FE7RnZ0wTztYM6Lm4oLyr3MgjH...</span>
       <span class="p">},</span>
-      <span class="s2">"roomMetadata"</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">"hkUkHY6wm-ZXmIyhCt1v4NBK-o1PV4GyKBnl7...</span>
-<span class="p">[</span><span class="mi">7</span><span class="p">]</span>       <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Room 1"</span><span class="p">,</span>
-<span class="p">[</span><span class="mi">8</span><span class="p">]</span>       <span class="s2">"lastMessageTime"</span><span class="p">:</span> <span class="s2">"0101111100010011...</span>
-          <span class="s2">"unread"</span><span class="p">:</span> <span class="n">true</span>
+      <span class="s2">&quot;roomMetadata&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;hkUkHY6wm-ZXmIyhCt1v4NBK-o1PV4GyKBnl7...</span>
+<span class="p">[</span><span class="mi">7</span><span class="p">]</span>       <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Room 1&quot;</span><span class="p">,</span>
+<span class="p">[</span><span class="mi">8</span><span class="p">]</span>       <span class="s2">&quot;lastMessageTime&quot;</span><span class="p">:</span> <span class="s2">&quot;0101111100010011...</span>
+          <span class="s2">&quot;unread&quot;</span><span class="p">:</span> <span class="n">true</span>
         <span class="p">}</span>
       <span class="p">}</span>
     <span class="p">}</span>
@@ -475,38 +486,42 @@ simply derived from this (details later). That means only the individual
 with the private half of the owner key can ever prove that they “own”
 the room. When rooms are migrated or mirrored, snackabra servers will
 only accept the authority provided by that owner, and snackabra clients
-can verify that the servers are doing it correctly. <a class="footnote-reference brackets" href="#f08" id="id5">4</a></p>
+can verify that the servers are doing it correctly. <a class="footnote-reference brackets" href="#f08" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a></p>
 <p>This is the gist of it. The biggest part that we’re not covering in
 this overview is storage - how to share photos and files and
 documents, while maintaining privacy, secrecy, etc, is the big
 “pillar” of snackabra.</p>
 <div class="line-block">
-<div class="line"><br/></div>
+<div class="line"><br /></div>
 </div>
-<hr class="docutils"/>
+<hr class="docutils" />
 <p class="rubric">Footnotes</p>
-<dl class="footnote brackets">
-<dt class="label" id="f05"><span class="brackets"><a class="fn-backref" href="#id3">1</a></span></dt>
-<dd><p>Here we are cleaning it up a little so it’s easier to read, the actual
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="f05" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">1</a><span class="fn-bracket">]</span></span>
+<p>Here we are cleaning it up a little so it’s easier to read, the actual
 string will have some escape characters etc so that it can be stored
 and re-loaded and re-parsed.</p>
-</dd>
-<dt class="label" id="f06"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
-<dd><p>It’s important to note that this is just our reference web app user
+</aside>
+<aside class="footnote brackets" id="f06" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>It’s important to note that this is just our reference web app user
 interface - the important parts of snackabra are various protocols and
 formats, hopefully allowing anybody that wants to develop their own
 apps (or add chat features to web sites or apps) to take their own
 approach.</p>
-</dd>
-<dt class="label" id="f07"><span class="brackets"><a class="fn-backref" href="#id4">3</a></span></dt>
-<dd><p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage">https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage</a></p>
-</dd>
-<dt class="label" id="f08"><span class="brackets"><a class="fn-backref" href="#id5">4</a></span></dt>
-<dd><p>Regardless, it’s not very useful to spoof ownership, since
+</aside>
+<aside class="footnote brackets" id="f07" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">3</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage">https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage</a></p>
+</aside>
+<aside class="footnote brackets" id="f08" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">4</a><span class="fn-bracket">]</span></span>
+<p>Regardless, it’s not very useful to spoof ownership, since
 unless you were a participant, you can’t untangle and read
 the message history anyway.</p>
-</dd>
-</dl>
+</aside>
+</aside>
 </section>
 </section>
 
@@ -522,10 +537,10 @@ the message history anyway.</p>
                 </div>
                 <div class="title">Technical Overview</div>
               </div>
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
           <a class="prev-page" href="index.html">
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
@@ -539,7 +554,7 @@ the message history anyway.</p>
         <div class="bottom-of-page">
           <div class="left-details">
             <div class="copyright">
-                Copyright &#169; 2019-2022, Magnusson Institute
+                Copyright &#169; 2019-2023, Magnusson Institute
             </div>
             Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
             
@@ -547,9 +562,7 @@ the message history anyway.</p>
             
           </div>
           <div class="right-details">
-            <div class="icons">
-              
-            </div>
+            
           </div>
         </div>
         
@@ -561,7 +574,7 @@ the message history anyway.</p>
       <div class="toc-sticky toc-scroll">
         <div class="toc-title-container">
           <span class="toc-title">
-            Contents
+            On this page
           </span>
         </div>
         <div class="toc-tree-container">
@@ -586,7 +599,9 @@ the message history anyway.</p>
 </div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/scripts/furo.js"></script>
     </body>
 </html>

@@ -6,6 +6,68 @@ In this section we cover topics that are well progressed in terms
 of design thinking, but not finalize (or implemented) yet.
 
 
+Curve25519 Support
+------------------
+
+We currently use ECDSA (Elliptic Curve Digital Signature Algorithm)
+to generate channel names. There are some concerns with this curve,
+however, we consider the support of it by major browser vendors as
+preferable over the possible improvement from using another curve,
+which would require significant custom code. Recall that one of
+our design principles is that core of SB should all fit into a 
+single typescript library with no external dependencies, and one
+that is as simple to read and understand by humans as possible.
+
+One candidate replacement is Ed25519 (which for example was chosen
+for recent revisions of Onion and IPFS) and Curve448. NIST has
+announced that both will be included in FIPS-186-5.
+
+It seems likely that support for both of these will be added to
+the standard web crypto api, and we plan to simply follow that
+development. In the SB protocol, we will be adding meta data on
+what algorithm was used to generate the channel name. (For
+backwards compatibility, if no such information exists, default
+assumption is that ECDSA P-384 was used).
+
+* https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/sign#ecdsa
+
+* https://datatracker.ietf.org/doc/html/rfc7748 
+
+* https://datatracker.ietf.org/doc/html/rfc6090 
+
+* https://chromestatus.com/feature/4913922408710144
+
+* https://docs.google.com/document/d/1fDTUY3HVAXehi-eSfbi7nxh8ZPw4MpSKM8U1fMdqJlU
+
+* https://csrc.nist.gov/publications/detail/fips/186/5/draft
+
+* https://www.rfc-editor.org/rfc/rfc8032#section-5.1
+
+* http://safecurves.cr.yp.to/
+
+* http://ed25519.cr.yp.to/ed25519-20110926.pdf
+
+* https://github.com/libp2p/specs/blob/master/peer-ids/peer-ids.md 
+
+Not directly relevant, but there is some interesting discussion of the
+issues with the Onion v3 privacy improvements:
+
+https://blog.torproject.org/v3-onion-services-usage/
+
+Similar issues in the area of brute-forcing a global identifier. In the
+case of SB, we don't have an opinion on directory services (e.g. discovery
+of where a channel is being served from), but we do want to take into
+consideration issues any directory service somebody else builds for SB
+channels will run into. We were not aware of the Onion V3 address format
+when we first designed SB channel names, but we did design it to be a
+64-byte name (currently an iterated hash of the 64-byte public key)
+compared to 16 characters for Onion V2 and 56 for V3.
+
+
+
+
+
+
 Verifying Room Integrity
 ------------------------
 

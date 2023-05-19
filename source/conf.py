@@ -1,5 +1,5 @@
 # Snackabra Documentation Sphinx File
-# Copyright (c) Magnusson Institute
+# Copyright (c) 2019-2023 Magnusson Institute
 #
 # (full sphinx conf docs:
 #  https://www.sphinx-doc.org/en/master/usage/configuration.html)
@@ -11,19 +11,16 @@
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
 
-# import os
-# import sys
-# sys.path.insert(0, os.path.abspath('../snackabra-pylib/src/snackabra'))
-
+import os
 
 # -- Project information -----------------------------------------------------
 
 project = 'snackabra'
-copyright = '2019-2022, Magnusson Institute'
+copyright = '2019-2023, Magnusson Institute'
 author = 'Magnusson Institute'
 
 # The full version, including alpha/beta/rc tags
-release = '0.4.3'
+release = '0.6.0 beta'
 
 
 # -- General configuration ---------------------------------------------------
@@ -37,8 +34,40 @@ extensions = [
     'sphinx.ext.graphviz',
     'sphinx.ext.autodoc',
     'sphinx.ext.autosummary',
-    'sphinx.ext.napoleon' # google-style python autodoc
+    'sphinx.ext.napoleon', # google-style python autodoc
+    'sphinx_js',
+
+    # these are for confluence setup ... not sure all are needed
+    'sphinx.ext.intersphinx',
+    'sphinx.ext.ifconfig',
+    'sphinx.ext.viewcode',
+    'sphinx.ext.githubpages',
+    'sphinxcontrib.confluencebuilder',
+
+    'myst_parser'
+
 ]
+
+# myst_parser (?)
+source_suffix = ['.rst', '.md']
+
+tsdoc_warning_disable = 'abstract-method'
+
+
+# Atlassian Confluence extension configuration
+# it will only try to deploy if you have env set for it
+if (os.environ.get('confluence_server_pass', '')):
+    # guide from:
+    # https://towardsdatascience.com/publish-python-project-documentation-on-confluence-html-using-sphinx-fad3a98b8eeb
+    # extensions.append('sphinxcontrib.confluencebuilder')
+    confluence_publish = True
+    confluence_space_key = os.environ.get('confluence_space_key', 'YOU NEED TO CONF YOUR ENV')
+    # confluence_parent_page = os.environ.get('confluence_parent_page', 'YOU NEED TO CONF YOUR ENV')
+    confluence_server_url = os.environ.get('confluence_server_url', 'YOU NEED TO CONF YOUR ENV')
+    confluence_server_user = os.environ.get('confluence_server_user', 'YOU NEED TO CONF YOUR ENV')
+    confluence_server_pass = os.environ.get('confluence_server_pass', 'YOU NEED TO CONF YOUR ENV')
+    # confluence_ask_password = True
+    # confluence_page_hierarchy = True
 
 # Fontpath for blockdiag (truetype font)
 # ... TODO .. needed?
@@ -60,6 +89,15 @@ templates_path = ['_templates']
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = []
 
+# sphinx-js path to snackabra-javascript library
+# js_source_path = '../snackabra-jslib'
+# optional configuration for jsdoc per se
+# jsdoc_config_path = '../jsdoc_conf.json'
+
+# testing working with typescript (typedoc)
+# (not able to get it to work, stuck on 'Unable to find any entry points'
+# js_language = 'typescript'
+# primary_domain = 'js'
 
 # -- Options for HTML output -------------------------------------------------
 

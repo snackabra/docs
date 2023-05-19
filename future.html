@@ -1,16 +1,16 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="References / Further Reading" href="references.html" /><link rel="prev" title="Glossary" href="glossary.html" />
 
-    <meta name="generator" content="sphinx-4.4.0, furo 2022.02.23"/>
-        <title>Future Work - snackabra 0.4.3 documentation</title>
+    <!-- Generated with Sphinx 5.3.0 and Furo 2023.03.27 -->
+        <title>Future Work - snackabra 0.6.0 beta documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=3c656993158f05539f962c5cea52a5e6c184bb8c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=25ceb02ed1c46dc30f2321ff83e92799f69dfdb9" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
     
     
@@ -22,24 +22,28 @@
   --color-code-foreground: black;
   
   }
-  body[data-theme="dark"] {
-    --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
-  
-  }
-  @media (prefers-color-scheme: dark) {
-    body:not([data-theme="light"]) {
+  @media not print {
+    body[data-theme="dark"] {
       --color-code-background: #202020;
   --color-code-foreground: #d0d0d0;
   
     }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
   }
 </style></head>
   <body>
+    
     <script>
       document.body.dataset.theme = localStorage.getItem("theme") || "auto";
     </script>
     
+
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
   <symbol id="svg-toc" viewBox="0 0 24 24">
     <title>Contents</title>
@@ -121,7 +125,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">snackabra 0.4.3 documentation</div></a>
+      <a href="index.html"><div class="brand">snackabra 0.6.0 beta documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -144,10 +148,10 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
   
-  <span class="sidebar-brand-text">snackabra 0.4.3 documentation</span>
+  <span class="sidebar-brand-text">snackabra 0.6.0 beta documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
-  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
   <input type="hidden" name="check_keywords" value="yes">
   <input type="hidden" name="area" value="default">
 </form>
@@ -164,10 +168,15 @@
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Future Work</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References / Further Reading</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">LICENSE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jslib.html">JSLib User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">JSLib Reference Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="server.html">Snackabra Server</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pylib.html">Python Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="appendix-a-crypto.html">Appendix A: Cryptography</a></li>
 <li class="toctree-l1"><a class="reference internal" href="user-guide.html">Appendix B: Privacy.App Chat Room User Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="diag-sample.html">(ignore)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="motivation.html">Motivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updated-glossary.html">Updated Glossary</a></li>
 </ul>
 
 </div>
@@ -186,7 +195,9 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -201,11 +212,54 @@
         </div>
         <article role="main">
           <section id="future-work">
-<h1>Future Work<a class="headerlink" href="#future-work" title="Permalink to this headline">#</a></h1>
+<h1>Future Work<a class="headerlink" href="#future-work" title="Permalink to this heading">#</a></h1>
 <p>In this section we cover topics that are well progressed in terms
 of design thinking, but not finalize (or implemented) yet.</p>
+<section id="curve25519-support">
+<h2>Curve25519 Support<a class="headerlink" href="#curve25519-support" title="Permalink to this heading">#</a></h2>
+<p>We currently use ECDSA (Elliptic Curve Digital Signature Algorithm)
+to generate channel names. There are some concerns with this curve,
+however, we consider the support of it by major browser vendors as
+preferable over the possible improvement from using another curve,
+which would require significant custom code. Recall that one of
+our design principles is that core of SB should all fit into a
+single typescript library with no external dependencies, and one
+that is as simple to read and understand by humans as possible.</p>
+<p>One candidate replacement is Ed25519 (which for example was chosen
+for recent revisions of Onion and IPFS) and Curve448. NIST has
+announced that both will be included in FIPS-186-5.</p>
+<p>It seems likely that support for both of these will be added to
+the standard web crypto api, and we plan to simply follow that
+development. In the SB protocol, we will be adding meta data on
+what algorithm was used to generate the channel name. (For
+backwards compatibility, if no such information exists, default
+assumption is that ECDSA P-384 was used).</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/sign#ecdsa">https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/sign#ecdsa</a></p></li>
+<li><p><a class="reference external" href="https://datatracker.ietf.org/doc/html/rfc7748">https://datatracker.ietf.org/doc/html/rfc7748</a></p></li>
+<li><p><a class="reference external" href="https://datatracker.ietf.org/doc/html/rfc6090">https://datatracker.ietf.org/doc/html/rfc6090</a></p></li>
+<li><p><a class="reference external" href="https://chromestatus.com/feature/4913922408710144">https://chromestatus.com/feature/4913922408710144</a></p></li>
+<li><p><a class="reference external" href="https://docs.google.com/document/d/1fDTUY3HVAXehi-eSfbi7nxh8ZPw4MpSKM8U1fMdqJlU">https://docs.google.com/document/d/1fDTUY3HVAXehi-eSfbi7nxh8ZPw4MpSKM8U1fMdqJlU</a></p></li>
+<li><p><a class="reference external" href="https://csrc.nist.gov/publications/detail/fips/186/5/draft">https://csrc.nist.gov/publications/detail/fips/186/5/draft</a></p></li>
+<li><p><a class="reference external" href="https://www.rfc-editor.org/rfc/rfc8032#section-5.1">https://www.rfc-editor.org/rfc/rfc8032#section-5.1</a></p></li>
+<li><p><a class="reference external" href="http://safecurves.cr.yp.to/">http://safecurves.cr.yp.to/</a></p></li>
+<li><p><a class="reference external" href="http://ed25519.cr.yp.to/ed25519-20110926.pdf">http://ed25519.cr.yp.to/ed25519-20110926.pdf</a></p></li>
+<li><p><a class="reference external" href="https://github.com/libp2p/specs/blob/master/peer-ids/peer-ids.md">https://github.com/libp2p/specs/blob/master/peer-ids/peer-ids.md</a></p></li>
+</ul>
+<p>Not directly relevant, but there is some interesting discussion of the
+issues with the Onion v3 privacy improvements:</p>
+<p><a class="reference external" href="https://blog.torproject.org/v3-onion-services-usage/">https://blog.torproject.org/v3-onion-services-usage/</a></p>
+<p>Similar issues in the area of brute-forcing a global identifier. In the
+case of SB, we don’t have an opinion on directory services (e.g. discovery
+of where a channel is being served from), but we do want to take into
+consideration issues any directory service somebody else builds for SB
+channels will run into. We were not aware of the Onion V3 address format
+when we first designed SB channel names, but we did design it to be a
+64-byte name (currently an iterated hash of the 64-byte public key)
+compared to 16 characters for Onion V2 and 56 for V3.</p>
+</section>
 <section id="verifying-room-integrity">
-<h2>Verifying Room Integrity<a class="headerlink" href="#verifying-room-integrity" title="Permalink to this headline">#</a></h2>
+<h2>Verifying Room Integrity<a class="headerlink" href="#verifying-room-integrity" title="Permalink to this heading">#</a></h2>
 <p>This needs to be thought through more, consider the below as
 tentative: the whole process of how to securely “disconnect” from a
 server, in what steps exactly, is a bit unclear.</p>
@@ -221,7 +275,7 @@ participants. Then, once that’s accomplished, the concept of ‘locking’
 is to eliminate the ability of the SSO to override (impersonate) Owner
 identity, whether that may happen through action by an entity
 controlling the SSO, or a sufficient subset of underlying
-infrastructure providers. <a class="footnote-reference brackets" href="#f028" id="id1">1</a></p>
+infrastructure providers. <a class="footnote-reference brackets" href="#f028" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
 <p>This raises a well-known challenge: how do you, as a user, ascertain
 that there was no manipulation of any part of the setup leading up to
 this final state?</p>
@@ -231,11 +285,11 @@ pairwise verify the integrity of the final result. Said final
 result from every participants’ point of view is simply the room name
 and the set of all participants’ public keys. If all participants have
 the exact same final result, then there could not have been
-manipulation. <a class="footnote-reference brackets" href="#f029" id="id2">2</a></p>
+manipulation. <a class="footnote-reference brackets" href="#f029" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></p>
 <p>When a room is locked down (both verified and the owner has rotated
 keys), for users who are verified a new “lock” icon appears next to
 the room name. Pressing that lock will produce the verification image:</p>
-<a class="reference internal image-reference" href="_images/verify_example.png"><img alt="_images/verify_example.png" class="align-center" src="_images/verify_example.png" style="height: 140px;"/></a>
+<a class="reference internal image-reference" href="_images/verify_example.png"><img alt="_images/verify_example.png" class="align-center" src="_images/verify_example.png" style="height: 140px;" /></a>
 <p>The above image is generated as follows:</p>
 <p>A string is generated by concatenating the &lt;roomId&gt; with every
 participants’ public keys, the latter in alphanumeric order. The
@@ -262,16 +316,18 @@ be identical to everybody), a simply pairwise execution of the
 by Boudt, Schoenmakerrs, and Traore
 (<a class="reference external" href="https://www.win.tue.nl/~berry/papers/dam.pdf">https://www.win.tue.nl/~berry/papers/dam.pdf</a>).</p>
 <div class="line-block">
-<div class="line"><br/></div>
+<div class="line"><br /></div>
 </div>
 <p class="rubric">Footnotes</p>
-<dl class="footnote brackets">
-<dt class="label" id="f028"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>Whether or not the entity controlling the SSO is aware of
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="f028" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Whether or not the entity controlling the SSO is aware of
 such interference.</p>
-</dd>
-<dt class="label" id="f029"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
-<dd><p>Here is why: all individual participants’ keys are
+</aside>
+<aside class="footnote brackets" id="f029" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>Here is why: all individual participants’ keys are
 generated locally to their client and the private half is
 never on the network. So from the perspective of each
 participant, if every other participant has the same view
@@ -281,8 +337,8 @@ leaves open the possibility of one or more clients having
 been tampered with at some point in the process; this
 security risk is discussed below in the ‘Static Client’
 section.</p>
-</dd>
-</dl>
+</aside>
+</aside>
 </section>
 </section>
 
@@ -298,10 +354,10 @@ section.</p>
                 </div>
                 <div class="title">References / Further Reading</div>
               </div>
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
           <a class="prev-page" href="glossary.html">
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
@@ -315,7 +371,7 @@ section.</p>
         <div class="bottom-of-page">
           <div class="left-details">
             <div class="copyright">
-                Copyright &#169; 2019-2022, Magnusson Institute
+                Copyright &#169; 2019-2023, Magnusson Institute
             </div>
             Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
             
@@ -323,9 +379,7 @@ section.</p>
             
           </div>
           <div class="right-details">
-            <div class="icons">
-              
-            </div>
+            
           </div>
         </div>
         
@@ -337,13 +391,14 @@ section.</p>
       <div class="toc-sticky toc-scroll">
         <div class="toc-title-container">
           <span class="toc-title">
-            Contents
+            On this page
           </span>
         </div>
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Future Work</a><ul>
+<li><a class="reference internal" href="#curve25519-support">Curve25519 Support</a></li>
 <li><a class="reference internal" href="#verifying-room-integrity">Verifying Room Integrity</a></li>
 </ul>
 </li>
@@ -359,7 +414,9 @@ section.</p>
 </div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/scripts/furo.js"></script>
     </body>
 </html>

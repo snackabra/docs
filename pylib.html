@@ -1,16 +1,16 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Appendix A: Cryptography" href="appendix-a-crypto.html" /><link rel="prev" title="LICENSE" href="license.html" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Appendix A: Cryptography" href="appendix-a-crypto.html" /><link rel="prev" title="Snackabra Server" href="server.html" />
 
-    <meta name="generator" content="sphinx-4.4.0, furo 2022.02.23"/>
-        <title>Python Library - snackabra 0.4.3 documentation</title>
+    <!-- Generated with Sphinx 5.3.0 and Furo 2023.03.27 -->
+        <title>Python Library - snackabra 0.6.0 beta documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=3c656993158f05539f962c5cea52a5e6c184bb8c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=25ceb02ed1c46dc30f2321ff83e92799f69dfdb9" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
     
     
@@ -22,24 +22,28 @@
   --color-code-foreground: black;
   
   }
-  body[data-theme="dark"] {
-    --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
-  
-  }
-  @media (prefers-color-scheme: dark) {
-    body:not([data-theme="light"]) {
+  @media not print {
+    body[data-theme="dark"] {
       --color-code-background: #202020;
   --color-code-foreground: #d0d0d0;
   
     }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
   }
 </style></head>
   <body>
+    
     <script>
       document.body.dataset.theme = localStorage.getItem("theme") || "auto";
     </script>
     
+
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
   <symbol id="svg-toc" viewBox="0 0 24 24">
     <title>Contents</title>
@@ -121,7 +125,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">snackabra 0.4.3 documentation</div></a>
+      <a href="index.html"><div class="brand">snackabra 0.6.0 beta documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -132,7 +136,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -144,10 +148,10 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
   
-  <span class="sidebar-brand-text">snackabra 0.4.3 documentation</span>
+  <span class="sidebar-brand-text">snackabra 0.6.0 beta documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
-  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
   <input type="hidden" name="check_keywords" value="yes">
   <input type="hidden" name="area" value="default">
 </form>
@@ -164,10 +168,15 @@
 <li class="toctree-l1"><a class="reference internal" href="future.html">Future Work</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References / Further Reading</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">LICENSE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jslib.html">JSLib User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">JSLib Reference Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="server.html">Snackabra Server</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Python Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="appendix-a-crypto.html">Appendix A: Cryptography</a></li>
 <li class="toctree-l1"><a class="reference internal" href="user-guide.html">Appendix B: Privacy.App Chat Room User Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="diag-sample.html">(ignore)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="motivation.html">Motivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updated-glossary.html">Updated Glossary</a></li>
 </ul>
 
 </div>
@@ -186,7 +195,9 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -194,51 +205,20 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
           <section id="python-library">
-<h1>Python Library<a class="headerlink" href="#python-library" title="Permalink to this headline">#</a></h1>
+<h1>Python Library<a class="headerlink" href="#python-library" title="Permalink to this heading">#</a></h1>
 <p>Install with:</p>
 <p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">snackabra</span></code></p>
-<p>Git repository: <a class="reference external" href="https://github.com/snackabra/pylib.git">https://github.com/snackabra/pylib.git</a></p>
-<section id="module-snackabra.crypto">
-<span id="snackabra-crypto-module"></span><h2>snackabra.crypto module<a class="headerlink" href="#module-snackabra.crypto" title="Permalink to this headline">#</a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="snackabra.crypto.gen_aes_key_jwk">
-<span class="sig-prename descclassname"><span class="pre">snackabra.crypto.</span></span><span class="sig-name descname"><span class="pre">gen_aes_key_jwk</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#snackabra.crypto.gen_aes_key_jwk" title="Permalink to this definition">#</a></dt>
-<dd><p>Generates a random 256-bit AES encryption key</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>JWK format AES key.</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py function">
-<dt class="sig sig-object py" id="snackabra.crypto.gen_p384_pair">
-<span class="sig-prename descclassname"><span class="pre">snackabra.crypto.</span></span><span class="sig-name descname"><span class="pre">gen_p384_pair</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_private_key_ops</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['deriveKey',</span> <span class="pre">'sign']</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_public_key_ops</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['deriveKey',</span> <span class="pre">'verify']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#snackabra.crypto.gen_p384_pair" title="Permalink to this definition">#</a></dt>
-<dd><p>Generates an eliptic curve key in json web key format</p>
-<p>Uses NIST P-384 standard [1]</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>_private_key_ops</strong> – Array of allowed private operations, default is [‘deriveKey’, ‘sign’].</p></li>
-<li><p><strong>_public_key_ops</strong> – Array of allowed public operations, default is [‘deriveKey’, ‘verify’].</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>{‘private’: &lt;private key&gt;, ‘public’: &lt;public key&gt;}</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>Dict</p>
-</dd>
-</dl>
-<p>[1] <a class="reference external" href="https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf">https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf</a></p>
-</dd></dl>
-</section>
+<p>Git repository: <a class="reference external" href="https://github.com/snackabra/snackabra-pylib.git">https://github.com/snackabra/snackabra-pylib.git</a></p>
+<p>NOTE: this project is currently abandonened, we are focused on Typescript,
+even for command-line (CLI) purposes. We hope to resuscitate this in the future.</p>
+<p>This will probably be a post-1.0 effort.</p>
 </section>
 
         </article>
@@ -253,16 +233,16 @@
                 </div>
                 <div class="title">Appendix A: Cryptography</div>
               </div>
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="license.html">
-              <svg><use href="#svg-arrow-right"></use></svg>
+          <a class="prev-page" href="server.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">LICENSE</div>
+                <div class="title">Snackabra Server</div>
                 
               </div>
             </a>
@@ -270,7 +250,7 @@
         <div class="bottom-of-page">
           <div class="left-details">
             <div class="copyright">
-                Copyright &#169; 2019-2022, Magnusson Institute
+                Copyright &#169; 2019-2023, Magnusson Institute
             </div>
             Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
             
@@ -278,35 +258,14 @@
             
           </div>
           <div class="right-details">
-            <div class="icons">
-              
-            </div>
+            
           </div>
         </div>
         
       </footer>
     </div>
-    <aside class="toc-drawer">
+    <aside class="toc-drawer no-toc">
       
-      
-      <div class="toc-sticky toc-scroll">
-        <div class="toc-title-container">
-          <span class="toc-title">
-            Contents
-          </span>
-        </div>
-        <div class="toc-tree-container">
-          <div class="toc-tree">
-            <ul>
-<li><a class="reference internal" href="#">Python Library</a><ul>
-<li><a class="reference internal" href="#module-snackabra.crypto">snackabra.crypto module</a></li>
-</ul>
-</li>
-</ul>
-
-          </div>
-        </div>
-      </div>
       
       
     </aside>
@@ -314,7 +273,9 @@
 </div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/scripts/furo.js"></script>
     </body>
 </html>

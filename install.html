@@ -1,16 +1,16 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Contact and Feedback" href="contact.html" /><link rel="prev" title="Formal Treatment" href="formal.html" />
 
-    <meta name="generator" content="sphinx-4.4.0, furo 2022.02.23"/>
-        <title>Installation - snackabra 0.4.3 documentation</title>
+    <!-- Generated with Sphinx 5.3.0 and Furo 2023.03.27 -->
+        <title>Installation - snackabra 0.6.0 beta documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=3c656993158f05539f962c5cea52a5e6c184bb8c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=25ceb02ed1c46dc30f2321ff83e92799f69dfdb9" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
     
     
@@ -22,24 +22,28 @@
   --color-code-foreground: black;
   
   }
-  body[data-theme="dark"] {
-    --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
-  
-  }
-  @media (prefers-color-scheme: dark) {
-    body:not([data-theme="light"]) {
+  @media not print {
+    body[data-theme="dark"] {
       --color-code-background: #202020;
   --color-code-foreground: #d0d0d0;
   
     }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
   }
 </style></head>
   <body>
+    
     <script>
       document.body.dataset.theme = localStorage.getItem("theme") || "auto";
     </script>
     
+
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
   <symbol id="svg-toc" viewBox="0 0 24 24">
     <title>Contents</title>
@@ -121,7 +125,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">snackabra 0.4.3 documentation</div></a>
+      <a href="index.html"><div class="brand">snackabra 0.6.0 beta documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -144,10 +148,10 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
   
-  <span class="sidebar-brand-text">snackabra 0.4.3 documentation</span>
+  <span class="sidebar-brand-text">snackabra 0.6.0 beta documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
-  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
   <input type="hidden" name="check_keywords" value="yes">
   <input type="hidden" name="area" value="default">
 </form>
@@ -164,10 +168,15 @@
 <li class="toctree-l1"><a class="reference internal" href="future.html">Future Work</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References / Further Reading</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">LICENSE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jslib.html">JSLib User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">JSLib Reference Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="server.html">Snackabra Server</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pylib.html">Python Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="appendix-a-crypto.html">Appendix A: Cryptography</a></li>
 <li class="toctree-l1"><a class="reference internal" href="user-guide.html">Appendix B: Privacy.App Chat Room User Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="diag-sample.html">(ignore)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="motivation.html">Motivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updated-glossary.html">Updated Glossary</a></li>
 </ul>
 
 </div>
@@ -186,7 +195,9 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -201,7 +212,7 @@
         </div>
         <article role="main">
           <section id="installation">
-<span id="personal-server"></span><h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">#</a></h1>
+<span id="personal-server"></span><h1>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">#</a></h1>
 <p>An objective with the design from the outset is that anybody should be
 able to cobble together a server that a “static” room UI, with loaded
 keys, can connect to. Setting aside more complex features like image
@@ -235,7 +246,7 @@ simply by helping out.</p>
 <li><p>Reference (multi-owner) SSO. Curently low priority, but we will get to it!</p></li>
 </ul>
 <section id="room-server">
-<span id="id1"></span><h2>Room Server<a class="headerlink" href="#room-server" title="Permalink to this headline">#</a></h2>
+<span id="id1"></span><h2>Room Server<a class="headerlink" href="#room-server" title="Permalink to this heading">#</a></h2>
 <p>Source: <a class="reference external" href="https://github.com/snackabra/snackabra-roomserver">https://github.com/snackabra/snackabra-roomserver</a></p>
 <p>The room server allows you to host and manage your own Snackabra
 server, called a “personal” server (as opposed to a “public”
@@ -260,7 +271,7 @@ reference implementations, a web app version</p>
 running).</p>
 </section>
 <section id="setup-personal-room-server">
-<h2>Setup (Personal Room Server)<a class="headerlink" href="#setup-personal-room-server" title="Permalink to this headline">#</a></h2>
+<h2>Setup (Personal Room Server)<a class="headerlink" href="#setup-personal-room-server" title="Permalink to this heading">#</a></h2>
 <p>The current room server requires a domain name and a Cloudflare (CF)
 account. Currently, a free CF account is _almost_ sufficient, but
 “durable objects” are not available yet on the free plans, so that
@@ -268,10 +279,13 @@ sets a minimum of $5/month to host a personal server (*).</p>
 <p>If you want (push) notifications for mobile you will (eventually) need
 to set up the necessary accounts with Apple; details coming soon in</p>
 <ul class="simple">
-<li><p>Set up a domain (we will call it “example.com”) that you control.
-You will need to be able to change the nameservers to be Cloudflare.</p></li>
-<li><p>Set up a free account with CF: <a class="reference external" href="https://dash.cloudflare.com/sign-up">https://dash.cloudflare.com/sign-up</a> -
-use your domain in the signup process.</p></li>
+<li><p>Path 1: If you have a CF account and domains, you can add a subdomain
+and then proceed with setup. You will need to be able to change the nameservers for your domain to be Cloudflare.</p></li>
+<li><p>Path 2: If you do not have a CF account, then first
+set up a new domain (we will call it “example.com”) that you control.</p></li>
+<li><p>Path 2: Set up a free account with CF: <a class="reference external" href="https://dash.cloudflare.com/sign-up">https://dash.cloudflare.com/sign-up</a> -
+use above new domain in the signup process.</p></li>
+<li><p>Within CF select which domain you’re working with.</p></li>
 <li><p>Go to the “workers” section and pick a name for your worker on
 CF, we’ll call it “example” here. That sets up a subdomain on
 “workers.dev”, e.g. “example.workers.dev.”  Later you can set
@@ -284,13 +298,13 @@ when any nameservers have propagated.</p>
 <p>Next set up the CF command line environment, the “Wrangler CLI”, we
 use “yarn” in general but the personal server code is pure JS and
 (currently) does not need any node packages. Follow instructions at
-<a class="reference external" href="https://dash.cloudflare.com/6a24dd354a78c1e313b1b8054d75e506/workers/cli">https://dash.cloudflare.com/6a24dd354a78c1e313b1b8054d75e506/workers/cli</a> -
+<a class="reference external" href="https://dash.cloudflare.com/id/workers/cli">https://dash.cloudflare.com/id/workers/cli</a> -b
 at time of writing:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># install the CLI:</span>
 <span class="n">yarn</span> <span class="k">global</span> <span class="n">add</span> <span class="nd">@cloudflare</span><span class="o">/</span><span class="n">wrangler</span>
 <span class="c1"># authenticate your CLI:</span>
 <span class="n">wrangler</span> <span class="n">login</span>
-<span class="c1"># copy the template 'toml' file</span>
+<span class="c1"># copy the template &#39;toml&#39; file</span>
 <span class="n">cp</span> <span class="n">setup</span><span class="o">/</span><span class="n">template</span><span class="o">.</span><span class="n">wranger</span><span class="o">.</span><span class="n">toml</span> <span class="n">wrangler</span><span class="o">.</span><span class="n">toml</span>
 </pre></div>
 </div>
@@ -299,9 +313,9 @@ to administrate your CF account.</p>
 <p>In the above ‘wrangler.toml’ file, you will need to add your ‘Account
 ID’ from the dashboard. Next, you will need a few “KV Namespaces”. You
 can do that with the CLI:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wrangler</span> <span class="n">kv</span><span class="p">:</span><span class="n">namespace</span> <span class="n">create</span> <span class="s2">"MESSAGES_NAMESPACE"</span>
-<span class="n">wrangler</span> <span class="n">kv</span><span class="p">:</span><span class="n">namespace</span> <span class="n">create</span> <span class="s2">"KEYS_NAMESPACE"</span>
-<span class="n">wrangler</span> <span class="n">kv</span><span class="p">:</span><span class="n">namespace</span> <span class="n">create</span> <span class="s2">"LEDGER_NAMESPACE"</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wrangler</span> <span class="n">kv</span><span class="p">:</span><span class="n">namespace</span> <span class="n">create</span> <span class="s2">&quot;MESSAGES_NAMESPACE&quot;</span>
+<span class="n">wrangler</span> <span class="n">kv</span><span class="p">:</span><span class="n">namespace</span> <span class="n">create</span> <span class="s2">&quot;KEYS_NAMESPACE&quot;</span>
+<span class="n">wrangler</span> <span class="n">kv</span><span class="p">:</span><span class="n">namespace</span> <span class="n">create</span> <span class="s2">&quot;LEDGER_NAMESPACE&quot;</span>
 </pre></div>
 </div>
 <p>For each of them, you need to copy-paste the corresponding ‘id’ to
@@ -324,21 +338,21 @@ few ways to do that, for example open a browser console and enter the
 following Javascript (<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/generateKey#rsa_key_pair_generation">https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/generateKey#rsa_key_pair_generation</a>):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">let</span> <span class="n">keyPair</span> <span class="o">=</span> <span class="k">await</span> <span class="n">window</span><span class="o">.</span><span class="n">crypto</span><span class="o">.</span><span class="n">subtle</span><span class="o">.</span><span class="n">generateKey</span><span class="p">(</span>
   <span class="p">{</span>
-    <span class="n">name</span><span class="p">:</span> <span class="s2">"RSA-OAEP"</span><span class="p">,</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;RSA-OAEP&quot;</span><span class="p">,</span>
     <span class="n">modulusLength</span><span class="p">:</span> <span class="mi">4096</span><span class="p">,</span>
     <span class="n">publicExponent</span><span class="p">:</span> <span class="n">new</span> <span class="n">Uint8Array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span>
-    <span class="nb">hash</span><span class="p">:</span> <span class="s2">"SHA-256"</span>
+    <span class="nb">hash</span><span class="p">:</span> <span class="s2">&quot;SHA-256&quot;</span>
   <span class="p">},</span>
   <span class="n">true</span><span class="p">,</span>
-  <span class="p">[</span><span class="s2">"encrypt"</span><span class="p">,</span> <span class="s2">"decrypt"</span><span class="p">]</span>
+  <span class="p">[</span><span class="s2">&quot;encrypt&quot;</span><span class="p">,</span> <span class="s2">&quot;decrypt&quot;</span><span class="p">]</span>
 <span class="p">);</span>
-<span class="n">let</span> <span class="n">my_private_key</span> <span class="o">=</span> <span class="k">await</span> <span class="n">window</span><span class="o">.</span><span class="n">crypto</span><span class="o">.</span><span class="n">subtle</span><span class="o">.</span><span class="n">exportKey</span><span class="p">(</span><span class="s2">"jwk"</span><span class="p">,</span> <span class="n">keyPair</span><span class="o">.</span><span class="n">privateKey</span><span class="p">);</span>
-<span class="n">let</span> <span class="n">my_public_key</span> <span class="o">=</span> <span class="k">await</span> <span class="n">window</span><span class="o">.</span><span class="n">crypto</span><span class="o">.</span><span class="n">subtle</span><span class="o">.</span><span class="n">exportKey</span><span class="p">(</span><span class="s2">"jwk"</span><span class="p">,</span> <span class="n">keyPair</span><span class="o">.</span><span class="n">publicKey</span><span class="p">);</span>
+<span class="n">let</span> <span class="n">my_private_key</span> <span class="o">=</span> <span class="k">await</span> <span class="n">window</span><span class="o">.</span><span class="n">crypto</span><span class="o">.</span><span class="n">subtle</span><span class="o">.</span><span class="n">exportKey</span><span class="p">(</span><span class="s2">&quot;jwk&quot;</span><span class="p">,</span> <span class="n">keyPair</span><span class="o">.</span><span class="n">privateKey</span><span class="p">);</span>
+<span class="n">let</span> <span class="n">my_public_key</span> <span class="o">=</span> <span class="k">await</span> <span class="n">window</span><span class="o">.</span><span class="n">crypto</span><span class="o">.</span><span class="n">subtle</span><span class="o">.</span><span class="n">exportKey</span><span class="p">(</span><span class="s2">&quot;jwk&quot;</span><span class="p">,</span> <span class="n">keyPair</span><span class="o">.</span><span class="n">publicKey</span><span class="p">);</span>
 <span class="n">JSON</span><span class="o">.</span><span class="n">stringify</span><span class="p">(</span><span class="n">my_public_key</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>And you should get something like:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">'{"alg":"RSA-OAEP-256","e":"AQAB","ext":true,"key_ops":["encrypt"],"kty":"RSA","n":"mOmu ....</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;{&quot;alg&quot;:&quot;RSA-OAEP-256&quot;,&quot;e&quot;:&quot;AQAB&quot;,&quot;ext&quot;:true,&quot;key_ops&quot;:[&quot;encrypt&quot;],&quot;kty&quot;:&quot;RSA&quot;,&quot;n&quot;:&quot;mOmu ....</span>
 </pre></div>
 </div>
 <p>(Don’t forget to store the full / private key somewhere secure: <code class="docutils literal notranslate"><span class="pre">JSON.stringify(my_private_key)</span></code>)</p>
@@ -353,9 +367,9 @@ following Javascript (<a class="reference external" href="https://developer.mozi
 <p>And point a client to it!</p>
 <p>(*) We are not affiliated with Cloudflare, we’re just fans.</p>
 <p>(**) At time of writing, the link was:
-<a class="reference external" href="https://dash.cloudflare.com/<id>/workers/overview?enable-durable-objects">https://dash.cloudflare.com/<id>/workers/overview?enable-durable-objects</a></p> where id is your account
+<a class="reference external" href="https://dash.cloudflare.com/id/workers/overview?enable-durable-objects">https://dash.cloudflare.com/id/workers/overview?enable-durable-objects</a></p>
 <section id="directory">
-<h3>Directory<a class="headerlink" href="#directory" title="Permalink to this headline">#</a></h3>
+<h3>Directory<a class="headerlink" href="#directory" title="Permalink to this heading">#</a></h3>
 <p>Following files should be in the git:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>.
 ├── LICENSE.md
@@ -370,15 +384,15 @@ following Javascript (<a class="reference external" href="https://developer.mozi
 </div>
 </section>
 <section id="storage-server">
-<span id="id2"></span><h3>Storage Server<a class="headerlink" href="#storage-server" title="Permalink to this headline">#</a></h3>
+<span id="id2"></span><h3>Storage Server<a class="headerlink" href="#storage-server" title="Permalink to this heading">#</a></h3>
 <p>Source: <a class="reference external" href="https://github.com/snackabra/snackabra-storageserver">https://github.com/snackabra/snackabra-storageserver</a></p>
 </section>
 <section id="web-client">
-<span id="id3"></span><h3>Web Client<a class="headerlink" href="#web-client" title="Permalink to this headline">#</a></h3>
+<span id="id3"></span><h3>Web Client<a class="headerlink" href="#web-client" title="Permalink to this heading">#</a></h3>
 <p>Source: <a class="reference external" href="https://github.com/snackabra/snackabra-webclient">https://github.com/snackabra/snackabra-webclient</a></p>
 </section>
 <section id="ios-client">
-<span id="id4"></span><h3>iOS Client<a class="headerlink" href="#ios-client" title="Permalink to this headline">#</a></h3>
+<span id="id4"></span><h3>iOS Client<a class="headerlink" href="#ios-client" title="Permalink to this heading">#</a></h3>
 <p>Source: <a class="reference external" href="https://github.com/snackabra/snackabra-ios">https://github.com/snackabra/snackabra-ios</a></p>
 </section>
 </section>
@@ -396,10 +410,10 @@ following Javascript (<a class="reference external" href="https://developer.mozi
                 </div>
                 <div class="title">Contact and Feedback</div>
               </div>
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
           <a class="prev-page" href="formal.html">
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
@@ -413,7 +427,7 @@ following Javascript (<a class="reference external" href="https://developer.mozi
         <div class="bottom-of-page">
           <div class="left-details">
             <div class="copyright">
-                Copyright &#169; 2019-2022, Magnusson Institute
+                Copyright &#169; 2019-2023, Magnusson Institute
             </div>
             Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
             
@@ -421,9 +435,7 @@ following Javascript (<a class="reference external" href="https://developer.mozi
             
           </div>
           <div class="right-details">
-            <div class="icons">
-              
-            </div>
+            
           </div>
         </div>
         
@@ -435,7 +447,7 @@ following Javascript (<a class="reference external" href="https://developer.mozi
       <div class="toc-sticky toc-scroll">
         <div class="toc-title-container">
           <span class="toc-title">
-            Contents
+            On this page
           </span>
         </div>
         <div class="toc-tree-container">
@@ -464,7 +476,9 @@ following Javascript (<a class="reference external" href="https://developer.mozi
 </div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/scripts/furo.js"></script>
     </body>
 </html>

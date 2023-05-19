@@ -3,12 +3,12 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Python Library" href="pylib.html" /><link rel="prev" title="LICENSE" href="license.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="JSLib Reference Manual" href="modules.html" /><link rel="prev" title="LICENSE" href="license.html" />
 
-    <meta name="generator" content="sphinx-5.1.1, furo 2022.09.29"/>
-        <title>Javascript Library - snackabra 0.5.0 alpha documentation</title>
+    <!-- Generated with Sphinx 5.3.0 and Furo 2023.03.27 -->
+        <title>JSLib User Manual - snackabra 0.6.0 beta documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
@@ -125,7 +125,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">snackabra 0.5.0 alpha documentation</div></a>
+      <a href="index.html"><div class="brand">snackabra 0.6.0 beta documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -148,10 +148,10 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
   
-  <span class="sidebar-brand-text">snackabra 0.5.0 alpha documentation</span>
+  <span class="sidebar-brand-text">snackabra 0.6.0 beta documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
-  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
   <input type="hidden" name="check_keywords" value="yes">
   <input type="hidden" name="area" value="default">
 </form>
@@ -168,11 +168,15 @@
 <li class="toctree-l1"><a class="reference internal" href="future.html">Future Work</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References / Further Reading</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">LICENSE</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Javascript Library</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">JSLib User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">JSLib Reference Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="server.html">Snackabra Server</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pylib.html">Python Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="appendix-a-crypto.html">Appendix A: Cryptography</a></li>
 <li class="toctree-l1"><a class="reference internal" href="user-guide.html">Appendix B: Privacy.App Chat Room User Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="diag-sample.html">(ignore)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="motivation.html">Motivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updated-glossary.html">Updated Glossary</a></li>
 </ul>
 
 </div>
@@ -207,16 +211,18 @@
           </label>
         </div>
         <article role="main">
-          <section id="javascript-library">
-<h1>Javascript Library<a class="headerlink" href="#javascript-library" title="Permalink to this heading">#</a></h1>
-<p><cite>The core of SB is implemented in snackabra.ts, targeting ES2022.
+          <section id="jslib-user-manual">
+<h1>JSLib User Manual<a class="headerlink" href="#jslib-user-manual" title="Permalink to this heading">#</a></h1>
+<p><em>The core of SB is implemented in snackabra.ts, targeting ES2022.
 This section documents the JS (translated) version. Please note:
 any current published version is Alpha of upcoming 0.5.0 and should
 not be used for sensitive or production use (or if you do use it as
 such: caveat emptor). We will signal production-ready use by versioning
-it as 1.0.x (published to npmjs).</cite></p>
+it as 1.0.x (published to npmjs).</em></p>
+<p><em>We are still trying to sort out how to get Sphinx, JSDoc, Typedoc,
+etc to all play nice together in a good way…</em></p>
 <p>All core capababilities of the SB design is intended to be encapsulated
-in this library. Design objectives include:</p>
+in this library. Design objectives include: <a class="footnote-reference brackets" href="#id6" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a></p>
 <ul class="simple">
 <li><p>No external dependencies (no other libraries)</p></li>
 <li><p>No dependencies on the DOM object</p></li>
@@ -236,433 +242,30 @@ logic is being refactored into this library. If you’re looking
 at this prior to release of 0.5.0 (link above), then the latest
 (in progress) version underlying this documentation is here:</p>
 <p><a class="reference external" href="https://github.com/384co/snackabra-docs/blob/main/snackabra-jslib/snackabra.js">https://github.com/384co/snackabra-docs/blob/main/snackabra-jslib/snackabra.js</a></p>
+<p>Complete reference is here:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="modules.html">JSLib</a></p></li>
+</ul>
 </section>
 <section id="sb384">
 <h2>SB384<a class="headerlink" href="#sb384" title="Permalink to this heading">#</a></h2>
 <p>Most classes in SB are rooted in SB384. It encapsulates the core of an
-“identifier” in SB, namely a (384-bit) global <a class="reference internal" href="glossary.html#term-channel-name"><span class="xref std std-term">Channel Name</span></a>, derived
-from the <a class="reference internal" href="glossary.html#term-Owner-Key"><span class="xref std std-term">Owner Key</span></a> of that object - typically either a <a class="reference internal" href="glossary.html#term-channel"><span class="xref std std-term">channel</span></a>
-or a <a class="reference internal" href="glossary.html#term-object"><span class="xref std std-term">object</span></a>. Most of the properties (see getters below) are various
+“identifier” in SB, namely a (384-bit) global <a class="reference internal" href="updated-glossary.html#term-channel-name"><span class="xref std std-term">Channel Name</span></a>, derived
+from the <a class="reference internal" href="updated-glossary.html#term-Owner-Key"><span class="xref std std-term">Owner Key</span></a> of that object - typically either a <a class="reference internal" href="updated-glossary.html#term-channel"><span class="xref std std-term">channel</span></a>
+or a <a class="reference internal" href="updated-glossary.html#term-object"><span class="xref std std-term">object</span></a>. Most of the properties (see getters below) are various
 perspectives and formats on this identity.</p>
-<dl class="js class">
-<dt class="sig sig-object js" id="SB384">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">SB384</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SB384" title="Permalink to this definition">#</a></dt>
-<dd><p>Basic (core) capability object in SB.</p>
-<p>Note that all the getters below will throw an exception if the
-corresponding information is not ready.</p>
-<p>Like most SB classes, SB384 follows the “ready template” design
-principle: the object is immediately available upon creation,
-but isn’t “ready” until it says it’s ready. See <a class="reference internal" href="#channel-class">Channel Class</a>
-example below.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Arguments<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>key</strong> – a jwk with which to create identity; if not provided, it will ‘mint’ (generate) them randomly, in other words it will default to creating a new identity (“384”).</p></li>
+<ul class="simple">
+<li><p><a class="reference external" href="classes/SB384.html">SB384</a></p></li>
 </ul>
-</dd>
-</dl>
-<dl class="js attribute">
-<dt class="sig sig-object js" id="SB384._id">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">SB384</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">_id</span></span></span><a class="headerlink" href="#SB384._id" title="Permalink to this definition">#</a></dt>
-<dd><p><strong>type:</strong> JsonWebKey</p>
-</dd></dl>
-
-<dl class="js attribute">
-<dt class="sig sig-object js" id="SB384.exportable_privateKey">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">SB384</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">exportable_privateKey</span></span></span><a class="headerlink" href="#SB384.exportable_privateKey" title="Permalink to this definition">#</a></dt>
-<dd><p><strong>type:</strong> JsonWebKey</p>
-</dd></dl>
-
-<dl class="js attribute">
-<dt class="sig sig-object js" id="SB384.exportable_pubKey">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">SB384</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">exportable_pubKey</span></span></span><a class="headerlink" href="#SB384.exportable_pubKey" title="Permalink to this definition">#</a></dt>
-<dd><p><strong>type:</strong> JsonWebKey</p>
-</dd></dl>
-
-<dl class="js attribute">
-<dt class="sig sig-object js" id="SB384.keyPair">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">SB384</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">keyPair</span></span></span><a class="headerlink" href="#SB384.keyPair" title="Permalink to this definition">#</a></dt>
-<dd><p><strong>type:</strong> CryptoKeyPair</p>
-</dd></dl>
-
-<dl class="js attribute">
-<dt class="sig sig-object js" id="SB384.ownerChannelId">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">SB384</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">ownerChannelId</span></span></span><a class="headerlink" href="#SB384.ownerChannelId" title="Permalink to this definition">#</a></dt>
-<dd><p><strong>type:</strong> string</p>
-</dd></dl>
-
-<dl class="js attribute">
-<dt class="sig sig-object js" id="SB384.privateKey">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">SB384</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">privateKey</span></span></span><a class="headerlink" href="#SB384.privateKey" title="Permalink to this definition">#</a></dt>
-<dd><p><strong>type:</strong> CryptoKey</p>
-</dd></dl>
-
-<dl class="js attribute">
-<dt class="sig sig-object js" id="SB384.readyFlag">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">SB384</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">readyFlag</span></span></span><a class="headerlink" href="#SB384.readyFlag" title="Permalink to this definition">#</a></dt>
-<dd><p><strong>type:</strong> boolean</p>
-</dd></dl>
-
-</dd></dl>
-
 </section>
 <section id="snackabra-server-class">
 <h2>Snackabra (Server) Class<a class="headerlink" href="#snackabra-server-class" title="Permalink to this heading">#</a></h2>
 <p id="snackabra">The SB class is the orchestrator, in particular it tracks one or more channels
 connecting to one or more SB servers.</p>
-<dl class="js class">
-<dt class="sig sig-object js" id="Snackabra">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">Snackabra</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Snackabra" title="Permalink to this definition">#</a></dt>
-<dd><p>Constructor expects an object with the names of the matching servers, for example
-below shows the miniflare local dev config. Note that ‘new Snackabra()’ is
-guaranteed synchronous, so can be ‘used’ right away. You can optionally call
-without a parameter in which case SB will ping known servers.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="n">channel_server</span><span class="p">:</span> <span class="s1">&#39;http://127.0.0.1:4001&#39;</span><span class="p">,</span>
-  <span class="n">channel_ws</span><span class="p">:</span> <span class="s1">&#39;ws://127.0.0.1:4001&#39;</span><span class="p">,</span>
-  <span class="n">storage_server</span><span class="p">:</span> <span class="s1">&#39;http://127.0.0.1:4000&#39;</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">Arguments<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>args</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">SBServer()</span></code></span>) – server names (optional)</p></li>
+<ul class="simple">
+<li><p><a class="reference external" href="classes/Snackabra.html">Snackabra</a></p></li>
+<li><p><a class="reference external" href="interfaces/SBServer.html">SBServer</a></p></li>
 </ul>
-</dd>
-</dl>
-<dl class="js function">
-<dt class="sig sig-object js" id="Snackabra.connect">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">Snackabra</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">connect</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">onMessage</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channelId</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Snackabra.connect" title="Permalink to this definition">#</a></dt>
-<dd><p>Connects to <a class="reference internal" href="glossary.html#term-channel-name"><span class="xref std std-term">Channel Name</span></a> on this SB config.
-Returns a (promise to the) channel (socket) object.
-It will throw an <code class="docutils literal notranslate"><span class="pre">AggregateError</span></code> if it fails
-to find the room anywhere.</p>
-</dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="Snackabra.create">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">Snackabra</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">create</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sbServer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">serverSecret</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keys</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Snackabra.create" title="Permalink to this definition">#</a></dt>
-<dd><p>Creates a new channel. Currently uses trivial authentication.
-Returns the <a class="reference internal" href="glossary.html#term-channel-name"><span class="xref std std-term">Channel Name</span></a>. Note that this does not
-create a channel object, e.g. does not make a connection.</p>
-</dd></dl>
-
-</dd></dl>
-
-</section>
-<section id="channels">
-<h2>Channels<a class="headerlink" href="#channels" title="Permalink to this heading">#</a></h2>
-<p>Channels (aka “Rooms”) are the core communication primitive in SB.</p>
-<section id="sb-message-class">
-<h3>SB Message Class<a class="headerlink" href="#sb-message-class" title="Permalink to this heading">#</a></h3>
-<span class="target" id="sbmessage"></span><dl class="js class">
-<dt class="sig sig-object js" id="SBMessage">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">SBMessage</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SBMessage" title="Permalink to this definition">#</a></dt>
-<dd><dl class="js function">
-<dt class="sig sig-object js" id="SBMessage.send">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">SBMessage</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">send</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SBMessage.send" title="Permalink to this definition">#</a></dt>
-<dd><p>SBMessage.send()</p>
-<dl class="field-list simple">
-<dt class="field-odd">Arguments<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>message</strong> (<span><a class="reference internal" href="#SBMessage" title="SBMessage"><code class="xref js js-func docutils literal notranslate"><span class="pre">SBMessage()</span></code></a></span>) – the message object to send</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-</section>
-<section id="channel-class">
-<h3>Channel Class<a class="headerlink" href="#channel-class" title="Permalink to this heading">#</a></h3>
-<dl class="js class">
-<dt class="sig sig-object js" id="Channel">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">Channel</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sbServer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key?</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channelId</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Channel" title="Permalink to this definition">#</a></dt>
-<dd><p>SB384</p>
-<p>Join a channel, returns channel object.</p>
-<p>Currently, you must have an identity when connecting, because every single
-message is signed by sender. TODO is to look at how to provide a ‘listening’
-mode on channels.</p>
-<p>Most classes in SB follow the “ready” template: objects can be used
-right away, but they decide for themselves if they’re ready or not.</p>
-<p>Below is a (complete) example for reference:</p>
-<blockquote>
-<div><pre class="literal-block">//
-// Here we create a new channel; for this we need to be specific
-// about what servers to use. This example references local dev
-// (miniflare) servers
-//
-const sb_config = {
-  channel_server: 'http://localhost:4001',
-  channel_ws: 'ws://localhost:4001',
-  storage_server: 'http://localhost:4000'
-}
-//
-// Next we create the orchestrator object, for above endpoints
-//
-const SB = new <a class="reference internal" href="#snackabra">Snackabra</a> (sb_config)
-//
-// On these servers, we create a new channel (trivial auth)
-//
-SB.create(sb_config, '&lt;SECRET&gt;').then((handle) =&gt; {
-  //
-  // This will return a 'handle', a type that contains all
-  // the information you need to keep reference a channel.
-  //
-  SB.connect(
-    //
-    // Above we've created a channel, but not connected.
-    // Besides some information in the handle, to connect we
-    // must provide a message handler for all (new) messages
-    //
-    (m: ChannelMessage) =&gt; { console.log(`got message: ${m}`) },
-    handle.key,
-    handle.channelId
-  ).then((c) =&gt; c.ready).then((c) =&gt; {
-    //
-    // We are now connected, 'c' is a <a class="reference internal" href="#channel-socket-class">Channel Socket Class</a>
-    // and can (optionally) pick a name (alias) for ourselves
-    //
-    c.userName = &quot;TestBot&quot;
-    //
-    // We can now send messages
-    //
-    (new <a class="reference internal" href="#sbmessage">SBMessage</a> (c, &quot;Hello from TestBot!&quot;)).send().then((c) =&gt; {
-      console.log(`test message sent! (${c})`) })
-  })
-})</pre>
-</div></blockquote>
-<dl class="field-list simple">
-<dt class="field-odd">Arguments<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>sbServer</strong> (<span><a class="reference internal" href="#Snackabra" title="Snackabra"><code class="xref js js-func docutils literal notranslate"><span class="pre">Snackabra()</span></code></a></span>) – server to join</p></li>
-<li><p><strong>key?</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">JsonWebKey()</span></code></span>) – key to use to join (optional)</p></li>
-<li><p><strong>channelId</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">string()</span></code></span>) – (the <a class="reference internal" href="glossary.html#term-channel-name"><span class="xref std std-term">Channel Name</span></a>) to find on that server (optional)</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="js attribute">
-<dt class="sig sig-object js" id="Channel.api">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">Channel</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">api</span></span></span><a class="headerlink" href="#Channel.api" title="Permalink to this definition">#</a></dt>
-<dd><p><strong>type:</strong> ChannelApi</p>
-</dd></dl>
-
-<dl class="js attribute">
-<dt class="sig sig-object js" id="Channel.channelId">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">Channel</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">channelId</span></span></span><a class="headerlink" href="#Channel.channelId" title="Permalink to this definition">#</a></dt>
-<dd><p><strong>type:</strong> string</p>
-</dd></dl>
-
-<dl class="js attribute">
-<dt class="sig sig-object js" id="Channel.readyFlag">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">Channel</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">readyFlag</span></span></span><a class="headerlink" href="#Channel.readyFlag" title="Permalink to this definition">#</a></dt>
-<dd><p><strong>type:</strong> boolean</p>
-</dd></dl>
-
-<dl class="js attribute">
-<dt class="sig sig-object js" id="Channel.sbServer">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">Channel</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">sbServer</span></span></span><a class="headerlink" href="#Channel.sbServer" title="Permalink to this definition">#</a></dt>
-<dd><p><strong>type:</strong> SBServer</p>
-</dd></dl>
-
-</dd></dl>
-
-</section>
-<section id="channel-socket-class">
-<h3>Channel Socket Class<a class="headerlink" href="#channel-socket-class" title="Permalink to this heading">#</a></h3>
-<p>Channel “sockets” are the synchronous communication interface to channels.</p>
-<dl class="js class">
-<dt class="sig sig-object js" id="ChannelSocket">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">ChannelSocket</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sbServer:</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ChannelSocket" title="Permalink to this definition">#</a></dt>
-<dd><p>ChannelSocket</p>
-<blockquote>
-<div><p>Class managing connections</p>
-</div></blockquote>
-<p>ChannelSocket</p>
-<dl class="field-list simple">
-<dt class="field-odd">Arguments<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>sbServer:</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">SBServer()</span></code></span>) – </p></li>
-</ul>
-</dd>
-</dl>
-<dl class="js attribute">
-<dt class="sig sig-object js" id="ChannelSocket.ChannelSocket">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">ChannelSocket</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">ChannelSocket</span></span></span><a class="headerlink" href="#ChannelSocket.ChannelSocket" title="Permalink to this definition">#</a></dt>
-<dd><p>ChannelSocket</p>
-</dd></dl>
-
-<dl class="js attribute">
-<dt class="sig sig-object js" id="ChannelSocket.exportable_owner_pubKey">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">ChannelSocket</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">exportable_owner_pubKey</span></span></span><a class="headerlink" href="#ChannelSocket.exportable_owner_pubKey" title="Permalink to this definition">#</a></dt>
-<dd><p><strong>type:</strong> JsonWebKey</p>
-</dd></dl>
-
-<dl class="js attribute">
-<dt class="sig sig-object js" id="ChannelSocket.keys">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">ChannelSocket</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">keys</span></span></span><a class="headerlink" href="#ChannelSocket.keys" title="Permalink to this definition">#</a></dt>
-<dd><p>ChannelSocket.keys</p>
-<p>Will throw an exception if keys are unknown or not yet loaded</p>
-</dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="ChannelSocket.send">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">ChannelSocket</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">send</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ChannelSocket.send" title="Permalink to this definition">#</a></dt>
-<dd><p>ChannelSocket.send()</p>
-<p>Returns a promise that resolves to “success” when sent,
-or an error message if it fails.</p>
-</dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="ChannelSocket.sendSbObject">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">ChannelSocket</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">sendSbObject</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ChannelSocket.sendSbObject" title="Permalink to this definition">#</a></dt>
-<dd><p>ChannelSocket.sendSbObject()</p>
-<p>Send SB object (file) on channel socket</p>
-</dd></dl>
-
-</dd></dl>
-
-</section>
-<section id="channel-api-class">
-<h3>Channel API Class<a class="headerlink" href="#channel-api-class" title="Permalink to this heading">#</a></h3>
-<p>The channel “API” class is the asynchronous interface to channels.</p>
-<dl class="js class">
-<dt class="sig sig-object js" id="ChannelApi">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">ChannelApi</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ChannelApi" title="Permalink to this definition">#</a></dt>
-<dd><dl class="js function">
-<dt class="sig sig-object js" id="ChannelApi.downloadData">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">ChannelApi</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">downloadData</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ChannelApi.downloadData" title="Permalink to this definition">#</a></dt>
-<dd><p>downloadData</p>
-</dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="ChannelApi.getAdminData">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">ChannelApi</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">getAdminData</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ChannelApi.getAdminData" title="Permalink to this definition">#</a></dt>
-<dd><p>getAdminData</p>
-</dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="ChannelApi.getCapacity">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">ChannelApi</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">getCapacity</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ChannelApi.getCapacity" title="Permalink to this definition">#</a></dt>
-<dd><p>getCapacity</p>
-</dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="ChannelApi.getJoinRequests">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">ChannelApi</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">getJoinRequests</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ChannelApi.getJoinRequests" title="Permalink to this definition">#</a></dt>
-<dd><p>getJoinRequests</p>
-</dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="ChannelApi.getLastMessageTimes">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">ChannelApi</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">getLastMessageTimes</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ChannelApi.getLastMessageTimes" title="Permalink to this definition">#</a></dt>
-<dd><p>getLastMessageTimes</p>
-</dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="ChannelApi.getOldMessages">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">ChannelApi</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">getOldMessages</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">currentMessagesLength</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ChannelApi.getOldMessages" title="Permalink to this definition">#</a></dt>
-<dd><p>getOldMessages</p>
-</dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="ChannelApi.isLocked">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">ChannelApi</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">isLocked</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ChannelApi.isLocked" title="Permalink to this definition">#</a></dt>
-<dd><p>isLocked</p>
-</dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="ChannelApi.setMOTD">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">ChannelApi</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">setMOTD</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">motd</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ChannelApi.setMOTD" title="Permalink to this definition">#</a></dt>
-<dd><p>Set message of the day</p>
-</dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="ChannelApi.updateCapacity">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">ChannelApi</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">updateCapacity</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">capacity</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ChannelApi.updateCapacity" title="Permalink to this definition">#</a></dt>
-<dd><p>updateCapacity</p>
-</dd></dl>
-
-</dd></dl>
-
-</section>
-</section>
-<section id="storage">
-<h2>Storage<a class="headerlink" href="#storage" title="Permalink to this heading">#</a></h2>
-<section id="sb-storage-class">
-<h3>SB Storage Class<a class="headerlink" href="#sb-storage-class" title="Permalink to this heading">#</a></h3>
-<dl class="js class">
-<dt class="sig sig-object js" id="StorageApi">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">StorageApi</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">server</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channelServer</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#StorageApi" title="Permalink to this definition">#</a></dt>
-<dd><dl class="js function">
-<dt class="sig sig-object js" id="StorageApi.fetchData">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">StorageApi</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">fetchData</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">h</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#StorageApi.fetchData" title="Permalink to this definition">#</a></dt>
-<dd><p>StorageApi().fetchData()</p>
-<p>This assumes you have a complete SBObjectHandle. Note that
-if you only have the ‘id’ and ‘verification fields, you
-can reconstruct / request the rest. The current interface
-will return both nonce, salt, and encrypted data.</p>
-</dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="StorageApi.retrieveData">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">StorageApi</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">retrieveData</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msgId</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">messages</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">controlMessages</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#StorageApi.retrieveData" title="Permalink to this definition">#</a></dt>
-<dd><p>StorageApi().retrieveData()
-retrieves an object from storage</p>
-</dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="StorageApi.retrieveDataFromMessage">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">StorageApi</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">retrieveDataFromMessage</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">controlMessages</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#StorageApi.retrieveDataFromMessage" title="Permalink to this definition">#</a></dt>
-<dd><p>StorageApi().retrieveDataFromMessage()</p>
-</dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="StorageApi.saveFile">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">StorageApi</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">saveFile</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sbFile</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#StorageApi.saveFile" title="Permalink to this definition">#</a></dt>
-<dd><p>StorageApi.saveFile()</p>
-</dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="StorageApi.storeData">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">StorageApi</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">storeData</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fileId</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iv</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">salt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">storageToken</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#StorageApi.storeData" title="Permalink to this definition">#</a></dt>
-<dd><p>StorageApi().storeData()</p>
-</dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="StorageApi.storeImage">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">StorageApi</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">storeImage</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keyData</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#StorageApi.storeImage" title="Permalink to this definition">#</a></dt>
-<dd><p>StorageApi().storeImage()</p>
-</dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="StorageApi.storeObject">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">StorageApi</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">storeObject</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">buf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roomId</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#StorageApi.storeObject" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="StorageApi.storeRequest">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">StorageApi</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">storeRequest</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileId</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#StorageApi.storeRequest" title="Permalink to this definition">#</a></dt>
-<dd><p>StorageApi().storeRequest</p>
-</dd></dl>
-
-</dd></dl>
-
-</section>
-<section id="sb-file-class">
-<h3>SB File Class<a class="headerlink" href="#sb-file-class" title="Permalink to this heading">#</a></h3>
-<dl class="js class">
-<dt class="sig sig-object js" id="SBFile">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">SBFile</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#SBFile" title="Permalink to this definition">#</a></dt>
-<dd><dl class="js attribute">
-<dt class="sig sig-object js" id="SBFile.SBFile">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">SBFile</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">SBFile</span></span></span><a class="headerlink" href="#SBFile.SBFile" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
 <p>Sample usage:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span> const SB = new Snackabra(sb_config)
  SB.create(
@@ -679,323 +282,206 @@ retrieves an object from storage</p>
 }
 </pre></div>
 </div>
+<section id="sb-message-class">
+<h3>SB Message Class<a class="headerlink" href="#sb-message-class" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="classes/SBMessage.html">SBMessage</a></p></li>
+</ul>
+</section>
+<section id="channels">
+<h3>Channels<a class="headerlink" href="#channels" title="Permalink to this heading">#</a></h3>
+<p>Channels (aka “Rooms”) are the core communication primitive in SB.
+Channel “sockets” are the synchronous communication interface to channels.
+The channel “API” class is the asynchronous interface to channels.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="classes/Channel.html">Channel</a></p></li>
+<li><p><a class="reference external" href="interfaces/SBChannelHandle.html">SBChannelHandle</a></p></li>
+<li><p><a class="reference external" href="classes/ChannelSocket.html">ChannelSocket</a></p></li>
+<li><p><a class="reference external" href="interfaces/ChannelKeys.html">ChannelKeys</a></p></li>
+<li><p><a class="reference external" href="interfaces/ChannelMessage.html">ChannelMessage</a></p></li>
+</ul>
+</section>
+<section id="storage">
+<h3>Storage<a class="headerlink" href="#storage" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="interfaces/SBObjectHandle.html">SBObjectHandle</a></p></li>
+<li><p><a class="reference external" href="classes/SBObjectHandleClass.html">SBObjectHandleClass</a></p></li>
+<li><p><a class="reference external" href="interfaces/SBObjectMetadata.html">SBObjectMetadata</a></p></li>
+<li><p><a class="reference external" href="classes/SBFile.html">SBFile</a></p></li>
+<li><p><a class="reference external" href="interfaces/SBPayload.html">SBPayload</a></p></li>
+</ul>
 </section>
 </section>
 <section id="utilities-and-helpers">
 <h2>Utilities and Helpers<a class="headerlink" href="#utilities-and-helpers" title="Permalink to this heading">#</a></h2>
 <p>These are a set common operations, that typically are supported by the
 web api, but where we want to ensure specific behavior.</p>
-<section id="indexedkv-class">
-<h3>IndexedKV Class<a class="headerlink" href="#indexedkv-class" title="Permalink to this heading">#</a></h3>
-<dl class="js class">
-<dt class="sig sig-object js" id="IndexedKV">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">IndexedKV</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#IndexedKV" title="Permalink to this definition">#</a></dt>
-<dd><dl class="js attribute">
-<dt class="sig sig-object js" id="IndexedKV.IndexedKV">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">IndexedKV</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">IndexedKV</span></span></span><a class="headerlink" href="#IndexedKV.IndexedKV" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-</section>
+<ul class="simple">
+<li><p><a class="reference external" href="classes/MessageBus.html">MessageBus</a></p></li>
+</ul>
+<ul class="simple">
+<li><p>[arrayBuffer32ToBase62](modules.md#arraybuffer32tobase62)</p></li>
+<li><p>[arrayBufferToBase64](modules.md#arraybuffertobase64)</p></li>
+<li><p>[assemblePayload](modules.md#assemblepayload)</p></li>
+<li><p>[base62ToArrayBuffer32](modules.md#base62toarraybuffer32)</p></li>
+<li><p>[base62ToBase64](modules.md#base62tobase64)</p></li>
+<li><p>[base64ToArrayBuffer](modules.md#base64toarraybuffer)</p></li>
+<li><p>[base64ToBase62](modules.md#base64tobase62)</p></li>
+<li><p>[decodeB64Url](modules.md#decodeb64url)</p></li>
+<li><p>[encodeB64Url](modules.md#encodeb64url)</p></li>
+<li><p>[encryptedContentsMakeBinary](modules.md#encryptedcontentsmakebinary)</p></li>
+<li><p>[extractPayload](modules.md#extractpayload)</p></li>
+<li><p>[getRandomValues](modules.md#getrandomvalues)</p></li>
+<li><p>[jsonParseWrapper](modules.md#jsonparsewrapper)</p></li>
+<li><p>[partition](modules.md#partition)</p></li>
+<li><p>[simpleRand256](modules.md#simplerand256)</p></li>
+<li><p>[simpleRandomString](modules.md#simplerandomstring)</p></li>
+</ul>
 <section id="crypto-class">
 <h3>Crypto Class<a class="headerlink" href="#crypto-class" title="Permalink to this heading">#</a></h3>
-<dl class="js class">
-<dt class="sig sig-object js" id="SBCrypto">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="n"><span class="pre">SBCrypto</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#SBCrypto" title="Permalink to this definition">#</a></dt>
-<dd><dl class="js function">
-<dt class="sig sig-object js" id="SBCrypto.compareKeys">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">SBCrypto</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">compareKeys</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SBCrypto.compareKeys" title="Permalink to this definition">#</a></dt>
-<dd><p>SBCrypto.compareKeys()</p>
-<p>Compare keys, true if the ‘same’, false if different.
-TODO: type it up.</p>
-</dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="SBCrypto.deriveKey">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">SBCrypto</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">deriveKey</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">privateKey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">publicKey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extractable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keyUsages</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SBCrypto.deriveKey" title="Permalink to this definition">#</a></dt>
-<dd><p>SBCrypto.deriveKey()</p>
-<p>Derive key.</p>
-</dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="SBCrypto.extractPubKey">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">SBCrypto</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">extractPubKey</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">privateKey</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SBCrypto.extractPubKey" title="Permalink to this definition">#</a></dt>
-<dd><p>Extracts (generates) public key from a private key.</p>
-</dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="SBCrypto.generateKeys">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">SBCrypto</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">generateKeys</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#SBCrypto.generateKeys" title="Permalink to this definition">#</a></dt>
-<dd><p>SBCrypto.generatekeys()</p>
-<p>Generates standard <code class="docutils literal notranslate"><span class="pre">ECDH</span></code> keys using <code class="docutils literal notranslate"><span class="pre">P-384</span></code>.</p>
-</dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="SBCrypto.importKey">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">SBCrypto</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">importKey</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">format</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extractable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keyUsages</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SBCrypto.importKey" title="Permalink to this definition">#</a></dt>
-<dd><p>SBCrypto.importKey()</p>
-<p>Import keys</p>
-</dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="SBCrypto.sign">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">SBCrypto</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">sign</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">secretKey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">contents</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SBCrypto.sign" title="Permalink to this definition">#</a></dt>
-<dd><p>SBCrypto.sign()</p>
-<p>Sign</p>
-</dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="SBCrypto.verify">
-<span class="sig-prename descclassname"><span class="n"><span class="pre">SBCrypto</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">verify</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">verifyKey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sign</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">contents</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SBCrypto.verify" title="Permalink to this definition">#</a></dt>
-<dd><p>SBCrypto.verify()</p>
-<p>Verify signature.</p>
-</dd></dl>
-
-</dd></dl>
-
-</section>
-<section id="format-related">
-<h3>Format Related<a class="headerlink" href="#format-related" title="Permalink to this heading">#</a></h3>
-<dl class="js function">
-<dt class="sig sig-object js" id="arrayBufferToBase64">
-<span class="sig-name descname"><span class="n"><span class="pre">arrayBufferToBase64</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ArrayBuffer</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#arrayBufferToBase64" title="Permalink to this definition">#</a></dt>
-<dd><p>Standardized ‘btoa()’-like function, e.g., takes a binary string
-(‘b’) and returns a Base64 encoded version (‘a’ used to be short
-for ‘ascii’).</p>
-<dl class="field-list simple">
-<dt class="field-odd">Arguments<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>ArrayBuffer</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">bufferSource()</span></code></span>) – buffer</p></li>
+<ul class="simple">
+<li><p><a class="reference external" href="classes/SBCrypto.html">SBCrypto</a></p></li>
+<li><p><a class="reference external" href="interfaces/EncryptedContents.html">EncryptedContents</a></p></li>
+<li><p><a class="reference external" href="interfaces/EncryptedContentsBin.html">EncryptedContentsBin</a></p></li>
 </ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>string</strong> – base64 string</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="base64ToArrayBuffer">
-<span class="sig-name descname"><span class="n"><span class="pre">base64ToArrayBuffer</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base64</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#base64ToArrayBuffer" title="Permalink to this definition">#</a></dt>
-<dd><p>Standardized ‘atob()’ function, e.g. takes the a Base64 encoded
-input and decodes it. Note: always returns Uint8Array.
-Accepts both regular Base64 and the URL-friendly variant,
-where <cite>+</cite> =&gt; <cite>-</cite>, <cite>/</cite> =&gt; <cite>_</cite>, and the padding character is omitted.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Arguments<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>base64</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">str()</span></code></span>) – string in either regular or URL-friendly representation.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>Uint8Array</strong> – returns decoded binary result</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="encodeB64Url">
-<span class="sig-name descname"><span class="n"><span class="pre">encodeB64Url</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#encodeB64Url" title="Permalink to this definition">#</a></dt>
-<dd><p>Encode into b64 URL</p>
-</dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="decodeB64Url">
-<span class="sig-name descname"><span class="n"><span class="pre">decodeB64Url</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#decodeB64Url" title="Permalink to this definition">#</a></dt>
-<dd><p>Decode b64 URL</p>
-</dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="str2ab">
-<span class="sig-name descname"><span class="n"><span class="pre">str2ab</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#str2ab" title="Permalink to this definition">#</a></dt>
-<dd><p>Standardized ‘str2ab()’ function, string to array buffer.
-This assumes on byte per character.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Arguments<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>string</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">string()</span></code></span>) – </p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>Uint8Array</strong> – buffer</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="ab2str">
-<span class="sig-name descname"><span class="n"><span class="pre">ab2str</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">buffer</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ab2str" title="Permalink to this definition">#</a></dt>
-<dd><p>Standardized ‘ab2str()’ function, array buffer to string.
-This assumes one byte per character.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Arguments<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>buffer</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">Uint8Array()</span></code></span>) – </p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>string</strong> – string</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="cleanBase32mi">
-<span class="sig-name descname"><span class="n"><span class="pre">cleanBase32mi</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cleanBase32mi" title="Permalink to this definition">#</a></dt>
-<dd><p>Disambiguates strings that are known to be ‘base32mi’ type</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;base32mi&#39;</span><span class="p">:</span> <span class="s1">&#39;0123456789abcdefyhEjkLmNHpFrRTUW&#39;</span>
-</pre></div>
-</div>
-<p>This is the base32mi disambiguation table</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">OoQD</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;0&#39;</span>
-<span class="p">[</span><span class="n">lIiJ</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;1&#39;</span>
-<span class="p">[</span><span class="n">Zz</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;2&#39;</span>
-<span class="p">[</span><span class="n">A</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;4&#39;</span>
-<span class="p">[</span><span class="n">Ss</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;5&#39;</span>
-<span class="p">[</span><span class="n">G</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;6&#39;</span>
-<span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;7&#39;</span>
-<span class="p">[</span><span class="n">B</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;8&#39;</span>
-<span class="p">[</span><span class="n">gq</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;9&#39;</span>
-<span class="p">[</span><span class="n">C</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;c&#39;</span>
-<span class="p">[</span><span class="n">Y</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;y&#39;</span>
-<span class="p">[</span><span class="n">KxX</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;k&#39;</span>
-<span class="p">[</span><span class="n">M</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;m&#39;</span>
-<span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;N&#39;</span>
-<span class="p">[</span><span class="n">P</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;p&#39;</span>
-<span class="p">[</span><span class="n">uvV</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;U&#39;</span>
-<span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="s1">&#39;W&#39;</span>
-</pre></div>
-</div>
-<p>Another way to think of it is that this, becomes this (‘.’ means no change):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0123456789</span><span class="n">abcdefghijklmnopqrstuvxyzABCDEFGHIJKLMNOPQRSTUVXYZ</span>
-<span class="o">...............</span><span class="mf">.9.1</span><span class="o">.</span><span class="mf">.1</span><span class="o">.</span><span class="n">N0</span><span class="mf">.9.57</span><span class="n">UUk</span><span class="mf">.248</span><span class="n">c0EF6</span><span class="mf">.11</span><span class="n">kLm</span><span class="mf">.0</span><span class="n">p0</span><span class="mf">.5</span><span class="o">..</span><span class="n">Uky2</span>
-</pre></div>
-</div>
-</dd></dl>
-
 </section>
 <section id="crypto-helpers">
 <h3>Crypto Helpers<a class="headerlink" href="#crypto-helpers" title="Permalink to this heading">#</a></h3>
-<dl class="js function">
-<dt class="sig sig-object js" id="importPublicKey">
-<span class="sig-name descname"><span class="n"><span class="pre">importPublicKey</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">RSA</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#importPublicKey" title="Permalink to this definition">#</a></dt>
-<dd><p>Import a PEM encoded RSA public key, to use for RSA-OAEP
-encryption.  Takes a string containing the PEM encoded key, and
-returns a Promise that will resolve to a CryptoKey representing
-the public key.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Arguments<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>RSA</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">pem()</span></code></span>) – public key, string, PEM format</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>cryptoKey</strong> – RSA-OAEP key</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="simpleRand256">
-<span class="sig-name descname"><span class="n"><span class="pre">simpleRand256</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simpleRand256" title="Permalink to this definition">#</a></dt>
-<dd><p>Returns random number</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>int</strong> – integer 0..255</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="simpleRandomString">
-<span class="sig-name descname"><span class="n"><span class="pre">simpleRandomString</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">number</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simpleRandomString" title="Permalink to this definition">#</a></dt>
-<dd><p>Returns a random string in requested encoding</p>
-<dl class="field-list simple">
-<dt class="field-odd">Arguments<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>number</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">n()</span></code></span>) – of characters</p></li>
-<li><p><strong>encoding,</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">code()</span></code></span>) – supported types: ‘base32mi’</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>string</strong> – random string base32mi: <code class="docutils literal notranslate"><span class="pre">0123456789abcdefyhEjkLmNHpFrRTUW</span></code></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="getRandomValues">
-<span class="sig-name descname"><span class="n"><span class="pre">getRandomValues</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">buffer</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#getRandomValues" title="Permalink to this definition">#</a></dt>
-<dd><p>Fills buffer with random data</p>
-</dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="packageEncryptDict">
-<span class="sig-name descname"><span class="n"><span class="pre">packageEncryptDict</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dictionary</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">public</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#packageEncryptDict" title="Permalink to this definition">#</a></dt>
-<dd><p>Takes an arbitrary dict object, a public key in PEM
-format, and a callback function: generates a random AES key,
-wraps that in (RSA) key, and when all done will call the
-callback function with the results.</p>
-<p>This function is for direct use in a web page, for example
-capturing a ‘form’ input set of data about a user, and
-sending towards a backend in such a way that the contents
-can only be decrypted and read off-line (air gapped).</p>
-<dl class="field-list simple">
-<dt class="field-odd">Arguments<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>dictionary</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">dict()</span></code></span>) – (payload)</p></li>
-<li><p><strong>public</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">publicKeyPEM()</span></code></span>) – key (PEM format)</p></li>
-<li><p><strong>callback</strong> (<span><code class="xref js js-func docutils literal notranslate"><span class="pre">callback()</span></code></span>) – function, called with results</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
 </section>
 <section id="sb-wire-format-helpers">
 <h3>SB “Wire” Format Helpers<a class="headerlink" href="#sb-wire-format-helpers" title="Permalink to this heading">#</a></h3>
-<dl class="js function">
-<dt class="sig sig-object js" id="assemblePayload">
-<span class="sig-name descname"><span class="n"><span class="pre">assemblePayload</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#assemblePayload" title="Permalink to this definition">#</a></dt>
-<dd><p>Assemble payload</p>
-</dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="extractPayload">
-<span class="sig-name descname"><span class="n"><span class="pre">extractPayload</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">payload</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#extractPayload" title="Permalink to this definition">#</a></dt>
-<dd><p>Extract payload - this decodes from our binary (wire) format
-to a JS object. This provides a binary encoding of any JSON,
-and it allows some elements of the JSON to be raw (binary).</p>
-</dd></dl>
-
 </section>
 <section id="sb-specific-helpers">
 <h3>SB-specific Helpers<a class="headerlink" href="#sb-specific-helpers" title="Permalink to this heading">#</a></h3>
-<dl class="js function">
-<dt class="sig sig-object js" id="jsonParseWrapper">
-<span class="sig-name descname"><span class="n"><span class="pre">jsonParseWrapper</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loc</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#jsonParseWrapper" title="Permalink to this definition">#</a></dt>
-<dd><p>There are many problems with JSON parsing, adding a wrapper to capture more info.
-The ‘loc’ parameter should be a (unique) string that allows you to find the usage
-in the code; one approach is the line number in the file (at some point).</p>
-</dd></dl>
-
-<dl class="js function">
-<dt class="sig sig-object js" id="partition">
-<span class="sig-name descname"><span class="n"><span class="pre">partition</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partition" title="Permalink to this definition">#</a></dt>
-<dd><p>Partition</p>
-</dd></dl>
-
 </section>
 <section id="testing-related">
 <h3>Testing Related<a class="headerlink" href="#testing-related" title="Permalink to this heading">#</a></h3>
-<dl class="js function">
-<dt class="sig sig-object js" id="compareBuffers">
-<span class="sig-name descname"><span class="n"><span class="pre">compareBuffers</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#compareBuffers" title="Permalink to this definition">#</a></dt>
-<dd><p>Compare buffers</p>
-</dd></dl>
-
+<ul class="simple">
+<li><p>[compareBuffers](modules.md#comparebuffers)</p></li>
+</ul>
+<hr class="docutils" />
+<p class="rubric">Footnotes</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id4" role="note">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<p>(test) This is the closest to DM (Direct Message) that the system
+allows, since one constraint is that any communication must
+include a responsible Owner.</p>
+</aside>
+<aside class="footnote brackets" id="id5" role="note">
+<span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
+<p>(test) If the whisper is initiated by the guest. If whisper is
+initiated by the owner, the key derivation uses the private
+half of &lt;room&gt;_ownerKey and the public key of the
+guest. The derived key remains the same in both cases.</p>
+</aside>
+<aside class="footnote brackets" id="id6" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">3</a><span class="fn-bracket">]</span></span>
+<p>(test) In exchange for possible weaker security, since now the
+Owner needs to keep track of their key files.</p>
+</aside>
+</aside>
+<hr class="docutils" />
 </section>
+</section>
+<section id="dn-004-the-ready-pattern">
+<span id="dn004"></span><h2>DN 004: The “Ready” Pattern<a class="headerlink" href="#dn-004-the-ready-pattern" title="Permalink to this heading">#</a></h2>
+<p>Unfortunately we have lost the original source from where we first
+heard about the “ready” design pattern, and that source might have
+called it something different.</p>
+<p>The idea is to allow objects to be created immediately, but not
+necessarily be “ready” to use, meaning that there might be some
+asynchronous initialization that needs to be completed before the
+object is ready to use.</p>
+<p>Here is essentially how it works:</p>
+<blockquote>
+<div><div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">SomeClass</span><span class="p">()</span>
+<span class="c1">// the object per se is created right away</span>
+
+<span class="c1">// you can call any method on the object, but it will</span>
+<span class="c1">// throw an exception if the object is not ready</span>
+<span class="nx">obj</span><span class="p">.</span><span class="nx">someMethod</span><span class="p">()</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">obj</span><span class="p">.</span><span class="nx">readyFlag</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="c1">// you can explicitly check if an object is ready</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="c1">// and if not, perhaps do something else</span>
+<span class="p">}</span>
+
+<span class="nx">obj</span><span class="p">.</span><span class="nx">ready</span><span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">obj</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="c1">// or you can set up what should be done when the object is ready</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>That’s the basic model. Creating an object is not a blocking operation,
+but you can check if it is ready or not, and if not, you can either
+wait for it to become ready, or you can move on and do something else.
+If you call a method on an object that is not ready, it will throw an
+exception.</p>
+<p>The “readyFlag” value is set to true when the object is ready, and the
+“ready” promise is resolved when the object is ready. The “ready”
+promise is initialized by the constructor, so you also can do this:</p>
+<blockquote>
+<div><div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">SomeClass</span><span class="p">()).</span><span class="nx">ready</span><span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">obj</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="c1">// do something with the object</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Internally (inside jslib), part of this pattern is done by the
+ready decorator, allowing things like getters to be succinct:</p>
+<blockquote>
+<div><div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span>@Ready get privateKey() { return this.#privateKey }
+</pre></div>
+</div>
+</div></blockquote>
+<p>This will automatically protect the getter from being called before
+the internal state is ready, which in turn allows users of the library
+to code more aggressively and not always have to explicitly
+check if the object is ready or not.</p>
+</section>
+<section id="dn-005-browser-connectivity">
+<span id="dn005"></span><h2>DN 005: Browser connectivity<a class="headerlink" href="#dn-005-browser-connectivity" title="Permalink to this heading">#</a></h2>
+<p>Unfortunately, browsers at the time of writing (February, 2023)
+simply do not have a good way of checking network status. Currently
+it comes down to this:</p>
+<ul class="simple">
+<li><p>You cannot use ‘’XMLHttpRequest()’’ or ‘’fetch()’’ to “ping”
+a server without it being noisy: for example, Chrome insists on
+complaining (in red font) about ‘’ERR_CONNECTION_REFUSED’’ in the
+developer console, no matter what you do in your javascript code.
+The only way to turn that off is change default settings in the
+browser developer tools setup.</p></li>
+<li><p>You cannot use ‘’navigator.online’’ in all cases, because the
+browser doesn’t consider a local server (on the same computer)
+as a “server” per se, for this purpose, even though you can
+connect to it.</p></li>
+</ul>
+<p>The current net-net of this situation is that we chose not to
+make jslib “proactive”, or “smart”, in this context. What we
+can do, however, is “track” any of these errors, and print out
+an info message on the console to ignore ‘’ERR_CONNECTION_REFUSED’’.</p>
+<p>It would be nice if there was a simple api to check connectivity
+to a server or an IP address. But it’s not something to be too
+upset about: we’re pushing the browser behavior here pretty far
+already. But it does mean that systems like Deno or Cloudflare’s
+‘’workerd’’ will have to have additional non-browser APIs, just
+like node needed … and then presumably browsers will add
+incompatible versions of those …</p>
+</section>
+<section id="dn-006-localhost-cors-and-other-fun-things">
+<h2>DN 006: Localhost, CORS, and other fun things<a class="headerlink" href="#dn-006-localhost-cors-and-other-fun-things" title="Permalink to this heading">#</a></h2>
+<p>The browser has a concept of “same origin” policy, which means that
+a web page can only access resources on the same server, or on a
+different server, but only if the server explicitly allows it.</p>
+<p>This plus some other issues adds up to these constraints:</p>
+<ul class="simple">
+<li><p>If you want a static (local) web page, e.g. a resource of type
+“<a class="reference external" href="file://">file://</a>”, then it CANNOT load other resources locally - such as
+a library (eg jslib itself). This is a security feature of the
+browser, and it’s not likely to change.</p></li>
+</ul>
 </section>
 </section>
 
@@ -1004,12 +490,12 @@ in the code; one approach is the line number in the file (at some point).</p>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="pylib.html">
+          <a class="next-page" href="modules.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Python Library</div>
+                <div class="title">JSLib Reference Manual</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -1028,7 +514,7 @@ in the code; one approach is the line number in the file (at some point).</p>
         <div class="bottom-of-page">
           <div class="left-details">
             <div class="copyright">
-                Copyright &#169; 2019-2022, Magnusson Institute
+                Copyright &#169; 2019-2023, Magnusson Institute
             </div>
             Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
             
@@ -1036,9 +522,7 @@ in the code; one approach is the line number in the file (at some point).</p>
             
           </div>
           <div class="right-details">
-            <div class="icons">
-              
-            </div>
+            
           </div>
         </div>
         
@@ -1056,32 +540,26 @@ in the code; one approach is the line number in the file (at some point).</p>
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Javascript Library</a><ul>
+<li><a class="reference internal" href="#">JSLib User Manual</a><ul>
 <li><a class="reference internal" href="#installation-development">Installation / Development</a></li>
 <li><a class="reference internal" href="#sb384">SB384</a></li>
-<li><a class="reference internal" href="#snackabra-server-class">Snackabra (Server) Class</a></li>
-<li><a class="reference internal" href="#channels">Channels</a><ul>
+<li><a class="reference internal" href="#snackabra-server-class">Snackabra (Server) Class</a><ul>
 <li><a class="reference internal" href="#sb-message-class">SB Message Class</a></li>
-<li><a class="reference internal" href="#channel-class">Channel Class</a></li>
-<li><a class="reference internal" href="#channel-socket-class">Channel Socket Class</a></li>
-<li><a class="reference internal" href="#channel-api-class">Channel API Class</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#storage">Storage</a><ul>
-<li><a class="reference internal" href="#sb-storage-class">SB Storage Class</a></li>
-<li><a class="reference internal" href="#sb-file-class">SB File Class</a></li>
+<li><a class="reference internal" href="#channels">Channels</a></li>
+<li><a class="reference internal" href="#storage">Storage</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#utilities-and-helpers">Utilities and Helpers</a><ul>
-<li><a class="reference internal" href="#indexedkv-class">IndexedKV Class</a></li>
 <li><a class="reference internal" href="#crypto-class">Crypto Class</a></li>
-<li><a class="reference internal" href="#format-related">Format Related</a></li>
 <li><a class="reference internal" href="#crypto-helpers">Crypto Helpers</a></li>
 <li><a class="reference internal" href="#sb-wire-format-helpers">SB “Wire” Format Helpers</a></li>
 <li><a class="reference internal" href="#sb-specific-helpers">SB-specific Helpers</a></li>
 <li><a class="reference internal" href="#testing-related">Testing Related</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#dn-004-the-ready-pattern">DN 004: The “Ready” Pattern</a></li>
+<li><a class="reference internal" href="#dn-005-browser-connectivity">DN 005: Browser connectivity</a></li>
+<li><a class="reference internal" href="#dn-006-localhost-cors-and-other-fun-things">DN 006: Localhost, CORS, and other fun things</a></li>
 </ul>
 </li>
 </ul>
@@ -1098,6 +576,7 @@ in the code; one approach is the line number in the file (at some point).</p>
     <script src="_static/underscore.js"></script>
     <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/scripts/furo.js"></script>
     </body>
 </html>

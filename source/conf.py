@@ -1,5 +1,5 @@
 # Snackabra Documentation Sphinx File
-# Copyright (c) Magnusson Institute
+# Copyright (c) 2019-2023 Magnusson Institute
 #
 # (full sphinx conf docs:
 #  https://www.sphinx-doc.org/en/master/usage/configuration.html)
@@ -12,18 +12,15 @@
 #
 
 import os
-# import sys
-# sys.path.insert(0, os.path.abspath('../snackabra-pylib/src/snackabra'))
-
 
 # -- Project information -----------------------------------------------------
 
 project = 'snackabra'
-copyright = '2019-2022, Magnusson Institute'
+copyright = '2019-2023, Magnusson Institute'
 author = 'Magnusson Institute'
 
 # The full version, including alpha/beta/rc tags
-release = '0.5.0 alpha'
+release = '0.6.0 beta'
 
 
 # -- General configuration ---------------------------------------------------
@@ -45,8 +42,17 @@ extensions = [
     'sphinx.ext.ifconfig',
     'sphinx.ext.viewcode',
     'sphinx.ext.githubpages',
-    'sphinxcontrib.confluencebuilder'
+    'sphinxcontrib.confluencebuilder',
+
+    'myst_parser'
+
 ]
+
+# myst_parser (?)
+source_suffix = ['.rst', '.md']
+
+tsdoc_warning_disable = 'abstract-method'
+
 
 # Atlassian Confluence extension configuration
 # it will only try to deploy if you have env set for it
@@ -84,7 +90,7 @@ templates_path = ['_templates']
 exclude_patterns = []
 
 # sphinx-js path to snackabra-javascript library
-js_source_path = '../snackabra-jslib'
+# js_source_path = '../snackabra-jslib'
 # optional configuration for jsdoc per se
 # jsdoc_config_path = '../jsdoc_conf.json'
 

@@ -144,6 +144,51 @@ As well as packet diagrams: http://blockdiag.com/en/nwdiag/packetdiag-examples.h
 And activity diagrams: http://blockdiag.com/en/actdiag/examples.html
 
 
+ChatGPT
+-------
+
+Testing some chatgpt-generated ones:
+
+.. blockdiag::
+
+    blockdiag {
+       // Set labels to nodes.
+       Browser [label = "User's browser"];
+       Server [label = "Server"];
+       RootDNS [label = "Root DNS server"];
+       TLD [label = "Top-level domain server"];
+       AuthNS [label = "Authoritative nameserver"];
+       Resource [label = "Server hosting\nrequested resource"];
+
+       // Set labels to edges.
+       Browser -> Server [label = "HTTP request"];
+       Server -> RootDNS [label = "Requests IP\naddress if not\nin cache"];
+       RootDNS -> TLD [label = "Returns IP\naddress of TLD\nserver"];
+       TLD -> AuthNS [label = "Requests IP\naddress of\nauthoritative\nnameserver"];
+       AuthNS -> Resource [label = "Returns IP\naddress of server\nhosting resource"];
+       Server -> Resource [label = "HTTP request"];
+       Resource -> Server [label = "Requested content"];
+       Server -> Browser [label = "Sends content"];
+    }
+
+
+.. seqdiag::
+
+    seqdiag {
+       browser -> webserver [label = "User types URL or\n clicks on link with URL"];
+       webserver -> webserver [label = "Checks cache for IP address\n of requested domain"];
+       webserver -> rootdns [label = "Requests IP address of\n top-level domain server\nfor requested domain"];
+       rootdns -> webserver [label = "Returns IP address of\n top-level domain server"];
+       webserver -> tld [label = "Requests IP address of\n authoritative nameserver\n for requested domain"];
+       tld -> webserver [label = "Returns IP address of\n authoritative nameserver"];
+       webserver -> authns [label = "Requests IP address of\n server hosting resource"];
+       authns -> webserver [label = "Returns IP address of\n server hosting resource"];
+       webserver -> resource [label = "Sends HTTP request for\n requested resource"];
+       resource -> webserver [label = "Returns requested content"];
+       webserver -> browser [label = "Sends content to browser"];
+    }
+
+
 Graphviz
 --------
 

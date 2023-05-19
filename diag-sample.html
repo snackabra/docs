@@ -3,12 +3,12 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="prev" title="Appendix B: Privacy.App Chat Room User Guide" href="user-guide.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Motivation" href="motivation.html" /><link rel="prev" title="Appendix B: Privacy.App Chat Room User Guide" href="user-guide.html" />
 
-    <meta name="generator" content="sphinx-5.1.1, furo 2022.09.29"/>
-        <title>Sphinx Diagram Examples - snackabra 0.5.0 alpha documentation</title>
+    <!-- Generated with Sphinx 5.3.0 and Furo 2023.03.27 -->
+        <title>Sphinx Diagram Examples - snackabra 0.6.0 beta documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
@@ -125,7 +125,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">snackabra 0.5.0 alpha documentation</div></a>
+      <a href="index.html"><div class="brand">snackabra 0.6.0 beta documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -148,10 +148,10 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
   
-  <span class="sidebar-brand-text">snackabra 0.5.0 alpha documentation</span>
+  <span class="sidebar-brand-text">snackabra 0.6.0 beta documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
-  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
   <input type="hidden" name="check_keywords" value="yes">
   <input type="hidden" name="area" value="default">
 </form>
@@ -168,11 +168,15 @@
 <li class="toctree-l1"><a class="reference internal" href="future.html">Future Work</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References / Further Reading</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">LICENSE</a></li>
-<li class="toctree-l1"><a class="reference internal" href="jslib.html">Javascript Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jslib.html">JSLib User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">JSLib Reference Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="server.html">Snackabra Server</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pylib.html">Python Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="appendix-a-crypto.html">Appendix A: Cryptography</a></li>
 <li class="toctree-l1"><a class="reference internal" href="user-guide.html">Appendix B: Privacy.App Chat Room User Guide</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">(ignore)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="motivation.html">Motivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updated-glossary.html">Updated Glossary</a></li>
 </ul>
 
 </div>
@@ -234,12 +238,18 @@ some of the diagram / figure tools.</p>
 <p>And activity diagrams: <a class="reference external" href="http://blockdiag.com/en/actdiag/examples.html">http://blockdiag.com/en/actdiag/examples.html</a></p>
 </section>
 </section>
+<section id="chatgpt">
+<h2>ChatGPT<a class="headerlink" href="#chatgpt" title="Permalink to this heading">#</a></h2>
+<p>Testing some chatgpt-generated ones:</p>
+<div class="align-default"><img height="120" src="_images/blockdiag-16f5500a28aad08ed51fcee391803a5f5c9b70aa.png" width="1216" /></div>
+<div class="align-default"><img height="1184" src="_images/seqdiag-51797d9e343256ce4eb9198e093481abea95203c.png" width="1216" /></div>
+</section>
 <section id="graphviz">
 <h2>Graphviz<a class="headerlink" href="#graphviz" title="Permalink to this heading">#</a></h2>
 <p>Here’s an example using graphviz (more here: <a class="reference external" href="https://graphviz.org/gallery/">https://graphviz.org/gallery/</a> )</p>
 <section id="digraph">
 <h3>Digraph<a class="headerlink" href="#digraph" title="Permalink to this heading">#</a></h3>
-digraph PhiloDilemma {
+<div class="graphviz"><img src="_images/graphviz-84b43c8606d0bc796a3a6c24d22a7d82e5dbbccc.png" alt="digraph PhiloDilemma {
 layout=neato
 node [shape=box];  bec3; rel3; bec2; rel2; acq2; acq3; bec1; rel1; acq1;
 node [shape=circle,fixedsize=true,width=0.9];  hu3; th3; ri3; ea3; hu2; th2; ri2; ea2; hu1; th1; ri1; ea1;
@@ -274,10 +284,11 @@ acq1-&gt;ea1;
 overlap=false
 label=&quot;PetriNet Model PhiloDilemma\nExtracted from ConceptBase and layed out by Graphviz &quot;
 fontsize=12;
-}</section>
+}" class="graphviz" /></div>
+</section>
 <section id="process-graph">
 <h3>Process Graph<a class="headerlink" href="#process-graph" title="Permalink to this heading">#</a></h3>
-graph G {
+<div class="graphviz"><img src="_images/graphviz-b61c7aecdb64833bf229b759a613380785166522.png" alt="graph G {
         layout=neato
         run -- intr;
         intr -- runbl;
@@ -292,7 +303,8 @@ graph G {
         runswap -- runmem;
         new -- runmem;
         sleep -- runmem;
-}</section>
+}" class="graphviz" /></div>
+</section>
 </section>
 </section>
 
@@ -301,7 +313,15 @@ graph G {
       <footer>
         
         <div class="related-pages">
-          
+          <a class="next-page" href="motivation.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Motivation</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
           <a class="prev-page" href="user-guide.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
@@ -317,7 +337,7 @@ graph G {
         <div class="bottom-of-page">
           <div class="left-details">
             <div class="copyright">
-                Copyright &#169; 2019-2022, Magnusson Institute
+                Copyright &#169; 2019-2023, Magnusson Institute
             </div>
             Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
             
@@ -325,9 +345,7 @@ graph G {
             
           </div>
           <div class="right-details">
-            <div class="icons">
-              
-            </div>
+            
           </div>
         </div>
         
@@ -351,6 +369,7 @@ graph G {
 <li><a class="reference internal" href="#block-diagrams">Block Diagrams</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#chatgpt">ChatGPT</a></li>
 <li><a class="reference internal" href="#graphviz">Graphviz</a><ul>
 <li><a class="reference internal" href="#digraph">Digraph</a></li>
 <li><a class="reference internal" href="#process-graph">Process Graph</a></li>
@@ -372,6 +391,7 @@ graph G {
     <script src="_static/underscore.js"></script>
     <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/scripts/furo.js"></script>
     </body>
 </html>

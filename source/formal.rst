@@ -130,99 +130,11 @@ the resulting :math:`\mathcal{C}` is of no use to you without :math:`\langle\mat
 Future Design Directions
 ------------------------
 
-The above design is the current one, which results in a few issues. In
-this section we summarize the current next-generation design candidate.
-First we present the future direction, then we discuss how it improves
-upon the characteristics of the current design.
+The above design is the current one. The next generation will be
+a slight tweak: you can access either with the ID plus the 
+verification, or a hash of both.  It's up to the shard server 
+to decide on policy.
 
-To the above servers, we add two OPRF endpoints,
-:math:`\mathcal{OPRF_1}` whic can be reached by anybody
-and :math:`\mathcal{OPRF_2}` that is only accessible by
-the storage server.
-
-1. Alice creates a hash :math:`\mathfrak{H}(\mathcal{M})`.
-   Alice sends this to :math:`\mathcal{OPRF_1}`,
-   which returns a secret :math:`\mathcal{r}` which Alice first recombines (xor)
-   with :math:`\mathfrak{H}(\mathcal{M})`, and derives
-   nonce :math:`\mathcal{iv}` and salt :math:`\mathcal{s}`.
-   Alice now constructs encryption key :math:`\mathcal{k}=\mathcal{K}(\mathfrak{x}\oplus\mathfrak{H}(\mathcal{M}), \mathcal{s})`. [#f205]_
-
-2. This step is no longer needed - :math:`\mathcal{OPRF_1}`
-   ensures that any clients with the same message :math:`\mathcal{M}` end up with the same encryption :math:`\mathcal{k}` and
-   nonce :math:`\mathcal{iv}`, without revealing anything about :math:`\mathcal{M}` 
-   to the :math:`\mathcal{OPRF_1}` server. It is this characteristic
-   of :math:`\mathcal{OPRF_1}` which yields deduplication.
-
-3. Alice next generates the cryptotext of the message :math:`\mathcal{C}=\mathscr{E}(\mathcal{k},\mathcal{iv}|\mathcal{M})`.
-   Alice sends the full encrypted message :math:`\mathcal{C}` to the server.
-
-4. The storage server receives :math:`\mathcal{C}` and generates a pseudo-random
-   verification identifier :math:`\mathcal{v}`, returning the identifier
-   once it's fully received :math:`\mathcal{C}`. The server maintains
-   a mapping :math:`\mathfrak{H}(\mathcal{v}|\mathcal{C})\longmapsto\langle\mathcal{v}|\mathcal{C}\rangle`.
-   Note that this constitutes a simple content-based hash storage.
-   The pseudo-random verification identifier 
-   is generated from :math:`\mathcal{OPRF_2(\mathcal{H}(\mathcal{C}))}`,
-   assuring that identical :math:`\mathcal{C}` blobs will end up
-   with the same name, however that name cannot easily be
-   guessed even with access to :math:`\mathcal{C}`.
-
-5. Once Alice receives :math:`\mathcal{v}`, Alice can construct a (final) name
-   hash :math:`\mathcal{c}=\mathcal{H}(\mathcal{v}|\mathcal{C})`.
-   At this point Alice has collected the full "manifest": 
-   :math:`\langle\mathcal{c},\mathcal{k},\mathcal{iv},\mathcal{s}\rangle`,
-   which can be sent to Bob.
-
-When Bob wants to fetch the object, Bob sends
-:math:`\mathcal{c}` to the
-storage server which returns :math:`\mathcal{v}|\mathcal{C}`. Bob can
-strip :math:`\mathcal{v}` and has :math:`\mathcal{M}` from
-:math:`\mathcal{D}(\mathcal{C},\mathcal{k},\mathcal{iv},\mathcal{s})`.
-
-Note: brute force attacks against either
-:math:`\mathcal{OPRF_1}` or
-:math:`\mathcal{OPRF_2}` are not economical, since an
-upload operation can only be initiated by spending a storage token
-from the ledger server.
-
-The characteristics of the current design are all retained, with these
-improvements:
-
-* The storage server only needs to retain a single, trivially simple, mapping
-  :math:`\mathfrak{H}(\mathcal{v}|\mathcal{C})\longmapsto\langle\mathcal{v}|\mathcal{C}\rangle`.
-  Since it no longer needs a verification "step" for :math:`\mathcal{v}`,
-  this "blob" store is now fully CDN-compatible, which is a significant
-  improvement in both performance, cost efficiency, and privacy.
-  Furthermore, since this final mapping is a pure content-based addressing
-  scheme, it can be trivially mirrored to systems such as IPFS.
-
-* The storage server does *not* need to ever see even a prefix of
-  :math:`\mathcal{H}(\mathcal{M})`. This means that even if the storage
-  server is compromised, an adversary cannot trivially confirm
-  what objects have ever been shared.
-  
-* Deduplication is accomplished through the two uses of :math:`\mathcal{OPRF}`.
-  Notably, this approach simplifies some operational tasks.
-  If there is a fear of system compromise, then the secrets of both 
-  :math:`\mathcal{OPRF_1}` and :math:`\mathcal{OPRF_2}`
-  can be trivially rotated - for example every two weeks. Thus, deduplication
-  occurs only within timing windows, which should yield the bulk
-  of any deduplication efficacy. This way, an adversary who gains
-  complete control of the storage server as well as :math:`\mathcal{OPRF_2}`
-  can at most initiate a brute force attack against objects
-  shared in the current window (and even then only tell *if*
-  that object had been shared at all, not how often or by whom etc).
-
-* To emphasize: with this design, the *only* state the storage server needs
-  to maintain is :math:`\mathfrak{H}(\mathcal{v}|\mathcal{C})\longmapsto\langle\mathcal{v}|\mathcal{C}\rangle`,
-  nothing else, and no need for any authentication or verification steps.
-  All information needed to *find* the object and decrypt it
-  is contained in the manifest, which is shared through room chat
-  control messages.
-
-Currently, implementation of this approach is pending adding
-OPRF to the snackabra core library, since it is not (yet) a part
-of the web crypto API standard. [#f206]_
 
 
 .. _ledger_formal:

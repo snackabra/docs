@@ -5,10 +5,10 @@
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Contact and Feedback" href="contact.html" /><link rel="prev" title="Formal Treatment" href="formal.html" />
 
-    <meta name="generator" content="sphinx-5.1.1, furo 2022.09.29"/>
-        <title>Installation - snackabra 0.5.0 alpha documentation</title>
+    <!-- Generated with Sphinx 5.3.0 and Furo 2023.03.27 -->
+        <title>Installation - snackabra 0.6.0 beta documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
@@ -125,7 +125,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">snackabra 0.5.0 alpha documentation</div></a>
+      <a href="index.html"><div class="brand">snackabra 0.6.0 beta documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -148,10 +148,10 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
   
-  <span class="sidebar-brand-text">snackabra 0.5.0 alpha documentation</span>
+  <span class="sidebar-brand-text">snackabra 0.6.0 beta documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
-  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
   <input type="hidden" name="check_keywords" value="yes">
   <input type="hidden" name="area" value="default">
 </form>
@@ -168,11 +168,15 @@
 <li class="toctree-l1"><a class="reference internal" href="future.html">Future Work</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References / Further Reading</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">LICENSE</a></li>
-<li class="toctree-l1"><a class="reference internal" href="jslib.html">Javascript Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jslib.html">JSLib User Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">JSLib Reference Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="server.html">Snackabra Server</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pylib.html">Python Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="appendix-a-crypto.html">Appendix A: Cryptography</a></li>
 <li class="toctree-l1"><a class="reference internal" href="user-guide.html">Appendix B: Privacy.App Chat Room User Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="diag-sample.html">(ignore)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="motivation.html">Motivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updated-glossary.html">Updated Glossary</a></li>
 </ul>
 
 </div>
@@ -294,7 +298,7 @@ when any nameservers have propagated.</p>
 <p>Next set up the CF command line environment, the “Wrangler CLI”, we
 use “yarn” in general but the personal server code is pure JS and
 (currently) does not need any node packages. Follow instructions at
-<a class="reference external" href="https://dash.cloudflare.com/6a24dd354a78c1e313b1b8054d75e506/workers/cli">https://dash.cloudflare.com/6a24dd354a78c1e313b1b8054d75e506/workers/cli</a> -
+<a class="reference external" href="https://dash.cloudflare.com/id/workers/cli">https://dash.cloudflare.com/id/workers/cli</a> -b
 at time of writing:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># install the CLI:</span>
 <span class="n">yarn</span> <span class="k">global</span> <span class="n">add</span> <span class="nd">@cloudflare</span><span class="o">/</span><span class="n">wrangler</span>
@@ -363,7 +367,7 @@ following Javascript (<a class="reference external" href="https://developer.mozi
 <p>And point a client to it!</p>
 <p>(*) We are not affiliated with Cloudflare, we’re just fans.</p>
 <p>(**) At time of writing, the link was:
-<a class="reference external" href="https://dash.cloudflare.com/<id>/workers/overview?enable-durable-objects">https://dash.cloudflare.com/<id>/workers/overview?enable-durable-objects</a></p> where id is your account
+<a class="reference external" href="https://dash.cloudflare.com/id/workers/overview?enable-durable-objects">https://dash.cloudflare.com/id/workers/overview?enable-durable-objects</a></p>
 <section id="directory">
 <h3>Directory<a class="headerlink" href="#directory" title="Permalink to this heading">#</a></h3>
 <p>Following files should be in the git:</p>
@@ -423,7 +427,7 @@ following Javascript (<a class="reference external" href="https://developer.mozi
         <div class="bottom-of-page">
           <div class="left-details">
             <div class="copyright">
-                Copyright &#169; 2019-2022, Magnusson Institute
+                Copyright &#169; 2019-2023, Magnusson Institute
             </div>
             Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
             
@@ -431,9 +435,7 @@ following Javascript (<a class="reference external" href="https://developer.mozi
             
           </div>
           <div class="right-details">
-            <div class="icons">
-              
-            </div>
+            
           </div>
         </div>
         
@@ -476,6 +478,7 @@ following Javascript (<a class="reference external" href="https://developer.mozi
     <script src="_static/underscore.js"></script>
     <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/scripts/furo.js"></script>
     </body>
 </html>

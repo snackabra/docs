@@ -14,8 +14,6 @@ build:
     post_install:
       - npm install -g jsdoc
 
-
-
 sphinx:
    configuration: source/conf.py
 
@@ -26,3 +24,12 @@ formats:
 python:
    install:
    - requirements: requirements.txt
+
+# per chatgpt :-) this should be run to try to fix footnotes
+# ... chatgtp is wrong, so putting this on TODO
+# build:
+#   # this should be triggered by the "-e" ... supposedly
+#   script:
+#     - sphinx-build -M latex souurce build/latex
+#     - latexmk -pdf -cd -use-make -interaction=nonstopmode build/latex/*.tex
+#     - latexmk -pdf -cd -use-make -interaction=nonstopmode build/latex/*.tex

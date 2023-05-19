@@ -1,10 +1,10 @@
 
 You will need the javascript files in here.
 
-We don't automatically pull from git latest javascript
-version of library (eg snackabra-jslib), you will need
-to copy (overwrite) the version you want in the 
-documentation into this directory.
+This should happen automatically: 'yarn install' should
+place latest snackabra in node_modules/snackabra, and 
+we use the TS file directly from src/snackabra.ts
 
-... together with any other javascript files you want
-jsdoc/sphinx to find.
+Any other javascript files you want jsdoc/sphinx to find
+also need to be here.
+

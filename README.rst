@@ -72,10 +72,10 @@ For the jsdoc (documenting snackabra.js), you need to copy the
 javascript code you want documented to the ''snackabra-jslib''
 directory, ''make'' won't pull anything for you. 
 
-_UPDATE: we just got typedoc to work in this setup, thx to a recent
+*UPDATE: we just got typedoc to work in this setup, thx to a recent
 typedoc plugin (typedoc-plugin-sphinx) combined with myst-parser.
 So jslib is being refactored with typedoc. So perhaps should be 
-called tslib soon ... _
+called tslib soon ... *
 
 
     

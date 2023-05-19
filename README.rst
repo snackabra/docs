@@ -10,7 +10,8 @@ Snackabra Documentation
 This repo contains all documentation and specifications related to ``snackabra``,
 the resulting output is hosted on:
 
-* https://snackabra.io
+* https://snackabra.readthedocs.io
+* https://snackabra.io (previous version, 0.4.x)
 
 Latest PDF format version should be on ReadTheDocs [#r00]_.
 

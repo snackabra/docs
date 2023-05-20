@@ -48,7 +48,6 @@ Gives access to a Channel API (without needing to connect to socket)
 
 ### Methods
 
-- [importKeys](ChannelEndpoint.md#importkeys)
 - [send](ChannelEndpoint.md#send)
 
 ## Constructors
@@ -352,26 +351,6 @@ ___
 Channel.sbServer
 
 ## Methods
-
-### importKeys
-
-▸ **importKeys**(`keyStrings`): `Promise`<`void`\>
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `keyStrings` | [`ChannelKeyStrings`](../interfaces/ChannelKeyStrings.md) |
-
-#### Returns
-
-`Promise`<`void`\>
-
-#### Inherited from
-
-[Channel](Channel.md).[importKeys](Channel.md#importkeys)
-
-___
 
 ### send
 

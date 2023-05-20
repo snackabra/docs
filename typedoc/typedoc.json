@@ -6,7 +6,7 @@
 	"flags": {},
 	"children": [
 		{
-			"id": 416,
+			"id": 408,
 			"name": "Channel",
 			"variant": "declaration",
 			"kind": 128,
@@ -23,21 +23,21 @@
 			},
 			"children": [
 				{
-					"id": 417,
+					"id": 409,
 					"name": "constructor",
 					"variant": "declaration",
 					"kind": 512,
 					"flags": {},
 					"signatures": [
 						{
-							"id": 418,
+							"id": 410,
 							"name": "new Channel",
 							"variant": "signature",
 							"kind": 16384,
 							"flags": {},
 							"parameters": [
 								{
-									"id": 419,
+									"id": 411,
 									"name": "sbServer",
 									"variant": "param",
 									"kind": 32768,
@@ -50,7 +50,7 @@
 									}
 								},
 								{
-									"id": 420,
+									"id": 412,
 									"name": "key",
 									"variant": "param",
 									"kind": 32768,
@@ -68,7 +68,7 @@
 									}
 								},
 								{
-									"id": 421,
+									"id": 413,
 									"name": "channelId",
 									"variant": "param",
 									"kind": 32768,
@@ -83,25 +83,25 @@
 							],
 							"type": {
 								"type": "reference",
-								"target": 416,
+								"target": 408,
 								"name": "Channel",
 								"package": "snackabra"
 							},
 							"overwrites": {
 								"type": "reference",
-								"target": 693,
+								"target": 685,
 								"name": "SB384.constructor"
 							}
 						}
 					],
 					"overwrites": {
 						"type": "reference",
-						"target": 692,
+						"target": 684,
 						"name": "SB384.constructor"
 					}
 				},
 				{
-					"id": 428,
+					"id": 420,
 					"name": "admin",
 					"variant": "declaration",
 					"kind": 1024,
@@ -113,7 +113,7 @@
 					"defaultValue": "false"
 				},
 				{
-					"id": 444,
+					"id": 436,
 					"name": "adminData",
 					"variant": "declaration",
 					"kind": 1024,
@@ -138,7 +138,7 @@
 					}
 				},
 				{
-					"id": 422,
+					"id": 414,
 					"name": "channelReady",
 					"variant": "declaration",
 					"kind": 1024,
@@ -187,7 +187,7 @@
 						"typeArguments": [
 							{
 								"type": "reference",
-								"target": 416,
+								"target": 408,
 								"name": "Channel",
 								"package": "snackabra"
 							}
@@ -197,7 +197,7 @@
 					}
 				},
 				{
-					"id": 426,
+					"id": 418,
 					"name": "locked",
 					"variant": "declaration",
 					"kind": 1024,
@@ -211,7 +211,7 @@
 					"defaultValue": "false"
 				},
 				{
-					"id": 425,
+					"id": 417,
 					"name": "motd",
 					"variant": "declaration",
 					"kind": 1024,
@@ -225,7 +225,7 @@
 					"defaultValue": "''"
 				},
 				{
-					"id": 427,
+					"id": 419,
 					"name": "owner",
 					"variant": "declaration",
 					"kind": 1024,
@@ -237,7 +237,7 @@
 					"defaultValue": "false"
 				},
 				{
-					"id": 460,
+					"id": 452,
 					"name": "ready",
 					"variant": "declaration",
 					"kind": 1024,
@@ -251,7 +251,7 @@
 						"typeArguments": [
 							{
 								"type": "reference",
-								"target": 691,
+								"target": 683,
 								"name": "SB384",
 								"package": "snackabra"
 							}
@@ -261,12 +261,12 @@
 					},
 					"inheritedFrom": {
 						"type": "reference",
-						"target": 695,
+						"target": 687,
 						"name": "SB384.ready"
 					}
 				},
 				{
-					"id": 461,
+					"id": 453,
 					"name": "sb384Ready",
 					"variant": "declaration",
 					"kind": 1024,
@@ -280,7 +280,7 @@
 						"typeArguments": [
 							{
 								"type": "reference",
-								"target": 691,
+								"target": 683,
 								"name": "SB384",
 								"package": "snackabra"
 							}
@@ -290,12 +290,12 @@
 					},
 					"inheritedFrom": {
 						"type": "reference",
-						"target": 696,
+						"target": 688,
 						"name": "SB384.sb384Ready"
 					}
 				},
 				{
-					"id": 430,
+					"id": 422,
 					"name": "userName",
 					"variant": "declaration",
 					"kind": 1024,
@@ -307,7 +307,7 @@
 					"defaultValue": "''"
 				},
 				{
-					"id": 429,
+					"id": 421,
 					"name": "verifiedGuest",
 					"variant": "declaration",
 					"kind": 1024,
@@ -319,13 +319,13 @@
 					"defaultValue": "false"
 				},
 				{
-					"id": 473,
+					"id": 465,
 					"name": "_id",
 					"variant": "declaration",
 					"kind": 262144,
 					"flags": {},
 					"getSignature": {
-						"id": 474,
+						"id": 466,
 						"name": "_id",
 						"variant": "signature",
 						"kind": 524288,
@@ -342,38 +342,38 @@
 					},
 					"inheritedFrom": {
 						"type": "reference",
-						"target": 710,
+						"target": 702,
 						"name": "SB384._id"
 					}
 				},
 				{
-					"id": 454,
+					"id": 446,
 					"name": "api",
 					"variant": "declaration",
 					"kind": 262144,
 					"flags": {},
 					"getSignature": {
-						"id": 455,
+						"id": 447,
 						"name": "api",
 						"variant": "signature",
 						"kind": 524288,
 						"flags": {},
 						"type": {
 							"type": "reference",
-							"target": 477,
+							"target": 469,
 							"name": "ChannelApi",
 							"package": "snackabra"
 						}
 					}
 				},
 				{
-					"id": 456,
+					"id": 448,
 					"name": "channelId",
 					"variant": "declaration",
 					"kind": 262144,
 					"flags": {},
 					"getSignature": {
-						"id": 457,
+						"id": 449,
 						"name": "channelId",
 						"variant": "signature",
 						"kind": 524288,
@@ -394,13 +394,13 @@
 					}
 				},
 				{
-					"id": 458,
+					"id": 450,
 					"name": "channelSignKey",
 					"variant": "declaration",
 					"kind": 262144,
 					"flags": {},
 					"getSignature": {
-						"id": 459,
+						"id": 451,
 						"name": "channelSignKey",
 						"variant": "signature",
 						"kind": 524288,
@@ -417,13 +417,13 @@
 					}
 				},
 				{
-					"id": 469,
+					"id": 461,
 					"name": "exportable_privateKey",
 					"variant": "declaration",
 					"kind": 262144,
 					"flags": {},
 					"getSignature": {
-						"id": 470,
+						"id": 462,
 						"name": "exportable_privateKey",
 						"variant": "signature",
 						"kind": 524288,
@@ -445,18 +445,18 @@
 					},
 					"inheritedFrom": {
 						"type": "reference",
-						"target": 706,
+						"target": 698,
 						"name": "SB384.exportable_privateKey"
 					}
 				},
 				{
-					"id": 467,
+					"id": 459,
 					"name": "exportable_pubKey",
 					"variant": "declaration",
 					"kind": 262144,
 					"flags": {},
 					"getSignature": {
-						"id": 468,
+						"id": 460,
 						"name": "exportable_pubKey",
 						"variant": "signature",
 						"kind": 524288,
@@ -478,18 +478,18 @@
 					},
 					"inheritedFrom": {
 						"type": "reference",
-						"target": 704,
+						"target": 696,
 						"name": "SB384.exportable_pubKey"
 					}
 				},
 				{
-					"id": 448,
+					"id": 440,
 					"name": "keys",
 					"variant": "declaration",
 					"kind": 262144,
 					"flags": {},
 					"getSignature": {
-						"id": 449,
+						"id": 441,
 						"name": "keys",
 						"variant": "signature",
 						"kind": 524288,
@@ -503,13 +503,13 @@
 					}
 				},
 				{
-					"id": 475,
+					"id": 467,
 					"name": "ownerChannelId",
 					"variant": "declaration",
 					"kind": 262144,
 					"flags": {},
 					"getSignature": {
-						"id": 476,
+						"id": 468,
 						"name": "ownerChannelId",
 						"variant": "signature",
 						"kind": 524288,
@@ -526,18 +526,18 @@
 					},
 					"inheritedFrom": {
 						"type": "reference",
-						"target": 712,
+						"target": 704,
 						"name": "SB384.ownerChannelId"
 					}
 				},
 				{
-					"id": 471,
+					"id": 463,
 					"name": "privateKey",
 					"variant": "declaration",
 					"kind": 262144,
 					"flags": {},
 					"getSignature": {
-						"id": 472,
+						"id": 464,
 						"name": "privateKey",
 						"variant": "signature",
 						"kind": 524288,
@@ -559,18 +559,18 @@
 					},
 					"inheritedFrom": {
 						"type": "reference",
-						"target": 708,
+						"target": 700,
 						"name": "SB384.privateKey"
 					}
 				},
 				{
-					"id": 452,
+					"id": 444,
 					"name": "readyFlag",
 					"variant": "declaration",
 					"kind": 262144,
 					"flags": {},
 					"getSignature": {
-						"id": 453,
+						"id": 445,
 						"name": "readyFlag",
 						"variant": "signature",
 						"kind": 524288,
@@ -587,18 +587,18 @@
 					},
 					"overwrites": {
 						"type": "reference",
-						"target": 702,
+						"target": 694,
 						"name": "SB384.readyFlag"
 					}
 				},
 				{
-					"id": 450,
+					"id": 442,
 					"name": "sbServer",
 					"variant": "declaration",
 					"kind": 262144,
 					"flags": {},
 					"getSignature": {
-						"id": 451,
+						"id": 443,
 						"name": "sbServer",
 						"variant": "signature",
 						"kind": 524288,
@@ -612,53 +612,7 @@
 					}
 				},
 				{
-					"id": 445,
-					"name": "importKeys",
-					"variant": "declaration",
-					"kind": 2048,
-					"flags": {},
-					"signatures": [
-						{
-							"id": 446,
-							"name": "importKeys",
-							"variant": "signature",
-							"kind": 4096,
-							"flags": {},
-							"parameters": [
-								{
-									"id": 447,
-									"name": "keyStrings",
-									"variant": "param",
-									"kind": 32768,
-									"flags": {},
-									"type": {
-										"type": "reference",
-										"target": 409,
-										"name": "ChannelKeyStrings",
-										"package": "snackabra"
-									}
-								}
-							],
-							"type": {
-								"type": "reference",
-								"target": {
-									"sourceFileName": "node_modules/typescript/lib/lib.es5.d.ts",
-									"qualifiedName": "Promise"
-								},
-								"typeArguments": [
-									{
-										"type": "intrinsic",
-										"name": "void"
-									}
-								],
-								"name": "Promise",
-								"package": "typescript"
-							}
-						}
-					]
-				},
-				{
-					"id": 439,
+					"id": 431,
 					"name": "send",
 					"variant": "declaration",
 					"kind": 2048,
@@ -667,14 +621,14 @@
 					},
 					"signatures": [
 						{
-							"id": 440,
+							"id": 432,
 							"name": "send",
 							"variant": "signature",
 							"kind": 4096,
 							"flags": {},
 							"parameters": [
 								{
-									"id": 441,
+									"id": 433,
 									"name": "m",
 									"variant": "param",
 									"kind": 32768,
@@ -688,7 +642,7 @@
 											},
 											{
 												"type": "reference",
-												"target": 551,
+												"target": 543,
 												"name": "SBMessage",
 												"package": "snackabra"
 											}
@@ -696,7 +650,7 @@
 									}
 								},
 								{
-									"id": 442,
+									"id": 434,
 									"name": "messageType",
 									"variant": "param",
 									"kind": 32768,
@@ -741,52 +695,51 @@
 				{
 					"title": "Constructors",
 					"children": [
-						417
+						409
 					]
 				},
 				{
 					"title": "Properties",
 					"children": [
-						428,
-						444,
+						420,
+						436,
+						414,
+						418,
+						417,
+						419,
+						452,
+						453,
 						422,
-						426,
-						425,
-						427,
-						460,
-						461,
-						430,
-						429
+						421
 					]
 				},
 				{
 					"title": "Accessors",
 					"children": [
-						473,
-						454,
-						456,
-						458,
-						469,
-						467,
+						465,
+						446,
 						448,
-						475,
-						471,
-						452,
-						450
+						450,
+						461,
+						459,
+						440,
+						467,
+						463,
+						444,
+						442
 					]
 				},
 				{
 					"title": "Methods",
 					"children": [
-						445,
-						439
+						431
 					]
 				}
 			],
 			"extendedTypes": [
 				{
 					"type": "reference",
-					"target": 691,
+					"target": 683,
 					"name": "SB384",
 					"package": "snackabra"
 				}
@@ -805,7 +758,7 @@
 			]
 		},
 		{
-			"id": 477,
+			"id": 469,
 			"name": "ChannelApi",
 			"variant": "declaration",
 			"kind": 128,
@@ -822,28 +775,28 @@
 			},
 			"children": [
 				{
-					"id": 478,
+					"id": 470,
 					"name": "constructor",
 					"variant": "declaration",
 					"kind": 512,
 					"flags": {},
 					"signatures": [
 						{
-							"id": 479,
+							"id": 471,
 							"name": "new ChannelApi",
 							"variant": "signature",
 							"kind": 16384,
 							"flags": {},
 							"parameters": [
 								{
-									"id": 480,
+									"id": 472,
 									"name": "channel",
 									"variant": "param",
 									"kind": 32768,
 									"flags": {},
 									"type": {
 										"type": "reference",
-										"target": 416,
+										"target": 408,
 										"name": "Channel",
 										"package": "snackabra"
 									}
@@ -851,7 +804,7 @@
 							],
 							"type": {
 								"type": "reference",
-								"target": 477,
+								"target": 469,
 								"name": "ChannelApi",
 								"package": "snackabra"
 							}
@@ -859,13 +812,13 @@
 					]
 				},
 				{
-					"id": 499,
+					"id": 491,
 					"name": "channelId",
 					"variant": "declaration",
 					"kind": 262144,
 					"flags": {},
 					"getSignature": {
-						"id": 500,
+						"id": 492,
 						"name": "channelId",
 						"variant": "signature",
 						"kind": 524288,
@@ -886,21 +839,21 @@
 					}
 				},
 				{
-					"id": 538,
+					"id": 530,
 					"name": "acceptVisitor",
 					"variant": "declaration",
 					"kind": 2048,
 					"flags": {},
 					"signatures": [
 						{
-							"id": 539,
+							"id": 531,
 							"name": "acceptVisitor",
 							"variant": "signature",
 							"kind": 4096,
 							"flags": {},
 							"parameters": [
 								{
-									"id": 540,
+									"id": 532,
 									"name": "pubKey",
 									"variant": "param",
 									"kind": 32768,
@@ -930,21 +883,21 @@
 					]
 				},
 				{
-					"id": 524,
+					"id": 516,
 					"name": "authorize",
 					"variant": "declaration",
 					"kind": 2048,
 					"flags": {},
 					"signatures": [
 						{
-							"id": 525,
+							"id": 517,
 							"name": "authorize",
 							"variant": "signature",
 							"kind": 4096,
 							"flags": {},
 							"parameters": [
 								{
-									"id": 526,
+									"id": 518,
 									"name": "ownerPublicKey",
 									"variant": "param",
 									"kind": 32768,
@@ -966,7 +919,7 @@
 									}
 								},
 								{
-									"id": 527,
+									"id": 519,
 									"name": "serverSecret",
 									"variant": "param",
 									"kind": 32768,
@@ -996,14 +949,14 @@
 					]
 				},
 				{
-					"id": 543,
+					"id": 535,
 					"name": "budd",
 					"variant": "declaration",
 					"kind": 2048,
 					"flags": {},
 					"signatures": [
 						{
-							"id": 544,
+							"id": 536,
 							"name": "budd",
 							"variant": "signature",
 							"kind": 4096,
@@ -1035,14 +988,14 @@
 							}
 						},
 						{
-							"id": 545,
+							"id": 537,
 							"name": "budd",
 							"variant": "signature",
 							"kind": 4096,
 							"flags": {},
 							"parameters": [
 								{
-									"id": 546,
+									"id": 538,
 									"name": "options",
 									"variant": "param",
 									"kind": 32768,
@@ -1050,14 +1003,14 @@
 									"type": {
 										"type": "reflection",
 										"declaration": {
-											"id": 547,
+											"id": 539,
 											"name": "__type",
 											"variant": "declaration",
 											"kind": 65536,
 											"flags": {},
 											"children": [
 												{
-													"id": 548,
+													"id": 540,
 													"name": "keys",
 													"variant": "declaration",
 													"kind": 1024,
@@ -1075,7 +1028,7 @@
 													}
 												},
 												{
-													"id": 549,
+													"id": 541,
 													"name": "storage",
 													"variant": "declaration",
 													"kind": 1024,
@@ -1088,7 +1041,7 @@
 													}
 												},
 												{
-													"id": 550,
+													"id": 542,
 													"name": "targetChannel",
 													"variant": "declaration",
 													"kind": 1024,
@@ -1105,9 +1058,9 @@
 												{
 													"title": "Properties",
 													"children": [
-														548,
-														549,
-														550
+														540,
+														541,
+														542
 													]
 												}
 											]
@@ -1136,14 +1089,14 @@
 					]
 				},
 				{
-					"id": 519,
+					"id": 511,
 					"name": "downloadData",
 					"variant": "declaration",
 					"kind": 2048,
 					"flags": {},
 					"signatures": [
 						{
-							"id": 520,
+							"id": 512,
 							"name": "downloadData",
 							"variant": "signature",
 							"kind": 4096,
@@ -1175,14 +1128,14 @@
 					]
 				},
 				{
-					"id": 517,
+					"id": 509,
 					"name": "getAdminData",
 					"variant": "declaration",
 					"kind": 2048,
 					"flags": {},
 					"signatures": [
 						{
-							"id": 518,
+							"id": 510,
 							"name": "getAdminData",
 							"variant": "signature",
 							"kind": 4096,
@@ -1216,14 +1169,14 @@
 					]
 				},
 				{
-					"id": 504,
+					"id": 496,
 					"name": "getCapacity",
 					"variant": "declaration",
 					"kind": 2048,
 					"flags": {},
 					"signatures": [
 						{
-							"id": 505,
+							"id": 497,
 							"name": "getCapacity",
 							"variant": "signature",
 							"kind": 4096,
@@ -1255,14 +1208,14 @@
 					]
 				},
 				{
-					"id": 510,
+					"id": 502,
 					"name": "getJoinRequests",
 					"variant": "declaration",
 					"kind": 2048,
 					"flags": {},
 					"signatures": [
 						{
-							"id": 511,
+							"id": 503,
 							"name": "getJoinRequests",
 							"variant": "signature",
 							"kind": 4096,
@@ -1294,14 +1247,14 @@
 					]
 				},
 				{
-					"id": 487,
+					"id": 479,
 					"name": "getLastMessageTimes",
 					"variant": "declaration",
 					"kind": 2048,
 					"flags": {},
 					"signatures": [
 						{
-							"id": 488,
+							"id": 480,
 							"name": "getLastMessageTimes",
 							"variant": "signature",
 							"kind": 4096,
@@ -1333,14 +1286,14 @@
 					]
 				},
 				{
-					"id": 508,
+					"id": 500,
 					"name": "getMother",
 					"variant": "declaration",
 					"kind": 2048,
 					"flags": {},
 					"signatures": [
 						{
-							"id": 509,
+							"id": 501,
 							"name": "getMother",
 							"variant": "signature",
 							"kind": 4096,
@@ -1372,14 +1325,14 @@
 					]
 				},
 				{
-					"id": 489,
+					"id": 481,
 					"name": "getOldMessages",
 					"variant": "declaration",
 					"kind": 2048,
 					"flags": {},
 					"signatures": [
 						{
-							"id": 490,
+							"id": 482,
 							"name": "getOldMessages",
 							"variant": "signature",
 							"kind": 4096,
@@ -1394,7 +1347,7 @@
 							},
 							"parameters": [
 								{
-									"id": 491,
+									"id": 483,
 									"name": "currentMessagesLength",
 									"variant": "param",
 									"kind": 32768,
@@ -1414,7 +1367,7 @@
 									"defaultValue": "100"
 								},
 								{
-									"id": 492,
+									"id": 484,
 									"name": "paginate",
 									"variant": "param",
 									"kind": 32768,
@@ -1458,14 +1411,14 @@
 					]
 				},
 				{
-					"id": 506,
+					"id": 498,
 					"name": "getStorageLimit",
 					"variant": "declaration",
 					"kind": 2048,
 					"flags": {},
 					"signatures": [
 						{
-							"id": 507,
+							"id": 499,
 							"name": "getStorageLimit",
 							"variant": "signature",
 							"kind": 4096,
@@ -1497,14 +1450,14 @@
 					]
 				},
 				{
-					"id": 512,
+					"id": 504,
 					"name": "isLocked",
 					"variant": "declaration",
 					"kind": 2048,
 					"flags": {},
 					"signatures": [
 						{
-							"id": 513,
+							"id": 505,
 							"name": "isLocked",
 							"variant": "signature",
 							"kind": 4096,
@@ -1536,14 +1489,14 @@
 					]
 				},
 				{
-					"id": 536,
+					"id": 528,
 					"name": "lock",
 					"variant": "declaration",
 					"kind": 2048,
 					"flags": {},
 					"signatures": [
 						{
-							"id": 537,
+							"id": 529,
 							"name": "lock",
 							"variant": "signature",
 							"kind": 4096,
@@ -1567,14 +1520,14 @@
 					]
 				},
 				{
-					"id": 541,
+					"id": 533,
 					"name": "ownerKeyRotation",
 					"variant": "declaration",
 					"kind": 2048,
 					"flags": {},
 					"signatures": [
 						{
-							"id": 542,
+							"id": 534,
 							"name": "ownerKeyRotation",
 							"variant": "signature",
 							"kind": 4096,
@@ -1587,21 +1540,21 @@
 					]
 				},
 				{
-					"id": 528,
+					"id": 520,
 					"name": "postPubKey",
 					"variant": "declaration",
 					"kind": 2048,
 					"flags": {},
 					"signatures": [
 						{
-							"id": 529,
+							"id": 521,
 							"name": "postPubKey",
 							"variant": "signature",
 							"kind": 4096,
 							"flags": {},
 							"parameters": [
 								{
-									"id": 530,
+									"id": 522,
 									"name": "_exportable_pubKey",
 									"variant": "param",
 									"kind": 32768,
@@ -1627,14 +1580,14 @@
 									{
 										"type": "reflection",
 										"declaration": {
-											"id": 531,
+											"id": 523,
 											"name": "__type",
 											"variant": "declaration",
 											"kind": 65536,
 											"flags": {},
 											"children": [
 												{
-													"id": 532,
+													"id": 524,
 													"name": "success",
 													"variant": "declaration",
 													"kind": 1024,
@@ -1649,7 +1602,7 @@
 												{
 													"title": "Properties",
 													"children": [
-														532
+														524
 													]
 												}
 											]
@@ -1663,14 +1616,14 @@
 					]
 				},
 				{
-					"id": 514,
+					"id": 506,
 					"name": "setMOTD",
 					"variant": "declaration",
 					"kind": 2048,
 					"flags": {},
 					"signatures": [
 						{
-							"id": 515,
+							"id": 507,
 							"name": "setMOTD",
 							"variant": "signature",
 							"kind": 4096,
@@ -1685,7 +1638,7 @@
 							},
 							"parameters": [
 								{
-									"id": 516,
+									"id": 508,
 									"name": "motd",
 									"variant": "param",
 									"kind": 32768,
@@ -1715,21 +1668,21 @@
 					]
 				},
 				{
-					"id": 533,
+					"id": 525,
 					"name": "storageRequest",
 					"variant": "declaration",
 					"kind": 2048,
 					"flags": {},
 					"signatures": [
 						{
-							"id": 534,
+							"id": 526,
 							"name": "storageRequest",
 							"variant": "signature",
 							"kind": 4096,
 							"flags": {},
 							"parameters": [
 								{
-									"id": 535,
+									"id": 527,
 									"name": "byteLength",
 									"variant": "param",
 									"kind": 32768,
@@ -1770,14 +1723,14 @@
 					]
 				},
 				{
-					"id": 501,
+					"id": 493,
 					"name": "updateCapacity",
 					"variant": "declaration",
 					"kind": 2048,
 					"flags": {},
 					"signatures": [
 						{
-							"id": 502,
+							"id": 494,
 							"name": "updateCapacity",
 							"variant": "signature",
 							"kind": 4096,
@@ -1792,7 +1745,7 @@
 							},
 							"parameters": [
 								{
-									"id": 503,
+									"id": 495,
 									"name": "capacity",
 									"variant": "param",
 									"kind": 32768,
@@ -1822,28 +1775,28 @@
 					]
 				},
 				{
-					"id": 521,
+					"id": 513,
 					"name": "uploadChannel",
 					"variant": "declaration",
 					"kind": 2048,
 					"flags": {},
 					"signatures": [
 						{
-							"id": 522,
+							"id": 514,
 							"name": "uploadChannel",
 							"variant": "signature",
 							"kind": 4096,
 							"flags": {},
 							"parameters": [
 								{
-									"id": 523,
+									"id": 515,
 									"name": "channelData",
 									"variant": "param",
 									"kind": 32768,
 									"flags": {},
 									"type": {
 										"type": "reference",
-										"target": 400,
+										"target": 392,
 										"name": "ChannelData",
 										"package": "snackabra"
 									}
@@ -1872,37 +1825,37 @@
 				{
 					"title": "Constructors",
 					"children": [
-						478
+						470
 					]
 				},
 				{
 					"title": "Accessors",
 					"children": [
-						499
+						491
 					]
 				},
 				{
 					"title": "Methods",
 					"children": [
-						538,
-						524,
-						543,
-						519,
-						517,
+						530,
+						516,
+						535,
+						511,
+						509,
+						496,
+						502,
+						479,
+						500,
+						481,
+						498,
 						504,
-						510,
-						487,
-						508,
-						489,
-						506,
-						512,
-						536,
-						541,
 						528,
-						514,
 						533,
-						501,
-						521
+						520,
+						506,
+						525,
+						493,
+						513
 					]
 				}
 			]
@@ -1989,14 +1942,14 @@
 							},
 							"overwrites": {
 								"type": "reference",
-								"target": 418,
+								"target": 410,
 								"name": "Channel.constructor"
 							}
 						}
 					],
 					"overwrites": {
 						"type": "reference",
-						"target": 417,
+						"target": 409,
 						"name": "Channel.constructor"
 					}
 				},
@@ -2013,7 +1966,7 @@
 					"defaultValue": "false",
 					"inheritedFrom": {
 						"type": "reference",
-						"target": 428,
+						"target": 420,
 						"name": "Channel.admin"
 					}
 				},
@@ -2042,7 +1995,7 @@
 					},
 					"overwrites": {
 						"type": "reference",
-						"target": 444,
+						"target": 436,
 						"name": "Channel.adminData"
 					}
 				},
@@ -2096,7 +2049,7 @@
 						"typeArguments": [
 							{
 								"type": "reference",
-								"target": 416,
+								"target": 408,
 								"name": "Channel",
 								"package": "snackabra"
 							}
@@ -2106,7 +2059,7 @@
 					},
 					"inheritedFrom": {
 						"type": "reference",
-						"target": 422,
+						"target": 414,
 						"name": "Channel.channelReady"
 					}
 				},
@@ -2125,7 +2078,7 @@
 					"defaultValue": "false",
 					"inheritedFrom": {
 						"type": "reference",
-						"target": 426,
+						"target": 418,
 						"name": "Channel.locked"
 					}
 				},
@@ -2144,7 +2097,7 @@
 					"defaultValue": "''",
 					"inheritedFrom": {
 						"type": "reference",
-						"target": 425,
+						"target": 417,
 						"name": "Channel.motd"
 					}
 				},
@@ -2161,7 +2114,7 @@
 					"defaultValue": "false",
 					"inheritedFrom": {
 						"type": "reference",
-						"target": 427,
+						"target": 419,
 						"name": "Channel.owner"
 					}
 				},
@@ -2180,7 +2133,7 @@
 						"typeArguments": [
 							{
 								"type": "reference",
-								"target": 691,
+								"target": 683,
 								"name": "SB384",
 								"package": "snackabra"
 							}
@@ -2190,7 +2143,7 @@
 					},
 					"inheritedFrom": {
 						"type": "reference",
-						"target": 460,
+						"target": 452,
 						"name": "Channel.ready"
 					}
 				},
@@ -2209,7 +2162,7 @@
 						"typeArguments": [
 							{
 								"type": "reference",
-								"target": 691,
+								"target": 683,
 								"name": "SB384",
 								"package": "snackabra"
 							}
@@ -2219,7 +2172,7 @@
 					},
 					"inheritedFrom": {
 						"type": "reference",
-						"target": 461,
+						"target": 453,
 						"name": "Channel.sb384Ready"
 					}
 				},
@@ -2236,7 +2189,7 @@
 					"defaultValue": "''",
 					"inheritedFrom": {
 						"type": "reference",
-						"target": 430,
+						"target": 422,
 						"name": "Channel.userName"
 					}
 				},
@@ -2253,7 +2206,7 @@
 					"defaultValue": "false",
 					"inheritedFrom": {
 						"type": "reference",
-						"target": 429,
+						"target": 421,
 						"name": "Channel.verifiedGuest"
 					}
 				},
@@ -2281,7 +2234,7 @@
 					},
 					"inheritedFrom": {
 						"type": "reference",
-						"target": 473,
+						"target": 465,
 						"name": "Channel._id"
 					}
 				},
@@ -2299,7 +2252,7 @@
 						"flags": {},
 						"type": {
 							"type": "reference",
-							"target": 477,
+							"target": 469,
 							"name": "ChannelApi",
 							"package": "snackabra"
 						},
@@ -2311,7 +2264,7 @@
 					},
 					"inheritedFrom": {
 						"type": "reference",
-						"target": 454,
+						"target": 446,
 						"name": "Channel.api"
 					}
 				},
@@ -2348,7 +2301,7 @@
 					},
 					"inheritedFrom": {
 						"type": "reference",
-						"target": 456,
+						"target": 448,
 						"name": "Channel.channelId"
 					}
 				},
@@ -2381,7 +2334,7 @@
 					},
 					"inheritedFrom": {
 						"type": "reference",
-						"target": 458,
+						"target": 450,
 						"name": "Channel.channelSignKey"
 					}
 				},
@@ -2414,7 +2367,7 @@
 					},
 					"inheritedFrom": {
 						"type": "reference",
-						"target": 469,
+						"target": 461,
 						"name": "Channel.exportable_privateKey"
 					}
 				},
@@ -2447,7 +2400,7 @@
 					},
 					"inheritedFrom": {
 						"type": "reference",
-						"target": 467,
+						"target": 459,
 						"name": "Channel.exportable_pubKey"
 					}
 				},
@@ -2477,7 +2430,7 @@
 					},
 					"inheritedFrom": {
 						"type": "reference",
-						"target": 448,
+						"target": 440,
 						"name": "Channel.keys"
 					}
 				},
@@ -2541,7 +2494,7 @@
 					},
 					"inheritedFrom": {
 						"type": "reference",
-						"target": 475,
+						"target": 467,
 						"name": "Channel.ownerChannelId"
 					}
 				},
@@ -2574,7 +2527,7 @@
 					},
 					"inheritedFrom": {
 						"type": "reference",
-						"target": 471,
+						"target": 463,
 						"name": "Channel.privateKey"
 					}
 				},
@@ -2602,7 +2555,7 @@
 					},
 					"inheritedFrom": {
 						"type": "reference",
-						"target": 452,
+						"target": 444,
 						"name": "Channel.readyFlag"
 					}
 				},
@@ -2632,64 +2585,8 @@
 					},
 					"inheritedFrom": {
 						"type": "reference",
-						"target": 450,
+						"target": 442,
 						"name": "Channel.sbServer"
-					}
-				},
-				{
-					"id": 190,
-					"name": "importKeys",
-					"variant": "declaration",
-					"kind": 2048,
-					"flags": {},
-					"signatures": [
-						{
-							"id": 191,
-							"name": "importKeys",
-							"variant": "signature",
-							"kind": 4096,
-							"flags": {},
-							"parameters": [
-								{
-									"id": 192,
-									"name": "keyStrings",
-									"variant": "param",
-									"kind": 32768,
-									"flags": {},
-									"type": {
-										"type": "reference",
-										"target": 409,
-										"name": "ChannelKeyStrings",
-										"package": "snackabra"
-									}
-								}
-							],
-							"type": {
-								"type": "reference",
-								"target": {
-									"sourceFileName": "node_modules/typescript/lib/lib.es5.d.ts",
-									"qualifiedName": "Promise"
-								},
-								"typeArguments": [
-									{
-										"type": "intrinsic",
-										"name": "void"
-									}
-								],
-								"name": "Promise",
-								"package": "typescript"
-							},
-							"inheritedFrom": {
-								"type": "reference",
-								"target": 446,
-								"name": "Channel.importKeys"
-							}
-						}
-					],
-					"inheritedFrom": {
-						"type": "reference",
-						"target": 445,
-						"name": "Channel.importKeys"
 					}
 				},
 				{
@@ -2721,7 +2618,7 @@
 											},
 											{
 												"type": "reference",
-												"target": 551,
+												"target": 543,
 												"name": "SBMessage",
 												"package": "snackabra"
 											}
@@ -2768,14 +2665,14 @@
 							},
 							"overwrites": {
 								"type": "reference",
-								"target": 440,
+								"target": 432,
 								"name": "Channel.send"
 							}
 						}
 					],
 					"overwrites": {
 						"type": "reference",
-						"target": 439,
+						"target": 431,
 						"name": "Channel.send"
 					}
 				}
@@ -2822,7 +2719,6 @@
 				{
 					"title": "Methods",
 					"children": [
-						190,
 						165
 					]
 				}
@@ -2830,7 +2726,7 @@
 			"extendedTypes": [
 				{
 					"type": "reference",
-					"target": 416,
+					"target": 408,
 					"name": "Channel",
 					"package": "snackabra"
 				}
@@ -2971,19 +2867,19 @@
 							},
 							"overwrites": {
 								"type": "reference",
-								"target": 418,
+								"target": 410,
 								"name": "Channel.constructor"
 							}
 						}
 					],
 					"overwrites": {
 						"type": "reference",
-						"target": 417,
+						"target": 409,
 						"name": "Channel.constructor"
 					}
 				},
 				{
-					"id": 285,
+					"id": 277,
 					"name": "admin",
 					"variant": "declaration",
 					"kind": 1024,
@@ -2995,7 +2891,7 @@
 					"defaultValue": "false",
 					"inheritedFrom": {
 						"type": "reference",
-						"target": 428,
+						"target": 420,
 						"name": "Channel.admin"
 					}
 				},
@@ -3015,12 +2911,12 @@
 					},
 					"overwrites": {
 						"type": "reference",
-						"target": 444,
+						"target": 436,
 						"name": "Channel.adminData"
 					}
 				},
 				{
-					"id": 279,
+					"id": 271,
 					"name": "channelReady",
 					"variant": "declaration",
 					"kind": 1024,
@@ -3069,7 +2965,7 @@
 						"typeArguments": [
 							{
 								"type": "reference",
-								"target": 416,
+								"target": 408,
 								"name": "Channel",
 								"package": "snackabra"
 							}
@@ -3079,12 +2975,12 @@
 					},
 					"inheritedFrom": {
 						"type": "reference",
-						"target": 422,
+						"target": 414,
 						"name": "Channel.channelReady"
 					}
 				},
 				{
-					"id": 283,
+					"id": 275,
 					"name": "locked",
 					"variant": "declaration",
 					"kind": 1024,
@@ -3098,12 +2994,12 @@
 					"defaultValue": "false",
 					"inheritedFrom": {
 						"type": "reference",
-						"target": 426,
+						"target": 418,
 						"name": "Channel.locked"
 					}
 				},
 				{
-					"id": 282,
+					"id": 274,
 					"name": "motd",
 					"variant": "declaration",
 					"kind": 1024,
@@ -3117,12 +3013,12 @@
 					"defaultValue": "''",
 					"inheritedFrom": {
 						"type": "reference",
-						"target": 425,
+						"target": 417,
 						"name": "Channel.motd"
 					}
 				},
 				{
-					"id": 284,
+					"id": 276,
 					"name": "owner",
 					"variant": "declaration",
 					"kind": 1024,
@@ -3134,7 +3030,7 @@
 					"defaultValue": "false",
 					"inheritedFrom": {
 						"type": "reference",
-						"target": 427,
+						"target": 419,
 						"name": "Channel.owner"
 					}
 				},
@@ -3163,12 +3059,12 @@
 					},
 					"overwrites": {
 						"type": "reference",
-						"target": 460,
+						"target": 452,
 						"name": "Channel.ready"
 					}
 				},
 				{
-					"id": 312,
+					"id": 304,
 					"name": "sb384Ready",
 					"variant": "declaration",
 					"kind": 1024,
@@ -3182,7 +3078,7 @@
 						"typeArguments": [
 							{
 								"type": "reference",
-								"target": 691,
+								"target": 683,
 								"name": "SB384",
 								"package": "snackabra"
 							}
@@ -3192,12 +3088,12 @@
 					},
 					"inheritedFrom": {
 						"type": "reference",
-						"target": 461,
+						"target": 453,
 						"name": "Channel.sb384Ready"
 					}
 				},
 				{
-					"id": 287,
+					"id": 279,
 					"name": "userName",
 					"variant": "declaration",
 					"kind": 1024,
@@ -3209,12 +3105,12 @@
 					"defaultValue": "''",
 					"inheritedFrom": {
 						"type": "reference",
-						"target": 430,
+						"target": 422,
 						"name": "Channel.userName"
 					}
 				},
 				{
-					"id": 286,
+					"id": 278,
 					"name": "verifiedGuest",
 					"variant": "declaration",
 					"kind": 1024,
@@ -3226,18 +3122,18 @@
 					"defaultValue": "false",
 					"inheritedFrom": {
 						"type": "reference",
-						"target": 429,
+						"target": 421,
 						"name": "Channel.verifiedGuest"
 					}
 				},
 				{
-					"id": 324,
+					"id": 316,
 					"name": "_id",
 					"variant": "declaration",
 					"kind": 262144,
 					"flags": {},
 					"getSignature": {
-						"id": 325,
+						"id": 317,
 						"name": "_id",
 						"variant": "signature",
 						"kind": 524288,
@@ -3254,25 +3150,25 @@
 					},
 					"inheritedFrom": {
 						"type": "reference",
-						"target": 473,
+						"target": 465,
 						"name": "Channel._id"
 					}
 				},
 				{
-					"id": 306,
+					"id": 298,
 					"name": "api",
 					"variant": "declaration",
 					"kind": 262144,
 					"flags": {},
 					"getSignature": {
-						"id": 307,
+						"id": 299,
 						"name": "api",
 						"variant": "signature",
 						"kind": 524288,
 						"flags": {},
 						"type": {
 							"type": "reference",
-							"target": 477,
+							"target": 469,
 							"name": "ChannelApi",
 							"package": "snackabra"
 						},
@@ -3284,18 +3180,18 @@
 					},
 					"inheritedFrom": {
 						"type": "reference",
-						"target": 454,
+						"target": 446,
 						"name": "Channel.api"
 					}
 				},
 				{
-					"id": 308,
+					"id": 300,
 					"name": "channelId",
 					"variant": "declaration",
 					"kind": 262144,
 					"flags": {},
 					"getSignature": {
-						"id": 309,
+						"id": 301,
 						"name": "channelId",
 						"variant": "signature",
 						"kind": 524288,
@@ -3321,18 +3217,18 @@
 					},
 					"inheritedFrom": {
 						"type": "reference",
-						"target": 456,
+						"target": 448,
 						"name": "Channel.channelId"
 					}
 				},
 				{
-					"id": 310,
+					"id": 302,
 					"name": "channelSignKey",
 					"variant": "declaration",
 					"kind": 262144,
 					"flags": {},
 					"getSignature": {
-						"id": 311,
+						"id": 303,
 						"name": "channelSignKey",
 						"variant": "signature",
 						"kind": 524288,
@@ -3354,25 +3250,33 @@
 					},
 					"inheritedFrom": {
 						"type": "reference",
-						"target": 458,
+						"target": 450,
 						"name": "Channel.channelSignKey"
 					}
 				},
 				{
-					"id": 271,
+					"id": 263,
 					"name": "enableTrace",
 					"variant": "declaration",
 					"kind": 262144,
 					"flags": {},
 					"setSignature": {
-						"id": 272,
+						"id": 264,
 						"name": "enableTrace",
 						"variant": "signature",
 						"kind": 1048576,
 						"flags": {},
+						"comment": {
+							"summary": [
+								{
+									"kind": "text",
+									"text": "Enables debug output"
+								}
+							]
+						},
 						"parameters": [
 							{
-								"id": 273,
+								"id": 265,
 								"name": "b",
 								"variant": "param",
 								"kind": 32768,
@@ -3390,13 +3294,13 @@
 					}
 				},
 				{
-					"id": 277,
+					"id": 269,
 					"name": "exportable_owner_pubKey",
 					"variant": "declaration",
 					"kind": 262144,
 					"flags": {},
 					"getSignature": {
-						"id": 278,
+						"id": 270,
 						"name": "exportable_owner_pubKey",
 						"variant": "signature",
 						"kind": 524288,
@@ -3422,13 +3326,13 @@
 					}
 				},
 				{
-					"id": 320,
+					"id": 312,
 					"name": "exportable_privateKey",
 					"variant": "declaration",
 					"kind": 262144,
 					"flags": {},
 					"getSignature": {
-						"id": 321,
+						"id": 313,
 						"name": "exportable_privateKey",
 						"variant": "signature",
 						"kind": 524288,
@@ -3450,18 +3354,18 @@
 					},
 					"inheritedFrom": {
 						"type": "reference",
-						"target": 469,
+						"target": 461,
 						"name": "Channel.exportable_privateKey"
 					}
 				},
 				{
-					"id": 318,
+					"id": 310,
 					"name": "exportable_pubKey",
 					"variant": "declaration",
 					"kind": 262144,
 					"flags": {},
 					"getSignature": {
-						"id": 319,
+						"id": 311,
 						"name": "exportable_pubKey",
 						"variant": "signature",
 						"kind": 524288,
@@ -3483,18 +3387,18 @@
 					},
 					"inheritedFrom": {
 						"type": "reference",
-						"target": 467,
+						"target": 459,
 						"name": "Channel.exportable_pubKey"
 					}
 				},
 				{
-					"id": 300,
+					"id": 292,
 					"name": "keys",
 					"variant": "declaration",
 					"kind": 262144,
 					"flags": {},
 					"getSignature": {
-						"id": 301,
+						"id": 293,
 						"name": "keys",
 						"variant": "signature",
 						"kind": 524288,
@@ -3513,18 +3417,18 @@
 					},
 					"inheritedFrom": {
 						"type": "reference",
-						"target": 448,
+						"target": 440,
 						"name": "Channel.keys"
 					}
 				},
 				{
-					"id": 261,
+					"id": 253,
 					"name": "onMessage",
 					"variant": "declaration",
 					"kind": 262144,
 					"flags": {},
 					"getSignature": {
-						"id": 262,
+						"id": 254,
 						"name": "onMessage",
 						"variant": "signature",
 						"kind": 524288,
@@ -3532,21 +3436,21 @@
 						"type": {
 							"type": "reflection",
 							"declaration": {
-								"id": 263,
+								"id": 255,
 								"name": "__type",
 								"variant": "declaration",
 								"kind": 65536,
 								"flags": {},
 								"signatures": [
 									{
-										"id": 264,
+										"id": 256,
 										"name": "__type",
 										"variant": "signature",
 										"kind": 4096,
 										"flags": {},
 										"parameters": [
 											{
-												"id": 265,
+												"id": 257,
 												"name": "m",
 												"variant": "param",
 												"kind": 32768,
@@ -3569,14 +3473,14 @@
 						}
 					},
 					"setSignature": {
-						"id": 266,
+						"id": 258,
 						"name": "onMessage",
 						"variant": "signature",
 						"kind": 1048576,
 						"flags": {},
 						"parameters": [
 							{
-								"id": 267,
+								"id": 259,
 								"name": "f",
 								"variant": "param",
 								"kind": 32768,
@@ -3584,21 +3488,21 @@
 								"type": {
 									"type": "reflection",
 									"declaration": {
-										"id": 268,
+										"id": 260,
 										"name": "__type",
 										"variant": "declaration",
 										"kind": 65536,
 										"flags": {},
 										"signatures": [
 											{
-												"id": 269,
+												"id": 261,
 												"name": "__type",
 												"variant": "signature",
 												"kind": 4096,
 												"flags": {},
 												"parameters": [
 													{
-														"id": 270,
+														"id": 262,
 														"name": "m",
 														"variant": "param",
 														"kind": 32768,
@@ -3628,13 +3532,13 @@
 					}
 				},
 				{
-					"id": 326,
+					"id": 318,
 					"name": "ownerChannelId",
 					"variant": "declaration",
 					"kind": 262144,
 					"flags": {},
 					"getSignature": {
-						"id": 327,
+						"id": 319,
 						"name": "ownerChannelId",
 						"variant": "signature",
 						"kind": 524288,
@@ -3651,18 +3555,18 @@
 					},
 					"inheritedFrom": {
 						"type": "reference",
-						"target": 475,
+						"target": 467,
 						"name": "Channel.ownerChannelId"
 					}
 				},
 				{
-					"id": 322,
+					"id": 314,
 					"name": "privateKey",
 					"variant": "declaration",
 					"kind": 262144,
 					"flags": {},
 					"getSignature": {
-						"id": 323,
+						"id": 315,
 						"name": "privateKey",
 						"variant": "signature",
 						"kind": 524288,
@@ -3684,18 +3588,18 @@
 					},
 					"inheritedFrom": {
 						"type": "reference",
-						"target": 471,
+						"target": 463,
 						"name": "Channel.privateKey"
 					}
 				},
 				{
-					"id": 304,
+					"id": 296,
 					"name": "readyFlag",
 					"variant": "declaration",
 					"kind": 262144,
 					"flags": {},
 					"getSignature": {
-						"id": 305,
+						"id": 297,
 						"name": "readyFlag",
 						"variant": "signature",
 						"kind": 524288,
@@ -3712,18 +3616,18 @@
 					},
 					"inheritedFrom": {
 						"type": "reference",
-						"target": 452,
+						"target": 444,
 						"name": "Channel.readyFlag"
 					}
 				},
 				{
-					"id": 302,
+					"id": 294,
 					"name": "sbServer",
 					"variant": "declaration",
 					"kind": 262144,
 					"flags": {},
 					"getSignature": {
-						"id": 303,
+						"id": 295,
 						"name": "sbServer",
 						"variant": "signature",
 						"kind": 524288,
@@ -3742,18 +3646,18 @@
 					},
 					"inheritedFrom": {
 						"type": "reference",
-						"target": 450,
+						"target": 442,
 						"name": "Channel.sbServer"
 					}
 				},
 				{
-					"id": 259,
+					"id": 251,
 					"name": "status",
 					"variant": "declaration",
 					"kind": 262144,
 					"flags": {},
 					"getSignature": {
-						"id": 260,
+						"id": 252,
 						"name": "status",
 						"variant": "signature",
 						"kind": 524288,
@@ -3782,93 +3686,6 @@
 					}
 				},
 				{
-					"id": 249,
-					"name": "checkServerStatus",
-					"variant": "declaration",
-					"kind": 2048,
-					"flags": {},
-					"signatures": [
-						{
-							"id": 250,
-							"name": "checkServerStatus",
-							"variant": "signature",
-							"kind": 4096,
-							"flags": {},
-							"parameters": [
-								{
-									"id": 251,
-									"name": "url",
-									"variant": "param",
-									"kind": 32768,
-									"flags": {},
-									"type": {
-										"type": "intrinsic",
-										"name": "string"
-									}
-								},
-								{
-									"id": 252,
-									"name": "timeout",
-									"variant": "param",
-									"kind": 32768,
-									"flags": {},
-									"type": {
-										"type": "intrinsic",
-										"name": "number"
-									}
-								},
-								{
-									"id": 253,
-									"name": "callback",
-									"variant": "param",
-									"kind": 32768,
-									"flags": {},
-									"type": {
-										"type": "reflection",
-										"declaration": {
-											"id": 254,
-											"name": "__type",
-											"variant": "declaration",
-											"kind": 65536,
-											"flags": {},
-											"signatures": [
-												{
-													"id": 255,
-													"name": "__type",
-													"variant": "signature",
-													"kind": 4096,
-													"flags": {},
-													"parameters": [
-														{
-															"id": 256,
-															"name": "online",
-															"variant": "param",
-															"kind": 32768,
-															"flags": {},
-															"type": {
-																"type": "intrinsic",
-																"name": "boolean"
-															}
-														}
-													],
-													"type": {
-														"type": "intrinsic",
-														"name": "void"
-													}
-												}
-											]
-										}
-									}
-								}
-							],
-							"type": {
-								"type": "intrinsic",
-								"name": "void"
-							}
-						}
-					]
-				},
-				{
 					"id": 244,
 					"name": "close",
 					"variant": "declaration",
@@ -3889,70 +3706,14 @@
 					]
 				},
 				{
-					"id": 297,
-					"name": "importKeys",
-					"variant": "declaration",
-					"kind": 2048,
-					"flags": {},
-					"signatures": [
-						{
-							"id": 298,
-							"name": "importKeys",
-							"variant": "signature",
-							"kind": 4096,
-							"flags": {},
-							"parameters": [
-								{
-									"id": 299,
-									"name": "keyStrings",
-									"variant": "param",
-									"kind": 32768,
-									"flags": {},
-									"type": {
-										"type": "reference",
-										"target": 409,
-										"name": "ChannelKeyStrings",
-										"package": "snackabra"
-									}
-								}
-							],
-							"type": {
-								"type": "reference",
-								"target": {
-									"sourceFileName": "node_modules/typescript/lib/lib.es5.d.ts",
-									"qualifiedName": "Promise"
-								},
-								"typeArguments": [
-									{
-										"type": "intrinsic",
-										"name": "void"
-									}
-								],
-								"name": "Promise",
-								"package": "typescript"
-							},
-							"inheritedFrom": {
-								"type": "reference",
-								"target": 446,
-								"name": "Channel.importKeys"
-							}
-						}
-					],
-					"inheritedFrom": {
-						"type": "reference",
-						"target": 445,
-						"name": "Channel.importKeys"
-					}
-				},
-				{
-					"id": 274,
+					"id": 266,
 					"name": "send",
 					"variant": "declaration",
 					"kind": 2048,
 					"flags": {},
 					"signatures": [
 						{
-							"id": 275,
+							"id": 267,
 							"name": "send",
 							"variant": "signature",
 							"kind": 4096,
@@ -3967,7 +3728,7 @@
 							},
 							"parameters": [
 								{
-									"id": 276,
+									"id": 268,
 									"name": "msg",
 									"variant": "param",
 									"kind": 32768,
@@ -3981,7 +3742,7 @@
 											},
 											{
 												"type": "reference",
-												"target": 551,
+												"target": 543,
 												"name": "SBMessage",
 												"package": "snackabra"
 											}
@@ -4006,14 +3767,14 @@
 							},
 							"overwrites": {
 								"type": "reference",
-								"target": 440,
+								"target": 432,
 								"name": "Channel.send"
 							}
 						}
 					],
 					"overwrites": {
 						"type": "reference",
-						"target": 439,
+						"target": 431,
 						"name": "Channel.send"
 					}
 				}
@@ -4028,52 +3789,50 @@
 				{
 					"title": "Properties",
 					"children": [
-						285,
+						277,
 						237,
-						279,
-						283,
-						282,
-						284,
+						271,
+						275,
+						274,
+						276,
 						232,
-						312,
-						287,
-						286
+						304,
+						279,
+						278
 					]
 				},
 				{
 					"title": "Accessors",
 					"children": [
-						324,
-						306,
-						308,
-						310,
-						271,
-						277,
-						320,
-						318,
+						316,
+						298,
 						300,
-						261,
-						326,
-						322,
-						304,
 						302,
-						259
+						263,
+						269,
+						312,
+						310,
+						292,
+						253,
+						318,
+						314,
+						296,
+						294,
+						251
 					]
 				},
 				{
 					"title": "Methods",
 					"children": [
-						249,
 						244,
-						297,
-						274
+						266
 					]
 				}
 			],
 			"extendedTypes": [
 				{
 					"type": "reference",
-					"target": 416,
+					"target": 408,
 					"name": "Channel",
 					"package": "snackabra"
 				}
@@ -4335,7 +4094,7 @@
 			]
 		},
 		{
-			"id": 691,
+			"id": 683,
 			"name": "SB384",
 			"variant": "declaration",
 			"kind": 128,
@@ -4344,14 +4103,14 @@
 			},
 			"children": [
 				{
-					"id": 692,
+					"id": 684,
 					"name": "constructor",
 					"variant": "declaration",
 					"kind": 512,
 					"flags": {},
 					"signatures": [
 						{
-							"id": 693,
+							"id": 685,
 							"name": "new SB384",
 							"variant": "signature",
 							"kind": 16384,
@@ -4380,7 +4139,7 @@
 							},
 							"parameters": [
 								{
-									"id": 694,
+									"id": 686,
 									"name": "key",
 									"variant": "param",
 									"kind": 32768,
@@ -4408,7 +4167,7 @@
 							],
 							"type": {
 								"type": "reference",
-								"target": 691,
+								"target": 683,
 								"name": "SB384",
 								"package": "snackabra"
 							}
@@ -4416,7 +4175,7 @@
 					]
 				},
 				{
-					"id": 695,
+					"id": 687,
 					"name": "ready",
 					"variant": "declaration",
 					"kind": 1024,
@@ -4430,7 +4189,7 @@
 						"typeArguments": [
 							{
 								"type": "reference",
-								"target": 691,
+								"target": 683,
 								"name": "SB384",
 								"package": "snackabra"
 							}
@@ -4440,7 +4199,7 @@
 					}
 				},
 				{
-					"id": 696,
+					"id": 688,
 					"name": "sb384Ready",
 					"variant": "declaration",
 					"kind": 1024,
@@ -4454,7 +4213,7 @@
 						"typeArguments": [
 							{
 								"type": "reference",
-								"target": 691,
+								"target": 683,
 								"name": "SB384",
 								"package": "snackabra"
 							}
@@ -4464,13 +4223,13 @@
 					}
 				},
 				{
-					"id": 710,
+					"id": 702,
 					"name": "_id",
 					"variant": "declaration",
 					"kind": 262144,
 					"flags": {},
 					"getSignature": {
-						"id": 711,
+						"id": 703,
 						"name": "_id",
 						"variant": "signature",
 						"kind": 524288,
@@ -4482,13 +4241,13 @@
 					}
 				},
 				{
-					"id": 706,
+					"id": 698,
 					"name": "exportable_privateKey",
 					"variant": "declaration",
 					"kind": 262144,
 					"flags": {},
 					"getSignature": {
-						"id": 707,
+						"id": 699,
 						"name": "exportable_privateKey",
 						"variant": "signature",
 						"kind": 524288,
@@ -4505,13 +4264,13 @@
 					}
 				},
 				{
-					"id": 704,
+					"id": 696,
 					"name": "exportable_pubKey",
 					"variant": "declaration",
 					"kind": 262144,
 					"flags": {},
 					"getSignature": {
-						"id": 705,
+						"id": 697,
 						"name": "exportable_pubKey",
 						"variant": "signature",
 						"kind": 524288,
@@ -4528,13 +4287,13 @@
 					}
 				},
 				{
-					"id": 712,
+					"id": 704,
 					"name": "ownerChannelId",
 					"variant": "declaration",
 					"kind": 262144,
 					"flags": {},
 					"getSignature": {
-						"id": 713,
+						"id": 705,
 						"name": "ownerChannelId",
 						"variant": "signature",
 						"kind": 524288,
@@ -4546,13 +4305,13 @@
 					}
 				},
 				{
-					"id": 708,
+					"id": 700,
 					"name": "privateKey",
 					"variant": "declaration",
 					"kind": 262144,
 					"flags": {},
 					"getSignature": {
-						"id": 709,
+						"id": 701,
 						"name": "privateKey",
 						"variant": "signature",
 						"kind": 524288,
@@ -4569,13 +4328,13 @@
 					}
 				},
 				{
-					"id": 702,
+					"id": 694,
 					"name": "readyFlag",
 					"variant": "declaration",
 					"kind": 262144,
 					"flags": {},
 					"getSignature": {
-						"id": 703,
+						"id": 695,
 						"name": "readyFlag",
 						"variant": "signature",
 						"kind": 524288,
@@ -4591,38 +4350,38 @@
 				{
 					"title": "Constructors",
 					"children": [
-						692
+						684
 					]
 				},
 				{
 					"title": "Properties",
 					"children": [
-						695,
-						696
+						687,
+						688
 					]
 				},
 				{
 					"title": "Accessors",
 					"children": [
-						710,
-						706,
+						702,
+						698,
+						696,
 						704,
-						712,
-						708,
-						702
+						700,
+						694
 					]
 				}
 			],
 			"extendedBy": [
 				{
 					"type": "reference",
-					"target": 416,
+					"target": 408,
 					"name": "Channel"
 				}
 			]
 		},
 		{
-			"id": 590,
+			"id": 582,
 			"name": "SBCrypto",
 			"variant": "declaration",
 			"kind": 128,
@@ -4639,21 +4398,21 @@
 			},
 			"children": [
 				{
-					"id": 591,
+					"id": 583,
 					"name": "constructor",
 					"variant": "declaration",
 					"kind": 512,
 					"flags": {},
 					"signatures": [
 						{
-							"id": 592,
+							"id": 584,
 							"name": "new SBCrypto",
 							"variant": "signature",
 							"kind": 16384,
 							"flags": {},
 							"type": {
 								"type": "reference",
-								"target": 590,
+								"target": 582,
 								"name": "SBCrypto",
 								"package": "snackabra"
 							}
@@ -4661,14 +4420,14 @@
 					]
 				},
 				{
-					"id": 677,
+					"id": 669,
 					"name": "ab2str",
 					"variant": "declaration",
 					"kind": 2048,
 					"flags": {},
 					"signatures": [
 						{
-							"id": 678,
+							"id": 670,
 							"name": "ab2str",
 							"variant": "signature",
 							"kind": 4096,
@@ -4694,7 +4453,7 @@
 							},
 							"parameters": [
 								{
-									"id": 679,
+									"id": 671,
 									"name": "buffer",
 									"variant": "param",
 									"kind": 32768,
@@ -4718,28 +4477,28 @@
 					]
 				},
 				{
-					"id": 688,
+					"id": 680,
 					"name": "channelKeyStringsToCryptoKeys",
 					"variant": "declaration",
 					"kind": 2048,
 					"flags": {},
 					"signatures": [
 						{
-							"id": 689,
+							"id": 681,
 							"name": "channelKeyStringsToCryptoKeys",
 							"variant": "signature",
 							"kind": 4096,
 							"flags": {},
 							"parameters": [
 								{
-									"id": 690,
+									"id": 682,
 									"name": "keyStrings",
 									"variant": "param",
 									"kind": 32768,
 									"flags": {},
 									"type": {
 										"type": "reference",
-										"target": 409,
+										"target": 401,
 										"name": "ChannelKeyStrings",
 										"package": "snackabra"
 									}
@@ -4766,14 +4525,14 @@
 					]
 				},
 				{
-					"id": 680,
+					"id": 672,
 					"name": "compareKeys",
 					"variant": "declaration",
 					"kind": 2048,
 					"flags": {},
 					"signatures": [
 						{
-							"id": 681,
+							"id": 673,
 							"name": "compareKeys",
 							"variant": "signature",
 							"kind": 4096,
@@ -4788,7 +4547,7 @@
 							},
 							"parameters": [
 								{
-									"id": 682,
+									"id": 674,
 									"name": "key1",
 									"variant": "param",
 									"kind": 32768,
@@ -4810,7 +4569,7 @@
 									}
 								},
 								{
-									"id": 683,
+									"id": 675,
 									"name": "key2",
 									"variant": "param",
 									"kind": 32768,
@@ -4840,14 +4599,14 @@
 					]
 				},
 				{
-					"id": 629,
+					"id": 621,
 					"name": "deriveKey",
 					"variant": "declaration",
 					"kind": 2048,
 					"flags": {},
 					"signatures": [
 						{
-							"id": 630,
+							"id": 622,
 							"name": "deriveKey",
 							"variant": "signature",
 							"kind": 4096,
@@ -4862,7 +4621,7 @@
 							},
 							"parameters": [
 								{
-									"id": 631,
+									"id": 623,
 									"name": "privateKey",
 									"variant": "param",
 									"kind": 32768,
@@ -4878,7 +4637,7 @@
 									}
 								},
 								{
-									"id": 632,
+									"id": 624,
 									"name": "publicKey",
 									"variant": "param",
 									"kind": 32768,
@@ -4894,7 +4653,7 @@
 									}
 								},
 								{
-									"id": 633,
+									"id": 625,
 									"name": "type",
 									"variant": "param",
 									"kind": 32768,
@@ -4905,7 +4664,7 @@
 									}
 								},
 								{
-									"id": 634,
+									"id": 626,
 									"name": "extractable",
 									"variant": "param",
 									"kind": 32768,
@@ -4916,7 +4675,7 @@
 									}
 								},
 								{
-									"id": 635,
+									"id": 627,
 									"name": "keyUsages",
 									"variant": "param",
 									"kind": 32768,
@@ -4959,14 +4718,14 @@
 					]
 				},
 				{
-					"id": 636,
+					"id": 628,
 					"name": "encrypt",
 					"variant": "declaration",
 					"kind": 2048,
 					"flags": {},
 					"signatures": [
 						{
-							"id": 637,
+							"id": 629,
 							"name": "encrypt",
 							"variant": "signature",
 							"kind": 4096,
@@ -4981,7 +4740,7 @@
 							},
 							"parameters": [
 								{
-									"id": 638,
+									"id": 630,
 									"name": "data",
 									"variant": "param",
 									"kind": 32768,
@@ -4997,7 +4756,7 @@
 									}
 								},
 								{
-									"id": 639,
+									"id": 631,
 									"name": "key",
 									"variant": "param",
 									"kind": 32768,
@@ -5013,7 +4772,7 @@
 									}
 								},
 								{
-									"id": 640,
+									"id": 632,
 									"name": "_iv",
 									"variant": "param",
 									"kind": 32768,
@@ -5040,7 +4799,7 @@
 									}
 								},
 								{
-									"id": 641,
+									"id": 633,
 									"name": "returnType",
 									"variant": "param",
 									"kind": 32768,
@@ -5072,14 +4831,14 @@
 							}
 						},
 						{
-							"id": 642,
+							"id": 634,
 							"name": "encrypt",
 							"variant": "signature",
 							"kind": 4096,
 							"flags": {},
 							"parameters": [
 								{
-									"id": 643,
+									"id": 635,
 									"name": "data",
 									"variant": "param",
 									"kind": 32768,
@@ -5095,7 +4854,7 @@
 									}
 								},
 								{
-									"id": 644,
+									"id": 636,
 									"name": "key",
 									"variant": "param",
 									"kind": 32768,
@@ -5111,7 +4870,7 @@
 									}
 								},
 								{
-									"id": 645,
+									"id": 637,
 									"name": "_iv",
 									"variant": "param",
 									"kind": 32768,
@@ -5138,7 +4897,7 @@
 									}
 								},
 								{
-									"id": 646,
+									"id": 638,
 									"name": "returnType",
 									"variant": "param",
 									"kind": 32768,
@@ -5175,14 +4934,14 @@
 					]
 				},
 				{
-					"id": 625,
+					"id": 617,
 					"name": "exportKey",
 					"variant": "declaration",
 					"kind": 2048,
 					"flags": {},
 					"signatures": [
 						{
-							"id": 626,
+							"id": 618,
 							"name": "exportKey",
 							"variant": "signature",
 							"kind": 4096,
@@ -5197,7 +4956,7 @@
 							},
 							"parameters": [
 								{
-									"id": 627,
+									"id": 619,
 									"name": "format",
 									"variant": "param",
 									"kind": 32768,
@@ -5208,7 +4967,7 @@
 									}
 								},
 								{
-									"id": 628,
+									"id": 620,
 									"name": "key",
 									"variant": "param",
 									"kind": 32768,
@@ -5248,14 +5007,14 @@
 					]
 				},
 				{
-					"id": 599,
+					"id": 591,
 					"name": "extractPubKey",
 					"variant": "declaration",
 					"kind": 2048,
 					"flags": {},
 					"signatures": [
 						{
-							"id": 600,
+							"id": 592,
 							"name": "extractPubKey",
 							"variant": "signature",
 							"kind": 4096,
@@ -5270,7 +5029,7 @@
 							},
 							"parameters": [
 								{
-									"id": 601,
+									"id": 593,
 									"name": "privateKey",
 									"variant": "param",
 									"kind": 32768,
@@ -5308,14 +5067,14 @@
 					]
 				},
 				{
-					"id": 609,
+					"id": 601,
 					"name": "generateChannelId",
 					"variant": "declaration",
 					"kind": 2048,
 					"flags": {},
 					"signatures": [
 						{
-							"id": 610,
+							"id": 602,
 							"name": "generateChannelId",
 							"variant": "signature",
 							"kind": 4096,
@@ -5330,7 +5089,7 @@
 							},
 							"parameters": [
 								{
-									"id": 611,
+									"id": 603,
 									"name": "owner_key",
 									"variant": "param",
 									"kind": 32768,
@@ -5374,14 +5133,14 @@
 					]
 				},
 				{
-					"id": 593,
+					"id": 585,
 					"name": "generateIdKey",
 					"variant": "declaration",
 					"kind": 2048,
 					"flags": {},
 					"signatures": [
 						{
-							"id": 594,
+							"id": 586,
 							"name": "generateIdKey",
 							"variant": "signature",
 							"kind": 4096,
@@ -5396,7 +5155,7 @@
 							},
 							"parameters": [
 								{
-									"id": 595,
+									"id": 587,
 									"name": "buf",
 									"variant": "param",
 									"kind": 32768,
@@ -5430,14 +5189,14 @@
 									{
 										"type": "reflection",
 										"declaration": {
-											"id": 596,
+											"id": 588,
 											"name": "__type",
 											"variant": "declaration",
 											"kind": 65536,
 											"flags": {},
 											"children": [
 												{
-													"id": 597,
+													"id": 589,
 													"name": "id",
 													"variant": "declaration",
 													"kind": 1024,
@@ -5448,7 +5207,7 @@
 													}
 												},
 												{
-													"id": 598,
+													"id": 590,
 													"name": "key",
 													"variant": "declaration",
 													"kind": 1024,
@@ -5463,8 +5222,8 @@
 												{
 													"title": "Properties",
 													"children": [
-														597,
-														598
+														589,
+														590
 													]
 												}
 											]
@@ -5478,14 +5237,14 @@
 					]
 				},
 				{
-					"id": 616,
+					"id": 608,
 					"name": "generateKeys",
 					"variant": "declaration",
 					"kind": 2048,
 					"flags": {},
 					"signatures": [
 						{
-							"id": 617,
+							"id": 609,
 							"name": "generateKeys",
 							"variant": "signature",
 							"kind": 4096,
@@ -5538,14 +5297,14 @@
 					]
 				},
 				{
-					"id": 618,
+					"id": 610,
 					"name": "importKey",
 					"variant": "declaration",
 					"kind": 2048,
 					"flags": {},
 					"signatures": [
 						{
-							"id": 619,
+							"id": 611,
 							"name": "importKey",
 							"variant": "signature",
 							"kind": 4096,
@@ -5560,7 +5319,7 @@
 							},
 							"parameters": [
 								{
-									"id": 620,
+									"id": 612,
 									"name": "format",
 									"variant": "param",
 									"kind": 32768,
@@ -5576,7 +5335,7 @@
 									}
 								},
 								{
-									"id": 621,
+									"id": 613,
 									"name": "key",
 									"variant": "param",
 									"kind": 32768,
@@ -5606,7 +5365,7 @@
 									}
 								},
 								{
-									"id": 622,
+									"id": 614,
 									"name": "type",
 									"variant": "param",
 									"kind": 32768,
@@ -5630,7 +5389,7 @@
 									}
 								},
 								{
-									"id": 623,
+									"id": 615,
 									"name": "extractable",
 									"variant": "param",
 									"kind": 32768,
@@ -5641,7 +5400,7 @@
 									}
 								},
 								{
-									"id": 624,
+									"id": 616,
 									"name": "keyUsages",
 									"variant": "param",
 									"kind": 32768,
@@ -5684,14 +5443,14 @@
 					]
 				},
 				{
-					"id": 684,
+					"id": 676,
 					"name": "lookupKey",
 					"variant": "declaration",
 					"kind": 2048,
 					"flags": {},
 					"signatures": [
 						{
-							"id": 685,
+							"id": 677,
 							"name": "lookupKey",
 							"variant": "signature",
 							"kind": 4096,
@@ -5706,7 +5465,7 @@
 							},
 							"parameters": [
 								{
-									"id": 686,
+									"id": 678,
 									"name": "key",
 									"variant": "param",
 									"kind": 32768,
@@ -5722,7 +5481,7 @@
 									}
 								},
 								{
-									"id": 687,
+									"id": 679,
 									"name": "array",
 									"variant": "param",
 									"kind": 32768,
@@ -5749,14 +5508,14 @@
 					]
 				},
 				{
-					"id": 665,
+					"id": 657,
 					"name": "sign",
 					"variant": "declaration",
 					"kind": 2048,
 					"flags": {},
 					"signatures": [
 						{
-							"id": 666,
+							"id": 658,
 							"name": "sign",
 							"variant": "signature",
 							"kind": 4096,
@@ -5771,7 +5530,7 @@
 							},
 							"parameters": [
 								{
-									"id": 667,
+									"id": 659,
 									"name": "secretKey",
 									"variant": "param",
 									"kind": 32768,
@@ -5787,7 +5546,7 @@
 									}
 								},
 								{
-									"id": 668,
+									"id": 660,
 									"name": "contents",
 									"variant": "param",
 									"kind": 32768,
@@ -5817,14 +5576,14 @@
 					]
 				},
 				{
-					"id": 674,
+					"id": 666,
 					"name": "str2ab",
 					"variant": "declaration",
 					"kind": 2048,
 					"flags": {},
 					"signatures": [
 						{
-							"id": 675,
+							"id": 667,
 							"name": "str2ab",
 							"variant": "signature",
 							"kind": 4096,
@@ -5850,7 +5609,7 @@
 							},
 							"parameters": [
 								{
-									"id": 676,
+									"id": 668,
 									"name": "string",
 									"variant": "param",
 									"kind": 32768,
@@ -5874,14 +5633,14 @@
 					]
 				},
 				{
-					"id": 656,
+					"id": 648,
 					"name": "unwrap",
 					"variant": "declaration",
 					"kind": 2048,
 					"flags": {},
 					"signatures": [
 						{
-							"id": 657,
+							"id": 649,
 							"name": "unwrap",
 							"variant": "signature",
 							"kind": 4096,
@@ -5896,7 +5655,7 @@
 							},
 							"parameters": [
 								{
-									"id": 658,
+									"id": 650,
 									"name": "k",
 									"variant": "param",
 									"kind": 32768,
@@ -5912,7 +5671,7 @@
 									}
 								},
 								{
-									"id": 659,
+									"id": 651,
 									"name": "o",
 									"variant": "param",
 									"kind": 32768,
@@ -5925,7 +5684,7 @@
 									}
 								},
 								{
-									"id": 660,
+									"id": 652,
 									"name": "returnType",
 									"variant": "param",
 									"kind": 32768,
@@ -5953,14 +5712,14 @@
 							}
 						},
 						{
-							"id": 661,
+							"id": 653,
 							"name": "unwrap",
 							"variant": "signature",
 							"kind": 4096,
 							"flags": {},
 							"parameters": [
 								{
-									"id": 662,
+									"id": 654,
 									"name": "k",
 									"variant": "param",
 									"kind": 32768,
@@ -5976,7 +5735,7 @@
 									}
 								},
 								{
-									"id": 663,
+									"id": 655,
 									"name": "o",
 									"variant": "param",
 									"kind": 32768,
@@ -5989,7 +5748,7 @@
 									}
 								},
 								{
-									"id": 664,
+									"id": 656,
 									"name": "returnType",
 									"variant": "param",
 									"kind": 32768,
@@ -6024,14 +5783,14 @@
 					]
 				},
 				{
-					"id": 669,
+					"id": 661,
 					"name": "verify",
 					"variant": "declaration",
 					"kind": 2048,
 					"flags": {},
 					"signatures": [
 						{
-							"id": 670,
+							"id": 662,
 							"name": "verify",
 							"variant": "signature",
 							"kind": 4096,
@@ -6046,7 +5805,7 @@
 							},
 							"parameters": [
 								{
-									"id": 671,
+									"id": 663,
 									"name": "verifyKey",
 									"variant": "param",
 									"kind": 32768,
@@ -6062,7 +5821,7 @@
 									}
 								},
 								{
-									"id": 672,
+									"id": 664,
 									"name": "sign",
 									"variant": "param",
 									"kind": 32768,
@@ -6073,7 +5832,7 @@
 									}
 								},
 								{
-									"id": 673,
+									"id": 665,
 									"name": "contents",
 									"variant": "param",
 									"kind": 32768,
@@ -6103,14 +5862,14 @@
 					]
 				},
 				{
-					"id": 612,
+					"id": 604,
 					"name": "verifyChannelId",
 					"variant": "declaration",
 					"kind": 2048,
 					"flags": {},
 					"signatures": [
 						{
-							"id": 613,
+							"id": 605,
 							"name": "verifyChannelId",
 							"variant": "signature",
 							"kind": 4096,
@@ -6125,7 +5884,7 @@
 							},
 							"parameters": [
 								{
-									"id": 614,
+									"id": 606,
 									"name": "owner_key",
 									"variant": "param",
 									"kind": 32768,
@@ -6150,7 +5909,7 @@
 									}
 								},
 								{
-									"id": 615,
+									"id": 607,
 									"name": "channel_id",
 									"variant": "param",
 									"kind": 32768,
@@ -6180,21 +5939,21 @@
 					]
 				},
 				{
-					"id": 647,
+					"id": 639,
 					"name": "wrap",
 					"variant": "declaration",
 					"kind": 2048,
 					"flags": {},
 					"signatures": [
 						{
-							"id": 648,
+							"id": 640,
 							"name": "wrap",
 							"variant": "signature",
 							"kind": 4096,
 							"flags": {},
 							"parameters": [
 								{
-									"id": 649,
+									"id": 641,
 									"name": "k",
 									"variant": "param",
 									"kind": 32768,
@@ -6210,7 +5969,7 @@
 									}
 								},
 								{
-									"id": 650,
+									"id": 642,
 									"name": "b",
 									"variant": "param",
 									"kind": 32768,
@@ -6221,7 +5980,7 @@
 									}
 								},
 								{
-									"id": 651,
+									"id": 643,
 									"name": "bodyType",
 									"variant": "param",
 									"kind": 32768,
@@ -6251,14 +6010,14 @@
 							}
 						},
 						{
-							"id": 652,
+							"id": 644,
 							"name": "wrap",
 							"variant": "signature",
 							"kind": 4096,
 							"flags": {},
 							"parameters": [
 								{
-									"id": 653,
+									"id": 645,
 									"name": "k",
 									"variant": "param",
 									"kind": 32768,
@@ -6274,7 +6033,7 @@
 									}
 								},
 								{
-									"id": 654,
+									"id": 646,
 									"name": "b",
 									"variant": "param",
 									"kind": 32768,
@@ -6290,7 +6049,7 @@
 									}
 								},
 								{
-									"id": 655,
+									"id": 647,
 									"name": "bodyType",
 									"variant": "param",
 									"kind": 32768,
@@ -6326,36 +6085,36 @@
 				{
 					"title": "Constructors",
 					"children": [
-						591
+						583
 					]
 				},
 				{
 					"title": "Methods",
 					"children": [
-						677,
-						688,
-						680,
-						629,
-						636,
-						625,
-						599,
-						609,
-						593,
-						616,
-						618,
-						684,
-						665,
-						674,
-						656,
 						669,
-						612,
-						647
+						680,
+						672,
+						621,
+						628,
+						617,
+						591,
+						601,
+						585,
+						608,
+						610,
+						676,
+						657,
+						666,
+						648,
+						661,
+						604,
+						639
 					]
 				}
 			]
 		},
 		{
-			"id": 551,
+			"id": 543,
 			"name": "SBMessage",
 			"variant": "declaration",
 			"kind": 128,
@@ -6372,34 +6131,34 @@
 			},
 			"children": [
 				{
-					"id": 552,
+					"id": 544,
 					"name": "constructor",
 					"variant": "declaration",
 					"kind": 512,
 					"flags": {},
 					"signatures": [
 						{
-							"id": 553,
+							"id": 545,
 							"name": "new SBMessage",
 							"variant": "signature",
 							"kind": 16384,
 							"flags": {},
 							"parameters": [
 								{
-									"id": 554,
+									"id": 546,
 									"name": "channel",
 									"variant": "param",
 									"kind": 32768,
 									"flags": {},
 									"type": {
 										"type": "reference",
-										"target": 416,
+										"target": 408,
 										"name": "Channel",
 										"package": "snackabra"
 									}
 								},
 								{
-									"id": 555,
+									"id": 547,
 									"name": "body",
 									"variant": "param",
 									"kind": 32768,
@@ -6413,7 +6172,7 @@
 							],
 							"type": {
 								"type": "reference",
-								"target": 551,
+								"target": 543,
 								"name": "SBMessage",
 								"package": "snackabra"
 							}
@@ -6421,7 +6180,7 @@
 					]
 				},
 				{
-					"id": 559,
+					"id": 551,
 					"name": "MAX_SB_BODY_SIZE",
 					"variant": "declaration",
 					"kind": 1024,
@@ -6433,7 +6192,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 562,
+					"id": 554,
 					"name": "[SB_MESSAGE_SYMBOL]",
 					"variant": "declaration",
 					"kind": 1024,
@@ -6445,20 +6204,20 @@
 					"defaultValue": "true"
 				},
 				{
-					"id": 557,
+					"id": 549,
 					"name": "channel",
 					"variant": "declaration",
 					"kind": 1024,
 					"flags": {},
 					"type": {
 						"type": "reference",
-						"target": 416,
+						"target": 408,
 						"name": "Channel",
 						"package": "snackabra"
 					}
 				},
 				{
-					"id": 558,
+					"id": 550,
 					"name": "contents",
 					"variant": "declaration",
 					"kind": 1024,
@@ -6474,7 +6233,7 @@
 					}
 				},
 				{
-					"id": 556,
+					"id": 548,
 					"name": "ready",
 					"variant": "declaration",
 					"kind": 1024,
@@ -6488,7 +6247,7 @@
 						"typeArguments": [
 							{
 								"type": "reference",
-								"target": 551,
+								"target": 543,
 								"name": "SBMessage",
 								"package": "snackabra"
 							}
@@ -6498,14 +6257,14 @@
 					}
 				},
 				{
-					"id": 560,
+					"id": 552,
 					"name": "send",
 					"variant": "declaration",
 					"kind": 2048,
 					"flags": {},
 					"signatures": [
 						{
-							"id": 561,
+							"id": 553,
 							"name": "send",
 							"variant": "signature",
 							"kind": 4096,
@@ -6541,29 +6300,29 @@
 				{
 					"title": "Constructors",
 					"children": [
-						552
+						544
 					]
 				},
 				{
 					"title": "Properties",
 					"children": [
-						559,
-						562,
-						557,
-						558,
-						556
+						551,
+						554,
+						549,
+						550,
+						548
 					]
 				},
 				{
 					"title": "Methods",
 					"children": [
-						560
+						552
 					]
 				}
 			]
 		},
 		{
-			"id": 347,
+			"id": 339,
 			"name": "SBObjectHandleClass",
 			"variant": "declaration",
 			"kind": 128,
@@ -6578,28 +6337,28 @@
 			},
 			"children": [
 				{
-					"id": 348,
+					"id": 340,
 					"name": "constructor",
 					"variant": "declaration",
 					"kind": 512,
 					"flags": {},
 					"signatures": [
 						{
-							"id": 349,
+							"id": 341,
 							"name": "new SBObjectHandleClass",
 							"variant": "signature",
 							"kind": 16384,
 							"flags": {},
 							"parameters": [
 								{
-									"id": 350,
+									"id": 342,
 									"name": "options",
 									"variant": "param",
 									"kind": 32768,
 									"flags": {},
 									"type": {
 										"type": "reference",
-										"target": 329,
+										"target": 321,
 										"name": "SBObjectHandle",
 										"package": "snackabra"
 									}
@@ -6607,7 +6366,7 @@
 							],
 							"type": {
 								"type": "reference",
-								"target": 347,
+								"target": 339,
 								"name": "SBObjectHandleClass",
 								"package": "snackabra"
 							}
@@ -6615,7 +6374,7 @@
 					]
 				},
 				{
-					"id": 365,
+					"id": 357,
 					"name": "actualSize",
 					"variant": "declaration",
 					"kind": 1024,
@@ -6636,7 +6395,7 @@
 					}
 				},
 				{
-					"id": 361,
+					"id": 353,
 					"name": "dateAndTime",
 					"variant": "declaration",
 					"kind": 1024,
@@ -6657,7 +6416,7 @@
 					}
 				},
 				{
-					"id": 360,
+					"id": 352,
 					"name": "fileName",
 					"variant": "declaration",
 					"kind": 1024,
@@ -6678,7 +6437,7 @@
 					}
 				},
 				{
-					"id": 363,
+					"id": 355,
 					"name": "fileType",
 					"variant": "declaration",
 					"kind": 1024,
@@ -6699,7 +6458,7 @@
 					}
 				},
 				{
-					"id": 358,
+					"id": 350,
 					"name": "iv",
 					"variant": "declaration",
 					"kind": 1024,
@@ -6734,7 +6493,7 @@
 					}
 				},
 				{
-					"id": 364,
+					"id": 356,
 					"name": "lastModified",
 					"variant": "declaration",
 					"kind": 1024,
@@ -6755,7 +6514,7 @@
 					}
 				},
 				{
-					"id": 359,
+					"id": 351,
 					"name": "salt",
 					"variant": "declaration",
 					"kind": 1024,
@@ -6790,7 +6549,7 @@
 					}
 				},
 				{
-					"id": 366,
+					"id": 358,
 					"name": "savedSize",
 					"variant": "declaration",
 					"kind": 1024,
@@ -6811,7 +6570,7 @@
 					}
 				},
 				{
-					"id": 362,
+					"id": 354,
 					"name": "shardServer",
 					"variant": "declaration",
 					"kind": 1024,
@@ -6832,7 +6591,7 @@
 					}
 				},
 				{
-					"id": 351,
+					"id": 343,
 					"name": "version",
 					"variant": "declaration",
 					"kind": 1024,
@@ -6852,13 +6611,13 @@
 					"defaultValue": "'1'"
 				},
 				{
-					"id": 369,
+					"id": 361,
 					"name": "id",
 					"variant": "declaration",
 					"kind": 262144,
 					"flags": {},
 					"getSignature": {
-						"id": 370,
+						"id": 362,
 						"name": "id",
 						"variant": "signature",
 						"kind": 524288,
@@ -6877,7 +6636,7 @@
 						}
 					},
 					"setSignature": {
-						"id": 371,
+						"id": 363,
 						"name": "id",
 						"variant": "signature",
 						"kind": 1048576,
@@ -6887,6 +6646,69 @@
 								{
 									"kind": "text",
 									"text": "id of object"
+								}
+							]
+						},
+						"parameters": [
+							{
+								"id": 364,
+								"name": "value",
+								"variant": "param",
+								"kind": 32768,
+								"flags": {},
+								"type": {
+									"type": "intrinsic",
+									"name": "string"
+								}
+							}
+						],
+						"type": {
+							"type": "intrinsic",
+							"name": "void"
+						}
+					}
+				},
+				{
+					"id": 369,
+					"name": "id32",
+					"variant": "declaration",
+					"kind": 262144,
+					"flags": {},
+					"getSignature": {
+						"id": 370,
+						"name": "id32",
+						"variant": "signature",
+						"kind": 524288,
+						"flags": {},
+						"comment": {
+							"summary": [
+								{
+									"kind": "text",
+									"text": "optional: array32 format of id"
+								}
+							]
+						},
+						"type": {
+							"type": "reference",
+							"target": {
+								"sourceFileName": "snackabra-jslib/snackabra.ts",
+								"qualifiedName": "Base62Encoded"
+							},
+							"name": "Base62Encoded",
+							"package": "snackabra"
+						}
+					},
+					"setSignature": {
+						"id": 371,
+						"name": "id32",
+						"variant": "signature",
+						"kind": 1048576,
+						"flags": {},
+						"comment": {
+							"summary": [
+								{
+									"kind": "text",
+									"text": "optional: array32 format of id"
 								}
 							]
 						},
@@ -6898,69 +6720,6 @@
 								"kind": 32768,
 								"flags": {},
 								"type": {
-									"type": "intrinsic",
-									"name": "string"
-								}
-							}
-						],
-						"type": {
-							"type": "intrinsic",
-							"name": "void"
-						}
-					}
-				},
-				{
-					"id": 377,
-					"name": "id32",
-					"variant": "declaration",
-					"kind": 262144,
-					"flags": {},
-					"getSignature": {
-						"id": 378,
-						"name": "id32",
-						"variant": "signature",
-						"kind": 524288,
-						"flags": {},
-						"comment": {
-							"summary": [
-								{
-									"kind": "text",
-									"text": "optional: array32 format of id"
-								}
-							]
-						},
-						"type": {
-							"type": "reference",
-							"target": {
-								"sourceFileName": "snackabra-jslib/snackabra.ts",
-								"qualifiedName": "Base62Encoded"
-							},
-							"name": "Base62Encoded",
-							"package": "snackabra"
-						}
-					},
-					"setSignature": {
-						"id": 379,
-						"name": "id32",
-						"variant": "signature",
-						"kind": 1048576,
-						"flags": {},
-						"comment": {
-							"summary": [
-								{
-									"kind": "text",
-									"text": "optional: array32 format of id"
-								}
-							]
-						},
-						"parameters": [
-							{
-								"id": 380,
-								"name": "value",
-								"variant": "param",
-								"kind": 32768,
-								"flags": {},
-								"type": {
 									"type": "reference",
 									"target": {
 										"sourceFileName": "snackabra-jslib/snackabra.ts",
@@ -6978,13 +6737,13 @@
 					}
 				},
 				{
-					"id": 373,
+					"id": 365,
 					"name": "key",
 					"variant": "declaration",
 					"kind": 262144,
 					"flags": {},
 					"getSignature": {
-						"id": 374,
+						"id": 366,
 						"name": "key",
 						"variant": "signature",
 						"kind": 524288,
@@ -7003,7 +6762,7 @@
 						}
 					},
 					"setSignature": {
-						"id": 375,
+						"id": 367,
 						"name": "key",
 						"variant": "signature",
 						"kind": 1048576,
@@ -7018,7 +6777,7 @@
 						},
 						"parameters": [
 							{
-								"id": 376,
+								"id": 368,
 								"name": "value",
 								"variant": "param",
 								"kind": 32768,
@@ -7036,13 +6795,13 @@
 					}
 				},
 				{
-					"id": 381,
+					"id": 373,
 					"name": "key32",
 					"variant": "declaration",
 					"kind": 262144,
 					"flags": {},
 					"getSignature": {
-						"id": 382,
+						"id": 374,
 						"name": "key32",
 						"variant": "signature",
 						"kind": 524288,
@@ -7066,7 +6825,7 @@
 						}
 					},
 					"setSignature": {
-						"id": 383,
+						"id": 375,
 						"name": "key32",
 						"variant": "signature",
 						"kind": 1048576,
@@ -7081,7 +6840,7 @@
 						},
 						"parameters": [
 							{
-								"id": 384,
+								"id": 376,
 								"name": "value",
 								"variant": "param",
 								"kind": 32768,
@@ -7104,13 +6863,13 @@
 					}
 				},
 				{
-					"id": 389,
+					"id": 381,
 					"name": "type",
 					"variant": "declaration",
 					"kind": 262144,
 					"flags": {},
 					"getSignature": {
-						"id": 390,
+						"id": 382,
 						"name": "type",
 						"variant": "signature",
 						"kind": 524288,
@@ -7125,20 +6884,20 @@
 						},
 						"type": {
 							"type": "reference",
-							"target": 328,
+							"target": 320,
 							"name": "SBObjectType",
 							"package": "snackabra"
 						}
 					}
 				},
 				{
-					"id": 385,
+					"id": 377,
 					"name": "verification",
 					"variant": "declaration",
 					"kind": 262144,
 					"flags": {},
 					"getSignature": {
-						"id": 386,
+						"id": 378,
 						"name": "verification",
 						"variant": "signature",
 						"kind": 524288,
@@ -7177,7 +6936,7 @@
 						}
 					},
 					"setSignature": {
-						"id": 387,
+						"id": 379,
 						"name": "verification",
 						"variant": "signature",
 						"kind": 1048576,
@@ -7192,7 +6951,7 @@
 						},
 						"parameters": [
 							{
-								"id": 388,
+								"id": 380,
 								"name": "value",
 								"variant": "param",
 								"kind": 32768,
@@ -7234,39 +6993,39 @@
 				{
 					"title": "Constructors",
 					"children": [
-						348
+						340
 					]
 				},
 				{
 					"title": "Properties",
 					"children": [
-						365,
-						361,
-						360,
-						363,
+						357,
+						353,
+						352,
+						355,
+						350,
+						356,
+						351,
 						358,
-						364,
-						359,
-						366,
-						362,
-						351
+						354,
+						343
 					]
 				},
 				{
 					"title": "Accessors",
 					"children": [
+						361,
 						369,
-						377,
+						365,
 						373,
 						381,
-						389,
-						385
+						377
 					]
 				}
 			]
 		},
 		{
-			"id": 563,
+			"id": 555,
 			"name": "Snackabra",
 			"variant": "declaration",
 			"kind": 128,
@@ -7292,21 +7051,21 @@
 			},
 			"children": [
 				{
-					"id": 564,
+					"id": 556,
 					"name": "constructor",
 					"variant": "declaration",
 					"kind": 512,
 					"flags": {},
 					"signatures": [
 						{
-							"id": 565,
+							"id": 557,
 							"name": "new Snackabra",
 							"variant": "signature",
 							"kind": 16384,
 							"flags": {},
 							"parameters": [
 								{
-									"id": 566,
+									"id": 558,
 									"name": "args",
 									"variant": "param",
 									"kind": 32768,
@@ -7329,7 +7088,7 @@
 									}
 								},
 								{
-									"id": 567,
+									"id": 559,
 									"name": "DEBUG",
 									"variant": "param",
 									"kind": 32768,
@@ -7351,7 +7110,7 @@
 							],
 							"type": {
 								"type": "reference",
-								"target": 563,
+								"target": 555,
 								"name": "Snackabra",
 								"package": "snackabra"
 							}
@@ -7359,13 +7118,13 @@
 					]
 				},
 				{
-					"id": 584,
+					"id": 576,
 					"name": "channel",
 					"variant": "declaration",
 					"kind": 262144,
 					"flags": {},
 					"getSignature": {
-						"id": 585,
+						"id": 577,
 						"name": "channel",
 						"variant": "signature",
 						"kind": 524288,
@@ -7380,20 +7139,20 @@
 						},
 						"type": {
 							"type": "reference",
-							"target": 416,
+							"target": 408,
 							"name": "Channel",
 							"package": "snackabra"
 						}
 					}
 				},
 				{
-					"id": 588,
+					"id": 580,
 					"name": "crypto",
 					"variant": "declaration",
 					"kind": 262144,
 					"flags": {},
 					"getSignature": {
-						"id": 589,
+						"id": 581,
 						"name": "crypto",
 						"variant": "signature",
 						"kind": 524288,
@@ -7408,20 +7167,20 @@
 						},
 						"type": {
 							"type": "reference",
-							"target": 590,
+							"target": 582,
 							"name": "SBCrypto",
 							"package": "snackabra"
 						}
 					}
 				},
 				{
-					"id": 586,
+					"id": 578,
 					"name": "storage",
 					"variant": "declaration",
 					"kind": 262144,
 					"flags": {},
 					"getSignature": {
-						"id": 587,
+						"id": 579,
 						"name": "storage",
 						"variant": "signature",
 						"kind": 524288,
@@ -7446,14 +7205,14 @@
 					}
 				},
 				{
-					"id": 571,
+					"id": 563,
 					"name": "connect",
 					"variant": "declaration",
 					"kind": 2048,
 					"flags": {},
 					"signatures": [
 						{
-							"id": 572,
+							"id": 564,
 							"name": "connect",
 							"variant": "signature",
 							"kind": 4096,
@@ -7511,7 +7270,7 @@
 							},
 							"parameters": [
 								{
-									"id": 573,
+									"id": 565,
 									"name": "onMessage",
 									"variant": "param",
 									"kind": 32768,
@@ -7519,21 +7278,21 @@
 									"type": {
 										"type": "reflection",
 										"declaration": {
-											"id": 574,
+											"id": 566,
 											"name": "__type",
 											"variant": "declaration",
 											"kind": 65536,
 											"flags": {},
 											"signatures": [
 												{
-													"id": 575,
+													"id": 567,
 													"name": "__type",
 													"variant": "signature",
 													"kind": 4096,
 													"flags": {},
 													"parameters": [
 														{
-															"id": 576,
+															"id": 568,
 															"name": "m",
 															"variant": "param",
 															"kind": 32768,
@@ -7556,7 +7315,7 @@
 									}
 								},
 								{
-									"id": 577,
+									"id": 569,
 									"name": "key",
 									"variant": "param",
 									"kind": 32768,
@@ -7582,7 +7341,7 @@
 									}
 								},
 								{
-									"id": 578,
+									"id": 570,
 									"name": "channelId",
 									"variant": "param",
 									"kind": 32768,
@@ -7624,14 +7383,14 @@
 					]
 				},
 				{
-					"id": 579,
+					"id": 571,
 					"name": "create",
 					"variant": "declaration",
 					"kind": 2048,
 					"flags": {},
 					"signatures": [
 						{
-							"id": 580,
+							"id": 572,
 							"name": "create",
 							"variant": "signature",
 							"kind": 4096,
@@ -7654,7 +7413,7 @@
 							},
 							"parameters": [
 								{
-									"id": 581,
+									"id": 573,
 									"name": "sbServer",
 									"variant": "param",
 									"kind": 32768,
@@ -7675,7 +7434,7 @@
 									}
 								},
 								{
-									"id": 582,
+									"id": 574,
 									"name": "serverSecret",
 									"variant": "param",
 									"kind": 32768,
@@ -7694,7 +7453,7 @@
 									}
 								},
 								{
-									"id": 583,
+									"id": 575,
 									"name": "keys",
 									"variant": "param",
 									"kind": 32768,
@@ -7745,22 +7504,22 @@
 				{
 					"title": "Constructors",
 					"children": [
-						564
+						556
 					]
 				},
 				{
 					"title": "Accessors",
 					"children": [
-						584,
-						588,
-						586
+						576,
+						580,
+						578
 					]
 				},
 				{
 					"title": "Methods",
 					"children": [
-						571,
-						579
+						563,
+						571
 					]
 				}
 			]
@@ -7828,14 +7587,14 @@
 			]
 		},
 		{
-			"id": 400,
+			"id": 392,
 			"name": "ChannelData",
 			"variant": "declaration",
 			"kind": 256,
 			"flags": {},
 			"children": [
 				{
-					"id": 407,
+					"id": 399,
 					"name": "SERVER_SECRET",
 					"variant": "declaration",
 					"kind": 1024,
@@ -7848,7 +7607,7 @@
 					}
 				},
 				{
-					"id": 402,
+					"id": 394,
 					"name": "channelId",
 					"variant": "declaration",
 					"kind": 1024,
@@ -7861,7 +7620,7 @@
 					}
 				},
 				{
-					"id": 404,
+					"id": 396,
 					"name": "encryptionKey",
 					"variant": "declaration",
 					"kind": 1024,
@@ -7872,7 +7631,7 @@
 					}
 				},
 				{
-					"id": 406,
+					"id": 398,
 					"name": "motherChannel",
 					"variant": "declaration",
 					"kind": 1024,
@@ -7885,7 +7644,7 @@
 					}
 				},
 				{
-					"id": 403,
+					"id": 395,
 					"name": "ownerKey",
 					"variant": "declaration",
 					"kind": 1024,
@@ -7896,7 +7655,7 @@
 					}
 				},
 				{
-					"id": 401,
+					"id": 393,
 					"name": "roomId",
 					"variant": "declaration",
 					"kind": 1024,
@@ -7909,7 +7668,7 @@
 					}
 				},
 				{
-					"id": 405,
+					"id": 397,
 					"name": "signKey",
 					"variant": "declaration",
 					"kind": 1024,
@@ -7920,7 +7679,7 @@
 					}
 				},
 				{
-					"id": 408,
+					"id": 400,
 					"name": "size",
 					"variant": "declaration",
 					"kind": 1024,
@@ -7937,27 +7696,27 @@
 				{
 					"title": "Properties",
 					"children": [
-						407,
-						402,
-						404,
-						406,
-						403,
-						401,
-						405,
-						408
+						399,
+						394,
+						396,
+						398,
+						395,
+						393,
+						397,
+						400
 					]
 				}
 			]
 		},
 		{
-			"id": 409,
+			"id": 401,
 			"name": "ChannelKeyStrings",
 			"variant": "declaration",
 			"kind": 256,
 			"flags": {},
 			"children": [
 				{
-					"id": 410,
+					"id": 402,
 					"name": "encryptionKey",
 					"variant": "declaration",
 					"kind": 1024,
@@ -7968,7 +7727,7 @@
 					}
 				},
 				{
-					"id": 415,
+					"id": 407,
 					"name": "error",
 					"variant": "declaration",
 					"kind": 1024,
@@ -7981,7 +7740,7 @@
 					}
 				},
 				{
-					"id": 411,
+					"id": 403,
 					"name": "guestKey",
 					"variant": "declaration",
 					"kind": 1024,
@@ -7994,7 +7753,7 @@
 					}
 				},
 				{
-					"id": 414,
+					"id": 406,
 					"name": "lockedKey",
 					"variant": "declaration",
 					"kind": 1024,
@@ -8007,7 +7766,7 @@
 					}
 				},
 				{
-					"id": 412,
+					"id": 404,
 					"name": "ownerKey",
 					"variant": "declaration",
 					"kind": 1024,
@@ -8018,7 +7777,7 @@
 					}
 				},
 				{
-					"id": 413,
+					"id": 405,
 					"name": "signKey",
 					"variant": "declaration",
 					"kind": 1024,
@@ -8033,12 +7792,12 @@
 				{
 					"title": "Properties",
 					"children": [
-						410,
-						415,
-						411,
-						414,
-						412,
-						413
+						402,
+						407,
+						403,
+						406,
+						404,
+						405
 					]
 				}
 			]
@@ -8388,7 +8147,7 @@
 					},
 					"type": {
 						"type": "reference",
-						"target": 409,
+						"target": 401,
 						"name": "ChannelKeyStrings",
 						"package": "snackabra"
 					}
@@ -8844,14 +8603,14 @@
 			]
 		},
 		{
-			"id": 329,
+			"id": 321,
 			"name": "SBObjectHandle",
 			"variant": "declaration",
 			"kind": 256,
 			"flags": {},
 			"children": [
 				{
-					"id": 346,
+					"id": 338,
 					"name": "[SB_OBJECT_HANDLE_SYMBOL]",
 					"variant": "declaration",
 					"kind": 1024,
@@ -8864,7 +8623,7 @@
 					}
 				},
 				{
-					"id": 344,
+					"id": 336,
 					"name": "actualSize",
 					"variant": "declaration",
 					"kind": 1024,
@@ -8877,7 +8636,7 @@
 					}
 				},
 				{
-					"id": 340,
+					"id": 332,
 					"name": "dateAndTime",
 					"variant": "declaration",
 					"kind": 1024,
@@ -8890,7 +8649,7 @@
 					}
 				},
 				{
-					"id": 339,
+					"id": 331,
 					"name": "fileName",
 					"variant": "declaration",
 					"kind": 1024,
@@ -8903,7 +8662,7 @@
 					}
 				},
 				{
-					"id": 342,
+					"id": 334,
 					"name": "fileType",
 					"variant": "declaration",
 					"kind": 1024,
@@ -8916,7 +8675,7 @@
 					}
 				},
 				{
-					"id": 332,
+					"id": 324,
 					"name": "id",
 					"variant": "declaration",
 					"kind": 1024,
@@ -8927,7 +8686,7 @@
 					}
 				},
 				{
-					"id": 334,
+					"id": 326,
 					"name": "id32",
 					"variant": "declaration",
 					"kind": 1024,
@@ -8945,7 +8704,7 @@
 					}
 				},
 				{
-					"id": 337,
+					"id": 329,
 					"name": "iv",
 					"variant": "declaration",
 					"kind": 1024,
@@ -8972,7 +8731,7 @@
 					}
 				},
 				{
-					"id": 333,
+					"id": 325,
 					"name": "key",
 					"variant": "declaration",
 					"kind": 1024,
@@ -8983,7 +8742,7 @@
 					}
 				},
 				{
-					"id": 335,
+					"id": 327,
 					"name": "key32",
 					"variant": "declaration",
 					"kind": 1024,
@@ -9001,7 +8760,7 @@
 					}
 				},
 				{
-					"id": 343,
+					"id": 335,
 					"name": "lastModified",
 					"variant": "declaration",
 					"kind": 1024,
@@ -9014,7 +8773,7 @@
 					}
 				},
 				{
-					"id": 338,
+					"id": 330,
 					"name": "salt",
 					"variant": "declaration",
 					"kind": 1024,
@@ -9041,7 +8800,7 @@
 					}
 				},
 				{
-					"id": 345,
+					"id": 337,
 					"name": "savedSize",
 					"variant": "declaration",
 					"kind": 1024,
@@ -9054,7 +8813,7 @@
 					}
 				},
 				{
-					"id": 341,
+					"id": 333,
 					"name": "shardServer",
 					"variant": "declaration",
 					"kind": 1024,
@@ -9067,20 +8826,20 @@
 					}
 				},
 				{
-					"id": 331,
+					"id": 323,
 					"name": "type",
 					"variant": "declaration",
 					"kind": 1024,
 					"flags": {},
 					"type": {
 						"type": "reference",
-						"target": 328,
+						"target": 320,
 						"name": "SBObjectType",
 						"package": "snackabra"
 					}
 				},
 				{
-					"id": 336,
+					"id": 328,
 					"name": "verification",
 					"variant": "declaration",
 					"kind": 1024,
@@ -9111,7 +8870,7 @@
 					}
 				},
 				{
-					"id": 330,
+					"id": 322,
 					"name": "version",
 					"variant": "declaration",
 					"kind": 1024,
@@ -9128,36 +8887,36 @@
 				{
 					"title": "Properties",
 					"children": [
-						346,
-						344,
-						340,
-						339,
-						342,
+						338,
+						336,
 						332,
+						331,
 						334,
+						324,
+						326,
+						329,
+						325,
+						327,
+						335,
+						330,
 						337,
 						333,
-						335,
-						343,
-						338,
-						345,
-						341,
-						331,
-						336,
-						330
+						323,
+						328,
+						322
 					]
 				}
 			]
 		},
 		{
-			"id": 391,
+			"id": 383,
 			"name": "SBObjectMetadata",
 			"variant": "declaration",
 			"kind": 256,
 			"flags": {},
 			"children": [
 				{
-					"id": 399,
+					"id": 391,
 					"name": "[SB_OBJECT_HANDLE_SYMBOL]",
 					"variant": "declaration",
 					"kind": 1024,
@@ -9168,7 +8927,7 @@
 					}
 				},
 				{
-					"id": 394,
+					"id": 386,
 					"name": "id",
 					"variant": "declaration",
 					"kind": 1024,
@@ -9179,7 +8938,7 @@
 					}
 				},
 				{
-					"id": 397,
+					"id": 389,
 					"name": "iv",
 					"variant": "declaration",
 					"kind": 1024,
@@ -9195,7 +8954,7 @@
 					}
 				},
 				{
-					"id": 395,
+					"id": 387,
 					"name": "key",
 					"variant": "declaration",
 					"kind": 1024,
@@ -9206,7 +8965,7 @@
 					}
 				},
 				{
-					"id": 396,
+					"id": 388,
 					"name": "paddedBuffer",
 					"variant": "declaration",
 					"kind": 1024,
@@ -9222,7 +8981,7 @@
 					}
 				},
 				{
-					"id": 398,
+					"id": 390,
 					"name": "salt",
 					"variant": "declaration",
 					"kind": 1024,
@@ -9238,20 +8997,20 @@
 					}
 				},
 				{
-					"id": 393,
+					"id": 385,
 					"name": "type",
 					"variant": "declaration",
 					"kind": 1024,
 					"flags": {},
 					"type": {
 						"type": "reference",
-						"target": 328,
+						"target": 320,
 						"name": "SBObjectType",
 						"package": "snackabra"
 					}
 				},
 				{
-					"id": 392,
+					"id": 384,
 					"name": "version",
 					"variant": "declaration",
 					"kind": 1024,
@@ -9266,14 +9025,14 @@
 				{
 					"title": "Properties",
 					"children": [
-						399,
-						394,
-						397,
-						395,
-						396,
-						398,
-						393,
-						392
+						391,
+						386,
+						389,
+						387,
+						388,
+						390,
+						385,
+						384
 					]
 				}
 			]
@@ -9284,6 +9043,14 @@
 			"variant": "declaration",
 			"kind": 256,
 			"flags": {},
+			"comment": {
+				"summary": [
+					{
+						"kind": "text",
+						"text": "Essentially a dictionary where each entry is an arraybuffer."
+					}
+				]
+			},
 			"indexSignature": {
 				"id": 156,
 				"name": "__index",
@@ -9456,7 +9223,7 @@
 			}
 		},
 		{
-			"id": 328,
+			"id": 320,
 			"name": "SBObjectType",
 			"variant": "declaration",
 			"kind": 4194304,
@@ -9484,7 +9251,7 @@
 			}
 		},
 		{
-			"id": 718,
+			"id": 710,
 			"name": "SB",
 			"variant": "declaration",
 			"kind": 32,
@@ -9492,14 +9259,14 @@
 			"type": {
 				"type": "reflection",
 				"declaration": {
-					"id": 719,
+					"id": 711,
 					"name": "__type",
 					"variant": "declaration",
 					"kind": 65536,
 					"flags": {},
 					"children": [
 						{
-							"id": 722,
+							"id": 714,
 							"name": "Channel",
 							"variant": "declaration",
 							"kind": 1024,
@@ -9508,7 +9275,7 @@
 								"type": "query",
 								"queryType": {
 									"type": "reference",
-									"target": 416,
+									"target": 408,
 									"name": "Channel",
 									"package": "snackabra"
 								}
@@ -9516,7 +9283,7 @@
 							"defaultValue": "Channel"
 						},
 						{
-							"id": 724,
+							"id": 716,
 							"name": "SB384",
 							"variant": "declaration",
 							"kind": 1024,
@@ -9525,7 +9292,7 @@
 								"type": "query",
 								"queryType": {
 									"type": "reference",
-									"target": 691,
+									"target": 683,
 									"name": "SB384",
 									"package": "snackabra"
 								}
@@ -9533,7 +9300,7 @@
 							"defaultValue": "SB384"
 						},
 						{
-							"id": 723,
+							"id": 715,
 							"name": "SBCrypto",
 							"variant": "declaration",
 							"kind": 1024,
@@ -9542,7 +9309,7 @@
 								"type": "query",
 								"queryType": {
 									"type": "reference",
-									"target": 590,
+									"target": 582,
 									"name": "SBCrypto",
 									"package": "snackabra"
 								}
@@ -9550,7 +9317,7 @@
 							"defaultValue": "SBCrypto"
 						},
 						{
-							"id": 721,
+							"id": 713,
 							"name": "SBMessage",
 							"variant": "declaration",
 							"kind": 1024,
@@ -9559,7 +9326,7 @@
 								"type": "query",
 								"queryType": {
 									"type": "reference",
-									"target": 551,
+									"target": 543,
 									"name": "SBMessage",
 									"package": "snackabra"
 								}
@@ -9567,7 +9334,7 @@
 							"defaultValue": "SBMessage"
 						},
 						{
-							"id": 720,
+							"id": 712,
 							"name": "Snackabra",
 							"variant": "declaration",
 							"kind": 1024,
@@ -9576,7 +9343,7 @@
 								"type": "query",
 								"queryType": {
 									"type": "reference",
-									"target": 563,
+									"target": 555,
 									"name": "Snackabra",
 									"package": "snackabra"
 								}
@@ -9584,7 +9351,7 @@
 							"defaultValue": "Snackabra"
 						},
 						{
-							"id": 725,
+							"id": 717,
 							"name": "arrayBufferToBase64",
 							"variant": "declaration",
 							"kind": 1024,
@@ -9592,14 +9359,14 @@
 							"type": {
 								"type": "reflection",
 								"declaration": {
-									"id": 726,
+									"id": 718,
 									"name": "__type",
 									"variant": "declaration",
 									"kind": 65536,
 									"flags": {},
 									"signatures": [
 										{
-											"id": 727,
+											"id": 719,
 											"name": "__type",
 											"variant": "signature",
 											"kind": 4096,
@@ -9625,7 +9392,7 @@
 											},
 											"parameters": [
 												{
-													"id": 728,
+													"id": 720,
 													"name": "buffer",
 													"variant": "param",
 													"kind": 32768,
@@ -9667,7 +9434,7 @@
 													}
 												},
 												{
-													"id": 729,
+													"id": 721,
 													"name": "variant",
 													"variant": "param",
 													"kind": 32768,
@@ -9711,12 +9478,12 @@
 						{
 							"title": "Properties",
 							"children": [
-								722,
-								724,
-								723,
-								721,
-								720,
-								725
+								714,
+								716,
+								715,
+								713,
+								712,
+								717
 							]
 						}
 					]
@@ -9937,14 +9704,14 @@
 			]
 		},
 		{
-			"id": 714,
+			"id": 706,
 			"name": "arrayBufferToBase64",
 			"variant": "declaration",
 			"kind": 64,
 			"flags": {},
 			"signatures": [
 				{
-					"id": 715,
+					"id": 707,
 					"name": "arrayBufferToBase64",
 					"variant": "signature",
 					"kind": 4096,
@@ -9970,7 +9737,7 @@
 					},
 					"parameters": [
 						{
-							"id": 716,
+							"id": 708,
 							"name": "buffer",
 							"variant": "param",
 							"kind": 32768,
@@ -10012,7 +9779,7 @@
 							}
 						},
 						{
-							"id": 717,
+							"id": 709,
 							"name": "variant",
 							"variant": "param",
 							"kind": 32768,
@@ -10065,7 +9832,7 @@
 						"summary": [
 							{
 								"kind": "text",
-								"text": "Assemble payload"
+								"text": "Assemble payload. This creates a single binary (wire) format\nof an arbitrary set of (named) binary objects."
 							}
 						]
 					},
@@ -10731,54 +10498,6 @@
 			]
 		},
 		{
-			"id": 64,
-			"name": "extractPayloadV1",
-			"variant": "declaration",
-			"kind": 64,
-			"flags": {},
-			"signatures": [
-				{
-					"id": 65,
-					"name": "extractPayloadV1",
-					"variant": "signature",
-					"kind": 4096,
-					"flags": {},
-					"comment": {
-						"summary": [
-							{
-								"kind": "text",
-								"text": "Deprecated (older version of payloads, for older channels)"
-							}
-						]
-					},
-					"parameters": [
-						{
-							"id": 66,
-							"name": "payload",
-							"variant": "param",
-							"kind": 32768,
-							"flags": {},
-							"type": {
-								"type": "reference",
-								"target": {
-									"sourceFileName": "node_modules/typescript/lib/lib.es5.d.ts",
-									"qualifiedName": "ArrayBuffer"
-								},
-								"name": "ArrayBuffer",
-								"package": "typescript"
-							}
-						}
-					],
-					"type": {
-						"type": "reference",
-						"target": 155,
-						"name": "SBPayload",
-						"package": "snackabra"
-					}
-				}
-			]
-		},
-		{
 			"id": 15,
 			"name": "getRandomValues",
 			"variant": "declaration",
@@ -11096,31 +10815,31 @@
 		{
 			"title": "Classes",
 			"children": [
-				416,
-				477,
+				408,
+				469,
 				158,
 				222,
 				136,
-				691,
-				590,
-				551,
-				347,
-				563
+				683,
+				582,
+				543,
+				339,
+				555
 			]
 		},
 		{
 			"title": "Interfaces",
 			"children": [
 				125,
-				400,
-				409,
+				392,
+				401,
 				116,
 				88,
 				129,
 				132,
 				79,
-				329,
-				391,
+				321,
+				383,
 				155,
 				82
 			]
@@ -11130,13 +10849,13 @@
 			"children": [
 				135,
 				87,
-				328
+				320
 			]
 		},
 		{
 			"title": "Variables",
 			"children": [
-				718
+				710
 			]
 		},
 		{
@@ -11145,7 +10864,7 @@
 				43,
 				18,
 				31,
-				714,
+				706,
 				67,
 				28,
 				34,
@@ -11157,7 +10876,6 @@
 				73,
 				1,
 				70,
-				64,
 				15,
 				40,
 				60,
@@ -11380,18 +11098,6 @@
 		"63": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "loc"
-		},
-		"64": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "extractPayloadV1"
-		},
-		"65": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "extractPayloadV1"
-		},
-		"66": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "payload"
 		},
 		"67": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
@@ -11817,18 +11523,6 @@
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "Channel.userName"
 		},
-		"190": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "Channel.importKeys"
-		},
-		"191": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "Channel.importKeys"
-		},
-		"192": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "keyStrings"
-		},
 		"193": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "Channel.keys"
@@ -11981,29 +11675,21 @@
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "ChannelSocket.close"
 		},
-		"249": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelSocket.checkServerStatus"
-		},
-		"250": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelSocket.checkServerStatus"
-		},
 		"251": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "url"
+			"qualifiedName": "ChannelSocket.status"
 		},
 		"252": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "timeout"
+			"qualifiedName": "ChannelSocket.status"
 		},
 		"253": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "callback"
+			"qualifiedName": "ChannelSocket.onMessage"
 		},
 		"254": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "__type"
+			"qualifiedName": "ChannelSocket.onMessage"
 		},
 		"255": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
@@ -12011,363 +11697,359 @@
 		},
 		"256": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "online"
+			"qualifiedName": "__type"
+		},
+		"257": {
+			"sourceFileName": "snackabra-jslib/snackabra.ts",
+			"qualifiedName": "m"
+		},
+		"258": {
+			"sourceFileName": "snackabra-jslib/snackabra.ts",
+			"qualifiedName": "ChannelSocket.onMessage"
 		},
 		"259": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelSocket.status"
+			"qualifiedName": "f"
 		},
 		"260": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelSocket.status"
+			"qualifiedName": "__type"
 		},
 		"261": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelSocket.onMessage"
+			"qualifiedName": "__type"
 		},
 		"262": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelSocket.onMessage"
+			"qualifiedName": "m"
 		},
 		"263": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "__type"
+			"qualifiedName": "ChannelSocket.enableTrace"
 		},
 		"264": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "__type"
+			"qualifiedName": "ChannelSocket.enableTrace"
 		},
 		"265": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "m"
+			"qualifiedName": "b"
 		},
 		"266": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelSocket.onMessage"
+			"qualifiedName": "ChannelSocket.send"
 		},
 		"267": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "f"
+			"qualifiedName": "ChannelSocket.send"
 		},
 		"268": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "__type"
+			"qualifiedName": "msg"
 		},
 		"269": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "__type"
+			"qualifiedName": "ChannelSocket.exportable_owner_pubKey"
 		},
 		"270": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "m"
+			"qualifiedName": "ChannelSocket.exportable_owner_pubKey"
 		},
 		"271": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelSocket.enableTrace"
-		},
-		"272": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelSocket.enableTrace"
-		},
-		"273": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "b"
+			"qualifiedName": "Channel.channelReady"
 		},
 		"274": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelSocket.send"
+			"qualifiedName": "Channel.motd"
 		},
 		"275": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelSocket.send"
+			"qualifiedName": "Channel.locked"
 		},
 		"276": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "msg"
+			"qualifiedName": "Channel.owner"
 		},
 		"277": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelSocket.exportable_owner_pubKey"
+			"qualifiedName": "Channel.admin"
 		},
 		"278": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelSocket.exportable_owner_pubKey"
+			"qualifiedName": "Channel.verifiedGuest"
 		},
 		"279": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "Channel.channelReady"
-		},
-		"282": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "Channel.motd"
-		},
-		"283": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "Channel.locked"
-		},
-		"284": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "Channel.owner"
-		},
-		"285": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "Channel.admin"
-		},
-		"286": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "Channel.verifiedGuest"
-		},
-		"287": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "Channel.userName"
+		},
+		"292": {
+			"sourceFileName": "snackabra-jslib/snackabra.ts",
+			"qualifiedName": "Channel.keys"
+		},
+		"293": {
+			"sourceFileName": "snackabra-jslib/snackabra.ts",
+			"qualifiedName": "Channel.keys"
+		},
+		"294": {
+			"sourceFileName": "snackabra-jslib/snackabra.ts",
+			"qualifiedName": "Channel.sbServer"
+		},
+		"295": {
+			"sourceFileName": "snackabra-jslib/snackabra.ts",
+			"qualifiedName": "Channel.sbServer"
+		},
+		"296": {
+			"sourceFileName": "snackabra-jslib/snackabra.ts",
+			"qualifiedName": "Channel.readyFlag"
 		},
 		"297": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "Channel.importKeys"
+			"qualifiedName": "Channel.readyFlag"
 		},
 		"298": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "Channel.importKeys"
+			"qualifiedName": "Channel.api"
 		},
 		"299": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "keyStrings"
+			"qualifiedName": "Channel.api"
 		},
 		"300": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "Channel.keys"
+			"qualifiedName": "Channel.channelId"
 		},
 		"301": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "Channel.keys"
+			"qualifiedName": "Channel.channelId"
 		},
 		"302": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "Channel.sbServer"
+			"qualifiedName": "Channel.channelSignKey"
 		},
 		"303": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "Channel.sbServer"
+			"qualifiedName": "Channel.channelSignKey"
 		},
 		"304": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "Channel.readyFlag"
-		},
-		"305": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "Channel.readyFlag"
-		},
-		"306": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "Channel.api"
-		},
-		"307": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "Channel.api"
-		},
-		"308": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "Channel.channelId"
-		},
-		"309": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "Channel.channelId"
+			"qualifiedName": "SB384.sb384Ready"
 		},
 		"310": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "Channel.channelSignKey"
+			"qualifiedName": "SB384.exportable_pubKey"
 		},
 		"311": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "Channel.channelSignKey"
+			"qualifiedName": "SB384.exportable_pubKey"
 		},
 		"312": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SB384.sb384Ready"
+			"qualifiedName": "SB384.exportable_privateKey"
+		},
+		"313": {
+			"sourceFileName": "snackabra-jslib/snackabra.ts",
+			"qualifiedName": "SB384.exportable_privateKey"
+		},
+		"314": {
+			"sourceFileName": "snackabra-jslib/snackabra.ts",
+			"qualifiedName": "SB384.privateKey"
+		},
+		"315": {
+			"sourceFileName": "snackabra-jslib/snackabra.ts",
+			"qualifiedName": "SB384.privateKey"
+		},
+		"316": {
+			"sourceFileName": "snackabra-jslib/snackabra.ts",
+			"qualifiedName": "SB384._id"
+		},
+		"317": {
+			"sourceFileName": "snackabra-jslib/snackabra.ts",
+			"qualifiedName": "SB384._id"
 		},
 		"318": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SB384.exportable_pubKey"
+			"qualifiedName": "SB384.ownerChannelId"
 		},
 		"319": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SB384.exportable_pubKey"
+			"qualifiedName": "SB384.ownerChannelId"
 		},
 		"320": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SB384.exportable_privateKey"
+			"qualifiedName": "SBObjectType"
 		},
 		"321": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SB384.exportable_privateKey"
+			"qualifiedName": "SBObjectHandle"
 		},
 		"322": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SB384.privateKey"
+			"qualifiedName": "SBObjectHandle.version"
 		},
 		"323": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SB384.privateKey"
+			"qualifiedName": "SBObjectHandle.type"
 		},
 		"324": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SB384._id"
+			"qualifiedName": "SBObjectHandle.id"
 		},
 		"325": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SB384._id"
+			"qualifiedName": "SBObjectHandle.key"
 		},
 		"326": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SB384.ownerChannelId"
+			"qualifiedName": "SBObjectHandle.id32"
 		},
 		"327": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SB384.ownerChannelId"
+			"qualifiedName": "SBObjectHandle.key32"
 		},
 		"328": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBObjectType"
+			"qualifiedName": "SBObjectHandle.verification"
 		},
 		"329": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBObjectHandle"
+			"qualifiedName": "SBObjectHandle.iv"
 		},
 		"330": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBObjectHandle.version"
+			"qualifiedName": "SBObjectHandle.salt"
 		},
 		"331": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBObjectHandle.type"
+			"qualifiedName": "SBObjectHandle.fileName"
 		},
 		"332": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBObjectHandle.id"
+			"qualifiedName": "SBObjectHandle.dateAndTime"
 		},
 		"333": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBObjectHandle.key"
+			"qualifiedName": "SBObjectHandle.shardServer"
 		},
 		"334": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBObjectHandle.id32"
+			"qualifiedName": "SBObjectHandle.fileType"
 		},
 		"335": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBObjectHandle.key32"
+			"qualifiedName": "SBObjectHandle.lastModified"
 		},
 		"336": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBObjectHandle.verification"
+			"qualifiedName": "SBObjectHandle.actualSize"
 		},
 		"337": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBObjectHandle.iv"
+			"qualifiedName": "SBObjectHandle.savedSize"
 		},
 		"338": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBObjectHandle.salt"
+			"qualifiedName": "SBObjectHandle.[SB_OBJECT_HANDLE_SYMBOL]"
 		},
 		"339": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBObjectHandle.fileName"
+			"qualifiedName": "SBObjectHandleClass"
 		},
 		"340": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBObjectHandle.dateAndTime"
+			"qualifiedName": "SBObjectHandleClass.__constructor"
 		},
 		"341": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBObjectHandle.shardServer"
+			"qualifiedName": "SBObjectHandleClass"
 		},
 		"342": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBObjectHandle.fileType"
+			"qualifiedName": "options"
 		},
 		"343": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBObjectHandle.lastModified"
-		},
-		"344": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBObjectHandle.actualSize"
-		},
-		"345": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBObjectHandle.savedSize"
-		},
-		"346": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBObjectHandle.[SB_OBJECT_HANDLE_SYMBOL]"
-		},
-		"347": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBObjectHandleClass"
-		},
-		"348": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBObjectHandleClass.__constructor"
-		},
-		"349": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBObjectHandleClass"
+			"qualifiedName": "SBObjectHandleClass.version"
 		},
 		"350": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "options"
+			"qualifiedName": "SBObjectHandleClass.iv"
 		},
 		"351": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBObjectHandleClass.version"
-		},
-		"358": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBObjectHandleClass.iv"
-		},
-		"359": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "SBObjectHandleClass.salt"
 		},
-		"360": {
+		"352": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "SBObjectHandleClass.fileName"
 		},
-		"361": {
+		"353": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "SBObjectHandleClass.dateAndTime"
 		},
-		"362": {
+		"354": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "SBObjectHandleClass.shardServer"
 		},
-		"363": {
+		"355": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "SBObjectHandleClass.fileType"
 		},
-		"364": {
+		"356": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "SBObjectHandleClass.lastModified"
 		},
-		"365": {
+		"357": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "SBObjectHandleClass.actualSize"
 		},
-		"366": {
+		"358": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "SBObjectHandleClass.savedSize"
 		},
-		"369": {
+		"361": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "SBObjectHandleClass.id"
+		},
+		"362": {
+			"sourceFileName": "snackabra-jslib/snackabra.ts",
+			"qualifiedName": "SBObjectHandleClass.id"
+		},
+		"363": {
+			"sourceFileName": "snackabra-jslib/snackabra.ts",
+			"qualifiedName": "SBObjectHandleClass.id"
+		},
+		"364": {
+			"sourceFileName": "snackabra-jslib/snackabra.ts",
+			"qualifiedName": "value"
+		},
+		"365": {
+			"sourceFileName": "snackabra-jslib/snackabra.ts",
+			"qualifiedName": "SBObjectHandleClass.key"
+		},
+		"366": {
+			"sourceFileName": "snackabra-jslib/snackabra.ts",
+			"qualifiedName": "SBObjectHandleClass.key"
+		},
+		"367": {
+			"sourceFileName": "snackabra-jslib/snackabra.ts",
+			"qualifiedName": "SBObjectHandleClass.key"
+		},
+		"368": {
+			"sourceFileName": "snackabra-jslib/snackabra.ts",
+			"qualifiedName": "value"
+		},
+		"369": {
+			"sourceFileName": "snackabra-jslib/snackabra.ts",
+			"qualifiedName": "SBObjectHandleClass.id32"
 		},
 		"370": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBObjectHandleClass.id"
+			"qualifiedName": "SBObjectHandleClass.id32"
 		},
 		"371": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBObjectHandleClass.id"
+			"qualifiedName": "SBObjectHandleClass.id32"
 		},
 		"372": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
@@ -12375,15 +12057,15 @@
 		},
 		"373": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBObjectHandleClass.key"
+			"qualifiedName": "SBObjectHandleClass.key32"
 		},
 		"374": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBObjectHandleClass.key"
+			"qualifiedName": "SBObjectHandleClass.key32"
 		},
 		"375": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBObjectHandleClass.key"
+			"qualifiedName": "SBObjectHandleClass.key32"
 		},
 		"376": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
@@ -12391,15 +12073,15 @@
 		},
 		"377": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBObjectHandleClass.id32"
+			"qualifiedName": "SBObjectHandleClass.verification"
 		},
 		"378": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBObjectHandleClass.id32"
+			"qualifiedName": "SBObjectHandleClass.verification"
 		},
 		"379": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBObjectHandleClass.id32"
+			"qualifiedName": "SBObjectHandleClass.verification"
 		},
 		"380": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
@@ -12407,1063 +12089,1051 @@
 		},
 		"381": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBObjectHandleClass.key32"
+			"qualifiedName": "SBObjectHandleClass.type"
 		},
 		"382": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBObjectHandleClass.key32"
+			"qualifiedName": "SBObjectHandleClass.type"
 		},
 		"383": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBObjectHandleClass.key32"
+			"qualifiedName": "SBObjectMetadata"
 		},
 		"384": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "value"
+			"qualifiedName": "SBObjectMetadata.version"
 		},
 		"385": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBObjectHandleClass.verification"
+			"qualifiedName": "SBObjectMetadata.type"
 		},
 		"386": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBObjectHandleClass.verification"
+			"qualifiedName": "SBObjectMetadata.id"
 		},
 		"387": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBObjectHandleClass.verification"
+			"qualifiedName": "SBObjectMetadata.key"
 		},
 		"388": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "value"
+			"qualifiedName": "SBObjectMetadata.paddedBuffer"
 		},
 		"389": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBObjectHandleClass.type"
+			"qualifiedName": "SBObjectMetadata.iv"
 		},
 		"390": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBObjectHandleClass.type"
+			"qualifiedName": "SBObjectMetadata.salt"
 		},
 		"391": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBObjectMetadata"
+			"qualifiedName": "SBObjectMetadata.[SB_OBJECT_HANDLE_SYMBOL]"
 		},
 		"392": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBObjectMetadata.version"
+			"qualifiedName": "ChannelData"
 		},
 		"393": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBObjectMetadata.type"
+			"qualifiedName": "ChannelData.roomId"
 		},
 		"394": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBObjectMetadata.id"
+			"qualifiedName": "ChannelData.channelId"
 		},
 		"395": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBObjectMetadata.key"
+			"qualifiedName": "ChannelData.ownerKey"
 		},
 		"396": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBObjectMetadata.paddedBuffer"
+			"qualifiedName": "ChannelData.encryptionKey"
 		},
 		"397": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBObjectMetadata.iv"
+			"qualifiedName": "ChannelData.signKey"
 		},
 		"398": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBObjectMetadata.salt"
+			"qualifiedName": "ChannelData.motherChannel"
 		},
 		"399": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBObjectMetadata.[SB_OBJECT_HANDLE_SYMBOL]"
+			"qualifiedName": "ChannelData.SERVER_SECRET"
 		},
 		"400": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelData"
+			"qualifiedName": "ChannelData.size"
 		},
 		"401": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelData.roomId"
+			"qualifiedName": "ChannelKeyStrings"
 		},
 		"402": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelData.channelId"
+			"qualifiedName": "ChannelKeyStrings.encryptionKey"
 		},
 		"403": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelData.ownerKey"
+			"qualifiedName": "ChannelKeyStrings.guestKey"
 		},
 		"404": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelData.encryptionKey"
+			"qualifiedName": "ChannelKeyStrings.ownerKey"
 		},
 		"405": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelData.signKey"
+			"qualifiedName": "ChannelKeyStrings.signKey"
 		},
 		"406": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelData.motherChannel"
+			"qualifiedName": "ChannelKeyStrings.lockedKey"
 		},
 		"407": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelData.SERVER_SECRET"
+			"qualifiedName": "ChannelKeyStrings.error"
 		},
 		"408": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelData.size"
+			"qualifiedName": "Channel"
 		},
 		"409": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelKeyStrings"
+			"qualifiedName": "Channel.__constructor"
 		},
 		"410": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelKeyStrings.encryptionKey"
+			"qualifiedName": "Channel"
 		},
 		"411": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelKeyStrings.guestKey"
+			"qualifiedName": "sbServer"
 		},
 		"412": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelKeyStrings.ownerKey"
+			"qualifiedName": "key"
 		},
 		"413": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelKeyStrings.signKey"
+			"qualifiedName": "channelId"
 		},
 		"414": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelKeyStrings.lockedKey"
-		},
-		"415": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelKeyStrings.error"
-		},
-		"416": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "Channel"
+			"qualifiedName": "Channel.channelReady"
 		},
 		"417": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "Channel.__constructor"
+			"qualifiedName": "Channel.motd"
 		},
 		"418": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "Channel"
+			"qualifiedName": "Channel.locked"
 		},
 		"419": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "sbServer"
+			"qualifiedName": "Channel.owner"
 		},
 		"420": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "key"
+			"qualifiedName": "Channel.admin"
 		},
 		"421": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "channelId"
+			"qualifiedName": "Channel.verifiedGuest"
 		},
 		"422": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "Channel.channelReady"
-		},
-		"425": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "Channel.motd"
-		},
-		"426": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "Channel.locked"
-		},
-		"427": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "Channel.owner"
-		},
-		"428": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "Channel.admin"
-		},
-		"429": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "Channel.verifiedGuest"
-		},
-		"430": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "Channel.userName"
 		},
-		"439": {
+		"431": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "Channel.send"
 		},
-		"440": {
+		"432": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "Channel.send"
 		},
-		"441": {
+		"433": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "m"
 		},
-		"442": {
+		"434": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "messageType"
 		},
-		"444": {
+		"436": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "Channel.adminData"
 		},
+		"440": {
+			"sourceFileName": "snackabra-jslib/snackabra.ts",
+			"qualifiedName": "Channel.keys"
+		},
+		"441": {
+			"sourceFileName": "snackabra-jslib/snackabra.ts",
+			"qualifiedName": "Channel.keys"
+		},
+		"442": {
+			"sourceFileName": "snackabra-jslib/snackabra.ts",
+			"qualifiedName": "Channel.sbServer"
+		},
+		"443": {
+			"sourceFileName": "snackabra-jslib/snackabra.ts",
+			"qualifiedName": "Channel.sbServer"
+		},
+		"444": {
+			"sourceFileName": "snackabra-jslib/snackabra.ts",
+			"qualifiedName": "Channel.readyFlag"
+		},
 		"445": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "Channel.importKeys"
+			"qualifiedName": "Channel.readyFlag"
 		},
 		"446": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "Channel.importKeys"
+			"qualifiedName": "Channel.api"
 		},
 		"447": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "keyStrings"
+			"qualifiedName": "Channel.api"
 		},
 		"448": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "Channel.keys"
+			"qualifiedName": "Channel.channelId"
 		},
 		"449": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "Channel.keys"
+			"qualifiedName": "Channel.channelId"
 		},
 		"450": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "Channel.sbServer"
+			"qualifiedName": "Channel.channelSignKey"
 		},
 		"451": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "Channel.sbServer"
+			"qualifiedName": "Channel.channelSignKey"
 		},
 		"452": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "Channel.readyFlag"
+			"qualifiedName": "SB384.ready"
 		},
 		"453": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "Channel.readyFlag"
-		},
-		"454": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "Channel.api"
-		},
-		"455": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "Channel.api"
-		},
-		"456": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "Channel.channelId"
-		},
-		"457": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "Channel.channelId"
-		},
-		"458": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "Channel.channelSignKey"
+			"qualifiedName": "SB384.sb384Ready"
 		},
 		"459": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "Channel.channelSignKey"
+			"qualifiedName": "SB384.exportable_pubKey"
 		},
 		"460": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SB384.ready"
+			"qualifiedName": "SB384.exportable_pubKey"
 		},
 		"461": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SB384.sb384Ready"
+			"qualifiedName": "SB384.exportable_privateKey"
+		},
+		"462": {
+			"sourceFileName": "snackabra-jslib/snackabra.ts",
+			"qualifiedName": "SB384.exportable_privateKey"
+		},
+		"463": {
+			"sourceFileName": "snackabra-jslib/snackabra.ts",
+			"qualifiedName": "SB384.privateKey"
+		},
+		"464": {
+			"sourceFileName": "snackabra-jslib/snackabra.ts",
+			"qualifiedName": "SB384.privateKey"
+		},
+		"465": {
+			"sourceFileName": "snackabra-jslib/snackabra.ts",
+			"qualifiedName": "SB384._id"
+		},
+		"466": {
+			"sourceFileName": "snackabra-jslib/snackabra.ts",
+			"qualifiedName": "SB384._id"
 		},
 		"467": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SB384.exportable_pubKey"
+			"qualifiedName": "SB384.ownerChannelId"
 		},
 		"468": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SB384.exportable_pubKey"
+			"qualifiedName": "SB384.ownerChannelId"
 		},
 		"469": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SB384.exportable_privateKey"
+			"qualifiedName": "ChannelApi"
 		},
 		"470": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SB384.exportable_privateKey"
+			"qualifiedName": "ChannelApi.__constructor"
 		},
 		"471": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SB384.privateKey"
+			"qualifiedName": "ChannelApi"
 		},
 		"472": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SB384.privateKey"
-		},
-		"473": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SB384._id"
-		},
-		"474": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SB384._id"
-		},
-		"475": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SB384.ownerChannelId"
-		},
-		"476": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SB384.ownerChannelId"
-		},
-		"477": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelApi"
-		},
-		"478": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelApi.__constructor"
+			"qualifiedName": "channel"
 		},
 		"479": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelApi"
+			"qualifiedName": "ChannelApi.getLastMessageTimes"
 		},
 		"480": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "channel"
-		},
-		"487": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "ChannelApi.getLastMessageTimes"
 		},
-		"488": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelApi.getLastMessageTimes"
-		},
-		"489": {
+		"481": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "ChannelApi.getOldMessages"
 		},
-		"490": {
+		"482": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "ChannelApi.getOldMessages"
 		},
-		"491": {
+		"483": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "currentMessagesLength"
 		},
-		"492": {
+		"484": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "paginate"
 		},
-		"499": {
+		"491": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "ChannelApi.channelId"
 		},
-		"500": {
+		"492": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "ChannelApi.channelId"
 		},
-		"501": {
+		"493": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "ChannelApi.updateCapacity"
 		},
-		"502": {
+		"494": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "ChannelApi.updateCapacity"
 		},
-		"503": {
+		"495": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "capacity"
 		},
-		"504": {
+		"496": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "ChannelApi.getCapacity"
+		},
+		"497": {
+			"sourceFileName": "snackabra-jslib/snackabra.ts",
+			"qualifiedName": "ChannelApi.getCapacity"
+		},
+		"498": {
+			"sourceFileName": "snackabra-jslib/snackabra.ts",
+			"qualifiedName": "ChannelApi.getStorageLimit"
+		},
+		"499": {
+			"sourceFileName": "snackabra-jslib/snackabra.ts",
+			"qualifiedName": "ChannelApi.getStorageLimit"
+		},
+		"500": {
+			"sourceFileName": "snackabra-jslib/snackabra.ts",
+			"qualifiedName": "ChannelApi.getMother"
+		},
+		"501": {
+			"sourceFileName": "snackabra-jslib/snackabra.ts",
+			"qualifiedName": "ChannelApi.getMother"
+		},
+		"502": {
+			"sourceFileName": "snackabra-jslib/snackabra.ts",
+			"qualifiedName": "ChannelApi.getJoinRequests"
+		},
+		"503": {
+			"sourceFileName": "snackabra-jslib/snackabra.ts",
+			"qualifiedName": "ChannelApi.getJoinRequests"
+		},
+		"504": {
+			"sourceFileName": "snackabra-jslib/snackabra.ts",
+			"qualifiedName": "ChannelApi.isLocked"
 		},
 		"505": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelApi.getCapacity"
+			"qualifiedName": "ChannelApi.isLocked"
 		},
 		"506": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelApi.getStorageLimit"
+			"qualifiedName": "ChannelApi.setMOTD"
 		},
 		"507": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelApi.getStorageLimit"
+			"qualifiedName": "ChannelApi.setMOTD"
 		},
 		"508": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelApi.getMother"
+			"qualifiedName": "motd"
 		},
 		"509": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelApi.getMother"
+			"qualifiedName": "ChannelApi.getAdminData"
 		},
 		"510": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelApi.getJoinRequests"
+			"qualifiedName": "ChannelApi.getAdminData"
 		},
 		"511": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelApi.getJoinRequests"
+			"qualifiedName": "ChannelApi.downloadData"
 		},
 		"512": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelApi.isLocked"
+			"qualifiedName": "ChannelApi.downloadData"
 		},
 		"513": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelApi.isLocked"
+			"qualifiedName": "ChannelApi.uploadChannel"
 		},
 		"514": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelApi.setMOTD"
+			"qualifiedName": "ChannelApi.uploadChannel"
 		},
 		"515": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelApi.setMOTD"
+			"qualifiedName": "channelData"
 		},
 		"516": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "motd"
+			"qualifiedName": "ChannelApi.authorize"
 		},
 		"517": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelApi.getAdminData"
+			"qualifiedName": "ChannelApi.authorize"
 		},
 		"518": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelApi.getAdminData"
+			"qualifiedName": "ownerPublicKey"
 		},
 		"519": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelApi.downloadData"
+			"qualifiedName": "serverSecret"
 		},
 		"520": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelApi.downloadData"
+			"qualifiedName": "ChannelApi.postPubKey"
 		},
 		"521": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelApi.uploadChannel"
+			"qualifiedName": "ChannelApi.postPubKey"
 		},
 		"522": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelApi.uploadChannel"
+			"qualifiedName": "_exportable_pubKey"
 		},
 		"523": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "channelData"
+			"qualifiedName": "__type"
 		},
 		"524": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelApi.authorize"
+			"qualifiedName": "__type.success"
 		},
 		"525": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelApi.authorize"
+			"qualifiedName": "ChannelApi.storageRequest"
 		},
 		"526": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ownerPublicKey"
+			"qualifiedName": "ChannelApi.storageRequest"
 		},
 		"527": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "serverSecret"
+			"qualifiedName": "byteLength"
 		},
 		"528": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelApi.postPubKey"
+			"qualifiedName": "ChannelApi.lock"
 		},
 		"529": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelApi.postPubKey"
+			"qualifiedName": "ChannelApi.lock"
 		},
 		"530": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "_exportable_pubKey"
+			"qualifiedName": "ChannelApi.acceptVisitor"
 		},
 		"531": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "__type"
+			"qualifiedName": "ChannelApi.acceptVisitor"
 		},
 		"532": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "__type.success"
+			"qualifiedName": "pubKey"
 		},
 		"533": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelApi.storageRequest"
+			"qualifiedName": "ChannelApi.ownerKeyRotation"
 		},
 		"534": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelApi.storageRequest"
+			"qualifiedName": "ChannelApi.ownerKeyRotation"
 		},
 		"535": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "byteLength"
+			"qualifiedName": "ChannelApi.budd"
 		},
 		"536": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelApi.lock"
+			"qualifiedName": "ChannelApi.budd"
 		},
 		"537": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelApi.lock"
+			"qualifiedName": "ChannelApi.budd"
 		},
 		"538": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelApi.acceptVisitor"
+			"qualifiedName": "options"
 		},
 		"539": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelApi.acceptVisitor"
+			"qualifiedName": "__type"
 		},
 		"540": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "pubKey"
+			"qualifiedName": "__type.keys"
 		},
 		"541": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelApi.ownerKeyRotation"
+			"qualifiedName": "__type.storage"
 		},
 		"542": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelApi.ownerKeyRotation"
+			"qualifiedName": "__type.targetChannel"
 		},
 		"543": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelApi.budd"
+			"qualifiedName": "SBMessage"
 		},
 		"544": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelApi.budd"
+			"qualifiedName": "SBMessage.__constructor"
 		},
 		"545": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "ChannelApi.budd"
+			"qualifiedName": "SBMessage"
 		},
 		"546": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "options"
+			"qualifiedName": "channel"
 		},
 		"547": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "__type"
+			"qualifiedName": "body"
 		},
 		"548": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "__type.keys"
+			"qualifiedName": "SBMessage.ready"
 		},
 		"549": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "__type.storage"
+			"qualifiedName": "SBMessage.channel"
 		},
 		"550": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "__type.targetChannel"
+			"qualifiedName": "SBMessage.contents"
 		},
 		"551": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBMessage"
+			"qualifiedName": "SBMessage.MAX_SB_BODY_SIZE"
 		},
 		"552": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBMessage.__constructor"
+			"qualifiedName": "SBMessage.send"
 		},
 		"553": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBMessage"
+			"qualifiedName": "SBMessage.send"
 		},
 		"554": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "channel"
+			"qualifiedName": "SBMessage.[SB_MESSAGE_SYMBOL]"
 		},
 		"555": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "body"
+			"qualifiedName": "Snackabra"
 		},
 		"556": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBMessage.ready"
+			"qualifiedName": "Snackabra.__constructor"
 		},
 		"557": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBMessage.channel"
+			"qualifiedName": "Snackabra"
 		},
 		"558": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBMessage.contents"
+			"qualifiedName": "args"
 		},
 		"559": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBMessage.MAX_SB_BODY_SIZE"
-		},
-		"560": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBMessage.send"
-		},
-		"561": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBMessage.send"
-		},
-		"562": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBMessage.[SB_MESSAGE_SYMBOL]"
+			"qualifiedName": "DEBUG"
 		},
 		"563": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "Snackabra"
+			"qualifiedName": "Snackabra.connect"
 		},
 		"564": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "Snackabra.__constructor"
+			"qualifiedName": "Snackabra.connect"
 		},
 		"565": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "Snackabra"
+			"qualifiedName": "onMessage"
 		},
 		"566": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "args"
+			"qualifiedName": "__type"
 		},
 		"567": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "DEBUG"
-		},
-		"571": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "Snackabra.connect"
-		},
-		"572": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "Snackabra.connect"
-		},
-		"573": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "onMessage"
-		},
-		"574": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "__type"
 		},
-		"575": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "__type"
-		},
-		"576": {
+		"568": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "m"
 		},
-		"577": {
+		"569": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "key"
 		},
-		"578": {
+		"570": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "channelId"
 		},
-		"579": {
+		"571": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "Snackabra.create"
 		},
-		"580": {
+		"572": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "Snackabra.create"
 		},
-		"581": {
+		"573": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "sbServer"
 		},
-		"582": {
+		"574": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "serverSecret"
 		},
-		"583": {
+		"575": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "keys"
 		},
-		"584": {
+		"576": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "Snackabra.channel"
 		},
-		"585": {
+		"577": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "Snackabra.channel"
 		},
-		"586": {
+		"578": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "Snackabra.storage"
 		},
-		"587": {
+		"579": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "Snackabra.storage"
 		},
-		"588": {
+		"580": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "Snackabra.crypto"
 		},
-		"589": {
+		"581": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "Snackabra.crypto"
 		},
-		"590": {
+		"582": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "SBCrypto"
 		},
-		"593": {
+		"585": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "SBCrypto.generateIdKey"
 		},
-		"594": {
+		"586": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "SBCrypto.generateIdKey"
 		},
-		"595": {
+		"587": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "buf"
 		},
-		"596": {
+		"588": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "__type"
 		},
-		"597": {
+		"589": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "__type.id"
 		},
-		"598": {
+		"590": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "__type.key"
 		},
-		"599": {
+		"591": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "SBCrypto.extractPubKey"
 		},
-		"600": {
+		"592": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "SBCrypto.extractPubKey"
+		},
+		"593": {
+			"sourceFileName": "snackabra-jslib/snackabra.ts",
+			"qualifiedName": "privateKey"
 		},
 		"601": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "privateKey"
+			"qualifiedName": "SBCrypto.generateChannelId"
 		},
-		"609": {
+		"602": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "SBCrypto.generateChannelId"
 		},
-		"610": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBCrypto.generateChannelId"
-		},
-		"611": {
+		"603": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "owner_key"
 		},
-		"612": {
+		"604": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "SBCrypto.verifyChannelId"
 		},
-		"613": {
+		"605": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "SBCrypto.verifyChannelId"
 		},
-		"614": {
+		"606": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "owner_key"
 		},
-		"615": {
+		"607": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "channel_id"
 		},
-		"616": {
+		"608": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "SBCrypto.generateKeys"
+		},
+		"609": {
+			"sourceFileName": "snackabra-jslib/snackabra.ts",
+			"qualifiedName": "SBCrypto.generateKeys"
+		},
+		"610": {
+			"sourceFileName": "snackabra-jslib/snackabra.ts",
+			"qualifiedName": "SBCrypto.importKey"
+		},
+		"611": {
+			"sourceFileName": "snackabra-jslib/snackabra.ts",
+			"qualifiedName": "SBCrypto.importKey"
+		},
+		"612": {
+			"sourceFileName": "snackabra-jslib/snackabra.ts",
+			"qualifiedName": "format"
+		},
+		"613": {
+			"sourceFileName": "snackabra-jslib/snackabra.ts",
+			"qualifiedName": "key"
+		},
+		"614": {
+			"sourceFileName": "snackabra-jslib/snackabra.ts",
+			"qualifiedName": "type"
+		},
+		"615": {
+			"sourceFileName": "snackabra-jslib/snackabra.ts",
+			"qualifiedName": "extractable"
+		},
+		"616": {
+			"sourceFileName": "snackabra-jslib/snackabra.ts",
+			"qualifiedName": "keyUsages"
 		},
 		"617": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBCrypto.generateKeys"
+			"qualifiedName": "SBCrypto.exportKey"
 		},
 		"618": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBCrypto.importKey"
+			"qualifiedName": "SBCrypto.exportKey"
 		},
 		"619": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBCrypto.importKey"
+			"qualifiedName": "format"
 		},
 		"620": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "format"
+			"qualifiedName": "key"
 		},
 		"621": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "key"
+			"qualifiedName": "SBCrypto.deriveKey"
 		},
 		"622": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "type"
+			"qualifiedName": "SBCrypto.deriveKey"
 		},
 		"623": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "extractable"
+			"qualifiedName": "privateKey"
 		},
 		"624": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "keyUsages"
+			"qualifiedName": "publicKey"
 		},
 		"625": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBCrypto.exportKey"
+			"qualifiedName": "type"
 		},
 		"626": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBCrypto.exportKey"
+			"qualifiedName": "extractable"
 		},
 		"627": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "format"
+			"qualifiedName": "keyUsages"
 		},
 		"628": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "key"
+			"qualifiedName": "SBCrypto.encrypt"
 		},
 		"629": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBCrypto.deriveKey"
+			"qualifiedName": "SBCrypto.encrypt"
 		},
 		"630": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBCrypto.deriveKey"
+			"qualifiedName": "data"
 		},
 		"631": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "privateKey"
+			"qualifiedName": "key"
 		},
 		"632": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "publicKey"
+			"qualifiedName": "_iv"
 		},
 		"633": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "type"
+			"qualifiedName": "returnType"
 		},
 		"634": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "extractable"
+			"qualifiedName": "SBCrypto.encrypt"
 		},
 		"635": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "keyUsages"
+			"qualifiedName": "data"
 		},
 		"636": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBCrypto.encrypt"
+			"qualifiedName": "key"
 		},
 		"637": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBCrypto.encrypt"
+			"qualifiedName": "_iv"
 		},
 		"638": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "data"
+			"qualifiedName": "returnType"
 		},
 		"639": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "key"
+			"qualifiedName": "SBCrypto.wrap"
 		},
 		"640": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "_iv"
+			"qualifiedName": "SBCrypto.wrap"
 		},
 		"641": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "returnType"
+			"qualifiedName": "k"
 		},
 		"642": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBCrypto.encrypt"
+			"qualifiedName": "b"
 		},
 		"643": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "data"
+			"qualifiedName": "bodyType"
 		},
 		"644": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "key"
+			"qualifiedName": "SBCrypto.wrap"
 		},
 		"645": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "_iv"
+			"qualifiedName": "k"
 		},
 		"646": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "returnType"
+			"qualifiedName": "b"
 		},
 		"647": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBCrypto.wrap"
+			"qualifiedName": "bodyType"
 		},
 		"648": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBCrypto.wrap"
+			"qualifiedName": "SBCrypto.unwrap"
 		},
 		"649": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "k"
+			"qualifiedName": "SBCrypto.unwrap"
 		},
 		"650": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "b"
+			"qualifiedName": "k"
 		},
 		"651": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "bodyType"
+			"qualifiedName": "o"
 		},
 		"652": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBCrypto.wrap"
+			"qualifiedName": "returnType"
 		},
 		"653": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "k"
+			"qualifiedName": "SBCrypto.unwrap"
 		},
 		"654": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "b"
+			"qualifiedName": "k"
 		},
 		"655": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "bodyType"
+			"qualifiedName": "o"
 		},
 		"656": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBCrypto.unwrap"
+			"qualifiedName": "returnType"
 		},
 		"657": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBCrypto.unwrap"
+			"qualifiedName": "SBCrypto.sign"
 		},
 		"658": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "k"
+			"qualifiedName": "SBCrypto.sign"
 		},
 		"659": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "o"
+			"qualifiedName": "secretKey"
 		},
 		"660": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "returnType"
+			"qualifiedName": "contents"
 		},
 		"661": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBCrypto.unwrap"
+			"qualifiedName": "SBCrypto.verify"
 		},
 		"662": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "k"
+			"qualifiedName": "SBCrypto.verify"
 		},
 		"663": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "o"
+			"qualifiedName": "verifyKey"
 		},
 		"664": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "returnType"
+			"qualifiedName": "sign"
 		},
 		"665": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBCrypto.sign"
+			"qualifiedName": "contents"
 		},
 		"666": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBCrypto.sign"
+			"qualifiedName": "SBCrypto.str2ab"
 		},
 		"667": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "secretKey"
+			"qualifiedName": "SBCrypto.str2ab"
 		},
 		"668": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "contents"
+			"qualifiedName": "string"
 		},
 		"669": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBCrypto.verify"
+			"qualifiedName": "SBCrypto.ab2str"
 		},
 		"670": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBCrypto.verify"
+			"qualifiedName": "SBCrypto.ab2str"
 		},
 		"671": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "verifyKey"
+			"qualifiedName": "buffer"
 		},
 		"672": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "sign"
+			"qualifiedName": "SBCrypto.compareKeys"
 		},
 		"673": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "contents"
+			"qualifiedName": "SBCrypto.compareKeys"
 		},
 		"674": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBCrypto.str2ab"
+			"qualifiedName": "key1"
 		},
 		"675": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBCrypto.str2ab"
+			"qualifiedName": "key2"
 		},
 		"676": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "string"
+			"qualifiedName": "SBCrypto.lookupKey"
 		},
 		"677": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBCrypto.ab2str"
+			"qualifiedName": "SBCrypto.lookupKey"
 		},
 		"678": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBCrypto.ab2str"
+			"qualifiedName": "key"
 		},
 		"679": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "buffer"
+			"qualifiedName": "array"
 		},
 		"680": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBCrypto.compareKeys"
+			"qualifiedName": "SBCrypto.channelKeyStringsToCryptoKeys"
 		},
 		"681": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBCrypto.compareKeys"
+			"qualifiedName": "SBCrypto.channelKeyStringsToCryptoKeys"
 		},
 		"682": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "key1"
+			"qualifiedName": "keyStrings"
 		},
 		"683": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "key2"
+			"qualifiedName": "SB384"
 		},
 		"684": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBCrypto.lookupKey"
+			"qualifiedName": "SB384.__constructor"
 		},
 		"685": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBCrypto.lookupKey"
+			"qualifiedName": "SB384"
 		},
 		"686": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
@@ -13471,153 +13141,121 @@
 		},
 		"687": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "array"
+			"qualifiedName": "SB384.ready"
 		},
 		"688": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBCrypto.channelKeyStringsToCryptoKeys"
-		},
-		"689": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SBCrypto.channelKeyStringsToCryptoKeys"
-		},
-		"690": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "keyStrings"
-		},
-		"691": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SB384"
-		},
-		"692": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SB384.__constructor"
-		},
-		"693": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SB384"
+			"qualifiedName": "SB384.sb384Ready"
 		},
 		"694": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "key"
+			"qualifiedName": "SB384.readyFlag"
 		},
 		"695": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SB384.ready"
+			"qualifiedName": "SB384.readyFlag"
 		},
 		"696": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SB384.sb384Ready"
+			"qualifiedName": "SB384.exportable_pubKey"
+		},
+		"697": {
+			"sourceFileName": "snackabra-jslib/snackabra.ts",
+			"qualifiedName": "SB384.exportable_pubKey"
+		},
+		"698": {
+			"sourceFileName": "snackabra-jslib/snackabra.ts",
+			"qualifiedName": "SB384.exportable_privateKey"
+		},
+		"699": {
+			"sourceFileName": "snackabra-jslib/snackabra.ts",
+			"qualifiedName": "SB384.exportable_privateKey"
+		},
+		"700": {
+			"sourceFileName": "snackabra-jslib/snackabra.ts",
+			"qualifiedName": "SB384.privateKey"
+		},
+		"701": {
+			"sourceFileName": "snackabra-jslib/snackabra.ts",
+			"qualifiedName": "SB384.privateKey"
 		},
 		"702": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SB384.readyFlag"
+			"qualifiedName": "SB384._id"
 		},
 		"703": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SB384.readyFlag"
+			"qualifiedName": "SB384._id"
 		},
 		"704": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SB384.exportable_pubKey"
+			"qualifiedName": "SB384.ownerChannelId"
 		},
 		"705": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SB384.exportable_pubKey"
+			"qualifiedName": "SB384.ownerChannelId"
 		},
 		"706": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SB384.exportable_privateKey"
+			"qualifiedName": "arrayBufferToBase64"
 		},
 		"707": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SB384.exportable_privateKey"
+			"qualifiedName": "arrayBufferToBase64"
 		},
 		"708": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SB384.privateKey"
+			"qualifiedName": "buffer"
 		},
 		"709": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SB384.privateKey"
+			"qualifiedName": "variant"
 		},
 		"710": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SB384._id"
+			"qualifiedName": "SB"
 		},
 		"711": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SB384._id"
+			"qualifiedName": "__object"
 		},
 		"712": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SB384.ownerChannelId"
+			"qualifiedName": "__object.Snackabra"
 		},
 		"713": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SB384.ownerChannelId"
+			"qualifiedName": "__object.SBMessage"
 		},
 		"714": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "arrayBufferToBase64"
+			"qualifiedName": "__object.Channel"
 		},
 		"715": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "arrayBufferToBase64"
+			"qualifiedName": "__object.SBCrypto"
 		},
 		"716": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "buffer"
+			"qualifiedName": "__object.SB384"
 		},
 		"717": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "variant"
+			"qualifiedName": "__object.arrayBufferToBase64"
 		},
 		"718": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "SB"
+			"qualifiedName": "arrayBufferToBase64"
 		},
 		"719": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "__object"
+			"qualifiedName": "arrayBufferToBase64"
 		},
 		"720": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "__object.Snackabra"
-		},
-		"721": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "__object.SBMessage"
-		},
-		"722": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "__object.Channel"
-		},
-		"723": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "__object.SBCrypto"
-		},
-		"724": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "__object.SB384"
-		},
-		"725": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "__object.arrayBufferToBase64"
-		},
-		"726": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "arrayBufferToBase64"
-		},
-		"727": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
-			"qualifiedName": "arrayBufferToBase64"
-		},
-		"728": {
-			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "buffer"
 		},
-		"729": {
+		"721": {
 			"sourceFileName": "snackabra-jslib/snackabra.ts",
 			"qualifiedName": "variant"
 		}

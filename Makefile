@@ -28,6 +28,9 @@ clean:
 
 # https://gitlab.acceleratxr.com/composerjs/typedoc-plugin-sphinx
 jslib:
+	echo "Generating jslib documentation - do not forget to yarn-link if you have local jslib version"
+	cp node_modules/snackabra/dist/snackabra.* snackabra-jslib
+	cp node_modules/snackabra/src/snackabra.ts snackabra-jslib
 	npx typedoc --plugin typedoc-plugin-markdown --out typedocOutput ./snackabra-jslib/snackabra.ts
 	cp typedocOutput/modules.md source
 	cp -R typedocOutput/classes typedocOutput/interfaces source

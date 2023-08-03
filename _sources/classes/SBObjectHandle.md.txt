@@ -1,12 +1,10 @@
-[JSLib Reference Manual](../README.md) / [Exports](../modules.md) / SBObjectHandleClass
+[JSLib Reference Manual](../README.md) / [Exports](../modules.md) / SBObjectHandle
 
-# Class: SBObjectHandleClass
+# Class: SBObjectHandle
 
 Basic object handle for a shard (all storage).
 
 To RETRIEVE a shard, you need id and verification.
-Next generation shard servers will only require id32.
-Same goes for shard mirrors.
 
 To DECRYPT a shard, you need key, iv, and salt. Current
 generation of shard servers will provide (iv, salt) upon
@@ -21,45 +19,53 @@ joined by '.' or simply concatenated. Currently all four
 values are random, future generation only first three
 are guaranteed to be random, the fourth may be "designed".
 
+## Implements
+
+- [`SBObjectHandle`](SBObjectHandle.md)
+
+## Implemented by
+
+- [`SBObjectHandle`](SBObjectHandle.md)
+
 ## Table of contents
 
 ### Constructors
 
-- [constructor](SBObjectHandleClass.md#constructor)
+- [constructor](SBObjectHandle.md#constructor)
 
 ### Properties
 
-- [actualSize](SBObjectHandleClass.md#actualsize)
-- [dateAndTime](SBObjectHandleClass.md#dateandtime)
-- [fileName](SBObjectHandleClass.md#filename)
-- [fileType](SBObjectHandleClass.md#filetype)
-- [iv](SBObjectHandleClass.md#iv)
-- [lastModified](SBObjectHandleClass.md#lastmodified)
-- [salt](SBObjectHandleClass.md#salt)
-- [savedSize](SBObjectHandleClass.md#savedsize)
-- [shardServer](SBObjectHandleClass.md#shardserver)
-- [version](SBObjectHandleClass.md#version)
+- [actualSize](SBObjectHandle.md#actualsize)
+- [dateAndTime](SBObjectHandle.md#dateandtime)
+- [fileName](SBObjectHandle.md#filename)
+- [fileType](SBObjectHandle.md#filetype)
+- [iv](SBObjectHandle.md#iv)
+- [lastModified](SBObjectHandle.md#lastmodified)
+- [salt](SBObjectHandle.md#salt)
+- [savedSize](SBObjectHandle.md#savedsize)
+- [shardServer](SBObjectHandle.md#shardserver)
+- [version](SBObjectHandle.md#version)
 
 ### Accessors
 
-- [id](SBObjectHandleClass.md#id)
-- [id32](SBObjectHandleClass.md#id32)
-- [key](SBObjectHandleClass.md#key)
-- [key32](SBObjectHandleClass.md#key32)
-- [type](SBObjectHandleClass.md#type)
-- [verification](SBObjectHandleClass.md#verification)
+- [id](SBObjectHandle.md#id)
+- [id32](SBObjectHandle.md#id32)
+- [key](SBObjectHandle.md#key)
+- [key32](SBObjectHandle.md#key32)
+- [type](SBObjectHandle.md#type)
+- [verification](SBObjectHandle.md#verification)
 
 ## Constructors
 
 ### constructor
 
-• **new SBObjectHandleClass**(`options`)
+• **new SBObjectHandle**(`options`)
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `options` | [`SBObjectHandle`](../interfaces/SBObjectHandle.md) |
+| `options` | [`SBObjectHandle`](SBObjectHandle.md) |
 
 ## Properties
 
@@ -69,6 +75,10 @@ are guaranteed to be random, the fourth may be "designed".
 
 optional: actual size of underlying file, if any
 
+#### Implementation of
+
+SBObjectHandle.actualSize
+
 ___
 
 ### dateAndTime
@@ -76,6 +86,10 @@ ___
 • `Optional` **dateAndTime**: `string`
 
 optional: time of shard creation
+
+#### Implementation of
+
+SBObjectHandle.dateAndTime
 
 ___
 
@@ -85,6 +99,10 @@ ___
 
 by convention will be "PAYLOAD" if it's a set of objects
 
+#### Implementation of
+
+SBObjectHandle.fileName
+
 ___
 
 ### fileType
@@ -92,6 +110,10 @@ ___
 • `Optional` **fileType**: `string`
 
 optional: file type (mime)
+
+#### Implementation of
+
+SBObjectHandle.fileType
 
 ___
 
@@ -103,6 +125,10 @@ you'll need these in case you want to track an object
 across future (storage) servers, but as long as you
 are within the same SB servers you can request them.
 
+#### Implementation of
+
+SBObjectHandle.iv
+
 ___
 
 ### lastModified
@@ -110,6 +136,10 @@ ___
 • `Optional` **lastModified**: `number`
 
 optional: last modified time (of underlying file, if any)
+
+#### Implementation of
+
+SBObjectHandle.lastModified
 
 ___
 
@@ -121,6 +151,10 @@ you'll need these in case you want to track an object
 across future (storage) servers, but as long as you
 are within the same SB servers you can request them.
 
+#### Implementation of
+
+SBObjectHandle.salt
+
 ___
 
 ### savedSize
@@ -128,6 +162,10 @@ ___
 • `Optional` **savedSize**: `number`
 
 optional: size of shard (may be different from actualSize)
+
+#### Implementation of
+
+SBObjectHandle.savedSize
 
 ___
 
@@ -137,13 +175,21 @@ ___
 
 optionally direct a shard to a specific server (especially for reads)
 
+#### Implementation of
+
+SBObjectHandle.shardServer
+
 ___
 
 ### version
 
-• **version**: `string` = `'1'`
+• `Optional` **version**: `string` = `'1'`
 
 version of this object
+
+#### Implementation of
+
+SBObjectHandle.version
 
 ## Accessors
 
@@ -156,6 +202,10 @@ id of object
 #### Returns
 
 `string`
+
+#### Implementation of
+
+SBObjectHandle.id
 
 • `set` **id**(`value`): `void`
 
@@ -171,6 +221,10 @@ id of object
 
 `void`
 
+#### Implementation of
+
+SBObjectHandle.id
+
 ___
 
 ### id32
@@ -182,6 +236,10 @@ optional: array32 format of id
 #### Returns
 
 `Base62Encoded`
+
+#### Implementation of
+
+SBObjectHandle.id32
 
 • `set` **id32**(`value`): `void`
 
@@ -197,6 +255,10 @@ optional: array32 format of id
 
 `void`
 
+#### Implementation of
+
+SBObjectHandle.id32
+
 ___
 
 ### key
@@ -208,6 +270,10 @@ key of object
 #### Returns
 
 `string`
+
+#### Implementation of
+
+SBObjectHandle.key
 
 • `set` **key**(`value`): `void`
 
@@ -223,6 +289,10 @@ key of object
 
 `void`
 
+#### Implementation of
+
+SBObjectHandle.key
+
 ___
 
 ### key32
@@ -234,6 +304,10 @@ optional: array32 format of key
 #### Returns
 
 `Base62Encoded`
+
+#### Implementation of
+
+SBObjectHandle.key32
 
 • `set` **key32**(`value`): `void`
 
@@ -249,6 +323,10 @@ optional: array32 format of key
 
 `void`
 
+#### Implementation of
+
+SBObjectHandle.key32
+
 ___
 
 ### type
@@ -260,6 +338,10 @@ type of object
 #### Returns
 
 [`SBObjectType`](../modules.md#sbobjecttype)
+
+#### Implementation of
+
+SBObjectHandle.type
 
 ___
 
@@ -275,6 +357,10 @@ serves as a 'write-through' verification
 #### Returns
 
 `string` \| `Promise`<`string`\>
+
+#### Implementation of
+
+SBObjectHandle.verification
 
 • `set` **verification**(`value`): `void`
 
@@ -292,3 +378,7 @@ serves as a 'write-through' verification
 #### Returns
 
 `void`
+
+#### Implementation of
+
+SBObjectHandle.verification

@@ -2,7 +2,8 @@
 
 # Class: Snackabra
 
-Snackabra is the main class for interacting with the Snackable backend.
+Snackabra
+The main class for interacting with SB servers
 
 It is a singleton, so you can only have one instance of it.
 It is guaranteed to be synchronous, so you can use it right away.
@@ -35,6 +36,7 @@ without a parameter in which case SB will ping known servers.
 - [channel](Snackabra.md#channel)
 - [crypto](Snackabra.md#crypto)
 - [storage](Snackabra.md#storage)
+- [version](Snackabra.md#version)
 
 ### Methods
 
@@ -90,6 +92,16 @@ Returns the storage API.
 
 `StorageApi`
 
+___
+
+### version
+
+• `get` **version**(): `string`
+
+#### Returns
+
+`string`
+
 ## Methods
 
 ### connect
@@ -99,11 +111,12 @@ Returns the storage API.
 Connects to :term:`Channel Name` on this SB config.
 Returns a channel socket promise right away, but it
 will not be ready until the ``ready`` promise is resolved.
+
 Note that if you have a preferred server then the channel
 object will be returned right away, but the ``ready`` promise
 will still be pending. If you do not have a preferred server,
-then the ``ready`` promise will be resolved when a least
-one of the known servers is ready.
+then the ``ready`` promise will be resolved when at least
+one of the known servers is responding and ready.
 
 #### Parameters
 

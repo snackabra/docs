@@ -213,7 +213,8 @@
           <p><a class="reference internal" href="../README.html"><span class="std std-doc">JSLib Reference Manual</span></a> / <a class="reference internal" href="../modules.html"><span class="std std-doc">Exports</span></a> / Snackabra</p>
 <section id="class-snackabra">
 <h1>Class: Snackabra<a class="headerlink" href="#class-snackabra" title="Permalink to this heading">#</a></h1>
-<p>Snackabra is the main class for interacting with the Snackable backend.</p>
+<p>Snackabra
+The main class for interacting with SB servers</p>
 <p>It is a singleton, so you can only have one instance of it.
 It is guaranteed to be synchronous, so you can use it right away.
 It is also guaranteed to be thread-safe, so you can use it from multiple
@@ -244,6 +245,7 @@ without a parameter in which case SB will ping known servers.</p>
 <li><p><a class="reference internal" href="#channel"><span class="std std-ref">channel</span></a></p></li>
 <li><p><a class="reference internal" href="#crypto"><span class="std std-ref">crypto</span></a></p></li>
 <li><p><a class="reference internal" href="#storage"><span class="std std-ref">storage</span></a></p></li>
+<li><p><a class="reference internal" href="#version"><span class="std std-ref">version</span></a></p></li>
 </ul>
 </section>
 <section id="methods">
@@ -318,22 +320,31 @@ without a parameter in which case SB will ping known servers.</p>
 <p><code class="docutils literal notranslate"><span class="pre">StorageApi</span></code></p>
 </section>
 </section>
-</section>
+<hr class="docutils" />
+<section id="version">
+<h3>version<a class="headerlink" href="#version" title="Permalink to this heading">#</a></h3>
+<p>• <code class="docutils literal notranslate"><span class="pre">get</span></code> <strong>version</strong>(): <code class="docutils literal notranslate"><span class="pre">string</span></code></p>
 <section id="id5">
-<h2>Methods<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<h4>Returns<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">string</span></code></p>
+</section>
+</section>
+</section>
+<section id="id6">
+<h2>Methods<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
 <section id="connect">
 <h3>connect<a class="headerlink" href="#connect" title="Permalink to this heading">#</a></h3>
 <p>▸ <strong>connect</strong>(<code class="docutils literal notranslate"><span class="pre">onMessage</span></code>, <code class="docutils literal notranslate"><span class="pre">key?</span></code>, <code class="docutils literal notranslate"><span class="pre">channelId?</span></code>): <code class="docutils literal notranslate"><span class="pre">Promise</span></code>&lt;<a class="reference internal" href="ChannelSocket.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">ChannelSocket</span></code></span></a>&gt;</p>
 <p>Connects to :term:<code class="docutils literal notranslate"><span class="pre">Channel</span> <span class="pre">Name</span></code> on this SB config.
 Returns a channel socket promise right away, but it
-will not be ready until the <code class="docutils literal notranslate"><span class="pre">ready</span></code> promise is resolved.
-Note that if you have a preferred server then the channel
+will not be ready until the <code class="docutils literal notranslate"><span class="pre">ready</span></code> promise is resolved.</p>
+<p>Note that if you have a preferred server then the channel
 object will be returned right away, but the <code class="docutils literal notranslate"><span class="pre">ready</span></code> promise
 will still be pending. If you do not have a preferred server,
-then the <code class="docutils literal notranslate"><span class="pre">ready</span></code> promise will be resolved when a least
-one of the known servers is ready.</p>
-<section id="id6">
-<h4>Parameters<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h4>
+then the <code class="docutils literal notranslate"><span class="pre">ready</span></code> promise will be resolved when at least
+one of the known servers is responding and ready.</p>
+<section id="id7">
+<h4>Parameters<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h4>
 <div class="table-wrapper colwidths-auto docutils container">
 <table class="docutils align-default">
 <thead>
@@ -359,8 +370,8 @@ one of the known servers is ready.</p>
 </table>
 </div>
 </section>
-<section id="id7">
-<h4>Returns<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h4>
+<section id="id8">
+<h4>Returns<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">Promise</span></code>&lt;<a class="reference internal" href="ChannelSocket.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">ChannelSocket</span></code></span></a>&gt;</p>
 <p>a channel object</p>
 </section>
@@ -374,8 +385,8 @@ Returns a promise to a ‘’SBChannelHandle’’ object
 (which includes the :term:<code class="docutils literal notranslate"><span class="pre">Channel</span> <span class="pre">Name</span></code>).
 Note that this method does not connect to the channel,
 it just creates (authorizes) it.</p>
-<section id="id8">
-<h4>Parameters<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h4>
+<section id="id9">
+<h4>Parameters<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h4>
 <div class="table-wrapper colwidths-auto docutils container">
 <table class="docutils align-default">
 <thead>
@@ -401,8 +412,8 @@ it just creates (authorizes) it.</p>
 </table>
 </div>
 </section>
-<section id="id9">
-<h4>Returns<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h4>
+<section id="id10">
+<h4>Returns<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">Promise</span></code>&lt;<a class="reference internal" href="../interfaces/SBChannelHandle.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">SBChannelHandle</span></code></span></a>&gt;</p>
 </section>
 </section>
@@ -473,17 +484,21 @@ it just creates (authorizes) it.</p>
 <li><a class="reference internal" href="#id4">Returns</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#version">version</a><ul>
+<li><a class="reference internal" href="#id5">Returns</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id5">Methods</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#id6">Methods</a><ul>
 <li><a class="reference internal" href="#connect">connect</a><ul>
-<li><a class="reference internal" href="#id6">Parameters</a></li>
-<li><a class="reference internal" href="#id7">Returns</a></li>
+<li><a class="reference internal" href="#id7">Parameters</a></li>
+<li><a class="reference internal" href="#id8">Returns</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#create">create</a><ul>
-<li><a class="reference internal" href="#id8">Parameters</a></li>
-<li><a class="reference internal" href="#id9">Returns</a></li>
+<li><a class="reference internal" href="#id9">Parameters</a></li>
+<li><a class="reference internal" href="#id10">Returns</a></li>
 </ul>
 </li>
 </ul>

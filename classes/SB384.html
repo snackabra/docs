@@ -242,6 +242,7 @@
 <li><p><a class="reference internal" href="#_id"><span class="std std-ref">_id</span></a></p></li>
 <li><p><a class="reference internal" href="#exportable_privatekey"><span class="std std-ref">exportable_privateKey</span></a></p></li>
 <li><p><a class="reference internal" href="#exportable_pubkey"><span class="std std-ref">exportable_pubKey</span></a></p></li>
+<li><p><a class="reference internal" href="#hash"><span class="std std-ref">hash</span></a></p></li>
 <li><p><a class="reference internal" href="#ownerchannelid"><span class="std std-ref">ownerChannelId</span></a></p></li>
 <li><p><a class="reference internal" href="#privatekey"><span class="std std-ref">privateKey</span></a></p></li>
 <li><p><a class="reference internal" href="#readyflag"><span class="std std-ref">readyFlag</span></a></p></li>
@@ -323,11 +324,37 @@ example below. Also see Design Note [4]_.</p>
 </section>
 </section>
 <hr class="docutils" />
+<section id="hash">
+<h3>hash<a class="headerlink" href="#hash" title="Permalink to this heading">#</a></h3>
+<p>• <code class="docutils literal notranslate"><span class="pre">get</span></code> <strong>hash</strong>(): <code class="docutils literal notranslate"><span class="pre">string</span></code></p>
+<p>Returns a unique identifier for external use, that will be unique
+for any class or object that uses SB384 as it’s root.</p>
+<p>This is deterministic, used to identify users, channels, etc.</p>
+<p>The hash is base64 encoding of the SHA-384 hash of the public key,
+taking the ‘x’ and ‘y’ fields. Note that it is slightly restricted, it only
+allows [A-Za-z0-9], eg does not allow the ‘_’ or ‘-’ characters. This makes the
+encoding more practical for end-user interactions like copy-paste. This
+is accomplished by simply re-hashing until the result is valid. This
+reduces the entropy of the channel ID by a neglible amount.</p>
+<p>Note this is not b62 encoding, which we use for 256-bit entities. This
+is still ~384 bits (e.g. x and y fields are each 384 bits, but of course
+the underlying total entropy isn’t that, see <insert lots of fun math crypto
+study material heh>).</p>
+<p>NOTE: if you ever need to COMPARE hashes, well short version is that
+you cannot do so in the general case. You can use sbCrypto.compareHashWithKey()
+to compare a hash with a key, but you cannot compare two hashes. See the
+comparison function for more details.</p>
+<section id="id6">
+<h4>Returns<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">string</span></code></p>
+</section>
+</section>
+<hr class="docutils" />
 <section id="ownerchannelid">
 <h3>ownerChannelId<a class="headerlink" href="#ownerchannelid" title="Permalink to this heading">#</a></h3>
 <p>• <code class="docutils literal notranslate"><span class="pre">get</span></code> <strong>ownerChannelId</strong>(): <code class="docutils literal notranslate"><span class="pre">string</span></code></p>
-<section id="id6">
-<h4>Returns<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h4>
+<section id="id7">
+<h4>Returns<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">string</span></code></p>
 </section>
 </section>
@@ -335,8 +362,8 @@ example below. Also see Design Note [4]_.</p>
 <section id="privatekey">
 <h3>privateKey<a class="headerlink" href="#privatekey" title="Permalink to this heading">#</a></h3>
 <p>• <code class="docutils literal notranslate"><span class="pre">get</span></code> <strong>privateKey</strong>(): <code class="docutils literal notranslate"><span class="pre">CryptoKey</span></code></p>
-<section id="id7">
-<h4>Returns<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h4>
+<section id="id8">
+<h4>Returns<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">CryptoKey</span></code></p>
 </section>
 </section>
@@ -344,8 +371,8 @@ example below. Also see Design Note [4]_.</p>
 <section id="readyflag">
 <h3>readyFlag<a class="headerlink" href="#readyflag" title="Permalink to this heading">#</a></h3>
 <p>• <code class="docutils literal notranslate"><span class="pre">get</span></code> <strong>readyFlag</strong>(): <code class="docutils literal notranslate"><span class="pre">boolean</span></code></p>
-<section id="id8">
-<h4>Returns<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h4>
+<section id="id9">
+<h4>Returns<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">boolean</span></code></p>
 </section>
 </section>
@@ -422,16 +449,20 @@ example below. Also see Design Note [4]_.</p>
 <li><a class="reference internal" href="#id5">Returns</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#ownerchannelid">ownerChannelId</a><ul>
+<li><a class="reference internal" href="#hash">hash</a><ul>
 <li><a class="reference internal" href="#id6">Returns</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#privatekey">privateKey</a><ul>
+<li><a class="reference internal" href="#ownerchannelid">ownerChannelId</a><ul>
 <li><a class="reference internal" href="#id7">Returns</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#readyflag">readyFlag</a><ul>
+<li><a class="reference internal" href="#privatekey">privateKey</a><ul>
 <li><a class="reference internal" href="#id8">Returns</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#readyflag">readyFlag</a><ul>
+<li><a class="reference internal" href="#id9">Returns</a></li>
 </ul>
 </li>
 </ul>

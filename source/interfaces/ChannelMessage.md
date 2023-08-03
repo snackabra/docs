@@ -33,6 +33,7 @@ for example the incoming message will look like this (after decryption)
 - [channelID](ChannelMessage.md#channelid)
 - [contents](ChannelMessage.md#contents)
 - [control](ChannelMessage.md#control)
+- [encrypted](ChannelMessage.md#encrypted)
 - [encrypted\_contents](ChannelMessage.md#encrypted_contents)
 - [id](ChannelMessage.md#id)
 - [image](ChannelMessage.md#image)
@@ -42,7 +43,9 @@ for example the incoming message will look like this (after decryption)
 - [keys](ChannelMessage.md#keys)
 - [motd](ChannelMessage.md#motd)
 - [ready](ChannelMessage.md#ready)
+- [replyTo](ChannelMessage.md#replyto)
 - [roomLocked](ChannelMessage.md#roomlocked)
+- [sendTo](ChannelMessage.md#sendto)
 - [sender\_pubKey](ChannelMessage.md#sender_pubkey)
 - [sender\_username](ChannelMessage.md#sender_username)
 - [sign](ChannelMessage.md#sign)
@@ -53,6 +56,8 @@ for example the incoming message will look like this (after decryption)
 - [type](ChannelMessage.md#type)
 - [user](ChannelMessage.md#user)
 - [verificationToken](ChannelMessage.md#verificationtoken)
+- [whisper](ChannelMessage.md#whisper)
+- [whispered](ChannelMessage.md#whispered)
 
 ## Properties
 
@@ -80,6 +85,12 @@ ___
 
 ___
 
+### encrypted
+
+• `Optional` **encrypted**: `boolean`
+
+___
+
 ### encrypted\_contents
 
 • `Optional` **encrypted\_contents**: [`EncryptedContents`](EncryptedContents.md)
@@ -100,7 +111,7 @@ ___
 
 ### imageMetaData
 
-• `Optional` **imageMetaData**: `ImageMetaData`
+• `Optional` **imageMetaData**: [`ImageMetaData`](ImageMetaData.md)
 
 ___
 
@@ -134,9 +145,21 @@ ___
 
 ___
 
+### replyTo
+
+• `Optional` **replyTo**: `JsonWebKey`
+
+___
+
 ### roomLocked
 
 • `Optional` **roomLocked**: `boolean`
+
+___
+
+### sendTo
+
+• `Optional` **sendTo**: `string`
 
 ___
 
@@ -204,3 +227,15 @@ ___
 ### verificationToken
 
 • `Optional` **verificationToken**: `string`
+
+___
+
+### whisper
+
+• `Optional` **whisper**: `string`
+
+___
+
+### whispered
+
+• `Optional` **whispered**: `boolean`

@@ -20,6 +20,11 @@ Body should be below 32KiB, though it tolerates up to 64KiB
 - [contents](SBMessage.md#contents)
 - [ready](SBMessage.md#ready)
 
+### Accessors
+
+- [encryptionKey](SBMessage.md#encryptionkey)
+- [sendToPubKey](SBMessage.md#sendtopubkey)
+
 ### Methods
 
 - [send](SBMessage.md#send)
@@ -28,14 +33,15 @@ Body should be below 32KiB, though it tolerates up to 64KiB
 
 ### constructor
 
-• **new SBMessage**(`channel`, `body?`)
+• **new SBMessage**(`channel`, `bodyParameter?`, `sendToJsonWebKey?`)
 
 #### Parameters
 
 | Name | Type | Default value |
 | :------ | :------ | :------ |
 | `channel` | [`Channel`](Channel.md) | `undefined` |
-| `body` | `string` | `''` |
+| `bodyParameter` | `string` \| `SBMessageContents` | `''` |
+| `sendToJsonWebKey?` | `JsonWebKey` | `undefined` |
 
 ## Properties
 
@@ -66,6 +72,26 @@ ___
 ### ready
 
 • **ready**: `Promise`<[`SBMessage`](SBMessage.md)\>
+
+## Accessors
+
+### encryptionKey
+
+• `get` **encryptionKey**(): `undefined` \| `CryptoKey`
+
+#### Returns
+
+`undefined` \| `CryptoKey`
+
+___
+
+### sendToPubKey
+
+• `get` **sendToPubKey**(): `undefined` \| `JsonWebKey`
+
+#### Returns
+
+`undefined` \| `JsonWebKey`
 
 ## Methods
 

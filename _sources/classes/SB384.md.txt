@@ -24,6 +24,7 @@
 - [\_id](SB384.md#_id)
 - [exportable\_privateKey](SB384.md#exportable_privatekey)
 - [exportable\_pubKey](SB384.md#exportable_pubkey)
+- [hash](SB384.md#hash)
 - [ownerChannelId](SB384.md#ownerchannelid)
 - [privateKey](SB384.md#privatekey)
 - [readyFlag](SB384.md#readyflag)
@@ -93,6 +94,38 @@ ___
 #### Returns
 
 `JsonWebKey`
+
+___
+
+### hash
+
+• `get` **hash**(): `string`
+
+Returns a unique identifier for external use, that will be unique
+for any class or object that uses SB384 as it's root.
+
+This is deterministic, used to identify users, channels, etc.
+
+The hash is base64 encoding of the SHA-384 hash of the public key,
+taking the 'x' and 'y' fields. Note that it is slightly restricted, it only
+allows [A-Za-z0-9], eg does not allow the '_' or '-' characters. This makes the
+encoding more practical for end-user interactions like copy-paste. This
+is accomplished by simply re-hashing until the result is valid. This 
+reduces the entropy of the channel ID by a neglible amount. 
+
+Note this is not b62 encoding, which we use for 256-bit entities. This
+is still ~384 bits (e.g. x and y fields are each 384 bits, but of course
+the underlying total entropy isn't that, see <insert lots of fun math crypto
+study material heh>).
+
+NOTE: if you ever need to COMPARE hashes, well short version is that
+you cannot do so in the general case. You can use sbCrypto.compareHashWithKey()
+to compare a hash with a key, but you cannot compare two hashes. See the
+comparison function for more details.
+
+#### Returns
+
+`string`
 
 ___
 

@@ -242,6 +242,7 @@
 <li><p><a class="reference internal" href="#channelid"><span class="std std-ref">channelID</span></a></p></li>
 <li><p><a class="reference internal" href="#contents"><span class="std std-ref">contents</span></a></p></li>
 <li><p><a class="reference internal" href="#control"><span class="std std-ref">control</span></a></p></li>
+<li><p><a class="reference internal" href="#encrypted"><span class="std std-ref">encrypted</span></a></p></li>
 <li><p><a class="reference internal" href="#encrypted_contents"><span class="std std-ref">encrypted_contents</span></a></p></li>
 <li><p><a class="reference internal" href="#id"><span class="std std-ref">id</span></a></p></li>
 <li><p><a class="reference internal" href="#image"><span class="std std-ref">image</span></a></p></li>
@@ -251,7 +252,9 @@
 <li><p><a class="reference internal" href="#keys"><span class="std std-ref">keys</span></a></p></li>
 <li><p><a class="reference internal" href="#motd"><span class="std std-ref">motd</span></a></p></li>
 <li><p><a class="reference internal" href="#ready"><span class="std std-ref">ready</span></a></p></li>
+<li><p><a class="reference internal" href="#replyto"><span class="std std-ref">replyTo</span></a></p></li>
 <li><p><a class="reference internal" href="#roomlocked"><span class="std std-ref">roomLocked</span></a></p></li>
+<li><p><a class="reference internal" href="#sendto"><span class="std std-ref">sendTo</span></a></p></li>
 <li><p><a class="reference internal" href="#sender_pubkey"><span class="std std-ref">sender_pubKey</span></a></p></li>
 <li><p><a class="reference internal" href="#sender_username"><span class="std std-ref">sender_username</span></a></p></li>
 <li><p><a class="reference internal" href="#sign"><span class="std std-ref">sign</span></a></p></li>
@@ -262,6 +265,8 @@
 <li><p><a class="reference internal" href="#type"><span class="std std-ref">type</span></a></p></li>
 <li><p><a class="reference internal" href="#user"><span class="std std-ref">user</span></a></p></li>
 <li><p><a class="reference internal" href="#verificationtoken"><span class="std std-ref">verificationToken</span></a></p></li>
+<li><p><a class="reference internal" href="#whisper"><span class="std std-ref">whisper</span></a></p></li>
+<li><p><a class="reference internal" href="#whispered"><span class="std std-ref">whispered</span></a></p></li>
 </ul>
 </section>
 </section>
@@ -287,6 +292,11 @@
 <p>• <code class="docutils literal notranslate"><span class="pre">Optional</span></code> <strong>control</strong>: <code class="docutils literal notranslate"><span class="pre">boolean</span></code></p>
 </section>
 <hr class="docutils" />
+<section id="encrypted">
+<h3>encrypted<a class="headerlink" href="#encrypted" title="Permalink to this heading">#</a></h3>
+<p>• <code class="docutils literal notranslate"><span class="pre">Optional</span></code> <strong>encrypted</strong>: <code class="docutils literal notranslate"><span class="pre">boolean</span></code></p>
+</section>
+<hr class="docutils" />
 <section id="encrypted-contents">
 <h3>encrypted_contents<a class="headerlink" href="#encrypted-contents" title="Permalink to this heading">#</a></h3>
 <p>• <code class="docutils literal notranslate"><span class="pre">Optional</span></code> <strong>encrypted_contents</strong>: <a class="reference internal" href="EncryptedContents.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">EncryptedContents</span></code></span></a></p>
@@ -304,7 +314,7 @@
 <hr class="docutils" />
 <section id="imagemetadata">
 <h3>imageMetaData<a class="headerlink" href="#imagemetadata" title="Permalink to this heading">#</a></h3>
-<p>• <code class="docutils literal notranslate"><span class="pre">Optional</span></code> <strong>imageMetaData</strong>: <code class="docutils literal notranslate"><span class="pre">ImageMetaData</span></code></p>
+<p>• <code class="docutils literal notranslate"><span class="pre">Optional</span></code> <strong>imageMetaData</strong>: <a class="reference internal" href="ImageMetaData.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">ImageMetaData</span></code></span></a></p>
 </section>
 <hr class="docutils" />
 <section id="imagemetadata-sign">
@@ -332,9 +342,19 @@
 <p>• <code class="docutils literal notranslate"><span class="pre">Optional</span></code> <strong>ready</strong>: <code class="docutils literal notranslate"><span class="pre">boolean</span></code></p>
 </section>
 <hr class="docutils" />
+<section id="replyto">
+<h3>replyTo<a class="headerlink" href="#replyto" title="Permalink to this heading">#</a></h3>
+<p>• <code class="docutils literal notranslate"><span class="pre">Optional</span></code> <strong>replyTo</strong>: <code class="docutils literal notranslate"><span class="pre">JsonWebKey</span></code></p>
+</section>
+<hr class="docutils" />
 <section id="roomlocked">
 <h3>roomLocked<a class="headerlink" href="#roomlocked" title="Permalink to this heading">#</a></h3>
 <p>• <code class="docutils literal notranslate"><span class="pre">Optional</span></code> <strong>roomLocked</strong>: <code class="docutils literal notranslate"><span class="pre">boolean</span></code></p>
+</section>
+<hr class="docutils" />
+<section id="sendto">
+<h3>sendTo<a class="headerlink" href="#sendto" title="Permalink to this heading">#</a></h3>
+<p>• <code class="docutils literal notranslate"><span class="pre">Optional</span></code> <strong>sendTo</strong>: <code class="docutils literal notranslate"><span class="pre">string</span></code></p>
 </section>
 <hr class="docutils" />
 <section id="sender-pubkey">
@@ -406,6 +426,16 @@
 <h3>verificationToken<a class="headerlink" href="#verificationtoken" title="Permalink to this heading">#</a></h3>
 <p>• <code class="docutils literal notranslate"><span class="pre">Optional</span></code> <strong>verificationToken</strong>: <code class="docutils literal notranslate"><span class="pre">string</span></code></p>
 </section>
+<hr class="docutils" />
+<section id="whisper">
+<h3>whisper<a class="headerlink" href="#whisper" title="Permalink to this heading">#</a></h3>
+<p>• <code class="docutils literal notranslate"><span class="pre">Optional</span></code> <strong>whisper</strong>: <code class="docutils literal notranslate"><span class="pre">string</span></code></p>
+</section>
+<hr class="docutils" />
+<section id="whispered">
+<h3>whispered<a class="headerlink" href="#whispered" title="Permalink to this heading">#</a></h3>
+<p>• <code class="docutils literal notranslate"><span class="pre">Optional</span></code> <strong>whispered</strong>: <code class="docutils literal notranslate"><span class="pre">boolean</span></code></p>
+</section>
 </section>
 </section>
 
@@ -456,6 +486,7 @@
 <li><a class="reference internal" href="#channelid">channelID</a></li>
 <li><a class="reference internal" href="#contents">contents</a></li>
 <li><a class="reference internal" href="#control">control</a></li>
+<li><a class="reference internal" href="#encrypted">encrypted</a></li>
 <li><a class="reference internal" href="#encrypted-contents">encrypted_contents</a></li>
 <li><a class="reference internal" href="#id2">id</a></li>
 <li><a class="reference internal" href="#image">image</a></li>
@@ -465,7 +496,9 @@
 <li><a class="reference internal" href="#keys">keys</a></li>
 <li><a class="reference internal" href="#motd">motd</a></li>
 <li><a class="reference internal" href="#ready">ready</a></li>
+<li><a class="reference internal" href="#replyto">replyTo</a></li>
 <li><a class="reference internal" href="#roomlocked">roomLocked</a></li>
+<li><a class="reference internal" href="#sendto">sendTo</a></li>
 <li><a class="reference internal" href="#sender-pubkey">sender_pubKey</a></li>
 <li><a class="reference internal" href="#sender-username">sender_username</a></li>
 <li><a class="reference internal" href="#sign">sign</a></li>
@@ -479,6 +512,8 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#verificationtoken">verificationToken</a></li>
+<li><a class="reference internal" href="#whisper">whisper</a></li>
+<li><a class="reference internal" href="#whispered">whispered</a></li>
 </ul>
 </li>
 </ul>

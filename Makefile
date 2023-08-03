@@ -31,3 +31,8 @@ jslib:
 	npx typedoc --plugin typedoc-plugin-markdown --out typedocOutput ./snackabra-jslib/snackabra.ts
 	cp typedocOutput/modules.md source
 	cp -R typedocOutput/classes typedocOutput/interfaces source
+
+	# npx typedoc --out typedocRegular ./snackabra-jslib/snackabra.ts
+	# npx typedoc --plugin typedoc-plugin-markdown --namedAnchors true --entryDocument jslib2.md --out typedocMD ./snackabra-jslib/snackabra.ts
+	# cp typedocMD/modules.md source
+	# cp -R typedocMD/classes typedocMD/interfaces source

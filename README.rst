@@ -28,9 +28,6 @@ To setup working with the ``snackabra`` documentation per se:
 
     $ git clone https://github.com/snackabra/snackabra-docs
     $ cd snackabra-docs
-
-    $ # main elements are typedoc
-    $ yarn install
     
     $ # note we do not support 3.10 yet (some package issues)
     $ python3.9 -m venv venv
@@ -42,6 +39,9 @@ To setup working with the ``snackabra`` documentation per se:
 
 You work with files in 'source', after you've made any changes, run
 'make html' [#r03]_ and results will be in the 'build' directory:
+
+This will pull in jslib from npm; if you're working with another
+version, use 'yarn link', see 'snackabra-jslib/README.txt').
 
 .. code-block:: console
 

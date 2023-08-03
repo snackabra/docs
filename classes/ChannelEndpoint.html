@@ -214,7 +214,10 @@
 <section id="class-channelendpoint">
 <h1>Class: ChannelEndpoint<a class="headerlink" href="#class-channelendpoint" title="Permalink to this heading">#</a></h1>
 <p>ChannelEndpoint</p>
-<p>Gives access to a Channel API (without needing to connect to socket)</p>
+<p>Gives access to a Channel API (without needing to connect to socket).
+It’s fully functional except it won’t send or receive messages
+(obviously, that’s what a socket is for, but we might add send/receive
+in the future for non-socket use cases)</p>
 <section id="hierarchy">
 <h2>Hierarchy<a class="headerlink" href="#hierarchy" title="Permalink to this heading">#</a></h2>
 <ul>
@@ -255,6 +258,7 @@
 <li><p><a class="reference internal" href="#channelsignkey"><span class="std std-ref">channelSignKey</span></a></p></li>
 <li><p><a class="reference internal" href="#exportable_privatekey"><span class="std std-ref">exportable_privateKey</span></a></p></li>
 <li><p><a class="reference internal" href="#exportable_pubkey"><span class="std std-ref">exportable_pubKey</span></a></p></li>
+<li><p><a class="reference internal" href="#hash"><span class="std std-ref">hash</span></a></p></li>
 <li><p><a class="reference internal" href="#keys"><span class="std std-ref">keys</span></a></p></li>
 <li><p><a class="reference internal" href="#onmessage"><span class="std std-ref">onMessage</span></a></p></li>
 <li><p><a class="reference internal" href="#ownerchannelid"><span class="std std-ref">ownerChannelId</span></a></p></li>
@@ -266,7 +270,26 @@
 <section id="methods">
 <h3>Methods<a class="headerlink" href="#methods" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
+<li><p><a class="reference internal" href="#acceptvisitor"><span class="std std-ref">acceptVisitor</span></a></p></li>
+<li><p><a class="reference internal" href="#authorize"><span class="std std-ref">authorize</span></a></p></li>
+<li><p><a class="reference internal" href="#budd"><span class="std std-ref">budd</span></a></p></li>
+<li><p><a class="reference internal" href="#downloaddata"><span class="std std-ref">downloadData</span></a></p></li>
+<li><p><a class="reference internal" href="#getadmindata"><span class="std std-ref">getAdminData</span></a></p></li>
+<li><p><a class="reference internal" href="#getcapacity"><span class="std std-ref">getCapacity</span></a></p></li>
+<li><p><a class="reference internal" href="#getjoinrequests"><span class="std std-ref">getJoinRequests</span></a></p></li>
+<li><p><a class="reference internal" href="#getlastmessagetimes"><span class="std std-ref">getLastMessageTimes</span></a></p></li>
+<li><p><a class="reference internal" href="#getmother"><span class="std std-ref">getMother</span></a></p></li>
+<li><p><a class="reference internal" href="#getoldmessages"><span class="std std-ref">getOldMessages</span></a></p></li>
+<li><p><a class="reference internal" href="#getstoragelimit"><span class="std std-ref">getStorageLimit</span></a></p></li>
+<li><p><a class="reference internal" href="#islocked"><span class="std std-ref">isLocked</span></a></p></li>
+<li><p><a class="reference internal" href="#lock"><span class="std std-ref">lock</span></a></p></li>
+<li><p><a class="reference internal" href="#ownerkeyrotation"><span class="std std-ref">ownerKeyRotation</span></a></p></li>
+<li><p><a class="reference internal" href="#postpubkey"><span class="std std-ref">postPubKey</span></a></p></li>
 <li><p><a class="reference internal" href="#send"><span class="std std-ref">send</span></a></p></li>
+<li><p><a class="reference internal" href="#setmotd"><span class="std std-ref">setMOTD</span></a></p></li>
+<li><p><a class="reference internal" href="#storagerequest"><span class="std std-ref">storageRequest</span></a></p></li>
+<li><p><a class="reference internal" href="#updatecapacity"><span class="std std-ref">updateCapacity</span></a></p></li>
+<li><p><a class="reference internal" href="#uploadchannel"><span class="std std-ref">uploadChannel</span></a></p></li>
 </ul>
 </section>
 </section>
@@ -319,7 +342,7 @@
 <h3>adminData<a class="headerlink" href="#admindata" title="Permalink to this heading">#</a></h3>
 <p>• <code class="docutils literal notranslate"><span class="pre">Optional</span></code> <strong>adminData</strong>: <code class="docutils literal notranslate"><span class="pre">Dictionary</span></code>&lt;<code class="docutils literal notranslate"><span class="pre">any</span></code>&gt;</p>
 <section id="id3">
-<h4>Overrides<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h4>
+<h4>Inherited from<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h4>
 <p><a class="reference internal" href="Channel.html"><span class="std std-doc">Channel</span></a>.<a class="reference internal" href="Channel.html#admindata"><span class="std std-ref">adminData</span></a></p>
 </section>
 </section>
@@ -327,6 +350,23 @@
 <section id="channelready">
 <h3>channelReady<a class="headerlink" href="#channelready" title="Permalink to this heading">#</a></h3>
 <p>• <strong>channelReady</strong>: <code class="docutils literal notranslate"><span class="pre">Promise</span></code>&lt;<a class="reference internal" href="Channel.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">Channel</span></code></span></a>&gt;</p>
+<p>Channel Class</p>
+<p>This is the main work horse for channels. However, it is ABSTRACT,
+meaning you need a ‘concrete’ class to use it.</p>
+<p>Currently you have two options:</p>
+<p>You can create a ChannelEndpoint object. That can do everything against
+a channel except send/receive messages synchronously.</p>
+<p>The other option is ChannelSocket, which does everything ChannelEndpoint
+does, but ALSO connects with a web socket.</p>
+<p>So unless you’re actually connecting with intent on interactive, fast
+messaging, an endpoint is sufficient. In fact, UNLESS you are going to
+do send/receive, you should use ChannelEndpoint, not ChannelSocket.</p>
+<p>In our current thinking, ‘Channel’ captures pretty much everything,
+except how you want (instant) messaging to be hooked up. So for example, our
+next class might be ‘ChannelP2P’, which would be setting up webrtc
+data channel connections in a mesh.</p>
+<p>Note that you don’t need to worry about what API calls involve race
+conditions and which don’t, jslib will do that for you.</p>
 <p><strong><code class="docutils literal notranslate"><span class="pre">Param</span></code></strong></p>
 <p>server to join</p>
 <p><strong><code class="docutils literal notranslate"><span class="pre">Param</span></code></strong></p>
@@ -419,10 +459,10 @@
 <hr class="docutils" />
 <section id="api">
 <h3>api<a class="headerlink" href="#api" title="Permalink to this heading">#</a></h3>
-<p>• <code class="docutils literal notranslate"><span class="pre">get</span></code> <strong>api</strong>(): <a class="reference internal" href="ChannelApi.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">ChannelApi</span></code></span></a></p>
+<p>• <code class="docutils literal notranslate"><span class="pre">get</span></code> <strong>api</strong>(): <code class="docutils literal notranslate"><span class="pre">this</span></code></p>
 <section id="id14">
 <h4>Returns<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h4>
-<p><a class="reference internal" href="ChannelApi.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">ChannelApi</span></code></span></a></p>
+<p><code class="docutils literal notranslate"><span class="pre">this</span></code></p>
 </section>
 <section id="id15">
 <h4>Inherited from<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h4>
@@ -482,15 +522,45 @@
 </section>
 </section>
 <hr class="docutils" />
-<section id="keys">
-<h3>keys<a class="headerlink" href="#keys" title="Permalink to this heading">#</a></h3>
-<p>• <code class="docutils literal notranslate"><span class="pre">get</span></code> <strong>keys</strong>(): <a class="reference internal" href="../interfaces/ChannelKeys.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">ChannelKeys</span></code></span></a></p>
+<section id="hash">
+<h3>hash<a class="headerlink" href="#hash" title="Permalink to this heading">#</a></h3>
+<p>• <code class="docutils literal notranslate"><span class="pre">get</span></code> <strong>hash</strong>(): <code class="docutils literal notranslate"><span class="pre">string</span></code></p>
+<p>Returns a unique identifier for external use, that will be unique
+for any class or object that uses SB384 as it’s root.</p>
+<p>This is deterministic, used to identify users, channels, etc.</p>
+<p>The hash is base64 encoding of the SHA-384 hash of the public key,
+taking the ‘x’ and ‘y’ fields. Note that it is slightly restricted, it only
+allows [A-Za-z0-9], eg does not allow the ‘_’ or ‘-’ characters. This makes the
+encoding more practical for end-user interactions like copy-paste. This
+is accomplished by simply re-hashing until the result is valid. This
+reduces the entropy of the channel ID by a neglible amount.</p>
+<p>Note this is not b62 encoding, which we use for 256-bit entities. This
+is still ~384 bits (e.g. x and y fields are each 384 bits, but of course
+the underlying total entropy isn’t that, see <insert lots of fun math crypto
+study material heh>).</p>
+<p>NOTE: if you ever need to COMPARE hashes, well short version is that
+you cannot do so in the general case. You can use sbCrypto.compareHashWithKey()
+to compare a hash with a key, but you cannot compare two hashes. See the
+comparison function for more details.</p>
 <section id="id24">
 <h4>Returns<a class="headerlink" href="#id24" title="Permalink to this heading">#</a></h4>
-<p><a class="reference internal" href="../interfaces/ChannelKeys.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">ChannelKeys</span></code></span></a></p>
+<p><code class="docutils literal notranslate"><span class="pre">string</span></code></p>
 </section>
 <section id="id25">
 <h4>Inherited from<a class="headerlink" href="#id25" title="Permalink to this heading">#</a></h4>
+<p>Channel.hash</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="keys">
+<h3>keys<a class="headerlink" href="#keys" title="Permalink to this heading">#</a></h3>
+<p>• <code class="docutils literal notranslate"><span class="pre">get</span></code> <strong>keys</strong>(): <a class="reference internal" href="../interfaces/ChannelKeys.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">ChannelKeys</span></code></span></a></p>
+<section id="id26">
+<h4>Returns<a class="headerlink" href="#id26" title="Permalink to this heading">#</a></h4>
+<p><a class="reference internal" href="../interfaces/ChannelKeys.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">ChannelKeys</span></code></span></a></p>
+</section>
+<section id="id27">
+<h4>Inherited from<a class="headerlink" href="#id27" title="Permalink to this heading">#</a></h4>
 <p>Channel.keys</p>
 </section>
 </section>
@@ -498,8 +568,8 @@
 <section id="onmessage">
 <h3>onMessage<a class="headerlink" href="#onmessage" title="Permalink to this heading">#</a></h3>
 <p>• <code class="docutils literal notranslate"><span class="pre">set</span></code> <strong>onMessage</strong>(<code class="docutils literal notranslate"><span class="pre">_f</span></code>): <code class="docutils literal notranslate"><span class="pre">void</span></code></p>
-<section id="id26">
-<h4>Parameters<a class="headerlink" href="#id26" title="Permalink to this heading">#</a></h4>
+<section id="id28">
+<h4>Parameters<a class="headerlink" href="#id28" title="Permalink to this heading">#</a></h4>
 <div class="table-wrapper colwidths-auto docutils container">
 <table class="docutils align-default">
 <thead>
@@ -515,8 +585,8 @@
 </table>
 </div>
 </section>
-<section id="id27">
-<h4>Returns<a class="headerlink" href="#id27" title="Permalink to this heading">#</a></h4>
+<section id="id29">
+<h4>Returns<a class="headerlink" href="#id29" title="Permalink to this heading">#</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">void</span></code></p>
 </section>
 </section>
@@ -524,12 +594,12 @@
 <section id="ownerchannelid">
 <h3>ownerChannelId<a class="headerlink" href="#ownerchannelid" title="Permalink to this heading">#</a></h3>
 <p>• <code class="docutils literal notranslate"><span class="pre">get</span></code> <strong>ownerChannelId</strong>(): <code class="docutils literal notranslate"><span class="pre">string</span></code></p>
-<section id="id28">
-<h4>Returns<a class="headerlink" href="#id28" title="Permalink to this heading">#</a></h4>
+<section id="id30">
+<h4>Returns<a class="headerlink" href="#id30" title="Permalink to this heading">#</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">string</span></code></p>
 </section>
-<section id="id29">
-<h4>Inherited from<a class="headerlink" href="#id29" title="Permalink to this heading">#</a></h4>
+<section id="id31">
+<h4>Inherited from<a class="headerlink" href="#id31" title="Permalink to this heading">#</a></h4>
 <p>Channel.ownerChannelId</p>
 </section>
 </section>
@@ -537,12 +607,12 @@
 <section id="privatekey">
 <h3>privateKey<a class="headerlink" href="#privatekey" title="Permalink to this heading">#</a></h3>
 <p>• <code class="docutils literal notranslate"><span class="pre">get</span></code> <strong>privateKey</strong>(): <code class="docutils literal notranslate"><span class="pre">CryptoKey</span></code></p>
-<section id="id30">
-<h4>Returns<a class="headerlink" href="#id30" title="Permalink to this heading">#</a></h4>
+<section id="id32">
+<h4>Returns<a class="headerlink" href="#id32" title="Permalink to this heading">#</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">CryptoKey</span></code></p>
 </section>
-<section id="id31">
-<h4>Inherited from<a class="headerlink" href="#id31" title="Permalink to this heading">#</a></h4>
+<section id="id33">
+<h4>Inherited from<a class="headerlink" href="#id33" title="Permalink to this heading">#</a></h4>
 <p>Channel.privateKey</p>
 </section>
 </section>
@@ -550,12 +620,12 @@
 <section id="readyflag">
 <h3>readyFlag<a class="headerlink" href="#readyflag" title="Permalink to this heading">#</a></h3>
 <p>• <code class="docutils literal notranslate"><span class="pre">get</span></code> <strong>readyFlag</strong>(): <code class="docutils literal notranslate"><span class="pre">boolean</span></code></p>
-<section id="id32">
-<h4>Returns<a class="headerlink" href="#id32" title="Permalink to this heading">#</a></h4>
+<section id="id34">
+<h4>Returns<a class="headerlink" href="#id34" title="Permalink to this heading">#</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">boolean</span></code></p>
 </section>
-<section id="id33">
-<h4>Inherited from<a class="headerlink" href="#id33" title="Permalink to this heading">#</a></h4>
+<section id="id35">
+<h4>Inherited from<a class="headerlink" href="#id35" title="Permalink to this heading">#</a></h4>
 <p>Channel.readyFlag</p>
 </section>
 </section>
@@ -563,23 +633,367 @@
 <section id="sbserver">
 <h3>sbServer<a class="headerlink" href="#sbserver" title="Permalink to this heading">#</a></h3>
 <p>• <code class="docutils literal notranslate"><span class="pre">get</span></code> <strong>sbServer</strong>(): <a class="reference internal" href="../interfaces/SBServer.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">SBServer</span></code></span></a></p>
-<section id="id34">
-<h4>Returns<a class="headerlink" href="#id34" title="Permalink to this heading">#</a></h4>
+<section id="id36">
+<h4>Returns<a class="headerlink" href="#id36" title="Permalink to this heading">#</a></h4>
 <p><a class="reference internal" href="../interfaces/SBServer.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">SBServer</span></code></span></a></p>
 </section>
-<section id="id35">
-<h4>Inherited from<a class="headerlink" href="#id35" title="Permalink to this heading">#</a></h4>
+<section id="id37">
+<h4>Inherited from<a class="headerlink" href="#id37" title="Permalink to this heading">#</a></h4>
 <p>Channel.sbServer</p>
 </section>
 </section>
 </section>
-<section id="id36">
-<h2>Methods<a class="headerlink" href="#id36" title="Permalink to this heading">#</a></h2>
+<section id="id38">
+<h2>Methods<a class="headerlink" href="#id38" title="Permalink to this heading">#</a></h2>
+<section id="acceptvisitor">
+<h3>acceptVisitor<a class="headerlink" href="#acceptvisitor" title="Permalink to this heading">#</a></h3>
+<p>▸ <strong>acceptVisitor</strong>(<code class="docutils literal notranslate"><span class="pre">pubKey</span></code>): <code class="docutils literal notranslate"><span class="pre">Promise</span></code>&lt;<code class="docutils literal notranslate"><span class="pre">unknown</span></code>&gt;</p>
+<section id="id39">
+<h4>Parameters<a class="headerlink" href="#id39" title="Permalink to this heading">#</a></h4>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Name</p></th>
+<th class="head text-left"><p>Type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">pubKey</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="id40">
+<h4>Returns<a class="headerlink" href="#id40" title="Permalink to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">Promise</span></code>&lt;<code class="docutils literal notranslate"><span class="pre">unknown</span></code>&gt;</p>
+</section>
+<section id="id41">
+<h4>Inherited from<a class="headerlink" href="#id41" title="Permalink to this heading">#</a></h4>
+<p><a class="reference internal" href="Channel.html"><span class="std std-doc">Channel</span></a>.<a class="reference internal" href="Channel.html#acceptvisitor"><span class="std std-ref">acceptVisitor</span></a></p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="authorize">
+<h3>authorize<a class="headerlink" href="#authorize" title="Permalink to this heading">#</a></h3>
+<p>▸ <strong>authorize</strong>(<code class="docutils literal notranslate"><span class="pre">ownerPublicKey</span></code>, <code class="docutils literal notranslate"><span class="pre">serverSecret</span></code>): <code class="docutils literal notranslate"><span class="pre">Promise</span></code>&lt;<code class="docutils literal notranslate"><span class="pre">any</span></code>&gt;</p>
+<section id="id42">
+<h4>Parameters<a class="headerlink" href="#id42" title="Permalink to this heading">#</a></h4>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Name</p></th>
+<th class="head text-left"><p>Type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">ownerPublicKey</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">Dictionary</span></code>&lt;<code class="docutils literal notranslate"><span class="pre">any</span></code>&gt;</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">serverSecret</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="id43">
+<h4>Returns<a class="headerlink" href="#id43" title="Permalink to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">Promise</span></code>&lt;<code class="docutils literal notranslate"><span class="pre">any</span></code>&gt;</p>
+</section>
+<section id="id44">
+<h4>Inherited from<a class="headerlink" href="#id44" title="Permalink to this heading">#</a></h4>
+<p><a class="reference internal" href="Channel.html"><span class="std std-doc">Channel</span></a>.<a class="reference internal" href="Channel.html#authorize"><span class="std std-ref">authorize</span></a></p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="budd">
+<h3>budd<a class="headerlink" href="#budd" title="Permalink to this heading">#</a></h3>
+<p>▸ <strong>budd</strong>(): <code class="docutils literal notranslate"><span class="pre">Promise</span></code>&lt;<a class="reference internal" href="../interfaces/SBChannelHandle.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">SBChannelHandle</span></code></span></a>&gt;</p>
+<p>“budd” will spin a channel off an existing one.
+You need to provide one of the following combinations of info:</p>
+<ul class="simple">
+<li><p>nothing: create new channel and transfer all storage budget</p></li>
+<li><p>just storage amount: creates new channel with that amount, returns new channel</p></li>
+<li><p>just a target channel: moves all storage budget to that channel</p></li>
+<li><p>just keys: creates new channel with those keys and transfers all storage budget</p></li>
+<li><p>keys and storage amount: creates new channel with those keys and that storage amount</p></li>
+</ul>
+<p>In the first (special) case you can just call budd(), in the other
+cases you need to fill out the ‘options’ object.</p>
+<p>Another way to remember the above: all combinations are valid except
+both a target channel and assigning keys.</p>
+<p>Note: if you’re specifying the target channel, then the return values will
+not include the private key (that return value will be empty).</p>
+<p>Same channels as mother and target will be a no-op, regardless of other
+parameters.</p>
+<p>Note: if you provide a value for ‘storage’, it cannot be undefined. If you
+wish it to be Infinity, then you need to omit the property from options.</p>
+<p>Future: negative amount of storage leaves that amount behind, the rest is transferred</p>
+<section id="id45">
+<h4>Returns<a class="headerlink" href="#id45" title="Permalink to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">Promise</span></code>&lt;<a class="reference internal" href="../interfaces/SBChannelHandle.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">SBChannelHandle</span></code></span></a>&gt;</p>
+</section>
+<section id="id46">
+<h4>Inherited from<a class="headerlink" href="#id46" title="Permalink to this heading">#</a></h4>
+<p><a class="reference internal" href="Channel.html"><span class="std std-doc">Channel</span></a>.<a class="reference internal" href="Channel.html#budd"><span class="std std-ref">budd</span></a></p>
+<p>▸ <strong>budd</strong>(<code class="docutils literal notranslate"><span class="pre">options</span></code>): <code class="docutils literal notranslate"><span class="pre">Promise</span></code>&lt;<a class="reference internal" href="../interfaces/SBChannelHandle.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">SBChannelHandle</span></code></span></a>&gt;</p>
+</section>
+<section id="id47">
+<h4>Parameters<a class="headerlink" href="#id47" title="Permalink to this heading">#</a></h4>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Name</p></th>
+<th class="head text-left"><p>Type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">options</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">Object</span></code></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">options.keys?</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">JsonWebKey</span></code></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">options.storage?</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">number</span></code></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">options.targetChannel?</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="id48">
+<h4>Returns<a class="headerlink" href="#id48" title="Permalink to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">Promise</span></code>&lt;<a class="reference internal" href="../interfaces/SBChannelHandle.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">SBChannelHandle</span></code></span></a>&gt;</p>
+</section>
+<section id="id49">
+<h4>Inherited from<a class="headerlink" href="#id49" title="Permalink to this heading">#</a></h4>
+<p><a class="reference internal" href="Channel.html"><span class="std std-doc">Channel</span></a>.<a class="reference internal" href="Channel.html#budd"><span class="std std-ref">budd</span></a></p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="downloaddata">
+<h3>downloadData<a class="headerlink" href="#downloaddata" title="Permalink to this heading">#</a></h3>
+<p>▸ <strong>downloadData</strong>(): <code class="docutils literal notranslate"><span class="pre">Promise</span></code>&lt;<code class="docutils literal notranslate"><span class="pre">unknown</span></code>&gt;</p>
+<p>Channel.downloadData</p>
+<section id="id50">
+<h4>Returns<a class="headerlink" href="#id50" title="Permalink to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">Promise</span></code>&lt;<code class="docutils literal notranslate"><span class="pre">unknown</span></code>&gt;</p>
+</section>
+<section id="id51">
+<h4>Inherited from<a class="headerlink" href="#id51" title="Permalink to this heading">#</a></h4>
+<p><a class="reference internal" href="Channel.html"><span class="std std-doc">Channel</span></a>.<a class="reference internal" href="Channel.html#downloaddata"><span class="std std-ref">downloadData</span></a></p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="getadmindata">
+<h3>getAdminData<a class="headerlink" href="#getadmindata" title="Permalink to this heading">#</a></h3>
+<p>▸ <strong>getAdminData</strong>(): <code class="docutils literal notranslate"><span class="pre">Promise</span></code>&lt;<a class="reference internal" href="../interfaces/ChannelAdminData.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">ChannelAdminData</span></code></span></a>&gt;</p>
+<p>Channel.getAdminData</p>
+<section id="id52">
+<h4>Returns<a class="headerlink" href="#id52" title="Permalink to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">Promise</span></code>&lt;<a class="reference internal" href="../interfaces/ChannelAdminData.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">ChannelAdminData</span></code></span></a>&gt;</p>
+</section>
+<section id="id53">
+<h4>Inherited from<a class="headerlink" href="#id53" title="Permalink to this heading">#</a></h4>
+<p><a class="reference internal" href="Channel.html"><span class="std std-doc">Channel</span></a>.<a class="reference internal" href="Channel.html#getadmindata"><span class="std std-ref">getAdminData</span></a></p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="getcapacity">
+<h3>getCapacity<a class="headerlink" href="#getcapacity" title="Permalink to this heading">#</a></h3>
+<p>▸ <strong>getCapacity</strong>(): <code class="docutils literal notranslate"><span class="pre">Promise</span></code>&lt;<code class="docutils literal notranslate"><span class="pre">any</span></code>&gt;</p>
+<p>getCapacity</p>
+<section id="id54">
+<h4>Returns<a class="headerlink" href="#id54" title="Permalink to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">Promise</span></code>&lt;<code class="docutils literal notranslate"><span class="pre">any</span></code>&gt;</p>
+</section>
+<section id="id55">
+<h4>Inherited from<a class="headerlink" href="#id55" title="Permalink to this heading">#</a></h4>
+<p><a class="reference internal" href="Channel.html"><span class="std std-doc">Channel</span></a>.<a class="reference internal" href="Channel.html#getcapacity"><span class="std std-ref">getCapacity</span></a></p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="getjoinrequests">
+<h3>getJoinRequests<a class="headerlink" href="#getjoinrequests" title="Permalink to this heading">#</a></h3>
+<p>▸ <strong>getJoinRequests</strong>(): <code class="docutils literal notranslate"><span class="pre">Promise</span></code>&lt;<code class="docutils literal notranslate"><span class="pre">any</span></code>&gt;</p>
+<p>getJoinRequests</p>
+<section id="id56">
+<h4>Returns<a class="headerlink" href="#id56" title="Permalink to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">Promise</span></code>&lt;<code class="docutils literal notranslate"><span class="pre">any</span></code>&gt;</p>
+</section>
+<section id="id57">
+<h4>Inherited from<a class="headerlink" href="#id57" title="Permalink to this heading">#</a></h4>
+<p><a class="reference internal" href="Channel.html"><span class="std std-doc">Channel</span></a>.<a class="reference internal" href="Channel.html#getjoinrequests"><span class="std std-ref">getJoinRequests</span></a></p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="getlastmessagetimes">
+<h3>getLastMessageTimes<a class="headerlink" href="#getlastmessagetimes" title="Permalink to this heading">#</a></h3>
+<p>▸ <strong>getLastMessageTimes</strong>(): <code class="docutils literal notranslate"><span class="pre">Promise</span></code>&lt;<code class="docutils literal notranslate"><span class="pre">unknown</span></code>&gt;</p>
+<p>Channel.getLastMessageTimes</p>
+<section id="id58">
+<h4>Returns<a class="headerlink" href="#id58" title="Permalink to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">Promise</span></code>&lt;<code class="docutils literal notranslate"><span class="pre">unknown</span></code>&gt;</p>
+</section>
+<section id="id59">
+<h4>Inherited from<a class="headerlink" href="#id59" title="Permalink to this heading">#</a></h4>
+<p><a class="reference internal" href="Channel.html"><span class="std std-doc">Channel</span></a>.<a class="reference internal" href="Channel.html#getlastmessagetimes"><span class="std std-ref">getLastMessageTimes</span></a></p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="getmother">
+<h3>getMother<a class="headerlink" href="#getmother" title="Permalink to this heading">#</a></h3>
+<p>▸ <strong>getMother</strong>(): <code class="docutils literal notranslate"><span class="pre">Promise</span></code>&lt;<code class="docutils literal notranslate"><span class="pre">any</span></code>&gt;</p>
+<p>getMother</p>
+<p>Get the channelID from which this channel was budded. Note that
+this is only accessible by Owner (as well as hosting server)</p>
+<section id="id60">
+<h4>Returns<a class="headerlink" href="#id60" title="Permalink to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">Promise</span></code>&lt;<code class="docutils literal notranslate"><span class="pre">any</span></code>&gt;</p>
+</section>
+<section id="id61">
+<h4>Inherited from<a class="headerlink" href="#id61" title="Permalink to this heading">#</a></h4>
+<p><a class="reference internal" href="Channel.html"><span class="std std-doc">Channel</span></a>.<a class="reference internal" href="Channel.html#getmother"><span class="std std-ref">getMother</span></a></p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="getoldmessages">
+<h3>getOldMessages<a class="headerlink" href="#getoldmessages" title="Permalink to this heading">#</a></h3>
+<p>▸ <strong>getOldMessages</strong>(<code class="docutils literal notranslate"><span class="pre">currentMessagesLength?</span></code>, <code class="docutils literal notranslate"><span class="pre">paginate?</span></code>): <code class="docutils literal notranslate"><span class="pre">Promise</span></code>&lt;<a class="reference internal" href="../interfaces/ChannelMessage.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">ChannelMessage</span></code></span></a>[]&gt;</p>
+<p>Channel.getOldMessages</p>
+<p>Will return most recent messages from the channel.</p>
+<section id="id62">
+<h4>Parameters<a class="headerlink" href="#id62" title="Permalink to this heading">#</a></h4>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Name</p></th>
+<th class="head text-left"><p>Type</p></th>
+<th class="head text-left"><p>Default value</p></th>
+<th class="head text-left"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">currentMessagesLength</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">number</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">100</span></code></p></td>
+<td class="text-left"><p>number to fetch (default 100)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">paginate</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">boolean</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+<td class="text-left"><p>if true, will paginate from last request (default false)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="id63">
+<h4>Returns<a class="headerlink" href="#id63" title="Permalink to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">Promise</span></code>&lt;<a class="reference internal" href="../interfaces/ChannelMessage.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">ChannelMessage</span></code></span></a>[]&gt;</p>
+</section>
+<section id="id64">
+<h4>Inherited from<a class="headerlink" href="#id64" title="Permalink to this heading">#</a></h4>
+<p><a class="reference internal" href="Channel.html"><span class="std std-doc">Channel</span></a>.<a class="reference internal" href="Channel.html#getoldmessages"><span class="std std-ref">getOldMessages</span></a></p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="getstoragelimit">
+<h3>getStorageLimit<a class="headerlink" href="#getstoragelimit" title="Permalink to this heading">#</a></h3>
+<p>▸ <strong>getStorageLimit</strong>(): <code class="docutils literal notranslate"><span class="pre">Promise</span></code>&lt;<code class="docutils literal notranslate"><span class="pre">any</span></code>&gt;</p>
+<p>getStorageLimit (current storage budget)</p>
+<section id="id65">
+<h4>Returns<a class="headerlink" href="#id65" title="Permalink to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">Promise</span></code>&lt;<code class="docutils literal notranslate"><span class="pre">any</span></code>&gt;</p>
+</section>
+<section id="id66">
+<h4>Inherited from<a class="headerlink" href="#id66" title="Permalink to this heading">#</a></h4>
+<p><a class="reference internal" href="Channel.html"><span class="std std-doc">Channel</span></a>.<a class="reference internal" href="Channel.html#getstoragelimit"><span class="std std-ref">getStorageLimit</span></a></p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="islocked">
+<h3>isLocked<a class="headerlink" href="#islocked" title="Permalink to this heading">#</a></h3>
+<p>▸ <strong>isLocked</strong>(): <code class="docutils literal notranslate"><span class="pre">Promise</span></code>&lt;<code class="docutils literal notranslate"><span class="pre">boolean</span></code>&gt;</p>
+<p>isLocked</p>
+<section id="id67">
+<h4>Returns<a class="headerlink" href="#id67" title="Permalink to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">Promise</span></code>&lt;<code class="docutils literal notranslate"><span class="pre">boolean</span></code>&gt;</p>
+</section>
+<section id="id68">
+<h4>Inherited from<a class="headerlink" href="#id68" title="Permalink to this heading">#</a></h4>
+<p><a class="reference internal" href="Channel.html"><span class="std std-doc">Channel</span></a>.<a class="reference internal" href="Channel.html#islocked"><span class="std std-ref">isLocked</span></a></p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="lock">
+<h3>lock<a class="headerlink" href="#lock" title="Permalink to this heading">#</a></h3>
+<p>▸ <strong>lock</strong>(): <code class="docutils literal notranslate"><span class="pre">Promise</span></code>&lt;<code class="docutils literal notranslate"><span class="pre">unknown</span></code>&gt;</p>
+<p>Channel.lock()</p>
+<p>Locks the channel, so that new visitors need an “ack” to join..</p>
+<section id="id69">
+<h4>Returns<a class="headerlink" href="#id69" title="Permalink to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">Promise</span></code>&lt;<code class="docutils literal notranslate"><span class="pre">unknown</span></code>&gt;</p>
+</section>
+<section id="id70">
+<h4>Inherited from<a class="headerlink" href="#id70" title="Permalink to this heading">#</a></h4>
+<p><a class="reference internal" href="Channel.html"><span class="std std-doc">Channel</span></a>.<a class="reference internal" href="Channel.html#lock"><span class="std std-ref">lock</span></a></p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="ownerkeyrotation">
+<h3>ownerKeyRotation<a class="headerlink" href="#ownerkeyrotation" title="Permalink to this heading">#</a></h3>
+<p>▸ <strong>ownerKeyRotation</strong>(): <code class="docutils literal notranslate"><span class="pre">void</span></code></p>
+<section id="id71">
+<h4>Returns<a class="headerlink" href="#id71" title="Permalink to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">void</span></code></p>
+</section>
+<section id="id72">
+<h4>Inherited from<a class="headerlink" href="#id72" title="Permalink to this heading">#</a></h4>
+<p><a class="reference internal" href="Channel.html"><span class="std std-doc">Channel</span></a>.<a class="reference internal" href="Channel.html#ownerkeyrotation"><span class="std std-ref">ownerKeyRotation</span></a></p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="postpubkey">
+<h3>postPubKey<a class="headerlink" href="#postpubkey" title="Permalink to this heading">#</a></h3>
+<p>▸ <strong>postPubKey</strong>(<code class="docutils literal notranslate"><span class="pre">_exportable_pubKey</span></code>): <code class="docutils literal notranslate"><span class="pre">Promise</span></code>&lt;{ <code class="docutils literal notranslate"><span class="pre">success</span></code>: <code class="docutils literal notranslate"><span class="pre">boolean</span></code>  }&gt;</p>
+<section id="id73">
+<h4>Parameters<a class="headerlink" href="#id73" title="Permalink to this heading">#</a></h4>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Name</p></th>
+<th class="head text-left"><p>Type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">_exportable_pubKey</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">JsonWebKey</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="id74">
+<h4>Returns<a class="headerlink" href="#id74" title="Permalink to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">Promise</span></code>&lt;{ <code class="docutils literal notranslate"><span class="pre">success</span></code>: <code class="docutils literal notranslate"><span class="pre">boolean</span></code>  }&gt;</p>
+</section>
+<section id="id75">
+<h4>Inherited from<a class="headerlink" href="#id75" title="Permalink to this heading">#</a></h4>
+<p><a class="reference internal" href="Channel.html"><span class="std std-doc">Channel</span></a>.<a class="reference internal" href="Channel.html#postpubkey"><span class="std std-ref">postPubKey</span></a></p>
+</section>
+</section>
+<hr class="docutils" />
 <section id="send">
 <h3>send<a class="headerlink" href="#send" title="Permalink to this heading">#</a></h3>
 <p>▸ <strong>send</strong>(<code class="docutils literal notranslate"><span class="pre">_m</span></code>, <code class="docutils literal notranslate"><span class="pre">_messageType?</span></code>): <code class="docutils literal notranslate"><span class="pre">Promise</span></code>&lt;<code class="docutils literal notranslate"><span class="pre">string</span></code>&gt;</p>
-<section id="id37">
-<h4>Parameters<a class="headerlink" href="#id37" title="Permalink to this heading">#</a></h4>
+<section id="id76">
+<h4>Parameters<a class="headerlink" href="#id76" title="Permalink to this heading">#</a></h4>
 <div class="table-wrapper colwidths-auto docutils container">
 <table class="docutils align-default">
 <thead>
@@ -598,13 +1012,135 @@
 </table>
 </div>
 </section>
-<section id="id38">
-<h4>Returns<a class="headerlink" href="#id38" title="Permalink to this heading">#</a></h4>
+<section id="id77">
+<h4>Returns<a class="headerlink" href="#id77" title="Permalink to this heading">#</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">Promise</span></code>&lt;<code class="docutils literal notranslate"><span class="pre">string</span></code>&gt;</p>
 </section>
-<section id="id39">
-<h4>Overrides<a class="headerlink" href="#id39" title="Permalink to this heading">#</a></h4>
+<section id="id78">
+<h4>Overrides<a class="headerlink" href="#id78" title="Permalink to this heading">#</a></h4>
 <p><a class="reference internal" href="Channel.html"><span class="std std-doc">Channel</span></a>.<a class="reference internal" href="Channel.html#send"><span class="std std-ref">send</span></a></p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="setmotd">
+<h3>setMOTD<a class="headerlink" href="#setmotd" title="Permalink to this heading">#</a></h3>
+<p>▸ <strong>setMOTD</strong>(<code class="docutils literal notranslate"><span class="pre">motd</span></code>): <code class="docutils literal notranslate"><span class="pre">Promise</span></code>&lt;<code class="docutils literal notranslate"><span class="pre">any</span></code>&gt;</p>
+<p>Set message of the day</p>
+<section id="id79">
+<h4>Parameters<a class="headerlink" href="#id79" title="Permalink to this heading">#</a></h4>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Name</p></th>
+<th class="head text-left"><p>Type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">motd</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="id80">
+<h4>Returns<a class="headerlink" href="#id80" title="Permalink to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">Promise</span></code>&lt;<code class="docutils literal notranslate"><span class="pre">any</span></code>&gt;</p>
+</section>
+<section id="id81">
+<h4>Inherited from<a class="headerlink" href="#id81" title="Permalink to this heading">#</a></h4>
+<p><a class="reference internal" href="Channel.html"><span class="std std-doc">Channel</span></a>.<a class="reference internal" href="Channel.html#setmotd"><span class="std std-ref">setMOTD</span></a></p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="storagerequest">
+<h3>storageRequest<a class="headerlink" href="#storagerequest" title="Permalink to this heading">#</a></h3>
+<p>▸ <strong>storageRequest</strong>(<code class="docutils literal notranslate"><span class="pre">byteLength</span></code>): <code class="docutils literal notranslate"><span class="pre">Promise</span></code>&lt;<code class="docutils literal notranslate"><span class="pre">Dictionary</span></code>&lt;<code class="docutils literal notranslate"><span class="pre">any</span></code>&gt;&gt;</p>
+<section id="id82">
+<h4>Parameters<a class="headerlink" href="#id82" title="Permalink to this heading">#</a></h4>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Name</p></th>
+<th class="head text-left"><p>Type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">byteLength</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">number</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="id83">
+<h4>Returns<a class="headerlink" href="#id83" title="Permalink to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">Promise</span></code>&lt;<code class="docutils literal notranslate"><span class="pre">Dictionary</span></code>&lt;<code class="docutils literal notranslate"><span class="pre">any</span></code>&gt;&gt;</p>
+</section>
+<section id="id84">
+<h4>Inherited from<a class="headerlink" href="#id84" title="Permalink to this heading">#</a></h4>
+<p><a class="reference internal" href="Channel.html"><span class="std std-doc">Channel</span></a>.<a class="reference internal" href="Channel.html#storagerequest"><span class="std std-ref">storageRequest</span></a></p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="updatecapacity">
+<h3>updateCapacity<a class="headerlink" href="#updatecapacity" title="Permalink to this heading">#</a></h3>
+<p>▸ <strong>updateCapacity</strong>(<code class="docutils literal notranslate"><span class="pre">capacity</span></code>): <code class="docutils literal notranslate"><span class="pre">Promise</span></code>&lt;<code class="docutils literal notranslate"><span class="pre">any</span></code>&gt;</p>
+<p>Update (set) the capacity of the channel; Owner only</p>
+<section id="id85">
+<h4>Parameters<a class="headerlink" href="#id85" title="Permalink to this heading">#</a></h4>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Name</p></th>
+<th class="head text-left"><p>Type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">capacity</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">number</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="id86">
+<h4>Returns<a class="headerlink" href="#id86" title="Permalink to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">Promise</span></code>&lt;<code class="docutils literal notranslate"><span class="pre">any</span></code>&gt;</p>
+</section>
+<section id="id87">
+<h4>Inherited from<a class="headerlink" href="#id87" title="Permalink to this heading">#</a></h4>
+<p><a class="reference internal" href="Channel.html"><span class="std std-doc">Channel</span></a>.<a class="reference internal" href="Channel.html#updatecapacity"><span class="std std-ref">updateCapacity</span></a></p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="uploadchannel">
+<h3>uploadChannel<a class="headerlink" href="#uploadchannel" title="Permalink to this heading">#</a></h3>
+<p>▸ <strong>uploadChannel</strong>(<code class="docutils literal notranslate"><span class="pre">channelData</span></code>): <code class="docutils literal notranslate"><span class="pre">Promise</span></code>&lt;<code class="docutils literal notranslate"><span class="pre">any</span></code>&gt;</p>
+<section id="id88">
+<h4>Parameters<a class="headerlink" href="#id88" title="Permalink to this heading">#</a></h4>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Name</p></th>
+<th class="head text-left"><p>Type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">channelData</span></code></p></td>
+<td class="text-left"><p><a class="reference internal" href="../interfaces/ChannelData.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">ChannelData</span></code></span></a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="id89">
+<h4>Returns<a class="headerlink" href="#id89" title="Permalink to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">Promise</span></code>&lt;<code class="docutils literal notranslate"><span class="pre">any</span></code>&gt;</p>
+</section>
+<section id="id90">
+<h4>Inherited from<a class="headerlink" href="#id90" title="Permalink to this heading">#</a></h4>
+<p><a class="reference internal" href="Channel.html"><span class="std std-doc">Channel</span></a>.<a class="reference internal" href="Channel.html#uploadchannel"><span class="std std-ref">uploadChannel</span></a></p>
 </section>
 </section>
 </section>
@@ -670,7 +1206,7 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#admindata">adminData</a><ul>
-<li><a class="reference internal" href="#id3">Overrides</a></li>
+<li><a class="reference internal" href="#id3">Inherited from</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#channelready">channelReady</a><ul>
@@ -738,43 +1274,154 @@
 <li><a class="reference internal" href="#id23">Inherited from</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#keys">keys</a><ul>
+<li><a class="reference internal" href="#hash">hash</a><ul>
 <li><a class="reference internal" href="#id24">Returns</a></li>
 <li><a class="reference internal" href="#id25">Inherited from</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#keys">keys</a><ul>
+<li><a class="reference internal" href="#id26">Returns</a></li>
+<li><a class="reference internal" href="#id27">Inherited from</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#onmessage">onMessage</a><ul>
-<li><a class="reference internal" href="#id26">Parameters</a></li>
-<li><a class="reference internal" href="#id27">Returns</a></li>
+<li><a class="reference internal" href="#id28">Parameters</a></li>
+<li><a class="reference internal" href="#id29">Returns</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#ownerchannelid">ownerChannelId</a><ul>
-<li><a class="reference internal" href="#id28">Returns</a></li>
-<li><a class="reference internal" href="#id29">Inherited from</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#privatekey">privateKey</a><ul>
 <li><a class="reference internal" href="#id30">Returns</a></li>
 <li><a class="reference internal" href="#id31">Inherited from</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#readyflag">readyFlag</a><ul>
+<li><a class="reference internal" href="#privatekey">privateKey</a><ul>
 <li><a class="reference internal" href="#id32">Returns</a></li>
 <li><a class="reference internal" href="#id33">Inherited from</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#sbserver">sbServer</a><ul>
+<li><a class="reference internal" href="#readyflag">readyFlag</a><ul>
 <li><a class="reference internal" href="#id34">Returns</a></li>
 <li><a class="reference internal" href="#id35">Inherited from</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#sbserver">sbServer</a><ul>
+<li><a class="reference internal" href="#id36">Returns</a></li>
+<li><a class="reference internal" href="#id37">Inherited from</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id36">Methods</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#id38">Methods</a><ul>
+<li><a class="reference internal" href="#acceptvisitor">acceptVisitor</a><ul>
+<li><a class="reference internal" href="#id39">Parameters</a></li>
+<li><a class="reference internal" href="#id40">Returns</a></li>
+<li><a class="reference internal" href="#id41">Inherited from</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#authorize">authorize</a><ul>
+<li><a class="reference internal" href="#id42">Parameters</a></li>
+<li><a class="reference internal" href="#id43">Returns</a></li>
+<li><a class="reference internal" href="#id44">Inherited from</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#budd">budd</a><ul>
+<li><a class="reference internal" href="#id45">Returns</a></li>
+<li><a class="reference internal" href="#id46">Inherited from</a></li>
+<li><a class="reference internal" href="#id47">Parameters</a></li>
+<li><a class="reference internal" href="#id48">Returns</a></li>
+<li><a class="reference internal" href="#id49">Inherited from</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#downloaddata">downloadData</a><ul>
+<li><a class="reference internal" href="#id50">Returns</a></li>
+<li><a class="reference internal" href="#id51">Inherited from</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#getadmindata">getAdminData</a><ul>
+<li><a class="reference internal" href="#id52">Returns</a></li>
+<li><a class="reference internal" href="#id53">Inherited from</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#getcapacity">getCapacity</a><ul>
+<li><a class="reference internal" href="#id54">Returns</a></li>
+<li><a class="reference internal" href="#id55">Inherited from</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#getjoinrequests">getJoinRequests</a><ul>
+<li><a class="reference internal" href="#id56">Returns</a></li>
+<li><a class="reference internal" href="#id57">Inherited from</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#getlastmessagetimes">getLastMessageTimes</a><ul>
+<li><a class="reference internal" href="#id58">Returns</a></li>
+<li><a class="reference internal" href="#id59">Inherited from</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#getmother">getMother</a><ul>
+<li><a class="reference internal" href="#id60">Returns</a></li>
+<li><a class="reference internal" href="#id61">Inherited from</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#getoldmessages">getOldMessages</a><ul>
+<li><a class="reference internal" href="#id62">Parameters</a></li>
+<li><a class="reference internal" href="#id63">Returns</a></li>
+<li><a class="reference internal" href="#id64">Inherited from</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#getstoragelimit">getStorageLimit</a><ul>
+<li><a class="reference internal" href="#id65">Returns</a></li>
+<li><a class="reference internal" href="#id66">Inherited from</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#islocked">isLocked</a><ul>
+<li><a class="reference internal" href="#id67">Returns</a></li>
+<li><a class="reference internal" href="#id68">Inherited from</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#lock">lock</a><ul>
+<li><a class="reference internal" href="#id69">Returns</a></li>
+<li><a class="reference internal" href="#id70">Inherited from</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ownerkeyrotation">ownerKeyRotation</a><ul>
+<li><a class="reference internal" href="#id71">Returns</a></li>
+<li><a class="reference internal" href="#id72">Inherited from</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#postpubkey">postPubKey</a><ul>
+<li><a class="reference internal" href="#id73">Parameters</a></li>
+<li><a class="reference internal" href="#id74">Returns</a></li>
+<li><a class="reference internal" href="#id75">Inherited from</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#send">send</a><ul>
-<li><a class="reference internal" href="#id37">Parameters</a></li>
-<li><a class="reference internal" href="#id38">Returns</a></li>
-<li><a class="reference internal" href="#id39">Overrides</a></li>
+<li><a class="reference internal" href="#id76">Parameters</a></li>
+<li><a class="reference internal" href="#id77">Returns</a></li>
+<li><a class="reference internal" href="#id78">Overrides</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#setmotd">setMOTD</a><ul>
+<li><a class="reference internal" href="#id79">Parameters</a></li>
+<li><a class="reference internal" href="#id80">Returns</a></li>
+<li><a class="reference internal" href="#id81">Inherited from</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#storagerequest">storageRequest</a><ul>
+<li><a class="reference internal" href="#id82">Parameters</a></li>
+<li><a class="reference internal" href="#id83">Returns</a></li>
+<li><a class="reference internal" href="#id84">Inherited from</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#updatecapacity">updateCapacity</a><ul>
+<li><a class="reference internal" href="#id85">Parameters</a></li>
+<li><a class="reference internal" href="#id86">Returns</a></li>
+<li><a class="reference internal" href="#id87">Inherited from</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#uploadchannel">uploadChannel</a><ul>
+<li><a class="reference internal" href="#id88">Parameters</a></li>
+<li><a class="reference internal" href="#id89">Returns</a></li>
+<li><a class="reference internal" href="#id90">Inherited from</a></li>
 </ul>
 </li>
 </ul>

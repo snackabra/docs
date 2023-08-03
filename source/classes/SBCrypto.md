@@ -16,17 +16,20 @@ as well as some general utility functions.
 ### Methods
 
 - [ab2str](SBCrypto.md#ab2str)
+- [addKnownKey](SBCrypto.md#addknownkey)
 - [channelKeyStringsToCryptoKeys](SBCrypto.md#channelkeystringstocryptokeys)
+- [compareHashWithKey](SBCrypto.md#comparehashwithkey)
 - [compareKeys](SBCrypto.md#comparekeys)
 - [deriveKey](SBCrypto.md#derivekey)
 - [encrypt](SBCrypto.md#encrypt)
 - [exportKey](SBCrypto.md#exportkey)
 - [extractPubKey](SBCrypto.md#extractpubkey)
-- [generateChannelId](SBCrypto.md#generatechannelid)
 - [generateIdKey](SBCrypto.md#generateidkey)
 - [generateKeys](SBCrypto.md#generatekeys)
 - [importKey](SBCrypto.md#importkey)
 - [lookupKey](SBCrypto.md#lookupkey)
+- [lookupKeyGlobal](SBCrypto.md#lookupkeyglobal)
+- [sb384Hash](SBCrypto.md#sb384hash)
 - [sign](SBCrypto.md#sign)
 - [str2ab](SBCrypto.md#str2ab)
 - [unwrap](SBCrypto.md#unwrap)
@@ -63,6 +66,27 @@ string
 
 ___
 
+### addKnownKey
+
+▸ **addKnownKey**(`key`): `Promise`<`void`\>
+
+SBCrypto.addKnownKey()
+
+Adds any key to the list of known keys; if it's known
+but only as a public key, then it will be 'upgraded'.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `key` | `CryptoKey` \| `JsonWebKey` \| [`SB384`](SB384.md) |
+
+#### Returns
+
+`Promise`<`void`\>
+
+___
+
 ### channelKeyStringsToCryptoKeys
 
 ▸ **channelKeyStringsToCryptoKeys**(`keyStrings`): `Promise`<[`ChannelKeys`](../interfaces/ChannelKeys.md)\>
@@ -79,6 +103,36 @@ ___
 
 ___
 
+### compareHashWithKey
+
+▸ **compareHashWithKey**(`hash`, `key`): `Promise`<`boolean`\>
+
+SBCrypto.compareHashWithKey()
+
+Checks if an existing SB384Hash is 'compatible' with a given key.
+
+Note that you CAN NOT have a hash, and a key, generate a hash
+from that key, and then compare the two. The hash generation per
+se will be deterministic and specific AT ANY POINT IN TIME,
+but may change over time, and this comparison function will 
+maintain ability to compare over versions.
+
+For example, this comparison will accept a simple straight
+b64-encoded hash without iteration or other processing.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `hash` | `string` |
+| `key` | `JsonWebKey` |
+
+#### Returns
+
+`Promise`<`boolean`\>
+
+___
+
 ### compareKeys
 
 ▸ **compareKeys**(`key1`, `key2`): `boolean`
@@ -87,6 +141,7 @@ SBCrypto.compareKeys()
 
 Compare JSON keys, true if the 'same', false if different. We consider
 them "equal" if both have 'x' and 'y' properties and they are the same.
+(Which means it doesn't care about which or either being public or private)
 
 #### Parameters
 
@@ -107,7 +162,7 @@ ___
 
 SBCrypto.deriveKey()
 
-Derive key.
+Derive key. Takes a private and public key, and returns a Promise to a cryptoKey for 1:1 communication.
 
 #### Parameters
 
@@ -167,9 +222,13 @@ ___
 
 ### exportKey
 
-▸ **exportKey**(`format`, `key`): `Promise`<`JsonWebKey`\>
+▸ **exportKey**(`format`, `key`): `Promise`<`undefined` \| `JsonWebKey`\>
 
 SBCrypto.exportKey()
+
+Export key; note that if there's an issue, this will return undefined.
+That can happen normally if for example the key is restricted (and
+not extractable).
 
 #### Parameters
 
@@ -180,7 +239,7 @@ SBCrypto.exportKey()
 
 #### Returns
 
-`Promise`<`JsonWebKey`\>
+`Promise`<`undefined` \| `JsonWebKey`\>
 
 ___
 
@@ -199,38 +258,6 @@ Extracts (generates) public key from a private key.
 #### Returns
 
 ``null`` \| `JsonWebKey`
-
-___
-
-### generateChannelId
-
-▸ **generateChannelId**(`owner_key`): `Promise`<`string`\>
-
-Generates a channel ID from a public (owner) key. This is deterministic,
-used both for creating channels as well as at any time verifying ownership.
-Returns the SBChannelId, or error code if there are any issues:
-
-'InvalidJsonWebKey' - format (eg basic JWK) has issues
-'InvalidOwnerKey' - the key itself is not valid
-
-(Also does basic verification of the owner key itself)
-
-The channel ID is base64 encoding of the SHA-384 hash of the public key,
-taking the 'x' and 'y' fields. Not that is slightly restricted, it only
-allows [A-Za-z0-9_], eg does not allow the '-' character. This makes the
-encoding more practical for end-user interactions like copy-paste. This
-is accomplished by simply re-hashing until the result is valid. This 
-reduces the entropy of the channel ID by a neglible amount.
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `owner_key` | ``null`` \| `JsonWebKey` |
-
-#### Returns
-
-`Promise`<`string`\>
 
 ___
 
@@ -311,6 +338,46 @@ Returns index of key if found, -1 if not found.
 #### Returns
 
 `number`
+
+___
+
+### lookupKeyGlobal
+
+▸ **lookupKeyGlobal**(`hash`): `undefined` \| `knownKeysInfo`
+
+SBCrypto.lookupKeyGlobal()
+
+Given any sort of SB384Hash, returns the corresponding known key, if any
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `hash` | `string` |
+
+#### Returns
+
+`undefined` \| `knownKeysInfo`
+
+___
+
+### sb384Hash
+
+▸ **sb384Hash**(`key?`): `Promise`<`undefined` \| `string`\>
+
+SBCrypto.sb384Hash()
+
+Takes a JsonWebKey and creates the SB384Hash. Returns
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `key?` | `CryptoKey` \| `JsonWebKey` |
+
+#### Returns
+
+`Promise`<`undefined` \| `string`\>
 
 ___
 
@@ -425,7 +492,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `owner_key` | ``null`` \| `JsonWebKey` |
+| `owner_key` | `JsonWebKey` |
 | `channel_id` | `string` |
 
 #### Returns

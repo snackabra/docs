@@ -14,6 +14,7 @@ an 'owner' key.
 
 - [channelId](SBChannelHandle.md#channelid)
 - [key](SBChannelHandle.md#key)
+- [server](SBChannelHandle.md#server)
 
 ## Properties
 
@@ -26,3 +27,9 @@ ___
 ### key
 
 • **key**: `JsonWebKey`
+
+___
+
+### server
+
+• `Optional` **server**: `string`

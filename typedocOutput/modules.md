@@ -4,17 +4,20 @@
 
 ## Table of contents
 
+### Namespaces
+
+- [Interfaces](modules/Interfaces.md)
+
 ### Classes
 
 - [Channel](classes/Channel.md)
-- [ChannelApi](classes/ChannelApi.md)
 - [ChannelEndpoint](classes/ChannelEndpoint.md)
 - [ChannelSocket](classes/ChannelSocket.md)
 - [MessageBus](classes/MessageBus.md)
 - [SB384](classes/SB384.md)
 - [SBCrypto](classes/SBCrypto.md)
 - [SBMessage](classes/SBMessage.md)
-- [SBObjectHandleClass](classes/SBObjectHandleClass.md)
+- [SBObjectHandle](classes/SBObjectHandle.md)
 - [Snackabra](classes/Snackabra.md)
 
 ### Interfaces
@@ -26,8 +29,8 @@
 - [ChannelMessage](interfaces/ChannelMessage.md)
 - [EncryptedContents](interfaces/EncryptedContents.md)
 - [EncryptedContentsBin](interfaces/EncryptedContentsBin.md)
+- [ImageMetaData](interfaces/ImageMetaData.md)
 - [SBChannelHandle](interfaces/SBChannelHandle.md)
-- [SBObjectHandle](interfaces/SBObjectHandle.md)
 - [SBObjectMetadata](interfaces/SBObjectMetadata.md)
 - [SBPayload](interfaces/SBPayload.md)
 - [SBServer](interfaces/SBServer.md)
@@ -35,17 +38,19 @@
 ### Type Aliases
 
 - [ChannelMessageTypes](modules.md#channelmessagetypes)
+- [SB384Hash](modules.md#sb384hash)
 - [SBChannelId](modules.md#sbchannelid)
 - [SBObjectType](modules.md#sbobjecttype)
+- [SBUserId](modules.md#sbuserid)
 
 ### Variables
 
 - [SB](modules.md#sb)
+- [sbCrypto](modules.md#sbcrypto)
+- [version](modules.md#version)
 
 ### Functions
 
-- [\_appendBuffer](modules.md#_appendbuffer)
-- [\_assertBase64](modules.md#_assertbase64)
 - [arrayBuffer32ToBase62](modules.md#arraybuffer32tobase62)
 - [arrayBufferToBase64](modules.md#arraybuffertobase64)
 - [assemblePayload](modules.md#assemblepayload)
@@ -70,19 +75,31 @@
 
 ### ChannelMessageTypes
 
-Ƭ **ChannelMessageTypes**: ``"ack"`` \| ``"keys"`` \| ``"invalid"`` \| ``"ready"`` \| ``"encypted"``
+Ƭ **ChannelMessageTypes**: ``"ack"`` \| ``"keys"`` \| ``"invalid"`` \| ``"ready"`` \| ``"encrypted"``
+
+___
+
+### SB384Hash
+
+Ƭ **SB384Hash**: `string`
 
 ___
 
 ### SBChannelId
 
-Ƭ **SBChannelId**: `string`
+Ƭ **SBChannelId**: [`SB384Hash`](modules.md#sb384hash)
 
 ___
 
 ### SBObjectType
 
 Ƭ **SBObjectType**: ``"f"`` \| ``"p"`` \| ``"b"`` \| ``"t"``
+
+___
+
+### SBUserId
+
+Ƭ **SBUserId**: [`SB384Hash`](modules.md#sb384hash)
 
 ## Variables
 
@@ -100,48 +117,27 @@ ___
 | `SBMessage` | typeof [`SBMessage`](classes/SBMessage.md) |
 | `Snackabra` | typeof [`Snackabra`](classes/Snackabra.md) |
 | `arrayBufferToBase64` | (`buffer`: ``null`` \| `ArrayBuffer` \| `Uint8Array`, `variant`: ``"url"`` \| ``"b64"``) => `string` |
+| `sbCrypto` | [`SBCrypto`](classes/SBCrypto.md) |
+| `version` | `string` |
+
+___
+
+### sbCrypto
+
+• `Const` **sbCrypto**: [`SBCrypto`](classes/SBCrypto.md)
+
+This is the GLOBAL SBCrypto object, which is instantiated
+immediately upon loading the jslib library.
+
+You should use this guy, not instantiate your own.
+
+___
+
+### version
+
+• `Const` **version**: ``"1.1.25 (pre) build 02"``
 
 ## Functions
-
-### \_appendBuffer
-
-▸ **_appendBuffer**(`buffer1`, `buffer2`): `ArrayBuffer`
-
-Appends two buffers and returns a new buffer
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `buffer1` | `ArrayBuffer` \| `Uint8Array` |
-| `buffer2` | `ArrayBuffer` \| `Uint8Array` |
-
-#### Returns
-
-`ArrayBuffer`
-
-new buffer
-
-___
-
-### \_assertBase64
-
-▸ **_assertBase64**(`base64`): `boolean`
-
-Returns 'true' if (and only if) string is well-formed base64.
-Works same on browsers and nodejs.
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `base64` | `string` |
-
-#### Returns
-
-`boolean`
-
-___
 
 ### arrayBuffer32ToBase62
 
@@ -231,10 +227,6 @@ ___
 
 base62ToBase64 converts a base62 encoded string to a base64 encoded string.
 
-**`Throws`**
-
-Error if the string is not a valid base62 encoded string
-
 #### Parameters
 
 | Name | Type | Description |
@@ -246,6 +238,10 @@ Error if the string is not a valid base62 encoded string
 `string`
 
 base64 encoded string
+
+**`Throws`**
+
+Error if the string is not a valid base62 encoded string
 
 ___
 
@@ -278,10 +274,6 @@ ___
 
 base64ToBase62 converts a base64 encoded string to a base62 encoded string.
 
-**`Throws`**
-
-Error if the string is not a valid base64 encoded string
-
 #### Parameters
 
 | Name | Type | Description |
@@ -293,6 +285,10 @@ Error if the string is not a valid base64 encoded string
 `string`
 
 base62 encoded string
+
+**`Throws`**
+
+Error if the string is not a valid base64 encoded string
 
 ___
 
@@ -310,10 +306,22 @@ You can think of the translation either in terms of many-to-one
 (all entered characters that map to a specific base32mi character),
 or as a one-to-one correspondence (where '.' means 'no change').
 
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `s` | `string` |
+
+#### Returns
+
+`string`
+
 **`Example`**
 
 ```ts
 'base32mi': '0123456789abcdefyhEjkLmNHpFrRTUW'
+
+    Disambiguation transformations:
 
     [OoQD] -> '0'
     [lIiJ] -> '1'
@@ -336,16 +344,6 @@ or as a one-to-one correspondence (where '.' means 'no change').
     0123456789abcdefghijklmnopqrstuvxyzABCDEFGHIJKLMNOPQRSTUVXYZ
     ................9.1..1.N0.9.57UUk.248c0EF6.11kLm.0p0.5..Uky2
 ```
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `s` | `string` |
-
-#### Returns
-
-`string`
 
 ___
 

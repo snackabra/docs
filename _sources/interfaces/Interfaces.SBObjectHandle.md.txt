@@ -1,28 +1,30 @@
-[JSLib Reference Manual](../README.md) / [Exports](../modules.md) / SBObjectHandle
+[JSLib Reference Manual](../README.md) / [Exports](../modules.md) / [Interfaces](../modules/Interfaces.md) / SBObjectHandle
 
 # Interface: SBObjectHandle
+
+[Interfaces](../modules/Interfaces.md).SBObjectHandle
 
 ## Table of contents
 
 ### Properties
 
-- [[SB\_OBJECT\_HANDLE\_SYMBOL]](SBObjectHandle.md#[sb_object_handle_symbol])
-- [actualSize](SBObjectHandle.md#actualsize)
-- [dateAndTime](SBObjectHandle.md#dateandtime)
-- [fileName](SBObjectHandle.md#filename)
-- [fileType](SBObjectHandle.md#filetype)
-- [id](SBObjectHandle.md#id)
-- [id32](SBObjectHandle.md#id32)
-- [iv](SBObjectHandle.md#iv)
-- [key](SBObjectHandle.md#key)
-- [key32](SBObjectHandle.md#key32)
-- [lastModified](SBObjectHandle.md#lastmodified)
-- [salt](SBObjectHandle.md#salt)
-- [savedSize](SBObjectHandle.md#savedsize)
-- [shardServer](SBObjectHandle.md#shardserver)
-- [type](SBObjectHandle.md#type)
-- [verification](SBObjectHandle.md#verification)
-- [version](SBObjectHandle.md#version)
+- [[SB\_OBJECT\_HANDLE\_SYMBOL]](Interfaces.SBObjectHandle.md#[sb_object_handle_symbol])
+- [actualSize](Interfaces.SBObjectHandle.md#actualsize)
+- [dateAndTime](Interfaces.SBObjectHandle.md#dateandtime)
+- [fileName](Interfaces.SBObjectHandle.md#filename)
+- [fileType](Interfaces.SBObjectHandle.md#filetype)
+- [id](Interfaces.SBObjectHandle.md#id)
+- [id32](Interfaces.SBObjectHandle.md#id32)
+- [iv](Interfaces.SBObjectHandle.md#iv)
+- [key](Interfaces.SBObjectHandle.md#key)
+- [key32](Interfaces.SBObjectHandle.md#key32)
+- [lastModified](Interfaces.SBObjectHandle.md#lastmodified)
+- [salt](Interfaces.SBObjectHandle.md#salt)
+- [savedSize](Interfaces.SBObjectHandle.md#savedsize)
+- [shardServer](Interfaces.SBObjectHandle.md#shardserver)
+- [type](Interfaces.SBObjectHandle.md#type)
+- [verification](Interfaces.SBObjectHandle.md#verification)
+- [version](Interfaces.SBObjectHandle.md#version)
 
 ## Properties
 

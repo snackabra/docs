@@ -15,7 +15,7 @@ Snackabra
 Snackabra is a new technology stack for building private, secure, and sovereign applications. 
 It revisits and redefines the conventional architecture of apps on the internet.
 
-Why a whole new stack? We found that creating simple chat and social media apps from scratch that encapsulate a modern (2020s) understanding of privacy, security, and sovereignty was not possible with existing solutions.
+Why did we need to construct a whole new stack? When we embarked on a mission to create chat and social media applications from scratch, integrating 2020s' ideals of privacy, security, and sovereignty, we discovered that this was unattainable with existing technologies. Many small building blocks were 'lying around', but with many gaps. As we tried to assemble these pieces and fill in the gaps, we realized that we were inadvertently building a whole new stack. And so we did.
 
 Whereas conventionally the 'platform' layer resides on servers - whether they be edge-based or in datacenters - the Snackabra (SB) architecture is fundamentally different: the application layer remains the same (eg static web sites, React applications, etc), but the platform layer has migrated from servers “behind” the internet backbone into your client (browser). The platform layer in turn still talks to servers somewhere, but now in the form of two composable low-level primitives: channels (communication) and shards (block storage).
 

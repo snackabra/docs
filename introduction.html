@@ -1,17 +1,17 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="en" data-content_root="./">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Technical Overview" href="overview.html" /><link rel="prev" title="Snackabra" href="index.html" />
 
-    <!-- Generated with Sphinx 5.3.0 and Furo 2023.03.27 -->
+    <!-- Generated with Sphinx 7.2.6 and Furo 2023.09.10 -->
         <title>Introduction - snackabra 1.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
-    <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=36a5483c" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=7a5cf5c2" />
     
     
 
@@ -211,7 +211,7 @@
         </div>
         <article role="main">
           <section id="introduction">
-<span id="id1"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h1>
+<span id="id1"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
 <p>One-to-one messaging or group messaging is the same in snackabra,
 everything centers around a “room”. You access a room with it’s unique
 URL, that will look something like this:</p>
@@ -222,21 +222,21 @@ URL, that will look something like this:</p>
 <figure class="align-default" id="id6" style="width: 40%">
 <a class="reference external image-reference" href="_static/welcome-message.png"><img alt="_images/welcome-message.png" src="_images/welcome-message.png" /></a>
 <figcaption>
-<p><span class="caption-text">Typical first-time-visitor message.</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-text">Typical first-time-visitor message.</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Type something in the box, and you’re in the chat room:</p>
 <figure class="align-default" id="id7" style="width: 40%">
 <a class="reference external image-reference" href="_static/sample-room.png"><img alt="_images/sample-room.png" src="_images/sample-room.png" /></a>
 <figcaption>
-<p><span class="caption-text">Sample view of a room.</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-text">Sample view of a room.</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The above is from our current web interface, a native iOS app is under
 development, but the “web app” interface is designed to work
 (decently) on mobile browsers. <a class="footnote-reference brackets" href="#f06" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></p>
 <section id="message-types">
-<h2>Message Types<a class="headerlink" href="#message-types" title="Permalink to this heading">#</a></h2>
+<h2>Message Types<a class="headerlink" href="#message-types" title="Link to this heading">#</a></h2>
 <p>In the <a class="reference external" href="_static/sample-room.png">above screenshot</a> of a sample room,
 all the main message types are demonstrated:</p>
 <ul class="simple">
@@ -260,14 +260,14 @@ certain Owner actions.</p></li>
 </ul>
 </section>
 <section id="room-keys">
-<h2>Room Keys<a class="headerlink" href="#room-keys" title="Permalink to this heading">#</a></h2>
+<h2>Room Keys<a class="headerlink" href="#room-keys" title="Link to this heading">#</a></h2>
 <p>A lot happened in your browser in the above simple steps. The snackabra web client
 loaded, and checked for any state in your “local storage” (in your browser). If there’s none,
 it initializes that data for you. You can see the results by selecting the “Home” tab:</p>
 <figure class="align-default" id="id8" style="width: 40%">
 <a class="reference external image-reference" href="_static/sample-home-page-fixed.png"><img alt="_images/sample-home-page-fixed.png" src="_images/sample-home-page-fixed.png" /></a>
 <figcaption>
-<p><span class="caption-text">Sample view of a basic home page.</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-text">Sample view of a basic home page.</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>If this is your first time using any snackabra chat rooms, you should
@@ -298,7 +298,7 @@ anything about you.  Visitors are either Guests or Owners. Guests can
 be Verified (or not), and Accepted (or not), and Owners can also be
 Admin. More on all this shortly:</p>
 <figure class="align-center" id="id9">
-<div class="graphviz"><img src="_images/graphviz-c8e609aa71d6648116000899492ac7ebaa7cd2b8.png" alt="digraph visitors{
+digraph visitors{
         size=&quot;6,6&quot;;
     node [shape=&quot;record&quot;, color=lightgrey]; Guest;
         node [color=lightblue2, style=filled];  Visitor; Owner; Admin
@@ -306,9 +306,8 @@ Admin. More on all this shortly:</p>
         &quot;Visitor&quot; -&gt; &quot;Owner&quot; [label=&quot;  Keys Match Room?  &quot;, fontsize=&quot;10&quot;];
         &quot;Owner&quot; -&gt; &quot;Admin&quot; [label=&quot;  Cookie Present?  &quot;, fontsize=&quot;10&quot;];
     Guest [label=&quot;Guest: \n|{Verified?|Accepted?}&quot;];
-}" class="graphviz" /></div>
-<figcaption>
-<p><span class="caption-text">Basic categories of visitors</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+}<figcaption>
+<p><span class="caption-text">Basic categories of visitors</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>A typical first-time visitor is a straight-up Guest (neither Verified
@@ -359,7 +358,7 @@ see this data at all and the app will manage it for you on your
 device. More on this later.</p>
 </section>
 <section id="sequence-diagrams">
-<h2>Sequence Diagrams<a class="headerlink" href="#sequence-diagrams" title="Permalink to this heading">#</a></h2>
+<h2>Sequence Diagrams<a class="headerlink" href="#sequence-diagrams" title="Link to this heading">#</a></h2>
 <p>First let’s introduce the type of sequence diagrams that we will be
 using in these docs:</p>
 <p>Note that the “solid” arrowhead is something initated, and if there
@@ -368,7 +367,7 @@ If the line is dotted, it’s optional - an optional reply, or
 an event that “might” happen.</p>
 </section>
 <section id="basic-connection">
-<h2>Basic Connection<a class="headerlink" href="#basic-connection" title="Permalink to this heading">#</a></h2>
+<h2>Basic Connection<a class="headerlink" href="#basic-connection" title="Link to this heading">#</a></h2>
 <p>Here’s roughly what’s going on. Let’s say you’re connecting to
 “example.com/&lt;room…&gt;” with a browser (on a computer or on a phone,
 doesn’t matter, you’re using a “web client” / “web app”):</p>
@@ -494,13 +493,13 @@ documents, while maintaining privacy, secrecy, etc, is the big
 <hr class="docutils" />
 <p class="rubric">Footnotes</p>
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="f05" role="note">
+<aside class="footnote brackets" id="f05" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">1</a><span class="fn-bracket">]</span></span>
 <p>Here we are cleaning it up a little so it’s easier to read, the actual
 string will have some escape characters etc so that it can be stored
 and re-loaded and re-parsed.</p>
 </aside>
-<aside class="footnote brackets" id="f06" role="note">
+<aside class="footnote brackets" id="f06" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
 <p>It’s important to note that this is just our reference web app user
 interface - the important parts of snackabra are various protocols and
@@ -508,11 +507,11 @@ formats, hopefully allowing anybody that wants to develop their own
 apps (or add chat features to web sites or apps) to take their own
 approach.</p>
 </aside>
-<aside class="footnote brackets" id="f07" role="note">
+<aside class="footnote brackets" id="f07" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">3</a><span class="fn-bracket">]</span></span>
 <p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage">https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage</a></p>
 </aside>
-<aside class="footnote brackets" id="f08" role="note">
+<aside class="footnote brackets" id="f08" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">4</a><span class="fn-bracket">]</span></span>
 <p>Regardless, it’s not very useful to spoof ownership, since
 unless you were a participant, you can’t untangle and read
@@ -593,12 +592,9 @@ the message history anyway.</p>
       
     </aside>
   </div>
-</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
-    <script src="_static/scripts/furo.js"></script>
+</div><script src="_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=32e29ea5"></script>
     </body>
 </html>

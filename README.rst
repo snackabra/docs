@@ -28,7 +28,7 @@ To setup working with the ``snackabra`` documentation per se:
 
     $ git clone https://github.com/snackabra/snackabra-docs
     $ cd snackabra-docs
-    
+
     $ # note we do not support 3.10 yet (some package issues)
     $ python3.9 -m venv venv
     $ source venv/bin/activate
@@ -40,14 +40,10 @@ To setup working with the ``snackabra`` documentation per se:
 You work with files in 'source', after you've made any changes, run
 'make html' [#r03]_ and results will be in the 'build' directory:
 
-This will pull in jslib from npm; if you're working with another
-version, use 'yarn link', see 'snackabra-jslib/README.txt').
-
 .. code-block:: console
 
     $ make html
-    $ # you sometimes need to run this twice
-    $ make html
+    $ make html # you sometimes need to run this twice
 
     $ # should open nicely, note this is root dir
     $ open index.html
@@ -63,6 +59,17 @@ needing upwards 10 GB of disk space.
 
 If you're modifying jslib and not using the npm package ``snackabra``,
 consider using ``yarn link`` to make life easier.
+
+
+NOTES
+-----
+
+* Requires typedoc 0.25 to get support for Typescript 5.2+
+
+* There's a bug in @types/node:
+  https://github.com/DefinitelyTyped/DefinitelyTyped/discussions/67406  
+  requiring a hack in package.json and tsconfig (sigh)
+  
 
     
 LICENSE

@@ -4,19 +4,27 @@
 
 SBChannelHandle
 
-Complete descriptor of a channel. 'key' is stringified 'jwk' key.
-The key is always private. If it matches the channelId, then it's
-an 'owner' key.
+Complete descriptor of a channel. SBUserKeyString (previously 'key')
+is a canonical format of stringified version of 'jwk'..
+The underlying key is always private. If it corresponds to the channelId,
+then it's an 'owner' key.
 
 ## Table of contents
 
 ### Properties
 
+- [[SB\_CHANNEL\_HANDLE\_SYMBOL]](SBChannelHandle.md#[sb_channel_handle_symbol])
 - [channelId](SBChannelHandle.md#channelid)
-- [key](SBChannelHandle.md#key)
-- [server](SBChannelHandle.md#server)
+- [channelServer](SBChannelHandle.md#channelserver)
+- [userKeyString](SBChannelHandle.md#userkeystring)
 
 ## Properties
+
+### [SB\_CHANNEL\_HANDLE\_SYMBOL]
+
+• `Optional` **[SB\_CHANNEL\_HANDLE\_SYMBOL]**: `boolean`
+
+___
 
 ### channelId
 
@@ -24,12 +32,12 @@ an 'owner' key.
 
 ___
 
-### key
+### channelServer
 
-• **key**: `JsonWebKey`
+• `Optional` **channelServer**: `string`
 
 ___
 
-### server
+### userKeyString
 
-• `Optional` **server**: `string`
+• **userKeyString**: `string`

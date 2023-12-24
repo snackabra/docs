@@ -1,4 +1,4 @@
-declare const version = "1.1.25 (pre) build 02";
+declare const version = "2.0.0-alpha.5 (build 20)";
 export interface SBServer {
     channel_server: string;
     channel_ws: string;
@@ -6,16 +6,16 @@ export interface SBServer {
     shard_server?: string;
 }
 export interface SBChannelHandle {
+    [SB_CHANNEL_HANDLE_SYMBOL]?: boolean;
     channelId: SBChannelId;
-    key: JsonWebKey;
-    server?: string;
+    userKeyString: SBUserKeyString;
+    channelServer?: string;
 }
 interface Dictionary<T> {
     [index: string]: T;
 }
 export type SB384Hash = string;
 export type SBChannelId = SB384Hash;
-export type SBUserId = SB384Hash;
 interface ChannelData {
     roomId?: SBChannelId;
     channelId?: SBChannelId;
@@ -23,13 +23,15 @@ interface ChannelData {
     encryptionKey: string;
     signKey: string;
     motherChannel?: SBChannelId;
+    storageToken?: string;
     SERVER_SECRET?: string;
     size?: number;
 }
 interface ImageMetaData {
+    imgObjVersion?: SBObjectHandleVersions;
     imageId?: string;
-    previewId?: string;
     imageKey?: string;
+    previewId?: string;
     previewKey?: string;
     previewNonce?: string;
     previewSalt?: string;
@@ -70,25 +72,25 @@ export interface ChannelMessage {
 }
 export interface ChannelKeys {
     ownerKey: CryptoKey;
-    ownerPubKeyX: string;
     guestKey?: CryptoKey;
     encryptionKey: CryptoKey;
     signKey: CryptoKey;
-    lockedKey?: JsonWebKey;
     publicSignKey: CryptoKey;
     privateKey?: CryptoKey;
+    lockedKey?: CryptoKey;
+    encryptedLockedKey?: string;
 }
 interface ChannelKeyStrings {
     encryptionKey: string;
     guestKey?: string;
     ownerKey: string;
     signKey: string;
-    lockedKey?: string;
+    encryptedLockedKey?: string;
     error?: string;
 }
 export interface ChannelAdminData {
     room_id?: SBChannelId;
-    join_requests: Array<JsonWebKey>;
+    join_requests: Array<SBUserId>;
     capacity: number;
 }
 export interface EncryptedContents {
@@ -102,47 +104,48 @@ export interface EncryptedContentsBin {
 export type ChannelMessageTypes = 'ack' | 'keys' | 'invalid' | 'ready' | 'encrypted';
 interface SBMessageContents {
     contents: string;
+    imgObjVersion?: SBObjectHandleVersions;
     image: string;
     imageMetaData?: ImageMetaData;
     image_sign?: string;
     imageMetadata_sign?: string;
     sender_pubKey?: JsonWebKey;
+    senderUserId?: SBUserId;
     sender_username?: string;
     encrypted: boolean;
     isVerfied: boolean;
     sign: string;
 }
 export type SBObjectType = 'f' | 'p' | 'b' | 't';
+export type SBObjectHandleVersions = '1' | '2';
 export declare namespace Interfaces {
-    interface SBObjectHandle {
+    interface SBObjectHandle_base {
         [SB_OBJECT_HANDLE_SYMBOL]?: boolean;
-        version?: '1';
-        type: SBObjectType;
-        id: string;
-        key: string;
-        id32?: Base62Encoded;
-        key32?: Base62Encoded;
-        verification: Promise<string> | string;
+        version?: SBObjectHandleVersions;
+        type?: SBObjectType;
+        verification?: Promise<string> | string;
         iv?: Uint8Array | string;
         salt?: Uint8Array | string;
         fileName?: string;
         dateAndTime?: string;
-        shardServer?: string;
         fileType?: string;
         lastModified?: number;
         actualSize?: number;
         savedSize?: number;
     }
-}
-export interface SBObjectMetadata {
-    [SB_OBJECT_HANDLE_SYMBOL]: boolean;
-    version: '1';
-    type: SBObjectType;
-    id: string;
-    key: string;
-    paddedBuffer: ArrayBuffer;
-    iv: Uint8Array;
-    salt: Uint8Array;
+    interface SBObjectHandle_v1 extends SBObjectHandle_base {
+        version: '1';
+        id: string;
+        key: string;
+        id32?: Base62Encoded;
+        key32?: Base62Encoded;
+    }
+    interface SBObjectHandle_v2 extends SBObjectHandle_base {
+        version: '2';
+        id: Base62Encoded;
+        key: Base62Encoded;
+    }
+    type SBObjectHandle = SBObjectHandle_v1 | SBObjectHandle_v2;
 }
 export declare class MessageBus {
     #private;
@@ -156,43 +159,74 @@ export declare function getRandomValues(buffer: Uint8Array): Uint8Array;
 export declare function base64ToArrayBuffer(str: string): Uint8Array;
 export declare function compareBuffers(a: Uint8Array | ArrayBuffer | null, b: Uint8Array | ArrayBuffer | null): boolean;
 declare function arrayBufferToBase64(buffer: ArrayBuffer | Uint8Array | null, variant?: 'b64' | 'url'): string;
+export declare function arrayBufferToBase62(buffer: ArrayBuffer): string;
+export declare function base62ToArrayBuffer(s: string): ArrayBuffer;
 type Base62Encoded = string & {
     _brand?: 'Base62Encoded';
 };
-export declare function base62ToArrayBuffer32(s: string): ArrayBuffer;
-export declare function arrayBuffer32ToBase62(buffer: ArrayBuffer): string;
-export declare function base62ToBase64(s: string): string;
-export declare function base64ToBase62(s: string): string;
-export declare function isBase62Encoded(value: string): value is Base62Encoded;
-export declare function simpleRand256(): number;
-export declare function simpleRandomString(n: number, code: string): string;
-export declare function cleanBase32mi(s: string): string;
+export declare function base62ToArrayBuffer32(s: Base62Encoded): ArrayBuffer;
+export declare function arrayBuffer32ToBase62(buffer: ArrayBuffer): Base62Encoded;
+export declare function base62ToBase64(s: Base62Encoded): string;
+export declare function base64ToBase62(s: string): Base62Encoded;
+export declare function isBase62Encoded(value: string | Base62Encoded): value is Base62Encoded;
 export declare function partition(str: string, n: number): void;
-export declare function jsonParseWrapper(str: string | null, loc: string): any;
+export declare function jsonParseWrapper(str: string | null, loc?: string): any;
 export interface SBPayload {
     [index: string]: ArrayBuffer;
 }
 export declare function extractPayloadV1(payload: ArrayBuffer): SBPayload;
-export declare function assemblePayload(data: SBPayload): BodyInit | null;
+export declare function assemblePayload(data: SBPayload): ArrayBuffer | null;
 export declare function extractPayload(payload: ArrayBuffer): SBPayload;
 export declare function encodeB64Url(input: string): string;
 export declare function decodeB64Url(input: string): string;
 type knownKeysInfo = {
     hash: SB384Hash;
-    pubKeyJson?: JsonWebKey;
+    jwk?: JsonWebKey;
     key?: CryptoKey;
 };
+declare enum KeyPrefix {
+    SBPublicKey = "PNk2",
+    SBAES256Key = "X881",
+    SBPrivateKey = "Xj3p"
+}
+interface SBAES256Key {
+    prefix: KeyPrefix.SBAES256Key;
+    k: Base62Encoded;
+}
+interface SBPrivateKey {
+    prefix: KeyPrefix.SBPrivateKey;
+    x: Base62Encoded;
+    y: Base62Encoded;
+    d: Base62Encoded;
+}
+interface SBPublicKey {
+    prefix: KeyPrefix.SBPublicKey;
+    x: Base62Encoded;
+    y: Base62Encoded;
+}
+export declare function isSBKey(key: any): key is SBKey;
+export type SBKey = SBAES256Key | SBPrivateKey | SBPublicKey;
+export type SBUserKey = SBPrivateKey | SBPublicKey;
+export type SBUserId = string;
+export type SBUserKeyString = string;
+type Key = JsonWebKey | SB384 | CryptoKey | SBKey;
 declare class SBCrypto {
     #private;
-    addKnownKey(key: JsonWebKey | SB384 | CryptoKey): Promise<void>;
+    SBKeyToJWK(key: SBKey | JsonWebKey): JsonWebKey;
+    JWKToSBKey(key: JsonWebKey, forcePublic?: boolean): SBKey | undefined;
+    SBKeyToString(key: SBKey): SBUserId | SBUserKeyString | string;
+    JWKToSBUserId(key: JsonWebKey): SBUserId | undefined;
+    StringToSBKey(input: string): SBKey | undefined;
+    StringToJWK(userId: SBUserId | SBUserKeyString | string): JsonWebKey | undefined;
+    addKnownKey(key: Key): Promise<void>;
     lookupKeyGlobal(hash: SB384Hash): knownKeysInfo | undefined;
     generateIdKey(buf: ArrayBuffer): Promise<{
-        id: string;
-        key: string;
+        id_binary: ArrayBuffer;
+        key_material: ArrayBuffer;
     }>;
     extractPubKey(privateKey: JsonWebKey): JsonWebKey | null;
     sb384Hash(key?: JsonWebKey | CryptoKey): Promise<SB384Hash | undefined>;
-    compareHashWithKey(hash: SB384Hash, key: JsonWebKey): Promise<boolean>;
+    compareHashWithKey(hash: SB384Hash, key: JsonWebKey | null): Promise<boolean>;
     verifyChannelId(owner_key: JsonWebKey, channel_id: SBChannelId): Promise<boolean>;
     generateKeys(): Promise<CryptoKeyPair>;
     importKey(format: KeyFormat, key: BufferSource | JsonWebKey, type: 'ECDH' | 'AES' | 'PBKDF2', extractable: boolean, keyUsages: KeyUsage[]): Promise<CryptoKey>;
@@ -209,9 +243,9 @@ declare class SBCrypto {
     str2ab(string: string): Uint8Array;
     ab2str(buffer: Uint8Array): string;
     compareKeys(key1: Dictionary<any>, key2: Dictionary<any>): boolean;
-    lookupKey(key: JsonWebKey, array: Array<JsonWebKey>): number;
     channelKeyStringsToCryptoKeys(keyStrings: ChannelKeyStrings): Promise<ChannelKeys>;
 }
+declare const SB_CHANNEL_HANDLE_SYMBOL: unique symbol;
 declare const SB_MESSAGE_SYMBOL: unique symbol;
 declare const SB_OBJECT_HANDLE_SYMBOL: unique symbol;
 declare const sbCrypto: SBCrypto;
@@ -219,47 +253,62 @@ declare class SB384 {
     #private;
     ready: Promise<SB384>;
     sb384Ready: Promise<SB384>;
-    constructor(key?: JsonWebKey);
+    constructor(key?: JsonWebKey | SBUserKeyString, forcePrivate?: boolean);
     get readyFlag(): boolean;
-    get exportable_pubKey(): JsonWebKey;
-    get exportable_privateKey(): JsonWebKey;
-    get privateKey(): CryptoKey;
+    get private(): boolean;
+    get hash(): SB384Hash;
     get ownerChannelId(): string;
-    get hash(): string;
-    get _id(): string;
+    get jwk(): JsonWebKey;
+    get key(): CryptoKey;
+    get exportable_pubKey(): JsonWebKey;
+    get userKeyString(): string;
+    get userId(): SBUserId;
+}
+declare class SBChannelKeys extends SB384 {
+    #private;
+    ready: Promise<SBChannelKeys>;
+    sbChannelKeysReady: Promise<SBChannelKeys>;
+    constructor(source: 'handle', handleOrJWK: SBChannelHandle, channelKeyStrings?: ChannelKeyStrings);
+    constructor(source: 'jwk', handleOrJWK: JsonWebKey, channelKeyStrings?: ChannelKeyStrings);
+    constructor(source: 'new');
+    get readyFlag(): boolean;
+    get encryptionKey(): CryptoKey;
+    get channelSignKey(): CryptoKey;
+    get owner(): boolean;
+    get channelData(): ChannelData;
+    get keys(): ChannelKeys;
+    get channelId(): string | undefined;
+    get channelServer(): string;
+    set channelServer(channelServer: string);
 }
 declare class SBMessage {
     #private;
-    ready: Promise<SBMessage>;
     channel: Channel;
-    contents: SBMessageContents;
     [SB_MESSAGE_SYMBOL]: boolean;
+    ready: Promise<SBMessage>;
+    contents: SBMessageContents;
     MAX_SB_BODY_SIZE: number;
     constructor(channel: Channel, bodyParameter?: SBMessageContents | string, sendToJsonWebKey?: JsonWebKey);
     get encryptionKey(): CryptoKey | undefined;
     get sendToPubKey(): JsonWebKey | undefined;
     send(): Promise<string>;
 }
-declare abstract class Channel extends SB384 {
+declare class Channel extends SBChannelKeys {
     #private;
+    ready: Promise<Channel>;
     channelReady: Promise<Channel>;
     motd?: string;
     locked?: boolean;
-    owner: boolean;
-    admin: boolean;
     adminData?: Dictionary<any>;
     verifiedGuest: boolean;
-    userName: string;
-    abstract send(message: SBMessage): Promise<string>;
-    constructor(sbServer: SBServer, key?: JsonWebKey, channelId?: string);
-    get keys(): ChannelKeys;
-    get sbServer(): SBServer;
+    constructor(handle: SBChannelHandle);
+    constructor(sbServer: SBServer, userKey: JsonWebKey, channelId: SBChannelId);
     get readyFlag(): boolean;
     get api(): this;
-    get channelId(): string | undefined;
-    get channelSignKey(): CryptoKey;
-    getLastMessageTimes(): Promise<unknown>;
+    deCryptChannelMessage(m00: string, m01: EncryptedContents): Promise<ChannelMessage | undefined>;
+    getLastMessageTimes(): void;
     getOldMessages(currentMessagesLength?: number, paginate?: boolean): Promise<Array<ChannelMessage>>;
+    send(_msg: SBMessage | string): Promise<string>;
     updateCapacity(capacity: number): Promise<any>;
     getCapacity(): Promise<any>;
     getStorageLimit(): Promise<any>;
@@ -275,9 +324,13 @@ declare abstract class Channel extends SB384 {
         success: boolean;
     }>;
     storageRequest(byteLength: number): Promise<Dictionary<any>>;
-    lock(): Promise<unknown>;
-    acceptVisitor(pubKey: string): Promise<unknown>;
+    lock(key?: CryptoKey): Promise<{
+        locked: boolean;
+        lockedKey: JsonWebKey;
+    }>;
+    acceptVisitor(userId: SBUserId): Promise<unknown>;
     ownerKeyRotation(): void;
+    getStorageToken(size: number): Promise<string>;
     budd(): Promise<SBChannelHandle>;
     budd(options: {
         keys?: JsonWebKey;
@@ -285,11 +338,12 @@ declare abstract class Channel extends SB384 {
         targetChannel?: SBChannelId;
     }): Promise<SBChannelHandle>;
 }
-export declare class ChannelSocket extends Channel {
+declare class ChannelSocket extends Channel {
     #private;
     ready: Promise<ChannelSocket>;
     channelSocketReady: Promise<ChannelSocket>;
-    constructor(sbServer: SBServer, onMessage: (m: ChannelMessage) => void, key?: JsonWebKey, channelId?: string);
+    constructor(sbServerOrHandle: SBChannelHandle, onMessage: (m: ChannelMessage) => void);
+    constructor(sbServerOrHandle: SBServer, onMessage: (m: ChannelMessage) => void, key: JsonWebKey, channelId: string);
     get status(): "CLOSED" | "CONNECTING" | "OPEN" | "CLOSING";
     set onMessage(f: (m: ChannelMessage) => void);
     get onMessage(): (m: ChannelMessage) => void;
@@ -297,31 +351,28 @@ export declare class ChannelSocket extends Channel {
     send(msg: SBMessage | string): Promise<string>;
     get exportable_owner_pubKey(): CryptoKey;
 }
-export declare class ChannelEndpoint extends Channel {
-    constructor(sbServer: SBServer, key?: JsonWebKey, channelId?: string);
-    send(_m: SBMessage | string, _messageType?: 'string' | 'SBMessage'): Promise<string>;
-    set onMessage(_f: CallableFunction);
-}
-export declare class SBObjectHandle implements SBObjectHandle {
+declare class SBObjectHandle implements Interfaces.SBObjectHandle_base {
     #private;
-    version?: string | undefined;
+    version: SBObjectHandleVersions;
+    shardServer?: string;
     iv?: Uint8Array | string;
     salt?: Uint8Array | string;
     fileName?: string;
     dateAndTime?: string;
-    shardServer?: string;
     fileType?: string;
     lastModified?: number;
     actualSize?: number;
     savedSize?: number;
-    constructor(options: SBObjectHandle);
-    set id(value: string);
+    constructor(options: Interfaces.SBObjectHandle);
+    set id_binary(value: ArrayBuffer);
+    set key_binary(value: ArrayBuffer);
+    set id(value: ArrayBuffer | string | Base62Encoded);
+    set key(value: ArrayBuffer | string | Base62Encoded);
     get id(): string;
-    set key(value: string);
     get key(): string;
-    set id32(value: Base62Encoded);
-    set key32(value: Base62Encoded);
+    get id64(): string;
     get id32(): Base62Encoded;
+    get key64(): string;
     get key32(): Base62Encoded;
     set verification(value: Promise<string> | string);
     get verification(): Promise<string> | string;
@@ -329,30 +380,29 @@ export declare class SBObjectHandle implements SBObjectHandle {
 }
 declare class StorageApi {
     #private;
-    server: string;
-    shardServer?: string;
-    channelServer: string;
-    constructor(server: string, channelServer: string, shardServer?: string);
-    getObjectMetadata(buf: ArrayBuffer, type: SBObjectType): Promise<SBObjectMetadata>;
-    storeObject(buf: BodyInit | Uint8Array, type: SBObjectType, roomId: SBChannelId, metadata?: SBObjectMetadata): Promise<Interfaces.SBObjectHandle>;
-    storeRequest(fileId: string): Promise<ArrayBuffer>;
-    storeData(type: string, fileId: string, iv: Uint8Array, salt: Uint8Array, storageToken: string, data: ArrayBuffer): Promise<Dictionary<any>>;
-    fetchData(h: Interfaces.SBObjectHandle, returnType: 'string'): Promise<string>;
-    fetchData(h: Interfaces.SBObjectHandle, returnType?: 'arrayBuffer'): Promise<ArrayBuffer>;
-    retrieveImage(imageMetaData: ImageMetaData, controlMessages: Array<ChannelMessage>, imageId?: string, imageKey?: string, imageType?: SBObjectType): Promise<Dictionary<any>>;
+    storageServer: string;
+    constructor(sbServerOrStorageServer: SBServer | string);
+    storeObject(type: string, fileId: Base62Encoded, iv: Uint8Array, salt: Uint8Array, storageToken: string, data: ArrayBuffer): Promise<Dictionary<any>>;
+    storeData(buf: BodyInit | Uint8Array, type: SBObjectType, channelOrHandle: SBChannelHandle | Channel): Promise<Interfaces.SBObjectHandle>;
+    fetchData(handle: Interfaces.SBObjectHandle, returnType: 'string'): Promise<string>;
+    fetchData(handle: Interfaces.SBObjectHandle, returnType?: 'arrayBuffer'): Promise<ArrayBuffer>;
+    retrieveImage(imageMetaData: ImageMetaData, controlMessages: Array<ChannelMessage>, imageId?: string, imageKey?: string, imageType?: SBObjectType, imgObjVersion?: SBObjectHandleVersions): Promise<Dictionary<any>>;
 }
 declare class Snackabra {
     #private;
-    constructor(args?: SBServer, DEBUG?: boolean);
-    connect(onMessage: (m: ChannelMessage) => void, key?: JsonWebKey, channelId?: string): Promise<ChannelSocket>;
-    create(sbServer: SBServer, serverSecret: string, keys?: JsonWebKey): Promise<SBChannelHandle>;
-    get channel(): Channel;
+    channelServer: string;
+    storageServer: string | string;
+    constructor(sbServerOrChannelServer: SBServer | string, setDBG?: boolean, setDBG2?: boolean);
+    attach(handle: SBChannelHandle): Promise<Channel>;
+    create(ownerKeys: SB384, budgetChannel: Channel): Promise<SBChannelHandle>;
+    create(sbServer: SBServer, serverSecretOrBudgetChannel?: string | Channel, keys?: JsonWebKey): Promise<SBChannelHandle>;
+    connect(handle: SBChannelHandle, onMessage?: (m: ChannelMessage) => void): ChannelSocket;
     get storage(): StorageApi;
     get crypto(): SBCrypto;
     get version(): string;
 }
 export type { ChannelData, ChannelKeyStrings, ImageMetaData };
-export { Channel, SBMessage, Snackabra, SBCrypto, SB384, arrayBufferToBase64, sbCrypto, version, };
+export { SB384, SBMessage, Channel, ChannelSocket, SBObjectHandle, Snackabra, SBCrypto, arrayBufferToBase64, sbCrypto, version, };
 export declare var SB: {
     Snackabra: typeof Snackabra;
     SBMessage: typeof SBMessage;

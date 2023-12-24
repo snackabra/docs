@@ -1,17 +1,17 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="en" data-content_root="./">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="JSLib Reference Manual" href="modules.html" /><link rel="prev" title="LICENSE" href="license.html" />
 
-    <!-- Generated with Sphinx 5.3.0 and Furo 2023.03.27 -->
+    <!-- Generated with Sphinx 7.2.6 and Furo 2023.09.10 -->
         <title>JSLib User Manual - snackabra 1.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
-    <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=36a5483c" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=7a5cf5c2" />
     
     
 
@@ -211,7 +211,7 @@
         </div>
         <article role="main">
           <section id="jslib-user-manual">
-<h1>JSLib User Manual<a class="headerlink" href="#jslib-user-manual" title="Permalink to this heading">#</a></h1>
+<h1>JSLib User Manual<a class="headerlink" href="#jslib-user-manual" title="Link to this heading">#</a></h1>
 <p><em>The core of SB is implemented in snackabra.ts, targeting ES2022.
 This section documents the JS (translated) version. Please note:
 any current published version is Alpha of upcoming 0.5.0 and should
@@ -232,7 +232,7 @@ in this library. Design objectives include: <a class="footnote-reference bracket
 <li><p>DRY extendable / abstract OOP implementation</p></li>
 </ul>
 <section id="installation-development">
-<h2>Installation / Development<a class="headerlink" href="#installation-development" title="Permalink to this heading">#</a></h2>
+<h2>Installation / Development<a class="headerlink" href="#installation-development" title="Link to this heading">#</a></h2>
 <p>Install with:</p>
 <p><code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">i</span> <span class="pre">-g</span> <span class="pre">snackabra</span></code></p>
 <p>Git repository: <a class="reference external" href="https://github.com/snackabra/snackabra-jslib.git">https://github.com/snackabra/snackabra-jslib.git</a></p>
@@ -247,7 +247,7 @@ at this prior to release of 0.5.0 (link above), then the latest
 </ul>
 </section>
 <section id="sb384">
-<h2>SB384<a class="headerlink" href="#sb384" title="Permalink to this heading">#</a></h2>
+<h2>SB384<a class="headerlink" href="#sb384" title="Link to this heading">#</a></h2>
 <p>Most classes in SB are rooted in SB384. It encapsulates the core of an
 “identifier” in SB, namely a (384-bit) global <a class="reference internal" href="glossary.html#term-channel-name"><span class="xref std std-term">Channel Name</span></a>, derived
 from the <a class="reference internal" href="glossary.html#term-Owner-Key"><span class="xref std std-term">Owner Key</span></a> of that object - typically either a <a class="reference internal" href="glossary.html#term-channel"><span class="xref std std-term">channel</span></a>
@@ -258,7 +258,7 @@ perspectives and formats on this identity.</p>
 </ul>
 </section>
 <section id="snackabra-server-class">
-<h2>Snackabra (Server) Class<a class="headerlink" href="#snackabra-server-class" title="Permalink to this heading">#</a></h2>
+<h2>Snackabra (Server) Class<a class="headerlink" href="#snackabra-server-class" title="Link to this heading">#</a></h2>
 <p id="snackabra">The SB class is the orchestrator, in particular it tracks one or more channels
 connecting to one or more SB servers.</p>
 <ul class="simple">
@@ -282,13 +282,13 @@ connecting to one or more SB servers.</p>
 </pre></div>
 </div>
 <section id="sb-message-class">
-<h3>SB Message Class<a class="headerlink" href="#sb-message-class" title="Permalink to this heading">#</a></h3>
+<h3>SB Message Class<a class="headerlink" href="#sb-message-class" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="classes/SBMessage.html">SBMessage</a></p></li>
 </ul>
 </section>
 <section id="channels">
-<h3>Channels<a class="headerlink" href="#channels" title="Permalink to this heading">#</a></h3>
+<h3>Channels<a class="headerlink" href="#channels" title="Link to this heading">#</a></h3>
 <p>Channels (aka “Rooms”) are the core communication primitive in SB.
 Channel “sockets” are the synchronous communication interface to channels.
 The channel “API” class is the asynchronous interface to channels.</p>
@@ -301,7 +301,7 @@ The channel “API” class is the asynchronous interface to channels.</p>
 </ul>
 </section>
 <section id="storage">
-<h3>Storage<a class="headerlink" href="#storage" title="Permalink to this heading">#</a></h3>
+<h3>Storage<a class="headerlink" href="#storage" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="interfaces/SBObjectHandle.html">SBObjectHandle</a></p></li>
 <li><p><a class="reference external" href="classes/SBObjectHandleClass.html">SBObjectHandleClass</a></p></li>
@@ -312,7 +312,7 @@ The channel “API” class is the asynchronous interface to channels.</p>
 </section>
 </section>
 <section id="utilities-and-helpers">
-<h2>Utilities and Helpers<a class="headerlink" href="#utilities-and-helpers" title="Permalink to this heading">#</a></h2>
+<h2>Utilities and Helpers<a class="headerlink" href="#utilities-and-helpers" title="Link to this heading">#</a></h2>
 <p>These are a set common operations, that typically are supported by the
 web api, but where we want to ensure specific behavior.</p>
 <ul class="simple">
@@ -337,7 +337,7 @@ web api, but where we want to ensure specific behavior.</p>
 <li><p>[simpleRandomString](modules.md#simplerandomstring)</p></li>
 </ul>
 <section id="crypto-class">
-<h3>Crypto Class<a class="headerlink" href="#crypto-class" title="Permalink to this heading">#</a></h3>
+<h3>Crypto Class<a class="headerlink" href="#crypto-class" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="classes/SBCrypto.html">SBCrypto</a></p></li>
 <li><p><a class="reference external" href="interfaces/EncryptedContents.html">EncryptedContents</a></p></li>
@@ -345,36 +345,36 @@ web api, but where we want to ensure specific behavior.</p>
 </ul>
 </section>
 <section id="crypto-helpers">
-<h3>Crypto Helpers<a class="headerlink" href="#crypto-helpers" title="Permalink to this heading">#</a></h3>
+<h3>Crypto Helpers<a class="headerlink" href="#crypto-helpers" title="Link to this heading">#</a></h3>
 </section>
 <section id="sb-wire-format-helpers">
-<h3>SB “Wire” Format Helpers<a class="headerlink" href="#sb-wire-format-helpers" title="Permalink to this heading">#</a></h3>
+<h3>SB “Wire” Format Helpers<a class="headerlink" href="#sb-wire-format-helpers" title="Link to this heading">#</a></h3>
 </section>
 <section id="sb-specific-helpers">
-<h3>SB-specific Helpers<a class="headerlink" href="#sb-specific-helpers" title="Permalink to this heading">#</a></h3>
+<h3>SB-specific Helpers<a class="headerlink" href="#sb-specific-helpers" title="Link to this heading">#</a></h3>
 </section>
 <section id="testing-related">
-<h3>Testing Related<a class="headerlink" href="#testing-related" title="Permalink to this heading">#</a></h3>
+<h3>Testing Related<a class="headerlink" href="#testing-related" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>[compareBuffers](modules.md#comparebuffers)</p></li>
 </ul>
 <hr class="docutils" />
 <p class="rubric">Footnotes</p>
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id4" role="note">
+<aside class="footnote brackets" id="id4" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
 <p>(test) This is the closest to DM (Direct Message) that the system
 allows, since one constraint is that any communication must
 include a responsible Owner.</p>
 </aside>
-<aside class="footnote brackets" id="id5" role="note">
+<aside class="footnote brackets" id="id5" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
 <p>(test) If the whisper is initiated by the guest. If whisper is
 initiated by the owner, the key derivation uses the private
 half of &lt;room&gt;_ownerKey and the public key of the
 guest. The derived key remains the same in both cases.</p>
 </aside>
-<aside class="footnote brackets" id="id6" role="note">
+<aside class="footnote brackets" id="id6" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">3</a><span class="fn-bracket">]</span></span>
 <p>(test) In exchange for possible weaker security, since now the
 Owner needs to keep track of their key files.</p>
@@ -384,7 +384,7 @@ Owner needs to keep track of their key files.</p>
 </section>
 </section>
 <section id="dn-004-the-ready-pattern">
-<span id="dn004"></span><h2>DN 004: The “Ready” Pattern<a class="headerlink" href="#dn-004-the-ready-pattern" title="Permalink to this heading">#</a></h2>
+<span id="dn004"></span><h2>DN 004: The “Ready” Pattern<a class="headerlink" href="#dn-004-the-ready-pattern" title="Link to this heading">#</a></h2>
 <p>Unfortunately we have lost the original source from where we first
 heard about the “ready” design pattern, and that source might have
 called it something different.</p>
@@ -431,7 +431,7 @@ promise is initialized by the constructor, so you also can do this:</p>
 <p>Internally (inside jslib), part of this pattern is done by the
 ready decorator, allowing things like getters to be succinct:</p>
 <blockquote>
-<div><div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span>@Ready get privateKey() { return this.#privateKey }
+<div><div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="err">@</span><span class="nx">Ready</span><span class="w"> </span><span class="nx">get</span><span class="w"> </span><span class="nx">privateKey</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="err">#</span><span class="nx">privateKey</span><span class="w"> </span><span class="p">}</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -441,7 +441,7 @@ to code more aggressively and not always have to explicitly
 check if the object is ready or not.</p>
 </section>
 <section id="dn-005-browser-connectivity">
-<span id="dn005"></span><h2>DN 005: Browser connectivity<a class="headerlink" href="#dn-005-browser-connectivity" title="Permalink to this heading">#</a></h2>
+<span id="dn005"></span><h2>DN 005: Browser connectivity<a class="headerlink" href="#dn-005-browser-connectivity" title="Link to this heading">#</a></h2>
 <p>Unfortunately, browsers at the time of writing (February, 2023)
 simply do not have a good way of checking network status. Currently
 it comes down to this:</p>
@@ -470,7 +470,7 @@ like node needed … and then presumably browsers will add
 incompatible versions of those …</p>
 </section>
 <section id="dn-006-localhost-cors-and-other-fun-things">
-<h2>DN 006: Localhost, CORS, and other fun things<a class="headerlink" href="#dn-006-localhost-cors-and-other-fun-things" title="Permalink to this heading">#</a></h2>
+<h2>DN 006: Localhost, CORS, and other fun things<a class="headerlink" href="#dn-006-localhost-cors-and-other-fun-things" title="Link to this heading">#</a></h2>
 <p>The browser has a concept of “same origin” policy, which means that
 a web page can only access resources on the same server, or on a
 different server, but only if the server explicitly allows it.</p>
@@ -570,12 +570,9 @@ browser, and it’s not likely to change.</p></li>
       
     </aside>
   </div>
-</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
-    <script src="_static/scripts/furo.js"></script>
+</div><script src="_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=32e29ea5"></script>
     </body>
 </html>

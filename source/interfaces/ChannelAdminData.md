@@ -20,7 +20,7 @@ ___
 
 ### join\_requests
 
-• **join\_requests**: `JsonWebKey`[]
+• **join\_requests**: `string`[]
 
 ___
 

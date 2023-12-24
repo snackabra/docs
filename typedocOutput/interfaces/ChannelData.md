@@ -14,6 +14,7 @@
 - [roomId](ChannelData.md#roomid)
 - [signKey](ChannelData.md#signkey)
 - [size](ChannelData.md#size)
+- [storageToken](ChannelData.md#storagetoken)
 
 ## Properties
 
@@ -62,3 +63,9 @@ ___
 ### size
 
 • `Optional` **size**: `number`
+
+___
+
+### storageToken
+
+• `Optional` **storageToken**: `string`

@@ -6,14 +6,20 @@
 
 ### Properties
 
+- [encryptedLockedKey](ChannelKeyStrings.md#encryptedlockedkey)
 - [encryptionKey](ChannelKeyStrings.md#encryptionkey)
 - [error](ChannelKeyStrings.md#error)
 - [guestKey](ChannelKeyStrings.md#guestkey)
-- [lockedKey](ChannelKeyStrings.md#lockedkey)
 - [ownerKey](ChannelKeyStrings.md#ownerkey)
 - [signKey](ChannelKeyStrings.md#signkey)
 
 ## Properties
+
+### encryptedLockedKey
+
+• `Optional` **encryptedLockedKey**: `string`
+
+___
 
 ### encryptionKey
 
@@ -30,12 +36,6 @@ ___
 ### guestKey
 
 • `Optional` **guestKey**: `string`
-
-___
-
-### lockedKey
-
-• `Optional` **lockedKey**: `string`
 
 ___
 

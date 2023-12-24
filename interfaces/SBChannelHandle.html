@@ -1,17 +1,17 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="en" data-content_root="../">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" />
 
-    <!-- Generated with Sphinx 5.3.0 and Furo 2023.03.27 -->
+    <!-- Generated with Sphinx 7.2.6 and Furo 2023.09.10 -->
         <title>Interface: SBChannelHandle - snackabra 1.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
-    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=7a5cf5c2" />
     
     
 
@@ -212,37 +212,44 @@
         <article role="main">
           <p><a class="reference internal" href="../README.html"><span class="std std-doc">JSLib Reference Manual</span></a> / <a class="reference internal" href="../modules.html"><span class="std std-doc">Exports</span></a> / SBChannelHandle</p>
 <section id="interface-sbchannelhandle">
-<h1>Interface: SBChannelHandle<a class="headerlink" href="#interface-sbchannelhandle" title="Permalink to this heading">#</a></h1>
+<h1>Interface: SBChannelHandle<a class="headerlink" href="#interface-sbchannelhandle" title="Link to this heading">#</a></h1>
 <p>SBChannelHandle</p>
-<p>Complete descriptor of a channel. ‘key’ is stringified ‘jwk’ key.
-The key is always private. If it matches the channelId, then it’s
-an ‘owner’ key.</p>
+<p>Complete descriptor of a channel. SBUserKeyString (previously ‘key’)
+is a canonical format of stringified version of ‘jwk’..
+The underlying key is always private. If it corresponds to the channelId,
+then it’s an ‘owner’ key.</p>
 <section id="table-of-contents">
-<h2>Table of contents<a class="headerlink" href="#table-of-contents" title="Permalink to this heading">#</a></h2>
+<h2>Table of contents<a class="headerlink" href="#table-of-contents" title="Link to this heading">#</a></h2>
 <section id="properties">
-<h3>Properties<a class="headerlink" href="#properties" title="Permalink to this heading">#</a></h3>
+<h3>Properties<a class="headerlink" href="#properties" title="Link to this heading">#</a></h3>
 <ul class="simple">
+<li><p><a class="reference internal" href="#[sb_channel_handle_symbol]"><span class="std std-ref">[SB_CHANNEL_HANDLE_SYMBOL]</span></a></p></li>
 <li><p><a class="reference internal" href="#channelid"><span class="std std-ref">channelId</span></a></p></li>
-<li><p><a class="reference internal" href="#key"><span class="std std-ref">key</span></a></p></li>
-<li><p><a class="reference internal" href="#server"><span class="std std-ref">server</span></a></p></li>
+<li><p><a class="reference internal" href="#channelserver"><span class="std std-ref">channelServer</span></a></p></li>
+<li><p><a class="reference internal" href="#userkeystring"><span class="std std-ref">userKeyString</span></a></p></li>
 </ul>
 </section>
 </section>
 <section id="id1">
-<h2>Properties<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<h2>Properties<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<section id="sb-channel-handle-symbol">
+<h3>[SB_CHANNEL_HANDLE_SYMBOL]<a class="headerlink" href="#sb-channel-handle-symbol" title="Link to this heading">#</a></h3>
+<p>• <code class="docutils literal notranslate"><span class="pre">Optional</span></code> <strong>[SB_CHANNEL_HANDLE_SYMBOL]</strong>: <code class="docutils literal notranslate"><span class="pre">boolean</span></code></p>
+</section>
+<hr class="docutils" />
 <section id="channelid">
-<h3>channelId<a class="headerlink" href="#channelid" title="Permalink to this heading">#</a></h3>
+<h3>channelId<a class="headerlink" href="#channelid" title="Link to this heading">#</a></h3>
 <p>• <strong>channelId</strong>: <code class="docutils literal notranslate"><span class="pre">string</span></code></p>
 </section>
 <hr class="docutils" />
-<section id="key">
-<h3>key<a class="headerlink" href="#key" title="Permalink to this heading">#</a></h3>
-<p>• <strong>key</strong>: <code class="docutils literal notranslate"><span class="pre">JsonWebKey</span></code></p>
+<section id="channelserver">
+<h3>channelServer<a class="headerlink" href="#channelserver" title="Link to this heading">#</a></h3>
+<p>• <code class="docutils literal notranslate"><span class="pre">Optional</span></code> <strong>channelServer</strong>: <code class="docutils literal notranslate"><span class="pre">string</span></code></p>
 </section>
 <hr class="docutils" />
-<section id="server">
-<h3>server<a class="headerlink" href="#server" title="Permalink to this heading">#</a></h3>
-<p>• <code class="docutils literal notranslate"><span class="pre">Optional</span></code> <strong>server</strong>: <code class="docutils literal notranslate"><span class="pre">string</span></code></p>
+<section id="userkeystring">
+<h3>userKeyString<a class="headerlink" href="#userkeystring" title="Link to this heading">#</a></h3>
+<p>• <strong>userKeyString</strong>: <code class="docutils literal notranslate"><span class="pre">string</span></code></p>
 </section>
 </section>
 </section>
@@ -290,9 +297,10 @@ an ‘owner’ key.</p>
 </ul>
 </li>
 <li><a class="reference internal" href="#id1">Properties</a><ul>
+<li><a class="reference internal" href="#sb-channel-handle-symbol">[SB_CHANNEL_HANDLE_SYMBOL]</a></li>
 <li><a class="reference internal" href="#channelid">channelId</a></li>
-<li><a class="reference internal" href="#key">key</a></li>
-<li><a class="reference internal" href="#server">server</a></li>
+<li><a class="reference internal" href="#channelserver">channelServer</a></li>
+<li><a class="reference internal" href="#userkeystring">userKeyString</a></li>
 </ul>
 </li>
 </ul>
@@ -306,12 +314,9 @@ an ‘owner’ key.</p>
       
     </aside>
   </div>
-</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
-    <script src="../_static/scripts/furo.js"></script>
+</div><script src="../_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/furo.js?v=32e29ea5"></script>
     </body>
 </html>

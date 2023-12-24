@@ -2,7 +2,7 @@
 
 # Class: MessageBus
 
-SB simple events (mesage bus) class
+MessageBus
 
 ## Table of contents
 
@@ -24,13 +24,17 @@ SB simple events (mesage bus) class
 
 ### constructor
 
-• **new MessageBus**()
+• **new MessageBus**(): [`MessageBus`](MessageBus.md)
+
+#### Returns
+
+[`MessageBus`](MessageBus.md)
 
 ## Properties
 
 ### bus
 
-• **bus**: `Dictionary`<`any`\> = `{}`
+• **bus**: `Dictionary`\<`any`\> = `{}`
 
 ## Methods
 

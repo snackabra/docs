@@ -1,17 +1,17 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="en" data-content_root="./">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="prev" title="Sphinx Diagram Examples" href="diag-sample.html" />
 
-    <!-- Generated with Sphinx 5.3.0 and Furo 2023.03.27 -->
+    <!-- Generated with Sphinx 7.2.6 and Furo 2023.09.10 -->
         <title>Motivation - snackabra 1.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
-    <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=36a5483c" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=7a5cf5c2" />
     
     
 
@@ -211,36 +211,36 @@
         </div>
         <article role="main">
           <section id="motivation">
-<span id="id1"></span><h1>Motivation<a class="headerlink" href="#motivation" title="Permalink to this heading">#</a></h1>
+<span id="id1"></span><h1>Motivation<a class="headerlink" href="#motivation" title="Link to this heading">#</a></h1>
 <p>The 384 platform is built on a number of core concepts that are essential to the design of a decentralized
 storage platform. Each of these concepts is explained in more detail below.</p>
 <section id="zero-trust">
-<h2>Zero Trust<a class="headerlink" href="#zero-trust" title="Permalink to this heading">#</a></h2>
+<h2>Zero Trust<a class="headerlink" href="#zero-trust" title="Link to this heading">#</a></h2>
 <p>Cloudflare’s learning page succinctly summarizes what Zero Trust is and why it is important here.</p>
 <p>Traditional IT network security trusts anyone and anything inside the network. A Zero Trust architecture trusts no one and nothing. Traditional IT network security is based on the castle-and-moat concept. In castle-and-moat security, it is hard to obtain access from outside the network, but everyone inside the network is trusted by default. The problem with this approach is that once an attacker gains access to the network, they have free rein over everything inside. This vulnerability in castle-and-moat security systems is exacerbated by the fact that companies no longer have their data in just one place. Today, information is often spread across cloud vendors, which makes it more difficult to have a single security control for an entire network. Zero Trust security means that no one is trusted by default from inside or outside the network, and verification is required from everyone trying to gain access to resources on the network. This added layer of security has been shown to prevent data breaches. Studies have shown that the average cost of a single data breach is over $3 million. Considering that figure, it should come as no surprise that many organizations are now eager to adopt a Zero Trust security policy.</p>
 <p>384 is built on the Zero Trust model…to be continued…</p>
 </section>
 <section id="local-first-software">
-<h2>Local-first software<a class="headerlink" href="#local-first-software" title="Permalink to this heading">#</a></h2>
+<h2>Local-first software<a class="headerlink" href="#local-first-software" title="Link to this heading">#</a></h2>
 <p>Local-first software is an approach to software design that prioritizes the user’s control and ownership of their data. The idea is to build software applications that work offline and store data locally either on device or on the edge, while also allowing for synchronization with other devices and the cloud.</p>
 <p>The 384 platform facilitates the creation of local first software by design. Our platform allows you to load an app locally from a shard and run it on whichever data you decide to give it. This flips the traditional SaaS model of uploading your data to some third-party server that then does processing on it. Since the app can run locally in the browser, it can also take advantage of all the latest features of Web APIs to build a PWA that works offline. This gives you the privacy, security, and performance of local desktop applications, but also the convenience and redundancy of the cloud. It was previously thought that web browsers were not a good way to make local first applications, but with advances in browser capability and increasing access to native compute and storage through APIs, it is more than possible, and in our opinion preferable.</p>
 </section>
 <section id="key-management">
-<h2>Key Management<a class="headerlink" href="#key-management" title="Permalink to this heading">#</a></h2>
+<h2>Key Management<a class="headerlink" href="#key-management" title="Link to this heading">#</a></h2>
 <p>Key management refers to the process of handling cryptographic keys throughout their lifecycle. It involves generating, distributing, storing, protecting, revoking, and ensuring the availability and integrity of keys, as well as implementing policies and selecting appropriate algorithms and key lengths. Effective key management is essential for maintaining the security and confidentiality of sensitive information.</p>
 <p>Imagine now that key management is done by some third party, on some infrastructure that you don’t know. Doesn’t that seem antithetical to privacy and security? Not only do you have to trust that they are not prying their eyes into your data, but you also must trust the integrity of their infrastructure. With 384, since key management is done in the client, the specific cloud infrastructure that our services are being run on does not matter, and they can even be insecure. Your data is never unencrypted in transit or in rest anywhere besides the client.</p>
 </section>
 <section id="data-sovereignty">
-<h2>Data Sovereignty<a class="headerlink" href="#data-sovereignty" title="Permalink to this heading">#</a></h2>
+<h2>Data Sovereignty<a class="headerlink" href="#data-sovereignty" title="Link to this heading">#</a></h2>
 <p>There are many conflicting definitions of data sovereignty, but what we feel is essential about this concept is that the individual has control over their personal data and digital identity, including the ability to determine how and where their data is collected, processed, and shared. It encompasses the rights of individuals/companies to privacy, security, and autonomy in their digital lives.</p>
 <p>384 is designed to facilitate this by providing a platform that fundamentally flips the power imbalance between the user and the service provider. The user has complete control over their data, and the application level has no access to it unless the user explicitly grants it. This is in contrast to the traditional model of data being stored and processed in a centralized location.</p>
 </section>
 <section id="open-source">
-<h2>Open Source<a class="headerlink" href="#open-source" title="Permalink to this heading">#</a></h2>
+<h2>Open Source<a class="headerlink" href="#open-source" title="Link to this heading">#</a></h2>
 <p>To be written…</p>
 </section>
 <section id="public-key-cryptography-as-identity">
-<h2>Public Key Cryptography as Identity<a class="headerlink" href="#public-key-cryptography-as-identity" title="Permalink to this heading">#</a></h2>
+<h2>Public Key Cryptography as Identity<a class="headerlink" href="#public-key-cryptography-as-identity" title="Link to this heading">#</a></h2>
 <p>To be written…</p>
 </section>
 </section>
@@ -310,12 +310,9 @@ storage platform. Each of these concepts is explained in more detail below.</p>
       
     </aside>
   </div>
-</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
-    <script src="_static/scripts/furo.js"></script>
+</div><script src="_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=32e29ea5"></script>
     </body>
 </html>

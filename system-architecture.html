@@ -1,17 +1,17 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="en" data-content_root="./">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Background and Discussion" href="discussion.html" /><link rel="prev" title="Technical Overview" href="overview.html" />
 
-    <!-- Generated with Sphinx 5.3.0 and Furo 2023.03.27 -->
+    <!-- Generated with Sphinx 7.2.6 and Furo 2023.09.10 -->
         <title>System Architecture - snackabra 1.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
-    <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=36a5483c" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=7a5cf5c2" />
     
     
 
@@ -211,7 +211,7 @@
         </div>
         <article role="main">
           <section id="system-architecture">
-<h1>System Architecture<a class="headerlink" href="#system-architecture" title="Permalink to this heading">#</a></h1>
+<h1>System Architecture<a class="headerlink" href="#system-architecture" title="Link to this heading">#</a></h1>
 <p>To both future-proof as well as take advantage of what we’ve learned
 over the past 10-20 years in the area of <em>implementing and *operating</em>
 a messaging and document sharing service. To give a full accounting of
@@ -226,7 +226,7 @@ the “correct” (most widely used) names for any technologies or
 architecture decisions, to facilitate for a reader to inform
 themselves elsewhere.</p>
 <section id="computing">
-<span id="id1"></span><h2>Computing<a class="headerlink" href="#computing" title="Permalink to this heading">#</a></h2>
+<span id="id1"></span><h2>Computing<a class="headerlink" href="#computing" title="Link to this heading">#</a></h2>
 <p>We have clients and backend(s). For clients our baseline is simply a
 modern web browser. The core of the client chat application is
 Javascript. <a class="footnote-reference brackets" href="#f151" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> The communication with backends is over
@@ -288,7 +288,7 @@ used for specific purposes; furthermore we strive for these to be
 “batch” oriented as much as possible.</p>
 </section>
 <section id="storage">
-<span id="id7"></span><h2>Storage<a class="headerlink" href="#storage" title="Permalink to this heading">#</a></h2>
+<span id="id7"></span><h2>Storage<a class="headerlink" href="#storage" title="Link to this heading">#</a></h2>
 <p>For storage we will assume both global and local key-value storage. We
 will make minimum assumptions on features; for searches we will only
 need “prefix” storage queries. <a href="#id20"><span class="problematic" id="id8">[#156]_</span></a> We will also assume that
@@ -313,7 +313,7 @@ if that is unreliable, that user needs to export/import to a local
 file system (local to their computer/device).</p>
 </section>
 <section id="cloudflare">
-<span id="id13"></span><h2>Cloudflare<a class="headerlink" href="#cloudflare" title="Permalink to this heading">#</a></h2>
+<span id="id13"></span><h2>Cloudflare<a class="headerlink" href="#cloudflare" title="Link to this heading">#</a></h2>
 <p>Our reference implementation is primarily built on Cloudflare
 products, and should be relatively easy to self-host. The reason is
 that, from what we can tell, Cloudflare currently has the simplest to
@@ -361,29 +361,29 @@ Durable Objects: Easy, Fast, Correct — Choose three
 </ul>
 <p class="rubric">Footnotes</p>
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="f02" role="note">
+<aside class="footnote brackets" id="f02" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
 <p>Concept of “Owner” is explained <a class="reference internal" href="overview.html#owner-definition"><span class="std std-ref">here</span></a>.</p>
 </aside>
-<aside class="footnote brackets" id="f151" role="note">
+<aside class="footnote brackets" id="f151" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
 <p>In our case we are using React Native for the UI, but the
 core of the client-side MiChat code will be a Javascript
 library that can be added to various contexts, including a
 minimalist (static, local) html file.</p>
 </aside>
-<aside class="footnote brackets" id="f152" role="note">
+<aside class="footnote brackets" id="f152" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></span>
 <p>As opposed to ‘cloud computing’ which was the preceding
 generation of architecture.</p>
 </aside>
-<aside class="footnote brackets" id="f153" role="note">
+<aside class="footnote brackets" id="f153" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></span>
 <p>In this context, something like a Docker image is, in fact,
 Heavy. We assume a subset since that’s the smart thing to
 do: full api support starts getting heavy.</p>
 </aside>
-<aside class="footnote brackets" id="f154" role="note">
+<aside class="footnote brackets" id="f154" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></span>
 <p>Edge computing is where the backend/server code is running
 inside, or very near, the network: for example in an
@@ -394,7 +394,7 @@ example, it would probably not include a consumer home
 router, unless the instance of the service was operated by
 its owner. See also <a class="reference internal" href="discussion.html#micro-federation"><span class="std std-ref">micro-federation</span></a></p>
 </aside>
-<aside class="footnote brackets" id="f155" role="note">
+<aside class="footnote brackets" id="f155" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></span>
 <p>The textbook pioneer of this model was Google App Engine,
 though their initial choice for container language was
@@ -402,7 +402,7 @@ Python. By having a standardized language and API, the
 exact same lightweight container can be used for all
 customers and all applications, with dramatic benefits.</p>
 </aside>
-<aside class="footnote brackets" id="f156" role="note">
+<aside class="footnote brackets" id="f156" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></span>
 <p>The core concept of key-value store (also called ‘key-value
 database’) is a generic ‘key’ which then maps to some
@@ -410,12 +410,12 @@ object (value). It’s akin to a hash table. By having a flat
 addressing scheme and no metadata (in its simplest form),
 it can be made both scalable, reliable, and fast.</p>
 </aside>
-<aside class="footnote brackets" id="f157" role="note">
+<aside class="footnote brackets" id="f157" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span>8<span class="fn-bracket">]</span></span>
 <p>We will manage multi-part objects ourselves, see ‘wire
 protocol’ below.</p>
 </aside>
-<aside class="footnote brackets" id="f158" role="note">
+<aside class="footnote brackets" id="f158" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span>9<span class="fn-bracket">]</span></span>
 <p>In the case of images, the client code will down-sample /
 reduce the image size until it fits into 80% of the limit
@@ -423,18 +423,18 @@ reduce the image size until it fits into 80% of the limit
 max). It will only store unmodified image (with metadata)
 if that fits into 20MB (binary).</p>
 </aside>
-<aside class="footnote brackets" id="f159" role="note">
+<aside class="footnote brackets" id="f159" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span>10<span class="fn-bracket">]</span></span>
 <p>Technically O(m) where ‘m’ is the length of the prefix. So
 we should note that the design will only ever perform
 fixed-length / bounded prefix queries; in current
 implementation &lt;64 bytes.</p>
 </aside>
-<aside class="footnote brackets" id="f160" role="note">
+<aside class="footnote brackets" id="f160" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span>11<span class="fn-bracket">]</span></span>
 <p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage/local">https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage/local</a></p>
 </aside>
-<aside class="footnote brackets" id="f161" role="note">
+<aside class="footnote brackets" id="f161" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span>12<span class="fn-bracket">]</span></span>
 <p>Not surprisingly, Cloudflare anticipated that chat rooms
 would be an excellent use case:
@@ -514,12 +514,9 @@ would be an excellent use case:
       
     </aside>
   </div>
-</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
-    <script src="_static/scripts/furo.js"></script>
+</div><script src="_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=32e29ea5"></script>
     </body>
 </html>

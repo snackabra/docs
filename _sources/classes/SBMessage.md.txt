@@ -2,7 +2,24 @@
 
 # Class: SBMessage
 
-SBMessage
+Every message being sent goes through the SBMessage object. Upon creation,
+the provided contents (which can be any JS object more or les) is encrypted
+and wrapped into a ChannelMessage object, which is what is later sent. Same
+binary format is used for restful endpoints, websockets, and other
+transports.
+
+Body should be below 32KiB. Note: for protocol choice, sbm will prioritize
+message options over channel choice, and lacking both will default to
+Channel.defaultProtocol (which is Protocol_ECDH).
+
+Note that with Protocl_ECDH, you need to make sure 'sendTo' is set, since
+that will otherwise default to Owner. It does not support channel
+'broadcast'.
+
+The option 'sendString' allows for 'lower-level' messaging, for example for
+special 'keep alive' messages that might be server-specific. If that is set,
+the contents are expected to be a string, and the message will be sent as-is,
+and features like encryption, ack/nack, ttl, routing, etc, are not available.
 
 ## Table of contents
 
@@ -12,16 +29,19 @@ SBMessage
 
 ### Properties
 
-- [MAX\_SB\_BODY\_SIZE](SBMessage.md#max_sb_body_size)
 - [[SB\_MESSAGE\_SYMBOL]](SBMessage.md#[sb_message_symbol])
 - [channel](SBMessage.md#channel)
 - [contents](SBMessage.md#contents)
-- [ready](SBMessage.md#ready)
+- [options](SBMessage.md#options)
+- [salt](SBMessage.md#salt)
+- [sbMessageReady](SBMessage.md#sbmessageready)
+- [ReadyFlag](SBMessage.md#readyflag)
 
 ### Accessors
 
-- [encryptionKey](SBMessage.md#encryptionkey)
-- [sendToPubKey](SBMessage.md#sendtopubkey)
+- [SBMessageReadyFlag](SBMessage.md#sbmessagereadyflag)
+- [message](SBMessage.md#message)
+- [ready](SBMessage.md#ready)
 
 ### Methods
 
@@ -31,31 +51,21 @@ SBMessage
 
 ### constructor
 
-• **new SBMessage**(`channel`, `bodyParameter?`, `sendToJsonWebKey?`): [`SBMessage`](SBMessage.md)
-
-SBMessage
-
-Body should be below 32KiB, though it tolerates up to 64KiB
+• **new SBMessage**(`channel`, `contents`, `options?`): [`SBMessage`](SBMessage.md)
 
 #### Parameters
 
-| Name | Type | Default value |
-| :------ | :------ | :------ |
-| `channel` | [`Channel`](Channel.md) | `undefined` |
-| `bodyParameter` | `string` \| `SBMessageContents` | `''` |
-| `sendToJsonWebKey?` | `JsonWebKey` | `undefined` |
+| Name | Type |
+| :------ | :------ |
+| `channel` | [`Channel`](Channel.md) |
+| `contents` | `any` |
+| `options` | [`MessageOptions`](../interfaces/MessageOptions.md) |
 
 #### Returns
 
 [`SBMessage`](SBMessage.md)
 
 ## Properties
-
-### MAX\_SB\_BODY\_SIZE
-
-• **MAX\_SB\_BODY\_SIZE**: `number`
-
-___
 
 ### [SB\_MESSAGE\_SYMBOL]
 
@@ -71,42 +81,70 @@ ___
 
 ### contents
 
-• **contents**: `SBMessageContents`
+• **contents**: `any`
+
+___
+
+### options
+
+• **options**: [`MessageOptions`](../interfaces/MessageOptions.md) = `{}`
+
+___
+
+### salt
+
+• `Optional` **salt**: `ArrayBuffer`
+
+___
+
+### sbMessageReady
+
+• **sbMessageReady**: `Promise`\<[`SBMessage`](SBMessage.md)\>
+
+___
+
+### ReadyFlag
+
+▪ `Static` **ReadyFlag**: `symbol`
+
+## Accessors
+
+### SBMessageReadyFlag
+
+• `get` **SBMessageReadyFlag**(): `any`
+
+#### Returns
+
+`any`
+
+___
+
+### message
+
+• `get` **message**(): `string` \| [`ChannelMessage`](../interfaces/ChannelMessage.md)
+
+#### Returns
+
+`string` \| [`ChannelMessage`](../interfaces/ChannelMessage.md)
 
 ___
 
 ### ready
 
-• **ready**: `Promise`\<[`SBMessage`](SBMessage.md)\>
-
-## Accessors
-
-### encryptionKey
-
-• `get` **encryptionKey**(): `undefined` \| `CryptoKey`
+• `get` **ready**(): `Promise`\<[`SBMessage`](SBMessage.md)\>
 
 #### Returns
 
-`undefined` \| `CryptoKey`
-
-___
-
-### sendToPubKey
-
-• `get` **sendToPubKey**(): `undefined` \| `JsonWebKey`
-
-#### Returns
-
-`undefined` \| `JsonWebKey`
+`Promise`\<[`SBMessage`](SBMessage.md)\>
 
 ## Methods
 
 ### send
 
-▸ **send**(): `Promise`\<`string`\>
+▸ **send**(): `Promise`\<`any`\>
 
 SBMessage.send()
 
 #### Returns
 
-`Promise`\<`string`\>
+`Promise`\<`any`\>

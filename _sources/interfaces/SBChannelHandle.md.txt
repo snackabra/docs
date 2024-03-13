@@ -2,21 +2,17 @@
 
 # Interface: SBChannelHandle
 
-SBChannelHandle
-
-Complete descriptor of a channel. SBUserKeyString (previously 'key')
-is a canonical format of stringified version of 'jwk'..
-The underlying key is always private. If it corresponds to the channelId,
-then it's an 'owner' key.
+Channel 'descriptor'.
 
 ## Table of contents
 
 ### Properties
 
 - [[SB\_CHANNEL\_HANDLE\_SYMBOL]](SBChannelHandle.md#[sb_channel_handle_symbol])
+- [channelData](SBChannelHandle.md#channeldata)
 - [channelId](SBChannelHandle.md#channelid)
 - [channelServer](SBChannelHandle.md#channelserver)
-- [userKeyString](SBChannelHandle.md#userkeystring)
+- [userPrivateKey](SBChannelHandle.md#userprivatekey)
 
 ## Properties
 
@@ -26,9 +22,15 @@ then it's an 'owner' key.
 
 ___
 
+### channelData
+
+• `Optional` **channelData**: [`SBChannelData`](SBChannelData.md)
+
+___
+
 ### channelId
 
-• **channelId**: `string`
+• `Optional` **channelId**: `string`
 
 ___
 
@@ -38,6 +40,6 @@ ___
 
 ___
 
-### userKeyString
+### userPrivateKey
 
-• **userKeyString**: `string`
+• **userPrivateKey**: `string`

@@ -4,80 +4,158 @@
 
 ## Table of contents
 
-### Namespaces
+### Enumerations
 
-- [Interfaces](modules/Interfaces.md)
+- [KeyPrefix](enums/KeyPrefix.md)
 
 ### Classes
 
 - [Channel](classes/Channel.md)
 - [ChannelSocket](classes/ChannelSocket.md)
 - [MessageBus](classes/MessageBus.md)
+- [MessageQueue](classes/MessageQueue.md)
+- [Protocol\_AES\_GCM\_256](classes/Protocol_AES_GCM_256.md)
+- [Protocol\_ECDH](classes/Protocol_ECDH.md)
 - [SB384](classes/SB384.md)
+- [SBChannelKeys](classes/SBChannelKeys.md)
 - [SBCrypto](classes/SBCrypto.md)
-- [SBMessage](classes/SBMessage.md)
-- [SBObjectHandle](classes/SBObjectHandle.md)
+- [SBError](classes/SBError.md)
 - [Snackabra](classes/Snackabra.md)
+- [StorageApi](classes/StorageApi.md)
 
 ### Interfaces
 
 - [ChannelAdminData](interfaces/ChannelAdminData.md)
-- [ChannelData](interfaces/ChannelData.md)
-- [ChannelKeyStrings](interfaces/ChannelKeyStrings.md)
-- [ChannelKeys](interfaces/ChannelKeys.md)
+- [ChannelApiBody](interfaces/ChannelApiBody.md)
 - [ChannelMessage](interfaces/ChannelMessage.md)
-- [EncryptedContents](interfaces/EncryptedContents.md)
-- [EncryptedContentsBin](interfaces/EncryptedContentsBin.md)
-- [ImageMetaData](interfaces/ImageMetaData.md)
+- [EncryptParams](interfaces/EncryptParams.md)
+- [Message](interfaces/Message.md)
+- [MessageHistory](interfaces/MessageHistory.md)
+- [MessageHistoryDirectory](interfaces/MessageHistoryDirectory.md)
+- [MessageHistoryEntry](interfaces/MessageHistoryEntry.md)
+- [MessageOptions](interfaces/MessageOptions.md)
+- [Protocol\_KeyInfo](interfaces/Protocol_KeyInfo.md)
+- [SBChannelData](interfaces/SBChannelData.md)
 - [SBChannelHandle](interfaces/SBChannelHandle.md)
-- [SBPayload](interfaces/SBPayload.md)
-- [SBServer](interfaces/SBServer.md)
+- [SBObjectHandle](interfaces/SBObjectHandle.md)
+- [SBProtocol](interfaces/SBProtocol.md)
+- [SBStorageToken](interfaces/SBStorageToken.md)
+- [Shard](interfaces/Shard.md)
 
 ### Type Aliases
 
-- [ChannelMessageTypes](modules.md#channelmessagetypes)
+- [Base62Encoded](modules.md#base62encoded)
+- [MessageTtl](modules.md#messagettl)
 - [SB384Hash](modules.md#sb384hash)
 - [SBChannelId](modules.md#sbchannelid)
-- [SBKey](modules.md#sbkey)
 - [SBObjectHandleVersions](modules.md#sbobjecthandleversions)
-- [SBObjectType](modules.md#sbobjecttype)
+- [SBStorageTokenHash](modules.md#sbstoragetokenhash)
 - [SBUserId](modules.md#sbuserid)
-- [SBUserKey](modules.md#sbuserkey)
-- [SBUserKeyString](modules.md#sbuserkeystring)
+- [SBUserPrivateKey](modules.md#sbuserprivatekey)
+- [SBUserPublicKey](modules.md#sbuserpublickey)
 
 ### Variables
 
+- [NEW\_CHANNEL\_MINIMUM\_BUDGET](modules.md#new_channel_minimum_budget)
 - [SB](modules.md#sb)
+- [SBStorageTokenPrefix](modules.md#sbstoragetokenprefix)
+- [b62regex](modules.md#b62regex)
+- [base62](modules.md#base62)
+- [base62regex](modules.md#base62regex)
+- [base64url](modules.md#base64url)
+- [msgTtlToSeconds](modules.md#msgttltoseconds)
+- [msgTtlToString](modules.md#msgttltostring)
 - [sbCrypto](modules.md#sbcrypto)
 - [version](modules.md#version)
 
 ### Functions
 
-- [arrayBuffer32ToBase62](modules.md#arraybuffer32tobase62)
+- [Memoize](modules.md#memoize)
+- [Ready](modules.md#ready)
+- [SBApiFetch](modules.md#sbapifetch)
+- [\_check\_SBChannelData](modules.md#_check_sbchanneldata)
+- [\_check\_SBChannelHandle](modules.md#_check_sbchannelhandle)
+- [\_check\_SBObjectHandle](modules.md#_check_sbobjecthandle)
+- [\_check\_SBStorageToken](modules.md#_check_sbstoragetoken)
 - [arrayBufferToBase62](modules.md#arraybuffertobase62)
-- [arrayBufferToBase64](modules.md#arraybuffertobase64)
+- [arrayBufferToBase64url](modules.md#arraybuffertobase64url)
 - [assemblePayload](modules.md#assemblepayload)
+- [b32decode](modules.md#b32decode)
+- [b32encode](modules.md#b32encode)
+- [b32process](modules.md#b32process)
 - [base62ToArrayBuffer](modules.md#base62toarraybuffer)
-- [base62ToArrayBuffer32](modules.md#base62toarraybuffer32)
 - [base62ToBase64](modules.md#base62tobase64)
 - [base64ToArrayBuffer](modules.md#base64toarraybuffer)
 - [base64ToBase62](modules.md#base64tobase62)
 - [compareBuffers](modules.md#comparebuffers)
-- [decodeB64Url](modules.md#decodeb64url)
-- [encodeB64Url](modules.md#encodeb64url)
-- [encryptedContentsMakeBinary](modules.md#encryptedcontentsmakebinary)
 - [extractPayload](modules.md#extractpayload)
 - [getRandomValues](modules.md#getrandomvalues)
+- [hydrateKey](modules.md#hydratekey)
 - [isBase62Encoded](modules.md#isbase62encoded)
-- [isSBKey](modules.md#issbkey)
+- [jsonOrString](modules.md#jsonorstring)
 - [jsonParseWrapper](modules.md#jsonparsewrapper)
-- [partition](modules.md#partition)
+- [setDebugLevel](modules.md#setdebuglevel)
+- [stringify\_SBObjectHandle](modules.md#stringify_sbobjecthandle)
+- [stripChannelMessage](modules.md#stripchannelmessage)
+- [validate\_ChannelApiBody](modules.md#validate_channelapibody)
+- [validate\_ChannelMessage](modules.md#validate_channelmessage)
+- [validate\_Message](modules.md#validate_message)
+- [validate\_SBChannelData](modules.md#validate_sbchanneldata)
+- [validate\_SBChannelHandle](modules.md#validate_sbchannelhandle)
+- [validate\_SBObjectHandle](modules.md#validate_sbobjecthandle)
+- [validate\_SBStorageToken](modules.md#validate_sbstoragetoken)
 
 ## Type Aliases
 
-### ChannelMessageTypes
+### Base62Encoded
 
-Ƭ **ChannelMessageTypes**: ``"ack"`` \| ``"keys"`` \| ``"invalid"`` \| ``"ready"`` \| ``"encrypted"``
+Ƭ **Base62Encoded**: `string` & \{ `_brand?`: ``"Base62Encoded"``  }
+
+***************************************************************************************************
+
+___
+
+### MessageTtl
+
+Ƭ **MessageTtl**: ``0`` \| ``3`` \| ``4`` \| ``5`` \| ``6`` \| ``7`` \| ``8`` \| ``15``
+
+Index/number of seconds/string description of TTL values (0-15) for
+messages.
+
+```text
+    #    Seconds  Description
+    0          0  Ephemeral (not stored)
+    1             <reserved>
+    2             <reserved>
+    3         60  One minute (current minimum)
+    4        300  Five minutes
+    5       1800  Thirty minutes
+    6      14400  Four hours
+    7     129600  36 hours
+    8     864000  Ten days
+   10             <reserved> (all 'reserved' future choices will be monotonically increasing)
+   11             <reserved>
+   12             <reserved>
+   13             <reserved>
+   14             <reserved>
+   15   Infinity  Permastore, this is the default.
+ ```
+
+ Note that time periods above '8' (10 days) is largely TBD pending
+ finalization of what the storage server will prefer. As far as messages
+ are concerned, anything above '8' is 'very long'.
+
+ A few rules around messages and TTL (this list is not exhaustive):
+
+ - Currently only values 0, 3-8, and 15 are valid (15 is default).
+ - Routable messages (eg messages with a 'to' field) may not have ttl above '8'.
+ - TTL messages are never in storage shards; channel servers can chose to
+   limit how many they will keep (on a per TTL category basis) regardless
+   of time value (but at least last 1000).
+ - TTL messages are duplicated and available on 'main' channel ('i2')
+   '____' as well as on subchannels '___3', '___4', up to '___8'.
+
+ It's valid to encode it as four bits.
 
 ___
 
@@ -93,57 +171,53 @@ ___
 
 ___
 
-### SBKey
-
-Ƭ **SBKey**: `SBAES256Key` \| `SBPrivateKey` \| `SBPublicKey`
-
-___
-
 ### SBObjectHandleVersions
 
-Ƭ **SBObjectHandleVersions**: ``"1"`` \| ``"2"``
+Ƭ **SBObjectHandleVersions**: ``"1"`` \| ``"2"`` \| ``"3"``
 
 ___
 
-### SBObjectType
+### SBStorageTokenHash
 
-Ƭ **SBObjectType**: ``"f"`` \| ``"p"`` \| ``"b"`` \| ``"t"``
+Ƭ **SBStorageTokenHash**: `string`
 
-SBObjectType
+This is whatever token system the channel server uses.
 
-SBObjectType is a single character string that indicates the
-type of object. Currently, the following types are supported:
+For example with 'channel-server', you could command-line bootstrap with
+something like:
 
-- 'f' : full object (e.g. image, this is the most common)
-- 'p' : preview object (e.g. thumbnail)
-- 'b' : block/binary object (e.g. 64KB block)
-- 't' : test object (for testing purposes)
-
-The 't' type is used for testing purposes, and you should
-not expect it to have any particular SLA or longevity.
-
-Note that when you retrieve any object, you must have the
-matching object type.
+'''bash
+  wrangler kv:key put --preview false --binding=LEDGER_NAMESPACE "zzR5Ljv8LlYjgOnO5yOr4Gtgr9yVS7dTAQkJeVQ4I7w" '{"used":false,"size":33554432}'
 
 ___
 
 ### SBUserId
 
-Ƭ **SBUserId**: `string`
+Ƭ **SBUserId**: [`SB384Hash`](modules.md#sb384hash)
+
+The three encodings of a 'user'
 
 ___
 
-### SBUserKey
+### SBUserPrivateKey
 
-Ƭ **SBUserKey**: `SBPrivateKey` \| `SBPublicKey`
+Ƭ **SBUserPrivateKey**: `string`
 
 ___
 
-### SBUserKeyString
+### SBUserPublicKey
 
-Ƭ **SBUserKeyString**: `string`
+Ƭ **SBUserPublicKey**: `string`
 
 ## Variables
+
+### NEW\_CHANNEL\_MINIMUM\_BUDGET
+
+• `Const` **NEW\_CHANNEL\_MINIMUM\_BUDGET**: `number`
+
+***************************************************************************************************
+
+___
 
 ### SB
 
@@ -156,11 +230,56 @@ ___
 | `Channel` | typeof [`Channel`](classes/Channel.md) |
 | `SB384` | typeof [`SB384`](classes/SB384.md) |
 | `SBCrypto` | typeof [`SBCrypto`](classes/SBCrypto.md) |
-| `SBMessage` | typeof [`SBMessage`](classes/SBMessage.md) |
 | `Snackabra` | typeof [`Snackabra`](classes/Snackabra.md) |
-| `arrayBufferToBase64` | (`buffer`: ``null`` \| `ArrayBuffer` \| `Uint8Array`, `variant`: ``"url"`` \| ``"b64"``) => `string` |
+| `arrayBufferToBase62` | (`buffer`: `ArrayBuffer` \| `Uint8Array`) => `string` |
+| `arrayBufferToBase64url` | (`buffer`: `ArrayBuffer` \| `Uint8Array`) => `string` |
+| `base62ToArrayBuffer` | (`s`: `string`) => `ArrayBuffer` |
+| `base64ToArrayBuffer` | (`s`: `string`) => `Uint8Array` |
 | `sbCrypto` | [`SBCrypto`](classes/SBCrypto.md) |
+| `setDebugLevel` | (`dbg1`: `boolean`, `dbg2?`: `boolean`) => `void` |
 | `version` | `string` |
+
+___
+
+### SBStorageTokenPrefix
+
+• `Const` **SBStorageTokenPrefix**: ``"LM2r"``
+
+___
+
+### b62regex
+
+• `Const` **b62regex**: `RegExp`
+
+___
+
+### base62
+
+• `Const` **base62**: ``"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"``
+
+___
+
+### base62regex
+
+• `Const` **base62regex**: `RegExp` = `b62regex`
+
+___
+
+### base64url
+
+• `Const` **base64url**: ``"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_"``
+
+___
+
+### msgTtlToSeconds
+
+• `Const` **msgTtlToSeconds**: `number`[]
+
+___
+
+### msgTtlToString
+
+• `Const` **msgTtlToString**: `string`[]
 
 ___
 
@@ -179,25 +298,132 @@ ___
 
 ### version
 
-• `Const` **version**: ``"2.0.0-alpha.5 (build 20)"``
+• `Const` **version**: ``"2.0.0-alpha.5 (build 093)"``
 
 ## Functions
 
-### arrayBuffer32ToBase62
+### Memoize
 
-▸ **arrayBuffer32ToBase62**(`buffer`): `Base62Encoded`
+▸ **Memoize**(`target`, `propertyKey`, `descriptor?`): `void`
 
-Convenience wrapper.
+***************************************************************************************************
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `buffer` | `ArrayBuffer` |
+| `target` | `any` |
+| `propertyKey` | `string` |
+| `descriptor?` | `PropertyDescriptor` |
 
 #### Returns
 
-`Base62Encoded`
+`void`
+
+___
+
+### Ready
+
+▸ **Ready**(`target`, `propertyKey`, `descriptor?`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `target` | `any` |
+| `propertyKey` | `string` |
+| `descriptor?` | `PropertyDescriptor` |
+
+#### Returns
+
+`void`
+
+___
+
+### SBApiFetch
+
+▸ **SBApiFetch**(`input`, `init?`): `Promise`\<`any`\>
+
+Wrapper to SBFetch that applies SB API calling conventions on both sides of
+the call; it will return whatever data structure the server returns, note
+that it will extract the reply (either from json or from payload). if there
+are any issues or if the reply contains an error message, it will throw an
+error.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `input` | `RequestInfo` \| `URL` |
+| `init?` | `RequestInit` |
+
+#### Returns
+
+`Promise`\<`any`\>
+
+___
+
+### \_check\_SBChannelData
+
+▸ **_check_SBChannelData**(`data`): `boolean` \| ``""`` \| [`SBStorageToken`](interfaces/SBStorageToken.md)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `data` | [`SBChannelData`](interfaces/SBChannelData.md) |
+
+#### Returns
+
+`boolean` \| ``""`` \| [`SBStorageToken`](interfaces/SBStorageToken.md)
+
+___
+
+### \_check\_SBChannelHandle
+
+▸ **_check_SBChannelHandle**(`data`): `boolean` \| ``""`` \| [`SBStorageToken`](interfaces/SBStorageToken.md)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `data` | [`SBChannelHandle`](interfaces/SBChannelHandle.md) |
+
+#### Returns
+
+`boolean` \| ``""`` \| [`SBStorageToken`](interfaces/SBStorageToken.md)
+
+___
+
+### \_check\_SBObjectHandle
+
+▸ **_check_SBObjectHandle**(`h`): `boolean`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `h` | [`SBObjectHandle`](interfaces/SBObjectHandle.md) |
+
+#### Returns
+
+`boolean`
+
+___
+
+### \_check\_SBStorageToken
+
+▸ **_check_SBStorageToken**(`data`): `boolean` \| ``""``
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `data` | [`SBStorageToken`](interfaces/SBStorageToken.md) |
+
+#### Returns
+
+`boolean` \| ``""``
 
 ___
 
@@ -206,13 +432,12 @@ ___
 ▸ **arrayBufferToBase62**(`buffer`): `string`
 
 Converts any array buffer to base62.
-Restriction: ArrayBuffer must be size multiple of 4 bytes (32 bits).
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `buffer` | `ArrayBuffer` |
+| `buffer` | `ArrayBuffer` \| `Uint8Array` |
 
 #### Returns
 
@@ -220,27 +445,21 @@ Restriction: ArrayBuffer must be size multiple of 4 bytes (32 bits).
 
 ___
 
-### arrayBufferToBase64
+### arrayBufferToBase64url
 
-▸ **arrayBufferToBase64**(`buffer`, `variant?`): `string`
+▸ **arrayBufferToBase64url**(`buffer`): `string`
 
-Standardized 'btoa()'-like function, e.g., takes a binary string
-('b') and returns a Base64 encoded version ('a' used to be short
-for 'ascii'). Defaults to URL safe ('url') but can be overriden
-to use standardized Base64 ('b64').
+Converts an ArrayBuffer to base64url.
 
 #### Parameters
 
-| Name | Type | Default value | Description |
-| :------ | :------ | :------ | :------ |
-| `buffer` | ``null`` \| `ArrayBuffer` \| `Uint8Array` | `undefined` | binary string |
-| `variant` | ``"url"`` \| ``"b64"`` | `'url'` | 'b64' or 'url' |
+| Name | Type |
+| :------ | :------ |
+| `buffer` | `ArrayBuffer` \| `Uint8Array` |
 
 #### Returns
 
 `string`
-
-- returns Base64 encoded string
 
 ___
 
@@ -255,7 +474,7 @@ of an arbitrary set of (named) binary objects.
 
 | Name | Type |
 | :------ | :------ |
-| `data` | [`SBPayload`](interfaces/SBPayload.md) |
+| `data` | `any` |
 
 #### Returns
 
@@ -263,16 +482,59 @@ of an arbitrary set of (named) binary objects.
 
 ___
 
+### b32decode
+
+▸ **b32decode**(`encoded`): `number` \| ``null``
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `encoded` | `string` |
+
+#### Returns
+
+`number` \| ``null``
+
+___
+
+### b32encode
+
+▸ **b32encode**(`num`): `string`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `num` | `number` |
+
+#### Returns
+
+`string`
+
+___
+
+### b32process
+
+▸ **b32process**(`str`): `string`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `str` | `string` |
+
+#### Returns
+
+`string`
+
+___
+
 ### base62ToArrayBuffer
 
 ▸ **base62ToArrayBuffer**(`s`): `ArrayBuffer`
 
-base62ToArrayBuffer
-
-Converts a base62 string to matchin ArrayBuffer.
-Restriction: the original array buffer size must have
-been a multiple of 4 bytes (32 bits), eg. this
-function will always return such an ArrayBuffer.
+Converts a base62 string to matching ArrayBuffer.
 
 #### Parameters
 
@@ -286,94 +548,58 @@ function will always return such an ArrayBuffer.
 
 ___
 
-### base62ToArrayBuffer32
+### base62ToBase64
 
-▸ **base62ToArrayBuffer32**(`s`): `ArrayBuffer`
+▸ **base62ToBase64**(`s`): `string`
 
-Convenience wrapper, enforces array32 format
+Convenience: direct conversion from Base62 to Base64.
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `s` | `Base62Encoded` |
-
-#### Returns
-
-`ArrayBuffer`
-
-___
-
-### base62ToBase64
-
-▸ **base62ToBase64**(`s`): `string`
-
-base62ToBase64 converts a base62 encoded string to a base64 encoded string.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `s` | `Base62Encoded` | base62 encoded string |
+| `s` | [`Base62Encoded`](modules.md#base62encoded) |
 
 #### Returns
 
 `string`
 
-base64 encoded string
-
-**`Throws`**
-
-Error if the string is not a valid base62 encoded string
-
 ___
 
 ### base64ToArrayBuffer
 
-▸ **base64ToArrayBuffer**(`str`): `Uint8Array`
+▸ **base64ToArrayBuffer**(`s`): `Uint8Array`
 
-Standardized 'atob()' function, e.g. takes the a Base64 encoded
-input and decodes it. Note: always returns Uint8Array.
-Accepts both regular Base64 and the URL-friendly variant,
-where `+` => `-`, `/` => `_`, and the padding character is omitted.
+Converts base64/base64url to ArrayBuffer. We're tolerant of inputs. Despite
+it's name, we return Uint8Array.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `str` | `string` | string in either regular or URL-friendly representation. |
+| Name | Type |
+| :------ | :------ |
+| `s` | `string` |
 
 #### Returns
 
 `Uint8Array`
 
-- returns decoded binary result
-
 ___
 
 ### base64ToBase62
 
-▸ **base64ToBase62**(`s`): `Base62Encoded`
+▸ **base64ToBase62**(`s`): [`Base62Encoded`](modules.md#base62encoded)
 
-Convenience function.
-
-base64ToBase62 converts a base64 encoded string to a base62 encoded string.
+Convenience: direct conversion from Base64 to Base62.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `s` | `string` | base64 encoded string |
+| Name | Type |
+| :------ | :------ |
+| `s` | `string` |
 
 #### Returns
 
-`Base62Encoded`
-
-base62 encoded string
-
-**`Throws`**
-
-Error if the string is not a valid base64 encoded string
+[`Base62Encoded`](modules.md#base62encoded)
 
 ___
 
@@ -381,7 +607,7 @@ ___
 
 ▸ **compareBuffers**(`a`, `b`): `boolean`
 
-Compare buffers
+Simple comparison of buffers
 
 #### Parameters
 
@@ -396,79 +622,22 @@ Compare buffers
 
 ___
 
-### decodeB64Url
-
-▸ **decodeB64Url**(`input`): `string`
-
-Decode b64 URL
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `input` | `string` |
-
-#### Returns
-
-`string`
-
-___
-
-### encodeB64Url
-
-▸ **encodeB64Url**(`input`): `string`
-
-Encode into b64 URL
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `input` | `string` |
-
-#### Returns
-
-`string`
-
-___
-
-### encryptedContentsMakeBinary
-
-▸ **encryptedContentsMakeBinary**(`o`): [`EncryptedContentsBin`](interfaces/EncryptedContentsBin.md)
-
-Force EncryptedContents object to binary (interface
-supports either string or arrays). String contents
-implies base64 encoding.
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `o` | [`EncryptedContents`](interfaces/EncryptedContents.md) |
-
-#### Returns
-
-[`EncryptedContentsBin`](interfaces/EncryptedContentsBin.md)
-
-___
-
 ### extractPayload
 
-▸ **extractPayload**(`payload`): [`SBPayload`](interfaces/SBPayload.md)
+▸ **extractPayload**(`value`): `any`
 
 Extract payload - this decodes from our binary (wire) format
-to a JS object. This provides a binary encoding of any JSON,
-and it allows some elements of the JSON to be raw (binary).
+to a JS object. This supports a wide range of objects.
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `payload` | `ArrayBuffer` |
+| `value` | `ArrayBuffer` |
 
 #### Returns
 
-[`SBPayload`](interfaces/SBPayload.md)
+`any`
 
 ___
 
@@ -490,6 +659,27 @@ Fills buffer with random data
 
 ___
 
+### hydrateKey
+
+▸ **hydrateKey**(`privKey`, `pubKey?`): [`SBUserPrivateKey`](modules.md#sbuserprivatekey) \| `undefined`
+
+'hydrates' a key - if needed; if it's already good on hydration, just returns it.
+Providing pubKey (from other source) is optional so that you can use this function
+to easily confirm that a key is hydrated, it will return undefined if it's not.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `privKey` | `string` |
+| `pubKey?` | `string` |
+
+#### Returns
+
+[`SBUserPrivateKey`](modules.md#sbuserprivatekey) \| `undefined`
+
+___
+
 ### isBase62Encoded
 
 ▸ **isBase62Encoded**(`value`): value is Base62Encoded
@@ -498,7 +688,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `value` | `string` \| `Base62Encoded` |
+| `value` | `string` \| [`Base62Encoded`](modules.md#base62encoded) |
 
 #### Returns
 
@@ -506,36 +696,20 @@ value is Base62Encoded
 
 ___
 
-### isSBKey
+### jsonOrString
 
-▸ **isSBKey**(`key`): key is SBKey
+▸ **jsonOrString**(`str`): `any`
 
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `key` | `any` |
-
-#### Returns
-
-key is SBKey
-
-___
-
-### jsonParseWrapper
-
-▸ **jsonParseWrapper**(`str`, `loc?`): `any`
-
-There are many problems with JSON parsing, adding a resilient wrapper to capture more info.
-The 'loc' parameter should be a (unique) string that allows you to find the usage
-in the code; one approach is the line number in the file.
+Different version than jsonParseWrapper. Does not throw, and also checks for
+simple strings (which are not valid JSON) and would return those. Returns
+null if input is null, or it can't figure out what it is. Used in (low level)
+messaging contexts.
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `str` | ``null`` \| `string` |
-| `loc?` | `string` |
 
 #### Returns
 
@@ -543,19 +717,196 @@ in the code; one approach is the line number in the file.
 
 ___
 
-### partition
+### jsonParseWrapper
 
-▸ **partition**(`str`, `n`): `void`
+▸ **jsonParseWrapper**(`str`, `loc?`, `reviver?`): `any`
 
-Partition
+Adding a more resilient wrapper around JSON.parse. The 'loc' parameter is typically (file) line number.
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `str` | `string` |
-| `n` | `number` |
+| `str` | ``null`` \| `string` |
+| `loc?` | `string` |
+| `reviver?` | (`this`: `any`, `key`: `string`, `value`: `any`) => `any` |
+
+#### Returns
+
+`any`
+
+___
+
+### setDebugLevel
+
+▸ **setDebugLevel**(`dbg1`, `dbg2?`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `dbg1` | `boolean` |
+| `dbg2?` | `boolean` |
 
 #### Returns
 
 `void`
+
+___
+
+### stringify\_SBObjectHandle
+
+▸ **stringify_SBObjectHandle**(`h`): `Promise`\<[`SBObjectHandle`](interfaces/SBObjectHandle.md)\>
+
+In some circumstances we need to make sure we have a JSON serializable
+version of the object handle, eg that iv and salt are base62 strings,
+and that the verification has been resolved
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `h` | [`SBObjectHandle`](interfaces/SBObjectHandle.md) |
+
+#### Returns
+
+`Promise`\<[`SBObjectHandle`](interfaces/SBObjectHandle.md)\>
+
+___
+
+### stripChannelMessage
+
+▸ **stripChannelMessage**(`msg`, `serverMode?`): [`ChannelMessage`](interfaces/ChannelMessage.md)
+
+Complements validate_ChannelMessage. This is used to strip out the parts that
+are not strictly needed. Addresses privacy, security, and message size
+issues. Note that 'ChannelMessage' is a 'public' interface, in the sense that
+this is what is actually stored (as payload ArrayBuffers) at rest, both on
+servers and clients.
+
+'serverMode' is slightly more strict and used by server-side code.
+
+#### Parameters
+
+| Name | Type | Default value |
+| :------ | :------ | :------ |
+| `msg` | [`ChannelMessage`](interfaces/ChannelMessage.md) | `undefined` |
+| `serverMode` | `boolean` | `false` |
+
+#### Returns
+
+[`ChannelMessage`](interfaces/ChannelMessage.md)
+
+___
+
+### validate\_ChannelApiBody
+
+▸ **validate_ChannelApiBody**(`body`): [`ChannelApiBody`](interfaces/ChannelApiBody.md)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `body` | `any` |
+
+#### Returns
+
+[`ChannelApiBody`](interfaces/ChannelApiBody.md)
+
+___
+
+### validate\_ChannelMessage
+
+▸ **validate_ChannelMessage**(`body`): [`ChannelMessage`](interfaces/ChannelMessage.md)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `body` | [`ChannelMessage`](interfaces/ChannelMessage.md) |
+
+#### Returns
+
+[`ChannelMessage`](interfaces/ChannelMessage.md)
+
+___
+
+### validate\_Message
+
+▸ **validate_Message**(`data`): [`Message`](interfaces/Message.md)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `data` | [`Message`](interfaces/Message.md) |
+
+#### Returns
+
+[`Message`](interfaces/Message.md)
+
+___
+
+### validate\_SBChannelData
+
+▸ **validate_SBChannelData**(`data`): [`SBChannelData`](interfaces/SBChannelData.md)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `data` | `any` |
+
+#### Returns
+
+[`SBChannelData`](interfaces/SBChannelData.md)
+
+___
+
+### validate\_SBChannelHandle
+
+▸ **validate_SBChannelHandle**(`data`): [`SBChannelHandle`](interfaces/SBChannelHandle.md)
+
+Validates 'SBChannelHandle', throws if there's an issue
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `data` | [`SBChannelHandle`](interfaces/SBChannelHandle.md) |
+
+#### Returns
+
+[`SBChannelHandle`](interfaces/SBChannelHandle.md)
+
+___
+
+### validate\_SBObjectHandle
+
+▸ **validate_SBObjectHandle**(`h`): [`SBObjectHandle`](interfaces/SBObjectHandle.md)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `h` | [`SBObjectHandle`](interfaces/SBObjectHandle.md) |
+
+#### Returns
+
+[`SBObjectHandle`](interfaces/SBObjectHandle.md)
+
+___
+
+### validate\_SBStorageToken
+
+▸ **validate_SBStorageToken**(`data`): [`SBStorageToken`](interfaces/SBStorageToken.md)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `data` | [`SBStorageToken`](interfaces/SBStorageToken.md) |
+
+#### Returns
+
+[`SBStorageToken`](interfaces/SBStorageToken.md)

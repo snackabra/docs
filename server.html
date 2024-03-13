@@ -1,17 +1,17 @@
 <!doctype html>
-<html class="no-js" lang="en" data-content_root="./">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Python Library" href="pylib.html" /><link rel="prev" title="JSLib Reference Manual" href="modules.html" />
 
-    <!-- Generated with Sphinx 7.2.6 and Furo 2023.09.10 -->
+    <!-- Generated with Sphinx 5.3.0 and Furo 2023.03.27 -->
         <title>Snackabra Server - snackabra 1.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=135e06be" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=36a5483c" />
-    <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=7a5cf5c2" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
     
     
 
@@ -211,9 +211,9 @@
         </div>
         <article role="main">
           <section id="snackabra-server">
-<h1>Snackabra Server<a class="headerlink" href="#snackabra-server" title="Link to this heading">#</a></h1>
+<h1>Snackabra Server<a class="headerlink" href="#snackabra-server" title="Permalink to this heading">#</a></h1>
 <section id="server-development">
-<h2>Server Development<a class="headerlink" href="#server-development" title="Link to this heading">#</a></h2>
+<h2>Server Development<a class="headerlink" href="#server-development" title="Permalink to this heading">#</a></h2>
 <p>The sdk supports Deno, Miniflare, Cloudflare, and Workerd.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">yarn</span> <span class="n">install</span>
 </pre></div>
@@ -230,7 +230,7 @@ that’s included.</p>
 </pre></div>
 </div>
 <section id="ledger-key">
-<h3>Ledger Key<a class="headerlink" href="#ledger-key" title="Link to this heading">#</a></h3>
+<h3>Ledger Key<a class="headerlink" href="#ledger-key" title="Permalink to this heading">#</a></h3>
 <p>Some of the setups below will require a “LEDGER_KEY” (an RSA-OAEP key,
 in ‘jwk’ format). You will need to generate that and copy-paste where instructed.</p>
 <p>If you are running Node v15 or higher the mint_keys.js
@@ -271,7 +271,7 @@ as needed in the below instructions (nota bene: the public key) - eg it’ll go 
 file for local environments, or put into a server secrets manager, etc.</p>
 </section>
 <section id="webclient">
-<h3>Webclient<a class="headerlink" href="#webclient" title="Link to this heading">#</a></h3>
+<h3>Webclient<a class="headerlink" href="#webclient" title="Permalink to this heading">#</a></h3>
 <p>If you want to connect an app like ‘’snackabra-webclient’’ to the servers you spin
 up per the below instructions, make sure to direct them to your ‘’localhost’’.
 For example for webclient you currently need the following in ‘’.env’’ (see the
@@ -282,7 +282,7 @@ webclient README for details):</p>
 </pre></div>
 </div>
 <section id="install-miniflare">
-<h4>Install (miniflare)<a class="headerlink" href="#install-miniflare" title="Link to this heading">#</a></h4>
+<h4>Install (miniflare)<a class="headerlink" href="#install-miniflare" title="Permalink to this heading">#</a></h4>
 <p>For details see <a class="reference external" href="https://miniflare.dev/">https://miniflare.dev/</a></p>
 <p>Setup is similar as to the full-fledged Cloudflare setup (below):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># copy the template &#39;toml&#39; file for miniflare</span>
@@ -299,11 +299,11 @@ that includes it.</p>
 <p>It should fire up on ‘’<a class="reference external" href="http://127.0.0.1:4000">http://127.0.0.1:4000</a>’’ and ‘’ws://127.0.0.1:4000’’.</p>
 </section>
 <section id="install-deno">
-<h4>Install (deno)<a class="headerlink" href="#install-deno" title="Link to this heading">#</a></h4>
+<h4>Install (deno)<a class="headerlink" href="#install-deno" title="Permalink to this heading">#</a></h4>
 <p>TODO.</p>
 </section>
 <section id="install-workerd">
-<h4>Install (workerd)<a class="headerlink" href="#install-workerd" title="Link to this heading">#</a></h4>
+<h4>Install (workerd)<a class="headerlink" href="#install-workerd" title="Permalink to this heading">#</a></h4>
 <p>_(as of 2/8/2023, on Mac M1.  this is only partiallly working,
 so it is paused for the moment.  we can either dig in deep,
 or wait for either an update and more documentation from
@@ -350,7 +350,7 @@ git pull</p>
 </section>
 </section>
 <section id="build-and-run-workerd">
-<h3>Build and Run (workerd)<a class="headerlink" href="#build-and-run-workerd" title="Link to this heading">#</a></h3>
+<h3>Build and Run (workerd)<a class="headerlink" href="#build-and-run-workerd" title="Permalink to this heading">#</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># open two terminals</span>
 
 <span class="c1"># terminal 1:</span>
@@ -364,13 +364,13 @@ git pull</p>
 </div>
 </section>
 <section id="compile-workerd">
-<h3>Compile (workerd)<a class="headerlink" href="#compile-workerd" title="Link to this heading">#</a></h3>
+<h3>Compile (workerd)<a class="headerlink" href="#compile-workerd" title="Permalink to this heading">#</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~/</span><span class="n">dev</span><span class="o">/</span><span class="n">sdk</span><span class="o">-</span><span class="n">dev</span>
 <span class="n">yarn</span> <span class="n">build</span>
 </pre></div>
 </div>
 <section id="install-cloudflare">
-<h4>Install (Cloudflare)<a class="headerlink" href="#install-cloudflare" title="Link to this heading">#</a></h4>
+<h4>Install (Cloudflare)<a class="headerlink" href="#install-cloudflare" title="Permalink to this heading">#</a></h4>
 <p>The current room server requires a domain name and a Cloudflare (CF)
 account. Currently, a free CF account is _almost_ sufficient, but
 “durable objects” are not available yet on the free plans, so that
@@ -527,9 +527,12 @@ room, or migrate a room over from somewhere else.</p>
       
     </aside>
   </div>
-</div><script src="_static/documentation_options.js?v=f2a433a1"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/scripts/furo.js?v=32e29ea5"></script>
+</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/scripts/furo.js"></script>
     </body>
 </html>

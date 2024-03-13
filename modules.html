@@ -1,17 +1,17 @@
 <!doctype html>
-<html class="no-js" lang="en" data-content_root="./">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Snackabra Server" href="server.html" /><link rel="prev" title="JSLib User Manual" href="jslib.html" />
 
-    <!-- Generated with Sphinx 7.2.6 and Furo 2023.09.10 -->
+    <!-- Generated with Sphinx 5.3.0 and Furo 2023.03.27 -->
         <title>JSLib Reference Manual - snackabra 1.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=135e06be" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=36a5483c" />
-    <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=7a5cf5c2" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
     
     
 
@@ -212,158 +212,224 @@
         <article role="main">
           <p><a class="reference internal" href="README.html"><span class="std std-doc">JSLib Reference Manual</span></a> / Exports</p>
 <section id="jslib-reference-manual">
-<h1>JSLib Reference Manual<a class="headerlink" href="#jslib-reference-manual" title="Link to this heading">#</a></h1>
+<h1>JSLib Reference Manual<a class="headerlink" href="#jslib-reference-manual" title="Permalink to this heading">#</a></h1>
 <section id="table-of-contents">
-<h2>Table of contents<a class="headerlink" href="#table-of-contents" title="Link to this heading">#</a></h2>
-<section id="namespaces">
-<h3>Namespaces<a class="headerlink" href="#namespaces" title="Link to this heading">#</a></h3>
+<h2>Table of contents<a class="headerlink" href="#table-of-contents" title="Permalink to this heading">#</a></h2>
+<section id="enumerations">
+<h3>Enumerations<a class="headerlink" href="#enumerations" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
-<li><p><a class="reference internal" href="#modules/Interfaces.md"><span class="xref myst">Interfaces</span></a></p></li>
+<li><p><a class="reference internal" href="#enums/KeyPrefix.md"><span class="xref myst">KeyPrefix</span></a></p></li>
 </ul>
 </section>
 <section id="classes">
-<h3>Classes<a class="headerlink" href="#classes" title="Link to this heading">#</a></h3>
+<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference internal" href="classes/Channel.html"><span class="std std-doc">Channel</span></a></p></li>
 <li><p><a class="reference internal" href="classes/ChannelSocket.html"><span class="std std-doc">ChannelSocket</span></a></p></li>
 <li><p><a class="reference internal" href="classes/MessageBus.html"><span class="std std-doc">MessageBus</span></a></p></li>
+<li><p><a class="reference internal" href="classes/MessageQueue.html"><span class="std std-doc">MessageQueue</span></a></p></li>
+<li><p><a class="reference internal" href="classes/Protocol_AES_GCM_256.html"><span class="std std-doc">Protocol_AES_GCM_256</span></a></p></li>
+<li><p><a class="reference internal" href="classes/Protocol_ECDH.html"><span class="std std-doc">Protocol_ECDH</span></a></p></li>
 <li><p><a class="reference internal" href="classes/SB384.html"><span class="std std-doc">SB384</span></a></p></li>
+<li><p><a class="reference internal" href="classes/SBChannelKeys.html"><span class="std std-doc">SBChannelKeys</span></a></p></li>
 <li><p><a class="reference internal" href="classes/SBCrypto.html"><span class="std std-doc">SBCrypto</span></a></p></li>
-<li><p><a class="reference internal" href="classes/SBMessage.html"><span class="std std-doc">SBMessage</span></a></p></li>
-<li><p><a class="reference internal" href="classes/SBObjectHandle.html"><span class="std std-doc">SBObjectHandle</span></a></p></li>
+<li><p><a class="reference internal" href="classes/SBError.html"><span class="std std-doc">SBError</span></a></p></li>
 <li><p><a class="reference internal" href="classes/Snackabra.html"><span class="std std-doc">Snackabra</span></a></p></li>
+<li><p><a class="reference internal" href="classes/StorageApi.html"><span class="std std-doc">StorageApi</span></a></p></li>
 </ul>
 </section>
 <section id="interfaces">
-<h3>Interfaces<a class="headerlink" href="#interfaces" title="Link to this heading">#</a></h3>
+<h3>Interfaces<a class="headerlink" href="#interfaces" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference internal" href="interfaces/ChannelAdminData.html"><span class="std std-doc">ChannelAdminData</span></a></p></li>
-<li><p><a class="reference internal" href="interfaces/ChannelData.html"><span class="std std-doc">ChannelData</span></a></p></li>
-<li><p><a class="reference internal" href="interfaces/ChannelKeyStrings.html"><span class="std std-doc">ChannelKeyStrings</span></a></p></li>
-<li><p><a class="reference internal" href="interfaces/ChannelKeys.html"><span class="std std-doc">ChannelKeys</span></a></p></li>
+<li><p><a class="reference internal" href="interfaces/ChannelApiBody.html"><span class="std std-doc">ChannelApiBody</span></a></p></li>
 <li><p><a class="reference internal" href="interfaces/ChannelMessage.html"><span class="std std-doc">ChannelMessage</span></a></p></li>
-<li><p><a class="reference internal" href="interfaces/EncryptedContents.html"><span class="std std-doc">EncryptedContents</span></a></p></li>
-<li><p><a class="reference internal" href="interfaces/EncryptedContentsBin.html"><span class="std std-doc">EncryptedContentsBin</span></a></p></li>
-<li><p><a class="reference internal" href="interfaces/ImageMetaData.html"><span class="std std-doc">ImageMetaData</span></a></p></li>
+<li><p><a class="reference internal" href="interfaces/EncryptParams.html"><span class="std std-doc">EncryptParams</span></a></p></li>
+<li><p><a class="reference internal" href="interfaces/Message.html"><span class="std std-doc">Message</span></a></p></li>
+<li><p><a class="reference internal" href="interfaces/MessageHistory.html"><span class="std std-doc">MessageHistory</span></a></p></li>
+<li><p><a class="reference internal" href="interfaces/MessageHistoryDirectory.html"><span class="std std-doc">MessageHistoryDirectory</span></a></p></li>
+<li><p><a class="reference internal" href="interfaces/MessageHistoryEntry.html"><span class="std std-doc">MessageHistoryEntry</span></a></p></li>
+<li><p><a class="reference internal" href="interfaces/MessageOptions.html"><span class="std std-doc">MessageOptions</span></a></p></li>
+<li><p><a class="reference internal" href="interfaces/Protocol_KeyInfo.html"><span class="std std-doc">Protocol_KeyInfo</span></a></p></li>
+<li><p><a class="reference internal" href="interfaces/SBChannelData.html"><span class="std std-doc">SBChannelData</span></a></p></li>
 <li><p><a class="reference internal" href="interfaces/SBChannelHandle.html"><span class="std std-doc">SBChannelHandle</span></a></p></li>
-<li><p><a class="reference internal" href="interfaces/SBPayload.html"><span class="std std-doc">SBPayload</span></a></p></li>
-<li><p><a class="reference internal" href="interfaces/SBServer.html"><span class="std std-doc">SBServer</span></a></p></li>
+<li><p><a class="reference internal" href="interfaces/SBObjectHandle.html"><span class="std std-doc">SBObjectHandle</span></a></p></li>
+<li><p><a class="reference internal" href="interfaces/SBProtocol.html"><span class="std std-doc">SBProtocol</span></a></p></li>
+<li><p><a class="reference internal" href="interfaces/SBStorageToken.html"><span class="std std-doc">SBStorageToken</span></a></p></li>
+<li><p><a class="reference internal" href="interfaces/Shard.html"><span class="std std-doc">Shard</span></a></p></li>
 </ul>
 </section>
 <section id="type-aliases">
-<h3>Type Aliases<a class="headerlink" href="#type-aliases" title="Link to this heading">#</a></h3>
+<h3>Type Aliases<a class="headerlink" href="#type-aliases" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
-<li><p><a class="reference internal" href="#channelmessagetypes"><span class="std std-ref">ChannelMessageTypes</span></a></p></li>
+<li><p><a class="reference internal" href="#base62encoded"><span class="std std-ref">Base62Encoded</span></a></p></li>
+<li><p><a class="reference internal" href="#messagettl"><span class="std std-ref">MessageTtl</span></a></p></li>
 <li><p><a class="reference internal" href="#sb384hash"><span class="std std-ref">SB384Hash</span></a></p></li>
 <li><p><a class="reference internal" href="#sbchannelid"><span class="std std-ref">SBChannelId</span></a></p></li>
-<li><p><a class="reference internal" href="#sbkey"><span class="std std-ref">SBKey</span></a></p></li>
 <li><p><a class="reference internal" href="#sbobjecthandleversions"><span class="std std-ref">SBObjectHandleVersions</span></a></p></li>
-<li><p><a class="reference internal" href="#sbobjecttype"><span class="std std-ref">SBObjectType</span></a></p></li>
+<li><p><a class="reference internal" href="#sbstoragetokenhash"><span class="std std-ref">SBStorageTokenHash</span></a></p></li>
 <li><p><a class="reference internal" href="#sbuserid"><span class="std std-ref">SBUserId</span></a></p></li>
-<li><p><a class="reference internal" href="#sbuserkey"><span class="std std-ref">SBUserKey</span></a></p></li>
-<li><p><a class="reference internal" href="#sbuserkeystring"><span class="std std-ref">SBUserKeyString</span></a></p></li>
+<li><p><a class="reference internal" href="#sbuserprivatekey"><span class="std std-ref">SBUserPrivateKey</span></a></p></li>
+<li><p><a class="reference internal" href="#sbuserpublickey"><span class="std std-ref">SBUserPublicKey</span></a></p></li>
 </ul>
 </section>
 <section id="variables">
-<h3>Variables<a class="headerlink" href="#variables" title="Link to this heading">#</a></h3>
+<h3>Variables<a class="headerlink" href="#variables" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
+<li><p><a class="reference internal" href="#new_channel_minimum_budget"><span class="std std-ref">NEW_CHANNEL_MINIMUM_BUDGET</span></a></p></li>
 <li><p><a class="reference internal" href="#sb"><span class="std std-ref">SB</span></a></p></li>
+<li><p><a class="reference internal" href="#sbstoragetokenprefix"><span class="std std-ref">SBStorageTokenPrefix</span></a></p></li>
+<li><p><a class="reference internal" href="#b62regex"><span class="std std-ref">b62regex</span></a></p></li>
+<li><p><a class="reference internal" href="#base62"><span class="std std-ref">base62</span></a></p></li>
+<li><p><a class="reference internal" href="#base62regex"><span class="std std-ref">base62regex</span></a></p></li>
+<li><p><a class="reference internal" href="#base64url"><span class="std std-ref">base64url</span></a></p></li>
+<li><p><a class="reference internal" href="#msgttltoseconds"><span class="std std-ref">msgTtlToSeconds</span></a></p></li>
+<li><p><a class="reference internal" href="#msgttltostring"><span class="std std-ref">msgTtlToString</span></a></p></li>
 <li><p><a class="reference internal" href="#sbcrypto"><span class="std std-ref">sbCrypto</span></a></p></li>
 <li><p><a class="reference internal" href="#version"><span class="std std-ref">version</span></a></p></li>
 </ul>
 </section>
 <section id="functions">
-<h3>Functions<a class="headerlink" href="#functions" title="Link to this heading">#</a></h3>
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
-<li><p><a class="reference internal" href="#arraybuffer32tobase62"><span class="std std-ref">arrayBuffer32ToBase62</span></a></p></li>
+<li><p><a class="reference internal" href="#memoize"><span class="std std-ref">Memoize</span></a></p></li>
+<li><p><a class="reference internal" href="#ready"><span class="std std-ref">Ready</span></a></p></li>
+<li><p><a class="reference internal" href="#sbapifetch"><span class="std std-ref">SBApiFetch</span></a></p></li>
+<li><p><a class="reference internal" href="#_check_sbchanneldata"><span class="std std-ref">_check_SBChannelData</span></a></p></li>
+<li><p><a class="reference internal" href="#_check_sbchannelhandle"><span class="std std-ref">_check_SBChannelHandle</span></a></p></li>
+<li><p><a class="reference internal" href="#_check_sbobjecthandle"><span class="std std-ref">_check_SBObjectHandle</span></a></p></li>
+<li><p><a class="reference internal" href="#_check_sbstoragetoken"><span class="std std-ref">_check_SBStorageToken</span></a></p></li>
 <li><p><a class="reference internal" href="#arraybuffertobase62"><span class="std std-ref">arrayBufferToBase62</span></a></p></li>
-<li><p><a class="reference internal" href="#arraybuffertobase64"><span class="std std-ref">arrayBufferToBase64</span></a></p></li>
+<li><p><a class="reference internal" href="#arraybuffertobase64url"><span class="std std-ref">arrayBufferToBase64url</span></a></p></li>
 <li><p><a class="reference internal" href="#assemblepayload"><span class="std std-ref">assemblePayload</span></a></p></li>
+<li><p><a class="reference internal" href="#b32decode"><span class="std std-ref">b32decode</span></a></p></li>
+<li><p><a class="reference internal" href="#b32encode"><span class="std std-ref">b32encode</span></a></p></li>
+<li><p><a class="reference internal" href="#b32process"><span class="std std-ref">b32process</span></a></p></li>
 <li><p><a class="reference internal" href="#base62toarraybuffer"><span class="std std-ref">base62ToArrayBuffer</span></a></p></li>
-<li><p><a class="reference internal" href="#base62toarraybuffer32"><span class="std std-ref">base62ToArrayBuffer32</span></a></p></li>
 <li><p><a class="reference internal" href="#base62tobase64"><span class="std std-ref">base62ToBase64</span></a></p></li>
 <li><p><a class="reference internal" href="#base64toarraybuffer"><span class="std std-ref">base64ToArrayBuffer</span></a></p></li>
 <li><p><a class="reference internal" href="#base64tobase62"><span class="std std-ref">base64ToBase62</span></a></p></li>
 <li><p><a class="reference internal" href="#comparebuffers"><span class="std std-ref">compareBuffers</span></a></p></li>
-<li><p><a class="reference internal" href="#decodeb64url"><span class="std std-ref">decodeB64Url</span></a></p></li>
-<li><p><a class="reference internal" href="#encodeb64url"><span class="std std-ref">encodeB64Url</span></a></p></li>
-<li><p><a class="reference internal" href="#encryptedcontentsmakebinary"><span class="std std-ref">encryptedContentsMakeBinary</span></a></p></li>
 <li><p><a class="reference internal" href="#extractpayload"><span class="std std-ref">extractPayload</span></a></p></li>
 <li><p><a class="reference internal" href="#getrandomvalues"><span class="std std-ref">getRandomValues</span></a></p></li>
+<li><p><a class="reference internal" href="#hydratekey"><span class="std std-ref">hydrateKey</span></a></p></li>
 <li><p><a class="reference internal" href="#isbase62encoded"><span class="std std-ref">isBase62Encoded</span></a></p></li>
-<li><p><a class="reference internal" href="#issbkey"><span class="std std-ref">isSBKey</span></a></p></li>
+<li><p><a class="reference internal" href="#jsonorstring"><span class="std std-ref">jsonOrString</span></a></p></li>
 <li><p><a class="reference internal" href="#jsonparsewrapper"><span class="std std-ref">jsonParseWrapper</span></a></p></li>
-<li><p><a class="reference internal" href="#partition"><span class="std std-ref">partition</span></a></p></li>
+<li><p><a class="reference internal" href="#setdebuglevel"><span class="std std-ref">setDebugLevel</span></a></p></li>
+<li><p><a class="reference internal" href="#stringify_sbobjecthandle"><span class="std std-ref">stringify_SBObjectHandle</span></a></p></li>
+<li><p><a class="reference internal" href="#stripchannelmessage"><span class="std std-ref">stripChannelMessage</span></a></p></li>
+<li><p><a class="reference internal" href="#validate_channelapibody"><span class="std std-ref">validate_ChannelApiBody</span></a></p></li>
+<li><p><a class="reference internal" href="#validate_channelmessage"><span class="std std-ref">validate_ChannelMessage</span></a></p></li>
+<li><p><a class="reference internal" href="#validate_message"><span class="std std-ref">validate_Message</span></a></p></li>
+<li><p><a class="reference internal" href="#validate_sbchanneldata"><span class="std std-ref">validate_SBChannelData</span></a></p></li>
+<li><p><a class="reference internal" href="#validate_sbchannelhandle"><span class="std std-ref">validate_SBChannelHandle</span></a></p></li>
+<li><p><a class="reference internal" href="#validate_sbobjecthandle"><span class="std std-ref">validate_SBObjectHandle</span></a></p></li>
+<li><p><a class="reference internal" href="#validate_sbstoragetoken"><span class="std std-ref">validate_SBStorageToken</span></a></p></li>
 </ul>
 </section>
 </section>
 <section id="id1">
-<h2>Type Aliases<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<section id="channelmessagetypes">
-<h3>ChannelMessageTypes<a class="headerlink" href="#channelmessagetypes" title="Link to this heading">#</a></h3>
-<p>Ƭ <strong>ChannelMessageTypes</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;ack&quot;</span></code> | <code class="docutils literal notranslate"><span class="pre">&quot;keys&quot;</span></code> | <code class="docutils literal notranslate"><span class="pre">&quot;invalid&quot;</span></code> | <code class="docutils literal notranslate"><span class="pre">&quot;ready&quot;</span></code> | <code class="docutils literal notranslate"><span class="pre">&quot;encrypted&quot;</span></code></p>
+<h2>Type Aliases<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<section id="base62encoded">
+<h3>Base62Encoded<a class="headerlink" href="#base62encoded" title="Permalink to this heading">#</a></h3>
+<p>Ƭ <strong>Base62Encoded</strong>: <code class="docutils literal notranslate"><span class="pre">string</span></code> &amp; { <code class="docutils literal notranslate"><span class="pre">_brand?</span></code>: <code class="docutils literal notranslate"><span class="pre">&quot;Base62Encoded&quot;</span></code>  }</p>
+<hr class="docutils" />
+</section>
+<hr class="docutils" />
+<section id="messagettl">
+<h3>MessageTtl<a class="headerlink" href="#messagettl" title="Permalink to this heading">#</a></h3>
+<p>Ƭ <strong>MessageTtl</strong>: <code class="docutils literal notranslate"><span class="pre">0</span></code> | <code class="docutils literal notranslate"><span class="pre">3</span></code> | <code class="docutils literal notranslate"><span class="pre">4</span></code> | <code class="docutils literal notranslate"><span class="pre">5</span></code> | <code class="docutils literal notranslate"><span class="pre">6</span></code> | <code class="docutils literal notranslate"><span class="pre">7</span></code> | <code class="docutils literal notranslate"><span class="pre">8</span></code> | <code class="docutils literal notranslate"><span class="pre">15</span></code></p>
+<p>Index/number of seconds/string description of TTL values (0-15) for
+messages.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>    #    Seconds  Description
+    0          0  Ephemeral (not stored)
+    1             &lt;reserved&gt;
+    2             &lt;reserved&gt;
+    3         60  One minute (current minimum)
+    4        300  Five minutes
+    5       1800  Thirty minutes
+    6      14400  Four hours
+    7     129600  36 hours
+    8     864000  Ten days
+   10             &lt;reserved&gt; (all &#39;reserved&#39; future choices will be monotonically increasing)
+   11             &lt;reserved&gt;
+   12             &lt;reserved&gt;
+   13             &lt;reserved&gt;
+   14             &lt;reserved&gt;
+   15   Infinity  Permastore, this is the default.
+</pre></div>
+</div>
+<p>Note that time periods above ‘8’ (10 days) is largely TBD pending
+finalization of what the storage server will prefer. As far as messages
+are concerned, anything above ‘8’ is ‘very long’.</p>
+<p>A few rules around messages and TTL (this list is not exhaustive):</p>
+<ul class="simple">
+<li><p>Currently only values 0, 3-8, and 15 are valid (15 is default).</p></li>
+<li><p>Routable messages (eg messages with a ‘to’ field) may not have ttl above ‘8’.</p></li>
+<li><p>TTL messages are never in storage shards; channel servers can chose to
+limit how many they will keep (on a per TTL category basis) regardless
+of time value (but at least last 1000).</p></li>
+<li><p>TTL messages are duplicated and available on ‘main’ channel (‘i2’)
+‘____’ as well as on subchannels ‘___3’, ‘___4’, up to ‘___8’.</p></li>
+</ul>
+<p>It’s valid to encode it as four bits.</p>
 </section>
 <hr class="docutils" />
 <section id="sb384hash">
-<h3>SB384Hash<a class="headerlink" href="#sb384hash" title="Link to this heading">#</a></h3>
+<h3>SB384Hash<a class="headerlink" href="#sb384hash" title="Permalink to this heading">#</a></h3>
 <p>Ƭ <strong>SB384Hash</strong>: <code class="docutils literal notranslate"><span class="pre">string</span></code></p>
 </section>
 <hr class="docutils" />
 <section id="sbchannelid">
-<h3>SBChannelId<a class="headerlink" href="#sbchannelid" title="Link to this heading">#</a></h3>
+<h3>SBChannelId<a class="headerlink" href="#sbchannelid" title="Permalink to this heading">#</a></h3>
 <p>Ƭ <strong>SBChannelId</strong>: <a class="reference internal" href="#sb384hash"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">SB384Hash</span></code></span></a></p>
 </section>
 <hr class="docutils" />
-<section id="sbkey">
-<h3>SBKey<a class="headerlink" href="#sbkey" title="Link to this heading">#</a></h3>
-<p>Ƭ <strong>SBKey</strong>: <code class="docutils literal notranslate"><span class="pre">SBAES256Key</span></code> | <code class="docutils literal notranslate"><span class="pre">SBPrivateKey</span></code> | <code class="docutils literal notranslate"><span class="pre">SBPublicKey</span></code></p>
-</section>
-<hr class="docutils" />
 <section id="sbobjecthandleversions">
-<h3>SBObjectHandleVersions<a class="headerlink" href="#sbobjecthandleversions" title="Link to this heading">#</a></h3>
-<p>Ƭ <strong>SBObjectHandleVersions</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;1&quot;</span></code> | <code class="docutils literal notranslate"><span class="pre">&quot;2&quot;</span></code></p>
+<h3>SBObjectHandleVersions<a class="headerlink" href="#sbobjecthandleversions" title="Permalink to this heading">#</a></h3>
+<p>Ƭ <strong>SBObjectHandleVersions</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;1&quot;</span></code> | <code class="docutils literal notranslate"><span class="pre">&quot;2&quot;</span></code> | <code class="docutils literal notranslate"><span class="pre">&quot;3&quot;</span></code></p>
 </section>
 <hr class="docutils" />
-<section id="sbobjecttype">
-<h3>SBObjectType<a class="headerlink" href="#sbobjecttype" title="Link to this heading">#</a></h3>
-<p>Ƭ <strong>SBObjectType</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;f&quot;</span></code> | <code class="docutils literal notranslate"><span class="pre">&quot;p&quot;</span></code> | <code class="docutils literal notranslate"><span class="pre">&quot;b&quot;</span></code> | <code class="docutils literal notranslate"><span class="pre">&quot;t&quot;</span></code></p>
-<p>SBObjectType</p>
-<p>SBObjectType is a single character string that indicates the
-type of object. Currently, the following types are supported:</p>
-<ul class="simple">
-<li><p>‘f’ : full object (e.g. image, this is the most common)</p></li>
-<li><p>‘p’ : preview object (e.g. thumbnail)</p></li>
-<li><p>‘b’ : block/binary object (e.g. 64KB block)</p></li>
-<li><p>‘t’ : test object (for testing purposes)</p></li>
-</ul>
-<p>The ‘t’ type is used for testing purposes, and you should
-not expect it to have any particular SLA or longevity.</p>
-<p>Note that when you retrieve any object, you must have the
-matching object type.</p>
+<section id="sbstoragetokenhash">
+<h3>SBStorageTokenHash<a class="headerlink" href="#sbstoragetokenhash" title="Permalink to this heading">#</a></h3>
+<p>Ƭ <strong>SBStorageTokenHash</strong>: <code class="docutils literal notranslate"><span class="pre">string</span></code></p>
+<p>This is whatever token system the channel server uses.</p>
+<p>For example with ‘channel-server’, you could command-line bootstrap with
+something like:</p>
+<p>‘’’bash
+wrangler kv:key put –preview false –binding=LEDGER_NAMESPACE “zzR5Ljv8LlYjgOnO5yOr4Gtgr9yVS7dTAQkJeVQ4I7w” ‘{“used”:false,”size”:33554432}’</p>
 </section>
 <hr class="docutils" />
 <section id="sbuserid">
-<h3>SBUserId<a class="headerlink" href="#sbuserid" title="Link to this heading">#</a></h3>
-<p>Ƭ <strong>SBUserId</strong>: <code class="docutils literal notranslate"><span class="pre">string</span></code></p>
+<h3>SBUserId<a class="headerlink" href="#sbuserid" title="Permalink to this heading">#</a></h3>
+<p>Ƭ <strong>SBUserId</strong>: <a class="reference internal" href="#sb384hash"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">SB384Hash</span></code></span></a></p>
+<p>The three encodings of a ‘user’</p>
 </section>
 <hr class="docutils" />
-<section id="sbuserkey">
-<h3>SBUserKey<a class="headerlink" href="#sbuserkey" title="Link to this heading">#</a></h3>
-<p>Ƭ <strong>SBUserKey</strong>: <code class="docutils literal notranslate"><span class="pre">SBPrivateKey</span></code> | <code class="docutils literal notranslate"><span class="pre">SBPublicKey</span></code></p>
+<section id="sbuserprivatekey">
+<h3>SBUserPrivateKey<a class="headerlink" href="#sbuserprivatekey" title="Permalink to this heading">#</a></h3>
+<p>Ƭ <strong>SBUserPrivateKey</strong>: <code class="docutils literal notranslate"><span class="pre">string</span></code></p>
 </section>
 <hr class="docutils" />
-<section id="sbuserkeystring">
-<h3>SBUserKeyString<a class="headerlink" href="#sbuserkeystring" title="Link to this heading">#</a></h3>
-<p>Ƭ <strong>SBUserKeyString</strong>: <code class="docutils literal notranslate"><span class="pre">string</span></code></p>
+<section id="sbuserpublickey">
+<h3>SBUserPublicKey<a class="headerlink" href="#sbuserpublickey" title="Permalink to this heading">#</a></h3>
+<p>Ƭ <strong>SBUserPublicKey</strong>: <code class="docutils literal notranslate"><span class="pre">string</span></code></p>
 </section>
 </section>
 <section id="id2">
-<h2>Variables<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<h2>Variables<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<section id="new-channel-minimum-budget">
+<h3>NEW_CHANNEL_MINIMUM_BUDGET<a class="headerlink" href="#new-channel-minimum-budget" title="Permalink to this heading">#</a></h3>
+<p>• <code class="docutils literal notranslate"><span class="pre">Const</span></code> <strong>NEW_CHANNEL_MINIMUM_BUDGET</strong>: <code class="docutils literal notranslate"><span class="pre">number</span></code></p>
+<hr class="docutils" />
+</section>
+<hr class="docutils" />
 <section id="sb">
-<h3>SB<a class="headerlink" href="#sb" title="Link to this heading">#</a></h3>
+<h3>SB<a class="headerlink" href="#sb" title="Permalink to this heading">#</a></h3>
 <p>• <strong>SB</strong>: <code class="docutils literal notranslate"><span class="pre">Object</span></code></p>
 <section id="type-declaration">
-<h4>Type declaration<a class="headerlink" href="#type-declaration" title="Link to this heading">#</a></h4>
+<h4>Type declaration<a class="headerlink" href="#type-declaration" title="Permalink to this heading">#</a></h4>
 <div class="table-wrapper colwidths-auto docutils container">
 <table class="docutils align-default">
 <thead>
@@ -381,19 +447,28 @@ matching object type.</p>
 <tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">SBCrypto</span></code></p></td>
 <td class="text-left"><p>typeof <a class="reference internal" href="classes/SBCrypto.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">SBCrypto</span></code></span></a></p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">SBMessage</span></code></p></td>
-<td class="text-left"><p>typeof <a class="reference internal" href="classes/SBMessage.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">SBMessage</span></code></span></a></p></td>
-</tr>
-<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">Snackabra</span></code></p></td>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">Snackabra</span></code></p></td>
 <td class="text-left"><p>typeof <a class="reference internal" href="classes/Snackabra.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">Snackabra</span></code></span></a></p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">arrayBufferToBase64</span></code></p></td>
-<td class="text-left"><p>(<code class="docutils literal notranslate"><span class="pre">buffer</span></code>: <code class="docutils literal notranslate"><span class="pre">null</span></code> | <code class="docutils literal notranslate"><span class="pre">ArrayBuffer</span></code> | <code class="docutils literal notranslate"><span class="pre">Uint8Array</span></code>, <code class="docutils literal notranslate"><span class="pre">variant</span></code>: <code class="docutils literal notranslate"><span class="pre">&quot;url&quot;</span></code> | <code class="docutils literal notranslate"><span class="pre">&quot;b64&quot;</span></code>) =&gt; <code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">arrayBufferToBase62</span></code></p></td>
+<td class="text-left"><p>(<code class="docutils literal notranslate"><span class="pre">buffer</span></code>: <code class="docutils literal notranslate"><span class="pre">ArrayBuffer</span></code> | <code class="docutils literal notranslate"><span class="pre">Uint8Array</span></code>) =&gt; <code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">arrayBufferToBase64url</span></code></p></td>
+<td class="text-left"><p>(<code class="docutils literal notranslate"><span class="pre">buffer</span></code>: <code class="docutils literal notranslate"><span class="pre">ArrayBuffer</span></code> | <code class="docutils literal notranslate"><span class="pre">Uint8Array</span></code>) =&gt; <code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">base62ToArrayBuffer</span></code></p></td>
+<td class="text-left"><p>(<code class="docutils literal notranslate"><span class="pre">s</span></code>: <code class="docutils literal notranslate"><span class="pre">string</span></code>) =&gt; <code class="docutils literal notranslate"><span class="pre">ArrayBuffer</span></code></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">base64ToArrayBuffer</span></code></p></td>
+<td class="text-left"><p>(<code class="docutils literal notranslate"><span class="pre">s</span></code>: <code class="docutils literal notranslate"><span class="pre">string</span></code>) =&gt; <code class="docutils literal notranslate"><span class="pre">Uint8Array</span></code></p></td>
 </tr>
 <tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">sbCrypto</span></code></p></td>
 <td class="text-left"><p><a class="reference internal" href="classes/SBCrypto.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">SBCrypto</span></code></span></a></p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">version</span></code></p></td>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">setDebugLevel</span></code></p></td>
+<td class="text-left"><p>(<code class="docutils literal notranslate"><span class="pre">dbg1</span></code>: <code class="docutils literal notranslate"><span class="pre">boolean</span></code>, <code class="docutils literal notranslate"><span class="pre">dbg2?</span></code>: <code class="docutils literal notranslate"><span class="pre">boolean</span></code>) =&gt; <code class="docutils literal notranslate"><span class="pre">void</span></code></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">version</span></code></p></td>
 <td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
 </tr>
 </tbody>
@@ -402,8 +477,43 @@ matching object type.</p>
 </section>
 </section>
 <hr class="docutils" />
+<section id="sbstoragetokenprefix">
+<h3>SBStorageTokenPrefix<a class="headerlink" href="#sbstoragetokenprefix" title="Permalink to this heading">#</a></h3>
+<p>• <code class="docutils literal notranslate"><span class="pre">Const</span></code> <strong>SBStorageTokenPrefix</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;LM2r&quot;</span></code></p>
+</section>
+<hr class="docutils" />
+<section id="b62regex">
+<h3>b62regex<a class="headerlink" href="#b62regex" title="Permalink to this heading">#</a></h3>
+<p>• <code class="docutils literal notranslate"><span class="pre">Const</span></code> <strong>b62regex</strong>: <code class="docutils literal notranslate"><span class="pre">RegExp</span></code></p>
+</section>
+<hr class="docutils" />
+<section id="base62">
+<h3>base62<a class="headerlink" href="#base62" title="Permalink to this heading">#</a></h3>
+<p>• <code class="docutils literal notranslate"><span class="pre">Const</span></code> <strong>base62</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789&quot;</span></code></p>
+</section>
+<hr class="docutils" />
+<section id="base62regex">
+<h3>base62regex<a class="headerlink" href="#base62regex" title="Permalink to this heading">#</a></h3>
+<p>• <code class="docutils literal notranslate"><span class="pre">Const</span></code> <strong>base62regex</strong>: <code class="docutils literal notranslate"><span class="pre">RegExp</span></code> = <code class="docutils literal notranslate"><span class="pre">b62regex</span></code></p>
+</section>
+<hr class="docutils" />
+<section id="base64url">
+<h3>base64url<a class="headerlink" href="#base64url" title="Permalink to this heading">#</a></h3>
+<p>• <code class="docutils literal notranslate"><span class="pre">Const</span></code> <strong>base64url</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_&quot;</span></code></p>
+</section>
+<hr class="docutils" />
+<section id="msgttltoseconds">
+<h3>msgTtlToSeconds<a class="headerlink" href="#msgttltoseconds" title="Permalink to this heading">#</a></h3>
+<p>• <code class="docutils literal notranslate"><span class="pre">Const</span></code> <strong>msgTtlToSeconds</strong>: <code class="docutils literal notranslate"><span class="pre">number</span></code>[]</p>
+</section>
+<hr class="docutils" />
+<section id="msgttltostring">
+<h3>msgTtlToString<a class="headerlink" href="#msgttltostring" title="Permalink to this heading">#</a></h3>
+<p>• <code class="docutils literal notranslate"><span class="pre">Const</span></code> <strong>msgTtlToString</strong>: <code class="docutils literal notranslate"><span class="pre">string</span></code>[]</p>
+</section>
+<hr class="docutils" />
 <section id="sbcrypto">
-<h3>sbCrypto<a class="headerlink" href="#sbcrypto" title="Link to this heading">#</a></h3>
+<h3>sbCrypto<a class="headerlink" href="#sbcrypto" title="Permalink to this heading">#</a></h3>
 <p>• <code class="docutils literal notranslate"><span class="pre">Const</span></code> <strong>sbCrypto</strong>: <a class="reference internal" href="classes/SBCrypto.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">SBCrypto</span></code></span></a></p>
 <p>This is the GLOBAL SBCrypto object, which is instantiated
 immediately upon loading the jslib library.</p>
@@ -413,18 +523,18 @@ able to add features (like global key store) incrementally.</p>
 </section>
 <hr class="docutils" />
 <section id="version">
-<h3>version<a class="headerlink" href="#version" title="Link to this heading">#</a></h3>
-<p>• <code class="docutils literal notranslate"><span class="pre">Const</span></code> <strong>version</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;2.0.0-alpha.5</span> <span class="pre">(build</span> <span class="pre">20)&quot;</span></code></p>
+<h3>version<a class="headerlink" href="#version" title="Permalink to this heading">#</a></h3>
+<p>• <code class="docutils literal notranslate"><span class="pre">Const</span></code> <strong>version</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;2.0.0-alpha.5</span> <span class="pre">(build</span> <span class="pre">093)&quot;</span></code></p>
 </section>
 </section>
 <section id="id3">
-<h2>Functions<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
-<section id="arraybuffer32tobase62">
-<h3>arrayBuffer32ToBase62<a class="headerlink" href="#arraybuffer32tobase62" title="Link to this heading">#</a></h3>
-<p>▸ <strong>arrayBuffer32ToBase62</strong>(<code class="docutils literal notranslate"><span class="pre">buffer</span></code>): <code class="docutils literal notranslate"><span class="pre">Base62Encoded</span></code></p>
-<p>Convenience wrapper.</p>
+<h2>Functions<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<section id="memoize">
+<h3>Memoize<a class="headerlink" href="#memoize" title="Permalink to this heading">#</a></h3>
+<p>▸ <strong>Memoize</strong>(<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">propertyKey</span></code>, <code class="docutils literal notranslate"><span class="pre">descriptor?</span></code>): <code class="docutils literal notranslate"><span class="pre">void</span></code></p>
+<hr class="docutils" />
 <section id="parameters">
-<h4>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">#</a></h4>
+<h4>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading">#</a></h4>
 <div class="table-wrapper colwidths-auto docutils container">
 <table class="docutils align-default">
 <thead>
@@ -433,26 +543,30 @@ able to add features (like global key store) incrementally.</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">buffer</span></code></p></td>
-<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">ArrayBuffer</span></code></p></td>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">any</span></code></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">propertyKey</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">descriptor?</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">PropertyDescriptor</span></code></p></td>
 </tr>
 </tbody>
 </table>
 </div>
 </section>
 <section id="returns">
-<h4>Returns<a class="headerlink" href="#returns" title="Link to this heading">#</a></h4>
-<p><code class="docutils literal notranslate"><span class="pre">Base62Encoded</span></code></p>
+<h4>Returns<a class="headerlink" href="#returns" title="Permalink to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">void</span></code></p>
 </section>
 </section>
 <hr class="docutils" />
-<section id="arraybuffertobase62">
-<h3>arrayBufferToBase62<a class="headerlink" href="#arraybuffertobase62" title="Link to this heading">#</a></h3>
-<p>▸ <strong>arrayBufferToBase62</strong>(<code class="docutils literal notranslate"><span class="pre">buffer</span></code>): <code class="docutils literal notranslate"><span class="pre">string</span></code></p>
-<p>Converts any array buffer to base62.
-Restriction: ArrayBuffer must be size multiple of 4 bytes (32 bits).</p>
+<section id="ready">
+<h3>Ready<a class="headerlink" href="#ready" title="Permalink to this heading">#</a></h3>
+<p>▸ <strong>Ready</strong>(<code class="docutils literal notranslate"><span class="pre">target</span></code>, <code class="docutils literal notranslate"><span class="pre">propertyKey</span></code>, <code class="docutils literal notranslate"><span class="pre">descriptor?</span></code>): <code class="docutils literal notranslate"><span class="pre">void</span></code></p>
 <section id="id4">
-<h4>Parameters<a class="headerlink" href="#id4" title="Link to this heading">#</a></h4>
+<h4>Parameters<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h4>
 <div class="table-wrapper colwidths-auto docutils container">
 <table class="docutils align-default">
 <thead>
@@ -461,68 +575,64 @@ Restriction: ArrayBuffer must be size multiple of 4 bytes (32 bits).</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">buffer</span></code></p></td>
-<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">ArrayBuffer</span></code></p></td>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">any</span></code></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">propertyKey</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">descriptor?</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">PropertyDescriptor</span></code></p></td>
 </tr>
 </tbody>
 </table>
 </div>
 </section>
 <section id="id5">
-<h4>Returns<a class="headerlink" href="#id5" title="Link to this heading">#</a></h4>
-<p><code class="docutils literal notranslate"><span class="pre">string</span></code></p>
+<h4>Returns<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">void</span></code></p>
 </section>
 </section>
 <hr class="docutils" />
-<section id="arraybuffertobase64">
-<h3>arrayBufferToBase64<a class="headerlink" href="#arraybuffertobase64" title="Link to this heading">#</a></h3>
-<p>▸ <strong>arrayBufferToBase64</strong>(<code class="docutils literal notranslate"><span class="pre">buffer</span></code>, <code class="docutils literal notranslate"><span class="pre">variant?</span></code>): <code class="docutils literal notranslate"><span class="pre">string</span></code></p>
-<p>Standardized ‘btoa()’-like function, e.g., takes a binary string
-(‘b’) and returns a Base64 encoded version (‘a’ used to be short
-for ‘ascii’). Defaults to URL safe (‘url’) but can be overriden
-to use standardized Base64 (‘b64’).</p>
+<section id="sbapifetch">
+<h3>SBApiFetch<a class="headerlink" href="#sbapifetch" title="Permalink to this heading">#</a></h3>
+<p>▸ <strong>SBApiFetch</strong>(<code class="docutils literal notranslate"><span class="pre">input</span></code>, <code class="docutils literal notranslate"><span class="pre">init?</span></code>): <code class="docutils literal notranslate"><span class="pre">Promise</span></code>&lt;<code class="docutils literal notranslate"><span class="pre">any</span></code>&gt;</p>
+<p>Wrapper to SBFetch that applies SB API calling conventions on both sides of
+the call; it will return whatever data structure the server returns, note
+that it will extract the reply (either from json or from payload). if there
+are any issues or if the reply contains an error message, it will throw an
+error.</p>
 <section id="id6">
-<h4>Parameters<a class="headerlink" href="#id6" title="Link to this heading">#</a></h4>
+<h4>Parameters<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h4>
 <div class="table-wrapper colwidths-auto docutils container">
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head text-left"><p>Name</p></th>
 <th class="head text-left"><p>Type</p></th>
-<th class="head text-left"><p>Default value</p></th>
-<th class="head text-left"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">buffer</span></code></p></td>
-<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">null</span></code> | <code class="docutils literal notranslate"><span class="pre">ArrayBuffer</span></code> | <code class="docutils literal notranslate"><span class="pre">Uint8Array</span></code></p></td>
-<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">undefined</span></code></p></td>
-<td class="text-left"><p>binary string</p></td>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">input</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">RequestInfo</span></code> | <code class="docutils literal notranslate"><span class="pre">URL</span></code></p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">variant</span></code></p></td>
-<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">&quot;url&quot;</span></code> | <code class="docutils literal notranslate"><span class="pre">&quot;b64&quot;</span></code></p></td>
-<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">'url'</span></code></p></td>
-<td class="text-left"><p>‘b64’ or ‘url’</p></td>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">init?</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">RequestInit</span></code></p></td>
 </tr>
 </tbody>
 </table>
 </div>
 </section>
 <section id="id7">
-<h4>Returns<a class="headerlink" href="#id7" title="Link to this heading">#</a></h4>
-<p><code class="docutils literal notranslate"><span class="pre">string</span></code></p>
-<ul class="simple">
-<li><p>returns Base64 encoded string</p></li>
-</ul>
+<h4>Returns<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">Promise</span></code>&lt;<code class="docutils literal notranslate"><span class="pre">any</span></code>&gt;</p>
 </section>
 </section>
 <hr class="docutils" />
-<section id="assemblepayload">
-<h3>assemblePayload<a class="headerlink" href="#assemblepayload" title="Link to this heading">#</a></h3>
-<p>▸ <strong>assemblePayload</strong>(<code class="docutils literal notranslate"><span class="pre">data</span></code>): <code class="docutils literal notranslate"><span class="pre">ArrayBuffer</span></code> | <code class="docutils literal notranslate"><span class="pre">null</span></code></p>
-<p>Assemble payload. This creates a single binary (wire) format
-of an arbitrary set of (named) binary objects.</p>
+<section id="check-sbchanneldata">
+<h3>_check_SBChannelData<a class="headerlink" href="#check-sbchanneldata" title="Permalink to this heading">#</a></h3>
+<p>▸ <strong>_check_SBChannelData</strong>(<code class="docutils literal notranslate"><span class="pre">data</span></code>): <code class="docutils literal notranslate"><span class="pre">boolean</span></code> | <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> | <a class="reference internal" href="interfaces/SBStorageToken.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">SBStorageToken</span></code></span></a></p>
 <section id="id8">
-<h4>Parameters<a class="headerlink" href="#id8" title="Link to this heading">#</a></h4>
+<h4>Parameters<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h4>
 <div class="table-wrapper colwidths-auto docutils container">
 <table class="docutils align-default">
 <thead>
@@ -532,28 +642,23 @@ of an arbitrary set of (named) binary objects.</p>
 </thead>
 <tbody>
 <tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">data</span></code></p></td>
-<td class="text-left"><p><a class="reference internal" href="interfaces/SBPayload.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">SBPayload</span></code></span></a></p></td>
+<td class="text-left"><p><a class="reference internal" href="interfaces/SBChannelData.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">SBChannelData</span></code></span></a></p></td>
 </tr>
 </tbody>
 </table>
 </div>
 </section>
 <section id="id9">
-<h4>Returns<a class="headerlink" href="#id9" title="Link to this heading">#</a></h4>
-<p><code class="docutils literal notranslate"><span class="pre">ArrayBuffer</span></code> | <code class="docutils literal notranslate"><span class="pre">null</span></code></p>
+<h4>Returns<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">boolean</span></code> | <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> | <a class="reference internal" href="interfaces/SBStorageToken.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">SBStorageToken</span></code></span></a></p>
 </section>
 </section>
 <hr class="docutils" />
-<section id="base62toarraybuffer">
-<h3>base62ToArrayBuffer<a class="headerlink" href="#base62toarraybuffer" title="Link to this heading">#</a></h3>
-<p>▸ <strong>base62ToArrayBuffer</strong>(<code class="docutils literal notranslate"><span class="pre">s</span></code>): <code class="docutils literal notranslate"><span class="pre">ArrayBuffer</span></code></p>
-<p>base62ToArrayBuffer</p>
-<p>Converts a base62 string to matchin ArrayBuffer.
-Restriction: the original array buffer size must have
-been a multiple of 4 bytes (32 bits), eg. this
-function will always return such an ArrayBuffer.</p>
+<section id="check-sbchannelhandle">
+<h3>_check_SBChannelHandle<a class="headerlink" href="#check-sbchannelhandle" title="Permalink to this heading">#</a></h3>
+<p>▸ <strong>_check_SBChannelHandle</strong>(<code class="docutils literal notranslate"><span class="pre">data</span></code>): <code class="docutils literal notranslate"><span class="pre">boolean</span></code> | <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> | <a class="reference internal" href="interfaces/SBStorageToken.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">SBStorageToken</span></code></span></a></p>
 <section id="id10">
-<h4>Parameters<a class="headerlink" href="#id10" title="Link to this heading">#</a></h4>
+<h4>Parameters<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h4>
 <div class="table-wrapper colwidths-auto docutils container">
 <table class="docutils align-default">
 <thead>
@@ -562,25 +667,24 @@ function will always return such an ArrayBuffer.</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">s</span></code></p></td>
-<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">data</span></code></p></td>
+<td class="text-left"><p><a class="reference internal" href="interfaces/SBChannelHandle.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">SBChannelHandle</span></code></span></a></p></td>
 </tr>
 </tbody>
 </table>
 </div>
 </section>
 <section id="id11">
-<h4>Returns<a class="headerlink" href="#id11" title="Link to this heading">#</a></h4>
-<p><code class="docutils literal notranslate"><span class="pre">ArrayBuffer</span></code></p>
+<h4>Returns<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">boolean</span></code> | <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> | <a class="reference internal" href="interfaces/SBStorageToken.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">SBStorageToken</span></code></span></a></p>
 </section>
 </section>
 <hr class="docutils" />
-<section id="base62toarraybuffer32">
-<h3>base62ToArrayBuffer32<a class="headerlink" href="#base62toarraybuffer32" title="Link to this heading">#</a></h3>
-<p>▸ <strong>base62ToArrayBuffer32</strong>(<code class="docutils literal notranslate"><span class="pre">s</span></code>): <code class="docutils literal notranslate"><span class="pre">ArrayBuffer</span></code></p>
-<p>Convenience wrapper, enforces array32 format</p>
+<section id="check-sbobjecthandle">
+<h3>_check_SBObjectHandle<a class="headerlink" href="#check-sbobjecthandle" title="Permalink to this heading">#</a></h3>
+<p>▸ <strong>_check_SBObjectHandle</strong>(<code class="docutils literal notranslate"><span class="pre">h</span></code>): <code class="docutils literal notranslate"><span class="pre">boolean</span></code></p>
 <section id="id12">
-<h4>Parameters<a class="headerlink" href="#id12" title="Link to this heading">#</a></h4>
+<h4>Parameters<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h4>
 <div class="table-wrapper colwidths-auto docutils container">
 <table class="docutils align-default">
 <thead>
@@ -589,125 +693,320 @@ function will always return such an ArrayBuffer.</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">s</span></code></p></td>
-<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">Base62Encoded</span></code></p></td>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">h</span></code></p></td>
+<td class="text-left"><p><a class="reference internal" href="interfaces/SBObjectHandle.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">SBObjectHandle</span></code></span></a></p></td>
 </tr>
 </tbody>
 </table>
 </div>
 </section>
 <section id="id13">
-<h4>Returns<a class="headerlink" href="#id13" title="Link to this heading">#</a></h4>
-<p><code class="docutils literal notranslate"><span class="pre">ArrayBuffer</span></code></p>
+<h4>Returns<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">boolean</span></code></p>
 </section>
 </section>
 <hr class="docutils" />
-<section id="base62tobase64">
-<h3>base62ToBase64<a class="headerlink" href="#base62tobase64" title="Link to this heading">#</a></h3>
-<p>▸ <strong>base62ToBase64</strong>(<code class="docutils literal notranslate"><span class="pre">s</span></code>): <code class="docutils literal notranslate"><span class="pre">string</span></code></p>
-<p>base62ToBase64 converts a base62 encoded string to a base64 encoded string.</p>
+<section id="check-sbstoragetoken">
+<h3>_check_SBStorageToken<a class="headerlink" href="#check-sbstoragetoken" title="Permalink to this heading">#</a></h3>
+<p>▸ <strong>_check_SBStorageToken</strong>(<code class="docutils literal notranslate"><span class="pre">data</span></code>): <code class="docutils literal notranslate"><span class="pre">boolean</span></code> | <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code></p>
 <section id="id14">
-<h4>Parameters<a class="headerlink" href="#id14" title="Link to this heading">#</a></h4>
+<h4>Parameters<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h4>
 <div class="table-wrapper colwidths-auto docutils container">
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head text-left"><p>Name</p></th>
 <th class="head text-left"><p>Type</p></th>
-<th class="head text-left"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">s</span></code></p></td>
-<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">Base62Encoded</span></code></p></td>
-<td class="text-left"><p>base62 encoded string</p></td>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">data</span></code></p></td>
+<td class="text-left"><p><a class="reference internal" href="interfaces/SBStorageToken.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">SBStorageToken</span></code></span></a></p></td>
 </tr>
 </tbody>
 </table>
 </div>
 </section>
 <section id="id15">
-<h4>Returns<a class="headerlink" href="#id15" title="Link to this heading">#</a></h4>
-<p><code class="docutils literal notranslate"><span class="pre">string</span></code></p>
-<p>base64 encoded string</p>
-<p><strong><code class="docutils literal notranslate"><span class="pre">Throws</span></code></strong></p>
-<p>Error if the string is not a valid base62 encoded string</p>
+<h4>Returns<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">boolean</span></code> | <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code></p>
 </section>
 </section>
 <hr class="docutils" />
-<section id="base64toarraybuffer">
-<h3>base64ToArrayBuffer<a class="headerlink" href="#base64toarraybuffer" title="Link to this heading">#</a></h3>
-<p>▸ <strong>base64ToArrayBuffer</strong>(<code class="docutils literal notranslate"><span class="pre">str</span></code>): <code class="docutils literal notranslate"><span class="pre">Uint8Array</span></code></p>
-<p>Standardized ‘atob()’ function, e.g. takes the a Base64 encoded
-input and decodes it. Note: always returns Uint8Array.
-Accepts both regular Base64 and the URL-friendly variant,
-where <code class="docutils literal notranslate"><span class="pre">+</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">-</span></code>, <code class="docutils literal notranslate"><span class="pre">/</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">_</span></code>, and the padding character is omitted.</p>
+<section id="arraybuffertobase62">
+<h3>arrayBufferToBase62<a class="headerlink" href="#arraybuffertobase62" title="Permalink to this heading">#</a></h3>
+<p>▸ <strong>arrayBufferToBase62</strong>(<code class="docutils literal notranslate"><span class="pre">buffer</span></code>): <code class="docutils literal notranslate"><span class="pre">string</span></code></p>
+<p>Converts any array buffer to base62.</p>
 <section id="id16">
-<h4>Parameters<a class="headerlink" href="#id16" title="Link to this heading">#</a></h4>
+<h4>Parameters<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h4>
 <div class="table-wrapper colwidths-auto docutils container">
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head text-left"><p>Name</p></th>
 <th class="head text-left"><p>Type</p></th>
-<th class="head text-left"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
-<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
-<td class="text-left"><p>string in either regular or URL-friendly representation.</p></td>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">buffer</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">ArrayBuffer</span></code> | <code class="docutils literal notranslate"><span class="pre">Uint8Array</span></code></p></td>
 </tr>
 </tbody>
 </table>
 </div>
 </section>
 <section id="id17">
-<h4>Returns<a class="headerlink" href="#id17" title="Link to this heading">#</a></h4>
-<p><code class="docutils literal notranslate"><span class="pre">Uint8Array</span></code></p>
-<ul class="simple">
-<li><p>returns decoded binary result</p></li>
-</ul>
+<h4>Returns<a class="headerlink" href="#id17" title="Permalink to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">string</span></code></p>
 </section>
 </section>
 <hr class="docutils" />
-<section id="base64tobase62">
-<h3>base64ToBase62<a class="headerlink" href="#base64tobase62" title="Link to this heading">#</a></h3>
-<p>▸ <strong>base64ToBase62</strong>(<code class="docutils literal notranslate"><span class="pre">s</span></code>): <code class="docutils literal notranslate"><span class="pre">Base62Encoded</span></code></p>
-<p>Convenience function.</p>
-<p>base64ToBase62 converts a base64 encoded string to a base62 encoded string.</p>
+<section id="arraybuffertobase64url">
+<h3>arrayBufferToBase64url<a class="headerlink" href="#arraybuffertobase64url" title="Permalink to this heading">#</a></h3>
+<p>▸ <strong>arrayBufferToBase64url</strong>(<code class="docutils literal notranslate"><span class="pre">buffer</span></code>): <code class="docutils literal notranslate"><span class="pre">string</span></code></p>
+<p>Converts an ArrayBuffer to base64url.</p>
 <section id="id18">
-<h4>Parameters<a class="headerlink" href="#id18" title="Link to this heading">#</a></h4>
+<h4>Parameters<a class="headerlink" href="#id18" title="Permalink to this heading">#</a></h4>
 <div class="table-wrapper colwidths-auto docutils container">
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head text-left"><p>Name</p></th>
 <th class="head text-left"><p>Type</p></th>
-<th class="head text-left"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">s</span></code></p></td>
-<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
-<td class="text-left"><p>base64 encoded string</p></td>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">buffer</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">ArrayBuffer</span></code> | <code class="docutils literal notranslate"><span class="pre">Uint8Array</span></code></p></td>
 </tr>
 </tbody>
 </table>
 </div>
 </section>
 <section id="id19">
-<h4>Returns<a class="headerlink" href="#id19" title="Link to this heading">#</a></h4>
-<p><code class="docutils literal notranslate"><span class="pre">Base62Encoded</span></code></p>
-<p>base62 encoded string</p>
-<p><strong><code class="docutils literal notranslate"><span class="pre">Throws</span></code></strong></p>
-<p>Error if the string is not a valid base64 encoded string</p>
+<h4>Returns<a class="headerlink" href="#id19" title="Permalink to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">string</span></code></p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="assemblepayload">
+<h3>assemblePayload<a class="headerlink" href="#assemblepayload" title="Permalink to this heading">#</a></h3>
+<p>▸ <strong>assemblePayload</strong>(<code class="docutils literal notranslate"><span class="pre">data</span></code>): <code class="docutils literal notranslate"><span class="pre">ArrayBuffer</span></code> | <code class="docutils literal notranslate"><span class="pre">null</span></code></p>
+<p>Assemble payload. This creates a single binary (wire) format
+of an arbitrary set of (named) binary objects.</p>
+<section id="id20">
+<h4>Parameters<a class="headerlink" href="#id20" title="Permalink to this heading">#</a></h4>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Name</p></th>
+<th class="head text-left"><p>Type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">data</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">any</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="id21">
+<h4>Returns<a class="headerlink" href="#id21" title="Permalink to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">ArrayBuffer</span></code> | <code class="docutils literal notranslate"><span class="pre">null</span></code></p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="b32decode">
+<h3>b32decode<a class="headerlink" href="#b32decode" title="Permalink to this heading">#</a></h3>
+<p>▸ <strong>b32decode</strong>(<code class="docutils literal notranslate"><span class="pre">encoded</span></code>): <code class="docutils literal notranslate"><span class="pre">number</span></code> | <code class="docutils literal notranslate"><span class="pre">null</span></code></p>
+<section id="id22">
+<h4>Parameters<a class="headerlink" href="#id22" title="Permalink to this heading">#</a></h4>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Name</p></th>
+<th class="head text-left"><p>Type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">encoded</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="id23">
+<h4>Returns<a class="headerlink" href="#id23" title="Permalink to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">number</span></code> | <code class="docutils literal notranslate"><span class="pre">null</span></code></p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="b32encode">
+<h3>b32encode<a class="headerlink" href="#b32encode" title="Permalink to this heading">#</a></h3>
+<p>▸ <strong>b32encode</strong>(<code class="docutils literal notranslate"><span class="pre">num</span></code>): <code class="docutils literal notranslate"><span class="pre">string</span></code></p>
+<section id="id24">
+<h4>Parameters<a class="headerlink" href="#id24" title="Permalink to this heading">#</a></h4>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Name</p></th>
+<th class="head text-left"><p>Type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">num</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">number</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="id25">
+<h4>Returns<a class="headerlink" href="#id25" title="Permalink to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">string</span></code></p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="b32process">
+<h3>b32process<a class="headerlink" href="#b32process" title="Permalink to this heading">#</a></h3>
+<p>▸ <strong>b32process</strong>(<code class="docutils literal notranslate"><span class="pre">str</span></code>): <code class="docutils literal notranslate"><span class="pre">string</span></code></p>
+<section id="id26">
+<h4>Parameters<a class="headerlink" href="#id26" title="Permalink to this heading">#</a></h4>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Name</p></th>
+<th class="head text-left"><p>Type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="id27">
+<h4>Returns<a class="headerlink" href="#id27" title="Permalink to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">string</span></code></p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="base62toarraybuffer">
+<h3>base62ToArrayBuffer<a class="headerlink" href="#base62toarraybuffer" title="Permalink to this heading">#</a></h3>
+<p>▸ <strong>base62ToArrayBuffer</strong>(<code class="docutils literal notranslate"><span class="pre">s</span></code>): <code class="docutils literal notranslate"><span class="pre">ArrayBuffer</span></code></p>
+<p>Converts a base62 string to matching ArrayBuffer.</p>
+<section id="id28">
+<h4>Parameters<a class="headerlink" href="#id28" title="Permalink to this heading">#</a></h4>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Name</p></th>
+<th class="head text-left"><p>Type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">s</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="id29">
+<h4>Returns<a class="headerlink" href="#id29" title="Permalink to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">ArrayBuffer</span></code></p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="base62tobase64">
+<h3>base62ToBase64<a class="headerlink" href="#base62tobase64" title="Permalink to this heading">#</a></h3>
+<p>▸ <strong>base62ToBase64</strong>(<code class="docutils literal notranslate"><span class="pre">s</span></code>): <code class="docutils literal notranslate"><span class="pre">string</span></code></p>
+<p>Convenience: direct conversion from Base62 to Base64.</p>
+<section id="id30">
+<h4>Parameters<a class="headerlink" href="#id30" title="Permalink to this heading">#</a></h4>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Name</p></th>
+<th class="head text-left"><p>Type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">s</span></code></p></td>
+<td class="text-left"><p><a class="reference internal" href="#base62encoded"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">Base62Encoded</span></code></span></a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="id31">
+<h4>Returns<a class="headerlink" href="#id31" title="Permalink to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">string</span></code></p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="base64toarraybuffer">
+<h3>base64ToArrayBuffer<a class="headerlink" href="#base64toarraybuffer" title="Permalink to this heading">#</a></h3>
+<p>▸ <strong>base64ToArrayBuffer</strong>(<code class="docutils literal notranslate"><span class="pre">s</span></code>): <code class="docutils literal notranslate"><span class="pre">Uint8Array</span></code></p>
+<p>Converts base64/base64url to ArrayBuffer. We’re tolerant of inputs. Despite
+it’s name, we return Uint8Array.</p>
+<section id="id32">
+<h4>Parameters<a class="headerlink" href="#id32" title="Permalink to this heading">#</a></h4>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Name</p></th>
+<th class="head text-left"><p>Type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">s</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="id33">
+<h4>Returns<a class="headerlink" href="#id33" title="Permalink to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">Uint8Array</span></code></p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="base64tobase62">
+<h3>base64ToBase62<a class="headerlink" href="#base64tobase62" title="Permalink to this heading">#</a></h3>
+<p>▸ <strong>base64ToBase62</strong>(<code class="docutils literal notranslate"><span class="pre">s</span></code>): <a class="reference internal" href="#base62encoded"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">Base62Encoded</span></code></span></a></p>
+<p>Convenience: direct conversion from Base64 to Base62.</p>
+<section id="id34">
+<h4>Parameters<a class="headerlink" href="#id34" title="Permalink to this heading">#</a></h4>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Name</p></th>
+<th class="head text-left"><p>Type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">s</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="id35">
+<h4>Returns<a class="headerlink" href="#id35" title="Permalink to this heading">#</a></h4>
+<p><a class="reference internal" href="#base62encoded"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">Base62Encoded</span></code></span></a></p>
 </section>
 </section>
 <hr class="docutils" />
 <section id="comparebuffers">
-<h3>compareBuffers<a class="headerlink" href="#comparebuffers" title="Link to this heading">#</a></h3>
+<h3>compareBuffers<a class="headerlink" href="#comparebuffers" title="Permalink to this heading">#</a></h3>
 <p>▸ <strong>compareBuffers</strong>(<code class="docutils literal notranslate"><span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>): <code class="docutils literal notranslate"><span class="pre">boolean</span></code></p>
-<p>Compare buffers</p>
-<section id="id20">
-<h4>Parameters<a class="headerlink" href="#id20" title="Link to this heading">#</a></h4>
+<p>Simple comparison of buffers</p>
+<section id="id36">
+<h4>Parameters<a class="headerlink" href="#id36" title="Permalink to this heading">#</a></h4>
 <div class="table-wrapper colwidths-auto docutils container">
 <table class="docutils align-default">
 <thead>
@@ -726,103 +1025,19 @@ where <code class="docutils literal notranslate"><span class="pre">+</span></cod
 </table>
 </div>
 </section>
-<section id="id21">
-<h4>Returns<a class="headerlink" href="#id21" title="Link to this heading">#</a></h4>
+<section id="id37">
+<h4>Returns<a class="headerlink" href="#id37" title="Permalink to this heading">#</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">boolean</span></code></p>
 </section>
 </section>
 <hr class="docutils" />
-<section id="decodeb64url">
-<h3>decodeB64Url<a class="headerlink" href="#decodeb64url" title="Link to this heading">#</a></h3>
-<p>▸ <strong>decodeB64Url</strong>(<code class="docutils literal notranslate"><span class="pre">input</span></code>): <code class="docutils literal notranslate"><span class="pre">string</span></code></p>
-<p>Decode b64 URL</p>
-<section id="id22">
-<h4>Parameters<a class="headerlink" href="#id22" title="Link to this heading">#</a></h4>
-<div class="table-wrapper colwidths-auto docutils container">
-<table class="docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head text-left"><p>Name</p></th>
-<th class="head text-left"><p>Type</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">input</span></code></p></td>
-<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
-<section id="id23">
-<h4>Returns<a class="headerlink" href="#id23" title="Link to this heading">#</a></h4>
-<p><code class="docutils literal notranslate"><span class="pre">string</span></code></p>
-</section>
-</section>
-<hr class="docutils" />
-<section id="encodeb64url">
-<h3>encodeB64Url<a class="headerlink" href="#encodeb64url" title="Link to this heading">#</a></h3>
-<p>▸ <strong>encodeB64Url</strong>(<code class="docutils literal notranslate"><span class="pre">input</span></code>): <code class="docutils literal notranslate"><span class="pre">string</span></code></p>
-<p>Encode into b64 URL</p>
-<section id="id24">
-<h4>Parameters<a class="headerlink" href="#id24" title="Link to this heading">#</a></h4>
-<div class="table-wrapper colwidths-auto docutils container">
-<table class="docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head text-left"><p>Name</p></th>
-<th class="head text-left"><p>Type</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">input</span></code></p></td>
-<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
-<section id="id25">
-<h4>Returns<a class="headerlink" href="#id25" title="Link to this heading">#</a></h4>
-<p><code class="docutils literal notranslate"><span class="pre">string</span></code></p>
-</section>
-</section>
-<hr class="docutils" />
-<section id="encryptedcontentsmakebinary">
-<h3>encryptedContentsMakeBinary<a class="headerlink" href="#encryptedcontentsmakebinary" title="Link to this heading">#</a></h3>
-<p>▸ <strong>encryptedContentsMakeBinary</strong>(<code class="docutils literal notranslate"><span class="pre">o</span></code>): <a class="reference internal" href="interfaces/EncryptedContentsBin.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">EncryptedContentsBin</span></code></span></a></p>
-<p>Force EncryptedContents object to binary (interface
-supports either string or arrays). String contents
-implies base64 encoding.</p>
-<section id="id26">
-<h4>Parameters<a class="headerlink" href="#id26" title="Link to this heading">#</a></h4>
-<div class="table-wrapper colwidths-auto docutils container">
-<table class="docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head text-left"><p>Name</p></th>
-<th class="head text-left"><p>Type</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">o</span></code></p></td>
-<td class="text-left"><p><a class="reference internal" href="interfaces/EncryptedContents.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">EncryptedContents</span></code></span></a></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
-<section id="id27">
-<h4>Returns<a class="headerlink" href="#id27" title="Link to this heading">#</a></h4>
-<p><a class="reference internal" href="interfaces/EncryptedContentsBin.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">EncryptedContentsBin</span></code></span></a></p>
-</section>
-</section>
-<hr class="docutils" />
 <section id="extractpayload">
-<h3>extractPayload<a class="headerlink" href="#extractpayload" title="Link to this heading">#</a></h3>
-<p>▸ <strong>extractPayload</strong>(<code class="docutils literal notranslate"><span class="pre">payload</span></code>): <a class="reference internal" href="interfaces/SBPayload.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">SBPayload</span></code></span></a></p>
+<h3>extractPayload<a class="headerlink" href="#extractpayload" title="Permalink to this heading">#</a></h3>
+<p>▸ <strong>extractPayload</strong>(<code class="docutils literal notranslate"><span class="pre">value</span></code>): <code class="docutils literal notranslate"><span class="pre">any</span></code></p>
 <p>Extract payload - this decodes from our binary (wire) format
-to a JS object. This provides a binary encoding of any JSON,
-and it allows some elements of the JSON to be raw (binary).</p>
-<section id="id28">
-<h4>Parameters<a class="headerlink" href="#id28" title="Link to this heading">#</a></h4>
+to a JS object. This supports a wide range of objects.</p>
+<section id="id38">
+<h4>Parameters<a class="headerlink" href="#id38" title="Permalink to this heading">#</a></h4>
 <div class="table-wrapper colwidths-auto docutils container">
 <table class="docutils align-default">
 <thead>
@@ -831,25 +1046,25 @@ and it allows some elements of the JSON to be raw (binary).</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">payload</span></code></p></td>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">value</span></code></p></td>
 <td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">ArrayBuffer</span></code></p></td>
 </tr>
 </tbody>
 </table>
 </div>
 </section>
-<section id="id29">
-<h4>Returns<a class="headerlink" href="#id29" title="Link to this heading">#</a></h4>
-<p><a class="reference internal" href="interfaces/SBPayload.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">SBPayload</span></code></span></a></p>
+<section id="id39">
+<h4>Returns<a class="headerlink" href="#id39" title="Permalink to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">any</span></code></p>
 </section>
 </section>
 <hr class="docutils" />
 <section id="getrandomvalues">
-<h3>getRandomValues<a class="headerlink" href="#getrandomvalues" title="Link to this heading">#</a></h3>
+<h3>getRandomValues<a class="headerlink" href="#getrandomvalues" title="Permalink to this heading">#</a></h3>
 <p>▸ <strong>getRandomValues</strong>(<code class="docutils literal notranslate"><span class="pre">buffer</span></code>): <code class="docutils literal notranslate"><span class="pre">Uint8Array</span></code></p>
 <p>Fills buffer with random data</p>
-<section id="id30">
-<h4>Parameters<a class="headerlink" href="#id30" title="Link to this heading">#</a></h4>
+<section id="id40">
+<h4>Parameters<a class="headerlink" href="#id40" title="Permalink to this heading">#</a></h4>
 <div class="table-wrapper colwidths-auto docutils container">
 <table class="docutils align-default">
 <thead>
@@ -865,17 +1080,49 @@ and it allows some elements of the JSON to be raw (binary).</p>
 </table>
 </div>
 </section>
-<section id="id31">
-<h4>Returns<a class="headerlink" href="#id31" title="Link to this heading">#</a></h4>
+<section id="id41">
+<h4>Returns<a class="headerlink" href="#id41" title="Permalink to this heading">#</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">Uint8Array</span></code></p>
 </section>
 </section>
 <hr class="docutils" />
+<section id="hydratekey">
+<h3>hydrateKey<a class="headerlink" href="#hydratekey" title="Permalink to this heading">#</a></h3>
+<p>▸ <strong>hydrateKey</strong>(<code class="docutils literal notranslate"><span class="pre">privKey</span></code>, <code class="docutils literal notranslate"><span class="pre">pubKey?</span></code>): <a class="reference internal" href="#sbuserprivatekey"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">SBUserPrivateKey</span></code></span></a> | <code class="docutils literal notranslate"><span class="pre">undefined</span></code></p>
+<p>‘hydrates’ a key - if needed; if it’s already good on hydration, just returns it.
+Providing pubKey (from other source) is optional so that you can use this function
+to easily confirm that a key is hydrated, it will return undefined if it’s not.</p>
+<section id="id42">
+<h4>Parameters<a class="headerlink" href="#id42" title="Permalink to this heading">#</a></h4>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Name</p></th>
+<th class="head text-left"><p>Type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">privKey</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">pubKey?</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="id43">
+<h4>Returns<a class="headerlink" href="#id43" title="Permalink to this heading">#</a></h4>
+<p><a class="reference internal" href="#sbuserprivatekey"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">SBUserPrivateKey</span></code></span></a> | <code class="docutils literal notranslate"><span class="pre">undefined</span></code></p>
+</section>
+</section>
+<hr class="docutils" />
 <section id="isbase62encoded">
-<h3>isBase62Encoded<a class="headerlink" href="#isbase62encoded" title="Link to this heading">#</a></h3>
+<h3>isBase62Encoded<a class="headerlink" href="#isbase62encoded" title="Permalink to this heading">#</a></h3>
 <p>▸ <strong>isBase62Encoded</strong>(<code class="docutils literal notranslate"><span class="pre">value</span></code>): value is Base62Encoded</p>
-<section id="id32">
-<h4>Parameters<a class="headerlink" href="#id32" title="Link to this heading">#</a></h4>
+<section id="id44">
+<h4>Parameters<a class="headerlink" href="#id44" title="Permalink to this heading">#</a></h4>
 <div class="table-wrapper colwidths-auto docutils container">
 <table class="docutils align-default">
 <thead>
@@ -885,23 +1132,27 @@ and it allows some elements of the JSON to be raw (binary).</p>
 </thead>
 <tbody>
 <tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">value</span></code></p></td>
-<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">string</span></code> | <code class="docutils literal notranslate"><span class="pre">Base62Encoded</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">string</span></code> | <a class="reference internal" href="#base62encoded"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">Base62Encoded</span></code></span></a></p></td>
 </tr>
 </tbody>
 </table>
 </div>
 </section>
-<section id="id33">
-<h4>Returns<a class="headerlink" href="#id33" title="Link to this heading">#</a></h4>
+<section id="id45">
+<h4>Returns<a class="headerlink" href="#id45" title="Permalink to this heading">#</a></h4>
 <p>value is Base62Encoded</p>
 </section>
 </section>
 <hr class="docutils" />
-<section id="issbkey">
-<h3>isSBKey<a class="headerlink" href="#issbkey" title="Link to this heading">#</a></h3>
-<p>▸ <strong>isSBKey</strong>(<code class="docutils literal notranslate"><span class="pre">key</span></code>): key is SBKey</p>
-<section id="id34">
-<h4>Parameters<a class="headerlink" href="#id34" title="Link to this heading">#</a></h4>
+<section id="jsonorstring">
+<h3>jsonOrString<a class="headerlink" href="#jsonorstring" title="Permalink to this heading">#</a></h3>
+<p>▸ <strong>jsonOrString</strong>(<code class="docutils literal notranslate"><span class="pre">str</span></code>): <code class="docutils literal notranslate"><span class="pre">any</span></code></p>
+<p>Different version than jsonParseWrapper. Does not throw, and also checks for
+simple strings (which are not valid JSON) and would return those. Returns
+null if input is null, or it can’t figure out what it is. Used in (low level)
+messaging contexts.</p>
+<section id="id46">
+<h4>Parameters<a class="headerlink" href="#id46" title="Permalink to this heading">#</a></h4>
 <div class="table-wrapper colwidths-auto docutils container">
 <table class="docutils align-default">
 <thead>
@@ -910,27 +1161,25 @@ and it allows some elements of the JSON to be raw (binary).</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">key</span></code></p></td>
-<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">any</span></code></p></td>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">null</span></code> | <code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
 </tr>
 </tbody>
 </table>
 </div>
 </section>
-<section id="id35">
-<h4>Returns<a class="headerlink" href="#id35" title="Link to this heading">#</a></h4>
-<p>key is SBKey</p>
+<section id="id47">
+<h4>Returns<a class="headerlink" href="#id47" title="Permalink to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">any</span></code></p>
 </section>
 </section>
 <hr class="docutils" />
 <section id="jsonparsewrapper">
-<h3>jsonParseWrapper<a class="headerlink" href="#jsonparsewrapper" title="Link to this heading">#</a></h3>
-<p>▸ <strong>jsonParseWrapper</strong>(<code class="docutils literal notranslate"><span class="pre">str</span></code>, <code class="docutils literal notranslate"><span class="pre">loc?</span></code>): <code class="docutils literal notranslate"><span class="pre">any</span></code></p>
-<p>There are many problems with JSON parsing, adding a resilient wrapper to capture more info.
-The ‘loc’ parameter should be a (unique) string that allows you to find the usage
-in the code; one approach is the line number in the file.</p>
-<section id="id36">
-<h4>Parameters<a class="headerlink" href="#id36" title="Link to this heading">#</a></h4>
+<h3>jsonParseWrapper<a class="headerlink" href="#jsonparsewrapper" title="Permalink to this heading">#</a></h3>
+<p>▸ <strong>jsonParseWrapper</strong>(<code class="docutils literal notranslate"><span class="pre">str</span></code>, <code class="docutils literal notranslate"><span class="pre">loc?</span></code>, <code class="docutils literal notranslate"><span class="pre">reviver?</span></code>): <code class="docutils literal notranslate"><span class="pre">any</span></code></p>
+<p>Adding a more resilient wrapper around JSON.parse. The ‘loc’ parameter is typically (file) line number.</p>
+<section id="id48">
+<h4>Parameters<a class="headerlink" href="#id48" title="Permalink to this heading">#</a></h4>
 <div class="table-wrapper colwidths-auto docutils container">
 <table class="docutils align-default">
 <thead>
@@ -945,22 +1194,24 @@ in the code; one approach is the line number in the file.</p>
 <tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">loc?</span></code></p></td>
 <td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
 </tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">reviver?</span></code></p></td>
+<td class="text-left"><p>(<code class="docutils literal notranslate"><span class="pre">this</span></code>: <code class="docutils literal notranslate"><span class="pre">any</span></code>, <code class="docutils literal notranslate"><span class="pre">key</span></code>: <code class="docutils literal notranslate"><span class="pre">string</span></code>, <code class="docutils literal notranslate"><span class="pre">value</span></code>: <code class="docutils literal notranslate"><span class="pre">any</span></code>) =&gt; <code class="docutils literal notranslate"><span class="pre">any</span></code></p></td>
+</tr>
 </tbody>
 </table>
 </div>
 </section>
-<section id="id37">
-<h4>Returns<a class="headerlink" href="#id37" title="Link to this heading">#</a></h4>
+<section id="id49">
+<h4>Returns<a class="headerlink" href="#id49" title="Permalink to this heading">#</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">any</span></code></p>
 </section>
 </section>
 <hr class="docutils" />
-<section id="partition">
-<h3>partition<a class="headerlink" href="#partition" title="Link to this heading">#</a></h3>
-<p>▸ <strong>partition</strong>(<code class="docutils literal notranslate"><span class="pre">str</span></code>, <code class="docutils literal notranslate"><span class="pre">n</span></code>): <code class="docutils literal notranslate"><span class="pre">void</span></code></p>
-<p>Partition</p>
-<section id="id38">
-<h4>Parameters<a class="headerlink" href="#id38" title="Link to this heading">#</a></h4>
+<section id="setdebuglevel">
+<h3>setDebugLevel<a class="headerlink" href="#setdebuglevel" title="Permalink to this heading">#</a></h3>
+<p>▸ <strong>setDebugLevel</strong>(<code class="docutils literal notranslate"><span class="pre">dbg1</span></code>, <code class="docutils literal notranslate"><span class="pre">dbg2?</span></code>): <code class="docutils literal notranslate"><span class="pre">void</span></code></p>
+<section id="id50">
+<h4>Parameters<a class="headerlink" href="#id50" title="Permalink to this heading">#</a></h4>
 <div class="table-wrapper colwidths-auto docutils container">
 <table class="docutils align-default">
 <thead>
@@ -969,19 +1220,269 @@ in the code; one approach is the line number in the file.</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
-<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">dbg1</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">boolean</span></code></p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">n</span></code></p></td>
-<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">number</span></code></p></td>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">dbg2?</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">boolean</span></code></p></td>
 </tr>
 </tbody>
 </table>
 </div>
 </section>
-<section id="id39">
-<h4>Returns<a class="headerlink" href="#id39" title="Link to this heading">#</a></h4>
+<section id="id51">
+<h4>Returns<a class="headerlink" href="#id51" title="Permalink to this heading">#</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">void</span></code></p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="stringify-sbobjecthandle">
+<h3>stringify_SBObjectHandle<a class="headerlink" href="#stringify-sbobjecthandle" title="Permalink to this heading">#</a></h3>
+<p>▸ <strong>stringify_SBObjectHandle</strong>(<code class="docutils literal notranslate"><span class="pre">h</span></code>): <code class="docutils literal notranslate"><span class="pre">Promise</span></code>&lt;<a class="reference internal" href="interfaces/SBObjectHandle.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">SBObjectHandle</span></code></span></a>&gt;</p>
+<p>In some circumstances we need to make sure we have a JSON serializable
+version of the object handle, eg that iv and salt are base62 strings,
+and that the verification has been resolved</p>
+<section id="id52">
+<h4>Parameters<a class="headerlink" href="#id52" title="Permalink to this heading">#</a></h4>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Name</p></th>
+<th class="head text-left"><p>Type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">h</span></code></p></td>
+<td class="text-left"><p><a class="reference internal" href="interfaces/SBObjectHandle.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">SBObjectHandle</span></code></span></a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="id53">
+<h4>Returns<a class="headerlink" href="#id53" title="Permalink to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">Promise</span></code>&lt;<a class="reference internal" href="interfaces/SBObjectHandle.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">SBObjectHandle</span></code></span></a>&gt;</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="stripchannelmessage">
+<h3>stripChannelMessage<a class="headerlink" href="#stripchannelmessage" title="Permalink to this heading">#</a></h3>
+<p>▸ <strong>stripChannelMessage</strong>(<code class="docutils literal notranslate"><span class="pre">msg</span></code>, <code class="docutils literal notranslate"><span class="pre">serverMode?</span></code>): <a class="reference internal" href="interfaces/ChannelMessage.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">ChannelMessage</span></code></span></a></p>
+<p>Complements validate_ChannelMessage. This is used to strip out the parts that
+are not strictly needed. Addresses privacy, security, and message size
+issues. Note that ‘ChannelMessage’ is a ‘public’ interface, in the sense that
+this is what is actually stored (as payload ArrayBuffers) at rest, both on
+servers and clients.</p>
+<p>‘serverMode’ is slightly more strict and used by server-side code.</p>
+<section id="id54">
+<h4>Parameters<a class="headerlink" href="#id54" title="Permalink to this heading">#</a></h4>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Name</p></th>
+<th class="head text-left"><p>Type</p></th>
+<th class="head text-left"><p>Default value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">msg</span></code></p></td>
+<td class="text-left"><p><a class="reference internal" href="interfaces/ChannelMessage.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">ChannelMessage</span></code></span></a></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">undefined</span></code></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">serverMode</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">boolean</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="id55">
+<h4>Returns<a class="headerlink" href="#id55" title="Permalink to this heading">#</a></h4>
+<p><a class="reference internal" href="interfaces/ChannelMessage.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">ChannelMessage</span></code></span></a></p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="validate-channelapibody">
+<h3>validate_ChannelApiBody<a class="headerlink" href="#validate-channelapibody" title="Permalink to this heading">#</a></h3>
+<p>▸ <strong>validate_ChannelApiBody</strong>(<code class="docutils literal notranslate"><span class="pre">body</span></code>): <a class="reference internal" href="interfaces/ChannelApiBody.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">ChannelApiBody</span></code></span></a></p>
+<section id="id56">
+<h4>Parameters<a class="headerlink" href="#id56" title="Permalink to this heading">#</a></h4>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Name</p></th>
+<th class="head text-left"><p>Type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">body</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">any</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="id57">
+<h4>Returns<a class="headerlink" href="#id57" title="Permalink to this heading">#</a></h4>
+<p><a class="reference internal" href="interfaces/ChannelApiBody.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">ChannelApiBody</span></code></span></a></p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="validate-channelmessage">
+<h3>validate_ChannelMessage<a class="headerlink" href="#validate-channelmessage" title="Permalink to this heading">#</a></h3>
+<p>▸ <strong>validate_ChannelMessage</strong>(<code class="docutils literal notranslate"><span class="pre">body</span></code>): <a class="reference internal" href="interfaces/ChannelMessage.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">ChannelMessage</span></code></span></a></p>
+<section id="id58">
+<h4>Parameters<a class="headerlink" href="#id58" title="Permalink to this heading">#</a></h4>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Name</p></th>
+<th class="head text-left"><p>Type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">body</span></code></p></td>
+<td class="text-left"><p><a class="reference internal" href="interfaces/ChannelMessage.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">ChannelMessage</span></code></span></a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="id59">
+<h4>Returns<a class="headerlink" href="#id59" title="Permalink to this heading">#</a></h4>
+<p><a class="reference internal" href="interfaces/ChannelMessage.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">ChannelMessage</span></code></span></a></p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="validate-message">
+<h3>validate_Message<a class="headerlink" href="#validate-message" title="Permalink to this heading">#</a></h3>
+<p>▸ <strong>validate_Message</strong>(<code class="docutils literal notranslate"><span class="pre">data</span></code>): <a class="reference internal" href="interfaces/Message.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">Message</span></code></span></a></p>
+<section id="id60">
+<h4>Parameters<a class="headerlink" href="#id60" title="Permalink to this heading">#</a></h4>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Name</p></th>
+<th class="head text-left"><p>Type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">data</span></code></p></td>
+<td class="text-left"><p><a class="reference internal" href="interfaces/Message.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">Message</span></code></span></a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="id61">
+<h4>Returns<a class="headerlink" href="#id61" title="Permalink to this heading">#</a></h4>
+<p><a class="reference internal" href="interfaces/Message.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">Message</span></code></span></a></p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="validate-sbchanneldata">
+<h3>validate_SBChannelData<a class="headerlink" href="#validate-sbchanneldata" title="Permalink to this heading">#</a></h3>
+<p>▸ <strong>validate_SBChannelData</strong>(<code class="docutils literal notranslate"><span class="pre">data</span></code>): <a class="reference internal" href="interfaces/SBChannelData.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">SBChannelData</span></code></span></a></p>
+<section id="id62">
+<h4>Parameters<a class="headerlink" href="#id62" title="Permalink to this heading">#</a></h4>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Name</p></th>
+<th class="head text-left"><p>Type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">data</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">any</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="id63">
+<h4>Returns<a class="headerlink" href="#id63" title="Permalink to this heading">#</a></h4>
+<p><a class="reference internal" href="interfaces/SBChannelData.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">SBChannelData</span></code></span></a></p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="validate-sbchannelhandle">
+<h3>validate_SBChannelHandle<a class="headerlink" href="#validate-sbchannelhandle" title="Permalink to this heading">#</a></h3>
+<p>▸ <strong>validate_SBChannelHandle</strong>(<code class="docutils literal notranslate"><span class="pre">data</span></code>): <a class="reference internal" href="interfaces/SBChannelHandle.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">SBChannelHandle</span></code></span></a></p>
+<p>Validates ‘SBChannelHandle’, throws if there’s an issue</p>
+<section id="id64">
+<h4>Parameters<a class="headerlink" href="#id64" title="Permalink to this heading">#</a></h4>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Name</p></th>
+<th class="head text-left"><p>Type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">data</span></code></p></td>
+<td class="text-left"><p><a class="reference internal" href="interfaces/SBChannelHandle.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">SBChannelHandle</span></code></span></a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="id65">
+<h4>Returns<a class="headerlink" href="#id65" title="Permalink to this heading">#</a></h4>
+<p><a class="reference internal" href="interfaces/SBChannelHandle.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">SBChannelHandle</span></code></span></a></p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="validate-sbobjecthandle">
+<h3>validate_SBObjectHandle<a class="headerlink" href="#validate-sbobjecthandle" title="Permalink to this heading">#</a></h3>
+<p>▸ <strong>validate_SBObjectHandle</strong>(<code class="docutils literal notranslate"><span class="pre">h</span></code>): <a class="reference internal" href="interfaces/SBObjectHandle.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">SBObjectHandle</span></code></span></a></p>
+<section id="id66">
+<h4>Parameters<a class="headerlink" href="#id66" title="Permalink to this heading">#</a></h4>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Name</p></th>
+<th class="head text-left"><p>Type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">h</span></code></p></td>
+<td class="text-left"><p><a class="reference internal" href="interfaces/SBObjectHandle.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">SBObjectHandle</span></code></span></a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="id67">
+<h4>Returns<a class="headerlink" href="#id67" title="Permalink to this heading">#</a></h4>
+<p><a class="reference internal" href="interfaces/SBObjectHandle.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">SBObjectHandle</span></code></span></a></p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="validate-sbstoragetoken">
+<h3>validate_SBStorageToken<a class="headerlink" href="#validate-sbstoragetoken" title="Permalink to this heading">#</a></h3>
+<p>▸ <strong>validate_SBStorageToken</strong>(<code class="docutils literal notranslate"><span class="pre">data</span></code>): <a class="reference internal" href="interfaces/SBStorageToken.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">SBStorageToken</span></code></span></a></p>
+<section id="id68">
+<h4>Parameters<a class="headerlink" href="#id68" title="Permalink to this heading">#</a></h4>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Name</p></th>
+<th class="head text-left"><p>Type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">data</span></code></p></td>
+<td class="text-left"><p><a class="reference internal" href="interfaces/SBStorageToken.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">SBStorageToken</span></code></span></a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="id69">
+<h4>Returns<a class="headerlink" href="#id69" title="Permalink to this heading">#</a></h4>
+<p><a class="reference internal" href="interfaces/SBStorageToken.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">SBStorageToken</span></code></span></a></p>
 </section>
 </section>
 </section>
@@ -1044,7 +1545,7 @@ in the code; one approach is the line number in the file.</p>
             <ul>
 <li><a class="reference internal" href="#">JSLib Reference Manual</a><ul>
 <li><a class="reference internal" href="#table-of-contents">Table of contents</a><ul>
-<li><a class="reference internal" href="#namespaces">Namespaces</a></li>
+<li><a class="reference internal" href="#enumerations">Enumerations</a></li>
 <li><a class="reference internal" href="#classes">Classes</a></li>
 <li><a class="reference internal" href="#interfaces">Interfaces</a></li>
 <li><a class="reference internal" href="#type-aliases">Type Aliases</a></li>
@@ -1053,120 +1554,203 @@ in the code; one approach is the line number in the file.</p>
 </ul>
 </li>
 <li><a class="reference internal" href="#id1">Type Aliases</a><ul>
-<li><a class="reference internal" href="#channelmessagetypes">ChannelMessageTypes</a></li>
+<li><a class="reference internal" href="#base62encoded">Base62Encoded</a></li>
+<li><a class="reference internal" href="#messagettl">MessageTtl</a></li>
 <li><a class="reference internal" href="#sb384hash">SB384Hash</a></li>
 <li><a class="reference internal" href="#sbchannelid">SBChannelId</a></li>
-<li><a class="reference internal" href="#sbkey">SBKey</a></li>
 <li><a class="reference internal" href="#sbobjecthandleversions">SBObjectHandleVersions</a></li>
-<li><a class="reference internal" href="#sbobjecttype">SBObjectType</a></li>
+<li><a class="reference internal" href="#sbstoragetokenhash">SBStorageTokenHash</a></li>
 <li><a class="reference internal" href="#sbuserid">SBUserId</a></li>
-<li><a class="reference internal" href="#sbuserkey">SBUserKey</a></li>
-<li><a class="reference internal" href="#sbuserkeystring">SBUserKeyString</a></li>
+<li><a class="reference internal" href="#sbuserprivatekey">SBUserPrivateKey</a></li>
+<li><a class="reference internal" href="#sbuserpublickey">SBUserPublicKey</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#id2">Variables</a><ul>
+<li><a class="reference internal" href="#new-channel-minimum-budget">NEW_CHANNEL_MINIMUM_BUDGET</a></li>
 <li><a class="reference internal" href="#sb">SB</a><ul>
 <li><a class="reference internal" href="#type-declaration">Type declaration</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#sbstoragetokenprefix">SBStorageTokenPrefix</a></li>
+<li><a class="reference internal" href="#b62regex">b62regex</a></li>
+<li><a class="reference internal" href="#base62">base62</a></li>
+<li><a class="reference internal" href="#base62regex">base62regex</a></li>
+<li><a class="reference internal" href="#base64url">base64url</a></li>
+<li><a class="reference internal" href="#msgttltoseconds">msgTtlToSeconds</a></li>
+<li><a class="reference internal" href="#msgttltostring">msgTtlToString</a></li>
 <li><a class="reference internal" href="#sbcrypto">sbCrypto</a></li>
 <li><a class="reference internal" href="#version">version</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#id3">Functions</a><ul>
-<li><a class="reference internal" href="#arraybuffer32tobase62">arrayBuffer32ToBase62</a><ul>
+<li><a class="reference internal" href="#memoize">Memoize</a><ul>
 <li><a class="reference internal" href="#parameters">Parameters</a></li>
 <li><a class="reference internal" href="#returns">Returns</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#arraybuffertobase62">arrayBufferToBase62</a><ul>
+<li><a class="reference internal" href="#ready">Ready</a><ul>
 <li><a class="reference internal" href="#id4">Parameters</a></li>
 <li><a class="reference internal" href="#id5">Returns</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#arraybuffertobase64">arrayBufferToBase64</a><ul>
+<li><a class="reference internal" href="#sbapifetch">SBApiFetch</a><ul>
 <li><a class="reference internal" href="#id6">Parameters</a></li>
 <li><a class="reference internal" href="#id7">Returns</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#assemblepayload">assemblePayload</a><ul>
+<li><a class="reference internal" href="#check-sbchanneldata">_check_SBChannelData</a><ul>
 <li><a class="reference internal" href="#id8">Parameters</a></li>
 <li><a class="reference internal" href="#id9">Returns</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#base62toarraybuffer">base62ToArrayBuffer</a><ul>
+<li><a class="reference internal" href="#check-sbchannelhandle">_check_SBChannelHandle</a><ul>
 <li><a class="reference internal" href="#id10">Parameters</a></li>
 <li><a class="reference internal" href="#id11">Returns</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#base62toarraybuffer32">base62ToArrayBuffer32</a><ul>
+<li><a class="reference internal" href="#check-sbobjecthandle">_check_SBObjectHandle</a><ul>
 <li><a class="reference internal" href="#id12">Parameters</a></li>
 <li><a class="reference internal" href="#id13">Returns</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#base62tobase64">base62ToBase64</a><ul>
+<li><a class="reference internal" href="#check-sbstoragetoken">_check_SBStorageToken</a><ul>
 <li><a class="reference internal" href="#id14">Parameters</a></li>
 <li><a class="reference internal" href="#id15">Returns</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#base64toarraybuffer">base64ToArrayBuffer</a><ul>
+<li><a class="reference internal" href="#arraybuffertobase62">arrayBufferToBase62</a><ul>
 <li><a class="reference internal" href="#id16">Parameters</a></li>
 <li><a class="reference internal" href="#id17">Returns</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#base64tobase62">base64ToBase62</a><ul>
+<li><a class="reference internal" href="#arraybuffertobase64url">arrayBufferToBase64url</a><ul>
 <li><a class="reference internal" href="#id18">Parameters</a></li>
 <li><a class="reference internal" href="#id19">Returns</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#comparebuffers">compareBuffers</a><ul>
+<li><a class="reference internal" href="#assemblepayload">assemblePayload</a><ul>
 <li><a class="reference internal" href="#id20">Parameters</a></li>
 <li><a class="reference internal" href="#id21">Returns</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#decodeb64url">decodeB64Url</a><ul>
+<li><a class="reference internal" href="#b32decode">b32decode</a><ul>
 <li><a class="reference internal" href="#id22">Parameters</a></li>
 <li><a class="reference internal" href="#id23">Returns</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#encodeb64url">encodeB64Url</a><ul>
+<li><a class="reference internal" href="#b32encode">b32encode</a><ul>
 <li><a class="reference internal" href="#id24">Parameters</a></li>
 <li><a class="reference internal" href="#id25">Returns</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#encryptedcontentsmakebinary">encryptedContentsMakeBinary</a><ul>
+<li><a class="reference internal" href="#b32process">b32process</a><ul>
 <li><a class="reference internal" href="#id26">Parameters</a></li>
 <li><a class="reference internal" href="#id27">Returns</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#extractpayload">extractPayload</a><ul>
+<li><a class="reference internal" href="#base62toarraybuffer">base62ToArrayBuffer</a><ul>
 <li><a class="reference internal" href="#id28">Parameters</a></li>
 <li><a class="reference internal" href="#id29">Returns</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#getrandomvalues">getRandomValues</a><ul>
+<li><a class="reference internal" href="#base62tobase64">base62ToBase64</a><ul>
 <li><a class="reference internal" href="#id30">Parameters</a></li>
 <li><a class="reference internal" href="#id31">Returns</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#isbase62encoded">isBase62Encoded</a><ul>
+<li><a class="reference internal" href="#base64toarraybuffer">base64ToArrayBuffer</a><ul>
 <li><a class="reference internal" href="#id32">Parameters</a></li>
 <li><a class="reference internal" href="#id33">Returns</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#issbkey">isSBKey</a><ul>
+<li><a class="reference internal" href="#base64tobase62">base64ToBase62</a><ul>
 <li><a class="reference internal" href="#id34">Parameters</a></li>
 <li><a class="reference internal" href="#id35">Returns</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#jsonparsewrapper">jsonParseWrapper</a><ul>
+<li><a class="reference internal" href="#comparebuffers">compareBuffers</a><ul>
 <li><a class="reference internal" href="#id36">Parameters</a></li>
 <li><a class="reference internal" href="#id37">Returns</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#partition">partition</a><ul>
+<li><a class="reference internal" href="#extractpayload">extractPayload</a><ul>
 <li><a class="reference internal" href="#id38">Parameters</a></li>
 <li><a class="reference internal" href="#id39">Returns</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#getrandomvalues">getRandomValues</a><ul>
+<li><a class="reference internal" href="#id40">Parameters</a></li>
+<li><a class="reference internal" href="#id41">Returns</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#hydratekey">hydrateKey</a><ul>
+<li><a class="reference internal" href="#id42">Parameters</a></li>
+<li><a class="reference internal" href="#id43">Returns</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#isbase62encoded">isBase62Encoded</a><ul>
+<li><a class="reference internal" href="#id44">Parameters</a></li>
+<li><a class="reference internal" href="#id45">Returns</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#jsonorstring">jsonOrString</a><ul>
+<li><a class="reference internal" href="#id46">Parameters</a></li>
+<li><a class="reference internal" href="#id47">Returns</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#jsonparsewrapper">jsonParseWrapper</a><ul>
+<li><a class="reference internal" href="#id48">Parameters</a></li>
+<li><a class="reference internal" href="#id49">Returns</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#setdebuglevel">setDebugLevel</a><ul>
+<li><a class="reference internal" href="#id50">Parameters</a></li>
+<li><a class="reference internal" href="#id51">Returns</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#stringify-sbobjecthandle">stringify_SBObjectHandle</a><ul>
+<li><a class="reference internal" href="#id52">Parameters</a></li>
+<li><a class="reference internal" href="#id53">Returns</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#stripchannelmessage">stripChannelMessage</a><ul>
+<li><a class="reference internal" href="#id54">Parameters</a></li>
+<li><a class="reference internal" href="#id55">Returns</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#validate-channelapibody">validate_ChannelApiBody</a><ul>
+<li><a class="reference internal" href="#id56">Parameters</a></li>
+<li><a class="reference internal" href="#id57">Returns</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#validate-channelmessage">validate_ChannelMessage</a><ul>
+<li><a class="reference internal" href="#id58">Parameters</a></li>
+<li><a class="reference internal" href="#id59">Returns</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#validate-message">validate_Message</a><ul>
+<li><a class="reference internal" href="#id60">Parameters</a></li>
+<li><a class="reference internal" href="#id61">Returns</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#validate-sbchanneldata">validate_SBChannelData</a><ul>
+<li><a class="reference internal" href="#id62">Parameters</a></li>
+<li><a class="reference internal" href="#id63">Returns</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#validate-sbchannelhandle">validate_SBChannelHandle</a><ul>
+<li><a class="reference internal" href="#id64">Parameters</a></li>
+<li><a class="reference internal" href="#id65">Returns</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#validate-sbobjecthandle">validate_SBObjectHandle</a><ul>
+<li><a class="reference internal" href="#id66">Parameters</a></li>
+<li><a class="reference internal" href="#id67">Returns</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#validate-sbstoragetoken">validate_SBStorageToken</a><ul>
+<li><a class="reference internal" href="#id68">Parameters</a></li>
+<li><a class="reference internal" href="#id69">Returns</a></li>
 </ul>
 </li>
 </ul>
@@ -1182,9 +1766,12 @@ in the code; one approach is the line number in the file.</p>
       
     </aside>
   </div>
-</div><script src="_static/documentation_options.js?v=f2a433a1"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/scripts/furo.js?v=32e29ea5"></script>
+</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/scripts/furo.js"></script>
     </body>
 </html>

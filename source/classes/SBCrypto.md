@@ -2,6 +2,9 @@
 
 # Class: SBCrypto
 
+Utility class for SB crypto functions. Generally we use an object instantiation
+of this (typically ''sbCrypto'') as a global variable.
+
 ## Table of contents
 
 ### Constructors
@@ -10,31 +13,15 @@
 
 ### Methods
 
-- [JWKToSBKey](SBCrypto.md#jwktosbkey)
-- [JWKToSBUserId](SBCrypto.md#jwktosbuserid)
-- [SBKeyToJWK](SBCrypto.md#sbkeytojwk)
-- [SBKeyToString](SBCrypto.md#sbkeytostring)
-- [StringToJWK](SBCrypto.md#stringtojwk)
-- [StringToSBKey](SBCrypto.md#stringtosbkey)
 - [ab2str](SBCrypto.md#ab2str)
-- [addKnownKey](SBCrypto.md#addknownkey)
-- [channelKeyStringsToCryptoKeys](SBCrypto.md#channelkeystringstocryptokeys)
-- [compareHashWithKey](SBCrypto.md#comparehashwithkey)
-- [compareKeys](SBCrypto.md#comparekeys)
-- [deriveKey](SBCrypto.md#derivekey)
 - [encrypt](SBCrypto.md#encrypt)
 - [exportKey](SBCrypto.md#exportkey)
-- [extractPubKey](SBCrypto.md#extractpubkey)
 - [generateIdKey](SBCrypto.md#generateidkey)
 - [generateKeys](SBCrypto.md#generatekeys)
 - [importKey](SBCrypto.md#importkey)
-- [lookupKeyGlobal](SBCrypto.md#lookupkeyglobal)
-- [sb384Hash](SBCrypto.md#sb384hash)
 - [sign](SBCrypto.md#sign)
 - [str2ab](SBCrypto.md#str2ab)
-- [unwrap](SBCrypto.md#unwrap)
 - [verify](SBCrypto.md#verify)
-- [verifyChannelId](SBCrypto.md#verifychannelid)
 - [wrap](SBCrypto.md#wrap)
 
 ## Constructors
@@ -49,134 +36,11 @@
 
 ## Methods
 
-### JWKToSBKey
-
-▸ **JWKToSBKey**(`key`, `forcePublic?`): `undefined` \| [`SBKey`](../modules.md#sbkey)
-
-Converts a JsonWebKey to a SBKey. Any issues and we return undefined.
-
-#### Parameters
-
-| Name | Type | Default value |
-| :------ | :------ | :------ |
-| `key` | `JsonWebKey` | `undefined` |
-| `forcePublic` | `boolean` | `false` |
-
-#### Returns
-
-`undefined` \| [`SBKey`](../modules.md#sbkey)
-
-___
-
-### JWKToSBUserId
-
-▸ **JWKToSBUserId**(`key`): `undefined` \| `string`
-
-Convenience function. Note that SBUserId is always 'public'.
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `key` | `JsonWebKey` |
-
-#### Returns
-
-`undefined` \| `string`
-
-___
-
-### SBKeyToJWK
-
-▸ **SBKeyToJWK**(`key`): `JsonWebKey`
-
-Converts a SBKey to a JsonWebKey, if the input is already a JsonWebKey
-then it's returned as is.
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `key` | `JsonWebKey` \| [`SBKey`](../modules.md#sbkey) |
-
-#### Returns
-
-`JsonWebKey`
-
-___
-
-### SBKeyToString
-
-▸ **SBKeyToString**(`key`): `string`
-
-Here we convert SBKey to a serialized string, it's a single
-string that begins with the four-character identifying prefix,
-and then just a string. The way that string is encoded is as
-follows:
-
-- AES256 key: it is 43x base64, so 256 bits, so can be base62 encoded straight up
-
-  public key: this is x and y, each are 384 bits, and we need to figure out a 
-  way to encode as a32 (base62) - remember we can only encode a32 in chunks of 256 bits.
-  perhaps we do as above but append 128 "zero" bits to it, for a total of 1280
-  bits, which we can split into four chunks of 256 bits, and do as above.
-
-- private key: this is x, y, and d, each are 384 bits, so that's a total 
-  of 768 bis, which can be encoded as three strings of 43 base62 characters.
-  BUT we need to convert all of them to BINARY, and then concatenate them
-  as binary, then split that to three equal-length buffers (32 bytes) and
-  then convert each to base62.
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `key` | [`SBKey`](../modules.md#sbkey) |
-
-#### Returns
-
-`string`
-
-___
-
-### StringToJWK
-
-▸ **StringToJWK**(`userId`): `undefined` \| `JsonWebKey`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `userId` | `string` |
-
-#### Returns
-
-`undefined` \| `JsonWebKey`
-
-___
-
-### StringToSBKey
-
-▸ **StringToSBKey**(`input`): `undefined` \| [`SBKey`](../modules.md#sbkey)
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `input` | `string` |
-
-#### Returns
-
-`undefined` \| [`SBKey`](../modules.md#sbkey)
-
-___
-
 ### ab2str
 
 ▸ **ab2str**(`buffer`): `string`
 
 Standardized 'ab2str()' function, array buffer to string.
-This assumes one byte per character.
 
 #### Parameters
 
@@ -188,133 +52,11 @@ This assumes one byte per character.
 
 `string`
 
-string
-
-___
-
-### addKnownKey
-
-▸ **addKnownKey**(`key`): `Promise`\<`void`\>
-
-SBCrypto.addKnownKey()
-
-Adds any key to the list of known keys; if it's known
-but only as a public key, then it will be 'upgraded'.
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `key` | `Key` |
-
-#### Returns
-
-`Promise`\<`void`\>
-
-___
-
-### channelKeyStringsToCryptoKeys
-
-▸ **channelKeyStringsToCryptoKeys**(`keyStrings`): `Promise`\<[`ChannelKeys`](../interfaces/ChannelKeys.md)\>
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `keyStrings` | [`ChannelKeyStrings`](../interfaces/ChannelKeyStrings.md) |
-
-#### Returns
-
-`Promise`\<[`ChannelKeys`](../interfaces/ChannelKeys.md)\>
-
-___
-
-### compareHashWithKey
-
-▸ **compareHashWithKey**(`hash`, `key`): `Promise`\<`boolean`\>
-
-SBCrypto.compareHashWithKey()
-
-Checks if an existing SB384Hash is 'compatible' with a given key.
-
-Note that you CAN NOT have a hash, and a key, generate a hash
-from that key, and then compare the two. The hash generation per
-se will be deterministic and specific AT ANY POINT IN TIME,
-but may change over time, and this comparison function will 
-maintain ability to compare over versions.
-
-For example, this comparison will accept a simple straight
-b64-encoded hash without iteration or other processing.
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `hash` | `string` |
-| `key` | ``null`` \| `JsonWebKey` |
-
-#### Returns
-
-`Promise`\<`boolean`\>
-
-___
-
-### compareKeys
-
-▸ **compareKeys**(`key1`, `key2`): `boolean`
-
-SBCrypto.compareKeys()
-
-Compare JSON keys, true if the 'same', false if different. We consider
-them "equal" if both have 'x' and 'y' properties and they are the same.
-(Which means it doesn't care about which or either being public or private)
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `key1` | `Dictionary`\<`any`\> |
-| `key2` | `Dictionary`\<`any`\> |
-
-#### Returns
-
-`boolean`
-
-___
-
-### deriveKey
-
-▸ **deriveKey**(`privateKey`, `publicKey`, `type`, `extractable`, `keyUsages`): `Promise`\<`CryptoKey`\>
-
-SBCrypto.deriveKey()
-
-Derive key. Takes a private and public key, and returns a Promise to a cryptoKey for 1:1 communication.
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `privateKey` | `CryptoKey` |
-| `publicKey` | `CryptoKey` |
-| `type` | `string` |
-| `extractable` | `boolean` |
-| `keyUsages` | `KeyUsage`[] |
-
-#### Returns
-
-`Promise`\<`CryptoKey`\>
-
 ___
 
 ### encrypt
 
-▸ **encrypt**(`data`, `key`, `_iv?`, `returnType?`): `Promise`\<[`EncryptedContents`](../interfaces/EncryptedContents.md)\>
-
-SBCrypto.encrypt()
-
-Encrypt. if no nonce (iv) is given, will create it. Returns a Promise
-that resolves either to raw array buffer or a packaged EncryptedContents.
-Note that for the former, nonce must be given.
+▸ **encrypt**(`data`, `key`, `params`): `Promise`\<`ArrayBuffer`\>
 
 #### Parameters
 
@@ -322,23 +64,7 @@ Note that for the former, nonce must be given.
 | :------ | :------ |
 | `data` | `BufferSource` |
 | `key` | `CryptoKey` |
-| `_iv?` | ``null`` \| `Uint8Array` |
-| `returnType?` | ``"encryptedContents"`` |
-
-#### Returns
-
-`Promise`\<[`EncryptedContents`](../interfaces/EncryptedContents.md)\>
-
-▸ **encrypt**(`data`, `key`, `_iv?`, `returnType?`): `Promise`\<`ArrayBuffer`\>
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `data` | `BufferSource` |
-| `key` | `CryptoKey` |
-| `_iv?` | ``null`` \| `Uint8Array` |
-| `returnType?` | ``"arrayBuffer"`` |
+| `params` | [`EncryptParams`](../interfaces/EncryptParams.md) |
 
 #### Returns
 
@@ -349,8 +75,6 @@ ___
 ### exportKey
 
 ▸ **exportKey**(`format`, `key`): `Promise`\<`undefined` \| `JsonWebKey`\>
-
-SBCrypto.exportKey()
 
 Export key; note that if there's an issue, this will return undefined.
 That can happen normally if for example the key is restricted (and
@@ -369,43 +93,23 @@ not extractable).
 
 ___
 
-### extractPubKey
-
-▸ **extractPubKey**(`privateKey`): ``null`` \| `JsonWebKey`
-
-Extracts (generates) public key from a private key.
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `privateKey` | `JsonWebKey` |
-
-#### Returns
-
-``null`` \| `JsonWebKey`
-
-___
-
 ### generateIdKey
 
-▸ **generateIdKey**(`buf`): `Promise`\<\{ `id_binary`: `ArrayBuffer` ; `key_material`: `ArrayBuffer`  }\>
+▸ **generateIdKey**(`buf`): `Promise`\<\{ `idBinary`: `ArrayBuffer` ; `keyMaterial`: `ArrayBuffer`  }\>
 
 Hashes and splits into two (h1 and h1) signature of data, h1
 is used to request (salt, iv) pair and then h2 is used for
 encryption (h2, salt, iv).
 
-Transitioning to internal binary format
-
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `buf` | `ArrayBuffer` | blob of data to be stored |
+| Name | Type |
+| :------ | :------ |
+| `buf` | `ArrayBuffer` |
 
 #### Returns
 
-`Promise`\<\{ `id_binary`: `ArrayBuffer` ; `key_material`: `ArrayBuffer`  }\>
+`Promise`\<\{ `idBinary`: `ArrayBuffer` ; `keyMaterial`: `ArrayBuffer`  }\>
 
 ___
 
@@ -427,8 +131,6 @@ ___
 
 ▸ **importKey**(`format`, `key`, `type`, `extractable`, `keyUsages`): `Promise`\<`CryptoKey`\>
 
-SBCrypto.importKey()
-
 Import keys
 
 #### Parameters
@@ -447,64 +149,22 @@ Import keys
 
 ___
 
-### lookupKeyGlobal
-
-▸ **lookupKeyGlobal**(`hash`): `undefined` \| `knownKeysInfo`
-
-SBCrypto.lookupKeyGlobal()
-
-Given any sort of SB384Hash, returns the corresponding known key, if any
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `hash` | `string` |
-
-#### Returns
-
-`undefined` \| `knownKeysInfo`
-
-___
-
-### sb384Hash
-
-▸ **sb384Hash**(`key?`): `Promise`\<`undefined` \| `string`\>
-
-SBCrypto.sb384Hash()
-
-Takes a JsonWebKey and returns a SB384Hash. If there's a problem, returns undefined.
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `key?` | `CryptoKey` \| `JsonWebKey` |
-
-#### Returns
-
-`Promise`\<`undefined` \| `string`\>
-
-___
-
 ### sign
 
-▸ **sign**(`secretKey`, `contents`): `Promise`\<`string`\>
+▸ **sign**(`signKey`, `contents`): `Promise`\<`ArrayBuffer`\>
 
-SBCrypto.sign()
-
-Sign
+Basic signing
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `secretKey` | `CryptoKey` |
-| `contents` | `string` |
+| `signKey` | `CryptoKey` |
+| `contents` | `ArrayBuffer` |
 
 #### Returns
 
-`Promise`\<`string`\>
+`Promise`\<`ArrayBuffer`\>
 
 ___
 
@@ -513,7 +173,6 @@ ___
 ▸ **str2ab**(`string`): `Uint8Array`
 
 Standardized 'str2ab()' function, string to array buffer.
-This assumes on byte per character.
 
 #### Parameters
 
@@ -525,81 +184,21 @@ This assumes on byte per character.
 
 `Uint8Array`
 
-buffer
-
-___
-
-### unwrap
-
-▸ **unwrap**(`k`, `o`, `returnType`): `Promise`\<`string`\>
-
-SBCrypto.unwrap
-
-Decrypts a wrapped object, returns (promise to) decrypted contents
-per se (either as a string or arrayBuffer)
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `k` | `CryptoKey` |
-| `o` | [`EncryptedContents`](../interfaces/EncryptedContents.md) |
-| `returnType` | ``"string"`` |
-
-#### Returns
-
-`Promise`\<`string`\>
-
-▸ **unwrap**(`k`, `o`, `returnType`): `Promise`\<`ArrayBuffer`\>
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `k` | `CryptoKey` |
-| `o` | [`EncryptedContents`](../interfaces/EncryptedContents.md) |
-| `returnType` | ``"arrayBuffer"`` |
-
-#### Returns
-
-`Promise`\<`ArrayBuffer`\>
-
 ___
 
 ### verify
 
 ▸ **verify**(`verifyKey`, `sign`, `contents`): `Promise`\<`boolean`\>
 
-SBCrypto.verify()
-
-Verify signature.
+Basic verifcation
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `verifyKey` | `CryptoKey` |
-| `sign` | `string` |
-| `contents` | `string` |
-
-#### Returns
-
-`Promise`\<`boolean`\>
-
-___
-
-### verifyChannelId
-
-▸ **verifyChannelId**(`owner_key`, `channel_id`): `Promise`\<`boolean`\>
-
-'Compare' two channel IDs. Note that this is not constant time.
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `owner_key` | `JsonWebKey` |
-| `channel_id` | `string` |
+| `sign` | `ArrayBuffer` |
+| `contents` | `ArrayBuffer` |
 
 #### Returns
 
@@ -609,30 +208,23 @@ ___
 
 ### wrap
 
-▸ **wrap**(`k`, `b`, `bodyType`): `Promise`\<[`EncryptedContents`](../interfaces/EncryptedContents.md)\>
+▸ **wrap**(`body`, `sender`, `encryptionKey`, `salt`, `signingKey`): `Promise`\<[`ChannelMessage`](../interfaces/ChannelMessage.md)\>
+
+Internally this is Deprecated, but we retain a simplified version for now; for example,
+some unit tests use this to 'track' higher-level jslib primitives. This used to be
+the main approach to boot-strap a ChannelMessage object; this is now divided into
+sync and async phases over internal channel queues.
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `k` | `CryptoKey` |
-| `b` | `string` |
-| `bodyType` | ``"string"`` |
+| `body` | `any` |
+| `sender` | `string` |
+| `encryptionKey` | `CryptoKey` |
+| `salt` | `ArrayBuffer` |
+| `signingKey` | `CryptoKey` |
 
 #### Returns
 
-`Promise`\<[`EncryptedContents`](../interfaces/EncryptedContents.md)\>
-
-▸ **wrap**(`k`, `b`, `bodyType`): `Promise`\<[`EncryptedContents`](../interfaces/EncryptedContents.md)\>
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `k` | `CryptoKey` |
-| `b` | `ArrayBuffer` |
-| `bodyType` | ``"arrayBuffer"`` |
-
-#### Returns
-
-`Promise`\<[`EncryptedContents`](../interfaces/EncryptedContents.md)\>
+`Promise`\<[`ChannelMessage`](../interfaces/ChannelMessage.md)\>

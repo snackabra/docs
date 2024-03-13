@@ -2,64 +2,82 @@
 
 # Interface: ChannelMessage
 
-for example the incoming message will look like this (after decryption)
+SB standard wrapped encrypted messages. This is largely 'internal', normal
+usage of the library will work at a higher level ('Message' interface).
 
-**`Example`**
+Encryption is done with AES-GCM, 16 bytes of salt.
 
-```ts
- {
-   "encrypted":false,
-   "contents":"Hello from test04d!",
-   "sign":"u7zAM-1fNLZjmuayOkwWvXTBGqMEimOuzp1DJGX4ECg",
-   "image":"",
-   "imageMetaData":{},
-   "sender_pubKey":
-       {
-         "crv":"P-384","ext":true,"key_ops":[],"kty":"EC",
-         "x":"edqHd4aUn7dGsuDMQxtvzuw-Q2N7l77HBW81KvWj9qtzU7ab-sFHUBqogg2PKihj",
-         "y":"Oqp27bXL4RUcAHpWUEFHZdyEuhTo8_8oyTsAKJDk1g_NQOA0FR5Sy_8ViTTWS9wT"
-       },
-   "sender_username":"TestBot",
-   "image_sign":"3O0AYKthtWWYUX3AWDmdU4kTR49UyNyaA937CfKtcQw",
-   "imageMetadata_sign":"4LmewpsH6TcRhHYQLivd4Ce87SI1AJIaezhJB5sdD7M"
- }
- ```
+Timestamp prefix is fourty-two (26) [0-3] characters. It encodes epoch
+milliseconds * 4^4 (last four are '0000').
+
+"Everything is optional" as this is used in multiple contexts. Use
+``validate_ChannelMessage()`` to validate.
+
+Note that channel server doesn't need userPublicKey on every channel message
+since it's provided on websocket setup.
+
+Complete channel "_id" is channelId + '_' + subChannel + '_' +
+timestampPrefix This allows (prefix) searches within time spans on a per
+channel (and if applicable, subchannel) basis. Special subchannel 'blank'
+(represented as '____') is the default channel and generally the only one
+that visitors have access to.
+
+A core exception is that all messages with a TTL in the range 1-7 (eg range
+of 1 minute to 72 hours) are duplicated onto subchannels matching the TTLs,
+namely '___1', '___2', '___3', etc. Thus an oldMessages fetch can for example
+request '___4' to get all messages that were sent with TTL 4 (eg 1 hour).
+Which also means that as Owner, if you set TTL on a message then you can't
+use the fourth character (if you try to while setting a TTL, channel server
+will reject it).
+
+Properties that are generally retained or communicated inside payload
+packaging have short names (apologies for lack of readability).
+'unencryptedContents' has a long and cumbersome name for obvious reasons.
+
+There are a couple of semantics that are enforced by the channel server;
+since this is partly a policy issue of the channel server, anything in this
+jslib documentation might be incomplete. For example, baseline channel server
+does not allow messages to both be 'infinite ttl' and addressed (eg have a
+'to' field value). 
+
+If any protocol wants to do additional or different encryption, it would need
+to wrap: the core binary format is defined to have room for iv and salt, and
+prescribes sizes 12 and 16 respectively. Strictly speaking, the protocol can
+use these 28 bytes for whatever it wants. A protocol that wants to do
+something completely different can simply modify the 'c' (contents) buffer
+and append any binary data it needs.
 
 ## Table of contents
 
 ### Properties
 
+- [[SB\_CHANNEL\_MESSAGE\_SYMBOL]](ChannelMessage.md#[sb_channel_message_symbol])
 - [\_id](ChannelMessage.md#_id)
-- [channelID](ChannelMessage.md#channelid)
-- [contents](ChannelMessage.md#contents)
-- [control](ChannelMessage.md#control)
-- [encrypted](ChannelMessage.md#encrypted)
-- [encrypted\_contents](ChannelMessage.md#encrypted_contents)
-- [id](ChannelMessage.md#id)
-- [image](ChannelMessage.md#image)
-- [imageMetaData](ChannelMessage.md#imagemetadata)
-- [imageMetadata\_sign](ChannelMessage.md#imagemetadata_sign)
-- [image\_sign](ChannelMessage.md#image_sign)
-- [keys](ChannelMessage.md#keys)
-- [motd](ChannelMessage.md#motd)
+- [c](ChannelMessage.md#c)
+- [channelId](ChannelMessage.md#channelid)
+- [error](ChannelMessage.md#error)
+- [f](ChannelMessage.md#f)
+- [i2](ChannelMessage.md#i2)
+- [iv](ChannelMessage.md#iv)
+- [protocol](ChannelMessage.md#protocol)
 - [ready](ChannelMessage.md#ready)
-- [replyTo](ChannelMessage.md#replyto)
-- [roomLocked](ChannelMessage.md#roomlocked)
-- [sendTo](ChannelMessage.md#sendto)
-- [sender\_pubKey](ChannelMessage.md#sender_pubkey)
-- [sender\_username](ChannelMessage.md#sender_username)
-- [sign](ChannelMessage.md#sign)
-- [system](ChannelMessage.md#system)
-- [text](ChannelMessage.md#text)
-- [timestamp](ChannelMessage.md#timestamp)
+- [s](ChannelMessage.md#s)
+- [salt](ChannelMessage.md#salt)
+- [stringMessage](ChannelMessage.md#stringmessage)
+- [sts](ChannelMessage.md#sts)
+- [t](ChannelMessage.md#t)
 - [timestampPrefix](ChannelMessage.md#timestampprefix)
-- [type](ChannelMessage.md#type)
-- [user](ChannelMessage.md#user)
-- [verificationToken](ChannelMessage.md#verificationtoken)
-- [whisper](ChannelMessage.md#whisper)
-- [whispered](ChannelMessage.md#whispered)
+- [ts](ChannelMessage.md#ts)
+- [ttl](ChannelMessage.md#ttl)
+- [unencryptedContents](ChannelMessage.md#unencryptedcontents)
 
 ## Properties
+
+### [SB\_CHANNEL\_MESSAGE\_SYMBOL]
+
+• `Optional` **[SB\_CHANNEL\_MESSAGE\_SYMBOL]**: `boolean`
+
+___
 
 ### \_id
 
@@ -67,75 +85,45 @@ for example the incoming message will look like this (after decryption)
 
 ___
 
-### channelID
+### c
 
-• `Optional` **channelID**: `string`
-
-___
-
-### contents
-
-• `Optional` **contents**: `string`
+• `Optional` **c**: `string` \| `ArrayBuffer`
 
 ___
 
-### control
+### channelId
 
-• `Optional` **control**: `boolean`
-
-___
-
-### encrypted
-
-• `Optional` **encrypted**: `boolean`
+• `Optional` **channelId**: `string`
 
 ___
 
-### encrypted\_contents
+### error
 
-• `Optional` **encrypted\_contents**: [`EncryptedContents`](EncryptedContents.md)
-
-___
-
-### id
-
-• `Optional` **id**: `string`
+• `Optional` **error**: `string`
 
 ___
 
-### image
+### f
 
-• `Optional` **image**: `string`
-
-___
-
-### imageMetaData
-
-• `Optional` **imageMetaData**: [`ImageMetaData`](ImageMetaData.md)
+• `Optional` **f**: `string`
 
 ___
 
-### imageMetadata\_sign
+### i2
 
-• `Optional` **imageMetadata\_sign**: `string`
-
-___
-
-### image\_sign
-
-• `Optional` **image\_sign**: `string`
+• `Optional` **i2**: `string`
 
 ___
 
-### keys
+### iv
 
-• `Optional` **keys**: [`ChannelKeyStrings`](ChannelKeyStrings.md)
+• `Optional` **iv**: `Uint8Array`
 
 ___
 
-### motd
+### protocol
 
-• `Optional` **motd**: `string`
+• `Optional` **protocol**: [`SBProtocol`](SBProtocol.md)
 
 ___
 
@@ -145,57 +133,33 @@ ___
 
 ___
 
-### replyTo
+### s
 
-• `Optional` **replyTo**: `JsonWebKey`
-
-___
-
-### roomLocked
-
-• `Optional` **roomLocked**: `boolean`
+• `Optional` **s**: `ArrayBuffer`
 
 ___
 
-### sendTo
+### salt
 
-• `Optional` **sendTo**: `string`
-
-___
-
-### sender\_pubKey
-
-• `Optional` **sender\_pubKey**: `JsonWebKey`
+• `Optional` **salt**: `ArrayBuffer`
 
 ___
 
-### sender\_username
+### stringMessage
 
-• `Optional` **sender\_username**: `string`
-
-___
-
-### sign
-
-• `Optional` **sign**: `string`
+• `Optional` **stringMessage**: `boolean`
 
 ___
 
-### system
+### sts
 
-• `Optional` **system**: `boolean`
-
-___
-
-### text
-
-• `Optional` **text**: `string`
+• `Optional` **sts**: `number`
 
 ___
 
-### timestamp
+### t
 
-• `Optional` **timestamp**: `number`
+• `Optional` **t**: `string`
 
 ___
 
@@ -205,37 +169,18 @@ ___
 
 ___
 
-### type
+### ts
 
-• `Optional` **type**: [`ChannelMessageTypes`](../modules.md#channelmessagetypes)
-
-___
-
-### user
-
-• `Optional` **user**: `Object`
-
-#### Type declaration
-
-| Name | Type |
-| :------ | :------ |
-| `_id?` | `JsonWebKey` |
-| `name` | `string` |
+• `Optional` **ts**: `number`
 
 ___
 
-### verificationToken
+### ttl
 
-• `Optional` **verificationToken**: `string`
-
-___
-
-### whisper
-
-• `Optional` **whisper**: `string`
+• `Optional` **ttl**: `number`
 
 ___
 
-### whispered
+### unencryptedContents
 
-• `Optional` **whispered**: `boolean`
+• `Optional` **unencryptedContents**: `any`

@@ -21,6 +21,10 @@
         "./node_modules/undici-types/index.d.ts"
       ],
     },
+    "lib": ["esnext", "dom"],     /* Specify library files to be included in the compilation. */
+    "types": [],                  /* (trying to exclude Node.JS types from VS Code ...) */
+   
+    
   },
   "exclude": [ "node_modules", "dist", "typedoc", "venv", "*.js" ],
   "include": [ "snackabra-jslib/*.ts" ],

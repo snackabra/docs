@@ -2,15 +2,30 @@
 
 # Interface: ChannelAdminData
 
+This corresponds to all important meta-data on a channel that an Owner
+has access to.
+
 ## Table of contents
 
 ### Properties
 
+- [accepted](ChannelAdminData.md#accepted)
 - [capacity](ChannelAdminData.md#capacity)
-- [join\_requests](ChannelAdminData.md#join_requests)
-- [room\_id](ChannelAdminData.md#room_id)
+- [channelData](ChannelAdminData.md#channeldata)
+- [channelId](ChannelAdminData.md#channelid)
+- [latestTimestamp](ChannelAdminData.md#latesttimestamp)
+- [locked](ChannelAdminData.md#locked)
+- [motherChannel](ChannelAdminData.md#motherchannel)
+- [storageLimit](ChannelAdminData.md#storagelimit)
+- [visitors](ChannelAdminData.md#visitors)
 
 ## Properties
+
+### accepted
+
+• **accepted**: `Set`\<`string`\>
+
+___
 
 ### capacity
 
@@ -18,12 +33,42 @@
 
 ___
 
-### join\_requests
+### channelData
 
-• **join\_requests**: `string`[]
+• **channelData**: [`SBChannelData`](SBChannelData.md)
 
 ___
 
-### room\_id
+### channelId
 
-• `Optional` **room\_id**: `string`
+• **channelId**: `string`
+
+___
+
+### latestTimestamp
+
+• **latestTimestamp**: `string`
+
+___
+
+### locked
+
+• **locked**: `boolean`
+
+___
+
+### motherChannel
+
+• **motherChannel**: `string`
+
+___
+
+### storageLimit
+
+• **storageLimit**: `number`
+
+___
+
+### visitors
+
+• **visitors**: `Map`\<`string`, `string`\>

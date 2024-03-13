@@ -1,17 +1,17 @@
 <!doctype html>
-<html class="no-js" lang="en" data-content_root="../">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" />
 
-    <!-- Generated with Sphinx 7.2.6 and Furo 2023.09.10 -->
+    <!-- Generated with Sphinx 5.3.0 and Furo 2023.03.27 -->
         <title>Interface: SBServer - snackabra 1.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
-    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=eafc0fe6" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=7a5cf5c2" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
     
     
 
@@ -212,11 +212,11 @@
         <article role="main">
           <p><a class="reference internal" href="../README.html"><span class="std std-doc">JSLib Reference Manual</span></a> / <a class="reference internal" href="../modules.html"><span class="std std-doc">Exports</span></a> / SBServer</p>
 <section id="interface-sbserver">
-<h1>Interface: SBServer<a class="headerlink" href="#interface-sbserver" title="Link to this heading">#</a></h1>
+<h1>Interface: SBServer<a class="headerlink" href="#interface-sbserver" title="Permalink to this heading">#</a></h1>
 <section id="table-of-contents">
-<h2>Table of contents<a class="headerlink" href="#table-of-contents" title="Link to this heading">#</a></h2>
+<h2>Table of contents<a class="headerlink" href="#table-of-contents" title="Permalink to this heading">#</a></h2>
 <section id="properties">
-<h3>Properties<a class="headerlink" href="#properties" title="Link to this heading">#</a></h3>
+<h3>Properties<a class="headerlink" href="#properties" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference internal" href="#channel_server"><span class="std std-ref">channel_server</span></a></p></li>
 <li><p><a class="reference internal" href="#channel_ws"><span class="std std-ref">channel_ws</span></a></p></li>
@@ -226,9 +226,9 @@
 </section>
 </section>
 <section id="id1">
-<h2>Properties<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<h2>Properties<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <section id="channel-server">
-<h3>channel_server<a class="headerlink" href="#channel-server" title="Link to this heading">#</a></h3>
+<h3>channel_server<a class="headerlink" href="#channel-server" title="Permalink to this heading">#</a></h3>
 <p>• <strong>channel_server</strong>: <code class="docutils literal notranslate"><span class="pre">string</span></code></p>
 <p>The channel server is the server that handles channel creation,
 channel deletion, and channel access. It is also the server that
@@ -236,7 +236,7 @@ handles channel messages.</p>
 </section>
 <hr class="docutils" />
 <section id="channel-ws">
-<h3>channel_ws<a class="headerlink" href="#channel-ws" title="Link to this heading">#</a></h3>
+<h3>channel_ws<a class="headerlink" href="#channel-ws" title="Permalink to this heading">#</a></h3>
 <p>• <strong>channel_ws</strong>: <code class="docutils literal notranslate"><span class="pre">string</span></code></p>
 <p>The channel websocket is the websocket that handles channel
 messages. It is the same as the channel server, but with a
@@ -244,7 +244,7 @@ different protocol.</p>
 </section>
 <hr class="docutils" />
 <section id="shard-server">
-<h3>shard_server<a class="headerlink" href="#shard-server" title="Link to this heading">#</a></h3>
+<h3>shard_server<a class="headerlink" href="#shard-server" title="Permalink to this heading">#</a></h3>
 <p>• <code class="docutils literal notranslate"><span class="pre">Optional</span></code> <strong>shard_server</strong>: <code class="docutils literal notranslate"><span class="pre">string</span></code></p>
 <p>“shard” server is a more modern version of the storage server,
 generally acting as a caching and/or mirroring layer. It proxies
@@ -254,7 +254,7 @@ interface, in particular for reading.</p>
 </section>
 <hr class="docutils" />
 <section id="storage-server">
-<h3>storage_server<a class="headerlink" href="#storage-server" title="Link to this heading">#</a></h3>
+<h3>storage_server<a class="headerlink" href="#storage-server" title="Permalink to this heading">#</a></h3>
 <p>• <strong>storage_server</strong>: <code class="docutils literal notranslate"><span class="pre">string</span></code></p>
 <p>The storage server is the server that all “shard” (blob) storage</p>
 </section>
@@ -321,9 +321,12 @@ interface, in particular for reading.</p>
       
     </aside>
   </div>
-</div><script src="../_static/documentation_options.js?v=f2a433a1"></script>
-    <script src="../_static/doctools.js?v=888ff710"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/scripts/furo.js?v=32e29ea5"></script>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/scripts/furo.js"></script>
     </body>
 </html>

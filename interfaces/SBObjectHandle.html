@@ -1,17 +1,17 @@
 <!doctype html>
-<html class="no-js" lang="en" data-content_root="../">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" />
 
-    <!-- Generated with Sphinx 7.2.6 and Furo 2023.09.10 -->
+    <!-- Generated with Sphinx 5.3.0 and Furo 2023.03.27 -->
         <title>Interface: SBObjectHandle - snackabra 1.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
-    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=eafc0fe6" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=7a5cf5c2" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
     
     
 
@@ -212,26 +212,51 @@
         <article role="main">
           <p><a class="reference internal" href="../README.html"><span class="std std-doc">JSLib Reference Manual</span></a> / <a class="reference internal" href="../modules.html"><span class="std std-doc">Exports</span></a> / SBObjectHandle</p>
 <section id="interface-sbobjecthandle">
-<h1>Interface: SBObjectHandle<a class="headerlink" href="#interface-sbobjecthandle" title="Link to this heading">#</a></h1>
+<h1>Interface: SBObjectHandle<a class="headerlink" href="#interface-sbobjecthandle" title="Permalink to this heading">#</a></h1>
+<p>SBObjectHandle</p>
+<p>SBObjectHandle is a string that encodes the object type, object id, and
+object key. It is used to retrieve objects from the storage server.</p>
+<ul class="simple">
+<li><p>version is a single character string that indicates the version of the
+object handle. Currently, the following versions are supported:</p>
+<ul>
+<li><p>‘1’ : version 1 (legacy)</p></li>
+<li><p>‘2’ : version 2 (legacy)</p></li>
+<li><p>‘3’ : version 3 (current)</p></li>
+</ul>
+</li>
+<li><p>id is a 43 character base62 string that identifies the object. It is used
+to retrieve the object from the storage server.</p></li>
+<li><p>key is a 43 character base62</p></li>
+<li><p>verification is a random (server specific) string that is used to verify
+that you’re allowed to access the object (specifically, that somebody,
+perhaps you, has paid for the object).</p></li>
+<li><p>iv and salt are optional and not tracked by shard servers etc, but
+facilitates app usage. During a period of time (the ‘privacy window’) you
+can request these from the storage server. After that window they get
+re-randomized, and if you didn’t keep the values (for example, you received
+an object but didn’t do anything with it), then they’re gone.</p></li>
+<li><p>storageServer is optional, if provided it’ll be asked first</p></li>
+</ul>
 <section id="table-of-contents">
-<h2>Table of contents<a class="headerlink" href="#table-of-contents" title="Link to this heading">#</a></h2>
+<h2>Table of contents<a class="headerlink" href="#table-of-contents" title="Permalink to this heading">#</a></h2>
 <section id="properties">
-<h3>Properties<a class="headerlink" href="#properties" title="Link to this heading">#</a></h3>
+<h3>Properties<a class="headerlink" href="#properties" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference internal" href="#[sb_object_handle_symbol]"><span class="std std-ref">[SB_OBJECT_HANDLE_SYMBOL]</span></a></p></li>
 <li><p><a class="reference internal" href="#actualsize"><span class="std std-ref">actualSize</span></a></p></li>
+<li><p><a class="reference internal" href="#data"><span class="std std-ref">data</span></a></p></li>
 <li><p><a class="reference internal" href="#dateandtime"><span class="std std-ref">dateAndTime</span></a></p></li>
 <li><p><a class="reference internal" href="#filename"><span class="std std-ref">fileName</span></a></p></li>
 <li><p><a class="reference internal" href="#filetype"><span class="std std-ref">fileType</span></a></p></li>
 <li><p><a class="reference internal" href="#id"><span class="std std-ref">id</span></a></p></li>
-<li><p><a class="reference internal" href="#id32"><span class="std std-ref">id32</span></a></p></li>
 <li><p><a class="reference internal" href="#iv"><span class="std std-ref">iv</span></a></p></li>
 <li><p><a class="reference internal" href="#key"><span class="std std-ref">key</span></a></p></li>
-<li><p><a class="reference internal" href="#key32"><span class="std std-ref">key32</span></a></p></li>
 <li><p><a class="reference internal" href="#lastmodified"><span class="std std-ref">lastModified</span></a></p></li>
+<li><p><a class="reference internal" href="#payload"><span class="std std-ref">payload</span></a></p></li>
 <li><p><a class="reference internal" href="#salt"><span class="std std-ref">salt</span></a></p></li>
 <li><p><a class="reference internal" href="#savedsize"><span class="std std-ref">savedSize</span></a></p></li>
-<li><p><a class="reference internal" href="#shardserver"><span class="std std-ref">shardServer</span></a></p></li>
+<li><p><a class="reference internal" href="#storageserver"><span class="std std-ref">storageServer</span></a></p></li>
 <li><p><a class="reference internal" href="#type"><span class="std std-ref">type</span></a></p></li>
 <li><p><a class="reference internal" href="#verification"><span class="std std-ref">verification</span></a></p></li>
 <li><p><a class="reference internal" href="#version"><span class="std std-ref">version</span></a></p></li>
@@ -239,90 +264,90 @@
 </section>
 </section>
 <section id="id1">
-<h2>Properties<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<h2>Properties<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <section id="sb-object-handle-symbol">
-<h3>[SB_OBJECT_HANDLE_SYMBOL]<a class="headerlink" href="#sb-object-handle-symbol" title="Link to this heading">#</a></h3>
+<h3>[SB_OBJECT_HANDLE_SYMBOL]<a class="headerlink" href="#sb-object-handle-symbol" title="Permalink to this heading">#</a></h3>
 <p>• <code class="docutils literal notranslate"><span class="pre">Optional</span></code> <strong>[SB_OBJECT_HANDLE_SYMBOL]</strong>: <code class="docutils literal notranslate"><span class="pre">boolean</span></code></p>
 </section>
 <hr class="docutils" />
 <section id="actualsize">
-<h3>actualSize<a class="headerlink" href="#actualsize" title="Link to this heading">#</a></h3>
+<h3>actualSize<a class="headerlink" href="#actualsize" title="Permalink to this heading">#</a></h3>
 <p>• <code class="docutils literal notranslate"><span class="pre">Optional</span></code> <strong>actualSize</strong>: <code class="docutils literal notranslate"><span class="pre">number</span></code></p>
 </section>
 <hr class="docutils" />
+<section id="data">
+<h3>data<a class="headerlink" href="#data" title="Permalink to this heading">#</a></h3>
+<p>• <code class="docutils literal notranslate"><span class="pre">Optional</span></code> <strong>data</strong>: <code class="docutils literal notranslate"><span class="pre">ArrayBuffer</span></code> | <code class="docutils literal notranslate"><span class="pre">WeakRef</span></code>&lt;<code class="docutils literal notranslate"><span class="pre">ArrayBuffer</span></code>&gt;</p>
+</section>
+<hr class="docutils" />
 <section id="dateandtime">
-<h3>dateAndTime<a class="headerlink" href="#dateandtime" title="Link to this heading">#</a></h3>
+<h3>dateAndTime<a class="headerlink" href="#dateandtime" title="Permalink to this heading">#</a></h3>
 <p>• <code class="docutils literal notranslate"><span class="pre">Optional</span></code> <strong>dateAndTime</strong>: <code class="docutils literal notranslate"><span class="pre">string</span></code></p>
 </section>
 <hr class="docutils" />
 <section id="filename">
-<h3>fileName<a class="headerlink" href="#filename" title="Link to this heading">#</a></h3>
+<h3>fileName<a class="headerlink" href="#filename" title="Permalink to this heading">#</a></h3>
 <p>• <code class="docutils literal notranslate"><span class="pre">Optional</span></code> <strong>fileName</strong>: <code class="docutils literal notranslate"><span class="pre">string</span></code></p>
 </section>
 <hr class="docutils" />
 <section id="filetype">
-<h3>fileType<a class="headerlink" href="#filetype" title="Link to this heading">#</a></h3>
+<h3>fileType<a class="headerlink" href="#filetype" title="Permalink to this heading">#</a></h3>
 <p>• <code class="docutils literal notranslate"><span class="pre">Optional</span></code> <strong>fileType</strong>: <code class="docutils literal notranslate"><span class="pre">string</span></code></p>
 </section>
 <hr class="docutils" />
 <section id="id">
-<h3>id<a class="headerlink" href="#id" title="Link to this heading">#</a></h3>
-<p>• <strong>id</strong>: <code class="docutils literal notranslate"><span class="pre">string</span></code></p>
-</section>
-<hr class="docutils" />
-<section id="id32">
-<h3>id32<a class="headerlink" href="#id32" title="Link to this heading">#</a></h3>
-<p>• <code class="docutils literal notranslate"><span class="pre">Optional</span></code> <strong>id32</strong>: <code class="docutils literal notranslate"><span class="pre">Base62Encoded</span></code></p>
+<h3>id<a class="headerlink" href="#id" title="Permalink to this heading">#</a></h3>
+<p>• <strong>id</strong>: <a class="reference internal" href="../modules.html#base62encoded"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">Base62Encoded</span></code></span></a></p>
 </section>
 <hr class="docutils" />
 <section id="iv">
-<h3>iv<a class="headerlink" href="#iv" title="Link to this heading">#</a></h3>
-<p>• <code class="docutils literal notranslate"><span class="pre">Optional</span></code> <strong>iv</strong>: <code class="docutils literal notranslate"><span class="pre">string</span></code> | <code class="docutils literal notranslate"><span class="pre">Uint8Array</span></code></p>
+<h3>iv<a class="headerlink" href="#iv" title="Permalink to this heading">#</a></h3>
+<p>• <code class="docutils literal notranslate"><span class="pre">Optional</span></code> <strong>iv</strong>: <code class="docutils literal notranslate"><span class="pre">Uint8Array</span></code> | <a class="reference internal" href="../modules.html#base62encoded"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">Base62Encoded</span></code></span></a></p>
 </section>
 <hr class="docutils" />
 <section id="key">
-<h3>key<a class="headerlink" href="#key" title="Link to this heading">#</a></h3>
-<p>• <strong>key</strong>: <code class="docutils literal notranslate"><span class="pre">string</span></code></p>
-</section>
-<hr class="docutils" />
-<section id="key32">
-<h3>key32<a class="headerlink" href="#key32" title="Link to this heading">#</a></h3>
-<p>• <code class="docutils literal notranslate"><span class="pre">Optional</span></code> <strong>key32</strong>: <code class="docutils literal notranslate"><span class="pre">Base62Encoded</span></code></p>
+<h3>key<a class="headerlink" href="#key" title="Permalink to this heading">#</a></h3>
+<p>• <code class="docutils literal notranslate"><span class="pre">Optional</span></code> <strong>key</strong>: <a class="reference internal" href="../modules.html#base62encoded"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">Base62Encoded</span></code></span></a></p>
 </section>
 <hr class="docutils" />
 <section id="lastmodified">
-<h3>lastModified<a class="headerlink" href="#lastmodified" title="Link to this heading">#</a></h3>
+<h3>lastModified<a class="headerlink" href="#lastmodified" title="Permalink to this heading">#</a></h3>
 <p>• <code class="docutils literal notranslate"><span class="pre">Optional</span></code> <strong>lastModified</strong>: <code class="docutils literal notranslate"><span class="pre">number</span></code></p>
 </section>
 <hr class="docutils" />
+<section id="payload">
+<h3>payload<a class="headerlink" href="#payload" title="Permalink to this heading">#</a></h3>
+<p>• <code class="docutils literal notranslate"><span class="pre">Optional</span></code> <strong>payload</strong>: <code class="docutils literal notranslate"><span class="pre">any</span></code></p>
+</section>
+<hr class="docutils" />
 <section id="salt">
-<h3>salt<a class="headerlink" href="#salt" title="Link to this heading">#</a></h3>
-<p>• <code class="docutils literal notranslate"><span class="pre">Optional</span></code> <strong>salt</strong>: <code class="docutils literal notranslate"><span class="pre">string</span></code> | <code class="docutils literal notranslate"><span class="pre">Uint8Array</span></code></p>
+<h3>salt<a class="headerlink" href="#salt" title="Permalink to this heading">#</a></h3>
+<p>• <code class="docutils literal notranslate"><span class="pre">Optional</span></code> <strong>salt</strong>: <code class="docutils literal notranslate"><span class="pre">ArrayBuffer</span></code> | <a class="reference internal" href="../modules.html#base62encoded"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">Base62Encoded</span></code></span></a></p>
 </section>
 <hr class="docutils" />
 <section id="savedsize">
-<h3>savedSize<a class="headerlink" href="#savedsize" title="Link to this heading">#</a></h3>
+<h3>savedSize<a class="headerlink" href="#savedsize" title="Permalink to this heading">#</a></h3>
 <p>• <code class="docutils literal notranslate"><span class="pre">Optional</span></code> <strong>savedSize</strong>: <code class="docutils literal notranslate"><span class="pre">number</span></code></p>
 </section>
 <hr class="docutils" />
-<section id="shardserver">
-<h3>shardServer<a class="headerlink" href="#shardserver" title="Link to this heading">#</a></h3>
-<p>• <code class="docutils literal notranslate"><span class="pre">Optional</span></code> <strong>shardServer</strong>: <code class="docutils literal notranslate"><span class="pre">string</span></code></p>
+<section id="storageserver">
+<h3>storageServer<a class="headerlink" href="#storageserver" title="Permalink to this heading">#</a></h3>
+<p>• <code class="docutils literal notranslate"><span class="pre">Optional</span></code> <strong>storageServer</strong>: <code class="docutils literal notranslate"><span class="pre">string</span></code></p>
 </section>
 <hr class="docutils" />
 <section id="type">
-<h3>type<a class="headerlink" href="#type" title="Link to this heading">#</a></h3>
-<p>• <strong>type</strong>: <a class="reference internal" href="../modules.html#sbobjecttype"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">SBObjectType</span></code></span></a></p>
+<h3>type<a class="headerlink" href="#type" title="Permalink to this heading">#</a></h3>
+<p>• <code class="docutils literal notranslate"><span class="pre">Optional</span></code> <strong>type</strong>: <code class="docutils literal notranslate"><span class="pre">string</span></code></p>
 </section>
 <hr class="docutils" />
 <section id="verification">
-<h3>verification<a class="headerlink" href="#verification" title="Link to this heading">#</a></h3>
-<p>• <strong>verification</strong>: <code class="docutils literal notranslate"><span class="pre">string</span></code> | <code class="docutils literal notranslate"><span class="pre">Promise</span></code>&lt;<code class="docutils literal notranslate"><span class="pre">string</span></code>&gt;</p>
+<h3>verification<a class="headerlink" href="#verification" title="Permalink to this heading">#</a></h3>
+<p>• <code class="docutils literal notranslate"><span class="pre">Optional</span></code> <strong>verification</strong>: <code class="docutils literal notranslate"><span class="pre">string</span></code> | <code class="docutils literal notranslate"><span class="pre">Promise</span></code>&lt;<code class="docutils literal notranslate"><span class="pre">string</span></code>&gt;</p>
 </section>
 <hr class="docutils" />
 <section id="version">
-<h3>version<a class="headerlink" href="#version" title="Link to this heading">#</a></h3>
-<p>• <code class="docutils literal notranslate"><span class="pre">Optional</span></code> <strong>version</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;1&quot;</span></code></p>
+<h3>version<a class="headerlink" href="#version" title="Permalink to this heading">#</a></h3>
+<p>• <code class="docutils literal notranslate"><span class="pre">Optional</span></code> <strong>version</strong>: <a class="reference internal" href="../modules.html#sbobjecthandleversions"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">SBObjectHandleVersions</span></code></span></a></p>
 </section>
 </section>
 </section>
@@ -372,18 +397,18 @@
 <li><a class="reference internal" href="#id1">Properties</a><ul>
 <li><a class="reference internal" href="#sb-object-handle-symbol">[SB_OBJECT_HANDLE_SYMBOL]</a></li>
 <li><a class="reference internal" href="#actualsize">actualSize</a></li>
+<li><a class="reference internal" href="#data">data</a></li>
 <li><a class="reference internal" href="#dateandtime">dateAndTime</a></li>
 <li><a class="reference internal" href="#filename">fileName</a></li>
 <li><a class="reference internal" href="#filetype">fileType</a></li>
 <li><a class="reference internal" href="#id">id</a></li>
-<li><a class="reference internal" href="#id32">id32</a></li>
 <li><a class="reference internal" href="#iv">iv</a></li>
 <li><a class="reference internal" href="#key">key</a></li>
-<li><a class="reference internal" href="#key32">key32</a></li>
 <li><a class="reference internal" href="#lastmodified">lastModified</a></li>
+<li><a class="reference internal" href="#payload">payload</a></li>
 <li><a class="reference internal" href="#salt">salt</a></li>
 <li><a class="reference internal" href="#savedsize">savedSize</a></li>
-<li><a class="reference internal" href="#shardserver">shardServer</a></li>
+<li><a class="reference internal" href="#storageserver">storageServer</a></li>
 <li><a class="reference internal" href="#type">type</a></li>
 <li><a class="reference internal" href="#verification">verification</a></li>
 <li><a class="reference internal" href="#version">version</a></li>
@@ -400,9 +425,12 @@
       
     </aside>
   </div>
-</div><script src="../_static/documentation_options.js?v=f2a433a1"></script>
-    <script src="../_static/doctools.js?v=888ff710"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/scripts/furo.js?v=32e29ea5"></script>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/scripts/furo.js"></script>
     </body>
 </html>

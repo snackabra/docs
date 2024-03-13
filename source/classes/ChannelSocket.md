@@ -2,7 +2,28 @@
 
 # Class: ChannelSocket
 
-ChannelSocket
+ChannelSocket extends Channel. Has same basic functionality as Channel, but
+is synchronous and uses websockets, eg lower latency and higher throughput.
+
+You send by calling channel.send(msg: SBMessage | string), i.e. you can
+send a quick string.
+
+You can set your message handler upon creation, or later by using
+channel.onMessage = (m: Message) => { ... }.
+
+You don't need to worry about managing resources, like closing it, or
+checking if it's open. It will close based on server behavior, eg it's up
+to the server to close the connection based on inactivity. The
+ChannelSocket will re-open if you try to send against a closed connection.
+
+Messages are delivered as type Message if it could be parsed and decrypted;
+it can also be a string (typically if a low-level server message, in which
+case it will just be forwarded to the message handler).
+
+It also handles a simple ack/nack mechanism with the server transparently.
+
+Be aware that if ChannelSocket doesn't know how to handle a certain
+message, it will generally drop it.
 
 ## Hierarchy
 
@@ -18,126 +39,110 @@ ChannelSocket
 
 ### Properties
 
-- [adminData](ChannelSocket.md#admindata)
 - [channelReady](ChannelSocket.md#channelready)
+- [channelServer](ChannelSocket.md#channelserver)
 - [channelSocketReady](ChannelSocket.md#channelsocketready)
+- [errorState](ChannelSocket.md#errorstate)
+- [isClosed](ChannelSocket.md#isclosed)
+- [lastTimestampPrefix](ChannelSocket.md#lasttimestampprefix)
 - [locked](ChannelSocket.md#locked)
-- [motd](ChannelSocket.md#motd)
-- [ready](ChannelSocket.md#ready)
+- [protocol](ChannelSocket.md#protocol)
 - [sb384Ready](ChannelSocket.md#sb384ready)
 - [sbChannelKeysReady](ChannelSocket.md#sbchannelkeysready)
-- [verifiedGuest](ChannelSocket.md#verifiedguest)
+- [sendQueue](ChannelSocket.md#sendqueue)
+- [visitors](ChannelSocket.md#visitors)
+- [HIGHEST\_TIMESTAMP](ChannelSocket.md#highest_timestamp)
+- [LOWEST\_TIMESTAMP](ChannelSocket.md#lowest_timestamp)
+- [ReadyFlag](ChannelSocket.md#readyflag)
+- [defaultProtocol](ChannelSocket.md#defaultprotocol)
+- [timestampRegex](ChannelSocket.md#timestampregex)
 
 ### Accessors
 
+- [ChannelReadyFlag](ChannelSocket.md#channelreadyflag)
+- [ChannelSocketReadyFlag](ChannelSocket.md#channelsocketreadyflag)
+- [SB384ReadyFlag](ChannelSocket.md#sb384readyflag)
+- [SBChannelKeysReadyFlag](ChannelSocket.md#sbchannelkeysreadyflag)
 - [api](ChannelSocket.md#api)
 - [channelData](ChannelSocket.md#channeldata)
 - [channelId](ChannelSocket.md#channelid)
-- [channelServer](ChannelSocket.md#channelserver)
-- [channelSignKey](ChannelSocket.md#channelsignkey)
 - [enableTrace](ChannelSocket.md#enabletrace)
-- [encryptionKey](ChannelSocket.md#encryptionkey)
-- [exportable\_owner\_pubKey](ChannelSocket.md#exportable_owner_pubkey)
-- [exportable\_pubKey](ChannelSocket.md#exportable_pubkey)
+- [handle](ChannelSocket.md#handle)
 - [hash](ChannelSocket.md#hash)
-- [jwk](ChannelSocket.md#jwk)
-- [key](ChannelSocket.md#key)
-- [keys](ChannelSocket.md#keys)
-- [onMessage](ChannelSocket.md#onmessage)
+- [hashB32](ChannelSocket.md#hashb32)
+- [jwkPrivate](ChannelSocket.md#jwkprivate)
+- [jwkPublic](ChannelSocket.md#jwkpublic)
 - [owner](ChannelSocket.md#owner)
 - [ownerChannelId](ChannelSocket.md#ownerchannelid)
 - [private](ChannelSocket.md#private)
-- [readyFlag](ChannelSocket.md#readyflag)
+- [privateKey](ChannelSocket.md#privatekey)
+- [publicKey](ChannelSocket.md#publickey)
+- [ready](ChannelSocket.md#ready)
+- [signKey](ChannelSocket.md#signkey)
 - [status](ChannelSocket.md#status)
 - [userId](ChannelSocket.md#userid)
-- [userKeyString](ChannelSocket.md#userkeystring)
+- [userPrivateKey](ChannelSocket.md#userprivatekey)
+- [userPrivateKeyDehydrated](ChannelSocket.md#userprivatekeydehydrated)
+- [userPublicKey](ChannelSocket.md#userpublickey)
+- [ySign](ChannelSocket.md#ysign)
 
 ### Methods
 
 - [acceptVisitor](ChannelSocket.md#acceptvisitor)
-- [authorize](ChannelSocket.md#authorize)
 - [budd](ChannelSocket.md#budd)
-- [deCryptChannelMessage](ChannelSocket.md#decryptchannelmessage)
-- [downloadData](ChannelSocket.md#downloaddata)
+- [buildApiBody](ChannelSocket.md#buildapibody)
+- [callApi](ChannelSocket.md#callapi)
+- [close](ChannelSocket.md#close)
+- [create](ChannelSocket.md#create)
+- [extractMessage](ChannelSocket.md#extractmessage)
+- [extractMessageMap](ChannelSocket.md#extractmessagemap)
+- [finalizeMessage](ChannelSocket.md#finalizemessage)
 - [getAdminData](ChannelSocket.md#getadmindata)
 - [getCapacity](ChannelSocket.md#getcapacity)
-- [getJoinRequests](ChannelSocket.md#getjoinrequests)
+- [getChannelKeys](ChannelSocket.md#getchannelkeys)
+- [getHistory](ChannelSocket.md#gethistory)
 - [getLastMessageTimes](ChannelSocket.md#getlastmessagetimes)
+- [getLatestTimestamp](ChannelSocket.md#getlatesttimestamp)
+- [getMessageKeys](ChannelSocket.md#getmessagekeys)
+- [getMessageMap](ChannelSocket.md#getmessagemap)
 - [getMother](ChannelSocket.md#getmother)
-- [getOldMessages](ChannelSocket.md#getoldmessages)
+- [getPage](ChannelSocket.md#getpage)
+- [getPubKeys](ChannelSocket.md#getpubkeys)
+- [getRawMessageMap](ChannelSocket.md#getrawmessagemap)
 - [getStorageLimit](ChannelSocket.md#getstoragelimit)
 - [getStorageToken](ChannelSocket.md#getstoragetoken)
 - [isLocked](ChannelSocket.md#islocked)
 - [lock](ChannelSocket.md#lock)
-- [ownerKeyRotation](ChannelSocket.md#ownerkeyrotation)
-- [postPubKey](ChannelSocket.md#postpubkey)
+- [messageQueueManager](ChannelSocket.md#messagequeuemanager)
+- [onMessage](ChannelSocket.md#onmessage)
+- [packageMessage](ChannelSocket.md#packagemessage)
+- [reset](ChannelSocket.md#reset)
 - [send](ChannelSocket.md#send)
-- [setMOTD](ChannelSocket.md#setmotd)
-- [storageRequest](ChannelSocket.md#storagerequest)
+- [setPage](ChannelSocket.md#setpage)
 - [updateCapacity](ChannelSocket.md#updatecapacity)
-- [uploadChannel](ChannelSocket.md#uploadchannel)
+- [base4StringToDate](ChannelSocket.md#base4stringtodate)
+- [base4StringToTimestamp](ChannelSocket.md#base4stringtotimestamp)
+- [base4stringToDate](ChannelSocket.md#base4stringtodate-1)
+- [composeMessageKey](ChannelSocket.md#composemessagekey)
+- [deComposeMessageKey](ChannelSocket.md#decomposemessagekey)
+- [getLexicalExtremes](ChannelSocket.md#getlexicalextremes)
+- [messageKeySetToPrefix](ChannelSocket.md#messagekeysettoprefix)
+- [timestampLongestPrefix](ChannelSocket.md#timestamplongestprefix)
+- [timestampToBase4String](ChannelSocket.md#timestamptobase4string)
 
 ## Constructors
 
 ### constructor
 
-• **new ChannelSocket**(`sbServerOrHandle`, `onMessage`): [`ChannelSocket`](ChannelSocket.md)
-
-ChannelSocket constructor
-
-This extends Channel. Use this instead of ChannelEndpoint if you
-are going to be sending/receiving messages.
-
-You send by calling channel.send(msg: SBMessage | string), i.e.
-you can send a quick string.
-
-You can set your message handler upon creation, or later by using
-channel.onMessage = (m: ChannelMessage) => { ... }.
-
-This implementation uses websockeds to connect all participating
-clients through a single servlet (somewhere), with very fast
-forwarding.
-
-You don't need to worry about managing resources, like closing it,
-or checking if it's open. It will close based on server behavior,
-eg it's up to the server to close the connection based on inactivity.
-The ChannelSocket will re-open if you try to send against a closed
-connection. You can check status with channelSocket.status if you
-like, but it shouldn't be necessary.
-
-Messages are delivered as type ChannelMessage. Usually they are
-simple blobs of data that are encrypted: the ChannelSocket will
-decrypt them for you. It also handles a simple ack/nack mechanism
-with the server transparently.
-
-Be aware that if ChannelSocket doesn't know how to handle a certain
-message, it will generally just forward it to you as-is.
+• **new ChannelSocket**(`handleOrKey`, `onMessage`, `protocol?`): [`ChannelSocket`](ChannelSocket.md)
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `sbServerOrHandle` | [`SBChannelHandle`](../interfaces/SBChannelHandle.md) |
-| `onMessage` | (`m`: [`ChannelMessage`](../interfaces/ChannelMessage.md)) => `void` |
-
-#### Returns
-
-[`ChannelSocket`](ChannelSocket.md)
-
-#### Overrides
-
-[Channel](Channel.md).[constructor](Channel.md#constructor)
-
-• **new ChannelSocket**(`sbServerOrHandle`, `onMessage`, `key`, `channelId`): [`ChannelSocket`](ChannelSocket.md)
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `sbServerOrHandle` | [`SBServer`](../interfaces/SBServer.md) |
-| `onMessage` | (`m`: [`ChannelMessage`](../interfaces/ChannelMessage.md)) => `void` |
-| `key` | `JsonWebKey` |
-| `channelId` | `string` |
+| `handleOrKey` | `string` \| [`SBChannelHandle`](../interfaces/SBChannelHandle.md) |
+| `onMessage` | (`m`: `string` \| [`Message`](../interfaces/Message.md)) => `void` |
+| `protocol?` | [`SBProtocol`](../interfaces/SBProtocol.md) |
 
 #### Returns
 
@@ -149,16 +154,6 @@ message, it will generally just forward it to you as-is.
 
 ## Properties
 
-### adminData
-
-• `Optional` **adminData**: `Dictionary`\<`any`\>
-
-#### Inherited from
-
-[Channel](Channel.md).[adminData](Channel.md#admindata)
-
-___
-
 ### channelReady
 
 • **channelReady**: `Promise`\<[`Channel`](Channel.md)\>
@@ -169,9 +164,45 @@ ___
 
 ___
 
+### channelServer
+
+• **channelServer**: `string`
+
+#### Inherited from
+
+[Channel](Channel.md).[channelServer](Channel.md#channelserver)
+
+___
+
 ### channelSocketReady
 
 • **channelSocketReady**: `Promise`\<[`ChannelSocket`](ChannelSocket.md)\>
+
+___
+
+### errorState
+
+• **errorState**: `boolean` = `false`
+
+#### Inherited from
+
+[Channel](Channel.md).[errorState](Channel.md#errorstate)
+
+___
+
+### isClosed
+
+• **isClosed**: `boolean` = `false`
+
+#### Inherited from
+
+[Channel](Channel.md).[isClosed](Channel.md#isclosed)
+
+___
+
+### lastTimestampPrefix
+
+• **lastTimestampPrefix**: `string`
 
 ___
 
@@ -185,23 +216,13 @@ ___
 
 ___
 
-### motd
+### protocol
 
-• `Optional` **motd**: `string` = `''`
+• `Optional` **protocol**: [`SBProtocol`](../interfaces/SBProtocol.md) = `Channel.defaultProtocol`
 
 #### Inherited from
 
-[Channel](Channel.md).[motd](Channel.md#motd)
-
-___
-
-### ready
-
-• **ready**: `Promise`\<[`ChannelSocket`](ChannelSocket.md)\>
-
-#### Overrides
-
-[Channel](Channel.md).[ready](Channel.md#ready)
+[Channel](Channel.md).[protocol](Channel.md#protocol)
 
 ___
 
@@ -217,7 +238,7 @@ ___
 
 ### sbChannelKeysReady
 
-• **sbChannelKeysReady**: `Promise`\<`SBChannelKeys`\>
+• **sbChannelKeysReady**: `Promise`\<[`SBChannelKeys`](SBChannelKeys.md)\>
 
 #### Inherited from
 
@@ -225,15 +246,131 @@ ___
 
 ___
 
-### verifiedGuest
+### sendQueue
 
-• **verifiedGuest**: `boolean` = `false`
+• **sendQueue**: [`MessageQueue`](MessageQueue.md)\<`EnqueuedMessage`\>
 
 #### Inherited from
 
-[Channel](Channel.md).[verifiedGuest](Channel.md#verifiedguest)
+[Channel](Channel.md).[sendQueue](Channel.md#sendqueue)
+
+___
+
+### visitors
+
+• **visitors**: `Map`\<`string`, `string`\>
+
+#### Inherited from
+
+[Channel](Channel.md).[visitors](Channel.md#visitors)
+
+___
+
+### HIGHEST\_TIMESTAMP
+
+▪ `Static` **HIGHEST\_TIMESTAMP**: `string`
+
+Returns the 'lowest' possible timestamp.
+
+#### Inherited from
+
+[Channel](Channel.md).[HIGHEST_TIMESTAMP](Channel.md#highest_timestamp)
+
+___
+
+### LOWEST\_TIMESTAMP
+
+▪ `Static` **LOWEST\_TIMESTAMP**: `string`
+
+Returns the 'lowest' possible timestamp.
+
+#### Inherited from
+
+[Channel](Channel.md).[LOWEST_TIMESTAMP](Channel.md#lowest_timestamp)
+
+___
+
+### ReadyFlag
+
+▪ `Static` **ReadyFlag**: `symbol`
+
+#### Overrides
+
+[Channel](Channel.md).[ReadyFlag](Channel.md#readyflag)
+
+___
+
+### defaultProtocol
+
+▪ `Static` **defaultProtocol**: [`SBProtocol`](../interfaces/SBProtocol.md)
+
+#### Inherited from
+
+[Channel](Channel.md).[defaultProtocol](Channel.md#defaultprotocol)
+
+___
+
+### timestampRegex
+
+▪ `Static` **timestampRegex**: `RegExp`
+
+#### Inherited from
+
+[Channel](Channel.md).[timestampRegex](Channel.md#timestampregex)
 
 ## Accessors
+
+### ChannelReadyFlag
+
+• `get` **ChannelReadyFlag**(): `boolean`
+
+#### Returns
+
+`boolean`
+
+#### Inherited from
+
+Channel.ChannelReadyFlag
+
+___
+
+### ChannelSocketReadyFlag
+
+• `get` **ChannelSocketReadyFlag**(): `boolean`
+
+#### Returns
+
+`boolean`
+
+___
+
+### SB384ReadyFlag
+
+• `get` **SB384ReadyFlag**(): `any`
+
+#### Returns
+
+`any`
+
+#### Inherited from
+
+Channel.SB384ReadyFlag
+
+___
+
+### SBChannelKeysReadyFlag
+
+• `get` **SBChannelKeysReadyFlag**(): `any`
+
+#### Returns
+
+`any`
+
+#### Inherited from
+
+Channel.SBChannelKeysReadyFlag
+
+___
 
 ### api
 
@@ -251,11 +388,11 @@ ___
 
 ### channelData
 
-• `get` **channelData**(): [`ChannelData`](../interfaces/ChannelData.md)
+• `get` **channelData**(): [`SBChannelData`](../interfaces/SBChannelData.md)
 
 #### Returns
 
-[`ChannelData`](../interfaces/ChannelData.md)
+[`SBChannelData`](../interfaces/SBChannelData.md)
 
 #### Inherited from
 
@@ -277,50 +414,6 @@ Channel.channelId
 
 ___
 
-### channelServer
-
-• `get` **channelServer**(): `string`
-
-#### Returns
-
-`string`
-
-#### Inherited from
-
-Channel.channelServer
-
-• `set` **channelServer**(`channelServer`): `void`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `channelServer` | `string` |
-
-#### Returns
-
-`void`
-
-#### Inherited from
-
-Channel.channelServer
-
-___
-
-### channelSignKey
-
-• `get` **channelSignKey**(): `CryptoKey`
-
-#### Returns
-
-`CryptoKey`
-
-#### Inherited from
-
-Channel.channelSignKey
-
-___
-
 ### enableTrace
 
 • `set` **enableTrace**(`b`): `void`
@@ -339,43 +432,17 @@ Enables debug output
 
 ___
 
-### encryptionKey
+### handle
 
-• `get` **encryptionKey**(): `CryptoKey`
+• `get` **handle**(): [`SBChannelHandle`](../interfaces/SBChannelHandle.md)
 
 #### Returns
 
-`CryptoKey`
+[`SBChannelHandle`](../interfaces/SBChannelHandle.md)
 
 #### Inherited from
 
-Channel.encryptionKey
-
-___
-
-### exportable\_owner\_pubKey
-
-• `get` **exportable_owner_pubKey**(): `CryptoKey`
-
-#### Returns
-
-`CryptoKey`
-
-___
-
-### exportable\_pubKey
-
-• `get` **exportable_pubKey**(): `JsonWebKey`
-
-For 'jwk' format use cases.
-
-#### Returns
-
-`JsonWebKey`
-
-#### Inherited from
-
-Channel.exportable\_pubKey
+Channel.handle
 
 ___
 
@@ -386,23 +453,11 @@ ___
 Returns a unique identifier for external use, that will be unique
 for any class or object that uses SB384 as it's root.
 
-This is deterministic. Important use case is to translate a user id
-into a channel id (eg the channel that any user id is inherently
+This is deterministic. Typical use case is to translate a user id
+into a ChannelId (eg the channel that any user id is inherently
 the owner of).
 
-The hash is base64 encoding of the SHA-384 hash of the public key,
-taking the 'x' and 'y' fields. Note that it is slightly restricted, it only
-allows [A-Za-z0-9], eg does not allow the '_' or '-' characters. This makes the
-encoding more practical for end-user interactions like copy-paste. This
-is accomplished by simply re-hashing until the result is valid. This 
-reduces the entropy of the channel ID by a neglible amount. 
-
-Note this is not b62 encoding, which we use for 256-bit entities. This
-is still ~384 bits (e.g. x and y fields are each 384 bits, but of course
-the underlying total entropy isn't that (exercise left to the reader).
-
-NOTE: if you ever need to COMPARE hashes, the short version is that
-you cannot do so in the general case: you need to use sbCrypto.compareHashWithKey()
+The hash is base62 encoding of the SHA-384 hash of the public key.
 
 #### Returns
 
@@ -414,9 +469,25 @@ Channel.hash
 
 ___
 
-### jwk
+### hashB32
 
-• `get` **jwk**(): `JsonWebKey`
+• `get` **hashB32**(): `string`
+
+Similar to [SB384.hash](SB384.md#hash), but base32 encoded.
+
+#### Returns
+
+`string`
+
+#### Inherited from
+
+Channel.hashB32
+
+___
+
+### jwkPrivate
+
+• `get` **jwkPrivate**(): `JsonWebKey`
 
 #### Returns
 
@@ -424,79 +495,31 @@ ___
 
 #### Inherited from
 
-Channel.jwk
+Channel.jwkPrivate
 
 ___
 
-### key
+### jwkPublic
 
-• `get` **key**(): `CryptoKey`
+• `get` **jwkPublic**(): `JsonWebKey`
 
 #### Returns
 
-`CryptoKey`
+`JsonWebKey`
 
 #### Inherited from
 
-Channel.key
-
-___
-
-### keys
-
-• `get` **keys**(): [`ChannelKeys`](../interfaces/ChannelKeys.md)
-
-#### Returns
-
-[`ChannelKeys`](../interfaces/ChannelKeys.md)
-
-#### Inherited from
-
-Channel.keys
-
-___
-
-### onMessage
-
-• `get` **onMessage**(): (`m`: [`ChannelMessage`](../interfaces/ChannelMessage.md)) => `void`
-
-#### Returns
-
-`fn`
-
-▸ (`m`): `void`
-
-##### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `m` | [`ChannelMessage`](../interfaces/ChannelMessage.md) |
-
-##### Returns
-
-`void`
-
-• `set` **onMessage**(`f`): `void`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `f` | (`m`: [`ChannelMessage`](../interfaces/ChannelMessage.md)) => `void` |
-
-#### Returns
-
-`void`
+Channel.jwkPublic
 
 ___
 
 ### owner
 
-• `get` **owner**(): `boolean`
+• `get` **owner**(): `undefined` \| `boolean` \| ``""``
 
 #### Returns
 
-`boolean`
+`undefined` \| `boolean` \| ``""``
 
 #### Inherited from
 
@@ -537,17 +560,59 @@ Channel.private
 
 ___
 
-### readyFlag
+### privateKey
 
-• `get` **readyFlag**(): `boolean`
+• `get` **privateKey**(): `CryptoKey`
 
 #### Returns
 
-`boolean`
+`CryptoKey`
 
 #### Inherited from
 
-Channel.readyFlag
+Channel.privateKey
+
+___
+
+### publicKey
+
+• `get` **publicKey**(): `CryptoKey`
+
+#### Returns
+
+`CryptoKey`
+
+#### Inherited from
+
+Channel.publicKey
+
+___
+
+### ready
+
+• `get` **ready**(): `Promise`\<[`ChannelSocket`](ChannelSocket.md)\>
+
+#### Returns
+
+`Promise`\<[`ChannelSocket`](ChannelSocket.md)\>
+
+#### Overrides
+
+Channel.ready
+
+___
+
+### signKey
+
+• `get` **signKey**(): `CryptoKey`
+
+#### Returns
+
+`CryptoKey`
+
+#### Inherited from
+
+Channel.signKey
 
 ___
 
@@ -565,10 +630,6 @@ ___
 
 • `get` **userId**(): `string`
 
-Somewhat confusing at times, the string version of the user key per se is
-different from "hash" (the full public key can be recovered from SBUserId).
-Eg this is the public identifier.
-
 #### Returns
 
 `string`
@@ -579,11 +640,11 @@ Channel.userId
 
 ___
 
-### userKeyString
+### userPrivateKey
 
-• `get` **userKeyString**(): `string`
+• `get` **userPrivateKey**(): `string`
 
-Wire format of full info of key (eg private key).
+Wire format of full info of key (eg private key). Compressed.
 
 #### Returns
 
@@ -591,13 +652,60 @@ Wire format of full info of key (eg private key).
 
 #### Inherited from
 
-Channel.userKeyString
+Channel.userPrivateKey
+
+___
+
+### userPrivateKeyDehydrated
+
+• `get` **userPrivateKeyDehydrated**(): `string`
+
+Compressed and dehydrated, meaning, 'x' needs to come from another source.
+(If lost it can be reconstructed from 'd')
+
+#### Returns
+
+`string`
+
+#### Inherited from
+
+Channel.userPrivateKeyDehydrated
+
+___
+
+### userPublicKey
+
+• `get` **userPublicKey**(): `string`
+
+Wire format of full (decodable) public key
+
+#### Returns
+
+`string`
+
+#### Inherited from
+
+Channel.userPublicKey
+
+___
+
+### ySign
+
+• `get` **ySign**(): ``0`` \| ``1``
+
+#### Returns
+
+``0`` \| ``1``
+
+#### Inherited from
+
+Channel.ySign
 
 ## Methods
 
 ### acceptVisitor
 
-▸ **acceptVisitor**(`userId`): `Promise`\<`unknown`\>
+▸ **acceptVisitor**(`userId`): `Promise`\<`any`\>
 
 #### Parameters
 
@@ -607,7 +715,7 @@ Channel.userKeyString
 
 #### Returns
 
-`Promise`\<`unknown`\>
+`Promise`\<`any`\>
 
 #### Inherited from
 
@@ -615,16 +723,111 @@ Channel.userKeyString
 
 ___
 
-### authorize
+### budd
 
-▸ **authorize**(`ownerPublicKey`, `serverSecret`): `Promise`\<`any`\>
+▸ **budd**(`options?`): `Promise`\<[`SBChannelHandle`](../interfaces/SBChannelHandle.md)\>
+
+"budd" will spin a channel off an existing one that you own,
+or transfer storage budget to an existing channel.
+
+You need to provide one of the following combinations of info:
+
+- nothing: creates new channel with minmal permitted budget
+- just storage amount: creates new channel with that amount, returns new channel
+- just a target channel: moves a chunk of storage to that channel (see below)
+- target channel and storage amount: moves that amount to that channel
+- keys and storage amount: creates new channel with those keys and that storage amount
+
+If you want to budd into a channel with specific keys, you'll need to
+create a new set of keys (SBChannelKeys) and pass the SBChannelData from that.
+
+It returns a complete SBChannelHandle, which will include the private key
+
+Another way to remember the above: all combinations are valid except
+both a target channel and assigning keys.
+
+In terms of 'keys', you can provide a JsonWebKey, or a SBUserPrivateKey,
+or a channel handle. JWK is there for backwards compatibility.
+
+Note: if you're specifying the target channel, then the return values will
+not include the private key (that return value will be empty).
+
+Note: the owner of the target channel will get a message that you budded
+into their channel, which includes the channelId it was budded from.
+
+Note: a negative storage amount is interpreted as 'leave that much behind'.
+
+Any indications that your parameters are wrong will result in a rejected
+promise. This includes if you ask for more storage than is there, or if
+your negative value is more than the storage budget that's there. 
+
+If the budget and target channels are the same, it will throw.
+
+If you omit budget size, it will use the smallest allowed new channel
+storage (currently 32 MB). This will happens regardless of if you are
+creating a new channel, or 'depositing'.
+
+If you give the size value of 'Infinity', then all the storage available
+on the source channel will be transferred to the target channel
+(aka 'plunder').
+
+On the server side, budd is in two steps, first extracting the storage
+budget from the mother channel, and then creating or transferring the
+storage budget to the target channel.
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `ownerPublicKey` | `Dictionary`\<`any`\> |
-| `serverSecret` | `string` |
+| `options?` | `Object` |
+| `options.size?` | `number` |
+| `options.targetChannel?` | [`SBChannelHandle`](../interfaces/SBChannelHandle.md) |
+
+#### Returns
+
+`Promise`\<[`SBChannelHandle`](../interfaces/SBChannelHandle.md)\>
+
+#### Inherited from
+
+[Channel](Channel.md).[budd](Channel.md#budd)
+
+___
+
+### buildApiBody
+
+▸ **buildApiBody**(`path`, `apiPayload?`): `Promise`\<[`ChannelApiBody`](../interfaces/ChannelApiBody.md)\>
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `path` | `string` |
+| `apiPayload?` | `any` |
+
+#### Returns
+
+`Promise`\<[`ChannelApiBody`](../interfaces/ChannelApiBody.md)\>
+
+#### Inherited from
+
+[Channel](Channel.md).[buildApiBody](Channel.md#buildapibody)
+
+___
+
+### callApi
+
+▸ **callApi**(`path`): `Promise`\<`any`\>
+
+Implements Channel api calls.
+
+Note that the API call details are also embedded in the ChannelMessage,
+and signed by the sender, completely separate from HTTP etc auth.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `path` | `string` |
 
 #### Returns
 
@@ -632,111 +835,135 @@ ___
 
 #### Inherited from
 
-[Channel](Channel.md).[authorize](Channel.md#authorize)
+[Channel](Channel.md).[callApi](Channel.md#callapi)
 
-___
-
-### budd
-
-▸ **budd**(): `Promise`\<[`SBChannelHandle`](../interfaces/SBChannelHandle.md)\>
-
-"budd" will spin a channel off an existing one.
-You need to provide one of the following combinations of info:
-
-- nothing: create new channel and transfer all storage budget
-- just storage amount: creates new channel with that amount, returns new channel
-- just a target channel: moves all storage budget to that channel
-- just keys: creates new channel with those keys and transfers all storage budget
-- keys and storage amount: creates new channel with those keys and that storage amount
-
-In the first (special) case you can just call budd(), in the other
-cases you need to fill out the 'options' object.
-
-Another way to remember the above: all combinations are valid except
-both a target channel and assigning keys.
-
-Note: if you're specifying the target channel, then the return values will
-not include the private key (that return value will be empty).
-
-Same channels as mother and target will be a no-op, regardless of other
-parameters.
-
-Note: if you provide a value for 'storage', it cannot be undefined. If you
-wish it to be Infinity, then you need to omit the property from options.
-
-Future: negative amount of storage leaves that amount behind, the rest is transferred
-
-#### Returns
-
-`Promise`\<[`SBChannelHandle`](../interfaces/SBChannelHandle.md)\>
-
-#### Inherited from
-
-[Channel](Channel.md).[budd](Channel.md#budd)
-
-▸ **budd**(`options`): `Promise`\<[`SBChannelHandle`](../interfaces/SBChannelHandle.md)\>
+▸ **callApi**(`path`, `apiPayload`): `Promise`\<`any`\>
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `options` | `Object` |
-| `options.keys?` | `JsonWebKey` |
-| `options.storage?` | `number` |
-| `options.targetChannel?` | `string` |
+| `path` | `string` |
+| `apiPayload` | `any` |
 
 #### Returns
 
-`Promise`\<[`SBChannelHandle`](../interfaces/SBChannelHandle.md)\>
+`Promise`\<`any`\>
 
 #### Inherited from
 
-[Channel](Channel.md).[budd](Channel.md#budd)
+[Channel](Channel.md).[callApi](Channel.md#callapi)
 
 ___
 
-### deCryptChannelMessage
+### close
 
-▸ **deCryptChannelMessage**(`m00`, `m01`): `Promise`\<`undefined` \| [`ChannelMessage`](../interfaces/ChannelMessage.md)\>
+▸ **close**(): `Promise`\<`void`\>
+
+#### Returns
+
+`Promise`\<`void`\>
+
+#### Overrides
+
+[Channel](Channel.md).[close](Channel.md#close)
+
+___
+
+### create
+
+▸ **create**(`storageToken`, `channelServer?`): `Promise`\<[`Channel`](Channel.md)\>
+
+Authorizes/registers this channel on the provided server
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `m00` | `string` |
-| `m01` | [`EncryptedContents`](../interfaces/EncryptedContents.md) |
+| `storageToken` | [`SBStorageToken`](../interfaces/SBStorageToken.md) |
+| `channelServer` | `string` |
 
 #### Returns
 
-`Promise`\<`undefined` \| [`ChannelMessage`](../interfaces/ChannelMessage.md)\>
+`Promise`\<[`Channel`](Channel.md)\>
 
 #### Inherited from
 
-[Channel](Channel.md).[deCryptChannelMessage](Channel.md#decryptchannelmessage)
+[Channel](Channel.md).[create](Channel.md#create)
 
 ___
 
-### downloadData
+### extractMessage
 
-▸ **downloadData**(): `Promise`\<`unknown`\>
+▸ **extractMessage**(`msgRaw`): `Promise`\<`undefined` \| [`Message`](../interfaces/Message.md)\>
 
-Channel.downloadData
+Takes a 'ChannelMessage' format and presents it as a 'Message'. Does a
+variety of things. If there is any issue, will return 'undefined', and you
+should probably just ignore that message. Only requirement is you extract
+payload before calling this (some callees needs to, or wants to, fill in
+things in ChannelMessage)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `msgRaw` | `undefined` \| [`ChannelMessage`](../interfaces/ChannelMessage.md) |
 
 #### Returns
 
-`Promise`\<`unknown`\>
+`Promise`\<`undefined` \| [`Message`](../interfaces/Message.md)\>
 
 #### Inherited from
 
-[Channel](Channel.md).[downloadData](Channel.md#downloaddata)
+[Channel](Channel.md).[extractMessage](Channel.md#extractmessage)
+
+___
+
+### extractMessageMap
+
+▸ **extractMessageMap**(`msgMap`): `Promise`\<`Map`\<`string`, [`Message`](../interfaces/Message.md)\>\>
+
+Applies 'extractMessage()' to a map of messages.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `msgMap` | `Map`\<`string`, [`ChannelMessage`](../interfaces/ChannelMessage.md)\> |
+
+#### Returns
+
+`Promise`\<`Map`\<`string`, [`Message`](../interfaces/Message.md)\>\>
+
+#### Inherited from
+
+[Channel](Channel.md).[extractMessageMap](Channel.md#extractmessagemap)
+
+___
+
+### finalizeMessage
+
+▸ **finalizeMessage**(`msg`): `Promise`\<[`ChannelMessage`](../interfaces/ChannelMessage.md)\>
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `msg` | [`ChannelMessage`](../interfaces/ChannelMessage.md) |
+
+#### Returns
+
+`Promise`\<[`ChannelMessage`](../interfaces/ChannelMessage.md)\>
+
+#### Inherited from
+
+[Channel](Channel.md).[finalizeMessage](Channel.md#finalizemessage)
 
 ___
 
 ### getAdminData
 
 ▸ **getAdminData**(): `Promise`\<[`ChannelAdminData`](../interfaces/ChannelAdminData.md)\>
-
-Channel.getAdminData
 
 #### Returns
 
@@ -752,8 +979,6 @@ ___
 
 ▸ **getCapacity**(): `Promise`\<`any`\>
 
-getCapacity
-
 #### Returns
 
 `Promise`\<`any`\>
@@ -764,19 +989,33 @@ getCapacity
 
 ___
 
-### getJoinRequests
+### getChannelKeys
 
-▸ **getJoinRequests**(): `Promise`\<`any`\>
-
-getJoinRequests
+▸ **getChannelKeys**(): `Promise`\<[`SBChannelData`](../interfaces/SBChannelData.md)\>
 
 #### Returns
 
-`Promise`\<`any`\>
+`Promise`\<[`SBChannelData`](../interfaces/SBChannelData.md)\>
 
 #### Inherited from
 
-[Channel](Channel.md).[getJoinRequests](Channel.md#getjoinrequests)
+[Channel](Channel.md).[getChannelKeys](Channel.md#getchannelkeys)
+
+___
+
+### getHistory
+
+▸ **getHistory**(): `Promise`\<[`MessageHistoryDirectory`](../interfaces/MessageHistoryDirectory.md)\>
+
+Returns map of message keys from the server corresponding to the request.
+
+#### Returns
+
+`Promise`\<[`MessageHistoryDirectory`](../interfaces/MessageHistoryDirectory.md)\>
+
+#### Inherited from
+
+[Channel](Channel.md).[getHistory](Channel.md#gethistory)
 
 ___
 
@@ -784,7 +1023,7 @@ ___
 
 ▸ **getLastMessageTimes**(): `void`
 
-Channel.getLastMessageTimes
+Deprecated. Would take an array of channelIds and get latest time stamp from all of them
 
 #### Returns
 
@@ -796,18 +1035,77 @@ Channel.getLastMessageTimes
 
 ___
 
-### getMother
+### getLatestTimestamp
 
-▸ **getMother**(): `Promise`\<`any`\>
+▸ **getLatestTimestamp**(): `Promise`\<`string`\>
 
-getMother
-
-Get the channelID from which this channel was budded. Note that
-this is only accessible by Owner (as well as hosting server)
+Gets the latest known timestamp on the server. Returns it in prefix string format.
 
 #### Returns
 
-`Promise`\<`any`\>
+`Promise`\<`string`\>
+
+#### Inherited from
+
+[Channel](Channel.md).[getLatestTimestamp](Channel.md#getlatesttimestamp)
+
+___
+
+### getMessageKeys
+
+▸ **getMessageKeys**(`prefix?`): `Promise`\<\{ `historyShard`: [`SBObjectHandle`](../interfaces/SBObjectHandle.md) ; `keys`: `Set`\<`string`\>  }\>
+
+Returns map of message keys from the server corresponding to the request.
+Takes a single optional parameter, which is the time stamp prefix for which
+a set is requested. If not provided, the default is '0' (which corresponds
+to entire history). The return data structure includes the map of message
+keys, and the current history shard (which is 'null' if there is none).
+
+#### Parameters
+
+| Name | Type | Default value |
+| :------ | :------ | :------ |
+| `prefix` | `string` | `'0'` |
+
+#### Returns
+
+`Promise`\<\{ `historyShard`: [`SBObjectHandle`](../interfaces/SBObjectHandle.md) ; `keys`: `Set`\<`string`\>  }\>
+
+#### Inherited from
+
+[Channel](Channel.md).[getMessageKeys](Channel.md#getmessagekeys)
+
+___
+
+### getMessageMap
+
+▸ **getMessageMap**(`messageKeys`): `Promise`\<`Map`\<`string`, [`Message`](../interfaces/Message.md)\>\>
+
+Main function for getting a chunk of messages from the server.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `messageKeys` | `Set`\<`string`\> |
+
+#### Returns
+
+`Promise`\<`Map`\<`string`, [`Message`](../interfaces/Message.md)\>\>
+
+#### Inherited from
+
+[Channel](Channel.md).[getMessageMap](Channel.md#getmessagemap)
+
+___
+
+### getMother
+
+▸ **getMother**(): `Promise`\<`string`\>
+
+#### Returns
+
+`Promise`\<`string`\>
 
 #### Inherited from
 
@@ -815,36 +1113,68 @@ this is only accessible by Owner (as well as hosting server)
 
 ___
 
-### getOldMessages
+### getPage
 
-▸ **getOldMessages**(`currentMessagesLength?`, `paginate?`): `Promise`\<[`ChannelMessage`](../interfaces/ChannelMessage.md)[]\>
+▸ **getPage**(): `Promise`\<`any`\>
 
-Channel.getOldMessages
+Note that 'getPage' can be done without any authentication, in which
+case have a look at Snackabra.getPage(). If however the Page is locked,
+you need to access it through this ChannelApi entry point.
 
-Will return most recent messages from the channel.
+But conversely, we don't need a prefix or anything else, since
+we know the channel. So .. we can just shoot this off.
 
-#### Parameters
-
-| Name | Type | Default value | Description |
-| :------ | :------ | :------ | :------ |
-| `currentMessagesLength` | `number` | `100` | number to fetch (default 100) |
-| `paginate` | `boolean` | `false` | if true, will paginate from last request (default false) |
+Note that a 'Page' might be mime-typed, in which case you should
+use a regular fetch() call and handle results accordingly. This
+function is for 'sb384payloadV3' only.
 
 #### Returns
 
-`Promise`\<[`ChannelMessage`](../interfaces/ChannelMessage.md)[]\>
+`Promise`\<`any`\>
 
 #### Inherited from
 
-[Channel](Channel.md).[getOldMessages](Channel.md#getoldmessages)
+[Channel](Channel.md).[getPage](Channel.md#getpage)
+
+___
+
+### getPubKeys
+
+▸ **getPubKeys**(): `Promise`\<`Map`\<`string`, `string`\>\>
+
+#### Returns
+
+`Promise`\<`Map`\<`string`, `string`\>\>
+
+#### Inherited from
+
+[Channel](Channel.md).[getPubKeys](Channel.md#getpubkeys)
+
+___
+
+### getRawMessageMap
+
+▸ **getRawMessageMap**(`messageKeys`): `Promise`\<`Map`\<`string`, `ArrayBuffer`\>\>
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `messageKeys` | `Set`\<`string`\> |
+
+#### Returns
+
+`Promise`\<`Map`\<`string`, `ArrayBuffer`\>\>
+
+#### Inherited from
+
+[Channel](Channel.md).[getRawMessageMap](Channel.md#getrawmessagemap)
 
 ___
 
 ### getStorageLimit
 
 ▸ **getStorageLimit**(): `Promise`\<`any`\>
-
-getStorageLimit (current storage budget)
 
 #### Returns
 
@@ -858,9 +1188,7 @@ ___
 
 ### getStorageToken
 
-▸ **getStorageToken**(`size`): `Promise`\<`string`\>
-
-returns a storage token (promise); basic consumption of channel budget
+▸ **getStorageToken**(`size`): `Promise`\<[`SBStorageToken`](../interfaces/SBStorageToken.md)\>
 
 #### Parameters
 
@@ -870,7 +1198,7 @@ returns a storage token (promise); basic consumption of channel budget
 
 #### Returns
 
-`Promise`\<`string`\>
+`Promise`\<[`SBStorageToken`](../interfaces/SBStorageToken.md)\>
 
 #### Inherited from
 
@@ -881,8 +1209,6 @@ ___
 ### isLocked
 
 ▸ **isLocked**(): `Promise`\<`boolean`\>
-
-isLocked
 
 #### Returns
 
@@ -896,51 +1222,7 @@ ___
 
 ### lock
 
-▸ **lock**(`key?`): `Promise`\<\{ `locked`: `boolean` ; `lockedKey`: `JsonWebKey`  }\>
-
-Channel.lock()
-
-Locks the channel, so that new visitors need an "ack" to join.
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `key?` | `CryptoKey` |
-
-#### Returns
-
-`Promise`\<\{ `locked`: `boolean` ; `lockedKey`: `JsonWebKey`  }\>
-
-#### Inherited from
-
-[Channel](Channel.md).[lock](Channel.md#lock)
-
-___
-
-### ownerKeyRotation
-
-▸ **ownerKeyRotation**(): `void`
-
-#### Returns
-
-`void`
-
-#### Inherited from
-
-[Channel](Channel.md).[ownerKeyRotation](Channel.md#ownerkeyrotation)
-
-___
-
-### postPubKey
-
-▸ **postPubKey**(`_exportable_pubKey`): `Promise`\<\{ `success`: `boolean`  }\>
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `_exportable_pubKey` | `JsonWebKey` |
+▸ **lock**(): `Promise`\<\{ `success`: `boolean`  }\>
 
 #### Returns
 
@@ -948,13 +1230,77 @@ ___
 
 #### Inherited from
 
-[Channel](Channel.md).[postPubKey](Channel.md#postpubkey)
+[Channel](Channel.md).[lock](Channel.md#lock)
+
+___
+
+### messageQueueManager
+
+▸ **messageQueueManager**(): `Promise`\<`void`\>
+
+#### Returns
+
+`Promise`\<`void`\>
+
+#### Inherited from
+
+[Channel](Channel.md).[messageQueueManager](Channel.md#messagequeuemanager)
+
+___
+
+### onMessage
+
+▸ **onMessage**(`_m`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `_m` | `string` \| [`Message`](../interfaces/Message.md) |
+
+#### Returns
+
+`void`
+
+___
+
+### packageMessage
+
+▸ **packageMessage**(`contents`, `options?`): [`ChannelMessage`](../interfaces/ChannelMessage.md)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `contents` | `any` |
+| `options` | [`MessageOptions`](../interfaces/MessageOptions.md) |
+
+#### Returns
+
+[`ChannelMessage`](../interfaces/ChannelMessage.md)
+
+#### Inherited from
+
+[Channel](Channel.md).[packageMessage](Channel.md#packagemessage)
+
+___
+
+### reset
+
+▸ **reset**(): `void`
+
+Reconnects (resets) a ChannelSocket. This will not block (it's
+synchronous), and 'ready' will resolve when the socket is ready again.
+
+#### Returns
+
+`void`
 
 ___
 
 ### send
 
-▸ **send**(`msg`): `Promise`\<`string`\>
+▸ **send**(`contents`, `options?`): `Promise`\<`string`\>
 
 ChannelSocket.send()
 
@@ -965,7 +1311,8 @@ or an error message if it fails.
 
 | Name | Type |
 | :------ | :------ |
-| `msg` | `string` \| [`SBMessage`](SBMessage.md) |
+| `contents` | `any` |
+| `options?` | [`MessageOptions`](../interfaces/MessageOptions.md) |
 
 #### Returns
 
@@ -977,17 +1324,24 @@ or an error message if it fails.
 
 ___
 
-### setMOTD
+### setPage
 
-▸ **setMOTD**(`motd`): `Promise`\<`any`\>
+▸ **setPage**(`options`): `Promise`\<`any`\>
 
-Set message of the day
+Sets 'page' as the Channel's 'page' response. If type is provided, it will
+be used as the 'Content-Type' header in the HTTP request when retrieved;
+also, if the type is 'text-like', it will be recoded to UTF-8 before
+delivery. Prefix indicates the smallest number of acceptable characters in
+the link. Default is 12, shortest is 6.
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `motd` | `string` |
+| `options` | `Object` |
+| `options.page` | `any` |
+| `options.prefix?` | `number` |
+| `options.type?` | `string` |
 
 #### Returns
 
@@ -995,35 +1349,13 @@ Set message of the day
 
 #### Inherited from
 
-[Channel](Channel.md).[setMOTD](Channel.md#setmotd)
-
-___
-
-### storageRequest
-
-▸ **storageRequest**(`byteLength`): `Promise`\<`Dictionary`\<`any`\>\>
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `byteLength` | `number` |
-
-#### Returns
-
-`Promise`\<`Dictionary`\<`any`\>\>
-
-#### Inherited from
-
-[Channel](Channel.md).[storageRequest](Channel.md#storagerequest)
+[Channel](Channel.md).[setPage](Channel.md#setpage)
 
 ___
 
 ### updateCapacity
 
 ▸ **updateCapacity**(`capacity`): `Promise`\<`any`\>
-
-Update (set) the capacity of the channel; Owner only
 
 #### Parameters
 
@@ -1041,20 +1373,216 @@ Update (set) the capacity of the channel; Owner only
 
 ___
 
-### uploadChannel
+### base4StringToDate
 
-▸ **uploadChannel**(`channelData`): `Promise`\<`any`\>
+▸ **base4StringToDate**(`tsStr`): `string`
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `channelData` | [`ChannelData`](../interfaces/ChannelData.md) |
+| `tsStr` | `string` |
 
 #### Returns
 
-`Promise`\<`any`\>
+`string`
 
 #### Inherited from
 
-[Channel](Channel.md).[uploadChannel](Channel.md#uploadchannel)
+[Channel](Channel.md).[base4StringToDate](Channel.md#base4stringtodate)
+
+___
+
+### base4StringToTimestamp
+
+▸ **base4StringToTimestamp**(`tsStr`): `number`
+
+Reverse of timestampToBase4String. Strict about the format
+(needs to be `[0-3]{26}`), returns 0 if there's any issue.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `tsStr` | `string` |
+
+#### Returns
+
+`number`
+
+#### Inherited from
+
+[Channel](Channel.md).[base4StringToTimestamp](Channel.md#base4stringtotimestamp)
+
+___
+
+### base4stringToDate
+
+▸ **base4stringToDate**(`tsStr`): `string`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `tsStr` | `string` |
+
+#### Returns
+
+`string`
+
+#### Inherited from
+
+[Channel](Channel.md).[base4stringToDate](Channel.md#base4stringtodate-1)
+
+___
+
+### composeMessageKey
+
+▸ **composeMessageKey**(`channelId`, `timestamp`, `subChannel?`): `string`
+
+Creates a 'message key' from constituent parts.
+
+#### Parameters
+
+| Name | Type | Default value |
+| :------ | :------ | :------ |
+| `channelId` | `string` | `undefined` |
+| `timestamp` | `number` | `undefined` |
+| `subChannel` | `string` | `'____'` |
+
+#### Returns
+
+`string`
+
+#### Inherited from
+
+[Channel](Channel.md).[composeMessageKey](Channel.md#composemessagekey)
+
+___
+
+### deComposeMessageKey
+
+▸ **deComposeMessageKey**(`key`): `Object`
+
+Teases apart the three elements of a channel message key. Note, this does not
+throw if there's an issue, it just sets all the parts to '', which should
+never occur. Up to you if you want to run with that result or assert on it.
+Strict about the format (defined as `[a-zA-Z0-9]{43}_[_a-zA-Z0-9]{4}_[0-3]{26}`).
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `key` | `string` |
+
+#### Returns
+
+`Object`
+
+| Name | Type |
+| :------ | :------ |
+| `channelId` | `string` |
+| `i2` | `string` |
+| `timestamp` | `string` |
+
+#### Inherited from
+
+[Channel](Channel.md).[deComposeMessageKey](Channel.md#decomposemessagekey)
+
+___
+
+### getLexicalExtremes
+
+▸ **getLexicalExtremes**\<`T`\>(`set`): [] \| [`T`, `T`]
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | extends `string` \| `number` |
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `set` | `Set`\<`T`\> |
+
+#### Returns
+
+[] \| [`T`, `T`]
+
+#### Inherited from
+
+[Channel](Channel.md).[getLexicalExtremes](Channel.md#getlexicalextremes)
+
+___
+
+### messageKeySetToPrefix
+
+▸ **messageKeySetToPrefix**(`keys`): `string`
+
+Given a set of (full) keys, reviews all the timestamp prefixes, and returns
+the shortest prefix that would range all the keys in the set.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `keys` | `Set`\<`string`\> |
+
+#### Returns
+
+`string`
+
+#### Inherited from
+
+[Channel](Channel.md).[messageKeySetToPrefix](Channel.md#messagekeysettoprefix)
+
+___
+
+### timestampLongestPrefix
+
+▸ **timestampLongestPrefix**(`s1`, `s2`): `string`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `s1` | `string` |
+| `s2` | `string` |
+
+#### Returns
+
+`string`
+
+#### Inherited from
+
+[Channel](Channel.md).[timestampLongestPrefix](Channel.md#timestamplongestprefix)
+
+___
+
+### timestampToBase4String
+
+▸ **timestampToBase4String**(`tsNum`): `string`
+
+Converts from timestamp to 'base 4' string used in message IDs.
+
+Time stamps are monotonically increasing. We enforce that they must be
+different. Stored as a string of [0-3] to facilitate prefix searches (within
+4x time ranges). We append "0000" for future needs, for example if we need
+above 1000 messages per second. Can represent epoch timestamps for the next
+400+ years. Currently the appended "0000" is stripped/ignored.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `tsNum` | `number` |
+
+#### Returns
+
+`string`
+
+#### Inherited from
+
+[Channel](Channel.md).[timestampToBase4String](Channel.md#timestamptobase4string)

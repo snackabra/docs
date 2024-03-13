@@ -34,7 +34,11 @@ MessageBus
 
 ### bus
 
-• **bus**: `Dictionary`\<`any`\> = `{}`
+• **bus**: `Object` = `{}`
+
+#### Index signature
+
+▪ [index: `string`]: `any`
 
 ## Methods
 

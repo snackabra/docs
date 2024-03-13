@@ -1,17 +1,17 @@
 <!doctype html>
-<html class="no-js" lang="en" data-content_root="../">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" />
 
-    <!-- Generated with Sphinx 7.2.6 and Furo 2023.09.10 -->
+    <!-- Generated with Sphinx 5.3.0 and Furo 2023.03.27 -->
         <title>Interface: ChannelAdminData - snackabra 1.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
-    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=eafc0fe6" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=7a5cf5c2" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
     
     
 
@@ -212,33 +212,71 @@
         <article role="main">
           <p><a class="reference internal" href="../README.html"><span class="std std-doc">JSLib Reference Manual</span></a> / <a class="reference internal" href="../modules.html"><span class="std std-doc">Exports</span></a> / ChannelAdminData</p>
 <section id="interface-channeladmindata">
-<h1>Interface: ChannelAdminData<a class="headerlink" href="#interface-channeladmindata" title="Link to this heading">#</a></h1>
+<h1>Interface: ChannelAdminData<a class="headerlink" href="#interface-channeladmindata" title="Permalink to this heading">#</a></h1>
+<p>This corresponds to all important meta-data on a channel that an Owner
+has access to.</p>
 <section id="table-of-contents">
-<h2>Table of contents<a class="headerlink" href="#table-of-contents" title="Link to this heading">#</a></h2>
+<h2>Table of contents<a class="headerlink" href="#table-of-contents" title="Permalink to this heading">#</a></h2>
 <section id="properties">
-<h3>Properties<a class="headerlink" href="#properties" title="Link to this heading">#</a></h3>
+<h3>Properties<a class="headerlink" href="#properties" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
+<li><p><a class="reference internal" href="#accepted"><span class="std std-ref">accepted</span></a></p></li>
 <li><p><a class="reference internal" href="#capacity"><span class="std std-ref">capacity</span></a></p></li>
-<li><p><a class="reference internal" href="#join_requests"><span class="std std-ref">join_requests</span></a></p></li>
-<li><p><a class="reference internal" href="#room_id"><span class="std std-ref">room_id</span></a></p></li>
+<li><p><a class="reference internal" href="#channeldata"><span class="std std-ref">channelData</span></a></p></li>
+<li><p><a class="reference internal" href="#channelid"><span class="std std-ref">channelId</span></a></p></li>
+<li><p><a class="reference internal" href="#latesttimestamp"><span class="std std-ref">latestTimestamp</span></a></p></li>
+<li><p><a class="reference internal" href="#locked"><span class="std std-ref">locked</span></a></p></li>
+<li><p><a class="reference internal" href="#motherchannel"><span class="std std-ref">motherChannel</span></a></p></li>
+<li><p><a class="reference internal" href="#storagelimit"><span class="std std-ref">storageLimit</span></a></p></li>
+<li><p><a class="reference internal" href="#visitors"><span class="std std-ref">visitors</span></a></p></li>
 </ul>
 </section>
 </section>
 <section id="id1">
-<h2>Properties<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<h2>Properties<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<section id="accepted">
+<h3>accepted<a class="headerlink" href="#accepted" title="Permalink to this heading">#</a></h3>
+<p>• <strong>accepted</strong>: <code class="docutils literal notranslate"><span class="pre">Set</span></code>&lt;<code class="docutils literal notranslate"><span class="pre">string</span></code>&gt;</p>
+</section>
+<hr class="docutils" />
 <section id="capacity">
-<h3>capacity<a class="headerlink" href="#capacity" title="Link to this heading">#</a></h3>
+<h3>capacity<a class="headerlink" href="#capacity" title="Permalink to this heading">#</a></h3>
 <p>• <strong>capacity</strong>: <code class="docutils literal notranslate"><span class="pre">number</span></code></p>
 </section>
 <hr class="docutils" />
-<section id="join-requests">
-<h3>join_requests<a class="headerlink" href="#join-requests" title="Link to this heading">#</a></h3>
-<p>• <strong>join_requests</strong>: <code class="docutils literal notranslate"><span class="pre">string</span></code>[]</p>
+<section id="channeldata">
+<h3>channelData<a class="headerlink" href="#channeldata" title="Permalink to this heading">#</a></h3>
+<p>• <strong>channelData</strong>: <a class="reference internal" href="SBChannelData.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">SBChannelData</span></code></span></a></p>
 </section>
 <hr class="docutils" />
-<section id="room-id">
-<h3>room_id<a class="headerlink" href="#room-id" title="Link to this heading">#</a></h3>
-<p>• <code class="docutils literal notranslate"><span class="pre">Optional</span></code> <strong>room_id</strong>: <code class="docutils literal notranslate"><span class="pre">string</span></code></p>
+<section id="channelid">
+<h3>channelId<a class="headerlink" href="#channelid" title="Permalink to this heading">#</a></h3>
+<p>• <strong>channelId</strong>: <code class="docutils literal notranslate"><span class="pre">string</span></code></p>
+</section>
+<hr class="docutils" />
+<section id="latesttimestamp">
+<h3>latestTimestamp<a class="headerlink" href="#latesttimestamp" title="Permalink to this heading">#</a></h3>
+<p>• <strong>latestTimestamp</strong>: <code class="docutils literal notranslate"><span class="pre">string</span></code></p>
+</section>
+<hr class="docutils" />
+<section id="locked">
+<h3>locked<a class="headerlink" href="#locked" title="Permalink to this heading">#</a></h3>
+<p>• <strong>locked</strong>: <code class="docutils literal notranslate"><span class="pre">boolean</span></code></p>
+</section>
+<hr class="docutils" />
+<section id="motherchannel">
+<h3>motherChannel<a class="headerlink" href="#motherchannel" title="Permalink to this heading">#</a></h3>
+<p>• <strong>motherChannel</strong>: <code class="docutils literal notranslate"><span class="pre">string</span></code></p>
+</section>
+<hr class="docutils" />
+<section id="storagelimit">
+<h3>storageLimit<a class="headerlink" href="#storagelimit" title="Permalink to this heading">#</a></h3>
+<p>• <strong>storageLimit</strong>: <code class="docutils literal notranslate"><span class="pre">number</span></code></p>
+</section>
+<hr class="docutils" />
+<section id="visitors">
+<h3>visitors<a class="headerlink" href="#visitors" title="Permalink to this heading">#</a></h3>
+<p>• <strong>visitors</strong>: <code class="docutils literal notranslate"><span class="pre">Map</span></code>&lt;<code class="docutils literal notranslate"><span class="pre">string</span></code>, <code class="docutils literal notranslate"><span class="pre">string</span></code>&gt;</p>
 </section>
 </section>
 </section>
@@ -286,9 +324,15 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#id1">Properties</a><ul>
+<li><a class="reference internal" href="#accepted">accepted</a></li>
 <li><a class="reference internal" href="#capacity">capacity</a></li>
-<li><a class="reference internal" href="#join-requests">join_requests</a></li>
-<li><a class="reference internal" href="#room-id">room_id</a></li>
+<li><a class="reference internal" href="#channeldata">channelData</a></li>
+<li><a class="reference internal" href="#channelid">channelId</a></li>
+<li><a class="reference internal" href="#latesttimestamp">latestTimestamp</a></li>
+<li><a class="reference internal" href="#locked">locked</a></li>
+<li><a class="reference internal" href="#motherchannel">motherChannel</a></li>
+<li><a class="reference internal" href="#storagelimit">storageLimit</a></li>
+<li><a class="reference internal" href="#visitors">visitors</a></li>
 </ul>
 </li>
 </ul>
@@ -302,9 +346,12 @@
       
     </aside>
   </div>
-</div><script src="../_static/documentation_options.js?v=f2a433a1"></script>
-    <script src="../_static/doctools.js?v=888ff710"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/scripts/furo.js?v=32e29ea5"></script>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/scripts/furo.js"></script>
     </body>
 </html>
